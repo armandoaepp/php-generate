@@ -22,6 +22,8 @@ switch($evento)
 
             $data = $user_controller->getAll() ;
 
+            $data = Serialize::unSerializeArray($data);
+
             $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
         }
         catch (Exception $e)
@@ -153,6 +155,8 @@ switch($evento)
             $user_controller = new UserController() ; 
 
             $data = $user_controller->getById( $id) ;
+
+            $data = Serialize::unSerializeRow($data);
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
