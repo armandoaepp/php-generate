@@ -81,96 +81,24 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $nomarchivo = $carpeta . "" . $tabla;
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-         $texto       = '<?php'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    require_once "../sesion_admin.php";'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    loginRedirect("../login.php");'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    require_once "../../app/autoload.php";'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    $'.$tabla.'_controller = new '.$cmTable.'Controller();'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    $data = $'.$tabla.'_controller->list();'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '    $title_page = "'.$tabla.'s"'. PHP_EOL ;
-         $texto      .= ''. PHP_EOL ;
-         $texto      .= '?>'. PHP_EOL ;
-         $
-
-        $texto      .= '<!DOCTYPE html>'.PHP_EOL ;
-        $texto      .= '<html lang="es">'.PHP_EOL ;
-        $texto      .= '  <head>'.PHP_EOL ;
-        $texto      .= '    <?php'.PHP_EOL ;
-        $texto      .= '      $setvar = array("titulo" => $title_page." | Admin ", "follow" => "", "active" => [1, 1]);'.PHP_EOL ;
-        $texto      .= '      require_once "../layout/head_links.phtml";'.PHP_EOL ;
-        $texto      .= '    ?>'.PHP_EOL ;
-        $texto      .= '    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">'.PHP_EOL ;
-        $texto      .= '  </head>'.PHP_EOL ;
-        $texto      .= ''.PHP_EOL ;
-        $texto      .= '  <body>'.PHP_EOL ;
-        $texto      .= '    <?php require "../layout/header.phtml"; ?>'.PHP_EOL ;
-        $texto      .= '    <main role="main" class="screen-main">'.PHP_EOL ;
-
-        $texto      .= '    <nav aria-label="breadcrumb">'.PHP_EOL ;
-        $texto      .= '        <ol class="breadcrumb">'.PHP_EOL ;
-        $texto      .= '            <li class="breadcrumb-item">'.PHP_EOL ;
-        $texto      .= '                <a href="admin">'.PHP_EOL ;
-        $texto      .= '                    <i class="material-icons">home</i>'.PHP_EOL ;
-        $texto      .= '                </a>'.PHP_EOL ;
-        $texto      .= '            </li>'.PHP_EOL ;
-        $texto      .= '            <li class="breadcrumb-item" aria-current="page">'.PHP_EOL ;
-        $texto      .= '                <a href="admin/productos/productos.php"><?php echo $title_page ?></a>'.PHP_EOL ;
-        $texto      .= '            </li>'.PHP_EOL ;
-        $texto      .= '        </ol>'.PHP_EOL ;
-        $texto      .= '    </nav>'.PHP_EOL ;
-
-        $texto      .= '   </main>'.PHP_EOL ;
-        $texto      .= '  '.PHP_EOL ;
-
-        $texto      .= ''.PHP_EOL ;
-        $texto      .= '  </body>'.PHP_EOL ;
+        $texto       = '<?php'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    require_once "../sesion_admin.php";'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    loginRedirect("../login.php");'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    require_once "../../app/autoload.php";'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    $'.$tabla.'_controller = new '.$cmTable.'Controller();'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    $data = $'.$tabla.'_controller->getAll();'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '    $title_page = "'.$tabla.'s"'. PHP_EOL ;
+        $texto      .= ''. PHP_EOL ;
+        $texto      .= '?>'. PHP_EOL ;
+        $texto      .= templateIndex($tabla, $aatri) ;
 
 
-        $texto      .= '<div id="div_' . $tabla . '">' . PHP_EOL;
-        $texto .= '<form id="frm_' . $tabla . '" name="frm_' .$tabla. '" class="hform"  ng-submit="upd'.ucwords($tabla).'()">' . PHP_EOL;
-
-        $texto .= '<table class="table" >' . PHP_EOL;
-        $texto .= ' <caption>LISTA DE '.strtoupper($tabla).' </caption>' . PHP_EOL;
-        $texto .= '<thead>' . PHP_EOL;
-        $texto .= '    <tr>' . PHP_EOL;
-            for ($i = 0; $i < count($aatri); $i++)
-            {
-                if (strtolower(trim($aatri[$i])) != "estado")
-                {
-
-                    $texto .= '        <th>' . ucwords($aatri[$i]) . ' </th>' . PHP_EOL;
-                }
-            }
-        $texto .= '    </tr>' . PHP_EOL;
-        $texto .= '</thead>' . PHP_EOL;
-
-        $texto .= '<tbody>' . PHP_EOL;
-        $texto .= '    <tr ng-repeat="'.$tabla.' in '.$tabla.'s">' . PHP_EOL;
-
-            for ($i = 0; $i < count($aatri); $i++)
-            {
-                if (strtolower(trim($aatri[$i])) != "estado")
-                {
-
-                    $texto .= '        <th>'.$tabla .'.'. ($aatri[$i]) . ' </th>' . PHP_EOL;
-                }
-            }
-
-
-        $texto .= '    </tr>' . PHP_EOL;
-        $texto .= '</tbody>' . PHP_EOL;
-        $texto .= '' . PHP_EOL;
-        $texto .= '</table>' . PHP_EOL;
-
-
-        $texto .= '</form>' . PHP_EOL;
-        $texto .= '</div>';
         fwrite($abrir, $texto);
         fclose($abrir);
 

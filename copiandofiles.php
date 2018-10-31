@@ -38,15 +38,18 @@
 			}
 
 			if (!file_exists(APP."/config" )) {
-				mkdir("/config" , 0777);
+				mkdir(APP."/config" , 0777);
 			}
 
 			copy("files_app/autoload.php", APP."/autoload.php");
 			copy("files_app/paths.php", APP."/paths.php");
 			copy("files_app/ClsConexion.php", APP."/models/ClsConexion.php");
-			copy("files_app/Validation.php", APP."/helpers/Validation.php");
 			copy("files_app/config.php", APP."/config/config.php");
-			copy("files_app/serialize.php", APP."/helpers/serialize.php");
+			// copy("files_app/Validation.php", APP."/helpers/Validation.php");
+			// copy("files_app/serialize.php", APP."/helpers/serialize.php");
+
+			copy_directory('files_app/helpers',HELPERS) ;
+			copy_directory('files_app/auth',APP.'/auth') ;
 
 			//  $midir=opendir("./img");
 			//    // $i=0;

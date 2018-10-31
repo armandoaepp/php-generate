@@ -9,7 +9,7 @@ function processFormLogout(event) {
   console.log(params);
 
   $.ajax({
-    url: './app/api/user/IndexLogin.php',
+    url: './app/auth/IndexAuth.php',
     dataType: 'json',
     type: 'post',
     contentType: 'application/json',

@@ -6,15 +6,15 @@
 
     require_once "../../app/autoload.php";
 
-    $admision_controller = new AdmisionController();
+    $amigos_controller = new AmigosController();
 
-    $data = $admision_controller->getAll();
+    $data = $amigos_controller->getAll();
 
-    $title_page = "admisions"
+    $title_page = "amigoss"
 
 ?>
 
-<?php $title_page = "admision" ; ?>
+<?php $title_page = "amigos" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/admision/admision.php">
+          <a href="admin/Amigos/amigos.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -52,10 +52,10 @@
           </h4>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/admision/admision.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/Amigos/amigos.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/admision/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/Amigos/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
@@ -63,15 +63,16 @@
         <div class="col-12">
         
 <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+   <caption>LISTA DE "AMIGOS" </caption>
     <thead>
       <tr>
          <th>Id </th>
          <th>Titulo </th>
          <th>Imagen </th>
-         <th>Requisitos </th>
-         <th>Horarios </th>
-         <th>Inversion </th>
+         <th>Imagen_2 </th>
          <th>Email </th>
+         <th>Orden </th>
+         <th>Fecha </th>
          <th width="70"></th>
         <th width="70"></th>
       </tr>
@@ -82,13 +83,13 @@
         <td> <?php echo $row["id"] ?> </td>
         <td> <?php echo $row["titulo"] ?> </td>
         <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["requisitos"] ?> </td>
-        <td> <?php echo $row["horarios"] ?> </td>
-        <td> <?php echo $row["inversion"] ?> </td>
+        <td> <?php echo $row["imagen_2"] ?> </td>
         <td> <?php echo $row["email"] ?> </td>
+        <td> <?php echo $row["orden"] ?> </td>
+        <td> <?php echo $row["fecha"] ?> </td>
 
         <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/admision/editar.php?id=<?php echo $row["id"] ?>"
+          <a class="btn btn-primary btn-sm lh-1 " href="admin/amigos/editar.php?id=<?php echo $row["id"] ?>"
             title="Editar">
             <i class="material-icons">edit</i>
           </a>
@@ -105,6 +106,8 @@
 
   </table> 
         </div>
+
+
 
       </div>
 
@@ -159,7 +162,14 @@
 
     $(document).ready(function () {
       $("#dataTableList").DataTable({
-
+        "columns": [
+          null,
+          null,
+          null,
+          null,
+          { "orderable": false },
+          { "orderable": false },
+        ],
         "language": language,
       });
     });
@@ -174,7 +184,7 @@
         });
 
         $.ajax({
-          url: "./app/api/admision/IndexAdmision.php",
+          url: "./app/api/amigos/IndexAmigos.php",
           dataType: "json",
           type: "post",
           contentType: "application/json",

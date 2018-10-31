@@ -8,6 +8,13 @@ function toCamelCase($string) {
     return $value ;
 }
 
+function toUrlFriendly($string, $str_re = "_") {
+    $value = str_replace($str_re, '-', $string);
+    return $value ;
+}
+
+
+
 // copy_directory('/directory1','/public/directory1')
 
 function copy_directory($src,$dst) {

@@ -13,6 +13,8 @@ include_once 'generando_procedures.php';
 
 include_once 'generateViews.php';
 
+include_once 'files_app/template.php';
+// echo templateIndex('demosss')  ;
 
 
 if (isset($_POST["btenviar"])) {

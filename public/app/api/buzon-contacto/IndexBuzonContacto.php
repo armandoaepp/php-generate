@@ -18,8 +18,8 @@ switch($evento)
     case "list":
         try
         {
-            $evento_img_controller = new EventoImgController() ; 
-            $data = $evento_img_controller->getAll() ;
+            $buzon_contacto_controller = new BuzonContactoController() ; 
+            $data = $buzon_contacto_controller->getAll() ;
             $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
         }
         catch (Exception $e)
@@ -38,24 +38,26 @@ switch($evento)
             $objConexion = new ClsConexion();
             $cnx = $objConexion->get_connection();
         
-            $evento_img_controller = new EventoImgController($cnx) ; 
+            $buzon_contacto_controller = new BuzonContactoController($cnx) ; 
             $objConexion->beginTransaction();
         
             $id = $inputs->id;
-            $imagen = $inputs->imagen;
-            $id_padre = $inputs->id_padre;
-            $orden = $inputs->orden;
+            $nombre = $inputs->nombre;
+            $dni = $inputs->dni;
+            $email = $inputs->email;
+            $telefono = $inputs->telefono;
             $fecha = $inputs->fecha;
         
             $params = array(
                'id'=> $id,
-               'imagen'=> $imagen,
-               'id_padre'=> $id_padre,
-               'orden'=> $orden,
+               'nombre'=> $nombre,
+               'dni'=> $dni,
+               'email'=> $email,
+               'telefono'=> $telefono,
                'fecha'=> $fecha,
             ) ; 
         
-            $data = $evento_img_controller->setEventoImg($params) ;
+            $data = $buzon_contacto_controller->setBuzonContacto($params) ;
         
             $objConexion->commit();
 
@@ -77,24 +79,26 @@ switch($evento)
             $objConexion = new ClsConexion();
             $cnx = $objConexion->get_connection();
         
-            $evento_img_controller = new EventoImgController($cnx) ; 
+            $buzon_contacto_controller = new BuzonContactoController($cnx) ; 
             $objConexion->beginTransaction();
         
             $id = $inputs->id;
-            $imagen = $inputs->imagen;
-            $id_padre = $inputs->id_padre;
-            $orden = $inputs->orden;
+            $nombre = $inputs->nombre;
+            $dni = $inputs->dni;
+            $email = $inputs->email;
+            $telefono = $inputs->telefono;
             $fecha = $inputs->fecha;
         
             $params = array(
                'id'=> $id,
-               'imagen'=> $imagen,
-               'id_padre'=> $id_padre,
-               'orden'=> $orden,
+               'nombre'=> $nombre,
+               'dni'=> $dni,
+               'email'=> $email,
+               'telefono'=> $telefono,
                'fecha'=> $fecha,
             ) ; 
         
-            $data = $evento_img_controller->updateEventoImg($params) ;
+            $data = $buzon_contacto_controller->updateBuzonContacto($params) ;
         
             $objConexion->commit();
 
@@ -123,9 +127,9 @@ switch($evento)
                'estado'=> $estado,
             ) ; 
 
-            $evento_img_controller = new EventoImgController() ; 
+            $buzon_contacto_controller = new BuzonContactoController() ; 
 
-            $data = $evento_img_controller->updateEstado( $params ) ;
+            $data = $buzon_contacto_controller->updateEstado( $params ) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -144,9 +148,9 @@ switch($evento)
         {
 
             $id = $_GET["id"] ;
-            $evento_img_controller = new EventoImgController() ; 
+            $buzon_contacto_controller = new BuzonContactoController() ; 
 
-            $data = $evento_img_controller->getById( $id) ;
+            $data = $buzon_contacto_controller->getById( $id) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -165,9 +169,9 @@ switch($evento)
         {
 
             $id = $_GET["id"] ;
-            $evento_img_controller = new EventoImgController() ; 
+            $buzon_contacto_controller = new BuzonContactoController() ; 
 
-            $data = $evento_img_controller->deleteById( $id) ;
+            $data = $buzon_contacto_controller->deleteById( $id) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 

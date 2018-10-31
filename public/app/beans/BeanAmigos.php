@@ -1,13 +1,15 @@
 <?php 
 # Clase Bean Generada - ByPower @armandoaepp 
-class BeanEventoImg{
+class BeanAmigos{
     # Constructor
     public function __construct(){}
 
     # Atributos
     private $id;
+    private $titulo;
     private $imagen;
-    private $id_padre;
+    private $imagen_2;
+    private $email;
     private $orden;
     private $estado;
     private $fecha;
@@ -23,6 +25,16 @@ class BeanEventoImg{
         return $this->id;
     }
 
+    public function setTitulo($titulo_)
+    {
+        $this->titulo = Validation::validate( $titulo_ );
+    }
+
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
     public function setImagen($imagen_)
     {
         $this->imagen = Validation::validate( $imagen_ );
@@ -33,14 +45,24 @@ class BeanEventoImg{
         return $this->imagen;
     }
 
-    public function setIdPadre($id_padre_)
+    public function setImagen2($imagen_2_)
     {
-        $this->id_padre = Validation::validate( $id_padre_ );
+        $this->imagen_2 = Validation::validate( $imagen_2_ );
     }
 
-    public function getIdPadre()
+    public function getImagen2()
     {
-        return $this->id_padre;
+        return $this->imagen_2;
+    }
+
+    public function setEmail($email_)
+    {
+        $this->email = Validation::validate( $email_ );
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     public function setOrden($orden_)

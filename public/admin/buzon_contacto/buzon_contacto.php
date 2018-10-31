@@ -6,15 +6,15 @@
 
     require_once "../../app/autoload.php";
 
-    $admision_controller = new AdmisionController();
+    $buzon_contacto_controller = new BuzonContactoController();
 
-    $data = $admision_controller->getAll();
+    $data = $buzon_contacto_controller->getAll();
 
-    $title_page = "admisions"
+    $title_page = "buzon_contactos"
 
 ?>
 
-<?php $title_page = "admision" ; ?>
+<?php $title_page = "buzon_contacto" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/admision/admision.php">
+          <a href="admin/buzon-contacto/buzon_contacto.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -52,10 +52,10 @@
           </h4>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/admision/admision.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/buzon-contacto/buzon_contacto.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/admision/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/buzon-contacto/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
@@ -66,12 +66,11 @@
     <thead>
       <tr>
          <th>Id </th>
-         <th>Titulo </th>
-         <th>Imagen </th>
-         <th>Requisitos </th>
-         <th>Horarios </th>
-         <th>Inversion </th>
+         <th>Nombre </th>
+         <th>Dni </th>
          <th>Email </th>
+         <th>Telefono </th>
+         <th>Fecha </th>
          <th width="70"></th>
         <th width="70"></th>
       </tr>
@@ -80,15 +79,14 @@
       <?php foreach ($data as &$row) {?>
       <tr>
         <td> <?php echo $row["id"] ?> </td>
-        <td> <?php echo $row["titulo"] ?> </td>
-        <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["requisitos"] ?> </td>
-        <td> <?php echo $row["horarios"] ?> </td>
-        <td> <?php echo $row["inversion"] ?> </td>
+        <td> <?php echo $row["nombre"] ?> </td>
+        <td> <?php echo $row["dni"] ?> </td>
         <td> <?php echo $row["email"] ?> </td>
+        <td> <?php echo $row["telefono"] ?> </td>
+        <td> <?php echo $row["fecha"] ?> </td>
 
         <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/admision/editar.php?id=<?php echo $row["id"] ?>"
+          <a class="btn btn-primary btn-sm lh-1 " href="admin/buzon_contacto/editar.php?id=<?php echo $row["id"] ?>"
             title="Editar">
             <i class="material-icons">edit</i>
           </a>
@@ -174,7 +172,7 @@
         });
 
         $.ajax({
-          url: "./app/api/admision/IndexAdmision.php",
+          url: "./app/api/buzon_contacto/IndexBuzonContacto.php",
           dataType: "json",
           type: "post",
           contentType: "application/json",

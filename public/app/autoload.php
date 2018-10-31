@@ -32,10 +32,18 @@
 		}
 	}
 
+	function loadAuthFiles($file_name){
+		$fullpath = ROOT_PATH.'/auth/' . $file_name . '.php' ;
+		if( file_exists($fullpath) ) {
+			require $fullpath;
+		}
+	}
+
 	spl_autoload_register("loadModelFiles");
 	spl_autoload_register("loadBeanFiles");
 	spl_autoload_register("loadControllerFiles");
 	spl_autoload_register("loadHelperFiles");
+	spl_autoload_register("loadAuthFiles");
 
 	require_once ROOT_PATH.'/config/config.php' ;
 

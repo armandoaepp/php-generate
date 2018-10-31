@@ -1,6 +1,6 @@
 <?php 
 # Class Model Generada - ByPower @armandaepp 
-class EventoImg extends ClsConexion {
+class Amigos extends ClsConexion {
     # CONSTRUCT 
     public function __construct($cnx  = null)
     {
@@ -12,7 +12,7 @@ class EventoImg extends ClsConexion {
     {
         try{
 
-            $this->query = "SELECT * FROM evento_img";
+            $this->query = "SELECT * FROM amigos";
 
             $this->execute_query();
 
@@ -28,27 +28,33 @@ class EventoImg extends ClsConexion {
     }
 
     # Método Insertar
-    public function save($bean_evento_img)
+    public function save($bean_amigos)
     {
         try{
-            $id = $bean_evento_img->getId();
-            $imagen = $bean_evento_img->getImagen();
-            $id_padre = $bean_evento_img->getIdPadre();
-            $orden = $bean_evento_img->getOrden();
-            $estado = $bean_evento_img->getEstado();
-            $fecha = $bean_evento_img->getFecha();
+            $id = $bean_amigos->getId();
+            $titulo = $bean_amigos->getTitulo();
+            $imagen = $bean_amigos->getImagen();
+            $imagen_2 = $bean_amigos->getImagen2();
+            $email = $bean_amigos->getEmail();
+            $orden = $bean_amigos->getOrden();
+            $estado = $bean_amigos->getEstado();
+            $fecha = $bean_amigos->getFecha();
 
-            $this->query = "INSERT INTO evento_img
+            $this->query = "INSERT INTO amigos
                             (
+                                titulo,
                                 imagen,
-                                id_padre,
+                                imagen_2,
+                                email,
                                 orden,
                                 estado,
                                 fecha
                             )
                             VALUES(
+                                '$titulo',
                                 '$imagen',
-                                '$id_padre',
+                                '$imagen_2',
+                                '$email',
                                 '$orden',
                                 '$estado',
                                 '$fecha'
@@ -69,19 +75,23 @@ class EventoImg extends ClsConexion {
     }
 
     # Método Actualizar
-    public function update($bean_evento_img)
+    public function update($bean_amigos)
     {
         try{
-            $id = $bean_evento_img->getId();
-            $imagen = $bean_evento_img->getImagen();
-            $id_padre = $bean_evento_img->getIdPadre();
-            $orden = $bean_evento_img->getOrden();
-            $estado = $bean_evento_img->getEstado();
-            $fecha = $bean_evento_img->getFecha();
+            $id = $bean_amigos->getId();
+            $titulo = $bean_amigos->getTitulo();
+            $imagen = $bean_amigos->getImagen();
+            $imagen_2 = $bean_amigos->getImagen2();
+            $email = $bean_amigos->getEmail();
+            $orden = $bean_amigos->getOrden();
+            $estado = $bean_amigos->getEstado();
+            $fecha = $bean_amigos->getFecha();
 
-            $this->query = "UPDATE evento_img SET 
+            $this->query = "UPDATE amigos SET 
+                                titulo = '$titulo,
                                 imagen = '$imagen,
-                                id_padre = '$id_padre,
+                                imagen_2 = '$imagen_2,
+                                email = '$email,
                                 orden = '$orden,
                                 estado = '$estado,
                                 fecha = '$fecha
@@ -101,13 +111,13 @@ class EventoImg extends ClsConexion {
     }
 
     # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_evento_img)
+    public function updateEstado($bean_amigos)
     {
         try{
-            $id = $bean_evento_img->getId();
-            $estado = $bean_evento_img->getEstado();
+            $id = $bean_amigos->getId();
+            $estado = $bean_amigos->getEstado();
 
-            $this->query = "UPDATE evento_img SET 
+            $this->query = "UPDATE amigos SET 
                                 estado = '$estado'
                             WHERE id='$id'
                             LIMIT 1 ";
@@ -126,12 +136,12 @@ class EventoImg extends ClsConexion {
     }
 
     # Método Buscar por ID
-    public function getById($bean_evento_img)
+    public function getById($bean_amigos)
     {
         try{
-            $id = $bean_evento_img->getId();
+            $id = $bean_amigos->getId();
 
-            $this->query = "SELECT * FROM evento_img WHERE id = '$id' LIMIT 1";
+            $this->query = "SELECT * FROM amigos WHERE id = '$id' LIMIT 1";
 
             $this->execute_find();
 
@@ -147,12 +157,12 @@ class EventoImg extends ClsConexion {
     }
 
     # Método deleteById
-    public function deleteById($bean_evento_img)
+    public function deleteById($bean_amigos)
     {
         try{
-            $id = $bean_evento_img->getId();
+            $id = $bean_amigos->getId();
 
-            $this->query = "DELETE FROM evento_img WHERE id = '$id' LIMIT 1";
+            $this->query = "DELETE FROM amigos WHERE id = '$id' LIMIT 1";
 
             $this->execute_query();
 

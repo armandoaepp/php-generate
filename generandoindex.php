@@ -32,14 +32,17 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $carpeta = "./app/api/" . $tabla . "/";
     } */
 
-    if (file_exists(API."/". $tabla)) {
-        $carpeta = API."/". $tabla . "/";
+    $cmTable     = toCamelCase($tabla);
+    $url     = toUrlFriendly($tabla);
+
+    if (file_exists(API."/". $url)) {
+        $carpeta = API."/". $url . "/";
     } else {
-        mkdir(API."/". $tabla, 0777);
-        $carpeta = API."/". $tabla . "/";
+        mkdir(API."/". $url, 0777);
+        $carpeta = API."/". $url . "/";
     }
 
-    $cmTable     = toCamelCase($tabla);
+
 
     $extension = ".php";
     if (!empty($tabla)) {

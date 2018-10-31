@@ -1,20 +1,12 @@
 <?php
 
-    require_once "../sesion_admin.php";
+function templateIndex($table, $aatri){
 
-    loginRedirect("../login.php");
+  $cmTable = toCamelCase($table) ;
+  $url = toUrlFriendly($table) ;
 
-    require_once "../../app/autoload.php";
-
-    $admision_controller = new AdmisionController();
-
-    $data = $admision_controller->getAll();
-
-    $title_page = "admisions"
-
-?>
-
-<?php $title_page = "admision" ; ?>
+$html = '
+<?php $title_page = "'.$table.'" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,7 +31,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/admision/admision.php">
+          <a href="admin/'.$url.'/'.$table.'.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -52,58 +44,16 @@
           </h4>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/admision/admision.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/admision/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
         <div class="col-12">
-        
-<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-      <tr>
-         <th>Id </th>
-         <th>Titulo </th>
-         <th>Imagen </th>
-         <th>Requisitos </th>
-         <th>Horarios </th>
-         <th>Inversion </th>
-         <th>Email </th>
-         <th width="70"></th>
-        <th width="70"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($data as &$row) {?>
-      <tr>
-        <td> <?php echo $row["id"] ?> </td>
-        <td> <?php echo $row["titulo"] ?> </td>
-        <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["requisitos"] ?> </td>
-        <td> <?php echo $row["horarios"] ?> </td>
-        <td> <?php echo $row["inversion"] ?> </td>
-        <td> <?php echo $row["email"] ?> </td>
-
-        <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/admision/editar.php?id=<?php echo $row["id"] ?>"
-            title="Editar">
-            <i class="material-icons">edit</i>
-          </a>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["id"] ?>, `aqui va el texto`);"
-            title="Eliminar">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-      <?php }?>
-    </tbody>
-
-  </table> 
+        '. tableHtml($table, $aatri) .'
         </div>
 
       </div>
@@ -174,7 +124,7 @@
         });
 
         $.ajax({
-          url: "./app/api/admision/IndexAdmision.php",
+          url: "./app/api/'.$table.'/Index'.$cmTable.'.php",
           dataType: "json",
           type: "post",
           contentType: "application/json",
@@ -236,3 +186,61 @@
 </body>
 
 </html>
+';
+
+  return $html ;
+}
+
+
+function tableHtml($table, $aatri){
+
+$table_html = '' ;
+$table_html .= '
+<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>' . PHP_EOL ;
+      for ($i = 0; $i < count($aatri); $i++)
+      {
+          if (strtolower(trim($aatri[$i])) != "estado")
+          {
+              $table_html .= '         <th>' . ucwords($aatri[$i]) . ' </th>' . PHP_EOL;
+          }
+      }
+$table_html .= '         <th width="70"></th>
+        <th width="70"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($data as &$row) {?>
+      <tr>' . PHP_EOL ;
+
+        for ($i = 0; $i < count($aatri); $i++)
+        {
+          if (strtolower(trim($aatri[$i])) != "estado")
+          {
+              $table_html .= '        <td> <?php echo $row["' . $aatri[$i] . '"] ?> </td>' . PHP_EOL;
+          }
+        }
+
+$table_html .= '
+        <td class="text-center">
+          <a class="btn btn-primary btn-sm lh-1 " href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $aatri[0] .'"] ?>"
+            title="Editar">
+            <i class="material-icons">edit</i>
+          </a>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["'. $aatri[0] .'"] ?>, `aqui va el texto`);"
+            title="Eliminar">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+      <?php }?>
+    </tbody>
+
+  </table> ' ;
+
+  return $table_html  ;
+
+}

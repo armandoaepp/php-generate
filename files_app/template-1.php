@@ -1,29 +1,14 @@
-<?php
-
-    require_once "../sesion_admin.php";
-
-    loginRedirect("../login.php");
-
-    require_once "../../app/autoload.php";
-
-    $admision_controller = new AdmisionController();
-
-    $data = $admision_controller->getAll();
-
-    $title_page = "admisions"
-
-?>
-
-<?php $title_page = "admision" ; ?>
+<?php $title_page = "Proyectos"?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <?php
-    $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
-    require_once "../layout/head_links.phtml";
-  ?>
+$setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
+require_once "../layout/head_links.phtml";
+?>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body>
@@ -39,7 +24,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/admision/admision.php">
+          <a href="admin/productos/productos.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -48,62 +33,62 @@
     <div class="container py-2">
       <div class="row">
         <div class="col-12">
-          <h4 class="page-header-title">Lista de <?php echo $title_page ?>
+          <h4 class="page-header-title">Lista de
+            <?php echo $title_page ?>
           </h4>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/admision/admision.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/productos/productos.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/admision/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/productos/nuevo-producto.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
         <div class="col-12">
-        
-<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-      <tr>
-         <th>Id </th>
-         <th>Titulo </th>
-         <th>Imagen </th>
-         <th>Requisitos </th>
-         <th>Horarios </th>
-         <th>Inversion </th>
-         <th>Email </th>
-         <th width="70"></th>
-        <th width="70"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($data as &$row) {?>
-      <tr>
-        <td> <?php echo $row["id"] ?> </td>
-        <td> <?php echo $row["titulo"] ?> </td>
-        <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["requisitos"] ?> </td>
-        <td> <?php echo $row["horarios"] ?> </td>
-        <td> <?php echo $row["inversion"] ?> </td>
-        <td> <?php echo $row["email"] ?> </td>
+          <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th width="150">Publicar</th>
+                <th width="70"></th>
+                <th width="70"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($productos as &$producto) {?>
+              <tr>
+                <td>
+                  <?php echo $producto['idproducto'] ?>
+                </td>
+                <td>
+                  <?php echo $producto['nombre'] ?>
+                </td>
 
-        <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/admision/editar.php?id=<?php echo $row["id"] ?>"
-            title="Editar">
-            <i class="material-icons">edit</i>
-          </a>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["id"] ?>, `aqui va el texto`);"
-            title="Eliminar">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-      <?php }?>
-    </tbody>
+                <td>
+                  <?php echo $producto['categoria'] ?>
+                </td>
 
-  </table> 
+                <td class="text-center">
+                  <a class="btn btn-primary btn-sm lh-1 " href="admin/productos/edit-producto.php?id=<?php echo $producto['idproducto'] ?>"
+                    title="Editar">
+                    <i class="material-icons">edit</i>
+                  </a>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $producto['idproducto'] ?>, `<?php echo $producto['nombre'] ?>`);"
+                    title="Eliminar">
+                    <i class="material-icons">delete</i>
+                  </button>
+                </td>
+              </tr>
+              <?php }?>
+            </tbody>
+
+          </table>
         </div>
 
       </div>
@@ -158,8 +143,15 @@
   <script>
 
     $(document).ready(function () {
-      $("#dataTableList").DataTable({
-
+      $('#dataTableList').DataTable({
+        "columns": [
+          null,
+          null,
+          null,
+          null,
+          { "orderable": false },
+          { "orderable": false },
+        ],
         "language": language,
       });
     });
@@ -168,27 +160,27 @@
     (function ($) {
       function processFormModal(event) {
         var params = JSON.stringify({
-          "idproducto": $("#idRowModal").val(),
-          "accion": $("#accion").val(),
-          "publicar": $("#publicar").val(),
+          "idproducto": $('#idRowModal').val(),
+          "accion": $('#accion').val(),
+          "publicar": $('#publicar').val(),
         });
 
         $.ajax({
-          url: "./app/api/admision/IndexAdmision.php",
-          dataType: "json",
-          type: "post",
-          contentType: "application/json",
+          url: './api/ajax/productos/IndexProducto.php',
+          dataType: 'json',
+          type: 'post',
+          contentType: 'application/json',
           data: params,
           processData: false,
           success: function (data, textStatus, jQxhr) {
 
             if (!data.error && data.data) {
-              $("#myModal").modal("hide");
+              $('#myModal').modal('hide');
               $("#formModal")[0].reset();
               location.reload();
             }
             else {
-              $("#alertModal").html("Error en servidor: " + data.data);
+              $('#alertModal').html('Error en servidor: ' + data.data);
             }
 
           },
@@ -200,34 +192,34 @@
         event.preventDefault();
       }
 
-      $("#formModal").submit(processFormModal);
+      $('#formModal').submit(processFormModal);
 
     })(jQuery);
 
 
     // modal DELETE
     function modalDelete(id, textRow) {
-      $("#idRowModal").val(id);
-      $("#accion").val("delete");
+      $('#idRowModal').val(id);
+      $('#accion').val('delete');
       var text = `¿Esta seguro de eliminar  <?php echo $title_page ?>: <strong> ${textRow} </strong> ?`;
-      $("#dataTextModal").html(text);
-      $("#btn-send").text("Eliminar");
+      $('#dataTextModal').html(text);
+      $('#btn-send').text("Eliminar");
 
-      $("#myModal").modal("show");
+      $('#myModal').modal('show');
     }
 
 
     // modal PUBLICAR
     function modalPublicar(id, textRow, title, publicar) {
-      $("#idRowModal").val(id);
-      $("#accion").val("publicar");
-      $("#publicar").val(publicar);
+      $('#idRowModal').val(id);
+      $('#accion').val('publicar');
+      $('#publicar').val(publicar);
 
       var text = `¿Esta seguro de ${title} la categoría: <strong> ${textRow} </strong> ?`;
-      $("#dataTextModal").html(text);
-      $("#btn-send").text(title);
+      $('#dataTextModal').html(text);
+      $('#btn-send').text(title);
 
-      $("#myModal").modal("show");
+      $('#myModal').modal('show');
     }
 
   </script>
