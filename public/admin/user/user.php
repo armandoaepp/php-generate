@@ -8,7 +8,7 @@
 
     $user_controller = new UserController();
 
-    $data = $user_controller->list();
+    $data = $user_controller->getAll();
 
     $title_page = "users"
 
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/User/.php">
+          <a href="admin/user/user.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -52,15 +52,57 @@
           </h4>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/User/.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/user/user.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/User/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/user/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
+        <div class="col-12">
+        
+<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+         <th>User_id </th>
+         <th>Nombre </th>
+         <th>Apellidos </th>
+         <th>Email </th>
+         <th>Password </th>
+         <th>Created_up </th>
+         <th width="70"></th>
+        <th width="70"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($data as &$row) {?>
+      <tr>
+        <td> <?php echo $row["user_id"] ?> </td>
+        <td> <?php echo $row["nombre"] ?> </td>
+        <td> <?php echo $row["apellidos"] ?> </td>
+        <td> <?php echo $row["email"] ?> </td>
+        <td> <?php echo $row["password"] ?> </td>
+        <td> <?php echo $row["created_up"] ?> </td>
 
+        <td class="text-center">
+          <a class="btn btn-primary btn-sm lh-1 " href="admin/user/editar.php?id=<?php echo $row["user_id"] ?>"
+            title="Editar">
+            <i class="material-icons">edit</i>
+          </a>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["user_id"] ?>, `aqui va el texto`);"
+            title="Eliminar">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+      <?php }?>
+    </tbody>
+
+  </table> 
+        </div>
 
       </div>
 
@@ -115,14 +157,7 @@
 
     $(document).ready(function () {
       $("#dataTableList").DataTable({
-        "columns": [
-          null,
-          null,
-          null,
-          null,
-          { "orderable": false },
-          { "orderable": false },
-        ],
+
         "language": language,
       });
     });
@@ -137,7 +172,7 @@
         });
 
         $.ajax({
-          url: "./app/api//IndexUser.php",
+          url: "./app/api/user/IndexUser.php",
           dataType: "json",
           type: "post",
           contentType: "application/json",
@@ -199,60 +234,3 @@
 </body>
 
 </html>
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <?php
-      $setvar = array("titulo" => $title_page." | Admin ", "follow" => "", "active" => [1, 1]);
-      require_once "../layout/head_links.phtml";
-    ?>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-  </head>
-
-  <body>
-    <?php require "../layout/header.phtml"; ?>
-    <main role="main" class="screen-main">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="admin">
-                    <i class="material-icons">home</i>
-                </a>
-            </li>
-            <li class="breadcrumb-item" aria-current="page">
-                <a href="admin/productos/productos.php"><?php echo $title_page ?></a>
-            </li>
-        </ol>
-    </nav>
-   </main>
-  
-
-  </body>
-<div id="div_user">
-<form id="frm_user" name="frm_user" class="hform"  ng-submit="updUser()">
-<table class="table" >
- <caption>LISTA DE USER </caption>
-<thead>
-    <tr>
-        <th>User_id </th>
-        <th>Nombre </th>
-        <th>Apellidos </th>
-        <th>Email </th>
-        <th>Password </th>
-        <th>Created_up </th>
-    </tr>
-</thead>
-<tbody>
-    <tr ng-repeat="user in users">
-        <th>user.user_id </th>
-        <th>user.nombre </th>
-        <th>user.apellidos </th>
-        <th>user.email </th>
-        <th>user.password </th>
-        <th>user.created_up </th>
-    </tr>
-</tbody>
-
-</table>
-</form>
-</div>

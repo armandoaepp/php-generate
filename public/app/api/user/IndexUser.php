@@ -19,7 +19,9 @@ switch($evento)
         try
         {
             $user_controller = new UserController() ; 
+
             $data = $user_controller->getAll() ;
+
             $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
         }
         catch (Exception $e)

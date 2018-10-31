@@ -78,9 +78,10 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        try' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
+        $texto .= "" . PHP_EOL;
         $texto .= '            $data = $'.$tabla.'_controller->getAll() ;' . PHP_EOL;
+        $texto .= "" . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Listado correcto\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
-
         $texto .= '        }' . PHP_EOL;
         $texto .= '        catch (Exception $e)' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;

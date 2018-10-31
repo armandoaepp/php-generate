@@ -3,9 +3,9 @@ class Serialize {
 
 	public function __construct() { }
 
-	static public function unSerializeLang($string, $lang)
+	public static function unSerializeLang($string, $lang)
 	{
-			if($this->is_serialized($string))
+			if( Serialize::isSerialized($string) )
 			{
 					$value = unserialize($string);
 
@@ -17,12 +17,15 @@ class Serialize {
 					{
 							$value = '';
 					}
-			return $value;
+				return $value;
 
+			}
+			else{
+				return $string ;
 			}
 	}
 
-	public function is_serialized( $data ) {
+	public static function isSerialized( $data ) {
 			// if it isn't a string, it isn't serialized
 			if ( !is_string( $data ) )
 					return false;
@@ -48,8 +51,55 @@ class Serialize {
 			return false;
 	}
 
+	/**
+	 * [array] : multiples rows
+	 */
+	public static function unSerializeArray( $array )
+	{
+
+		$data = array() ;
+
+		if (!is_array($array) )
+		{
+			return $array ;
+		}
+
+		foreach ($array as $key => $row)
+		{
+			foreach ($row as $k => $value)
+			{
+					$row[$k] = Serialize::unSerializeLang($value, 'es') ;
+			}
+			array_push($data, $row);
+		}
+
+		return $data ;
+
+	}
+
+	/**
+	 * [array] : only row
+	 */
+	public static function unSerializeRow( $array )
+	{
+
+		$data = array() ;
+
+		if (!is_array($array) )
+		{
+			return $array ;
+		}
+
+			foreach ($array as $k => $value)
+			{
+					$array[$k] = Serialize::unSerializeLang($value, 'es') ;
+			}
+			array_push($data, $array);
+
+		return $data ;
+
+	}
+
+
+
 }
-
-
-
-?>
