@@ -21,10 +21,6 @@
         <label for="publicar">publicar : </label>
         <input type="text" name="publicar" ng-model="categoria.publicar" />
     </fieldset>
-    <fieldset>
-        <label for="created_up">created_up : </label>
-        <input type="text" name="created_up" ng-model="categoria.created_up" />
-    </fieldset>
      <fieldset class="text-right">
         <button  type="button" id="btnCancelar" onclick="location.href='#/categoria/listar';">Cancelar </button>
         <button id="btregistrar" ng-disabled="frm_categoria.$invalid"  >Registrar </button>

@@ -1,6 +1,6 @@
 <?php 
 # Class Model Generada - ByPower @armandaepp 
-class User extends ClsConexion {
+class Categoria extends ClsConexion {
     # CONSTRUCT 
     public function __construct($cnx  = null)
     {
@@ -12,7 +12,7 @@ class User extends ClsConexion {
     {
         try{
 
-            $this->query = "SELECT * FROM user";
+            $this->query = "SELECT * FROM categoria";
 
             $this->execute_query();
 
@@ -28,31 +28,31 @@ class User extends ClsConexion {
     }
 
     # Método Insertar
-    public function save($bean_user)
+    public function save($bean_categoria)
     {
         try{
-            $user_id = $bean_user->getUserId();
-            $nombre = $bean_user->getNombre();
-            $apellidos = $bean_user->getApellidos();
-            $email = $bean_user->getEmail();
-            $password = $bean_user->getPassword();
-            $estado = $bean_user->getEstado();
-            $created_up = $bean_user->getCreatedUp();
+            $idcategoria = $bean_categoria->getIdcategoria();
+            $nombre = $bean_categoria->getNombre();
+            $url = $bean_categoria->getUrl();
+            $imagen = $bean_categoria->getImagen();
+            $publicar = $bean_categoria->getPublicar();
+            $estado = $bean_categoria->getEstado();
+            $created_up = $bean_categoria->getCreatedUp();
 
-            $this->query = "INSERT INTO user
+            $this->query = "INSERT INTO categoria
                             (
                                 nombre,
-                                apellidos,
-                                email,
-                                password,
+                                url,
+                                imagen,
+                                publicar,
                                 estado,
                                 created_up
                             )
                             VALUES(
                                 '$nombre',
-                                '$apellidos',
-                                '$email',
-                                '$password',
+                                '$url',
+                                '$imagen',
+                                '$publicar',
                                 '$estado',
                                 '$created_up'
                             )";
@@ -72,25 +72,25 @@ class User extends ClsConexion {
     }
 
     # Método Actualizar
-    public function update($bean_user)
+    public function update($bean_categoria)
     {
         try{
-            $user_id = $bean_user->getUserId();
-            $nombre = $bean_user->getNombre();
-            $apellidos = $bean_user->getApellidos();
-            $email = $bean_user->getEmail();
-            $password = $bean_user->getPassword();
-            $estado = $bean_user->getEstado();
-            $created_up = $bean_user->getCreatedUp();
+            $idcategoria = $bean_categoria->getIdcategoria();
+            $nombre = $bean_categoria->getNombre();
+            $url = $bean_categoria->getUrl();
+            $imagen = $bean_categoria->getImagen();
+            $publicar = $bean_categoria->getPublicar();
+            $estado = $bean_categoria->getEstado();
+            $created_up = $bean_categoria->getCreatedUp();
 
-            $this->query = "UPDATE user SET 
+            $this->query = "UPDATE categoria SET 
                                 nombre = '$nombre,
-                                apellidos = '$apellidos,
-                                email = '$email,
-                                password = '$password,
+                                url = '$url,
+                                imagen = '$imagen,
+                                publicar = '$publicar,
                                 estado = '$estado,
                                 created_up = '$created_up
-                            WHERE user_id = '$user_id'
+                            WHERE idcategoria = '$idcategoria'
                             LIMIT 1 ";
             $this->execute_query();
 
@@ -106,15 +106,15 @@ class User extends ClsConexion {
     }
 
     # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_user)
+    public function updateEstado($bean_categoria)
     {
         try{
-            $user_id = $bean_user->getUserId();
-            $estado = $bean_user->getEstado();
+            $idcategoria = $bean_categoria->getIdcategoria();
+            $estado = $bean_categoria->getEstado();
 
-            $this->query = "UPDATE user SET 
+            $this->query = "UPDATE categoria SET 
                                 estado = '$estado'
-                            WHERE user_id='$user_id'
+                            WHERE idcategoria='$idcategoria'
                             LIMIT 1 ";
 
             $this->execute_query();
@@ -131,12 +131,12 @@ class User extends ClsConexion {
     }
 
     # Método Buscar por ID
-    public function getById($bean_user)
+    public function getById($bean_categoria)
     {
         try{
-            $user_id = $bean_user->getUserId();
+            $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "SELECT * FROM user WHERE user_id = '$user_id' LIMIT 1";
+            $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1";
 
             $this->execute_find();
 
@@ -152,12 +152,12 @@ class User extends ClsConexion {
     }
 
     # Método deleteById
-    public function deleteById($bean_user)
+    public function deleteById($bean_categoria)
     {
         try{
-            $user_id = $bean_user->getUserId();
+            $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "DELETE FROM user WHERE user_id = '$user_id' LIMIT 1";
+            $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1";
 
             $this->execute_query();
 

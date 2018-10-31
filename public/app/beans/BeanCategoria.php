@@ -1,27 +1,27 @@
 <?php 
 # Clase Bean Generada - ByPower @armandoaepp 
-class BeanUser{
+class BeanCategoria{
     # Constructor
     public function __construct(){}
 
     # Atributos
-    private $user_id;
+    private $idcategoria;
     private $nombre;
-    private $apellidos;
-    private $email;
-    private $password;
+    private $url;
+    private $imagen;
+    private $publicar;
     private $estado;
     private $created_up;
 
     # METODOS
-    public function setUserId($user_id_)
+    public function setIdcategoria($idcategoria_)
     {
-        $this->user_id = Validation::validate( $user_id_ );
+        $this->idcategoria = Validation::validate( $idcategoria_ );
     }
 
-    public function getUserId()
+    public function getIdcategoria()
     {
-        return $this->user_id;
+        return $this->idcategoria;
     }
 
     public function setNombre($nombre_)
@@ -34,34 +34,34 @@ class BeanUser{
         return $this->nombre;
     }
 
-    public function setApellidos($apellidos_)
+    public function setUrl($url_)
     {
-        $this->apellidos = Validation::validate( $apellidos_ );
+        $this->url = Validation::validate( $url_ );
     }
 
-    public function getApellidos()
+    public function getUrl()
     {
-        return $this->apellidos;
+        return $this->url;
     }
 
-    public function setEmail($email_)
+    public function setImagen($imagen_)
     {
-        $this->email = Validation::validate( $email_ );
+        $this->imagen = Validation::validate( $imagen_ );
     }
 
-    public function getEmail()
+    public function getImagen()
     {
-        return $this->email;
+        return $this->imagen;
     }
 
-    public function setPassword($password_)
+    public function setPublicar($publicar_)
     {
-        $this->password = Validation::validate( $password_ );
+        $this->publicar = Validation::validate( $publicar_ );
     }
 
-    public function getPassword()
+    public function getPublicar()
     {
-        return $this->password;
+        return $this->publicar;
     }
 
     public function setEstado($estado_)

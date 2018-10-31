@@ -30,7 +30,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $texto .= '<fieldset> <legend> Nuevo ' . ucwords($tabla) . '</legend>' . PHP_EOL;
         for ($i = 0; $i < count($aatri); $i++)
         {
-            if (strtolower(trim($aatri[$i])) != "estado")
+            if (strtolower(trim($aatri[$i])) != "estado" && strtolower(trim($aatri[$i])) != "created_up" )
             {
 
                     $texto .= '    <fieldset>' . PHP_EOL;
@@ -38,6 +38,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
                      $texto .= '        <input type="text" name="' . $aatri[$i] .'" ng-model="'.$tabla.'.' . $aatri[$i] .'" />' . PHP_EOL;
                      $texto .= '    </fieldset>' . PHP_EOL;
             }
+
         }
          $texto .= '     <fieldset class="text-right">' . PHP_EOL;
          $texto .= '        <button  type="button" id="btnCancelar" onclick="location.href=\'#/'.$tabla.'/listar\';">Cancelar </button>' . PHP_EOL;
@@ -77,7 +78,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         fwrite($abrir, $texto);
         fclose($abrir);
 
-        # archivo Listar
+        # ARCHIVO LISTAR(INDEX)
         $nomarchivo = $carpeta . "" . $tabla;
         $abrir      = fopen($nomarchivo . $extension, "w");
 
@@ -98,9 +99,28 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $texto      .= '?>'. PHP_EOL ;
         $texto      .= templateIndex($tabla, $aatri) ;
 
+        fwrite($abrir, $texto);
+        fclose($abrir);
+
+        # ARCHIVO NUEVO
+        $nomarchivo = $carpeta . "nuevo";
+        $abrir      = fopen($nomarchivo . $extension, "w");
+
+        $texto      = templateNuevo($tabla, $aatri) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
+
+        # ARCHIVO NUEVO
+        $nomarchivo = $carpeta . "editar";
+        $abrir      = fopen($nomarchivo . $extension, "w");
+
+        $texto      = templateEdit($tabla, $aatri) ;
+
+        fwrite($abrir, $texto);
+        fclose($abrir);
+
+
 
      /*   // CREANDO ARCHIVO LISTAR
         $nomarchivo = $carpeta . "Listar_" . $tabla;

@@ -18,9 +18,9 @@ switch($evento)
     case "list":
         try
         {
-            $user_controller = new UserController() ; 
+            $categoria_controller = new CategoriaController() ; 
 
-            $data = $user_controller->getAll() ;
+            $data = $categoria_controller->getAll() ;
 
             $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
         }
@@ -40,26 +40,26 @@ switch($evento)
             $objConexion = new ClsConexion();
             $cnx = $objConexion->get_connection();
         
-            $user_controller = new UserController($cnx) ; 
+            $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
         
-            $user_id = $inputs->user_id;
+            $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
-            $apellidos = $inputs->apellidos;
-            $email = $inputs->email;
-            $password = $inputs->password;
+            $url = $inputs->url;
+            $imagen = $inputs->imagen;
+            $publicar = $inputs->publicar;
             $created_up = $inputs->created_up;
         
             $params = array(
-               'user_id'=> $user_id,
+               'idcategoria'=> $idcategoria,
                'nombre'=> $nombre,
-               'apellidos'=> $apellidos,
-               'email'=> $email,
-               'password'=> $password,
+               'url'=> $url,
+               'imagen'=> $imagen,
+               'publicar'=> $publicar,
                'created_up'=> $created_up,
             ) ; 
         
-            $data = $user_controller->setUser($params) ;
+            $data = $categoria_controller->setCategoria($params) ;
         
             $objConexion->commit();
 
@@ -81,26 +81,26 @@ switch($evento)
             $objConexion = new ClsConexion();
             $cnx = $objConexion->get_connection();
         
-            $user_controller = new UserController($cnx) ; 
+            $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
         
-            $user_id = $inputs->user_id;
+            $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
-            $apellidos = $inputs->apellidos;
-            $email = $inputs->email;
-            $password = $inputs->password;
+            $url = $inputs->url;
+            $imagen = $inputs->imagen;
+            $publicar = $inputs->publicar;
             $created_up = $inputs->created_up;
         
             $params = array(
-               'user_id'=> $user_id,
+               'idcategoria'=> $idcategoria,
                'nombre'=> $nombre,
-               'apellidos'=> $apellidos,
-               'email'=> $email,
-               'password'=> $password,
+               'url'=> $url,
+               'imagen'=> $imagen,
+               'publicar'=> $publicar,
                'created_up'=> $created_up,
             ) ; 
         
-            $data = $user_controller->updateUser($params) ;
+            $data = $categoria_controller->updateCategoria($params) ;
         
             $objConexion->commit();
 
@@ -121,17 +121,17 @@ switch($evento)
         try
         {
 
-            $user_id = $inputs->User_id;
+            $idcategoria = $inputs->Idcategoria;
             $estado = $inputs->estado;
 
             $params = array(
-               'user_id'=> $user_id,
+               'idcategoria'=> $idcategoria,
                'estado'=> $estado,
             ) ; 
 
-            $user_controller = new UserController() ; 
+            $categoria_controller = new CategoriaController() ; 
 
-            $data = $user_controller->updateEstado( $params ) ;
+            $data = $categoria_controller->updateEstado( $params ) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -150,9 +150,9 @@ switch($evento)
         {
 
             $id = $_GET["id"] ;
-            $user_controller = new UserController() ; 
+            $categoria_controller = new CategoriaController() ; 
 
-            $data = $user_controller->getById( $id) ;
+            $data = $categoria_controller->getById( $id) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -171,9 +171,9 @@ switch($evento)
         {
 
             $id = $_GET["id"] ;
-            $user_controller = new UserController() ; 
+            $categoria_controller = new CategoriaController() ; 
 
-            $data = $user_controller->deleteById( $id) ;
+            $data = $categoria_controller->deleteById( $id) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 

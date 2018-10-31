@@ -9,7 +9,7 @@ Class ClsConexion
     private static $db_host = 'localhost';
     private static $db_user = 'root';
     private static $db_pass = 'root';
-    protected $db_name      = 'escuelac_w_ne16';
+    protected $db_name      = 'cat_admin_prod';
 
     protected $db_driver = 'mysql';
 
