@@ -29,8 +29,6 @@ function verificarItemViewSave($item){
 }
 
 
-
-
 function itemsDefaultBeans($item)
 {
   $item = strtolower( trim($item) ) ;

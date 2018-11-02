@@ -1,15 +1,7 @@
 <?php
-function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenlace2){
+function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arrayenlace2){
 
     //atributos
-    $atri   = trim($atri);
-    $romper = explode("*", $atri);
-    /*$aatri  = array();
-    for ($i = 0; $i < count($romper); $i++) {
-        if (trim($romper[$i]) != "") {
-            $aatri[] = $romper[$i];
-        }
-    }*/
     if (file_exists(ADMIN."/" . $tabla)) {
         $carpeta = ADMIN."/" . $tabla . "/";
     } else {
@@ -43,7 +35,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $texto      .= '    $title_page = "'.$tabla.'s"'. PHP_EOL ;
         $texto      .= ''. PHP_EOL ;
         $texto      .= '?>'. PHP_EOL ;
-        $texto      .= templateIndex($tabla, $aatri) ;
+        $texto      .= templateIndex($tabla, $atri, $names_head) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -53,7 +45,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $nomarchivo = $carpeta . "nuevo";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateNuevo($tabla, $aatri) ;
+        $texto      = templateNuevo($tabla, $atri) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -63,7 +55,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $nomarchivo = $carpeta . "save";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateSave($tabla, $aatri) ;
+        $texto      = templateSave($tabla, $atri) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -74,7 +66,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $nomarchivo = $carpeta . "editar";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateEdit($tabla, $aatri) ;
+        $texto      = templateEdit($tabla, $atri) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -84,7 +76,7 @@ function generateViews($atri, $aatri, $tabla, $tablaref, $arrayenlace, $arrayenl
         $nomarchivo = $carpeta . "update";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateUpdate($tabla, $aatri) ;
+        $texto      = templateUpdate($tabla, $atri) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);

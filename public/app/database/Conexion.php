@@ -3,7 +3,7 @@ Class Conexion
 {
     private static $db_host = 'localhost';
     private static $db_user = 'root';
-    private static $db_pass = '';
+    private static $db_pass = 'root';
     protected $db_name      = 'db_admin_prod';
 
     protected $db_driver = 'mysql';

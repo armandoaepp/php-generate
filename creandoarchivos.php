@@ -24,6 +24,11 @@ if (isset($_POST["btenviar"])) {
 
     $sele = $_POST["sele"];
     $tabla = $_POST["nomtabla"];
+
+    echo "<pre>" ;
+    print_r($sele);
+    echo "</pre>" ;
+
     if (count($sele) > 0) {
         $consulta     = "Select ";
         $verre        = false;

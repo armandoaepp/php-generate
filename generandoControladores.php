@@ -161,7 +161,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto .= '            $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
-        $texto  .= '            $data = $'.($tabla).'->update($bean_'.($tabla).') ;' . PHP_EOL;
+        $texto  .= '            $data = $'.($tabla).'->updateEstado($bean_'.($tabla).') ;' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
         $texto  .= '            return $data;'. PHP_EOL;
         $texto  .= '        }' . PHP_EOL;

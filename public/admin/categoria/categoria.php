@@ -66,12 +66,7 @@
 <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <tr>
-         <th>Idcategoria </th>
-         <th>Nombre </th>
-         <th>Url </th>
-         <th>Imagen </th>
-         <th>Publicar </th>
-         <th>Created_up </th>
+         <th>I </th>
          <th width="70"></th>
         <th width="70"></th>
       </tr>
@@ -79,21 +74,16 @@
     <tbody>
       <?php foreach ($data as &$row) {?>
       <tr>
-        <td> <?php echo $row["idcategoria"] ?> </td>
-        <td> <?php echo $row["nombre"] ?> </td>
-        <td> <?php echo $row["url"] ?> </td>
-        <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["publicar"] ?> </td>
-        <td> <?php echo $row["created_up"] ?> </td>
+        <td> <?php echo $row["i"] ?> </td>
 
         <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/categoria/editar.php?id=<?php echo $row["idcategoria"] ?>"
+          <a class="btn btn-primary btn-sm lh-1 " href="admin/categoria/editar.php?id=<?php echo $row["i"] ?>"
             title="Editar">
             <i class="material-icons">edit</i>
           </a>
         </td>
         <td class="text-center">
-          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["idcategoria"] ?>, `aqui va el texto`);"
+          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["i"] ?>, `aqui va el texto`);"
             title="Eliminar">
             <i class="material-icons">delete</i>
           </button>

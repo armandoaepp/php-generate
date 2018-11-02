@@ -270,15 +270,39 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         }
         $texto .= '            $estado = 0; '. PHP_EOL;
 
+
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $params = array(' . PHP_EOL;
         $texto .= '               \''.strtolower($nameatri[0]).'\'=> $'.strtolower($nameatri[0]).','. PHP_EOL;
         $texto .= '               \'estado\'=> $estado,'. PHP_EOL;
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
+        $texto .= '            $' . $tabla . '_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        $texto .= '            $data = $'.$tabla.'_controller->deleteById( $params ) ;' . PHP_EOL;
+
+        $texto .= '
+            $historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
+
+            if( $historial == 0 )
+            {
+
+                $' . $tabla . ' = $' . $tabla . '_controller->find($params);
+
+                $data = $' . $tabla . '_controller->deleteById($params);
+
+                if( !empty($' . $tabla . ') && $data )
+                {
+                    $imagen = $' . $tabla . '["imagen"] ;
+                    UploadFiles::removeFile($img_bd) ;
+                }
+
+            }
+            else
+            {
+                $data = $' . $tabla . '_controller->updateEstado($params);
+            } '. PHP_EOL;
+
+        // $texto .= '            $data = $'.$tabla.'_controller->deleteById( $params ) ;' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;

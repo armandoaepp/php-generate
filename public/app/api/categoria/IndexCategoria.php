@@ -1,4 +1,4 @@
-<?php
+<?php 
 # Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
     header('content-type: application/json; charset=utf-8');
     require_once '../../autoload.php';
@@ -18,7 +18,7 @@ switch($evento)
     case "list":
         try
         {
-            $categoria_controller = new CategoriaController() ;
+            $categoria_controller = new CategoriaController() ; 
 
             $data = $categoria_controller->getAll() ;
 
@@ -28,39 +28,39 @@ switch($evento)
         {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;
 
     case "set":
-
+        
         try
         {
             $objConexion = new Conexion();
             $cnx = $objConexion->get_connection();
-
-            $categoria_controller = new CategoriaController($cnx) ;
+        
+            $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
-
-            $idcategoria = $inputs->idcategoria;
+        
+            $id = $inputs->id;
             $nombre = $inputs->nombre;
             $url = $inputs->url;
             $imagen = $inputs->imagen;
             $publicar = $inputs->publicar;
-            $created_up = $inputs->created_up;
-
+            $fecha = $inputs->fecha;
+        
             $params = array(
-               'idcategoria'=> $idcategoria,
+               'id'=> $id,
                'nombre'=> $nombre,
                'url'=> $url,
                'imagen'=> $imagen,
                'publicar'=> $publicar,
-               'created_up'=> $created_up,
-            ) ;
-
+               'fecha'=> $fecha,
+            ) ; 
+        
             $data = $categoria_controller->save($params) ;
-
+        
             $objConexion->commit();
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -70,7 +70,7 @@ switch($evento)
             $objConexion->rollback();
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;
@@ -80,28 +80,28 @@ switch($evento)
         {
             $objConexion = new Conexion();
             $cnx = $objConexion->get_connection();
-
-            $categoria_controller = new CategoriaController($cnx) ;
+        
+            $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
-
-            $idcategoria = $inputs->idcategoria;
+        
+            $id = $inputs->id;
             $nombre = $inputs->nombre;
             $url = $inputs->url;
             $imagen = $inputs->imagen;
             $publicar = $inputs->publicar;
-            $created_up = $inputs->created_up;
-
+            $fecha = $inputs->fecha;
+        
             $params = array(
-               'idcategoria'=> $idcategoria,
+               'id'=> $id,
                'nombre'=> $nombre,
                'url'=> $url,
                'imagen'=> $imagen,
                'publicar'=> $publicar,
-               'created_up'=> $created_up,
-            ) ;
-
+               'fecha'=> $fecha,
+            ) ; 
+        
             $data = $categoria_controller->update($params) ;
-
+        
             $objConexion->commit();
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -112,7 +112,7 @@ switch($evento)
             $objConexion->rollback();
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;
@@ -121,15 +121,15 @@ switch($evento)
         try
         {
 
-            $idcategoria = $inputs->Idcategoria;
+            $id = $inputs->Id;
             $estado = $inputs->estado;
 
             $params = array(
-               'idcategoria'=> $idcategoria,
+               'id'=> $id,
                'estado'=> $estado,
-            ) ;
+            ) ; 
 
-            $categoria_controller = new CategoriaController() ;
+            $categoria_controller = new CategoriaController() ; 
 
             $data = $categoria_controller->updateEstado( $params ) ;
 
@@ -140,7 +140,7 @@ switch($evento)
         {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;
@@ -150,7 +150,7 @@ switch($evento)
         {
 
             $id = $_GET["id"] ;
-            $categoria_controller = new CategoriaController() ;
+            $categoria_controller = new CategoriaController() ; 
 
             $data = $categoria_controller->find( $id) ;
 
@@ -161,7 +161,7 @@ switch($evento)
         {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;
@@ -170,21 +170,37 @@ switch($evento)
         try
         {
 
-            $idcategoria = $inputs->id;
-            $estado = 0;
-
-            var_dump($_POST);
-
-            return ;
+            $id = $inputs->id;
+            $estado = 0; 
 
             $params = array(
-               'idcategoria'=> $idcategoria,
+               'id'=> $id,
                'estado'=> $estado,
-            ) ;
+            ) ; 
 
-            $categoria_controller = new CategoriaController() ;
+            $categoria_controller = new CategoriaController() ; 
 
-            $data = $categoria_controller->deleteById( $params ) ;
+
+            $historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
+
+            if( $historial == 0 )
+            {
+
+                $categoria = $categoria_controller->find($params);
+
+                $data = $categoria_controller->deleteById($params);
+
+                if( !empty($categoria) && $data )
+                {
+                    $imagen = $categoria["imagen"] ;
+                    UploadFiles::removeFile($img_bd) ;
+                }
+
+            }
+            else
+            {
+                $data = $categoria_controller->updateEstado($params);
+            } 
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -193,7 +209,7 @@ switch($evento)
         {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
     break;

@@ -77,7 +77,7 @@ class Categoria extends Conexion {
     public function update($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getIdcategoria();
+            $idcategoria = $bean_categoria->getId();
             $nombre = $bean_categoria->getNombre();
             $url = $bean_categoria->getUrl();
             $imagen = $bean_categoria->getImagen();
@@ -108,7 +108,7 @@ class Categoria extends Conexion {
     public function updateEstado($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getIdcategoria();
+            $idcategoria = $bean_categoria->getId();
             $estado = $bean_categoria->getEstado();
 
             $this->query = "UPDATE categoria SET 
@@ -133,7 +133,7 @@ class Categoria extends Conexion {
     public function find($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getIdcategoria();
+            $idcategoria = $bean_categoria->getId();
 
             $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
@@ -154,7 +154,7 @@ class Categoria extends Conexion {
     public function deleteById($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getIdcategoria();
+            $idcategoria = $bean_categoria->getId();
 
             $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 

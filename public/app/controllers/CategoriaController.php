@@ -90,7 +90,7 @@
             $bean_categoria->setIdcategoria($idcategoria);
             $bean_categoria->setEstado($estado);
 
-            $data = $categoria->update($bean_categoria) ;
+            $data = $categoria->updateEstado($bean_categoria) ;
             
             return $data;
         }

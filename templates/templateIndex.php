@@ -1,7 +1,8 @@
 <?php
 
-function templateIndex($table, $aatri){
-
+function templateIndex($table, $aatri, $names_head = array() ){
+  var_dump($aatri);
+  var_dump($names_head);
   $cmTable = toCamelCase($table) ;
   $url = toUrlFriendly($table) ;
 
