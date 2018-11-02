@@ -82,11 +82,11 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-                                if (count($nameatri) > 0) {
-                                    for ($i = 1; $i < count($nameatri); $i++) {
-                                        // if ($nameatri[$i] != "estado") {
-                                        if ( !itemsNotSetController($nameatri[$i]) ){
-                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
+                                if (count($aatri) > 0) {
+                                    for ($i = 1; $i < count($aatri); $i++) {
+                                        // if ($aatri[$i] != "estado") {
+                                        if ( !itemsNotSetController($aatri[$i]) ){
+                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
                                         }
                                     }
                                 }
@@ -123,11 +123,11 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-                                if (count($nameatri) > 0) {
-                                    for ($i = 0; $i < count($nameatri); $i++) {
-                                        // if ($nameatri[$i] != "estado") {
-                                        if ( !itemsNotUpdateMetodo($nameatri[$i]) ){
-                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
+                                if (count($aatri) > 0) {
+                                    for ($i = 0; $i < count($aatri); $i++) {
+                                        // if ($aatri[$i] != "estado") {
+                                        if ( !itemsNotUpdateMetodo($aatri[$i]) ){
+                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
                                         }
                                     }
                                 }
@@ -157,7 +157,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-        $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[0]).'($'.strtolower($aatri[0]).');'. PHP_EOL;
+        $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($'.strtolower($aatri[0]).');'. PHP_EOL;
         $texto .= '            $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
@@ -181,7 +181,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[0]).'($id);' . PHP_EOL;
+        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($id);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '            $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
@@ -197,16 +197,22 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
 
 
+
+
+
          # FUNCTION DELETE
-        $texto  .= '    public function deleteById($id)' . PHP_EOL;
+        $texto  .= '    public function deleteById($params)' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
+        $texto  .= '            extract($params) ;' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
         $texto  .= '            $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[0]).'($id);' . PHP_EOL;
+        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($'. $aatri[0] .');' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '            $data = $'.($tabla).'->deleteById( $bean_'.($tabla).' ) ;' . PHP_EOL;

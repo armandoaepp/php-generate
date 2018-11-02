@@ -138,6 +138,19 @@
             <div id="dataTextModal">
             </div>
 
+            <div class="col-12 my-3">
+              <label for="si" class="text-bold "> Conservar en historial: </label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="historial" id="si" value="1" >
+                <label class="form-check-label" for="si">SI</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="historial" id="no" value="0" checked="checked">
+                <label class="form-check-label" for="no">NO</label>
+              </div>
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -166,11 +179,11 @@
     // modals
     (function ($) {
       function processFormModal(event) {
-        var params = JSON.stringify({
-          "idproducto": $("#idRowModal").val(),
-          "accion": $("#accion").val(),
-          "publicar": $("#publicar").val(),
-        });
+
+        event.preventDefault();
+        var inputs = $("#formModal").serializeFormJSON();
+        inputs.id = $("#idRowModal").val();
+        var params = JSON.stringify(inputs);
 
         $.ajax({
           url: "./app/api/categoria/IndexCategoria.php",

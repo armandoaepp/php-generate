@@ -121,15 +121,18 @@
         }
     }
 
-    public function deleteById($id)
+    public function deleteById($params)
     {
         try
         {
+
+            extract($params) ;
+
             $categoria  = new Categoria();
 
             $bean_categoria = new BeanCategoria();
 
-            $bean_categoria->setIdcategoria($id);
+            $bean_categoria->setIdcategoria($idcategoria);
 
             $data = $categoria->deleteById( $bean_categoria ) ;
 

@@ -263,10 +263,22 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        try' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        $texto .= '            $id = $_GET["id"] ;' . PHP_EOL;
+        // $texto .= '            $id = $_GET["id"] ;' . PHP_EOL;
+        if (count($nameatri) > 0) {
+            // $texto .= '            $'.strtolower($nameatri[0]).' = $inputs->'.($nameatri[0]).';'. PHP_EOL;
+            $texto .= '            $'.strtolower($nameatri[0]).' = $inputs->id;'. PHP_EOL;
+        }
+        $texto .= '            $estado = 0; '. PHP_EOL;
+
+        $texto  .= '' . PHP_EOL;
+        $texto  .= '            $params = array(' . PHP_EOL;
+        $texto .= '               \''.strtolower($nameatri[0]).'\'=> $'.strtolower($nameatri[0]).','. PHP_EOL;
+        $texto .= '               \'estado\'=> $estado,'. PHP_EOL;
+        $texto  .= '            ) ; ' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        $texto .= '            $data = $'.$tabla.'_controller->deleteById( $id) ;' . PHP_EOL;
+        $texto .= '            $data = $'.$tabla.'_controller->deleteById( $params ) ;' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
