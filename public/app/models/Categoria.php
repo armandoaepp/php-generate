@@ -1,6 +1,6 @@
 <?php 
 # Class Model Generada - ByPower @armandaepp 
-class Categoria extends ClsConexion {
+class Categoria extends Conexion {
     # CONSTRUCT 
     public function __construct($cnx  = null)
     {

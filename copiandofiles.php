@@ -15,6 +15,9 @@
 
 			if (!file_exists(APP )) {
 				mkdir(APP , 0777);
+
+				full_copy('core_app',APP) ;
+
 			}
 
 			if (!file_exists(MODELS)) {
@@ -35,29 +38,27 @@
 
 			if (!file_exists(HELPERS)) {
 				mkdir(HELPERS, 0777);
+				full_copy('core_app/helpers',HELPERS) ;
+
 			}
 
 			if (!file_exists(APP."/config" )) {
 				mkdir(APP."/config" , 0777);
 			}
 
-			copy("files_app/autoload.php", APP."/autoload.php");
-			copy("files_app/paths.php", APP."/paths.php");
-			copy("files_app/ClsConexion.php", APP."/models/ClsConexion.php");
-			copy("files_app/config.php", APP."/config/config.php");
-			// copy("files_app/Validation.php", APP."/helpers/Validation.php");
-			// copy("files_app/serialize.php", APP."/helpers/serialize.php");
+			if (!file_exists(ADMIN )) {
+				mkdir(ADMIN , 0777);
 
-			copy_directory('files_app/helpers',HELPERS) ;
-			copy_directory('files_app/auth',APP.'/auth') ;
+				full_copy('templates/admin', ADMIN ) ;
+			}
 
-			//  $midir=opendir("./img");
-			//    // $i=0;
-			//     while($archivo=readdir($midir)){
-			//        if (!is_dir($archivo) && $archivo!="." && $archivo!=".."){
-			// 		@copy("./img/".$archivo,"./app/Vistas/img/".$archivo);
-			// 		 }
-			//   }
+			// copy("files_app/autoload.php", APP."/autoload.php");
+			// copy("files_app/paths.php", APP."/paths.php");
+			// copy("files_app/Conexion.php", APP."/models/Conexion.php");
+			// copy("files_app/config.php", APP."/config/config.php");
+
+
+
 				return "Archivos Creados Correctamente";
 		}
 
@@ -94,7 +95,7 @@ $carpetap = "public";
 
 	copy("files_app/autoload.php","app/autoload.php");
 	copy("files_app/paths.php","app/paths.php");
-	copy("files_app/ClsConexion.php","app/models/ClsConexion.php");
+	copy("files_app/Conexion.php","app/models/Conexion.php");
 	copy("files_app/Validation.php","app/helpers/Validation.php");
 	copy("files_app/config.php","app/config/config.php");
 	copy("files_app/serialize.php","app/helpers/serialize.php");

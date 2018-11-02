@@ -98,7 +98,7 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto  .= '        ' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
-        $texto  .= '            $objConexion = new ClsConexion();' . PHP_EOL;
+        $texto  .= '            $objConexion = new Conexion();' . PHP_EOL;
         $texto  .= '            $cnx = $objConexion->get_connection();' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller($cnx) ; ' . PHP_EOL;
@@ -150,7 +150,7 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
 
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
-        $texto  .= '            $objConexion = new ClsConexion();' . PHP_EOL;
+        $texto  .= '            $objConexion = new Conexion();' . PHP_EOL;
         $texto  .= '            $cnx = $objConexion->get_connection();' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
         $texto  .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller($cnx) ; ' . PHP_EOL;

@@ -26,7 +26,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
 
         $texto .= '<?php ' . PHP_EOL;
         $texto .= '# Class Model Generada - ByPower @armandaepp ' . PHP_EOL;
-        $texto .= 'class ' . $clase . ' extends ClsConexion {' . PHP_EOL;
+        $texto .= 'class ' . $clase . ' extends Conexion {' . PHP_EOL;
 
         # contructor
         $texto .= '    # CONSTRUCT ' . PHP_EOL;

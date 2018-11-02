@@ -5,11 +5,11 @@ include_once 'functionsHelper.php';
 include_once 'copiandofiles.php';
 include_once 'generarmodelo.php';
 include_once 'generarbean.php';
-include_once 'generandovistas.php';
+// include_once 'generandovistas.php';
 include_once 'generandoControladores.php';
 include_once 'generandoindex.php';
-include_once 'generandolayout.php';
-include_once 'generando_procedures.php';
+// include_once 'generandolayout.php';
+// include_once 'generando_procedures.php';
 
 include_once 'generateViews.php';
 
@@ -58,7 +58,7 @@ if (isset($_POST["btenviar"])) {
         $atributos = trim($_POST["atributos"]);
         $atributos = substr($atributos, 0, -1);
         echo copiandofiles() . "<br/>";
-        echo generandolayout() . "<br/>";
+        // echo generandolayout() . "<br/>";
         echo generarbean($atributos, $consulta, $tabla, $arraycabeza) . "<br/>";
         echo generarmodelo($atributos, $consulta, $tabla , $arraycabeza) . "<br/>";
         echo generandoControladores($atributos, $tabla,$arraycabeza) . "<br/>";
@@ -68,7 +68,7 @@ if (isset($_POST["btenviar"])) {
 
         // echo generandoViewList($atributos, $consulta, $tabla) . "<br/>";
 
-        echo generandoVistas($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
+        // echo generandoVistas($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
         echo generateViews($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
 
 

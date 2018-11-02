@@ -37,7 +37,7 @@ switch($evento)
         
         try
         {
-            $objConexion = new ClsConexion();
+            $objConexion = new Conexion();
             $cnx = $objConexion->get_connection();
         
             $categoria_controller = new CategoriaController($cnx) ; 
@@ -78,7 +78,7 @@ switch($evento)
     case "upd":
         try
         {
-            $objConexion = new ClsConexion();
+            $objConexion = new Conexion();
             $cnx = $objConexion->get_connection();
         
             $categoria_controller = new CategoriaController($cnx) ; 
