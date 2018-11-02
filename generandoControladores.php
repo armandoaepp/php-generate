@@ -64,8 +64,11 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
+
+
         # FUNCTION set
-        $texto  .= '    public function set'.$cmTable.'($params = array() )' . PHP_EOL;
+        // $texto  .= '    public function set'.$cmTable.'($params = array() )' . PHP_EOL;
+        $texto  .= '    public function save($params = array() )' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
@@ -80,8 +83,9 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            ' . PHP_EOL;
 
                                 if (count($nameatri) > 0) {
-                                    for ($i = 0; $i < count($nameatri); $i++) {
-                                        if ($nameatri[$i] != "estado") {
+                                    for ($i = 1; $i < count($nameatri); $i++) {
+                                        // if ($nameatri[$i] != "estado") {
+                                        if ( !itemsNotSetController($nameatri[$i]) ){
                                             $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
                                         }
                                     }
@@ -103,8 +107,11 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
+
+
         # FUNCTION upd
-        $texto  .= '    public function update'.$cmTable.'($params = array())' . PHP_EOL;
+        // $texto  .= '    public function update'.$cmTable.'($params = array())' . PHP_EOL;
+        $texto  .= '    public function update($params = array())' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
@@ -118,7 +125,8 @@ function generandoControladores($atri, $tabla, $nameatri)
 
                                 if (count($nameatri) > 0) {
                                     for ($i = 0; $i < count($nameatri); $i++) {
-                                        if ($nameatri[$i] != "estado") {
+                                        // if ($nameatri[$i] != "estado") {
+                                        if ( !itemsNotUpdateMetodo($nameatri[$i]) ){
                                             $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
                                         }
                                     }
@@ -164,8 +172,8 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        # FUNCTION getById
-        $texto  .= '    public function getById($id)' . PHP_EOL;
+        # FUNCTION FIND
+        $texto  .= '    public function find($id)' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
@@ -176,7 +184,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($nameatri[0]).'($id);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        $texto  .= '            $data = $'.($tabla).'->getById( $bean_'.($tabla).') ;' . PHP_EOL;
+        $texto  .= '            $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '            return $data;'. PHP_EOL;
         $texto  .= '' . PHP_EOL;

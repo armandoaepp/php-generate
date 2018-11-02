@@ -13,15 +13,7 @@
 
   $categoria_controller = new CategoriaController();
 
-  $params = array(
-      "idcategoria" => $id,
-  );
-
-  // $categoria = $categoria_controller->getById($params);
-  $categoria = $categoria_controller->getById($id);
-
-  var_dump( $categoria );
-
+  $categoria = $categoria_controller->find($id);
 
   $publicar = trim($data["publicar"]);
 
@@ -81,7 +73,7 @@ require_once "../layout/head_links.phtml";
             <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
             <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
             <div class="row">
-
+            
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nombre">nombre : </label>
@@ -102,7 +94,7 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
               </div>
-
+              
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
@@ -116,9 +108,6 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
               </div>
-
-
-
 
             </div>
 

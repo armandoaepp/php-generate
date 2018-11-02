@@ -1,0 +1,30 @@
+<div id="div_suscrito">
+<form id="frm_suscrito" name="frm_suscrito" class="hform"  ng-submit="updSuscrito()">
+<table class="table" >
+ <caption>LISTA DE SUSCRITO </caption>
+<thead>
+    <tr>
+        <th>Id </th>
+        <th>Nombre </th>
+        <th>Email </th>
+        <th>Telefono </th>
+        <th>Empresa </th>
+        <th>Mensaje </th>
+        <th>Created_up </th>
+    </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="suscrito in suscritos">
+        <th>suscrito.id </th>
+        <th>suscrito.nombre </th>
+        <th>suscrito.email </th>
+        <th>suscrito.telefono </th>
+        <th>suscrito.empresa </th>
+        <th>suscrito.mensaje </th>
+        <th>suscrito.created_up </th>
+    </tr>
+</tbody>
+
+</table>
+</form>
+</div>

@@ -21,12 +21,7 @@ $html .= '
 
   $'. $table .'_controller = new '. $cmTable .'Controller();
 
-  $params = array(
-      "'.$aatri[0].'" => $id,
-  );
-
-  $'. $table .' = $'. $table .'_controller->getById($params);
-'. PHP_EOL;
+  $'. $table .' = $'. $table .'_controller->find($id);'. PHP_EOL;
 
 if(in_array('publicar', $aatri))
 {
@@ -125,12 +120,6 @@ for ($i = 1; $i < count($aatri); $i++)
                 </div>
               </div>
               ' ;
-            // $html .= '              <div class="col-md-6">' . PHP_EOL;
-            // $html .= '                <div class="form-group">' . PHP_EOL;
-            // $html .= '                  <label for="imagen">Imagen(Recomendación Imagen de 350 x 200 pixeles ) </label>' . PHP_EOL;
-            // $html .= '                  <input type="file"  class="form-control" name="imagen" id="imagen"  placeholder="Imagen" accept="image/*">' . PHP_EOL;
-            // $html .= '                </div>' . PHP_EOL;
-            // $html .= '              </div>' . PHP_EOL;
 
     }
     elseif(strtolower(trim($aatri[$i])) == "publicar")
@@ -154,9 +143,6 @@ for ($i = 1; $i < count($aatri); $i++)
 }
 
 $html .= '
-
-
-
             </div>
 
             <div class="w-100 text-center">

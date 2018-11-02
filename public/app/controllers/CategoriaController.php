@@ -25,7 +25,7 @@
         }
     }
 
-    public function setCategoria($params = array() )
+    public function save($params = array() )
     {
         try
         {
@@ -36,12 +36,10 @@
 
             $bean_categoria = new BeanCategoria();
             
-            $bean_categoria->setIdcategoria($idcategoria);
             $bean_categoria->setNombre($nombre);
             $bean_categoria->setUrl($url);
             $bean_categoria->setImagen($imagen);
             $bean_categoria->setPublicar($publicar);
-            $bean_categoria->setCreatedUp($created_up);
             
             $data = $categoria->save($bean_categoria) ;
 
@@ -53,7 +51,7 @@
         }
     }
 
-    public function updateCategoria($params = array())
+    public function update($params = array())
     {
         try
         {
@@ -68,7 +66,6 @@
             $bean_categoria->setUrl($url);
             $bean_categoria->setImagen($imagen);
             $bean_categoria->setPublicar($publicar);
-            $bean_categoria->setCreatedUp($created_up);
 
             $data = $categoria->update($bean_categoria) ;
             
@@ -103,7 +100,7 @@
         }
     }
 
-    public function getById($id)
+    public function find($id)
     {
         try
         {
@@ -113,7 +110,7 @@
 
             $bean_categoria->setIdcategoria($id);
 
-            $data = $categoria->getById( $bean_categoria) ;
+            $data = $categoria->find( $bean_categoria) ;
 
             return $data;
 

@@ -7,11 +7,11 @@ class BeanCategoria{
     # Atributos
     private $idcategoria;
     private $nombre;
-    private $url;
-    private $imagen;
-    private $publicar;
-    private $estado;
-    private $created_up;
+    private $url = "" ;
+    private $imagen = "" ;
+    private $publicar = "S" ;
+    private $estado = 1 ;
+    private $created_up = NULL ;
 
     # METODOS
     public function setIdcategoria($idcategoria_)

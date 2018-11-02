@@ -2,4 +2,6 @@
 # path/api
 	define('ROOT_PATH', __DIR__);
 
-	define('IMAGES_PATH', 'img_admin/');
+	# PATH[../FOLDER_NAME]
+	define('IMAGES_FOLDER', 'img_admin');
+	define('IMAGES_PATH', ROOT_PATH.'/../'.IMAGES_FOLDER);

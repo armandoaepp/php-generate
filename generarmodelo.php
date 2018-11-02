@@ -73,15 +73,20 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         //  END METODO LIST
 
 
-        $texto .= '    # Método Insertar' . PHP_EOL;
+        $texto .= '    # Método SAVE' . PHP_EOL;
         //Inicia Metodo INSERTAR
         $texto .= '    public function save($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '    {' . PHP_EOL;
 
         $texto .= '        try{' . PHP_EOL;
 
+        if (in_array('created_up', $aatri) ) {
+            $texto .= '            $bean_'.$tabla.'->set' . toCamelCase("created_up") . '( HelperDate::timestampsBd() );' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+        }
+
         for ($i = 0; $i < count($aatri); $i++) {
-            $texto .= '            $'.$aatri[$i]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[$i]) . '();' . PHP_EOL;
+            $texto .= '            $'.$aatri[$i]  .' = $bean_'.$tabla.'->get' . toCamelCase($aatri[$i]) . '();' . PHP_EOL;
         }
         $texto .= '' . PHP_EOL;
 
@@ -92,7 +97,14 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         $campos = "";
         for ($i = 1; $i < count($aatri); $i++) {
             $campos .= "                                " . $aatri[$i] ;
-            $concat .= "                                '" . '$' . $aatri[$i]."'" ;
+
+            if ($aatri[$i] == "created_up") {
+                $concat .= "                                " . '$' . $aatri[$i]."" ;
+            }
+            else{
+                $concat .= "                                '" . '$' . $aatri[$i]."'" ;
+            }
+
             if ( $i < (count($aatri) - 1) )
             {
                 $campos .= ",". PHP_EOL;
@@ -109,7 +121,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         $texto .= '                            VALUES('.PHP_EOL;
         $texto .= $concat;
         $texto .= PHP_EOL;
-        $texto .= '                            )";' . PHP_EOL;
+        $texto .= '                            ); ";' . PHP_EOL;
         $texto .= PHP_EOL;
 
         $texto .= '            $this->execute_query();' . PHP_EOL;
@@ -135,29 +147,36 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         $texto .= '    public function update($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '    {' . PHP_EOL;
         $texto .= '        try{' . PHP_EOL;
-           for ($i = 0; $i < count($aatri); $i++) {
+
+            for ($i = 0; $i < count($aatri); $i++) {
+                if ( !itemsNotSetController($aatri[$i]) ){
                 $texto .= '            $'.$aatri[$i]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[$i]) . '();' . PHP_EOL;
+                }
             }
+
             $texto .= '' . PHP_EOL;
 
              //QUERY
-             $concat='            $this->query = "UPDATE '.$tabla.' SET '. PHP_EOL;
+             $concat ='            $this->query = "UPDATE '.$tabla.' SET '. PHP_EOL;
              for ($i = 1; $i < count($aatri); $i++) {
-                 $concat.= '                                '.$aatri[$i]." = '$".$aatri[$i];
-                 if ( $i < (count($aatri) - 1) )
-                 {
-                     $concat .= ",". PHP_EOL;
-                 }
+                // $concat.= '                                '.$aatri[$i]." = '$".$aatri[$i];
+
+                if ( !itemsNotUpdateMetodo($aatri[$i]) ){
+                    $concat.= '                                '.$aatri[$i]." = '$".$aatri[$i]."',". PHP_EOL;
+                }
+
              }
-             // $concat=substr($concat,0,-1);
-             $concat= $concat ;
+
+             $concat = rtrim($concat);
+             $concat = substr($concat,0,-1);
+             $concat = $concat ;
              $concat.= PHP_EOL;
              $concat.="                            WHERE ".$aatri[0]." = '$".$aatri[0]."'";
              $concat.= PHP_EOL;
-             $concat.="                            LIMIT 1 ".'";';
+             $concat.="                            LIMIT 1 ;".'";';
              $texto.=$concat.PHP_EOL;
+             $texto.= PHP_EOL;
          // end QUERY
-
 
 
             $texto .= '            $this->execute_query();' . PHP_EOL;
@@ -197,7 +216,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
              $concat .= PHP_EOL;
              $concat.="                            WHERE ".$aatri[0]."='$".$aatri[0]."'";
              $concat.= PHP_EOL;
-             $concat.="                            LIMIT 1 ".'";';
+             $concat.="                            LIMIT 1 ; ".'";';
              $texto .=  $concat.PHP_EOL;
 
              $texto .= PHP_EOL;
@@ -221,7 +240,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         //  START METODO BUSCAR POR ID
         $texto .= PHP_EOL;
         $texto .= '    # Método Buscar por ID' . PHP_EOL;
-        $texto .= '    public function getById($bean_'.$tabla.')' . PHP_EOL;
+        $texto .= '    public function find($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '    {' . PHP_EOL;
         $texto .= '        try{' . PHP_EOL;
         // START SQL
@@ -232,7 +251,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
         //QUERY
         $concat = "";
         $concat .= '            $this->query = "SELECT * FROM '.$tabla;
-        $concat.=" WHERE ".$aatri[0]." = '$".$aatri[0]."'".' LIMIT 1";';
+        $concat.=" WHERE ".$aatri[0]." = '$".$aatri[0]."'".' LIMIT 1; ";';
         //end QUERY
         $texto .=  $concat.PHP_EOL;
         $texto .= PHP_EOL;
@@ -268,7 +287,7 @@ function generarmodelo($atri, $cListar, $tabla, $name_set_get)
             $concat = "";
             $concat .= '            $this->query = "DELETE FROM '.$tabla;
             // $concat .= PHP_EOL;
-            $concat.=" WHERE ".$aatri[0]." = '$".$aatri[0]."'".' LIMIT 1";';
+            $concat.=" WHERE ".$aatri[0]." = '$".$aatri[0]."'".' LIMIT 1; ";';
             $texto .=  $concat.PHP_EOL;
             $texto .= '' . PHP_EOL;
             //endQUERY

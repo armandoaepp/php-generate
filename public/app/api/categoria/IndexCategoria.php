@@ -59,7 +59,7 @@ switch($evento)
                'created_up'=> $created_up,
             ) ; 
         
-            $data = $categoria_controller->setCategoria($params) ;
+            $data = $categoria_controller->save($params) ;
         
             $objConexion->commit();
 
@@ -100,7 +100,7 @@ switch($evento)
                'created_up'=> $created_up,
             ) ; 
         
-            $data = $categoria_controller->updateCategoria($params) ;
+            $data = $categoria_controller->update($params) ;
         
             $objConexion->commit();
 
@@ -145,14 +145,14 @@ switch($evento)
         print_r($jsn) ;
     break;
 
-    case "getid":
+    case "find":
         try
         {
 
             $id = $_GET["id"] ;
             $categoria_controller = new CategoriaController() ; 
 
-            $data = $categoria_controller->getById( $id) ;
+            $data = $categoria_controller->find( $id) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 

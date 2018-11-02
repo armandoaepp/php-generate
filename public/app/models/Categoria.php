@@ -27,10 +27,12 @@ class Categoria extends ClsConexion {
         }
     }
 
-    # Método Insertar
+    # Método SAVE
     public function save($bean_categoria)
     {
         try{
+            $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
+
             $idcategoria = $bean_categoria->getIdcategoria();
             $nombre = $bean_categoria->getNombre();
             $url = $bean_categoria->getUrl();
@@ -54,8 +56,8 @@ class Categoria extends ClsConexion {
                                 '$imagen',
                                 '$publicar',
                                 '$estado',
-                                '$created_up'
-                            )";
+                                $created_up
+                            ); ";
 
             $this->execute_query();
 
@@ -80,18 +82,15 @@ class Categoria extends ClsConexion {
             $url = $bean_categoria->getUrl();
             $imagen = $bean_categoria->getImagen();
             $publicar = $bean_categoria->getPublicar();
-            $estado = $bean_categoria->getEstado();
-            $created_up = $bean_categoria->getCreatedUp();
 
             $this->query = "UPDATE categoria SET 
-                                nombre = '$nombre,
-                                url = '$url,
-                                imagen = '$imagen,
-                                publicar = '$publicar,
-                                estado = '$estado,
-                                created_up = '$created_up
+                                nombre = '$nombre',
+                                url = '$url',
+                                imagen = '$imagen',
+                                publicar = '$publicar'
                             WHERE idcategoria = '$idcategoria'
-                            LIMIT 1 ";
+                            LIMIT 1 ;";
+
             $this->execute_query();
 
             $data = $this->status_exe  ;
@@ -115,7 +114,7 @@ class Categoria extends ClsConexion {
             $this->query = "UPDATE categoria SET 
                                 estado = '$estado'
                             WHERE idcategoria='$idcategoria'
-                            LIMIT 1 ";
+                            LIMIT 1 ; ";
 
             $this->execute_query();
 
@@ -131,12 +130,12 @@ class Categoria extends ClsConexion {
     }
 
     # Método Buscar por ID
-    public function getById($bean_categoria)
+    public function find($bean_categoria)
     {
         try{
             $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1";
+            $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
             $this->execute_find();
 
@@ -157,7 +156,7 @@ class Categoria extends ClsConexion {
         try{
             $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1";
+            $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
             $this->execute_query();
 

@@ -30,7 +30,16 @@ function generarbean($atri, $cListar, $tabla,  $nameMetodo )
         $texto .= '' . PHP_EOL;
         $texto .= '    # Atributos' . PHP_EOL;
         for ($i = 0; $i < count($aatri); $i++) {
-            $texto .= '    private $' . $aatri[$i] . ';' . PHP_EOL;
+            // if ( $aatri[$i] == "estado") {
+            $value_def = itemsDefaultBeans($aatri[$i]) ;
+            if ( $value_def != false ) {
+                $texto .= '    private $' . $aatri[$i] . ' = '. $value_def .' ;' . PHP_EOL;
+            }
+            else{
+                $texto .= '    private $' . $aatri[$i] . ';' . PHP_EOL;
+
+            }
+
         }
         $texto .= '' . PHP_EOL;
 

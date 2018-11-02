@@ -124,7 +124,8 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
 
 
 
-        $texto .= '            $data = $'.$tabla.'_controller->set'.$cmTable.'($params) ;' . PHP_EOL;
+        // $texto .= '            $data = $'.$tabla.'_controller->set'.$cmTable.'($params) ;' . PHP_EOL;
+        $texto .= '            $data = $'.$tabla.'_controller->save($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
         $texto .= '            $objConexion->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
@@ -172,7 +173,8 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
 
-        $texto .= '            $data = $'.$tabla.'_controller->update'.$cmTable.'($params) ;' . PHP_EOL;
+        // $texto .= '            $data = $'.$tabla.'_controller->update'.$cmTable.'($params) ;' . PHP_EOL;
+        $texto .= '            $data = $'.$tabla.'_controller->update($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
         $texto .= '            $objConexion->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
@@ -190,6 +192,8 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        print_r($jsn) ;' . PHP_EOL;
         $texto .= '    break;' . PHP_EOL;
         $texto .= "" . PHP_EOL;
+
+
 
         # EVENTE UPDATE ESTADO
         $texto .= '    case "updestado":' . PHP_EOL;
@@ -230,15 +234,15 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= "" . PHP_EOL;
 
 
-        # EVENTE getid
-        $texto .= '    case "getid":' . PHP_EOL;
+        # EVENTE find
+        $texto .= '    case "find":' . PHP_EOL;
         $texto .= '        try' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $id = $_GET["id"] ;' . PHP_EOL;
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        $texto .= '            $data = $'.$tabla.'_controller->getById( $id) ;' . PHP_EOL;
+        $texto .= '            $data = $'.$tabla.'_controller->find( $id) ;' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;

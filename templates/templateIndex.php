@@ -15,7 +15,8 @@ $html = '
     $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
     require_once "../layout/head_links.phtml";
   ?>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="admin/plugins/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -101,9 +102,9 @@ $html = '
   </form>
 
 
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  <script src="admin/js/data-table-ES.js"></script>
+  <script src="admin/plugins/datatables/js/jquery.dataTables.min.js"></script>
+  <script src="admin/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="admin/plugins/datatables/js/data-table-ES.js"></script>
 
   <script>
 

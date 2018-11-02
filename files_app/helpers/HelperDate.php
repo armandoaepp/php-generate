@@ -1,5 +1,5 @@
 <?php
-class helperBd {
+class helperDate {
 
   public static function timestampsBd($timestamps = true)
   {
@@ -14,16 +14,6 @@ class helperBd {
 
     return $created_up;
 
-  }
-
-  public static function imagenDefault($imagen)
-  {
-    if(empty($imagen) )
-    {
-      $imagen = IMAGES_PATH."default.png" ;
-    }
-
-    return $imagen ;
   }
 
 }

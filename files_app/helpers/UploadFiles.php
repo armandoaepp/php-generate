@@ -3,8 +3,18 @@
 class UploadFiles {
 
   //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
+   //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
   static public function uploadFile(&$file, $path_relative = '')
   {
+
+    #verificar FOLDER_NAME
+    if (!file_exists(IMAGES_PATH)) {
+      mkdir(IMAGES_PATH, 0777);
+    }
+
+    if ( !file_exists(IMAGES_PATH ."/". $path_relative) ) {
+      mkdir(IMAGES_PATH ."/". $path_relative, 0777);
+    }
 
     $imagen_url      = '';
 
@@ -18,25 +28,19 @@ class UploadFiles {
       # new name and url imgen
         $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
 
-        if(!empty($path_relative))
-        {
-          # verificar si el folder existe
-          // $this->isFolderExist($path_relative);
-
+        if(!empty($path_relative)) {
           $imagen_url = "{$path_relative}/{$new_name}" ;
         }
         else{
           $imagen_url = "{$new_name}" ;
         }
 
-        $imagen_url = IMAGES_PATH."{$imagen_url}" ;
+        $imagen_url = IMAGES_FOLDER."/{$imagen_url}" ;
 
       # ruta destino(donde se movera el archivo )
-        // $ruta_destino = "{$path_root}{$imagen_url}";
-        $ruta_destino = ROOT_PATH.'/../'."{$imagen_url}";
+        $ruta_destino = IMAGES_PATH.'/../'."{$imagen_url}";
 
         // echo $ruta_destino ;
-
         $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
 
       $imagen_url = $imagen_url ;
@@ -44,7 +48,7 @@ class UploadFiles {
     }elseif ($file["error"] > 0)
     {
       // echo "Error: " . $file['error'] . "<br>";
-      $imagen_url = "error";
+      $imagen_url = "";
     }
 
     return $imagen_url ;
@@ -77,10 +81,20 @@ class UploadFiles {
 
             # new name and url imgen
               $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
-              $imagen_url = "{$path_url_img}{$new_name}" ;
+
+              if(!empty($path_relative)) {
+                $imagen_url = "{$path_relative}/{$new_name}" ;
+              }
+              else{
+                $imagen_url = "{$new_name}" ;
+              }
+
+              $imagen_url = IMAGES_FOLDER."/{$imagen_url}" ;
 
             # ruta destino(donde se movera el archivo )
-              $ruta_destino = "{$path_root}{$imagen_url}";
+              $ruta_destino = IMAGES_PATH.'/../'."{$imagen_url}";
+
+            # ruta destino(donde se movera el archivo )
               $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
 
             $imagenes[] = $imagen_url ;
@@ -113,7 +127,7 @@ class UploadFiles {
 
   static public function removeFile($path_file)
   {
-    $path_file = ROOT_PATH.'/../'.$path_file ;
+    $path_file = IMAGES_PATH . '/../' . $path_file ;
 
     $unlink =  false ;
     if(!empty($path_file))
@@ -131,13 +145,23 @@ class UploadFiles {
 
     if(empty($folder)) return ;
 
-    $folder_path =  ROOT_PATH.'/../'.IMAGES_PATH.$folder ;
+    $folder_path =  IMAGES_PATH . '/../' .  $folder ;
 
     if(!file_exists($folder_path))
     {
       mkdir($folder_path,0777);
     }
 
+  }
+
+  public static function imagenDefault($imagen)
+  {
+    if(empty($imagen) )
+    {
+      $imagen = IMAGES_FOLDER."/default.png" ;
+    }
+
+    return $imagen ;
   }
 
 
