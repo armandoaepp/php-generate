@@ -1,10 +1,16 @@
 <?php
+
+
+
 Class Conexion
 {
+
     private static $db_host = 'localhost';
     private static $db_user = 'root';
-    private static $db_pass = 'root';
+    private static $db_pass = '';
     protected $db_name      = 'db_admin_prod';
+    protected $db_port      = '3306';
+
 
     protected $db_driver = 'mysql';
 
@@ -16,8 +22,11 @@ Class Conexion
     # Conectar a la base de datos utilizamos la libreria pdo
     private function open_connection()
     {
-        $cadena=$this->db_driver.":host=".self::$db_host.";dbname=" .$this->db_name;
+        // $cadena=$this->db_driver.":host=".self::$db_host.";dbname=" .$this->db_name;
+        $cadena = $this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
+
         $this->conn = new PDO($cadena,self::$db_user,self::$db_pass);
+
         # para manejar errores y excepcciones especiales para el manejo de transacciones
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         # codificacion utf-8
