@@ -15,6 +15,17 @@
 
   $categoria = $categoria_controller->find($id);
 
+  $publicar = trim($data["publicar"]);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Categoria"
 ?>
 
@@ -63,6 +74,40 @@ require_once "../layout/head_links.phtml";
             <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
             <div class="row">
             
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre">nombre : </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"  value="<?php echo $categoria['nombre'] ?>" >
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 text-center">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">
+
+                <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid mb-1">
+                <div class="col-auto">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="imagen">Nueva Imagen</label>
+                    </div>
+                    <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $si; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
+                </div>
+              </div>
 
             </div>
 

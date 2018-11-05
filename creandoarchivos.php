@@ -25,10 +25,6 @@ if (isset($_POST["btenviar"])) {
     $sele = $_POST["sele"];
     $tabla = $_POST["nomtabla"];
 
-    echo "<pre>" ;
-    print_r($sele);
-    echo "</pre>" ;
-
     if (count($sele) > 0) {
         $consulta     = "Select ";
         $verre        = false;
@@ -62,6 +58,21 @@ if (isset($_POST["btenviar"])) {
         }
         $atributos = trim($_POST["atributos"]);
         $atributos = substr($atributos, 0, -1);
+
+        //atributos
+        $atributos = trim($_POST["atributos"]);
+        $atributos = substr($atributos, 0, -1);
+
+        $romper_exp = explode("*", $atributos);
+        $aatributos  = array();
+        for ($i = 0; $i < count($romper_exp); $i++) {
+            if (trim($romper_exp[$i]) != "") {
+                $aatributos[] = $romper_exp[$i];
+            }
+        }
+
+        $atributos = $aatributos ;
+        // var_dump($arraycabeza);
         echo copiandofiles() . "<br/>";
         // echo generandolayout() . "<br/>";
         echo generarbean($atributos, $consulta, $tabla, $arraycabeza) . "<br/>";

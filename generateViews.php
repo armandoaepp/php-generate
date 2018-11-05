@@ -1,7 +1,7 @@
 <?php
-function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arrayenlace2){
+function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace, $arrayenlace2){
 
-    //atributos
+
     if (file_exists(ADMIN."/" . $tabla)) {
         $carpeta = ADMIN."/" . $tabla . "/";
     } else {
@@ -35,7 +35,7 @@ function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arr
         $texto      .= '    $title_page = "'.$tabla.'s"'. PHP_EOL ;
         $texto      .= ''. PHP_EOL ;
         $texto      .= '?>'. PHP_EOL ;
-        $texto      .= templateIndex($tabla, $atri, $names_head) ;
+        $texto      .= templateIndex($tabla, $atributos, $arraycabeza) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -45,7 +45,7 @@ function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arr
         $nomarchivo = $carpeta . "nuevo";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateNuevo($tabla, $atri) ;
+        $texto      = templateNuevo($tabla, $atributos, $arraycabeza) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -55,7 +55,7 @@ function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arr
         $nomarchivo = $carpeta . "save";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateSave($tabla, $atri) ;
+        $texto      = templateSave($tabla, $atributos, $arraycabeza) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -66,7 +66,7 @@ function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arr
         $nomarchivo = $carpeta . "editar";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateEdit($tabla, $atri) ;
+        $texto      = templateEdit($tabla, $atributos, $arraycabeza) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -76,7 +76,7 @@ function generateViews($atri, $names_head, $tabla, $tablaref, $arrayenlace, $arr
         $nomarchivo = $carpeta . "update";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateUpdate($tabla, $atri) ;
+        $texto      = templateUpdate($tabla, $atributos, $arraycabeza) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);

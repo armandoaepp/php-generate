@@ -1,6 +1,6 @@
 <?php
 
-function templateNuevo($table, $aatri){
+function templateNuevo($table, $atributos, $arraycabeza = array() ){
 
   $cmTable = toCamelCase($table) ;
   $url = toUrlFriendly($table) ;
@@ -58,20 +58,20 @@ require_once "../layout/head_links.phtml";
             <div class="row">
             '. PHP_EOL ;
 
-for ($i = 1; $i < count($aatri); $i++)
+for ($i = 1; $i < count($atributos); $i++)
 {
-    // if (strtolower(trim($aatri[$i])) != "estado" && strtolower(trim($aatri[$i])) != "created_up" && strtolower(trim($aatri[$i])) != "imagen" )
-    if ( !verificarItem($aatri[$i]) )
+    // if (strtolower(trim($atributos[$i])) != "estado" && strtolower(trim($atributos[$i])) != "created_up" && strtolower(trim($atributos[$i])) != "imagen" )
+    if ( !verificarItem($atributos[$i]) )
     {
 
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
-            $html .= '                  <label for="' . $aatri[$i] . '">' . $aatri[$i] . ' : </label>' . PHP_EOL;
-            $html .= '                  <input type="text" class="form-control" name="' . $aatri[$i] .'" id="' . $aatri[$i] .'" required placeholder="' . $aatri[$i] .'">' . PHP_EOL;
+            $html .= '                  <label for="' . $atributos[$i] . '">' . $atributos[$i] . ' : </label>' . PHP_EOL;
+            $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . $atributos[$i] .'">' . PHP_EOL;
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;
     }
-    elseif(strtolower(trim($aatri[$i])) == "imagen")
+    elseif(strtolower(trim($atributos[$i])) == "imagen")
     {
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
@@ -81,7 +81,7 @@ for ($i = 1; $i < count($aatri); $i++)
             $html .= '              </div>' . PHP_EOL;
 
     }
-    elseif(strtolower(trim($aatri[$i])) == "publicar")
+    elseif(strtolower(trim($atributos[$i])) == "publicar")
     {
     $html .= '
               <div class="col-md-6">

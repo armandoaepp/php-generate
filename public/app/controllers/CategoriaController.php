@@ -145,4 +145,49 @@
         }
     }
 
+    public function updatePublish($params = array())
+    {
+        try
+        {
+            
+            extract($params) ; 
+
+            $categoria  = new Categoria($this->cnx);
+            $bean_categoria = new BeanCategoria();
+            
+            $bean_categoria->setIdcategoria($idcategoria);
+            $bean_categoria->setPublicar($publicar);
+
+            $data = $categoria->updatePublish($bean_categoria) ;
+            
+            return $data;
+        }
+        catch (Exception $e)
+        {
+           throw new Exception($e->getMessage());
+        }
+    }
+
+    public function getPublished($params = array())
+    {
+        try
+        {
+            
+            extract($params) ; 
+
+            $categoria  = new Categoria($this->cnx);
+            $bean_categoria = new BeanCategoria();
+            
+            $bean_categoria->setPublicar($publicar);
+
+            $data = $categoria->getPublished($bean_categoria) ;
+            
+            return $data;
+        }
+        catch (Exception $e)
+        {
+           throw new Exception($e->getMessage());
+        }
+    }
+
 }

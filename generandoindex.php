@@ -1,22 +1,12 @@
 <?php
-function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arrayenlace2)
+function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace, $arrayenlace2)
 {
-    //atributos
-    $atri   = trim($atri);
-    $romper = explode("*", $atri);
-    $aatri  = array();
-    for ($i = 0; $i < count($romper); $i++) {
-        if (trim($romper[$i]) != "") {
-            $aatri[] = $romper[$i];
-        }
-    }
-
 
     $paramss = "";
-        if (count($nameatri) > 0) {
-                    for ($i = 0; $i < count($nameatri); $i++) {
-                        if ($nameatri[$i] != "estado") {
-                            $paramss .= '               \''.strtolower($nameatri[$i]).'\'=> $'.strtolower($nameatri[$i]).','. PHP_EOL;
+        if (count($atributos) > 0) {
+                    for ($i = 0; $i < count($atributos); $i++) {
+                        if ($atributos[$i] != "estado") {
+                            $paramss .= '               \''.strtolower($atributos[$i]).'\'=> $'.strtolower($atributos[$i]).','. PHP_EOL;
                         }
                     }
                 }
@@ -53,8 +43,6 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp' . PHP_EOL;
          $texto .= "    header('content-type: application/json; charset=utf-8');" . PHP_EOL;
          $texto .= "    require_once '../../autoload.php';" . PHP_EOL;
-         // $texto .= "    require_once '../helpers/Helpers.php';" . PHP_EOL;
-
         $texto .= "" . PHP_EOL;
 
 
@@ -106,10 +94,10 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        ' . PHP_EOL;
 
 
-                if (count($nameatri) > 0) {
-                    for ($i = 0; $i < count($nameatri); $i++) {
-                        if ($nameatri[$i] != "estado") {
-                            $texto .= '            $'.strtolower($nameatri[$i]).' = $inputs->'.($nameatri[$i]).';'. PHP_EOL;
+                if (count($atributos) > 0) {
+                    for ($i = 0; $i < count($atributos); $i++) {
+                        if ($atributos[$i] != "estado") {
+                            $texto .= '            $'.strtolower($atributos[$i]).' = $inputs->'.($atributos[$i]).';'. PHP_EOL;
                         }
                     }
                 }
@@ -122,9 +110,6 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
 
-
-
-        // $texto .= '            $data = $'.$tabla.'_controller->set'.$cmTable.'($params) ;' . PHP_EOL;
         $texto .= '            $data = $'.$tabla.'_controller->save($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
         $texto .= '            $objConexion->commit();' . PHP_EOL;
@@ -158,10 +143,10 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto  .= '        ' . PHP_EOL;
 
 
-                if (count($nameatri) > 0) {
-                    for ($i = 0; $i < count($nameatri); $i++) {
-                        if ($nameatri[$i] != "estado") {
-                            $texto .= '            $'.strtolower($nameatri[$i]).' = $inputs->'.($nameatri[$i]).';'. PHP_EOL;
+                if (count($atributos) > 0) {
+                    for ($i = 0; $i < count($atributos); $i++) {
+                        if ($atributos[$i] != "estado") {
+                            $texto .= '            $'.strtolower($atributos[$i]).' = $inputs->'.($atributos[$i]).';'. PHP_EOL;
                         }
                     }
                 }
@@ -173,7 +158,6 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
 
-        // $texto .= '            $data = $'.$tabla.'_controller->update'.$cmTable.'($params) ;' . PHP_EOL;
         $texto .= '            $data = $'.$tabla.'_controller->update($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
         $texto .= '            $objConexion->commit();' . PHP_EOL;
@@ -200,21 +184,18 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        try' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        // $texto .= '            $id = $_GET["id"] ;' . PHP_EOL;
 
-        if (count($nameatri) > 0) {
-            $texto .= '            $'.strtolower($nameatri[0]).' = $inputs->'.ucwords($nameatri[0]).';'. PHP_EOL;
+        if (count($atributos) > 0) {
+            $texto .= '            $'.strtolower($atributos[0]).' = $inputs->'.($atributos[0]).';'. PHP_EOL;
         }
         $texto .= '            $estado = $inputs->estado;'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $params = array(' . PHP_EOL;
-        $texto .= '               \''.strtolower($nameatri[0]).'\'=> $'.strtolower($nameatri[0]).','. PHP_EOL;
+        $texto .= '               \''.strtolower($atributos[0]).'\'=> $'.strtolower($atributos[0]).','. PHP_EOL;
         $texto .= '               \'estado\'=> $estado,'. PHP_EOL;
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-
-
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = $'.$tabla.'_controller->updateEstado( $params ) ;' . PHP_EOL;
@@ -263,17 +244,15 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        try' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
-        // $texto .= '            $id = $_GET["id"] ;' . PHP_EOL;
-        if (count($nameatri) > 0) {
-            // $texto .= '            $'.strtolower($nameatri[0]).' = $inputs->'.($nameatri[0]).';'. PHP_EOL;
-            $texto .= '            $'.strtolower($nameatri[0]).' = $inputs->id;'. PHP_EOL;
+        if (count($atributos) > 0) {
+             $texto .= '            $'.strtolower($atributos[0]).' = $inputs->id;'. PHP_EOL;
         }
         $texto .= '            $estado = 0; '. PHP_EOL;
 
 
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $params = array(' . PHP_EOL;
-        $texto .= '               \''.strtolower($nameatri[0]).'\'=> $'.strtolower($nameatri[0]).','. PHP_EOL;
+        $texto .= '               \''.strtolower($atributos[0]).'\'=> $'.strtolower($atributos[0]).','. PHP_EOL;
         $texto .= '               \'estado\'=> $estado,'. PHP_EOL;
         $texto  .= '            ) ; ' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
@@ -302,7 +281,6 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
                 $data = $' . $tabla . '_controller->updateEstado($params);
             } '. PHP_EOL;
 
-        // $texto .= '            $data = $'.$tabla.'_controller->deleteById( $params ) ;' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
@@ -317,6 +295,90 @@ function generandoIndex($atri, $nameatri, $tabla, $tablaref, $arrayenlace, $arra
         $texto .= '        print_r($jsn) ;' . PHP_EOL;
         $texto .= '    break;' . PHP_EOL;
         $texto .= "" . PHP_EOL;
+
+        if ( in_array('publicar', $atributos))
+        {
+            # EVENTE UPDATE PUBLICAR
+            $texto .= '    case "publish":' . PHP_EOL;
+            $texto .= '        try' . PHP_EOL;
+            $texto .= '        {' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+
+            if (count($atributos) > 0) {
+                // $texto .= '            $'.strtolower($atributos[0]).' = $inputs->'.($atributos[0]).';'. PHP_EOL;
+                $texto .= '            $'.strtolower($atributos[0]).' = $inputs->id;'. PHP_EOL;
+            }
+            $texto .= '            $publicar = $inputs->publicar;'. PHP_EOL;
+            $texto .= '' . PHP_EOL;
+            $texto .= '            if($publicar == "N"){'. PHP_EOL;
+            $texto .= '                $publicar = "S" ;'. PHP_EOL;
+            $texto .= '            }else{'. PHP_EOL;
+            $texto .= '                $publicar = "N" ;'. PHP_EOL;
+            $texto .= '            }'. PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+            $texto  .= '            $params = array(' . PHP_EOL;
+            $texto .= '               \''.strtolower($atributos[0]).'\'=> $'.strtolower($atributos[0]).','. PHP_EOL;
+            $texto .= '               \'publicar\'=> $publicar,'. PHP_EOL;
+            $texto  .= '            ) ; ' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+
+
+            $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+            $texto .= '            $data = $'.$tabla.'_controller->updatePublish( $params ) ;' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+            $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+
+            $texto .= '        }' . PHP_EOL;
+            $texto .= '        catch (Exception $e)' . PHP_EOL;
+            $texto .= '        {' . PHP_EOL;
+            $texto  .= '            $data = array(\'msg\' => \'Error al consultar datos\'. $e->getMessage(), \'error\' => true, \'data\' => array());' . PHP_EOL;
+            $texto .= '        }' . PHP_EOL;
+            $texto .= '        ' . PHP_EOL;
+            $texto .= '        $jsn  = json_encode($data);' . PHP_EOL;
+            $texto .= '        print_r($jsn) ;' . PHP_EOL;
+            $texto .= '    break;' . PHP_EOL;
+            $texto .= "" . PHP_EOL;
+
+            # EVENTE UPDATE ESTADO
+            $texto .= '    case "published":' . PHP_EOL;
+            $texto .= '        try' . PHP_EOL;
+            $texto .= '        {' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+
+            // if (count($atributos) > 0) {
+            //     $texto .= '            $'.strtolower($atributos[0]).' = $inputs->'.($atributos[0]).';'. PHP_EOL;
+            // }
+            $texto .= '            $publicar = $inputs->publicar;'. PHP_EOL;
+
+            $texto  .= '' . PHP_EOL;
+            $texto  .= '            $params = array(' . PHP_EOL;
+            $texto .= '               \'publicar\'=> $publicar,'. PHP_EOL;
+            $texto  .= '            ) ; ' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+            $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+            $texto .= '            $data = $'.$tabla.'_controller->getPublished( $params ) ;' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+            $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
+            $texto .= '' . PHP_EOL;
+
+            $texto .= '        }' . PHP_EOL;
+            $texto .= '        catch (Exception $e)' . PHP_EOL;
+            $texto .= '        {' . PHP_EOL;
+            $texto  .= '            $data = array(\'msg\' => \'Error al consultar datos\'. $e->getMessage(), \'error\' => true, \'data\' => array());' . PHP_EOL;
+            $texto .= '        }' . PHP_EOL;
+            $texto .= '        ' . PHP_EOL;
+            $texto .= '        $jsn  = json_encode($data);' . PHP_EOL;
+            $texto .= '        print_r($jsn) ;' . PHP_EOL;
+            $texto .= '    break;' . PHP_EOL;
+            $texto .= "" . PHP_EOL;
+
+
+        }
+
+        // END CASE
 
 
         $texto .= '}' . PHP_EOL;

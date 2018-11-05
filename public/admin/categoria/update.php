@@ -11,10 +11,28 @@
 
   $categoria_controller = new CategoriaController();
 
-  $i = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $idcategoria = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+
+  $nombre   = $_POST["nombre"] ;
+  $publicar   = $_POST["publicar"] ;
+  $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+
+  $imagen  = "";
+  $imagen = UploadFiles::uploadFile($file_imagen, "categoria") ;
+
+  if (empty($imagen) ) { 
+    $imagen = $img_bd ; 
+  } 
+
+  $url = UrlHelper::urlFriendly($nombre); 
 
   $params = array(
-    "i"   => $i,
+    "idcategoria"   => $idcategoria,
+    "nombre"   => $nombre,
+    "publicar"   => $publicar,
+    "imagen"  => $imagen,
+    "url"  => $url,
   );
 
 

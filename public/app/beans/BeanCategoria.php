@@ -14,12 +14,12 @@ class BeanCategoria{
     private $created_up = NULL ;
 
     # METODOS
-    public function setId($idcategoria_)
+    public function setIdcategoria($idcategoria_)
     {
         $this->idcategoria = Validation::validate( $idcategoria_ );
     }
 
-    public function getId()
+    public function getIdcategoria()
     {
         return $this->idcategoria;
     }
@@ -74,12 +74,12 @@ class BeanCategoria{
         return $this->estado;
     }
 
-    public function setFecha($created_up_)
+    public function setCreatedUp($created_up_)
     {
         $this->created_up = Validation::validate( $created_up_ );
     }
 
-    public function getFecha()
+    public function getCreatedUp()
     {
         return $this->created_up;
     }

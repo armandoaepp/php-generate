@@ -11,7 +11,20 @@
 
   $categoria_controller = new CategoriaController();
 
+  $nombre   = $_POST["nombre"] ;
+  $publicar   = $_POST["publicar"] ;
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+
+  $imagen  = "";
+  $imagen = UploadFiles::uploadFile($file_imagen, "categoria") ;
+
+  $url = UrlHelper::urlFriendly($nombre); 
+
   $params = array(
+    "nombre"   => $nombre,
+    "publicar"   => $publicar,
+    "imagen"  => $imagen,
+    "url"  => $url,
   );
 
 

@@ -77,3 +77,17 @@ function itemsNotSetController($item){
   return false ;
 
 }
+
+function itemsNotListTable($item){
+
+  $item = strtolower( trim($item) ) ;
+
+  $items = array('estado', 'created_up', 'imagen', 'publicar') ;
+
+  if ( in_array($item, $items) )
+  {
+    return true ;
+  }
+  return false ;
+
+}

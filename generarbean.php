@@ -1,15 +1,6 @@
 <?php
-function generarbean($atri, $cListar, $tabla,  $nameMetodo )
+function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
 {
-    //atributos
-    $atri   = trim($atri);
-    $romper = explode("*", $atri);
-    $aatri  = array();
-    for ($i = 0; $i < count($romper); $i++) {
-        if (trim($romper[$i]) != "") {
-            $aatri[] = $romper[$i];
-        }
-    }
     // $carpeta   = "./app/beans/";
     $carpeta   = BEANS."/";
 
@@ -29,14 +20,14 @@ function generarbean($atri, $cListar, $tabla,  $nameMetodo )
         $texto .= '    public function __construct(){}' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '    # Atributos' . PHP_EOL;
-        for ($i = 0; $i < count($aatri); $i++) {
-            // if ( $aatri[$i] == "estado") {
-            $value_def = itemsDefaultBeans($aatri[$i]) ;
+        for ($i = 0; $i < count($atributos); $i++) {
+            // if ( $atributos[$i] == "estado") {
+            $value_def = itemsDefaultBeans($atributos[$i]) ;
             if ( $value_def != false ) {
-                $texto .= '    private $' . $aatri[$i] . ' = '. $value_def .' ;' . PHP_EOL;
+                $texto .= '    private $' . $atributos[$i] . ' = '. $value_def .' ;' . PHP_EOL;
             }
             else{
-                $texto .= '    private $' . $aatri[$i] . ';' . PHP_EOL;
+                $texto .= '    private $' . $atributos[$i] . ';' . PHP_EOL;
 
             }
 
@@ -44,17 +35,17 @@ function generarbean($atri, $cListar, $tabla,  $nameMetodo )
         $texto .= '' . PHP_EOL;
 
         $texto .= '    # METODOS' . PHP_EOL;
-        for ($i = 0; $i < count($aatri); $i++) {
-            // $texto .= '    public function set' . ucwords($nameMetodo[$i]) . '($' . $aatri[$i] . '_){ $this->' . $aatri[$i] . '=$' . $aatri[$i] . '_;}' . PHP_EOL;
-            $texto .= '    public function set' . toCamelCase($nameMetodo[$i]) . '($' . $aatri[$i] . '_)' . PHP_EOL;
+        for ($i = 0; $i < count($atributos); $i++) {
+            // $texto .= '    public function set' . ucwords($nameMetodo[$i]) . '($' . $atributos[$i] . '_){ $this->' . $atributos[$i] . '=$' . $atributos[$i] . '_;}' . PHP_EOL;
+            $texto .= '    public function set' . toCamelCase($nameMetodo[$i]) . '($' . $atributos[$i] . '_)' . PHP_EOL;
             $texto .= '    {' . PHP_EOL;
-            $texto .= '        $this->' . $aatri[$i] . ' = Validation::validate( $' . $aatri[$i] . '_ );' . PHP_EOL;
+            $texto .= '        $this->' . $atributos[$i] . ' = Validation::validate( $' . $atributos[$i] . '_ );' . PHP_EOL;
             $texto .= '    }' . PHP_EOL;
             $texto .= PHP_EOL;
-            // $texto .= '    public function get' . ucwords($nameMetodo[$i]) . '(){ return $this->' . $aatri[$i] . ';}' . PHP_EOL;
+            // $texto .= '    public function get' . ucwords($nameMetodo[$i]) . '(){ return $this->' . $atributos[$i] . ';}' . PHP_EOL;
             $texto .= '    public function get' . toCamelCase($nameMetodo[$i]) . '()' . PHP_EOL;
             $texto .= '    {' . PHP_EOL;
-            $texto .= '        return $this->' . $aatri[$i] . ';' . PHP_EOL;
+            $texto .= '        return $this->' . $atributos[$i] . ';' . PHP_EOL;
             $texto .= '    }' . PHP_EOL;
             $texto .= PHP_EOL;
         }

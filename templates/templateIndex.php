@@ -1,8 +1,7 @@
 <?php
 
-function templateIndex($table, $aatri, $names_head = array() ){
-  var_dump($aatri);
-  var_dump($names_head);
+function templateIndex($table, $atributos, $arraycabeza = array() ){
+
   $cmTable = toCamelCase($table) ;
   $url = toUrlFriendly($table) ;
 
@@ -42,20 +41,19 @@ $html = '
     <div class="container py-2">
       <div class="row">
         <div class="col-12">
-          <h4 class="page-header-title">Lista de <?php echo $title_page ?>
-          </h4>
+          <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/'.$url.'/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
         <div class="col-12">
-        '. tableHtml($table, $aatri) .'
+        '. tableHtml($table, $atributos, $arraycabeza) .'
         </div>
 
       </div>
@@ -76,7 +74,8 @@ $html = '
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle text-uppercase">Eliminar
+            <h5 class="modal-title" id="modalTitle">
+            <span> Eliminar </span>
               <?php echo $title_page; ?>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -91,16 +90,18 @@ $html = '
             <div id="dataTextModal">
             </div>
 
-            <div class="col-12 my-3">
-              <label for="si" class="text-bold "> Conservar en historial: </label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="historial" id="si" value="1" >
-                <label class="form-check-label" for="si">SI</label>
-              </div>
+            <div id="modalHistorial" class="d-none">
+              <div class="col-12 my-3">
+                <label for="si" class="text-bold "> Conservar en historial: </label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="historial" id="si" value="1" checked="checked">
+                  <label class="form-check-label" for="si">SI</label>
+                </div>
 
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="historial" id="no" value="0" checked="checked">
-                <label class="form-check-label" for="no">NO</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="historial" id="no" value="0" >
+                  <label class="form-check-label" for="no">NO</label>
+                </div>
               </div>
             </div>
 
@@ -115,7 +116,6 @@ $html = '
     </div>
   </form>
 
-
   <script src="plugins/datatables/js/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
   <script src="plugins/datatables/js/data-table-ES.js"></script>
@@ -124,7 +124,6 @@ $html = '
 
     $(document).ready(function () {
       $("#dataTableList").DataTable({
-
         "language": language,
       });
     });
@@ -174,9 +173,14 @@ $html = '
     function modalDelete(id, textRow) {
       $("#idRowModal").val(id);
       $("#accion").val("delete");
-      var text = `¿Esta seguro de eliminar  <?php echo $title_page ?>: <strong> ${textRow} </strong> ?`;
+      var text = `¿Esta seguro de <strong> eliminar </strong>  <?php echo $title_page ?>: <strong> ${textRow} </strong> ?`;
       $("#dataTextModal").html(text);
       $("#btn-send").text("Eliminar");
+
+      $("#modalHistorial").addClass("d-block");
+      $("#modalTitle span").text("Eliminar");
+
+      $("#btn-send").removeClass("btn-outline-success");
 
       $("#myModal").modal("show");
     }
@@ -185,12 +189,22 @@ $html = '
     // modal PUBLICAR
     function modalPublicar(id, textRow, title, publicar) {
       $("#idRowModal").val(id);
-      $("#accion").val("publicar");
+      $("#accion").val("publish");
       $("#publicar").val(publicar);
 
-      var text = `¿Esta seguro de ${title} la categoría: <strong> ${textRow} </strong> ?`;
+      $("#modalHistorial").addClass("d-none");
+      $("#modalTitle span").text("Publicar");
+
+      var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
       $("#dataTextModal").html(text);
       $("#btn-send").text(title);
+
+      $("#btn-send").removeClass("btn-outline-success");
+
+      if( publicar.toLowerCase() === "n" )
+      {
+        $("#btn-send").addClass("btn-outline-success");
+      }
 
       $("#myModal").modal("show");
     }
@@ -207,54 +221,94 @@ $html = '
 }
 
 
-function tableHtml($table, $aatri){
+function tableHtml($table, $atributos, $arraycabeza){
 
 $table_html = '' ;
 $table_html .= '
-<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-      <tr>' . PHP_EOL ;
-      for ($i = 0; $i < count($aatri); $i++)
+            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>' . PHP_EOL ;
+
+      for ($i = 0; $i < count($arraycabeza); $i++)
       {
-          if (strtolower(trim($aatri[$i])) != "estado")
+          if ( !itemsNotListTable( $atributos[$i] ) )
           {
-              $table_html .= '         <th>' . ucwords($aatri[$i]) . ' </th>' . PHP_EOL;
+            if($i == 0){
+              $table_html .= '                  <th width="50">' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+            }
+            else
+            {
+              $table_html .= '                  <th>' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+            }
+
           }
       }
-$table_html .= '         <th width="70"></th>
-        <th width="70"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($data as &$row) {?>
-      <tr>' . PHP_EOL ;
 
-        for ($i = 0; $i < count($aatri); $i++)
+      if ( in_array('publicar', $atributos ) )
+      {
+        $table_html .= '                  <th width="50"> Publicar </th>' . PHP_EOL;
+      }
+
+      $table_html .= '                  <th width="70"></th>' . PHP_EOL;
+      $table_html .= '                </tr>' . PHP_EOL;
+      $table_html .= '              </thead>' . PHP_EOL;
+
+$table_html .= '
+              <tbody>
+                <?php foreach ($data as &$row) {?>
+                  <tr>' . PHP_EOL ;
+
+        for ($i = 0; $i < count($atributos); $i++)
         {
-          if (strtolower(trim($aatri[$i])) != "estado")
+          if ( !itemsNotListTable( $atributos[$i] ) )
           {
-              $table_html .= '        <td> <?php echo $row["' . $aatri[$i] . '"] ?> </td>' . PHP_EOL;
+              $table_html .= '                  <td> <?php echo $row["' . $atributos[$i] . '"] ?> </td>' . PHP_EOL;
           }
         }
 
-$table_html .= '
-        <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $aatri[0] .'"] ?>"
-            title="Editar">
-            <i class="material-icons">edit</i>
-          </a>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["'. $aatri[0] .'"] ?>, `aqui va el texto`);"
-            title="Eliminar">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-      <?php }?>
-    </tbody>
+        if ( in_array('publicar', $atributos ) )
+        {
 
-  </table> ' ;
+
+            $table_html .= '
+                  <td class="text-center">
+                    <?php
+                      $classBtn = "" ;
+                      $title = "" ;
+                      if($row["publicar"] == "S"){
+                        $classBtn =  "btn-success";
+                        $title = "Desactivar" ;
+                      }
+                      else {
+                        $classBtn =  "btn-outline-success";
+                        $title = "Publicar" ;
+                      }
+                    ?>
+
+                    <span class="sr-only">
+                    <?php echo $row["publicar"] ?>
+                    </span>
+                    <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-primary btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
+                      <i class="material-icons"> check </i>
+                    </button>
+                </td>
+            ' . PHP_EOL;
+        }
+
+$table_html .= '
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`);" title="Eliminar">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                  </tr>
+                  <?php }?>
+                </tbody>
+
+              </table> ' ;
 
   return $table_html  ;
 

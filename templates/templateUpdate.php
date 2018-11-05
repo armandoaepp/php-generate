@@ -1,6 +1,6 @@
 <?php
 
-function templateUpdate($table, $aatri){
+function templateUpdate($table, $atributos, $arraycabeza = array() ){
 
   $cmTable = toCamelCase($table) ;
   // $url = toUrlFriendly($table) ;
@@ -19,21 +19,21 @@ $html .= '
 
   $'. $table.'_controller = new '. $cmTable.'Controller();
 
-  $'. $aatri[0].' = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $'. $atributos[0].' = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 ' . PHP_EOL;
 
 // RECIBIER PROPIEDADES
 
-for ($i = 1; $i < count($aatri); $i++)
+for ($i = 1; $i < count($atributos); $i++)
 {
-    if ( !verificarItemViewSave($aatri[$i]) )
+    if ( !verificarItemViewSave($atributos[$i]) )
     {
-            $html .= '  $' . $aatri[$i] . '   = $_POST["' . $aatri[$i] . '"] ;' . PHP_EOL;
+            $html .= '  $' . $atributos[$i] . '   = $_POST["' . $atributos[$i] . '"] ;' . PHP_EOL;
     }
 }
 
 
-if ( in_array('imagen', $aatri) )
+if ( in_array('imagen', $atributos) )
 {
   $html .= '  $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;' . PHP_EOL;
   $html .= '  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;' . PHP_EOL;
@@ -47,29 +47,29 @@ if ( in_array('imagen', $aatri) )
   $html .= '' . PHP_EOL;
 }
 
-if ( in_array('url', $aatri) )
+if ( in_array('url', $atributos) )
 {
-  $html .= '  $url = UrlHelper::urlFriendly($'. $aatri[1].'); ' . PHP_EOL;
+  $html .= '  $url = UrlHelper::urlFriendly($'. $atributos[1].'); ' . PHP_EOL;
   $html .= '' . PHP_EOL;
 }
 
 //START ARRAY
 
 $html .= '  $params = array(' . PHP_EOL;
-for ($i = 0; $i < count($aatri); $i++)
+for ($i = 0; $i < count($atributos); $i++)
 {
-    if ( !verificarItemViewSave($aatri[$i]) )
+    if ( !verificarItemViewSave($atributos[$i]) )
     {
-      $html .= '    "' . $aatri[$i] . '"   => $' . $aatri[$i] . ',' . PHP_EOL;
+      $html .= '    "' . $atributos[$i] . '"   => $' . $atributos[$i] . ',' . PHP_EOL;
   }
 }
 
-if ( in_array('imagen', $aatri) )
+if ( in_array('imagen', $atributos) )
 {
   $html .= '    "imagen"  => $imagen,' . PHP_EOL;
 }
 
-if ( in_array('url', $aatri) )
+if ( in_array('url', $atributos) )
 {
   $html .= '    "url"  => $url,' . PHP_EOL;
 }

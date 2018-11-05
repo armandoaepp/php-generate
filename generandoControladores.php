@@ -1,21 +1,6 @@
 <?php
-function generandoControladores($atri, $tabla, $nameatri)
+function generandoControladores($atributos, $tabla, $nameatri)
 {
-    //atributos
-    $atri   = trim($atri);
-    $romper = explode("*", $atri);
-    $aatri  = array();
-    for ($i = 0; $i < count($romper); $i++) {
-        if (trim($romper[$i]) != "") {
-            $aatri[] = $romper[$i];
-        }
-    }
-    // if (file_exists("./App/Controllers/" . $tabla)) {
-    //     $carpeta = "./App/Controllers/" . $tabla . "/";
-    // } else {
-    //     mkdir("./App/Controllers/" . $tabla, 0777);
-    //     $carpeta = "./App/Controllers/" . $tabla . "/";
-    // }
 
     // $carpeta = "./app/controllers/";
     $carpeta   = CONTROLLERS."/";
@@ -53,21 +38,17 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $data = $'.($tabla).'->getAll();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '            return $data ;'. PHP_EOL;
-        // $texto  .= '            $rpta = array("msg" => "Listado correcto", "error" => false, "data" => $data);'. PHP_EOL;
         $texto  .= '        }' . PHP_EOL;
         $texto  .= '        catch (Exception $e)' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
         $texto  .= '            throw new Exception($e->getMessage());' . PHP_EOL;
-        // $texto  .= '            $rpta = array("msg" => $e->getMessage(), "error" => true, "data" => array());' . PHP_EOL;
         $texto  .= '        }' . PHP_EOL;
-        // $texto  .= '        return $rpta ;' . PHP_EOL;
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
 
 
         # FUNCTION set
-        // $texto  .= '    public function set'.$cmTable.'($params = array() )' . PHP_EOL;
         $texto  .= '    public function save($params = array() )' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
@@ -82,11 +63,10 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-                                if (count($aatri) > 0) {
-                                    for ($i = 1; $i < count($aatri); $i++) {
-                                        // if ($aatri[$i] != "estado") {
-                                        if ( !itemsNotSetController($aatri[$i]) ){
-                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
+                                if (count($atributos) > 0) {
+                                    for ($i = 1; $i < count($atributos); $i++) {
+                                        if ( !itemsNotSetController($atributos[$i]) ){
+                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[$i]).'($'.strtolower($atributos[$i]).');'. PHP_EOL;
                                         }
                                     }
                                 }
@@ -95,22 +75,18 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $data = $'.($tabla).'->save($bean_'.($tabla).') ;' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        $texto  .= '            return $data ;'. PHP_EOL;
-        // $texto  .= '            $rpta = array("msg" => "Listado correcto", "error" => false, "data" => $data);'. PHP_EOL;
+        $texto  .= '            return $data ;'. PHP_EOL; ;
         $texto  .= '        }' . PHP_EOL;
         $texto  .= '        catch (Exception $e)' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
         $texto  .= '            throw new Exception($e->getMessage());' . PHP_EOL;
-        // $texto  .= '            $rpta = array("msg" => $e->getMessage(), "error" => true, "data" => array());' . PHP_EOL;
         $texto  .= '        }' . PHP_EOL;
-        // $texto  .= '        return $rpta ;' . PHP_EOL;
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
 
 
         # FUNCTION upd
-        // $texto  .= '    public function update'.$cmTable.'($params = array())' . PHP_EOL;
         $texto  .= '    public function update($params = array())' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
@@ -123,11 +99,10 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-                                if (count($aatri) > 0) {
-                                    for ($i = 0; $i < count($aatri); $i++) {
-                                        // if ($aatri[$i] != "estado") {
-                                        if ( !itemsNotUpdateMetodo($aatri[$i]) ){
-                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[$i]).'($'.strtolower($aatri[$i]).');'. PHP_EOL;
+                                if (count($atributos) > 0) {
+                                    for ($i = 0; $i < count($atributos); $i++) {
+                                        if ( !itemsNotUpdateMetodo($atributos[$i]) ){
+                                            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[$i]).'($'.strtolower($atributos[$i]).');'. PHP_EOL;
                                         }
                                     }
                                 }
@@ -157,7 +132,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-        $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($'.strtolower($aatri[0]).');'. PHP_EOL;
+        $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
         $texto .= '            $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
@@ -181,7 +156,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($id);' . PHP_EOL;
+        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($id);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '            $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
@@ -196,10 +171,6 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-
-
-
-
          # FUNCTION DELETE
         $texto  .= '    public function deleteById($params)' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
@@ -212,7 +183,7 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
         $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($aatri[0]).'($'. $aatri[0] .');' . PHP_EOL;
+        $texto  .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'. $atributos[0] .');' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '            $data = $'.($tabla).'->deleteById( $bean_'.($tabla).' ) ;' . PHP_EOL;
@@ -226,6 +197,67 @@ function generandoControladores($atri, $tabla, $nameatri)
         $texto  .= '        }' . PHP_EOL;
         $texto  .= '    }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
+
+        if ( in_array('publicar', $atributos) )
+        {
+
+            # FUNCTION UPDATE PUBLICAR
+            $texto  .= '    public function updatePublish($params = array())' . PHP_EOL;
+            $texto  .= '    {' . PHP_EOL;
+            $texto  .= '        try' . PHP_EOL;
+            $texto  .= '        {' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+            $texto  .= '            extract($params) ; ' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+
+            $texto  .= '            $'.($tabla).'  = new '.$cmTable.'($this->cnx);' . PHP_EOL;
+            $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+
+            $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
+            $texto .= '            $bean_'.($tabla).'->setPublicar($publicar);'. PHP_EOL;
+
+            $texto  .= '' . PHP_EOL;
+            $texto  .= '            $data = $'.($tabla).'->updatePublish($bean_'.($tabla).') ;' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+            $texto  .= '            return $data;'. PHP_EOL;
+            $texto  .= '        }' . PHP_EOL;
+            $texto  .= '        catch (Exception $e)' . PHP_EOL;
+            $texto  .= '        {' . PHP_EOL;
+            $texto  .= '           throw new Exception($e->getMessage());' . PHP_EOL;
+            $texto  .= '        }' . PHP_EOL;
+            $texto  .= '    }' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+
+
+            # FUNCTION getPublished
+            $texto  .= '    public function getPublished($params = array())' . PHP_EOL;
+            $texto  .= '    {' . PHP_EOL;
+            $texto  .= '        try' . PHP_EOL;
+            $texto  .= '        {' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+            $texto  .= '            extract($params) ; ' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+
+            $texto  .= '            $'.($tabla).'  = new '.$cmTable.'($this->cnx);' . PHP_EOL;
+            $texto  .= '            $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+
+            // $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
+            $texto .= '            $bean_'.($tabla).'->setPublicar($publicar);'. PHP_EOL;
+
+            $texto  .= '' . PHP_EOL;
+            $texto  .= '            $data = $'.($tabla).'->getPublished($bean_'.($tabla).') ;' . PHP_EOL;
+            $texto  .= '            ' . PHP_EOL;
+            $texto  .= '            return $data;'. PHP_EOL;
+            $texto  .= '        }' . PHP_EOL;
+            $texto  .= '        catch (Exception $e)' . PHP_EOL;
+            $texto  .= '        {' . PHP_EOL;
+            $texto  .= '           throw new Exception($e->getMessage());' . PHP_EOL;
+            $texto  .= '        }' . PHP_EOL;
+            $texto  .= '    }' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+        }
 
 
 

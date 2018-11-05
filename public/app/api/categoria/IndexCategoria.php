@@ -43,20 +43,20 @@ switch($evento)
             $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
         
-            $id = $inputs->id;
+            $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
             $url = $inputs->url;
             $imagen = $inputs->imagen;
             $publicar = $inputs->publicar;
-            $fecha = $inputs->fecha;
+            $created_up = $inputs->created_up;
         
             $params = array(
-               'id'=> $id,
+               'idcategoria'=> $idcategoria,
                'nombre'=> $nombre,
                'url'=> $url,
                'imagen'=> $imagen,
                'publicar'=> $publicar,
-               'fecha'=> $fecha,
+               'created_up'=> $created_up,
             ) ; 
         
             $data = $categoria_controller->save($params) ;
@@ -84,20 +84,20 @@ switch($evento)
             $categoria_controller = new CategoriaController($cnx) ; 
             $objConexion->beginTransaction();
         
-            $id = $inputs->id;
+            $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
             $url = $inputs->url;
             $imagen = $inputs->imagen;
             $publicar = $inputs->publicar;
-            $fecha = $inputs->fecha;
+            $created_up = $inputs->created_up;
         
             $params = array(
-               'id'=> $id,
+               'idcategoria'=> $idcategoria,
                'nombre'=> $nombre,
                'url'=> $url,
                'imagen'=> $imagen,
                'publicar'=> $publicar,
-               'fecha'=> $fecha,
+               'created_up'=> $created_up,
             ) ; 
         
             $data = $categoria_controller->update($params) ;
@@ -121,11 +121,11 @@ switch($evento)
         try
         {
 
-            $id = $inputs->Id;
+            $idcategoria = $inputs->idcategoria;
             $estado = $inputs->estado;
 
             $params = array(
-               'id'=> $id,
+               'idcategoria'=> $idcategoria,
                'estado'=> $estado,
             ) ; 
 
@@ -170,11 +170,11 @@ switch($evento)
         try
         {
 
-            $id = $inputs->id;
+            $idcategoria = $inputs->id;
             $estado = 0; 
 
             $params = array(
-               'id'=> $id,
+               'idcategoria'=> $idcategoria,
                'estado'=> $estado,
             ) ; 
 
@@ -201,6 +201,66 @@ switch($evento)
             {
                 $data = $categoria_controller->updateEstado($params);
             } 
+
+            $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+        }
+        catch (Exception $e)
+        {
+            $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+        }
+        
+        $jsn  = json_encode($data);
+        print_r($jsn) ;
+    break;
+
+    case "publish":
+        try
+        {
+
+            $idcategoria = $inputs->id;
+            $publicar = $inputs->publicar;
+
+            if($publicar == "N"){
+                $publicar = "S" ;
+            }else{
+                $publicar = "N" ;
+            }
+
+            $params = array(
+               'idcategoria'=> $idcategoria,
+               'publicar'=> $publicar,
+            ) ; 
+
+            $categoria_controller = new CategoriaController() ; 
+
+            $data = $categoria_controller->updatePublish( $params ) ;
+
+            $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+        }
+        catch (Exception $e)
+        {
+            $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+        }
+        
+        $jsn  = json_encode($data);
+        print_r($jsn) ;
+    break;
+
+    case "published":
+        try
+        {
+
+            $publicar = $inputs->publicar;
+
+            $params = array(
+               'publicar'=> $publicar,
+            ) ; 
+
+            $categoria_controller = new CategoriaController() ; 
+
+            $data = $categoria_controller->getPublished( $params ) ;
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 

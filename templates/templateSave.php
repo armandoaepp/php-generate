@@ -1,6 +1,6 @@
 <?php
 
-function templateSave($table, $aatri){
+function templateSave($table, $atributos, $arraycabeza = array() ){
 
   $cmTable = toCamelCase($table) ;
   // $url = toUrlFriendly($table) ;
@@ -22,16 +22,16 @@ $html .= '
 
 // RECIBIER PROPIEDADES
 
-for ($i = 1; $i < count($aatri); $i++)
+for ($i = 1; $i < count($atributos); $i++)
 {
-    if ( !verificarItemViewSave($aatri[$i]) )
+    if ( !verificarItemViewSave($atributos[$i]) )
     {
-            $html .= '  $' . $aatri[$i] . '   = $_POST["' . $aatri[$i] . '"] ;' . PHP_EOL;
+            $html .= '  $' . $atributos[$i] . '   = $_POST["' . $atributos[$i] . '"] ;' . PHP_EOL;
     }
 }
 
 
-if ( in_array('imagen', $aatri) )
+if ( in_array('imagen', $atributos) )
 {
   $html .= '  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;' . PHP_EOL;
   $html .= '' . PHP_EOL;
@@ -40,29 +40,29 @@ if ( in_array('imagen', $aatri) )
   $html .= '' . PHP_EOL;
 }
 
-if ( in_array('url', $aatri) )
+if ( in_array('url', $atributos) )
 {
-  $html .= '  $url = UrlHelper::urlFriendly($'. $aatri[1].'); ' . PHP_EOL;
+  $html .= '  $url = UrlHelper::urlFriendly($'. $atributos[1].'); ' . PHP_EOL;
   $html .= '' . PHP_EOL;
 }
 
 //START ARRAY
 
 $html .= '  $params = array(' . PHP_EOL;
-for ($i = 1; $i < count($aatri); $i++)
+for ($i = 1; $i < count($atributos); $i++)
 {
-  if ( !verificarItemViewSave($aatri[$i]) )
+  if ( !verificarItemViewSave($atributos[$i]) )
   {
-    $html .= '    "' . $aatri[$i] . '"   => $' . $aatri[$i] . ',' . PHP_EOL;
+    $html .= '    "' . $atributos[$i] . '"   => $' . $atributos[$i] . ',' . PHP_EOL;
   }
 }
 
-if ( in_array('imagen', $aatri) )
+if ( in_array('imagen', $atributos) )
 {
   $html .= '    "imagen"  => $imagen,' . PHP_EOL;
 }
 
-if ( in_array('url', $aatri) )
+if ( in_array('url', $atributos) )
 {
   $html .= '    "url"  => $url,' . PHP_EOL;
 }

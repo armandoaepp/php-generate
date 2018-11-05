@@ -77,7 +77,7 @@ class Categoria extends Conexion {
     public function update($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getId();
+            $idcategoria = $bean_categoria->getIdcategoria();
             $nombre = $bean_categoria->getNombre();
             $url = $bean_categoria->getUrl();
             $imagen = $bean_categoria->getImagen();
@@ -108,7 +108,7 @@ class Categoria extends Conexion {
     public function updateEstado($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getId();
+            $idcategoria = $bean_categoria->getIdcategoria();
             $estado = $bean_categoria->getEstado();
 
             $this->query = "UPDATE categoria SET 
@@ -133,7 +133,7 @@ class Categoria extends Conexion {
     public function find($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getId();
+            $idcategoria = $bean_categoria->getIdcategoria();
 
             $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
@@ -154,13 +154,61 @@ class Categoria extends Conexion {
     public function deleteById($bean_categoria)
     {
         try{
-            $idcategoria = $bean_categoria->getId();
+            $idcategoria = $bean_categoria->getIdcategoria();
 
             $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
             $this->execute_query();
 
             $data = $this->status_exe  ;
+
+            return $data;
+
+        }catch(exception $e){
+
+            throw new Exception($e->getMessage());
+
+        }
+    }
+
+
+    # Método updatePublish
+    public function updatePublish($bean_categoria)
+    {
+        try{
+            $idcategoria = $bean_categoria->getIdcategoria();
+            $publicar = $bean_categoria->getPublicar() ;
+
+            $this->query = "UPDATE categoria SET 
+                                publicar = '$publicar'
+                            WHERE idcategoria = '$idcategoria'
+                            LIMIT 1 ; ";
+
+            $this->execute_query();
+
+            $data = $this->status_exe  ;
+
+            return $data;
+
+        }catch(exception $e){
+
+            throw new Exception($e->getMessage());
+
+        }
+    }
+
+
+    # Método getPublished
+    public function getPublished($bean_categoria)
+    {
+        try{
+            $publicar = $bean_categoria->getPublicar() ;
+
+            $this->query = "SELECT * FROM categoria                            WHERE publicar = '$publicar'                            AND estado = 1 ; ";
+
+            $this->execute_query();
+
+            $data = $this->rows ;
 
             return $data;
 
