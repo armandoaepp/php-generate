@@ -27,7 +27,7 @@ if(in_array('publicar', $aatri))
 {
 
 $html .= '
-  $publicar = trim($data["publicar"]);
+  $publicar = trim($'. $table .'["publicar"]);
 
   $si = "";
   $no = "";

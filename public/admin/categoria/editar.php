@@ -15,7 +15,7 @@
 
   $categoria = $categoria_controller->find($id);
 
-  $publicar = trim($data["publicar"]);
+  $publicar = trim($categoria["publicar"]);
 
   $si = "";
   $no = "";

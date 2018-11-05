@@ -3,7 +3,6 @@
 function templateUpdate($table, $atributos, $arraycabeza = array() ){
 
   $cmTable = toCamelCase($table) ;
-  // $url = toUrlFriendly($table) ;
 
 $html = '';
 $html .= '
