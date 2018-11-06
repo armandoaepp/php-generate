@@ -17,7 +17,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
         $texto .= '<?php ' . PHP_EOL;
         $texto .= '# Class Model Generada - ByPower @armandaepp ' . PHP_EOL;
-        $texto .= 'class ' . $clase . ' extends Conexion {' . PHP_EOL;
+        $texto .= 'class ' . $clase . ' extends Connection {' . PHP_EOL;
 
         # contructor
         $texto .= '    # CONSTRUCT ' . PHP_EOL;
@@ -46,7 +46,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
             $texto .=  $concat.PHP_EOL;
             $texto .= PHP_EOL;
-            $texto .= '            $this->execute_query();' . PHP_EOL;
+            $texto .= '            $this->executeQuery();' . PHP_EOL;
             $texto .= PHP_EOL;
             $texto .= '            $data = $this->rows ;' . PHP_EOL;
             $texto .= PHP_EOL;
@@ -115,7 +115,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '                            ); ";' . PHP_EOL;
         $texto .= PHP_EOL;
 
-        $texto .= '            $this->execute_query();' . PHP_EOL;
+        $texto .= '            $this->executeQuery();' . PHP_EOL;
         $texto .= PHP_EOL;
         $texto .= '            $data = $this->status_exe  ;' . PHP_EOL;
         $texto .= PHP_EOL;
@@ -170,7 +170,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
          // end QUERY
 
 
-            $texto .= '            $this->execute_query();' . PHP_EOL;
+            $texto .= '            $this->executeQuery();' . PHP_EOL;
             $texto .= PHP_EOL;
             $texto .= '            $data = $this->status_exe  ;' . PHP_EOL;
             $texto .= PHP_EOL;
@@ -211,7 +211,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
              $texto .=  $concat.PHP_EOL;
 
              $texto .= PHP_EOL;
-             $texto .= '            $this->execute_query();' . PHP_EOL;
+             $texto .= '            $this->executeQuery();' . PHP_EOL;
              $texto .= PHP_EOL;
              $texto .= '            $data = $this->status_exe  ;' . PHP_EOL;
              $texto .= PHP_EOL;
@@ -246,7 +246,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         //end QUERY
         $texto .=  $concat.PHP_EOL;
         $texto .= PHP_EOL;
-        $texto .= '            $this->execute_find();' . PHP_EOL;
+        $texto .= '            $this->executeFind();' . PHP_EOL;
         $texto .= PHP_EOL;
         $texto .= '            $data = $this->rows ;' . PHP_EOL;
         $texto .= PHP_EOL;
@@ -283,7 +283,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= '' . PHP_EOL;
             //endQUERY
 
-            $texto .= '            $this->execute_query();' . PHP_EOL;
+            $texto .= '            $this->executeQuery();' . PHP_EOL;
             $texto .= PHP_EOL;
             $texto .= '            $data = $this->status_exe  ;' . PHP_EOL;
             $texto .= PHP_EOL;
@@ -327,7 +327,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $texto .=  PHP_EOL;
                 //end QUERY
 
-                $texto .= '            $this->execute_query();' . PHP_EOL;
+                $texto .= '            $this->executeQuery();' . PHP_EOL;
                 $texto .= PHP_EOL;
                 $texto .= '            $data = $this->status_exe  ;' . PHP_EOL;
                 $texto .= PHP_EOL;
@@ -367,7 +367,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $texto .=  PHP_EOL;
                 //end QUERY
 
-                $texto .= '            $this->execute_query();' . PHP_EOL;
+                $texto .= '            $this->executeQuery();' . PHP_EOL;
                 $texto .= PHP_EOL;
                 $texto .= '            $data = $this->rows ;' . PHP_EOL;
                 $texto .= PHP_EOL;

@@ -1,6 +1,6 @@
 <?php 
 # Class Model Generada - ByPower @armandaepp 
-class Categoria extends Conexion {
+class Categoria extends Connection {
     # CONSTRUCT 
     public function __construct($cnx  = null)
     {
@@ -14,7 +14,7 @@ class Categoria extends Conexion {
 
             $this->query = "SELECT * FROM categoria";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->rows ;
 
@@ -59,7 +59,7 @@ class Categoria extends Conexion {
                                 $created_up
                             ); ";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->status_exe  ;
 
@@ -91,7 +91,7 @@ class Categoria extends Conexion {
                             WHERE idcategoria = '$idcategoria'
                             LIMIT 1 ;";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->status_exe  ;
 
@@ -116,7 +116,7 @@ class Categoria extends Conexion {
                             WHERE idcategoria='$idcategoria'
                             LIMIT 1 ; ";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->status_exe  ;
 
@@ -137,7 +137,7 @@ class Categoria extends Conexion {
 
             $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
-            $this->execute_find();
+            $this->executeFind();
 
             $data = $this->rows ;
 
@@ -158,7 +158,7 @@ class Categoria extends Conexion {
 
             $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->status_exe  ;
 
@@ -184,7 +184,7 @@ class Categoria extends Conexion {
                             WHERE idcategoria = '$idcategoria'
                             LIMIT 1 ; ";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->status_exe  ;
 
@@ -206,7 +206,7 @@ class Categoria extends Conexion {
 
             $this->query = "SELECT * FROM categoria                            WHERE publicar = '$publicar'                            AND estado = 1 ; ";
 
-            $this->execute_query();
+            $this->executeQuery();
 
             $data = $this->rows ;
 

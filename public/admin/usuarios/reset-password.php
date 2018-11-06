@@ -10,7 +10,6 @@ if($id <= 0){
 
 require_once "../../api/autoload.php";
 
-
 $user_controller = new UserController();
 
 $params = array(
