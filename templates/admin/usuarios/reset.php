@@ -8,11 +8,6 @@ if (!isset($_POST)) {
 
 require_once "../../api/autoload.php";
 
-// require_once "../../api/model/Conexion.php";
-// require_once "../../api/model/User.php";
-// require_once "../../api/controller/UserController.php";
-// require_once "../../api/helper/helper.php";
-
 $user_controller = new UserController();
 
 

@@ -52,10 +52,7 @@
 			full_copy('templates/admin', ADMIN ) ;
 		}
 
-		// copy("files_app/autoload.php", APP."/autoload.php");
-		// copy("files_app/paths.php", APP."/paths.php");
 		// copy("files_app/Conexion.php", APP."/models/Conexion.php");
-		// copy("files_app/config.php", APP."/config/config.php");
 
 
 

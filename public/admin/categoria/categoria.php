@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-12">
-
+        
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
@@ -101,7 +101,7 @@
                       <i class="material-icons"> check </i>
                     </button>
                 </td>
-
+            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/categoria/editar.php?id=<?php echo $row["idcategoria"] ?>" title="Editar">
@@ -115,7 +115,7 @@
                   <?php }?>
                 </tbody>
 
-              </table>
+              </table> 
         </div>
 
       </div>
