@@ -27,7 +27,7 @@ class Auth extends Conexion {
                       LIMIT 1 ;";
 
 
-      $this->execute_find();
+      $this->executeFind();
 
       $rows = $this->rows ;
 
@@ -47,7 +47,7 @@ class Auth extends Conexion {
     try{
       $this->query = "SELECT * FROM user where  user_id = '$this->user_id';";
 
-      $this->execute_find();
+      $this->executeFind();
       $rows = $this->rows ;
 
       return $rows;

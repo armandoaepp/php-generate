@@ -86,11 +86,11 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto  .= '        ' . PHP_EOL;
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
-        $texto  .= '            $objConexion = new Conexion();' . PHP_EOL;
-        $texto  .= '            $cnx = $objConexion->get_connection();' . PHP_EOL;
+        $texto  .= '            $connection = new Connection();' . PHP_EOL;
+        $texto  .= '            $cnx = $connection->getConnection();' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
         $texto .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller($cnx) ; ' . PHP_EOL;
-        $texto .= '            $objConexion->beginTransaction();' . PHP_EOL;
+        $texto .= '            $connection->beginTransaction();' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
 
 
@@ -112,13 +112,13 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
         $texto .= '            $data = $'.$tabla.'_controller->save($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
-        $texto .= '            $objConexion->commit();' . PHP_EOL;
+        $texto .= '            $connection->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '        }' . PHP_EOL;
         $texto .= '        catch (Exception $e)' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
-        $texto .= '            $objConexion->rollback();' . PHP_EOL;
+        $texto .= '            $connection->rollback();' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Error al consultar datos\'. $e->getMessage(), \'error\' => true, \'data\' => array());' . PHP_EOL;
         $texto .= '        }' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
@@ -135,11 +135,11 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
         $texto  .= '        try' . PHP_EOL;
         $texto  .= '        {' . PHP_EOL;
-        $texto  .= '            $objConexion = new Conexion();' . PHP_EOL;
-        $texto  .= '            $cnx = $objConexion->get_connection();' . PHP_EOL;
+        $texto  .= '            $connection = new Connection();' . PHP_EOL;
+        $texto  .= '            $cnx = $connection->getConnection();' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
         $texto  .= '            $'.$tabla.'_controller = new '.$cmTable.'Controller($cnx) ; ' . PHP_EOL;
-        $texto  .= '            $objConexion->beginTransaction();' . PHP_EOL;
+        $texto  .= '            $connection->beginTransaction();' . PHP_EOL;
         $texto  .= '        ' . PHP_EOL;
 
 
@@ -160,14 +160,14 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
         $texto .= '            $data = $'.$tabla.'_controller->update($params) ;' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;
-        $texto .= '            $objConexion->commit();' . PHP_EOL;
+        $texto .= '            $connection->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '        }' . PHP_EOL;
         $texto .= '        catch (Exception $e)' . PHP_EOL;
         $texto .= '        {' . PHP_EOL;
-        $texto .= '            $objConexion->rollback();' . PHP_EOL;
+        $texto .= '            $connection->rollback();' . PHP_EOL;
         $texto .= '            $data = array(\'msg\' => \'Error al consultar datos\'. $e->getMessage(), \'error\' => true, \'data\' => array());' . PHP_EOL;
         $texto .= '        }' . PHP_EOL;
         $texto .= '        ' . PHP_EOL;

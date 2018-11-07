@@ -37,11 +37,11 @@ switch($evento)
         
         try
         {
-            $objConexion = new Conexion();
-            $cnx = $objConexion->get_connection();
+            $connection = new Connection();
+            $cnx = $connection->getConnection();
         
             $categoria_controller = new CategoriaController($cnx) ; 
-            $objConexion->beginTransaction();
+            $connection->beginTransaction();
         
             $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
@@ -61,13 +61,13 @@ switch($evento)
         
             $data = $categoria_controller->save($params) ;
         
-            $objConexion->commit();
+            $connection->commit();
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
         }
         catch (Exception $e)
         {
-            $objConexion->rollback();
+            $connection->rollback();
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
         
@@ -78,11 +78,11 @@ switch($evento)
     case "upd":
         try
         {
-            $objConexion = new Conexion();
-            $cnx = $objConexion->get_connection();
+            $connection = new Connection();
+            $cnx = $connection->getConnection();
         
             $categoria_controller = new CategoriaController($cnx) ; 
-            $objConexion->beginTransaction();
+            $connection->beginTransaction();
         
             $idcategoria = $inputs->idcategoria;
             $nombre = $inputs->nombre;
@@ -102,14 +102,14 @@ switch($evento)
         
             $data = $categoria_controller->update($params) ;
         
-            $objConexion->commit();
+            $connection->commit();
 
             $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
         }
         catch (Exception $e)
         {
-            $objConexion->rollback();
+            $connection->rollback();
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
         }
         
