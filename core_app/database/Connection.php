@@ -16,8 +16,6 @@ Class Connection
     # Conectar a la base de datos utilizamos la libreria pdo
     private function openConnection()
     {
-        // $pdo = new PDO('pgsql:host=192.168.137.160;port=5432;dbname=platin', 'cappytoi', '1111');
-
         // $cadena=$this->db_driver.":host=".self::$db_host.";dbname=" .$this->db_name;
         $cadena=$this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
 
