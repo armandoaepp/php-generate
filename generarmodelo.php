@@ -389,7 +389,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
 
         $texto .= '}' . PHP_EOL;
-        $texto .= '?>';
+        /* $texto .= '?>'; */
         fwrite($abrir, $texto);
         fclose($abrir);
         return "Clase Generada Correctamente";

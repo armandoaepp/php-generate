@@ -52,7 +52,7 @@ function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
 
 
         $texto .= '}' . PHP_EOL;
-        $texto .= '?>';
+        /* $texto .= '?>'; */
         fwrite($abrir, $texto);
         fclose($abrir);
         return "Clase Generada Correctamente";
