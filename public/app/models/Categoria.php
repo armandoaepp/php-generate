@@ -1,223 +1,225 @@
 <?php 
 # Class Model Generada - ByPower @armandaepp 
 class Categoria extends Connection {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM categoria";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_categoria)
+  {
+    try{
+      $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
 
-            $this->query = "SELECT * FROM categoria";
+      $idcategoria = $bean_categoria->getIdcategoria();
+      $nombre = $bean_categoria->getNombre();
+      $url = $bean_categoria->getUrl();
+      $imagen = $bean_categoria->getImagen();
+      $publicar = $bean_categoria->getPublicar();
+      $estado = $bean_categoria->getEstado();
+      $created_up = $bean_categoria->getCreatedUp();
 
-            $this->executeQuery();
+      $this->query = "INSERT INTO categoria
+                      (
+                        nombre,
+                        url,
+                        imagen,
+                        publicar,
+                        estado,
+                        created_up
+                      )
+                      VALUES(
+                        '$nombre',
+                        '$url',
+                        '$imagen',
+                        '$publicar',
+                        '$estado',
+                        $created_up
+                      ); ";
 
-            $data = $this->rows ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-        }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
 
-        }
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método SAVE
-    public function save($bean_categoria)
-    {
-        try{
-            $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
+  # Método Actualizar
+  public function update($bean_categoria)
+  {
+    try{
+      $idcategoria = $bean_categoria->getIdcategoria();
+      $nombre = $bean_categoria->getNombre();
+      $url = $bean_categoria->getUrl();
+      $imagen = $bean_categoria->getImagen();
+      $publicar = $bean_categoria->getPublicar();
 
-            $idcategoria = $bean_categoria->getIdcategoria();
-            $nombre = $bean_categoria->getNombre();
-            $url = $bean_categoria->getUrl();
-            $imagen = $bean_categoria->getImagen();
-            $publicar = $bean_categoria->getPublicar();
-            $estado = $bean_categoria->getEstado();
-            $created_up = $bean_categoria->getCreatedUp();
+      $this->query = "UPDATE categoria SET 
+                        nombre = '$nombre',
+                        url = '$url',
+                        imagen = '$imagen',
+                        publicar = '$publicar'
+                      WHERE idcategoria = '$idcategoria'
+                      LIMIT 1 ;";
 
-            $this->query = "INSERT INTO categoria
-                            (
-                                nombre,
-                                url,
-                                imagen,
-                                publicar,
-                                estado,
-                                created_up
-                            )
-                            VALUES(
-                                '$nombre',
-                                '$url',
-                                '$imagen',
-                                '$publicar',
-                                '$estado',
-                                $created_up
-                            ); ";
+      $this->executeQuery();
 
-            $this->executeQuery();
+      $data = $this->status_exe  ;
 
-            $data = $this->status_exe  ;
+      return $data;
 
-            return $data;
+    }catch(exception $e){
 
+      throw new Exception($e->getMessage());
 
-         }catch(exception $e){
-
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_categoria)
-    {
-        try{
-            $idcategoria = $bean_categoria->getIdcategoria();
-            $nombre = $bean_categoria->getNombre();
-            $url = $bean_categoria->getUrl();
-            $imagen = $bean_categoria->getImagen();
-            $publicar = $bean_categoria->getPublicar();
+  # Método Eliminar(Actualizar Estado)
+  public function updateEstado($bean_categoria)
+  {
+    try{
+      $idcategoria = $bean_categoria->getIdcategoria();
+      $estado = $bean_categoria->getEstado();
 
-            $this->query = "UPDATE categoria SET 
-                                nombre = '$nombre',
-                                url = '$url',
-                                imagen = '$imagen',
-                                publicar = '$publicar'
-                            WHERE idcategoria = '$idcategoria'
-                            LIMIT 1 ;";
+      $this->query = "UPDATE categoria SET 
+                        estado = '$estado'
+                      WHERE idcategoria='$idcategoria'
+                      LIMIT 1 ; ";
 
-            $this->executeQuery();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-         }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-         }
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_categoria)
-    {
-        try{
-            $idcategoria = $bean_categoria->getIdcategoria();
-            $estado = $bean_categoria->getEstado();
+  # Método Buscar por ID
+  public function find($bean_categoria)
+  {
+    try{
+      $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "UPDATE categoria SET 
-                                estado = '$estado'
-                            WHERE idcategoria='$idcategoria'
-                            LIMIT 1 ; ";
+      $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
-            $this->executeQuery();
+      $this->executeFind();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método Buscar por ID
-    public function find($bean_categoria)
-    {
-        try{
-            $idcategoria = $bean_categoria->getIdcategoria();
+  # Método deleteById
+  public function deleteById($bean_categoria)
+  {
+    try{
+      $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "DELETE FROM categoria
+                      WHERE idcategoria = '$idcategoria' LIMIT 1; ";
 
-            $this->executeFind();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método deleteById
-    public function deleteById($bean_categoria)
-    {
-        try{
-            $idcategoria = $bean_categoria->getIdcategoria();
 
-            $this->query = "DELETE FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+  # Método updatePublish
+  public function updatePublish($bean_categoria)
+  {
+    try{
+      $idcategoria = $bean_categoria->getIdcategoria();
+      $publicar = $bean_categoria->getPublicar() ;
 
-            $this->executeQuery();
+      $this->query = "UPDATE categoria SET 
+                        publicar = '$publicar'
+                      WHERE idcategoria = '$idcategoria'
+                      LIMIT 1 ; ";
 
-            $data = $this->status_exe  ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-        }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-        }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
 
-    # Método updatePublish
-    public function updatePublish($bean_categoria)
-    {
-        try{
-            $idcategoria = $bean_categoria->getIdcategoria();
-            $publicar = $bean_categoria->getPublicar() ;
+  # Método getPublished
+  public function getPublished($bean_categoria)
+  {
+    try{
+      $publicar = $bean_categoria->getPublicar() ;
 
-            $this->query = "UPDATE categoria SET 
-                                publicar = '$publicar'
-                            WHERE idcategoria = '$idcategoria'
-                            LIMIT 1 ; ";
+      $this->query = "SELECT * FROM categoria
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
 
-            $this->executeQuery();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-
-    # Método getPublished
-    public function getPublished($bean_categoria)
-    {
-        try{
-            $publicar = $bean_categoria->getPublicar() ;
-
-            $this->query = "SELECT * FROM categoria                            WHERE publicar = '$publicar'                            AND estado = 1 ; ";
-
-            $this->executeQuery();
-
-            $data = $this->rows ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

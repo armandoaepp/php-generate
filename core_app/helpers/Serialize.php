@@ -5,24 +5,24 @@ class Serialize {
 
 	public static function unSerializeLang($string, $lang)
 	{
-			if( Serialize::isSerialized($string) )
+		if( Serialize::isSerialized($string) )
+		{
+			$value = unserialize($string);
+
+			if(isset($value[$lang]))
 			{
-					$value = unserialize($string);
-
-					if(isset($value[$lang]))
-					{
-							$value = $value[$lang];
-					}
-					else
-					{
-							$value = '';
-					}
-				return $value;
-
+					$value = $value[$lang];
 			}
-			else{
-				return $string ;
+			else
+			{
+					$value = '';
 			}
+		return $value;
+
+		}
+		else{
+			return $string ;
+		}
 	}
 
 	public static function isSerialized( $data ) {

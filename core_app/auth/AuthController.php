@@ -2,56 +2,53 @@
 
 class AuthController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null){
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null){
+      $this->cnx = $cnx;
+  }
 
-    function login( $params = array() )
+  function login( $params = array() )
+  {
+    try
     {
-        try
-        {
-          // extraemos todos los parametros
-            extract($params);
+      // extraemos todos los parametros
+      extract($params);
 
-           $auth = new Auth();
+      $auth = new Auth();
 
-           $auth->email     = $email ;
-           $auth->password  = $password ;
+      $auth->email     = $email ;
+      $auth->password  = $password ;
 
-           $data = $auth->login();
+      $data = $auth->login();
 
-           return $data;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data;
     }
-
-
-
-
-    function getById( $params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-          // extraemos todos los parametros
-            extract($params);
-
-           $auth = new AUth();
-
-           $auth->user_id  = $user_id ;
-           $data = $auth->getById();
-
-           return $data;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  function getById( $params = array() )
+  {
+    try
+    {
+      // extraemos todos los parametros
+      extract($params);
+
+      $auth = new AUth();
+
+      $auth->user_id  = $user_id ;
+      $data = $auth->getById();
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 
 
