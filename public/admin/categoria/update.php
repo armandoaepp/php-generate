@@ -21,11 +21,11 @@
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "categoria") ;
 
-  if (empty($imagen) ) {
-    $imagen = $img_bd ;
-  }
+  if (empty($imagen) ) { 
+    $imagen = $img_bd ; 
+  } 
 
-  $url = UrlHelper::urlFriendly($nombre);
+  $url = UrlHelper::urlFriendly($nombre); 
 
   $params = array(
     "idcategoria"   => $idcategoria,
@@ -35,24 +35,16 @@
     "url"  => $url,
   );
 
-  // echo "imagen: ". $imagen ."\n <br>" ;
-  // echo "img_bd: ". $img_bd ."\n <br>" ;
 
   $response = $categoria_controller->update($params);
-
-  var_dump($imagen);
-  var_dump($img_bd);
-  var_dump($response);
 
   if($response)
   {
 
-    if( !empty($imagen) && $imagen != $img_bd )
+    if( if( !empty($imagen) && $imagen != $img_bd ) )
     {
       $status = UploadFiles::removeFile($img_bd) ;
     }
-    // var_dump( $status);
-    return ;
 
     header("Location: ./categoria.php ", true, 301);
   }

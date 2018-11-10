@@ -149,7 +149,7 @@ class UploadFiles {
 
     if(empty($folder)) return ;
 
-    $folder_path =  IMAGES . '/../' .  $folder ;
+    $folder_path =  IMAGES . '../' .  $folder ;
 
     if(!file_exists($folder_path))
     {

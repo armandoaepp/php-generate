@@ -18,7 +18,7 @@
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "categoria") ;
 
-  $url = UrlHelper::urlFriendly($nombre);
+  $url = UrlHelper::urlFriendly($nombre); 
 
   $params = array(
     "nombre"   => $nombre,
@@ -29,8 +29,6 @@
 
 
   $response = $categoria_controller->save($params);
-
-  return ;
 
   if($response){
     header("Location: ./categoria.php ", true, 301);
