@@ -1,10 +1,10 @@
 <?php
 
 /**
-  * [Class Controller Generada]
-  * Autor: Armando E. Pisfil Puemape
-  * twitter: @armandoaepp
-  * email: armandoaepp@gmail.com
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
 */
 
  class CategoriaController

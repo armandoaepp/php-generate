@@ -1,10 +1,10 @@
 <?php 
 
 /**
-  * [Class Bean Generada]
-  * Autor: Armando E. Pisfil Puemape
-  * twitter: @armandoaepp
-  * email: armandoaepp@gmail.com
+ * [Class Bean Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
 */
 
 class BeanCategoria{

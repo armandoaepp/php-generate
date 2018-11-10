@@ -16,7 +16,6 @@ Class Connection
   # Conectar a la base de datos utilizamos la libreria pdo
   private function openConnection()
   {
-    // $cadena=$this->db_driver.":host=".self::$db_host.";dbname=" .$this->db_name;
     $cadena = $this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
 
     $this->conn = new PDO($cadena,self::$db_user,self::$db_pass);

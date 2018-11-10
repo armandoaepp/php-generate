@@ -1,15 +1,14 @@
-<?php
+<?php 
 
 /**
-  * [Class Controller Generada]
-  * Autor: Armando E. Pisfil Puemape
-  * twitter: @armandoaepp
-  * email: armandoaepp@gmail.com
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
 */
 
-
 class Categoria extends Connection {
-  # CONSTRUCT
+  # CONSTRUCT 
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -91,7 +90,7 @@ class Categoria extends Connection {
       $imagen = $bean_categoria->getImagen();
       $publicar = $bean_categoria->getPublicar();
 
-      $this->query = "UPDATE categoria SET
+      $this->query = "UPDATE categoria SET 
                         nombre = '$nombre',
                         url = '$url',
                         imagen = '$imagen',
@@ -119,7 +118,7 @@ class Categoria extends Connection {
       $idcategoria = $bean_categoria->getIdcategoria();
       $estado = $bean_categoria->getEstado();
 
-      $this->query = "UPDATE categoria SET
+      $this->query = "UPDATE categoria SET 
                         estado = '$estado'
                       WHERE idcategoria='$idcategoria'
                       LIMIT 1 ; ";
@@ -188,7 +187,7 @@ class Categoria extends Connection {
       $idcategoria = $bean_categoria->getIdcategoria();
       $publicar = $bean_categoria->getPublicar() ;
 
-      $this->query = "UPDATE categoria SET
+      $this->query = "UPDATE categoria SET 
                         publicar = '$publicar'
                       WHERE idcategoria = '$idcategoria'
                       LIMIT 1 ; ";

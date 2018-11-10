@@ -1,10 +1,10 @@
 <?php 
 
 /**
-  * [Class Controller Generada]
-  * Autor: Armando E. Pisfil Puemape
-  * twitter: @armandoaepp
-  * email: armandoaepp@gmail.com
+ * [Api Index Auth  Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
 */
 
   header('content-type: application/json; charset=utf-8');
