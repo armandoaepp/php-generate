@@ -1,5 +1,12 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+  * [Class Controller Generada]
+  * Autor: Armando E. Pisfil Puemape
+  * twitter: @armandoaepp
+  * email: armandoaepp@gmail.com
+*/
+
  class CategoriaController
 {
   private $cnx;

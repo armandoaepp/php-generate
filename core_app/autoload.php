@@ -1,46 +1,46 @@
 <?php
 
-	// define('ROOT_PATH', __DIR__);
-	include_once 'paths.php' ;
-	// echo  IMAGES_PATH ;
+	require_once __DIR__.'/config/paths.php' ;
+
+	require_once __DIR__.'/config/config.php' ;
 
 	function loadModelFiles($file_name){
-		$fullpath = ROOT_PATH.'/models/' . $file_name . '.php' ;
+		$fullpath = APP.'models'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
 	}
 
 	function loadBeanFiles($file_name){
-		$fullpath = ROOT_PATH.'/beans/' . $file_name . '.php' ;
+		$fullpath = APP.'beans'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
 	}
 
 	function loadControllerFiles($file_name){
-		$fullpath = ROOT_PATH.'/controllers/' . $file_name . '.php' ;
+		$fullpath = APP.'controllers'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
 	}
 
 	function loadHelperFiles($file_name){
-		$fullpath = ROOT_PATH.'/helpers/' . $file_name . '.php' ;
+		$fullpath = APP.'helpers'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
 	}
 
 	function loadAuthFiles($file_name){
-		$fullpath = ROOT_PATH.'/auth/' . $file_name . '.php' ;
+		$fullpath = APP.'auth'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
 	}
 
 	function loadDataBaseFiles($file_name){
-		$fullpath = ROOT_PATH.'/database/' . $file_name . '.php' ;
+		$fullpath = APP.'database'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {
 			require $fullpath;
 		}
@@ -53,5 +53,5 @@
 	spl_autoload_register("loadAuthFiles");
 	spl_autoload_register("loadDataBaseFiles");
 
-	require_once ROOT_PATH.'/config/config.php' ;
+
 

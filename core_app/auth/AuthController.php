@@ -1,26 +1,36 @@
 <?php
 
-class AuthController
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+ class AuthController
 {
   private $cnx;
 
-  public function __construct($cnx = null){
-      $this->cnx = $cnx;
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
   }
 
-  function login( $params = array() )
+
+  public function login($params = array())
   {
     try
     {
-      // extraemos todos los parametros
-      extract($params);
 
-      $auth = new Auth();
+      extract($params) ;
 
-      $auth->email     = $email ;
-      $auth->password  = $password ;
+      $user  = new User();
+      $bean_user = new BeanUser();
 
-      $data = $auth->login();
+      $bean_user->setEmail($email);
+      $bean_user->setPassword($password);
+
+      $data = $user->login($bean_user) ;
 
       return $data;
     }
@@ -29,27 +39,5 @@ class AuthController
       throw new Exception($e->getMessage());
     }
   }
-
-  function getById( $params = array() )
-  {
-    try
-    {
-      // extraemos todos los parametros
-      extract($params);
-
-      $auth = new AUth();
-
-      $auth->user_id  = $user_id ;
-      $data = $auth->getById();
-
-      return $data;
-    }
-    catch (Exception $e)
-    {
-      throw new Exception($e->getMessage());
-    }
-  }
-
-
 
 }

@@ -15,8 +15,19 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $abrir      = fopen($nomarchivo . $extension, "w");
 
 
+
+
         $texto .= '<?php ' . PHP_EOL;
-        $texto .= '# Class Model Generada - ByPower @armandaepp ' . PHP_EOL;
+
+        $texto .= '' . PHP_EOL ;
+        $texto .= '/**' . PHP_EOL ;
+        $texto .= ' * [Class Controller Generada]' . PHP_EOL ;
+        $texto .= ' * Autor: Armando E. Pisfil Puemape' . PHP_EOL ;
+        $texto .= ' * twitter: @armandoaepp' . PHP_EOL ;
+        $texto .= ' * email: armandoaepp@gmail.com' . PHP_EOL ;
+        $texto .= '*/' . PHP_EOL ;
+        $texto .= '' . PHP_EOL ;
+
         $texto .= 'class ' . $clase . ' extends Connection {' . PHP_EOL;
 
         # contructor

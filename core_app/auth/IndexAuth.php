@@ -1,5 +1,11 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Api Auth Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
 
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -9,7 +15,6 @@
   date_default_timezone_set('America/Lima');
 
   require_once "../autoload.php";
-
 
 if(isset($_GET["accion"]))
 {
@@ -22,8 +27,7 @@ elseif (isset($_POST))
   $evento = $inputs->accion;
 }
 
-// echo $evento ;
-// return ;
+
 // $email = 'armandoaepp@gmail.com' ;
 // $password = 'armando' ;
 
@@ -35,7 +39,8 @@ switch($evento)
       session_start();
       $mensaje = "Ya haz iniciado sesión";
 
-      if (empty($_SESSION['login'])  && empty($_SESSION['USER']) ){
+      if (empty($_SESSION['login'])  && empty($_SESSION['USER']) )
+      {
 
         $auth_controller = new AuthController();
 

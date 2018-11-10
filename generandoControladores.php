@@ -13,7 +13,15 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $nomarchivo = $carpeta .$cmTable."Controller";
         $abrir      = fopen($nomarchivo . $extension, "w");
         $texto      = '<?php' . PHP_EOL;
-        $texto .= '# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp' . PHP_EOL;
+
+        $texto .= '' . PHP_EOL ;
+        $texto .= '/**' . PHP_EOL ;
+        $texto .= ' * [Class Controller Generada]' . PHP_EOL ;
+        $texto .= ' * Autor: Armando E. Pisfil Puemape' . PHP_EOL ;
+        $texto .= ' * twitter: @armandoaepp' . PHP_EOL ;
+        $texto .= ' * email: armandoaepp@gmail.com' . PHP_EOL ;
+        $texto .= '*/' . PHP_EOL ;
+        $texto .= '' . PHP_EOL ;
 
         $texto .= ' class '.$cmTable.'Controller' . PHP_EOL;
         $texto  .= '{' . PHP_EOL;

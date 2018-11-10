@@ -1,5 +1,12 @@
 <?php 
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+  * [Class Controller Generada]
+  * Autor: Armando E. Pisfil Puemape
+  * twitter: @armandoaepp
+  * email: armandoaepp@gmail.com
+*/
+
   header('content-type: application/json; charset=utf-8');
   require_once '../../autoload.php';
 

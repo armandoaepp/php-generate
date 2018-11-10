@@ -13,7 +13,16 @@ function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
         $nomarchivo = $carpeta . "Bean" . $cmTable;
         $abrir      = fopen($nomarchivo . $extension, "w");
         $texto      = '<?php ' . PHP_EOL;
-        $texto .= '# Clase Bean Generada - ByPower @armandoaepp ' . PHP_EOL;
+
+        $texto .= '' . PHP_EOL ;
+        $texto .= '/**' . PHP_EOL ;
+        $texto .= ' * [Class Bean Generada]' . PHP_EOL ;
+        $texto .= ' * Autor: Armando E. Pisfil Puemape' . PHP_EOL ;
+        $texto .= ' * twitter: @armandoaepp' . PHP_EOL ;
+        $texto .= ' * email: armandoaepp@gmail.com' . PHP_EOL ;
+        $texto .= '*/' . PHP_EOL ;
+        $texto .= '' . PHP_EOL ;
+
         $texto .= 'class ' . $clase . '{' . PHP_EOL;
         $texto .= '    # Constructor' . PHP_EOL;
         // $texto .= 'public function ' . $clase . '(){}' . PHP_EOL;

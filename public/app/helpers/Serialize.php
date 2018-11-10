@@ -5,24 +5,24 @@ class Serialize {
 
 	public static function unSerializeLang($string, $lang)
 	{
-			if( Serialize::isSerialized($string) )
+		if( Serialize::isSerialized($string) )
+		{
+			$value = unserialize($string);
+
+			if(isset($value[$lang]))
 			{
-					$value = unserialize($string);
-
-					if(isset($value[$lang]))
-					{
-							$value = $value[$lang];
-					}
-					else
-					{
-							$value = '';
-					}
-				return $value;
-
+					$value = $value[$lang];
 			}
-			else{
-				return $string ;
+			else
+			{
+					$value = '';
 			}
+		return $value;
+
+		}
+		else{
+			return $string ;
+		}
 	}
 
 	public static function isSerialized( $data ) {
@@ -31,22 +31,23 @@ class Serialize {
 					return false;
 			$data = trim( $data );
 			if ( 'N;' == $data )
-					return true;
+				return true;
 			if ( !preg_match( '/^([adObis]):/', $data, $badions ) )
-					return false;
+				return false;
 			switch ( $badions[1] ) {
-					case 'a' :
-					case 'O' :
-					case 's' :
-							if ( preg_match( "/^{$badions[1]}:[0-9]+:.*[;}]\$/s", $data ) )
-									return true;
-							break;
-					case 'b' :
-					case 'i' :
-					case 'd' :
-							if ( preg_match( "/^{$badions[1]}:[0-9.E-]+;\$/", $data ) )
-									return true;
-							break;
+				case 'a' :
+				case 'O' :
+				case 's' :
+					if ( preg_match( "/^{$badions[1]}:[0-9]+:.*[;}]\$/s", $data ) )
+					return true;
+				break;
+
+				case 'b' :
+				case 'i' :
+				case 'd' :
+					if ( preg_match( "/^{$badions[1]}:[0-9.E-]+;\$/", $data ) )
+						return true;
+				break;
 			}
 			return false;
 	}
@@ -68,7 +69,7 @@ class Serialize {
 		{
 			foreach ($row as $k => $value)
 			{
-					$row[$k] = Serialize::unSerializeLang($value, 'es') ;
+				$row[$k] = Serialize::unSerializeLang($value, 'es') ;
 			}
 			array_push($data, $row);
 		}
@@ -92,7 +93,7 @@ class Serialize {
 
 			foreach ($array as $k => $value)
 			{
-					$array[$k] = Serialize::unSerializeLang($value, 'es') ;
+				$array[$k] = Serialize::unSerializeLang($value, 'es') ;
 			}
 			array_push($data, $array);
 

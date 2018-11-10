@@ -40,9 +40,18 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $abrir      = fopen($nomarchivo . $extension, "w");
         $texto      = '<?php ' . PHP_EOL;
         // $texto .= 'ob_start();' . PHP_EOL;
-        $texto .= '# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp' . PHP_EOL;
-         $texto .= "  header('content-type: application/json; charset=utf-8');" . PHP_EOL;
-         $texto .= "  require_once '../../autoload.php';" . PHP_EOL;
+
+        $texto .= '' . PHP_EOL ;
+        $texto .= '/**' . PHP_EOL ;
+        $texto .= ' * [Api Index Auth  Generada]' . PHP_EOL ;
+        $texto .= ' * Autor: Armando E. Pisfil Puemape' . PHP_EOL ;
+        $texto .= ' * twitter: @armandoaepp' . PHP_EOL ;
+        $texto .= ' * email: armandoaepp@gmail.com' . PHP_EOL ;
+        $texto .= '*/' . PHP_EOL ;
+        $texto .= '' . PHP_EOL ;
+
+        $texto .= "  header('content-type: application/json; charset=utf-8');" . PHP_EOL;
+        $texto .= "  require_once '../../autoload.php';" . PHP_EOL;
         $texto .= "" . PHP_EOL;
 
 

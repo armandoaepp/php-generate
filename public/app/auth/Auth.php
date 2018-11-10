@@ -1,33 +1,38 @@
 <?php
-class Auth extends Conexion {
 
-  public $timestamps = true;
+/**
+ * [Class Model Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
 
-  public $user_id;
-  public $email ;
-  public $nombre ;
-  public $apellidos ;
-  public $password ;
-  public $estado      = 1;
-  private $created_up =  NULL;
+class Auth extends Connection {
+  # CONSTRUCT
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
 
 
-  public function __construct (){ }
-
-  public function login(){
+  public function login($bean_user){
 
     try{
 
-      $this->md5Password();
+      $email    = $bean_user->getEmail();
+      $password = $bean_user->getPassword();
+      $estado   = !empty($bean_user->getEstado()) ? $bean_user->getEstado() :  1;
+
+      $password = Encript::md5($password) ;
+
 
       $this->query = "SELECT user_id, email, nombre, apellidos FROM user
-                      WHERE email = '$this->email'
-                      AND password = '$this->password'
-                      AND estado = $this->estado
+                      WHERE email = '$email'
+                      AND password = '$password'
+                      AND estado = $estado
                       LIMIT 1 ;";
 
-
-      $this->execute_find();
+      $this->executeFind();
 
       $rows = $this->rows ;
 
@@ -42,27 +47,5 @@ class Auth extends Conexion {
   }
 
 
-  public function getById(){
 
-    try{
-      $this->query = "SELECT * FROM user where  user_id = '$this->user_id';";
-
-      $this->execute_find();
-      $rows = $this->rows ;
-
-      return $rows;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-
-  }
-
-
-
-  private function md5Password(){
-    $this->password = md5($this->password) ;
-  }
 }
