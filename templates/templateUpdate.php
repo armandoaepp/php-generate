@@ -80,9 +80,11 @@ $html .= '' . PHP_EOL;
 $html .= '
   $response = $'. $table .'_controller->update($params);
 
-  if($response){
+  if($response)
+  {
 
-    if( $imagen == $img_bd ){
+    if( if( !empty($imagen) && $imagen != $img_bd ) )
+    {
       $status = UploadFiles::removeFile($img_bd) ;
     }
 

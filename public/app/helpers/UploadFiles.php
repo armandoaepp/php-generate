@@ -7,13 +7,13 @@ class UploadFiles {
   static public function uploadFile(&$file, $path_relative = '')
   {
 
-    #verificar FOLDER_NAME
-    if (!file_exists(IMAGES_PATH)) {
-      mkdir(IMAGES_PATH, 0777);
+    #Verify directory name
+    if (!file_exists(IMAGES)) {
+      mkdir(IMAGES, 0777);
     }
 
-    if ( !file_exists(IMAGES_PATH ."/". $path_relative) ) {
-      mkdir(IMAGES_PATH ."/". $path_relative, 0777);
+    if ( !file_exists(IMAGES . $path_relative) ) {
+      mkdir(IMAGES . $path_relative, 0777);
     }
 
     $imagen_url      = '';
@@ -35,10 +35,11 @@ class UploadFiles {
           $imagen_url = "{$new_name}" ;
         }
 
-        $imagen_url = IMAGES_FOLDER."/{$imagen_url}" ;
+        $imagen_url = IMAGES_DIR. DS."{$imagen_url}" ;
 
       # ruta destino(donde se movera el archivo )
-        $ruta_destino = IMAGES_PATH.'/../'."{$imagen_url}";
+        $ruta_destino = IMAGES.'/../'."{$imagen_url}";
+        // echo $ruta_destino ;
 
         // echo $ruta_destino ;
         $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
@@ -89,10 +90,10 @@ class UploadFiles {
                 $imagen_url = "{$new_name}" ;
               }
 
-              $imagen_url = IMAGES_FOLDER."/{$imagen_url}" ;
+              $imagen_url = IMAGES_DIR."/{$imagen_url}" ;
 
             # ruta destino(donde se movera el archivo )
-              $ruta_destino = IMAGES_PATH.'/../'."{$imagen_url}";
+              $ruta_destino = IMAGES.'/../'."{$imagen_url}";
 
             # ruta destino(donde se movera el archivo )
               $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
@@ -127,12 +128,15 @@ class UploadFiles {
 
   static public function removeFile($path_file)
   {
-    $path_file = IMAGES_PATH . '/../' . $path_file ;
+    $path_file = IMAGES . '../' . $path_file ;
+
+    echo "path_file : ".$path_file ."\n" ;
 
     $unlink =  false ;
     if(!empty($path_file))
     {
-      if(is_file($path_file)) {
+      if(is_file($path_file))
+      {
         $unlink =   unlink($path_file );
       }
     }
@@ -145,7 +149,7 @@ class UploadFiles {
 
     if(empty($folder)) return ;
 
-    $folder_path =  IMAGES_PATH . '/../' .  $folder ;
+    $folder_path =  IMAGES . '/../' .  $folder ;
 
     if(!file_exists($folder_path))
     {

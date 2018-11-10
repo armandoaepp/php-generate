@@ -43,12 +43,13 @@ define('ADMIN', ROOT . DS . 'admin' . DS);
 * The actual directory name for images directory. Normally
 * named 'app'.
 */
-define('IMAGES_DIR',   'img_admin');
+define('IMAGES_DIR',   'images');
 
 /**
 * Path to the application's directory.
 */
-define('IMAGES', ROOT . DS . IMAGES_DIR . DS);
+// define('IMAGES', ROOT . DS . IMAGES_DIR . DS);
+define('IMAGES', ROOT . DS . IMAGES_DIR .DS );
 
 
 

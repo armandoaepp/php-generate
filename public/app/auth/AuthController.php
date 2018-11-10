@@ -24,13 +24,13 @@
 
       extract($params) ;
 
-      $user  = new User();
-      $bean_user = new BeanUser();
+      $auth  = new Auth();
+      $bean_auth = new BeanAuth();
 
-      $bean_user->setEmail($email);
-      $bean_user->setPassword($password);
+      $bean_auth->setEmail($email);
+      $bean_auth->setPassword($password);
 
-      $data = $user->login($bean_user) ;
+      $data = $auth->login($bean_auth) ;
 
       return $data;
     }
