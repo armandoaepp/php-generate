@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
-class Categoria extends Connection {
+class Marca extends Connection {
   # CONSTRUCT 
   public function __construct($cnx  = null)
   {
@@ -19,7 +19,7 @@ class Categoria extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM categoria";
+      $this->query = "SELECT * FROM marca";
 
       $this->executeQuery();
 
@@ -35,32 +35,26 @@ class Categoria extends Connection {
   }
 
   # Método SAVE
-  public function save($bean_categoria)
+  public function save($bean_marca)
   {
     try{
-      $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
+      $bean_marca->setCreatedUp( HelperDate::timestampsBd() );
 
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $nombre = $bean_categoria->getNombre();
-      $url = $bean_categoria->getUrl();
-      $imagen = $bean_categoria->getImagen();
-      $publicar = $bean_categoria->getPublicar();
-      $estado = $bean_categoria->getEstado();
-      $created_up = $bean_categoria->getCreatedUp();
+      $idmarca = $bean_marca->getIdmarca();
+      $nombre = $bean_marca->getNombre();
+      $publicar = $bean_marca->getPublicar();
+      $estado = $bean_marca->getEstado();
+      $created_up = $bean_marca->getCreatedUp();
 
-      $this->query = "INSERT INTO categoria
+      $this->query = "INSERT INTO marca
                       (
                         nombre,
-                        url,
-                        imagen,
                         publicar,
                         estado,
                         created_up
                       )
                       VALUES(
                         '$nombre',
-                        '$url',
-                        '$imagen',
                         '$publicar',
                         '$estado',
                         $created_up
@@ -81,21 +75,17 @@ class Categoria extends Connection {
   }
 
   # Método Actualizar
-  public function update($bean_categoria)
+  public function update($bean_marca)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $nombre = $bean_categoria->getNombre();
-      $url = $bean_categoria->getUrl();
-      $imagen = $bean_categoria->getImagen();
-      $publicar = $bean_categoria->getPublicar();
+      $idmarca = $bean_marca->getIdmarca();
+      $nombre = $bean_marca->getNombre();
+      $publicar = $bean_marca->getPublicar();
 
-      $this->query = "UPDATE categoria SET 
+      $this->query = "UPDATE marca SET 
                         nombre = '$nombre',
-                        url = '$url',
-                        imagen = '$imagen',
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE idmarca = '$idmarca'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -112,15 +102,15 @@ class Categoria extends Connection {
   }
 
   # Método Eliminar(Actualizar Estado)
-  public function updateEstado($bean_categoria)
+  public function updateEstado($bean_marca)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $estado = $bean_categoria->getEstado();
+      $idmarca = $bean_marca->getIdmarca();
+      $estado = $bean_marca->getEstado();
 
-      $this->query = "UPDATE categoria SET 
+      $this->query = "UPDATE marca SET 
                         estado = '$estado'
-                      WHERE idcategoria='$idcategoria'
+                      WHERE idmarca='$idmarca'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -137,12 +127,12 @@ class Categoria extends Connection {
   }
 
   # Método Buscar por ID
-  public function find($bean_categoria)
+  public function find($bean_marca)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $idmarca = $bean_marca->getIdmarca();
 
-      $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "SELECT * FROM marca WHERE idmarca = '$idmarca' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -158,13 +148,13 @@ class Categoria extends Connection {
   }
 
   # Método deleteById
-  public function deleteById($bean_categoria)
+  public function deleteById($bean_marca)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $idmarca = $bean_marca->getIdmarca();
 
-      $this->query = "DELETE FROM categoria
-                      WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "DELETE FROM marca
+                      WHERE idmarca = '$idmarca' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -181,15 +171,15 @@ class Categoria extends Connection {
 
 
   # Método updatePublish
-  public function updatePublish($bean_categoria)
+  public function updatePublish($bean_marca)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $publicar = $bean_categoria->getPublicar() ;
+      $idmarca = $bean_marca->getIdmarca();
+      $publicar = $bean_marca->getPublicar() ;
 
-      $this->query = "UPDATE categoria SET 
+      $this->query = "UPDATE marca SET 
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE idmarca = '$idmarca'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -207,12 +197,12 @@ class Categoria extends Connection {
 
 
   # Método getPublished
-  public function getPublished($bean_categoria)
+  public function getPublished($bean_marca)
   {
     try{
-      $publicar = $bean_categoria->getPublicar() ;
+      $publicar = $bean_marca->getPublicar() ;
 
-      $this->query = "SELECT * FROM categoria
+      $this->query = "SELECT * FROM marca
                       WHERE publicar = '$publicar'
                       AND estado = 1 ; ";
 
