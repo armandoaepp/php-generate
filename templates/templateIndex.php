@@ -1,20 +1,12 @@
 <?php
 
-    require_once "../sesion_admin.php";
+function templateIndex($table, $atributos, $arraycabeza = array() ){
 
-    loginRedirect("../login.php");
+  $cmTable = toCamelCase($table) ;
+  $url = toUrlFriendly($table) ;
 
-    require_once "../../app/autoload.php";
-
-    $categoria_controller = new CategoriaController();
-
-    $data = $categoria_controller->getAll();
-
-    $title_page = "categorias"
-
-?>
-
-<?php $title_page = "Categorias" ; ?>
+$html = '
+<?php $title_page = "'.$cmTable.'s" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,7 +32,7 @@
           </a>
         </li>
         <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/categoria/categoria.php">
+          <a href="admin/'.$url.'/'.$table.'.php">
             <?php echo $title_page ?></a>
         </li>
       </ol>
@@ -52,70 +44,16 @@
           <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/categoria/categoria.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/categoria/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+          <a href="admin/'.$url.'/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
         <div class="col-12">
-        
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-              <thead>
-                <tr>
-                  <th width="50">Idcategoria </th>
-                  <th>Nombre </th>
-                  <th>Url </th>
-                  <th width="50"> Publicar </th>
-                  <th width="70"></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <?php foreach ($data as &$row) {?>
-                  <tr>
-                  <td> <?php echo $row["idcategoria"] ?> </td>
-                  <td> <?php echo $row["nombre"] ?> </td>
-                  <td> <?php echo $row["url"] ?> </td>
-
-                  <td class="text-center">
-                    <?php
-                      $classBtn = "" ;
-                      $title = "" ;
-                      if($row["publicar"] == "S"){
-                        $classBtn =  "btn-success";
-                        $title = "Desactivar" ;
-                      }
-                      else {
-                        $classBtn =  "btn-outline-success";
-                        $title = "Publicar" ;
-                      }
-                    ?>
-
-                    <span class="sr-only">
-                    <?php echo $row["publicar"] ?>
-                    </span>
-                    <button onclick="modalPublicar(<?php echo $row['idcategoria'] ?>, `<?php echo $row['nombre'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-primary btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
-                      <i class="material-icons"> check </i>
-                    </button>
-                </td>
-            
-
-                  <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/categoria/editar.php?id=<?php echo $row["idcategoria"] ?>" title="Editar">
-                      <i class="material-icons">edit</i>
-                    </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["idcategoria"] ?>, `<?php echo $row['nombre'] ?>`);" title="Eliminar">
-                      <i class="material-icons">delete</i>
-                    </button>
-                  </td>
-                  </tr>
-                  <?php }?>
-                </tbody>
-
-              </table> 
+        '. tableHtml($table, $atributos, $arraycabeza) .'
         </div>
 
       </div>
@@ -200,7 +138,7 @@
         var params = JSON.stringify(inputs);
 
         $.ajax({
-          url: "./app/api/categoria/IndexCategoria.php",
+          url: "./app/api/'.$table.'/Index'.$cmTable.'.php",
           dataType: "json",
           type: "post",
           contentType: "application/json",
@@ -277,3 +215,101 @@
 </body>
 
 </html>
+';
+
+  return $html ;
+}
+
+
+function tableHtml($table, $atributos, $arraycabeza){
+
+$table_html = '' ;
+$table_html .= '
+            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>' . PHP_EOL ;
+
+      for ($i = 0; $i < count($arraycabeza); $i++)
+      {
+          if ( !itemsNotListTable( $atributos[$i] ) )
+          {
+            if($i == 0){
+              $table_html .= '                  <th width="50">' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+            }
+            else
+            {
+              $table_html .= '                  <th>' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+            }
+
+          }
+      }
+
+      if ( in_array('publicar', $atributos ) )
+      {
+        $table_html .= '                  <th width="50"> Publicar </th>' . PHP_EOL;
+      }
+
+      $table_html .= '                  <th width="70"></th>' . PHP_EOL;
+      $table_html .= '                </tr>' . PHP_EOL;
+      $table_html .= '              </thead>' . PHP_EOL;
+
+$table_html .= '
+              <tbody>
+                <?php foreach ($data as &$row) {?>
+                  <tr>' . PHP_EOL ;
+
+        for ($i = 0; $i < count($atributos); $i++)
+        {
+          if ( !itemsNotListTable( $atributos[$i] ) )
+          {
+              $table_html .= '                  <td> <?php echo $row["' . $atributos[$i] . '"] ?> </td>' . PHP_EOL;
+          }
+        }
+
+        if ( in_array('publicar', $atributos ) )
+        {
+
+
+            $table_html .= '
+                  <td class="text-center">
+                    <?php
+                      $classBtn = "" ;
+                      $title = "" ;
+                      if($row["publicar"] == "S"){
+                        $classBtn =  "btn-success";
+                        $title = "Desactivar" ;
+                      }
+                      else {
+                        $classBtn =  "btn-outline-success";
+                        $title = "Publicar" ;
+                      }
+                    ?>
+
+                    <span class="sr-only">
+                    <?php echo $row["publicar"] ?>
+                    </span>
+                    <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-primary btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
+                      <i class="material-icons"> check </i>
+                    </button>
+                </td>
+            ' . PHP_EOL;
+        }
+
+$table_html .= '
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`);" title="Eliminar">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                  </tr>
+                  <?php }?>
+                </tbody>
+
+              </table> ' ;
+
+  return $table_html  ;
+
+}

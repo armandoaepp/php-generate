@@ -41,7 +41,7 @@
   if($response)
   {
 
-    if( if( !empty($imagen) && $imagen != $img_bd ) )
+    if( !empty($imagen) && $imagen != $img_bd )
     {
       $status = UploadFiles::removeFile($img_bd) ;
     }

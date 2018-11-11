@@ -1,4 +1,12 @@
+<?php
 
+function templateEdit($table, $aatri){
+
+  $cmTable = toCamelCase($table) ;
+  $url = toUrlFriendly($table) ;
+
+$html = '';
+$html .= '
 <?php
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
@@ -6,27 +14,34 @@
   $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
   if ($id <= 0) {
-      header("Location: ./categoria.php ", true, 301);
+      header("Location: ./'. $table .'.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $categoria_controller = new CategoriaController();
+  $'. $table .'_controller = new '. $cmTable .'Controller();
 
-  $categoria = $categoria_controller->find($id);
+  $'. $table .' = $'. $table .'_controller->find($id);'. PHP_EOL;
 
-  $publicar = trim($categoria["publicar"]);
+if(in_array('publicar', $aatri))
+{
+
+$html .= '
+  $publicar = trim($'. $table .'["publicar"]);
 
   $si = "";
   $no = "";
 
   if ($publicar == "S") {
-      $si = "checked='checked'";
+      $si = "checked=\'checked\'";
   } elseif ($publicar == "N") {
-      $no = "checked='checked'";
-  }
+      $no = "checked=\'checked\'";
+  }'. PHP_EOL ;
 
-  $title_page = "Categoria"
+}
+
+$html .= '
+  $title_page = "' .$cmTable. '"
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +69,7 @@ require_once "../layout/head_links.phtml";
           </a>
         </li>
         <li class="breadcrumb-item">
-          <a href="admin/categoria/categoria.php"><?php echo $title_page ;?>s</a>
+          <a href="admin/'. $url .'/'. $url .'.php"><?php echo $title_page ;?>s</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Editar <?php echo $title_page ;?></li>
       </ol>
@@ -69,22 +84,32 @@ require_once "../layout/head_links.phtml";
       <div class="row">
 
         <div class="col-12 col-md-10">
-          <form action="admin/categoria/update.php" method="POST" enctype="multipart/form-data">
+          <form action="admin/'. $url .'/update.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
             <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
             <div class="row">
-            
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombre">nombre : </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"  value="<?php echo $categoria['nombre'] ?>" >
-                </div>
-              </div>
+            '. PHP_EOL ;
 
+for ($i = 1; $i < count($aatri); $i++)
+{
+    // if (strtolower(trim($aatri[$i])) != "estado" && strtolower(trim($aatri[$i])) != "created_up" && strtolower(trim($aatri[$i])) != "imagen" )
+    if ( !verificarItem($aatri[$i]) )
+    {
+
+            $html .= '              <div class="col-md-6">' . PHP_EOL;
+            $html .= '                <div class="form-group">' . PHP_EOL;
+            $html .= '                  <label for="' . $aatri[$i] . '">' . $aatri[$i] . ' : </label>' . PHP_EOL;
+            $html .= '                  <input type="text" class="form-control" name="' . $aatri[$i] .'" id="' . $aatri[$i] .'" required placeholder="' . $aatri[$i] .'"  value="<?php echo $'. $table .'[\''. $aatri[$i]. '\'] ?>" >' . PHP_EOL;
+            $html .= '                </div>' . PHP_EOL;
+            $html .= '              </div>' . PHP_EOL;
+    }
+    elseif(strtolower(trim($aatri[$i])) == "imagen")
+    {
+      $html .= '
               <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\''. $aatri[$i]. '\']; ?>">
 
-                <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid mb-1">
+                <img src="<?php echo $'. $table .'[\''. $aatri[$i]. '\'] ?>" class="img-fluid mb-1">
                 <div class="col-auto">
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -94,7 +119,12 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
               </div>
-              
+              ' ;
+
+    }
+    elseif(strtolower(trim($aatri[$i])) == "publicar")
+    {
+    $html .= '
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
@@ -107,12 +137,16 @@ require_once "../layout/head_links.phtml";
                     <label class="form-check-label" for="no">NO</label>
                   </div>
                 </div>
-              </div>
+              </div>' . PHP_EOL;
 
+    }
+}
+
+$html .= '
             </div>
 
             <div class="w-100 text-center">
-              <a href="admin/categoria/categoria.php" type="button" class="btn btn-dark ">Cancelar</a>
+              <a href="admin/' .$url . '/' .$url . '.php" type="button" class="btn btn-dark ">Cancelar</a>
               <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
             </div>
 
@@ -135,3 +169,8 @@ require_once "../layout/head_links.phtml";
 </body>
 
 </html>
+';
+
+  return $html ;
+}
+
