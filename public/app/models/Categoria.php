@@ -136,6 +136,27 @@ class Categoria extends Connection {
     }
   }
 
+  # Método getList
+  public function getList()
+  {
+    try{
+
+      $this->query = "SELECT * FROM categoria WHERE estado = 1 ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
   # Método Buscar por ID
   public function find($bean_categoria)
   {

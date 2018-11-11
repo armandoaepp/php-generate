@@ -87,6 +87,7 @@ $html = '
             <input type="hidden" name="idRowModal" id="idRowModal">
             <input type="hidden" name="accion" id="accion">
             <input type="hidden" name="publicar" id="publicar">
+            <input type="hidden" name="estado" id="estado">
             <div id="dataTextModal">
             </div>
 
@@ -170,17 +171,32 @@ $html = '
 
 
     // modal DELETE
-    function modalDelete(id, textRow) {
+    function modalDelete(id, textRow, title, estado) {
       $("#idRowModal").val(id);
       $("#accion").val("delete");
-      var text = `¿Esta seguro de <strong> eliminar </strong>  <?php echo $title_page ?>: <strong> ${textRow} </strong> ?`;
-      $("#dataTextModal").html(text);
-      $("#btn-send").text("Eliminar");
 
-      $("#modalHistorial").addClass("d-block");
+
+      $("#modalHistorial").addClass("d-none");
       $("#modalTitle span").text("Eliminar");
 
-      $("#btn-send").removeClass("btn-outline-success");
+      var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+      $("#dataTextModal").html(text);
+      $("#btn-send").text(title);
+
+      $("#estado").val(estado);
+      if( estado === "0" )
+      {
+        $("#btn-send").addClass("btn-outline-danger");
+        $("#modalHistorial").addClass("d-none");
+        $("#modalHistorial").removeClass("d-block");
+
+
+      }
+      else if( estado === "1" ) {
+        $("#modalHistorial").addClass("d-block");
+      }
+      $("#btn-send").removeClass("btn-outline-danger");
+      console.log(estado);
 
       $("#myModal").modal("show");
     }
@@ -256,7 +272,32 @@ $table_html .= '
 $table_html .= '
               <tbody>
                 <?php foreach ($data as &$row) {?>
-                  <tr>' . PHP_EOL ;
+
+                  <?php
+                    $classBtn = "" ;
+                    $title = "" ;
+                    if($row["publicar"] == "S"){
+                      $classBtn =  "btn-success";
+                      $title = "Desactivar" ;
+                    }
+                    else {
+                      $classBtn =  "btn-outline-success";
+                      $title = "Publicar" ;
+                    }
+
+                    /* estado */
+                    $title_estado = "" ;
+                    if($row["estado"] == 1){
+                      $title_estado = "Eliminar" ;
+                    }
+                    else {
+                      $title_estado = "Recuperar" ;
+                    }
+                  ?>
+
+                <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
+                ' . PHP_EOL ;
+
 
         for ($i = 0; $i < count($atributos); $i++)
         {
@@ -272,26 +313,11 @@ $table_html .= '
 
             $table_html .= '
                   <td class="text-center">
-                    <?php
-                      $classBtn = "" ;
-                      $title = "" ;
-                      if($row["publicar"] == "S"){
-                        $classBtn =  "btn-success";
-                        $title = "Desactivar" ;
-                      }
-                      else {
-                        $classBtn =  "btn-outline-success";
-                        $title = "Publicar" ;
-                      }
-                    ?>
-
-                    <span class="sr-only">
-                    <?php echo $row["publicar"] ?>
-                    </span>
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
                     <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-primary btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
                       <i class="material-icons"> check </i>
                     </button>
-                </td>
+                  </td>
             ' . PHP_EOL;
         }
 
@@ -300,15 +326,16 @@ $table_html .= '
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
                       <i class="material-icons">edit</i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`);" title="Eliminar">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row[\'estado\'] ?>`);" title="<?php echo $title_estado ;?>">
                       <i class="material-icons">delete</i>
                     </button>
+                    <span class="sr-only"><?php echo $row["estado"] ?></span>
                   </td>
-                  </tr>
-                  <?php }?>
-                </tbody>
+                </tr>
+                <?php }?>
+              </tbody>
 
-              </table> ' ;
+            </table> ' ;
 
   return $table_html  ;
 

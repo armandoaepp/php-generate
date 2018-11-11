@@ -256,8 +256,14 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         if (count($atributos) > 0) {
              $texto .= '      $'.strtolower($atributos[0]).' = $inputs->id;'. PHP_EOL;
         }
-        $texto .= '      $estado = 0; '. PHP_EOL;
 
+        $texto .= '      $estado = $inputs->estado; '. PHP_EOL;
+        $texto  .= '' . PHP_EOL;
+        $texto .= '      if($estado == 1){'. PHP_EOL;
+        $texto .= '        $estado = 0 ;'. PHP_EOL;
+        $texto .= '      }else{'. PHP_EOL;
+        $texto .= '        $estado = 1 ;'. PHP_EOL;
+        $texto .= '      }'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
         $texto  .= '      $params = array(' . PHP_EOL;

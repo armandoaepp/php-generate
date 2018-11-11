@@ -239,6 +239,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= '    }' . PHP_EOL;
             $texto .= '  }' . PHP_EOL;
             // fin del metodo actualizar estado
+
         }
 
 

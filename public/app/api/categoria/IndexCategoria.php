@@ -178,7 +178,13 @@ switch($evento)
   {
 
       $idcategoria = $inputs->id;
-      $estado = 0; 
+      $estado = $inputs->estado; 
+
+      if($estado == 1){
+        $estado = 0 ;
+      }else{
+        $estado = 1 ;
+      }
 
       $params = array(
                 'idcategoria'=> $idcategoria,
