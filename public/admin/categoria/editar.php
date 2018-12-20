@@ -103,7 +103,7 @@ require_once "../layout/head_links.phtml";
                     <label class="form-check-label" for="si">SI</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $si; ?> >
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
                     <label class="form-check-label" for="no">NO</label>
                   </div>
                 </div>
