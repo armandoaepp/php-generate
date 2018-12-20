@@ -10,7 +10,8 @@
 
     $data = $categoria_controller->getAll();
 
-    $title_page = "categorias"
+    $title_page = "categorias" ;
+    var_dump ( get_included_files ());
 
 ?>
 
@@ -61,7 +62,7 @@
         </div>
 
         <div class="col-12">
-        
+
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
@@ -99,7 +100,7 @@
                   ?>
 
                 <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
-                
+
                   <td> <?php echo $row["idcategoria"] ?> </td>
                   <td> <?php echo $row["nombre"] ?> </td>
                   <td> <?php echo $row["url"] ?> </td>
@@ -110,7 +111,7 @@
                       <i class="material-icons"> check </i>
                     </button>
                   </td>
-            
+
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/categoria/editar.php?id=<?php echo $row["idcategoria"] ?>" title="Editar">
@@ -125,7 +126,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
         </div>
 
       </div>
