@@ -5,15 +5,18 @@ include_once 'functionsHelper.php';
 include_once 'copiandofiles.php';
 include_once 'generarmodelo.php';
 include_once 'generarbean.php';
-include_once 'generandovistas.php';
+// include_once 'generandovistas.php';
 include_once 'generandoControladores.php';
 include_once 'generandoindex.php';
-include_once 'generandolayout.php';
-include_once 'generando_procedures.php';
+// include_once 'generandolayout.php';
+// include_once 'generando_procedures.php';
 
 include_once 'generateViews.php';
 
-include_once 'files_app/template.php';
+include_once 'templates/load_template.php';
+// include_once 'templates/fnc_template.php';
+// include_once 'templates/templateIndex.php';
+// include_once 'templates/templateNuevo.php';
 // echo templateIndex('demosss')  ;
 
 
@@ -21,6 +24,7 @@ if (isset($_POST["btenviar"])) {
 
     $sele = $_POST["sele"];
     $tabla = $_POST["nomtabla"];
+
     if (count($sele) > 0) {
         $consulta     = "Select ";
         $verre        = false;
@@ -54,8 +58,23 @@ if (isset($_POST["btenviar"])) {
         }
         $atributos = trim($_POST["atributos"]);
         $atributos = substr($atributos, 0, -1);
+
+        //atributos
+        $atributos = trim($_POST["atributos"]);
+        $atributos = substr($atributos, 0, -1);
+
+        $romper_exp = explode("*", $atributos);
+        $aatributos  = array();
+        for ($i = 0; $i < count($romper_exp); $i++) {
+            if (trim($romper_exp[$i]) != "") {
+                $aatributos[] = $romper_exp[$i];
+            }
+        }
+
+        $atributos = $aatributos ;
+        // var_dump($arraycabeza);
         echo copiandofiles() . "<br/>";
-        echo generandolayout() . "<br/>";
+        // echo generandolayout() . "<br/>";
         echo generarbean($atributos, $consulta, $tabla, $arraycabeza) . "<br/>";
         echo generarmodelo($atributos, $consulta, $tabla , $arraycabeza) . "<br/>";
         echo generandoControladores($atributos, $tabla,$arraycabeza) . "<br/>";
@@ -65,7 +84,7 @@ if (isset($_POST["btenviar"])) {
 
         // echo generandoViewList($atributos, $consulta, $tabla) . "<br/>";
 
-        echo generandoVistas($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
+        // echo generandoVistas($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
         echo generateViews($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
 
 

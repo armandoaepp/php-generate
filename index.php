@@ -66,7 +66,8 @@
 
                    ?>
                    <tr>
-                    <td><input type="checkbox" name="sele[]" value="<?=$rpta['cuerpo'][$i]['Field']."/".$i ?>" />
+                    <td>
+                      <input type="checkbox" name="sele[]" value="<?=$rpta['cuerpo'][$i]['Field']."/".$i ?>" />
                       <?php echo $rpta["cuerpo"][$i]["Field"]; ?></td>
                       <td><label>
                         <select name="ttabla<?=$i?>" id="ttabla<?=$i?>">

@@ -8,7 +8,7 @@ function processForLogin(event) {
   var params = JSON.stringify(inputs);
   // console.log(params);
 
-   axios.post('app/auth/IndexAuth.php', params)
+   axios.post('api/ajax/user/IndexLogin.php', params)
     .then(function (response) {
       // console.log(response);
       var data = response.data ;

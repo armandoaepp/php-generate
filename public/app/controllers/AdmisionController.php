@@ -1,150 +1,163 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class AdmisionController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $admision  = new Admision();
+      $admision  = new Admision();
 
-            $data = $admision->getAll();
+      $data = $admision->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setAdmision($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $admision  = new Admision($this->cnx);
-
-            $bean_admision = new BeanAdmision();
-            
-            $bean_admision->setId($id);
-            $bean_admision->setTitulo($titulo);
-            $bean_admision->setImagen($imagen);
-            $bean_admision->setRequisitos($requisitos);
-            $bean_admision->setHorarios($horarios);
-            $bean_admision->setInversion($inversion);
-            $bean_admision->setEmail($email);
-            
-            $data = $admision->save($bean_admision) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateAdmision($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $admision  = new Admision($this->cnx);
-            $bean_admision = new BeanAdmision();
-            
-            $bean_admision->setId($id);
-            $bean_admision->setTitulo($titulo);
-            $bean_admision->setImagen($imagen);
-            $bean_admision->setRequisitos($requisitos);
-            $bean_admision->setHorarios($horarios);
-            $bean_admision->setInversion($inversion);
-            $bean_admision->setEmail($email);
+      $admision  = new Admision($this->cnx);
 
-            $data = $admision->update($bean_admision) ;
+      $bean_admision = new BeanAdmision();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_admision->setTitulo($titulo);
+      $bean_admision->setImagen($imagen);
+      $bean_admision->setRequisitos($requisitos);
+      $bean_admision->setHorarios($horarios);
+      $bean_admision->setInversion($inversion);
+      $bean_admision->setEmail($email);
+            
+      $data = $admision->save($bean_admision) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $admision  = new Admision($this->cnx);
-            $bean_admision = new BeanAdmision();
-            
-            $bean_admision->setId($id);
-            $bean_admision->setEstado($estado);
-
-            $data = $admision->update($bean_admision) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $admision  = new Admision();
+            
+      extract($params) ; 
 
-            $bean_admision = new BeanAdmision();
+      $admision  = new Admision($this->cnx);
+      $bean_admision = new BeanAdmision();
+            
+      $bean_admision->setId($id);
+      $bean_admision->setTitulo($titulo);
+      $bean_admision->setImagen($imagen);
+      $bean_admision->setRequisitos($requisitos);
+      $bean_admision->setHorarios($horarios);
+      $bean_admision->setInversion($inversion);
+      $bean_admision->setEmail($email);
 
-            $bean_admision->setId($id);
-
-            $data = $admision->getById( $bean_admision) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $admision->update($bean_admision) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $admision  = new Admision();
-
-            $bean_admision = new BeanAdmision();
-
-            $bean_admision->setId($id);
-
-            $data = $admision->deleteById( $bean_admision ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $admision  = new Admision($this->cnx);
+      $bean_admision = new BeanAdmision();
+            
+      $bean_admision->setId($id);
+      $bean_admision->setEstado($estado);
+
+      $data = $admision->updateEstado($bean_admision) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $admision  = new Admision();
+
+      $bean_admision = new BeanAdmision();
+
+      $bean_admision->setId($id);
+
+      $data = $admision->find( $bean_admision) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $admision  = new Admision();
+
+      $bean_admision = new BeanAdmision();
+
+      $bean_admision->setId($id);
+
+      $data = $admision->deleteById( $bean_admision ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }
