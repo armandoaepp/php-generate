@@ -14,6 +14,9 @@ class BeanCategoria{
     # Atributos
     private $idcategoria;
     private $nombre;
+    private $descripcion;
+    private $visible;
+    private $fechareg;
     private $url = "" ;
     private $imagen = "" ;
     private $publicar = "S" ;
@@ -39,6 +42,36 @@ class BeanCategoria{
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function setDescripcion($descripcion_)
+    {
+        $this->descripcion = Validation::validate( $descripcion_ );
+    }
+
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function setVisible($visible_)
+    {
+        $this->visible = Validation::validate( $visible_ );
+    }
+
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+
+    public function setFechareg($fechareg_)
+    {
+        $this->fechareg = Validation::validate( $fechareg_ );
+    }
+
+    public function getFechareg()
+    {
+        return $this->fechareg;
     }
 
     public function setUrl($url_)

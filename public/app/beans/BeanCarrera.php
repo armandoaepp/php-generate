@@ -1,5 +1,12 @@
 <?php 
-# Clase Bean Generada - ByPower @armandoaepp 
+
+/**
+ * [Class Bean Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
 class BeanCarrera{
     # Constructor
     public function __construct(){}
@@ -9,7 +16,7 @@ class BeanCarrera{
     private $titulo;
     private $descripcion;
     private $slide;
-    private $imagen;
+    private $imagen = "" ;
     private $presentacion;
     private $porque;
     private $donde;
@@ -29,7 +36,7 @@ class BeanCarrera{
     private $temas;
     private $nombreseo;
     private $orden;
-    private $estado;
+    private $estado = 1 ;
     private $fecha;
 
     # METODOS
@@ -294,4 +301,3 @@ class BeanCarrera{
     }
 
 }
-?>

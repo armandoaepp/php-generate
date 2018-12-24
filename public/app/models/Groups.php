@@ -1,156 +1,139 @@
 <?php 
-# Class Model Generada - ByPower @armandaepp 
-class Groups extends ClsConexion {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+class Groups extends Connection {
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM groups";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_groups)
+  {
+    try{
+      $id = $bean_groups->getId();
+      $name = $bean_groups->getName();
+      $description = $bean_groups->getDescription();
 
-            $this->query = "SELECT * FROM groups";
+      $this->query = "INSERT INTO groups
+                      (
+                        name,
+                        description
+                      )
+                      VALUES(
+                        '$name',
+                        '$description'
+                      ); ";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-        }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Insertar
-    public function save($bean_groups)
-    {
-        try{
-            $id = $bean_groups->getId();
-            $name = $bean_groups->getName();
-            $description = $bean_groups->getDescription();
+  # Método Actualizar
+  public function update($bean_groups)
+  {
+    try{
+      $id = $bean_groups->getId();
+      $name = $bean_groups->getName();
+      $description = $bean_groups->getDescription();
 
-            $this->query = "INSERT INTO groups
-                            (
-                                name,
-                                description
-                            )
-                            VALUES(
-                                '$name',
-                                '$description'
-                            )";
+      $this->query = "UPDATE groups SET 
+                        name = '$name',
+                        description = '$description'
+                      WHERE id = '$id'
+                      LIMIT 1 ;";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
+    }catch(exception $e){
 
-         }catch(exception $e){
+      throw new Exception($e->getMessage());
 
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_groups)
-    {
-        try{
-            $id = $bean_groups->getId();
-            $name = $bean_groups->getName();
-            $description = $bean_groups->getDescription();
+  # Método Buscar por ID
+  public function find($bean_groups)
+  {
+    try{
+      $id = $bean_groups->getId();
 
-            $this->query = "UPDATE groups SET 
-                                name = '$name,
-                                description = '$description
-                            WHERE id = '$id'
-                            LIMIT 1 ";
-            $this->execute_query();
+      $this->query = "SELECT * FROM groups WHERE id = '$id' LIMIT 1; ";
 
-            $data = $this->status_exe  ;
+      $this->executeFind();
 
-            return $data;
+      $data = $this->rows ;
 
-         }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-         }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_groups)
-    {
-        try{
-            $id = $bean_groups->getId();
-            $estado = $bean_groups->getEstado();
+  # Método deleteById
+  public function deleteById($bean_groups)
+  {
+    try{
+      $id = $bean_groups->getId();
 
-            $this->query = "UPDATE groups SET 
-                                estado = '$estado'
-                            WHERE id='$id'
-                            LIMIT 1 ";
+      $this->query = "DELETE FROM groups
+                      WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-    # Método Buscar por ID
-    public function getById($bean_groups)
-    {
-        try{
-            $id = $bean_groups->getId();
-
-            $this->query = "SELECT * FROM groups WHERE id = '$id' LIMIT 1";
-
-            $this->execute_find();
-
-            $data = $this->rows ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
-
-    # Método deleteById
-    public function deleteById($bean_groups)
-    {
-        try{
-            $id = $bean_groups->getId();
-
-            $this->query = "DELETE FROM groups WHERE id = '$id' LIMIT 1";
-
-            $this->execute_query();
-
-            $data = $this->status_exe  ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

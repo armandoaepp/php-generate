@@ -1,162 +1,175 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class RedController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $red  = new Red();
+      $red  = new Red();
 
-            $data = $red->getAll();
+      $data = $red->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setRed($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $red  = new Red($this->cnx);
-
-            $bean_red = new BeanRed();
-            
-            $bean_red->setId($id);
-            $bean_red->setTitulo($titulo);
-            $bean_red->setSubtitulo($subtitulo);
-            $bean_red->setTipo($tipo);
-            $bean_red->setVacantes($vacantes);
-            $bean_red->setRequisitos($requisitos);
-            $bean_red->setConocimientos($conocimientos);
-            $bean_red->setSalario($salario);
-            $bean_red->setNombrecontacto($nombrecontacto);
-            $bean_red->setTelefonocontacto($telefonocontacto);
-            $bean_red->setEmailcontacto($emailcontacto);
-            $bean_red->setOrden($orden);
-            $bean_red->setFecha($fecha);
-            
-            $data = $red->save($bean_red) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateRed($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $red  = new Red($this->cnx);
-            $bean_red = new BeanRed();
-            
-            $bean_red->setId($id);
-            $bean_red->setTitulo($titulo);
-            $bean_red->setSubtitulo($subtitulo);
-            $bean_red->setTipo($tipo);
-            $bean_red->setVacantes($vacantes);
-            $bean_red->setRequisitos($requisitos);
-            $bean_red->setConocimientos($conocimientos);
-            $bean_red->setSalario($salario);
-            $bean_red->setNombrecontacto($nombrecontacto);
-            $bean_red->setTelefonocontacto($telefonocontacto);
-            $bean_red->setEmailcontacto($emailcontacto);
-            $bean_red->setOrden($orden);
-            $bean_red->setFecha($fecha);
+      $red  = new Red($this->cnx);
 
-            $data = $red->update($bean_red) ;
+      $bean_red = new BeanRed();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_red->setTitulo($titulo);
+      $bean_red->setSubtitulo($subtitulo);
+      $bean_red->setTipo($tipo);
+      $bean_red->setVacantes($vacantes);
+      $bean_red->setRequisitos($requisitos);
+      $bean_red->setConocimientos($conocimientos);
+      $bean_red->setSalario($salario);
+      $bean_red->setNombrecontacto($nombrecontacto);
+      $bean_red->setTelefonocontacto($telefonocontacto);
+      $bean_red->setEmailcontacto($emailcontacto);
+      $bean_red->setOrden($orden);
+      $bean_red->setFecha($fecha);
+            
+      $data = $red->save($bean_red) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $red  = new Red($this->cnx);
-            $bean_red = new BeanRed();
-            
-            $bean_red->setId($id);
-            $bean_red->setEstado($estado);
-
-            $data = $red->update($bean_red) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $red  = new Red();
+            
+      extract($params) ; 
 
-            $bean_red = new BeanRed();
+      $red  = new Red($this->cnx);
+      $bean_red = new BeanRed();
+            
+      $bean_red->setId($id);
+      $bean_red->setTitulo($titulo);
+      $bean_red->setSubtitulo($subtitulo);
+      $bean_red->setTipo($tipo);
+      $bean_red->setVacantes($vacantes);
+      $bean_red->setRequisitos($requisitos);
+      $bean_red->setConocimientos($conocimientos);
+      $bean_red->setSalario($salario);
+      $bean_red->setNombrecontacto($nombrecontacto);
+      $bean_red->setTelefonocontacto($telefonocontacto);
+      $bean_red->setEmailcontacto($emailcontacto);
+      $bean_red->setOrden($orden);
+      $bean_red->setFecha($fecha);
 
-            $bean_red->setId($id);
-
-            $data = $red->getById( $bean_red) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $red->update($bean_red) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $red  = new Red();
-
-            $bean_red = new BeanRed();
-
-            $bean_red->setId($id);
-
-            $data = $red->deleteById( $bean_red ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $red  = new Red($this->cnx);
+      $bean_red = new BeanRed();
+            
+      $bean_red->setId($id);
+      $bean_red->setEstado($estado);
+
+      $data = $red->updateEstado($bean_red) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $red  = new Red();
+
+      $bean_red = new BeanRed();
+
+      $bean_red->setId($id);
+
+      $data = $red->find( $bean_red) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $red  = new Red();
+
+      $bean_red = new BeanRed();
+
+      $bean_red->setId($id);
+
+      $data = $red->deleteById( $bean_red ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

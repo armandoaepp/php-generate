@@ -14,7 +14,7 @@
 
 ?>
 
-<?php $title_page = "slidehome" ; ?>
+<?php $title_page = "Slidehomes" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,7 +23,8 @@
     $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
     require_once "../layout/head_links.phtml";
   ?>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="plugins/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -48,64 +49,82 @@
     <div class="container py-2">
       <div class="row">
         <div class="col-12">
-          <h4 class="page-header-title">Lista de <?php echo $title_page ?>
-          </h4>
+          <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
         </div>
         <div class="col-12 mb-3">
-          <a href="admin/slidehome/slidehome.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/slidehome/slidehome.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">format_list_bulleted</i> Listar
           </a>
-          <a href="admin/slidehome/nuevo.php" class="btn btn-primary btn-sm btn-bar" role="button">
+          <a href="admin/slidehome/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
             <i class="material-icons ">insert_drive_file</i> Nuevo
           </a>
         </div>
 
         <div class="col-12">
         
-<table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-      <tr>
-         <th>Id </th>
-         <th>Titulo </th>
-         <th>Subtitulo </th>
-         <th>Descripcion </th>
-         <th>Imagen </th>
-         <th>Url </th>
-         <th>Orden </th>
-         <th>Fecha </th>
-         <th width="70"></th>
-        <th width="70"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($data as &$row) {?>
-      <tr>
-        <td> <?php echo $row["id"] ?> </td>
-        <td> <?php echo $row["titulo"] ?> </td>
-        <td> <?php echo $row["subtitulo"] ?> </td>
-        <td> <?php echo $row["descripcion"] ?> </td>
-        <td> <?php echo $row["imagen"] ?> </td>
-        <td> <?php echo $row["url"] ?> </td>
-        <td> <?php echo $row["orden"] ?> </td>
-        <td> <?php echo $row["fecha"] ?> </td>
+            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>
+                  <th width="50">Id </th>
+                  <th>Titulo </th>
+                  <th>Subtitulo </th>
+                  <th>Descripcion </th>
+                  <th>Url </th>
+                  <th>Orden </th>
+                  <th>Fecha </th>
+                  <th width="70"></th>
+                </tr>
+              </thead>
 
-        <td class="text-center">
-          <a class="btn btn-primary btn-sm lh-1 " href="admin/slidehome/editar.php?id=<?php echo $row["id"] ?>"
-            title="Editar">
-            <i class="material-icons">edit</i>
-          </a>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-sm lh-1" onclick="modalDelete(<?php echo $row["id"] ?>, `aqui va el texto`);"
-            title="Eliminar">
-            <i class="material-icons">delete</i>
-          </button>
-        </td>
-      </tr>
-      <?php }?>
-    </tbody>
+              <tbody>
+                <?php foreach ($data as &$row) {?>
 
-  </table> 
+                  <?php
+                    $classBtn = "" ;
+                    $title = "" ;
+                    if($row["publicar"] == "S"){
+                      $classBtn =  "btn-success";
+                      $title = "Desactivar" ;
+                    }
+                    else {
+                      $classBtn =  "btn-outline-success";
+                      $title = "Publicar" ;
+                    }
+
+                    /* estado */
+                    $title_estado = "" ;
+                    if($row["estado"] == 1){
+                      $title_estado = "Eliminar" ;
+                    }
+                    else {
+                      $title_estado = "Recuperar" ;
+                    }
+                  ?>
+
+                <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
+                
+                  <td> <?php echo $row["id"] ?> </td>
+                  <td> <?php echo $row["titulo"] ?> </td>
+                  <td> <?php echo $row["subtitulo"] ?> </td>
+                  <td> <?php echo $row["descripcion"] ?> </td>
+                  <td> <?php echo $row["url"] ?> </td>
+                  <td> <?php echo $row["orden"] ?> </td>
+                  <td> <?php echo $row["fecha"] ?> </td>
+
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/slidehome/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                      <i class="material-icons">delete</i>
+                    </button>
+                    <span class="sr-only"><?php echo $row["estado"] ?></span>
+                  </td>
+                </tr>
+                <?php }?>
+              </tbody>
+
+            </table> 
         </div>
 
       </div>
@@ -126,7 +145,8 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle text-uppercase">Eliminar
+            <h5 class="modal-title" id="modalTitle">
+            <span> Eliminar </span>
               <?php echo $title_page; ?>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -138,7 +158,23 @@
             <input type="hidden" name="idRowModal" id="idRowModal">
             <input type="hidden" name="accion" id="accion">
             <input type="hidden" name="publicar" id="publicar">
+            <input type="hidden" name="estado" id="estado">
             <div id="dataTextModal">
+            </div>
+
+            <div id="modalHistorial" class="d-none">
+              <div class="col-12 my-3">
+                <label for="si" class="text-bold "> Conservar en historial: </label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="historial" id="si" value="1" checked="checked">
+                  <label class="form-check-label" for="si">SI</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="historial" id="no" value="0" >
+                  <label class="form-check-label" for="no">NO</label>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -152,16 +188,14 @@
     </div>
   </form>
 
-
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  <script src="admin/js/data-table-ES.js"></script>
+  <script src="plugins/datatables/js/jquery.dataTables.min.js"></script>
+  <script src="plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="plugins/datatables/js/data-table-ES.js"></script>
 
   <script>
 
     $(document).ready(function () {
       $("#dataTableList").DataTable({
-
         "language": language,
       });
     });
@@ -169,11 +203,11 @@
     // modals
     (function ($) {
       function processFormModal(event) {
-        var params = JSON.stringify({
-          "idproducto": $("#idRowModal").val(),
-          "accion": $("#accion").val(),
-          "publicar": $("#publicar").val(),
-        });
+
+        event.preventDefault();
+        var inputs = $("#formModal").serializeFormJSON();
+        inputs.id = $("#idRowModal").val();
+        var params = JSON.stringify(inputs);
 
         $.ajax({
           url: "./app/api/slidehome/IndexSlidehome.php",
@@ -208,12 +242,32 @@
 
 
     // modal DELETE
-    function modalDelete(id, textRow) {
+    function modalDelete(id, textRow, title, estado) {
       $("#idRowModal").val(id);
       $("#accion").val("delete");
-      var text = `¿Esta seguro de eliminar  <?php echo $title_page ?>: <strong> ${textRow} </strong> ?`;
+
+
+      $("#modalHistorial").addClass("d-none");
+      $("#modalTitle span").text("Eliminar");
+
+      var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
       $("#dataTextModal").html(text);
-      $("#btn-send").text("Eliminar");
+      $("#btn-send").text(title);
+
+      $("#estado").val(estado);
+      if( estado === "0" )
+      {
+        $("#btn-send").addClass("btn-outline-danger");
+        $("#modalHistorial").addClass("d-none");
+        $("#modalHistorial").removeClass("d-block");
+
+
+      }
+      else if( estado === "1" ) {
+        $("#modalHistorial").addClass("d-block");
+      }
+      $("#btn-send").removeClass("btn-outline-danger");
+      console.log(estado);
 
       $("#myModal").modal("show");
     }
@@ -222,12 +276,22 @@
     // modal PUBLICAR
     function modalPublicar(id, textRow, title, publicar) {
       $("#idRowModal").val(id);
-      $("#accion").val("publicar");
+      $("#accion").val("publish");
       $("#publicar").val(publicar);
 
-      var text = `¿Esta seguro de ${title} la categoría: <strong> ${textRow} </strong> ?`;
+      $("#modalHistorial").addClass("d-none");
+      $("#modalTitle span").text("Publicar");
+
+      var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
       $("#dataTextModal").html(text);
       $("#btn-send").text(title);
+
+      $("#btn-send").removeClass("btn-outline-success");
+
+      if( publicar.toLowerCase() === "n" )
+      {
+        $("#btn-send").addClass("btn-outline-success");
+      }
 
       $("#myModal").modal("show");
     }

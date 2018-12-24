@@ -1,148 +1,161 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class BuzonContactoController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $buzon_contacto  = new BuzonContacto();
+      $buzon_contacto  = new BuzonContacto();
 
-            $data = $buzon_contacto->getAll();
+      $data = $buzon_contacto->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setBuzonContacto($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon_contacto  = new BuzonContacto($this->cnx);
-
-            $bean_buzon_contacto = new BeanBuzonContacto();
-            
-            $bean_buzon_contacto->setId($id);
-            $bean_buzon_contacto->setNombre($nombre);
-            $bean_buzon_contacto->setDni($dni);
-            $bean_buzon_contacto->setEmail($email);
-            $bean_buzon_contacto->setTelefono($telefono);
-            $bean_buzon_contacto->setFecha($fecha);
-            
-            $data = $buzon_contacto->save($bean_buzon_contacto) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateBuzonContacto($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $buzon_contacto  = new BuzonContacto($this->cnx);
-            $bean_buzon_contacto = new BeanBuzonContacto();
-            
-            $bean_buzon_contacto->setId($id);
-            $bean_buzon_contacto->setNombre($nombre);
-            $bean_buzon_contacto->setDni($dni);
-            $bean_buzon_contacto->setEmail($email);
-            $bean_buzon_contacto->setTelefono($telefono);
-            $bean_buzon_contacto->setFecha($fecha);
+      $buzon_contacto  = new BuzonContacto($this->cnx);
 
-            $data = $buzon_contacto->update($bean_buzon_contacto) ;
+      $bean_buzon_contacto = new BeanBuzonContacto();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_buzon_contacto->setNombre($nombre);
+      $bean_buzon_contacto->setDni($dni);
+      $bean_buzon_contacto->setEmail($email);
+      $bean_buzon_contacto->setTelefono($telefono);
+      $bean_buzon_contacto->setFecha($fecha);
+            
+      $data = $buzon_contacto->save($bean_buzon_contacto) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon_contacto  = new BuzonContacto($this->cnx);
-            $bean_buzon_contacto = new BeanBuzonContacto();
-            
-            $bean_buzon_contacto->setId($id);
-            $bean_buzon_contacto->setEstado($estado);
-
-            $data = $buzon_contacto->update($bean_buzon_contacto) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $buzon_contacto  = new BuzonContacto();
+            
+      extract($params) ; 
 
-            $bean_buzon_contacto = new BeanBuzonContacto();
+      $buzon_contacto  = new BuzonContacto($this->cnx);
+      $bean_buzon_contacto = new BeanBuzonContacto();
+            
+      $bean_buzon_contacto->setId($id);
+      $bean_buzon_contacto->setNombre($nombre);
+      $bean_buzon_contacto->setDni($dni);
+      $bean_buzon_contacto->setEmail($email);
+      $bean_buzon_contacto->setTelefono($telefono);
+      $bean_buzon_contacto->setFecha($fecha);
 
-            $bean_buzon_contacto->setId($id);
-
-            $data = $buzon_contacto->getById( $bean_buzon_contacto) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $buzon_contacto->update($bean_buzon_contacto) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $buzon_contacto  = new BuzonContacto();
-
-            $bean_buzon_contacto = new BeanBuzonContacto();
-
-            $bean_buzon_contacto->setId($id);
-
-            $data = $buzon_contacto->deleteById( $bean_buzon_contacto ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $buzon_contacto  = new BuzonContacto($this->cnx);
+      $bean_buzon_contacto = new BeanBuzonContacto();
+            
+      $bean_buzon_contacto->setId($id);
+      $bean_buzon_contacto->setEstado($estado);
+
+      $data = $buzon_contacto->updateEstado($bean_buzon_contacto) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $buzon_contacto  = new BuzonContacto();
+
+      $bean_buzon_contacto = new BeanBuzonContacto();
+
+      $bean_buzon_contacto->setId($id);
+
+      $data = $buzon_contacto->find( $bean_buzon_contacto) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $buzon_contacto  = new BuzonContacto();
+
+      $bean_buzon_contacto = new BeanBuzonContacto();
+
+      $bean_buzon_contacto->setId($id);
+
+      $data = $buzon_contacto->deleteById( $bean_buzon_contacto ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

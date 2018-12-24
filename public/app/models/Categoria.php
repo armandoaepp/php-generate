@@ -42,6 +42,9 @@ class Categoria extends Connection {
 
       $idcategoria = $bean_categoria->getIdcategoria();
       $nombre = $bean_categoria->getNombre();
+      $descripcion = $bean_categoria->getDescripcion();
+      $visible = $bean_categoria->getVisible();
+      $fechareg = $bean_categoria->getFechareg();
       $url = $bean_categoria->getUrl();
       $imagen = $bean_categoria->getImagen();
       $publicar = $bean_categoria->getPublicar();
@@ -51,6 +54,9 @@ class Categoria extends Connection {
       $this->query = "INSERT INTO categoria
                       (
                         nombre,
+                        descripcion,
+                        visible,
+                        fechareg,
                         url,
                         imagen,
                         publicar,
@@ -59,6 +65,9 @@ class Categoria extends Connection {
                       )
                       VALUES(
                         '$nombre',
+                        '$descripcion',
+                        '$visible',
+                        '$fechareg',
                         '$url',
                         '$imagen',
                         '$publicar',
@@ -86,12 +95,18 @@ class Categoria extends Connection {
     try{
       $idcategoria = $bean_categoria->getIdcategoria();
       $nombre = $bean_categoria->getNombre();
+      $descripcion = $bean_categoria->getDescripcion();
+      $visible = $bean_categoria->getVisible();
+      $fechareg = $bean_categoria->getFechareg();
       $url = $bean_categoria->getUrl();
       $imagen = $bean_categoria->getImagen();
       $publicar = $bean_categoria->getPublicar();
 
       $this->query = "UPDATE categoria SET 
                         nombre = '$nombre',
+                        descripcion = '$descripcion',
+                        visible = '$visible',
+                        fechareg = '$fechareg',
                         url = '$url',
                         imagen = '$imagen',
                         publicar = '$publicar'

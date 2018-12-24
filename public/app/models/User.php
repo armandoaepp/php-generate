@@ -1,176 +1,182 @@
 <?php 
-# Class Model Generada - ByPower @armandaepp 
-class User extends ClsConexion {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+class User extends Connection {
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM user";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_user)
+  {
+    try{
+      $bean_user->setCreatedUp( HelperDate::timestampsBd() );
 
-            $this->query = "SELECT * FROM user";
+      $user_id = $bean_user->getUserId();
+      $nombre = $bean_user->getNombre();
+      $apellidos = $bean_user->getApellidos();
+      $email = $bean_user->getEmail();
+      $password = $bean_user->getPassword();
+      $estado = $bean_user->getEstado();
+      $created_up = $bean_user->getCreatedUp();
 
-            $this->execute_query();
+      $this->query = "INSERT INTO user
+                      (
+                        nombre,
+                        apellidos,
+                        email,
+                        password,
+                        estado,
+                        created_up
+                      )
+                      VALUES(
+                        '$nombre',
+                        '$apellidos',
+                        '$email',
+                        '$password',
+                        '$estado',
+                        $created_up
+                      ); ";
 
-            $data = $this->rows ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-        }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
 
-        }
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Insertar
-    public function save($bean_user)
-    {
-        try{
-            $user_id = $bean_user->getUserId();
-            $nombre = $bean_user->getNombre();
-            $apellidos = $bean_user->getApellidos();
-            $email = $bean_user->getEmail();
-            $password = $bean_user->getPassword();
-            $estado = $bean_user->getEstado();
-            $created_up = $bean_user->getCreatedUp();
+  # Método Actualizar
+  public function update($bean_user)
+  {
+    try{
+      $user_id = $bean_user->getUserId();
+      $nombre = $bean_user->getNombre();
+      $apellidos = $bean_user->getApellidos();
+      $email = $bean_user->getEmail();
+      $password = $bean_user->getPassword();
 
-            $this->query = "INSERT INTO user
-                            (
-                                nombre,
-                                apellidos,
-                                email,
-                                password,
-                                estado,
-                                created_up
-                            )
-                            VALUES(
-                                '$nombre',
-                                '$apellidos',
-                                '$email',
-                                '$password',
-                                '$estado',
-                                '$created_up'
-                            )";
+      $this->query = "UPDATE user SET 
+                        nombre = '$nombre',
+                        apellidos = '$apellidos',
+                        email = '$email',
+                        password = '$password'
+                      WHERE user_id = '$user_id'
+                      LIMIT 1 ;";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
+    }catch(exception $e){
 
-         }catch(exception $e){
+      throw new Exception($e->getMessage());
 
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_user)
-    {
-        try{
-            $user_id = $bean_user->getUserId();
-            $nombre = $bean_user->getNombre();
-            $apellidos = $bean_user->getApellidos();
-            $email = $bean_user->getEmail();
-            $password = $bean_user->getPassword();
-            $estado = $bean_user->getEstado();
-            $created_up = $bean_user->getCreatedUp();
+  # Método Eliminar(Actualizar Estado)
+  public function updateEstado($bean_user)
+  {
+    try{
+      $user_id = $bean_user->getUserId();
+      $estado = $bean_user->getEstado();
 
-            $this->query = "UPDATE user SET 
-                                nombre = '$nombre,
-                                apellidos = '$apellidos,
-                                email = '$email,
-                                password = '$password,
-                                estado = '$estado,
-                                created_up = '$created_up
-                            WHERE user_id = '$user_id'
-                            LIMIT 1 ";
-            $this->execute_query();
+      $this->query = "UPDATE user SET 
+                        estado = '$estado'
+                      WHERE user_id='$user_id'
+                      LIMIT 1 ; ";
 
-            $data = $this->status_exe  ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-         }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-         }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_user)
-    {
-        try{
-            $user_id = $bean_user->getUserId();
-            $estado = $bean_user->getEstado();
+  # Método Buscar por ID
+  public function find($bean_user)
+  {
+    try{
+      $user_id = $bean_user->getUserId();
 
-            $this->query = "UPDATE user SET 
-                                estado = '$estado'
-                            WHERE user_id='$user_id'
-                            LIMIT 1 ";
+      $this->query = "SELECT * FROM user WHERE user_id = '$user_id' LIMIT 1; ";
 
-            $this->execute_query();
+      $this->executeFind();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método Buscar por ID
-    public function getById($bean_user)
-    {
-        try{
-            $user_id = $bean_user->getUserId();
+  # Método deleteById
+  public function deleteById($bean_user)
+  {
+    try{
+      $user_id = $bean_user->getUserId();
 
-            $this->query = "SELECT * FROM user WHERE user_id = '$user_id' LIMIT 1";
+      $this->query = "DELETE FROM user
+                      WHERE user_id = '$user_id' LIMIT 1; ";
 
-            $this->execute_find();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-    # Método deleteById
-    public function deleteById($bean_user)
-    {
-        try{
-            $user_id = $bean_user->getUserId();
-
-            $this->query = "DELETE FROM user WHERE user_id = '$user_id' LIMIT 1";
-
-            $this->execute_query();
-
-            $data = $this->status_exe  ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

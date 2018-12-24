@@ -1,162 +1,175 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class TrasladosController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $traslados  = new Traslados();
+      $traslados  = new Traslados();
 
-            $data = $traslados->getAll();
+      $data = $traslados->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setTraslados($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $traslados  = new Traslados($this->cnx);
-
-            $bean_traslados = new BeanTraslados();
-            
-            $bean_traslados->setId($id);
-            $bean_traslados->setTitulo($titulo);
-            $bean_traslados->setImagen($imagen);
-            $bean_traslados->setPresentacion($presentacion);
-            $bean_traslados->setItem1($item1);
-            $bean_traslados->setItem2($item2);
-            $bean_traslados->setItem3($item3);
-            $bean_traslados->setItem4($item4);
-            $bean_traslados->setDescitem1($descitem1);
-            $bean_traslados->setDescitem2($descitem2);
-            $bean_traslados->setDescitem3($descitem3);
-            $bean_traslados->setDescitem4($descitem4);
-            $bean_traslados->setPromocion($promocion);
-            
-            $data = $traslados->save($bean_traslados) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateTraslados($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $traslados  = new Traslados($this->cnx);
-            $bean_traslados = new BeanTraslados();
-            
-            $bean_traslados->setId($id);
-            $bean_traslados->setTitulo($titulo);
-            $bean_traslados->setImagen($imagen);
-            $bean_traslados->setPresentacion($presentacion);
-            $bean_traslados->setItem1($item1);
-            $bean_traslados->setItem2($item2);
-            $bean_traslados->setItem3($item3);
-            $bean_traslados->setItem4($item4);
-            $bean_traslados->setDescitem1($descitem1);
-            $bean_traslados->setDescitem2($descitem2);
-            $bean_traslados->setDescitem3($descitem3);
-            $bean_traslados->setDescitem4($descitem4);
-            $bean_traslados->setPromocion($promocion);
+      $traslados  = new Traslados($this->cnx);
 
-            $data = $traslados->update($bean_traslados) ;
+      $bean_traslados = new BeanTraslados();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_traslados->setTitulo($titulo);
+      $bean_traslados->setImagen($imagen);
+      $bean_traslados->setPresentacion($presentacion);
+      $bean_traslados->setItem1($item1);
+      $bean_traslados->setItem2($item2);
+      $bean_traslados->setItem3($item3);
+      $bean_traslados->setItem4($item4);
+      $bean_traslados->setDescitem1($descitem1);
+      $bean_traslados->setDescitem2($descitem2);
+      $bean_traslados->setDescitem3($descitem3);
+      $bean_traslados->setDescitem4($descitem4);
+      $bean_traslados->setPromocion($promocion);
+            
+      $data = $traslados->save($bean_traslados) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $traslados  = new Traslados($this->cnx);
-            $bean_traslados = new BeanTraslados();
-            
-            $bean_traslados->setId($id);
-            $bean_traslados->setEstado($estado);
-
-            $data = $traslados->update($bean_traslados) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $traslados  = new Traslados();
+            
+      extract($params) ; 
 
-            $bean_traslados = new BeanTraslados();
+      $traslados  = new Traslados($this->cnx);
+      $bean_traslados = new BeanTraslados();
+            
+      $bean_traslados->setId($id);
+      $bean_traslados->setTitulo($titulo);
+      $bean_traslados->setImagen($imagen);
+      $bean_traslados->setPresentacion($presentacion);
+      $bean_traslados->setItem1($item1);
+      $bean_traslados->setItem2($item2);
+      $bean_traslados->setItem3($item3);
+      $bean_traslados->setItem4($item4);
+      $bean_traslados->setDescitem1($descitem1);
+      $bean_traslados->setDescitem2($descitem2);
+      $bean_traslados->setDescitem3($descitem3);
+      $bean_traslados->setDescitem4($descitem4);
+      $bean_traslados->setPromocion($promocion);
 
-            $bean_traslados->setId($id);
-
-            $data = $traslados->getById( $bean_traslados) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $traslados->update($bean_traslados) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $traslados  = new Traslados();
-
-            $bean_traslados = new BeanTraslados();
-
-            $bean_traslados->setId($id);
-
-            $data = $traslados->deleteById( $bean_traslados ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $traslados  = new Traslados($this->cnx);
+      $bean_traslados = new BeanTraslados();
+            
+      $bean_traslados->setId($id);
+      $bean_traslados->setEstado($estado);
+
+      $data = $traslados->updateEstado($bean_traslados) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $traslados  = new Traslados();
+
+      $bean_traslados = new BeanTraslados();
+
+      $bean_traslados->setId($id);
+
+      $data = $traslados->find( $bean_traslados) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $traslados  = new Traslados();
+
+      $bean_traslados = new BeanTraslados();
+
+      $bean_traslados->setId($id);
+
+      $data = $traslados->deleteById( $bean_traslados ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

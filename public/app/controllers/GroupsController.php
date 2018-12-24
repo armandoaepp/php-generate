@@ -1,142 +1,155 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class GroupsController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $groups  = new Groups();
+      $groups  = new Groups();
 
-            $data = $groups->getAll();
+      $data = $groups->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setGroups($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $groups  = new Groups($this->cnx);
-
-            $bean_groups = new BeanGroups();
-            
-            $bean_groups->setId($id);
-            $bean_groups->setName($name);
-            $bean_groups->setDescription($description);
-            
-            $data = $groups->save($bean_groups) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateGroups($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $groups  = new Groups($this->cnx);
-            $bean_groups = new BeanGroups();
-            
-            $bean_groups->setId($id);
-            $bean_groups->setName($name);
-            $bean_groups->setDescription($description);
+      $groups  = new Groups($this->cnx);
 
-            $data = $groups->update($bean_groups) ;
+      $bean_groups = new BeanGroups();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_groups->setName($name);
+      $bean_groups->setDescription($description);
+            
+      $data = $groups->save($bean_groups) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $groups  = new Groups($this->cnx);
-            $bean_groups = new BeanGroups();
-            
-            $bean_groups->setId($id);
-            $bean_groups->setEstado($estado);
-
-            $data = $groups->update($bean_groups) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $groups  = new Groups();
+            
+      extract($params) ; 
 
-            $bean_groups = new BeanGroups();
+      $groups  = new Groups($this->cnx);
+      $bean_groups = new BeanGroups();
+            
+      $bean_groups->setId($id);
+      $bean_groups->setName($name);
+      $bean_groups->setDescription($description);
 
-            $bean_groups->setId($id);
-
-            $data = $groups->getById( $bean_groups) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $groups->update($bean_groups) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $groups  = new Groups();
-
-            $bean_groups = new BeanGroups();
-
-            $bean_groups->setId($id);
-
-            $data = $groups->deleteById( $bean_groups ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $groups  = new Groups($this->cnx);
+      $bean_groups = new BeanGroups();
+            
+      $bean_groups->setId($id);
+      $bean_groups->setEstado($estado);
+
+      $data = $groups->updateEstado($bean_groups) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $groups  = new Groups();
+
+      $bean_groups = new BeanGroups();
+
+      $bean_groups->setId($id);
+
+      $data = $groups->find( $bean_groups) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $groups  = new Groups();
+
+      $bean_groups = new BeanGroups();
+
+      $bean_groups->setId($id);
+
+      $data = $groups->deleteById( $bean_groups ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

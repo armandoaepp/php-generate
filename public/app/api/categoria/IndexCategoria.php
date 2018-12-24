@@ -52,6 +52,9 @@ switch($evento)
         
       $idcategoria = $inputs->idcategoria;
       $nombre = $inputs->nombre;
+      $descripcion = $inputs->descripcion;
+      $visible = $inputs->visible;
+      $fechareg = $inputs->fechareg;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
       $publicar = $inputs->publicar;
@@ -60,6 +63,9 @@ switch($evento)
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'nombre'=> $nombre,
+                'descripcion'=> $descripcion,
+                'visible'=> $visible,
+                'fechareg'=> $fechareg,
                 'url'=> $url,
                 'imagen'=> $imagen,
                 'publicar'=> $publicar,
@@ -67,7 +73,7 @@ switch($evento)
               ) ; 
         
       $data = $categoria_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -93,6 +99,9 @@ switch($evento)
         
       $idcategoria = $inputs->idcategoria;
       $nombre = $inputs->nombre;
+      $descripcion = $inputs->descripcion;
+      $visible = $inputs->visible;
+      $fechareg = $inputs->fechareg;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
       $publicar = $inputs->publicar;
@@ -101,6 +110,9 @@ switch($evento)
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'nombre'=> $nombre,
+                'descripcion'=> $descripcion,
+                'visible'=> $visible,
+                'fechareg'=> $fechareg,
                 'url'=> $url,
                 'imagen'=> $imagen,
                 'publicar'=> $publicar,
@@ -108,7 +120,7 @@ switch($evento)
               ) ; 
         
       $data = $categoria_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);

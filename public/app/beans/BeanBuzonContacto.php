@@ -1,5 +1,12 @@
 <?php 
-# Clase Bean Generada - ByPower @armandoaepp 
+
+/**
+ * [Class Bean Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
 class BeanBuzonContacto{
     # Constructor
     public function __construct(){}
@@ -74,4 +81,3 @@ class BeanBuzonContacto{
     }
 
 }
-?>

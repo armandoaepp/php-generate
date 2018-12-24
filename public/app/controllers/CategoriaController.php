@@ -23,6 +23,8 @@
       $categoria  = new Categoria();
 
       $data = $categoria->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
       return $data ;
     }
@@ -44,6 +46,9 @@
       $bean_categoria = new BeanCategoria();
             
       $bean_categoria->setNombre($nombre);
+      $bean_categoria->setDescripcion($descripcion);
+      $bean_categoria->setVisible($visible);
+      $bean_categoria->setFechareg($fechareg);
       $bean_categoria->setUrl($url);
       $bean_categoria->setImagen($imagen);
       $bean_categoria->setPublicar($publicar);
@@ -70,6 +75,9 @@
             
       $bean_categoria->setIdcategoria($idcategoria);
       $bean_categoria->setNombre($nombre);
+      $bean_categoria->setDescripcion($descripcion);
+      $bean_categoria->setVisible($visible);
+      $bean_categoria->setFechareg($fechareg);
       $bean_categoria->setUrl($url);
       $bean_categoria->setImagen($imagen);
       $bean_categoria->setPublicar($publicar);
@@ -118,6 +126,8 @@
       $bean_categoria->setIdcategoria($id);
 
       $data = $categoria->find( $bean_categoria) ;
+      $data = Serialize::unSerializeArray($data);
+        
 
       return $data;
 
@@ -189,6 +199,8 @@
 
       $data = $categoria->getPublished($bean_categoria) ;
       
+      $data = Serialize::unSerializeArray($data);
+        
       return $data;
     }
     catch (Exception $e)

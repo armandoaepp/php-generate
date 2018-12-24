@@ -14,6 +14,9 @@
   $idcategoria = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $nombre   = $_POST["nombre"] ;
+  $descripcion   = $_POST["descripcion"] ;
+  $visible   = $_POST["visible"] ;
+  $fechareg   = $_POST["fechareg"] ;
   $publicar   = $_POST["publicar"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
@@ -30,6 +33,9 @@
   $params = array(
     "idcategoria"   => $idcategoria,
     "nombre"   => $nombre,
+    "descripcion"   => $descripcion,
+    "visible"   => $visible,
+    "fechareg"   => $fechareg,
     "publicar"   => $publicar,
     "imagen"  => $imagen,
     "url"  => $url,

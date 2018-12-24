@@ -1,152 +1,165 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class SlidehomeController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $slidehome  = new Slidehome();
+      $slidehome  = new Slidehome();
 
-            $data = $slidehome->getAll();
+      $data = $slidehome->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setSlidehome($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $slidehome  = new Slidehome($this->cnx);
-
-            $bean_slidehome = new BeanSlidehome();
-            
-            $bean_slidehome->setId($id);
-            $bean_slidehome->setTitulo($titulo);
-            $bean_slidehome->setSubtitulo($subtitulo);
-            $bean_slidehome->setDescripcion($descripcion);
-            $bean_slidehome->setImagen($imagen);
-            $bean_slidehome->setUrl($url);
-            $bean_slidehome->setOrden($orden);
-            $bean_slidehome->setFecha($fecha);
-            
-            $data = $slidehome->save($bean_slidehome) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateSlidehome($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $slidehome  = new Slidehome($this->cnx);
-            $bean_slidehome = new BeanSlidehome();
-            
-            $bean_slidehome->setId($id);
-            $bean_slidehome->setTitulo($titulo);
-            $bean_slidehome->setSubtitulo($subtitulo);
-            $bean_slidehome->setDescripcion($descripcion);
-            $bean_slidehome->setImagen($imagen);
-            $bean_slidehome->setUrl($url);
-            $bean_slidehome->setOrden($orden);
-            $bean_slidehome->setFecha($fecha);
+      $slidehome  = new Slidehome($this->cnx);
 
-            $data = $slidehome->update($bean_slidehome) ;
+      $bean_slidehome = new BeanSlidehome();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_slidehome->setTitulo($titulo);
+      $bean_slidehome->setSubtitulo($subtitulo);
+      $bean_slidehome->setDescripcion($descripcion);
+      $bean_slidehome->setImagen($imagen);
+      $bean_slidehome->setUrl($url);
+      $bean_slidehome->setOrden($orden);
+      $bean_slidehome->setFecha($fecha);
+            
+      $data = $slidehome->save($bean_slidehome) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $slidehome  = new Slidehome($this->cnx);
-            $bean_slidehome = new BeanSlidehome();
-            
-            $bean_slidehome->setId($id);
-            $bean_slidehome->setEstado($estado);
-
-            $data = $slidehome->update($bean_slidehome) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $slidehome  = new Slidehome();
+            
+      extract($params) ; 
 
-            $bean_slidehome = new BeanSlidehome();
+      $slidehome  = new Slidehome($this->cnx);
+      $bean_slidehome = new BeanSlidehome();
+            
+      $bean_slidehome->setId($id);
+      $bean_slidehome->setTitulo($titulo);
+      $bean_slidehome->setSubtitulo($subtitulo);
+      $bean_slidehome->setDescripcion($descripcion);
+      $bean_slidehome->setImagen($imagen);
+      $bean_slidehome->setUrl($url);
+      $bean_slidehome->setOrden($orden);
+      $bean_slidehome->setFecha($fecha);
 
-            $bean_slidehome->setId($id);
-
-            $data = $slidehome->getById( $bean_slidehome) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $slidehome->update($bean_slidehome) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $slidehome  = new Slidehome();
-
-            $bean_slidehome = new BeanSlidehome();
-
-            $bean_slidehome->setId($id);
-
-            $data = $slidehome->deleteById( $bean_slidehome ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $slidehome  = new Slidehome($this->cnx);
+      $bean_slidehome = new BeanSlidehome();
+            
+      $bean_slidehome->setId($id);
+      $bean_slidehome->setEstado($estado);
+
+      $data = $slidehome->updateEstado($bean_slidehome) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $slidehome  = new Slidehome();
+
+      $bean_slidehome = new BeanSlidehome();
+
+      $bean_slidehome->setId($id);
+
+      $data = $slidehome->find( $bean_slidehome) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $slidehome  = new Slidehome();
+
+      $bean_slidehome = new BeanSlidehome();
+
+      $bean_slidehome->setId($id);
+
+      $data = $slidehome->deleteById( $bean_slidehome ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

@@ -1,150 +1,163 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class FacultadController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $facultad  = new Facultad();
+      $facultad  = new Facultad();
 
-            $data = $facultad->getAll();
+      $data = $facultad->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setFacultad($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $facultad  = new Facultad($this->cnx);
-
-            $bean_facultad = new BeanFacultad();
-            
-            $bean_facultad->setId($id);
-            $bean_facultad->setTitulo($titulo);
-            $bean_facultad->setDescripcion($descripcion);
-            $bean_facultad->setImagen($imagen);
-            $bean_facultad->setOrden($orden);
-            $bean_facultad->setFecha($fecha);
-            $bean_facultad->setActivo($activo);
-            
-            $data = $facultad->save($bean_facultad) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateFacultad($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $facultad  = new Facultad($this->cnx);
-            $bean_facultad = new BeanFacultad();
-            
-            $bean_facultad->setId($id);
-            $bean_facultad->setTitulo($titulo);
-            $bean_facultad->setDescripcion($descripcion);
-            $bean_facultad->setImagen($imagen);
-            $bean_facultad->setOrden($orden);
-            $bean_facultad->setFecha($fecha);
-            $bean_facultad->setActivo($activo);
+      $facultad  = new Facultad($this->cnx);
 
-            $data = $facultad->update($bean_facultad) ;
+      $bean_facultad = new BeanFacultad();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_facultad->setTitulo($titulo);
+      $bean_facultad->setDescripcion($descripcion);
+      $bean_facultad->setImagen($imagen);
+      $bean_facultad->setOrden($orden);
+      $bean_facultad->setFecha($fecha);
+      $bean_facultad->setActivo($activo);
+            
+      $data = $facultad->save($bean_facultad) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $facultad  = new Facultad($this->cnx);
-            $bean_facultad = new BeanFacultad();
-            
-            $bean_facultad->setId($id);
-            $bean_facultad->setEstado($estado);
-
-            $data = $facultad->update($bean_facultad) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $facultad  = new Facultad();
+            
+      extract($params) ; 
 
-            $bean_facultad = new BeanFacultad();
+      $facultad  = new Facultad($this->cnx);
+      $bean_facultad = new BeanFacultad();
+            
+      $bean_facultad->setId($id);
+      $bean_facultad->setTitulo($titulo);
+      $bean_facultad->setDescripcion($descripcion);
+      $bean_facultad->setImagen($imagen);
+      $bean_facultad->setOrden($orden);
+      $bean_facultad->setFecha($fecha);
+      $bean_facultad->setActivo($activo);
 
-            $bean_facultad->setId($id);
-
-            $data = $facultad->getById( $bean_facultad) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $facultad->update($bean_facultad) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $facultad  = new Facultad();
-
-            $bean_facultad = new BeanFacultad();
-
-            $bean_facultad->setId($id);
-
-            $data = $facultad->deleteById( $bean_facultad ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $facultad  = new Facultad($this->cnx);
+      $bean_facultad = new BeanFacultad();
+            
+      $bean_facultad->setId($id);
+      $bean_facultad->setEstado($estado);
+
+      $data = $facultad->updateEstado($bean_facultad) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $facultad  = new Facultad();
+
+      $bean_facultad = new BeanFacultad();
+
+      $bean_facultad->setId($id);
+
+      $data = $facultad->find( $bean_facultad) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $facultad  = new Facultad();
+
+      $bean_facultad = new BeanFacultad();
+
+      $bean_facultad->setId($id);
+
+      $data = $facultad->deleteById( $bean_facultad ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

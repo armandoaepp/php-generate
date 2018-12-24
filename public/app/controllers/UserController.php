@@ -1,148 +1,159 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class UserController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $user  = new User();
+      $user  = new User();
 
-            $data = $user->getAll();
+      $data = $user->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setUser($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $user  = new User($this->cnx);
-
-            $bean_user = new BeanUser();
-            
-            $bean_user->setUserId($user_id);
-            $bean_user->setNombre($nombre);
-            $bean_user->setApellidos($apellidos);
-            $bean_user->setEmail($email);
-            $bean_user->setPassword($password);
-            $bean_user->setCreatedUp($created_up);
-            
-            $data = $user->save($bean_user) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateUser($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $user  = new User($this->cnx);
-            $bean_user = new BeanUser();
-            
-            $bean_user->setUserId($user_id);
-            $bean_user->setNombre($nombre);
-            $bean_user->setApellidos($apellidos);
-            $bean_user->setEmail($email);
-            $bean_user->setPassword($password);
-            $bean_user->setCreatedUp($created_up);
+      $user  = new User($this->cnx);
 
-            $data = $user->update($bean_user) ;
+      $bean_user = new BeanUser();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_user->setNombre($nombre);
+      $bean_user->setApellidos($apellidos);
+      $bean_user->setEmail($email);
+      $bean_user->setPassword($password);
+            
+      $data = $user->save($bean_user) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $user  = new User($this->cnx);
-            $bean_user = new BeanUser();
-            
-            $bean_user->setUserId($user_id);
-            $bean_user->setEstado($estado);
-
-            $data = $user->update($bean_user) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $user  = new User();
+            
+      extract($params) ; 
 
-            $bean_user = new BeanUser();
+      $user  = new User($this->cnx);
+      $bean_user = new BeanUser();
+            
+      $bean_user->setUserId($user_id);
+      $bean_user->setNombre($nombre);
+      $bean_user->setApellidos($apellidos);
+      $bean_user->setEmail($email);
+      $bean_user->setPassword($password);
 
-            $bean_user->setUserId($id);
-
-            $data = $user->getById( $bean_user) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $user->update($bean_user) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $user  = new User();
-
-            $bean_user = new BeanUser();
-
-            $bean_user->setUserId($id);
-
-            $data = $user->deleteById( $bean_user ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $user  = new User($this->cnx);
+      $bean_user = new BeanUser();
+            
+      $bean_user->setUserId($user_id);
+      $bean_user->setEstado($estado);
+
+      $data = $user->updateEstado($bean_user) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $user  = new User();
+
+      $bean_user = new BeanUser();
+
+      $bean_user->setUserId($id);
+
+      $data = $user->find( $bean_user) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $user  = new User();
+
+      $bean_user = new BeanUser();
+
+      $bean_user->setUserId($user_id);
+
+      $data = $user->deleteById( $bean_user ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

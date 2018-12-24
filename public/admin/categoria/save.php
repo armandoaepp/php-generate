@@ -12,6 +12,9 @@
   $categoria_controller = new CategoriaController();
 
   $nombre   = $_POST["nombre"] ;
+  $descripcion   = $_POST["descripcion"] ;
+  $visible   = $_POST["visible"] ;
+  $fechareg   = $_POST["fechareg"] ;
   $publicar   = $_POST["publicar"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -22,6 +25,9 @@
 
   $params = array(
     "nombre"   => $nombre,
+    "descripcion"   => $descripcion,
+    "visible"   => $visible,
+    "fechareg"   => $fechareg,
     "publicar"   => $publicar,
     "imagen"  => $imagen,
     "url"  => $url,

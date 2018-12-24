@@ -1,148 +1,161 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class BuzonRetiroController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $buzon_retiro  = new BuzonRetiro();
+      $buzon_retiro  = new BuzonRetiro();
 
-            $data = $buzon_retiro->getAll();
+      $data = $buzon_retiro->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setBuzonRetiro($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon_retiro  = new BuzonRetiro($this->cnx);
-
-            $bean_buzon_retiro = new BeanBuzonRetiro();
-            
-            $bean_buzon_retiro->setId($id);
-            $bean_buzon_retiro->setNombres($nombres);
-            $bean_buzon_retiro->setTituloRetiro($titulo_retiro);
-            $bean_buzon_retiro->setEmail($email);
-            $bean_buzon_retiro->setMensaje($mensaje);
-            $bean_buzon_retiro->setFecha($fecha);
-            
-            $data = $buzon_retiro->save($bean_buzon_retiro) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateBuzonRetiro($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $buzon_retiro  = new BuzonRetiro($this->cnx);
-            $bean_buzon_retiro = new BeanBuzonRetiro();
-            
-            $bean_buzon_retiro->setId($id);
-            $bean_buzon_retiro->setNombres($nombres);
-            $bean_buzon_retiro->setTituloRetiro($titulo_retiro);
-            $bean_buzon_retiro->setEmail($email);
-            $bean_buzon_retiro->setMensaje($mensaje);
-            $bean_buzon_retiro->setFecha($fecha);
+      $buzon_retiro  = new BuzonRetiro($this->cnx);
 
-            $data = $buzon_retiro->update($bean_buzon_retiro) ;
+      $bean_buzon_retiro = new BeanBuzonRetiro();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_buzon_retiro->setNombres($nombres);
+      $bean_buzon_retiro->setTituloRetiro($titulo_retiro);
+      $bean_buzon_retiro->setEmail($email);
+      $bean_buzon_retiro->setMensaje($mensaje);
+      $bean_buzon_retiro->setFecha($fecha);
+            
+      $data = $buzon_retiro->save($bean_buzon_retiro) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon_retiro  = new BuzonRetiro($this->cnx);
-            $bean_buzon_retiro = new BeanBuzonRetiro();
-            
-            $bean_buzon_retiro->setId($id);
-            $bean_buzon_retiro->setEstado($estado);
-
-            $data = $buzon_retiro->update($bean_buzon_retiro) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $buzon_retiro  = new BuzonRetiro();
+            
+      extract($params) ; 
 
-            $bean_buzon_retiro = new BeanBuzonRetiro();
+      $buzon_retiro  = new BuzonRetiro($this->cnx);
+      $bean_buzon_retiro = new BeanBuzonRetiro();
+            
+      $bean_buzon_retiro->setId($id);
+      $bean_buzon_retiro->setNombres($nombres);
+      $bean_buzon_retiro->setTituloRetiro($titulo_retiro);
+      $bean_buzon_retiro->setEmail($email);
+      $bean_buzon_retiro->setMensaje($mensaje);
+      $bean_buzon_retiro->setFecha($fecha);
 
-            $bean_buzon_retiro->setId($id);
-
-            $data = $buzon_retiro->getById( $bean_buzon_retiro) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $buzon_retiro->update($bean_buzon_retiro) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $buzon_retiro  = new BuzonRetiro();
-
-            $bean_buzon_retiro = new BeanBuzonRetiro();
-
-            $bean_buzon_retiro->setId($id);
-
-            $data = $buzon_retiro->deleteById( $bean_buzon_retiro ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $buzon_retiro  = new BuzonRetiro($this->cnx);
+      $bean_buzon_retiro = new BeanBuzonRetiro();
+            
+      $bean_buzon_retiro->setId($id);
+      $bean_buzon_retiro->setEstado($estado);
+
+      $data = $buzon_retiro->updateEstado($bean_buzon_retiro) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $buzon_retiro  = new BuzonRetiro();
+
+      $bean_buzon_retiro = new BeanBuzonRetiro();
+
+      $bean_buzon_retiro->setId($id);
+
+      $data = $buzon_retiro->find( $bean_buzon_retiro) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $buzon_retiro  = new BuzonRetiro();
+
+      $bean_buzon_retiro = new BeanBuzonRetiro();
+
+      $bean_buzon_retiro->setId($id);
+
+      $data = $buzon_retiro->deleteById( $bean_buzon_retiro ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

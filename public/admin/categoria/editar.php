@@ -80,6 +80,24 @@ require_once "../layout/head_links.phtml";
                   <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"  value="<?php echo $categoria['nombre'] ?>" >
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="descripcion">descripcion : </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion"  value="<?php echo $categoria['descripcion'] ?>" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="visible">visible : </label>
+                  <input type="text" class="form-control" name="visible" id="visible" required placeholder="visible"  value="<?php echo $categoria['visible'] ?>" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fechareg">fechareg : </label>
+                  <input type="text" class="form-control" name="fechareg" id="fechareg" required placeholder="fechareg"  value="<?php echo $categoria['fechareg'] ?>" >
+                </div>
+              </div>
 
               <div class="col-sm-6 col-md-6 text-center">
                 <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">

@@ -1,176 +1,182 @@
 <?php 
-# Class Model Generada - ByPower @armandaepp 
-class Buzon extends ClsConexion {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+class Buzon extends Connection {
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM buzon";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_buzon)
+  {
+    try{
+      $id = $bean_buzon->getId();
+      $nombres = $bean_buzon->getNombres();
+      $telefono = $bean_buzon->getTelefono();
+      $email = $bean_buzon->getEmail();
+      $mensaje = $bean_buzon->getMensaje();
+      $estado = $bean_buzon->getEstado();
+      $fecha = $bean_buzon->getFecha();
 
-            $this->query = "SELECT * FROM buzon";
+      $this->query = "INSERT INTO buzon
+                      (
+                        nombres,
+                        telefono,
+                        email,
+                        mensaje,
+                        estado,
+                        fecha
+                      )
+                      VALUES(
+                        '$nombres',
+                        '$telefono',
+                        '$email',
+                        '$mensaje',
+                        '$estado',
+                        '$fecha'
+                      ); ";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-        }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Insertar
-    public function save($bean_buzon)
-    {
-        try{
-            $id = $bean_buzon->getId();
-            $nombres = $bean_buzon->getNombres();
-            $telefono = $bean_buzon->getTelefono();
-            $email = $bean_buzon->getEmail();
-            $mensaje = $bean_buzon->getMensaje();
-            $estado = $bean_buzon->getEstado();
-            $fecha = $bean_buzon->getFecha();
+  # Método Actualizar
+  public function update($bean_buzon)
+  {
+    try{
+      $id = $bean_buzon->getId();
+      $nombres = $bean_buzon->getNombres();
+      $telefono = $bean_buzon->getTelefono();
+      $email = $bean_buzon->getEmail();
+      $mensaje = $bean_buzon->getMensaje();
+      $fecha = $bean_buzon->getFecha();
 
-            $this->query = "INSERT INTO buzon
-                            (
-                                nombres,
-                                telefono,
-                                email,
-                                mensaje,
-                                estado,
-                                fecha
-                            )
-                            VALUES(
-                                '$nombres',
-                                '$telefono',
-                                '$email',
-                                '$mensaje',
-                                '$estado',
-                                '$fecha'
-                            )";
+      $this->query = "UPDATE buzon SET 
+                        nombres = '$nombres',
+                        telefono = '$telefono',
+                        email = '$email',
+                        mensaje = '$mensaje',
+                        fecha = '$fecha'
+                      WHERE id = '$id'
+                      LIMIT 1 ;";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
+    }catch(exception $e){
 
-         }catch(exception $e){
+      throw new Exception($e->getMessage());
 
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_buzon)
-    {
-        try{
-            $id = $bean_buzon->getId();
-            $nombres = $bean_buzon->getNombres();
-            $telefono = $bean_buzon->getTelefono();
-            $email = $bean_buzon->getEmail();
-            $mensaje = $bean_buzon->getMensaje();
-            $estado = $bean_buzon->getEstado();
-            $fecha = $bean_buzon->getFecha();
+  # Método Eliminar(Actualizar Estado)
+  public function updateEstado($bean_buzon)
+  {
+    try{
+      $id = $bean_buzon->getId();
+      $estado = $bean_buzon->getEstado();
 
-            $this->query = "UPDATE buzon SET 
-                                nombres = '$nombres,
-                                telefono = '$telefono,
-                                email = '$email,
-                                mensaje = '$mensaje,
-                                estado = '$estado,
-                                fecha = '$fecha
-                            WHERE id = '$id'
-                            LIMIT 1 ";
-            $this->execute_query();
+      $this->query = "UPDATE buzon SET 
+                        estado = '$estado'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
 
-            $data = $this->status_exe  ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-         }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-         }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_buzon)
-    {
-        try{
-            $id = $bean_buzon->getId();
-            $estado = $bean_buzon->getEstado();
+  # Método Buscar por ID
+  public function find($bean_buzon)
+  {
+    try{
+      $id = $bean_buzon->getId();
 
-            $this->query = "UPDATE buzon SET 
-                                estado = '$estado'
-                            WHERE id='$id'
-                            LIMIT 1 ";
+      $this->query = "SELECT * FROM buzon WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_query();
+      $this->executeFind();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método Buscar por ID
-    public function getById($bean_buzon)
-    {
-        try{
-            $id = $bean_buzon->getId();
+  # Método deleteById
+  public function deleteById($bean_buzon)
+  {
+    try{
+      $id = $bean_buzon->getId();
 
-            $this->query = "SELECT * FROM buzon WHERE id = '$id' LIMIT 1";
+      $this->query = "DELETE FROM buzon
+                      WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_find();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-    # Método deleteById
-    public function deleteById($bean_buzon)
-    {
-        try{
-            $id = $bean_buzon->getId();
-
-            $this->query = "DELETE FROM buzon WHERE id = '$id' LIMIT 1";
-
-            $this->execute_query();
-
-            $data = $this->status_exe  ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

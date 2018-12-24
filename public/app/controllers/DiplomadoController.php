@@ -1,180 +1,193 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class DiplomadoController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $diplomado  = new Diplomado();
+      $diplomado  = new Diplomado();
 
-            $data = $diplomado->getAll();
+      $data = $diplomado->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setDiplomado($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $diplomado  = new Diplomado($this->cnx);
-
-            $bean_diplomado = new BeanDiplomado();
-            
-            $bean_diplomado->setId($id);
-            $bean_diplomado->setTitulo($titulo);
-            $bean_diplomado->setDescripcion($descripcion);
-            $bean_diplomado->setSlide($slide);
-            $bean_diplomado->setImagen($imagen);
-            $bean_diplomado->setCertificacion($certificacion);
-            $bean_diplomado->setTitulos($titulos);
-            $bean_diplomado->setInversion($inversion);
-            $bean_diplomado->setTitulacion($titulacion);
-            $bean_diplomado->setDetalleduracion($detalleduracion);
-            $bean_diplomado->setDetalledia($detalledia);
-            $bean_diplomado->setDetallehorario($detallehorario);
-            $bean_diplomado->setDetallelugar($detallelugar);
-            $bean_diplomado->setDetalleprecio($detalleprecio);
-            $bean_diplomado->setDetalleequipos($detalleequipos);
-            $bean_diplomado->setDetalleconsultas($detalleconsultas);
-            $bean_diplomado->setDetalledirigido($detalledirigido);
-            $bean_diplomado->setAquien($aquien);
-            $bean_diplomado->setTemas($temas);
-            $bean_diplomado->setNombreseo($nombreseo);
-            $bean_diplomado->setOrden($orden);
-            $bean_diplomado->setFecha($fecha);
-            
-            $data = $diplomado->save($bean_diplomado) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateDiplomado($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $diplomado  = new Diplomado($this->cnx);
-            $bean_diplomado = new BeanDiplomado();
-            
-            $bean_diplomado->setId($id);
-            $bean_diplomado->setTitulo($titulo);
-            $bean_diplomado->setDescripcion($descripcion);
-            $bean_diplomado->setSlide($slide);
-            $bean_diplomado->setImagen($imagen);
-            $bean_diplomado->setCertificacion($certificacion);
-            $bean_diplomado->setTitulos($titulos);
-            $bean_diplomado->setInversion($inversion);
-            $bean_diplomado->setTitulacion($titulacion);
-            $bean_diplomado->setDetalleduracion($detalleduracion);
-            $bean_diplomado->setDetalledia($detalledia);
-            $bean_diplomado->setDetallehorario($detallehorario);
-            $bean_diplomado->setDetallelugar($detallelugar);
-            $bean_diplomado->setDetalleprecio($detalleprecio);
-            $bean_diplomado->setDetalleequipos($detalleequipos);
-            $bean_diplomado->setDetalleconsultas($detalleconsultas);
-            $bean_diplomado->setDetalledirigido($detalledirigido);
-            $bean_diplomado->setAquien($aquien);
-            $bean_diplomado->setTemas($temas);
-            $bean_diplomado->setNombreseo($nombreseo);
-            $bean_diplomado->setOrden($orden);
-            $bean_diplomado->setFecha($fecha);
+      $diplomado  = new Diplomado($this->cnx);
 
-            $data = $diplomado->update($bean_diplomado) ;
+      $bean_diplomado = new BeanDiplomado();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_diplomado->setTitulo($titulo);
+      $bean_diplomado->setDescripcion($descripcion);
+      $bean_diplomado->setSlide($slide);
+      $bean_diplomado->setImagen($imagen);
+      $bean_diplomado->setCertificacion($certificacion);
+      $bean_diplomado->setTitulos($titulos);
+      $bean_diplomado->setInversion($inversion);
+      $bean_diplomado->setTitulacion($titulacion);
+      $bean_diplomado->setDetalleduracion($detalleduracion);
+      $bean_diplomado->setDetalledia($detalledia);
+      $bean_diplomado->setDetallehorario($detallehorario);
+      $bean_diplomado->setDetallelugar($detallelugar);
+      $bean_diplomado->setDetalleprecio($detalleprecio);
+      $bean_diplomado->setDetalleequipos($detalleequipos);
+      $bean_diplomado->setDetalleconsultas($detalleconsultas);
+      $bean_diplomado->setDetalledirigido($detalledirigido);
+      $bean_diplomado->setAquien($aquien);
+      $bean_diplomado->setTemas($temas);
+      $bean_diplomado->setNombreseo($nombreseo);
+      $bean_diplomado->setOrden($orden);
+      $bean_diplomado->setFecha($fecha);
+            
+      $data = $diplomado->save($bean_diplomado) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $diplomado  = new Diplomado($this->cnx);
-            $bean_diplomado = new BeanDiplomado();
-            
-            $bean_diplomado->setId($id);
-            $bean_diplomado->setEstado($estado);
-
-            $data = $diplomado->update($bean_diplomado) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $diplomado  = new Diplomado();
+            
+      extract($params) ; 
 
-            $bean_diplomado = new BeanDiplomado();
+      $diplomado  = new Diplomado($this->cnx);
+      $bean_diplomado = new BeanDiplomado();
+            
+      $bean_diplomado->setId($id);
+      $bean_diplomado->setTitulo($titulo);
+      $bean_diplomado->setDescripcion($descripcion);
+      $bean_diplomado->setSlide($slide);
+      $bean_diplomado->setImagen($imagen);
+      $bean_diplomado->setCertificacion($certificacion);
+      $bean_diplomado->setTitulos($titulos);
+      $bean_diplomado->setInversion($inversion);
+      $bean_diplomado->setTitulacion($titulacion);
+      $bean_diplomado->setDetalleduracion($detalleduracion);
+      $bean_diplomado->setDetalledia($detalledia);
+      $bean_diplomado->setDetallehorario($detallehorario);
+      $bean_diplomado->setDetallelugar($detallelugar);
+      $bean_diplomado->setDetalleprecio($detalleprecio);
+      $bean_diplomado->setDetalleequipos($detalleequipos);
+      $bean_diplomado->setDetalleconsultas($detalleconsultas);
+      $bean_diplomado->setDetalledirigido($detalledirigido);
+      $bean_diplomado->setAquien($aquien);
+      $bean_diplomado->setTemas($temas);
+      $bean_diplomado->setNombreseo($nombreseo);
+      $bean_diplomado->setOrden($orden);
+      $bean_diplomado->setFecha($fecha);
 
-            $bean_diplomado->setId($id);
-
-            $data = $diplomado->getById( $bean_diplomado) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $diplomado->update($bean_diplomado) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $diplomado  = new Diplomado();
-
-            $bean_diplomado = new BeanDiplomado();
-
-            $bean_diplomado->setId($id);
-
-            $data = $diplomado->deleteById( $bean_diplomado ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $diplomado  = new Diplomado($this->cnx);
+      $bean_diplomado = new BeanDiplomado();
+            
+      $bean_diplomado->setId($id);
+      $bean_diplomado->setEstado($estado);
+
+      $data = $diplomado->updateEstado($bean_diplomado) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $diplomado  = new Diplomado();
+
+      $bean_diplomado = new BeanDiplomado();
+
+      $bean_diplomado->setId($id);
+
+      $data = $diplomado->find( $bean_diplomado) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $diplomado  = new Diplomado();
+
+      $bean_diplomado = new BeanDiplomado();
+
+      $bean_diplomado->setId($id);
+
+      $data = $diplomado->deleteById( $bean_diplomado ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

@@ -57,6 +57,24 @@ require_once "../layout/head_links.phtml";
               </div>
               <div class="col-md-6">
                 <div class="form-group">
+                  <label for="descripcion">descripcion : </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="visible">visible : </label>
+                  <input type="text" class="form-control" name="visible" id="visible" required placeholder="visible">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fechareg">fechareg : </label>
+                  <input type="text" class="form-control" name="fechareg" id="fechareg" required placeholder="fechareg">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
                   <label for="imagen">Imagen(Recomendación Imagen de 350 x 200 pixeles ) </label>
                   <input type="file"  class="form-control" name="imagen" id="imagen"  placeholder="Imagen" accept="image/*">
                 </div>

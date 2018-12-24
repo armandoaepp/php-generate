@@ -1,148 +1,161 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class BuzonController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $buzon  = new Buzon();
+      $buzon  = new Buzon();
 
-            $data = $buzon->getAll();
+      $data = $buzon->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setBuzon($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon  = new Buzon($this->cnx);
-
-            $bean_buzon = new BeanBuzon();
-            
-            $bean_buzon->setId($id);
-            $bean_buzon->setNombres($nombres);
-            $bean_buzon->setTelefono($telefono);
-            $bean_buzon->setEmail($email);
-            $bean_buzon->setMensaje($mensaje);
-            $bean_buzon->setFecha($fecha);
-            
-            $data = $buzon->save($bean_buzon) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateBuzon($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $buzon  = new Buzon($this->cnx);
-            $bean_buzon = new BeanBuzon();
-            
-            $bean_buzon->setId($id);
-            $bean_buzon->setNombres($nombres);
-            $bean_buzon->setTelefono($telefono);
-            $bean_buzon->setEmail($email);
-            $bean_buzon->setMensaje($mensaje);
-            $bean_buzon->setFecha($fecha);
+      $buzon  = new Buzon($this->cnx);
 
-            $data = $buzon->update($bean_buzon) ;
+      $bean_buzon = new BeanBuzon();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_buzon->setNombres($nombres);
+      $bean_buzon->setTelefono($telefono);
+      $bean_buzon->setEmail($email);
+      $bean_buzon->setMensaje($mensaje);
+      $bean_buzon->setFecha($fecha);
+            
+      $data = $buzon->save($bean_buzon) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $buzon  = new Buzon($this->cnx);
-            $bean_buzon = new BeanBuzon();
-            
-            $bean_buzon->setId($id);
-            $bean_buzon->setEstado($estado);
-
-            $data = $buzon->update($bean_buzon) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $buzon  = new Buzon();
+            
+      extract($params) ; 
 
-            $bean_buzon = new BeanBuzon();
+      $buzon  = new Buzon($this->cnx);
+      $bean_buzon = new BeanBuzon();
+            
+      $bean_buzon->setId($id);
+      $bean_buzon->setNombres($nombres);
+      $bean_buzon->setTelefono($telefono);
+      $bean_buzon->setEmail($email);
+      $bean_buzon->setMensaje($mensaje);
+      $bean_buzon->setFecha($fecha);
 
-            $bean_buzon->setId($id);
-
-            $data = $buzon->getById( $bean_buzon) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $buzon->update($bean_buzon) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $buzon  = new Buzon();
-
-            $bean_buzon = new BeanBuzon();
-
-            $bean_buzon->setId($id);
-
-            $data = $buzon->deleteById( $bean_buzon ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $buzon  = new Buzon($this->cnx);
+      $bean_buzon = new BeanBuzon();
+            
+      $bean_buzon->setId($id);
+      $bean_buzon->setEstado($estado);
+
+      $data = $buzon->updateEstado($bean_buzon) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $buzon  = new Buzon();
+
+      $bean_buzon = new BeanBuzon();
+
+      $bean_buzon->setId($id);
+
+      $data = $buzon->find( $bean_buzon) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $buzon  = new Buzon();
+
+      $bean_buzon = new BeanBuzon();
+
+      $bean_buzon->setId($id);
+
+      $data = $buzon->deleteById( $bean_buzon ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

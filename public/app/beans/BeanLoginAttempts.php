@@ -1,5 +1,12 @@
 <?php 
-# Clase Bean Generada - ByPower @armandoaepp 
+
+/**
+ * [Class Bean Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
 class BeanLoginAttempts{
     # Constructor
     public function __construct(){}
@@ -52,4 +59,3 @@ class BeanLoginAttempts{
     }
 
 }
-?>

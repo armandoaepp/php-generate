@@ -1,146 +1,159 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class TrasladoPreguntaController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $traslado_pregunta  = new TrasladoPregunta();
+      $traslado_pregunta  = new TrasladoPregunta();
 
-            $data = $traslado_pregunta->getAll();
+      $data = $traslado_pregunta->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setTrasladoPregunta($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $traslado_pregunta  = new TrasladoPregunta($this->cnx);
-
-            $bean_traslado_pregunta = new BeanTrasladoPregunta();
-            
-            $bean_traslado_pregunta->setId($id);
-            $bean_traslado_pregunta->setPregunta($pregunta);
-            $bean_traslado_pregunta->setRespuesta($respuesta);
-            $bean_traslado_pregunta->setOrden($orden);
-            $bean_traslado_pregunta->setFecha($fecha);
-            
-            $data = $traslado_pregunta->save($bean_traslado_pregunta) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateTrasladoPregunta($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $traslado_pregunta  = new TrasladoPregunta($this->cnx);
-            $bean_traslado_pregunta = new BeanTrasladoPregunta();
-            
-            $bean_traslado_pregunta->setId($id);
-            $bean_traslado_pregunta->setPregunta($pregunta);
-            $bean_traslado_pregunta->setRespuesta($respuesta);
-            $bean_traslado_pregunta->setOrden($orden);
-            $bean_traslado_pregunta->setFecha($fecha);
+      $traslado_pregunta  = new TrasladoPregunta($this->cnx);
 
-            $data = $traslado_pregunta->update($bean_traslado_pregunta) ;
+      $bean_traslado_pregunta = new BeanTrasladoPregunta();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_traslado_pregunta->setPregunta($pregunta);
+      $bean_traslado_pregunta->setRespuesta($respuesta);
+      $bean_traslado_pregunta->setOrden($orden);
+      $bean_traslado_pregunta->setFecha($fecha);
+            
+      $data = $traslado_pregunta->save($bean_traslado_pregunta) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $traslado_pregunta  = new TrasladoPregunta($this->cnx);
-            $bean_traslado_pregunta = new BeanTrasladoPregunta();
-            
-            $bean_traslado_pregunta->setId($id);
-            $bean_traslado_pregunta->setEstado($estado);
-
-            $data = $traslado_pregunta->update($bean_traslado_pregunta) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $traslado_pregunta  = new TrasladoPregunta();
+            
+      extract($params) ; 
 
-            $bean_traslado_pregunta = new BeanTrasladoPregunta();
+      $traslado_pregunta  = new TrasladoPregunta($this->cnx);
+      $bean_traslado_pregunta = new BeanTrasladoPregunta();
+            
+      $bean_traslado_pregunta->setId($id);
+      $bean_traslado_pregunta->setPregunta($pregunta);
+      $bean_traslado_pregunta->setRespuesta($respuesta);
+      $bean_traslado_pregunta->setOrden($orden);
+      $bean_traslado_pregunta->setFecha($fecha);
 
-            $bean_traslado_pregunta->setId($id);
-
-            $data = $traslado_pregunta->getById( $bean_traslado_pregunta) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $traslado_pregunta->update($bean_traslado_pregunta) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $traslado_pregunta  = new TrasladoPregunta();
-
-            $bean_traslado_pregunta = new BeanTrasladoPregunta();
-
-            $bean_traslado_pregunta->setId($id);
-
-            $data = $traslado_pregunta->deleteById( $bean_traslado_pregunta ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $traslado_pregunta  = new TrasladoPregunta($this->cnx);
+      $bean_traslado_pregunta = new BeanTrasladoPregunta();
+            
+      $bean_traslado_pregunta->setId($id);
+      $bean_traslado_pregunta->setEstado($estado);
+
+      $data = $traslado_pregunta->updateEstado($bean_traslado_pregunta) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $traslado_pregunta  = new TrasladoPregunta();
+
+      $bean_traslado_pregunta = new BeanTrasladoPregunta();
+
+      $bean_traslado_pregunta->setId($id);
+
+      $data = $traslado_pregunta->find( $bean_traslado_pregunta) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $traslado_pregunta  = new TrasladoPregunta();
+
+      $bean_traslado_pregunta = new BeanTrasladoPregunta();
+
+      $bean_traslado_pregunta->setId($id);
+
+      $data = $traslado_pregunta->deleteById( $bean_traslado_pregunta ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

@@ -1,181 +1,187 @@
 <?php 
-# Class Model Generada - ByPower @armandaepp 
-class Facultad extends ClsConexion {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+class Facultad extends Connection {
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM facultad";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_facultad)
+  {
+    try{
+      $id = $bean_facultad->getId();
+      $titulo = $bean_facultad->getTitulo();
+      $descripcion = $bean_facultad->getDescripcion();
+      $imagen = $bean_facultad->getImagen();
+      $orden = $bean_facultad->getOrden();
+      $estado = $bean_facultad->getEstado();
+      $fecha = $bean_facultad->getFecha();
+      $activo = $bean_facultad->getActivo();
 
-            $this->query = "SELECT * FROM facultad";
+      $this->query = "INSERT INTO facultad
+                      (
+                        titulo,
+                        descripcion,
+                        imagen,
+                        orden,
+                        estado,
+                        fecha,
+                        activo
+                      )
+                      VALUES(
+                        '$titulo',
+                        '$descripcion',
+                        '$imagen',
+                        '$orden',
+                        '$estado',
+                        '$fecha',
+                        '$activo'
+                      ); ";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-        }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Insertar
-    public function save($bean_facultad)
-    {
-        try{
-            $id = $bean_facultad->getId();
-            $titulo = $bean_facultad->getTitulo();
-            $descripcion = $bean_facultad->getDescripcion();
-            $imagen = $bean_facultad->getImagen();
-            $orden = $bean_facultad->getOrden();
-            $estado = $bean_facultad->getEstado();
-            $fecha = $bean_facultad->getFecha();
-            $activo = $bean_facultad->getActivo();
+  # Método Actualizar
+  public function update($bean_facultad)
+  {
+    try{
+      $id = $bean_facultad->getId();
+      $titulo = $bean_facultad->getTitulo();
+      $descripcion = $bean_facultad->getDescripcion();
+      $imagen = $bean_facultad->getImagen();
+      $orden = $bean_facultad->getOrden();
+      $fecha = $bean_facultad->getFecha();
+      $activo = $bean_facultad->getActivo();
 
-            $this->query = "INSERT INTO facultad
-                            (
-                                titulo,
-                                descripcion,
-                                imagen,
-                                orden,
-                                estado,
-                                fecha,
-                                activo
-                            )
-                            VALUES(
-                                '$titulo',
-                                '$descripcion',
-                                '$imagen',
-                                '$orden',
-                                '$estado',
-                                '$fecha',
-                                '$activo'
-                            )";
+      $this->query = "UPDATE facultad SET 
+                        titulo = '$titulo',
+                        descripcion = '$descripcion',
+                        imagen = '$imagen',
+                        orden = '$orden',
+                        fecha = '$fecha',
+                        activo = '$activo'
+                      WHERE id = '$id'
+                      LIMIT 1 ;";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
+    }catch(exception $e){
 
-         }catch(exception $e){
+      throw new Exception($e->getMessage());
 
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_facultad)
-    {
-        try{
-            $id = $bean_facultad->getId();
-            $titulo = $bean_facultad->getTitulo();
-            $descripcion = $bean_facultad->getDescripcion();
-            $imagen = $bean_facultad->getImagen();
-            $orden = $bean_facultad->getOrden();
-            $estado = $bean_facultad->getEstado();
-            $fecha = $bean_facultad->getFecha();
-            $activo = $bean_facultad->getActivo();
+  # Método Eliminar(Actualizar Estado)
+  public function updateEstado($bean_facultad)
+  {
+    try{
+      $id = $bean_facultad->getId();
+      $estado = $bean_facultad->getEstado();
 
-            $this->query = "UPDATE facultad SET 
-                                titulo = '$titulo,
-                                descripcion = '$descripcion,
-                                imagen = '$imagen,
-                                orden = '$orden,
-                                estado = '$estado,
-                                fecha = '$fecha,
-                                activo = '$activo
-                            WHERE id = '$id'
-                            LIMIT 1 ";
-            $this->execute_query();
+      $this->query = "UPDATE facultad SET 
+                        estado = '$estado'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
 
-            $data = $this->status_exe  ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-         }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-         }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_facultad)
-    {
-        try{
-            $id = $bean_facultad->getId();
-            $estado = $bean_facultad->getEstado();
+  # Método Buscar por ID
+  public function find($bean_facultad)
+  {
+    try{
+      $id = $bean_facultad->getId();
 
-            $this->query = "UPDATE facultad SET 
-                                estado = '$estado'
-                            WHERE id='$id'
-                            LIMIT 1 ";
+      $this->query = "SELECT * FROM facultad WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_query();
+      $this->executeFind();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método Buscar por ID
-    public function getById($bean_facultad)
-    {
-        try{
-            $id = $bean_facultad->getId();
+  # Método deleteById
+  public function deleteById($bean_facultad)
+  {
+    try{
+      $id = $bean_facultad->getId();
 
-            $this->query = "SELECT * FROM facultad WHERE id = '$id' LIMIT 1";
+      $this->query = "DELETE FROM facultad
+                      WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_find();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-    # Método deleteById
-    public function deleteById($bean_facultad)
-    {
-        try{
-            $id = $bean_facultad->getId();
-
-            $this->query = "DELETE FROM facultad WHERE id = '$id' LIMIT 1";
-
-            $this->execute_query();
-
-            $data = $this->status_exe  ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

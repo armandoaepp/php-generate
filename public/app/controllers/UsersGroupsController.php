@@ -1,142 +1,155 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class UsersGroupsController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $users_groups  = new UsersGroups();
+      $users_groups  = new UsersGroups();
 
-            $data = $users_groups->getAll();
+      $data = $users_groups->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setUsersGroups($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $users_groups  = new UsersGroups($this->cnx);
-
-            $bean_users_groups = new BeanUsersGroups();
-            
-            $bean_users_groups->setId($id);
-            $bean_users_groups->setUserId($user_id);
-            $bean_users_groups->setGroupId($group_id);
-            
-            $data = $users_groups->save($bean_users_groups) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateUsersGroups($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $users_groups  = new UsersGroups($this->cnx);
-            $bean_users_groups = new BeanUsersGroups();
-            
-            $bean_users_groups->setId($id);
-            $bean_users_groups->setUserId($user_id);
-            $bean_users_groups->setGroupId($group_id);
+      $users_groups  = new UsersGroups($this->cnx);
 
-            $data = $users_groups->update($bean_users_groups) ;
+      $bean_users_groups = new BeanUsersGroups();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_users_groups->setUserId($user_id);
+      $bean_users_groups->setGroupId($group_id);
+            
+      $data = $users_groups->save($bean_users_groups) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $users_groups  = new UsersGroups($this->cnx);
-            $bean_users_groups = new BeanUsersGroups();
-            
-            $bean_users_groups->setId($id);
-            $bean_users_groups->setEstado($estado);
-
-            $data = $users_groups->update($bean_users_groups) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $users_groups  = new UsersGroups();
+            
+      extract($params) ; 
 
-            $bean_users_groups = new BeanUsersGroups();
+      $users_groups  = new UsersGroups($this->cnx);
+      $bean_users_groups = new BeanUsersGroups();
+            
+      $bean_users_groups->setId($id);
+      $bean_users_groups->setUserId($user_id);
+      $bean_users_groups->setGroupId($group_id);
 
-            $bean_users_groups->setId($id);
-
-            $data = $users_groups->getById( $bean_users_groups) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $users_groups->update($bean_users_groups) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $users_groups  = new UsersGroups();
-
-            $bean_users_groups = new BeanUsersGroups();
-
-            $bean_users_groups->setId($id);
-
-            $data = $users_groups->deleteById( $bean_users_groups ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $users_groups  = new UsersGroups($this->cnx);
+      $bean_users_groups = new BeanUsersGroups();
+            
+      $bean_users_groups->setId($id);
+      $bean_users_groups->setEstado($estado);
+
+      $data = $users_groups->updateEstado($bean_users_groups) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $users_groups  = new UsersGroups();
+
+      $bean_users_groups = new BeanUsersGroups();
+
+      $bean_users_groups->setId($id);
+
+      $data = $users_groups->find( $bean_users_groups) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $users_groups  = new UsersGroups();
+
+      $bean_users_groups = new BeanUsersGroups();
+
+      $bean_users_groups->setId($id);
+
+      $data = $users_groups->deleteById( $bean_users_groups ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

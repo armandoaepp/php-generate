@@ -1,146 +1,159 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class EventoImgController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $evento_img  = new EventoImg();
+      $evento_img  = new EventoImg();
 
-            $data = $evento_img->getAll();
+      $data = $evento_img->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setEventoImg($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $evento_img  = new EventoImg($this->cnx);
-
-            $bean_evento_img = new BeanEventoImg();
-            
-            $bean_evento_img->setId($id);
-            $bean_evento_img->setImagen($imagen);
-            $bean_evento_img->setIdPadre($id_padre);
-            $bean_evento_img->setOrden($orden);
-            $bean_evento_img->setFecha($fecha);
-            
-            $data = $evento_img->save($bean_evento_img) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateEventoImg($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $evento_img  = new EventoImg($this->cnx);
-            $bean_evento_img = new BeanEventoImg();
-            
-            $bean_evento_img->setId($id);
-            $bean_evento_img->setImagen($imagen);
-            $bean_evento_img->setIdPadre($id_padre);
-            $bean_evento_img->setOrden($orden);
-            $bean_evento_img->setFecha($fecha);
+      $evento_img  = new EventoImg($this->cnx);
 
-            $data = $evento_img->update($bean_evento_img) ;
+      $bean_evento_img = new BeanEventoImg();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_evento_img->setImagen($imagen);
+      $bean_evento_img->setIdPadre($id_padre);
+      $bean_evento_img->setOrden($orden);
+      $bean_evento_img->setFecha($fecha);
+            
+      $data = $evento_img->save($bean_evento_img) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $evento_img  = new EventoImg($this->cnx);
-            $bean_evento_img = new BeanEventoImg();
-            
-            $bean_evento_img->setId($id);
-            $bean_evento_img->setEstado($estado);
-
-            $data = $evento_img->update($bean_evento_img) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $evento_img  = new EventoImg();
+            
+      extract($params) ; 
 
-            $bean_evento_img = new BeanEventoImg();
+      $evento_img  = new EventoImg($this->cnx);
+      $bean_evento_img = new BeanEventoImg();
+            
+      $bean_evento_img->setId($id);
+      $bean_evento_img->setImagen($imagen);
+      $bean_evento_img->setIdPadre($id_padre);
+      $bean_evento_img->setOrden($orden);
+      $bean_evento_img->setFecha($fecha);
 
-            $bean_evento_img->setId($id);
-
-            $data = $evento_img->getById( $bean_evento_img) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $evento_img->update($bean_evento_img) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $evento_img  = new EventoImg();
-
-            $bean_evento_img = new BeanEventoImg();
-
-            $bean_evento_img->setId($id);
-
-            $data = $evento_img->deleteById( $bean_evento_img ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $evento_img  = new EventoImg($this->cnx);
+      $bean_evento_img = new BeanEventoImg();
+            
+      $bean_evento_img->setId($id);
+      $bean_evento_img->setEstado($estado);
+
+      $data = $evento_img->updateEstado($bean_evento_img) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $evento_img  = new EventoImg();
+
+      $bean_evento_img = new BeanEventoImg();
+
+      $bean_evento_img->setId($id);
+
+      $data = $evento_img->find( $bean_evento_img) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $evento_img  = new EventoImg();
+
+      $bean_evento_img = new BeanEventoImg();
+
+      $bean_evento_img->setId($id);
+
+      $data = $evento_img->deleteById( $bean_evento_img ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

@@ -1,176 +1,182 @@
 <?php 
-# Class Model Generada - ByPower @armandaepp 
-class Textos extends ClsConexion {
-    # CONSTRUCT 
-    public function __construct($cnx  = null)
-    {
-        $this->conn = $cnx;
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
+class Textos extends Connection {
+  # CONSTRUCT 
+  public function __construct($cnx  = null)
+  {
+    $this->conn = $cnx;
+  }
+
+  # Método getALl
+  public function getAll()
+  {
+    try{
+
+      $this->query = "SELECT * FROM textos";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método getALl
-    public function getAll()
-    {
-        try{
+  # Método SAVE
+  public function save($bean_textos)
+  {
+    try{
+      $id = $bean_textos->getId();
+      $identificador = $bean_textos->getIdentificador();
+      $titulo = $bean_textos->getTitulo();
+      $descripcion = $bean_textos->getDescripcion();
+      $orden = $bean_textos->getOrden();
+      $estado = $bean_textos->getEstado();
+      $fecha = $bean_textos->getFecha();
 
-            $this->query = "SELECT * FROM textos";
+      $this->query = "INSERT INTO textos
+                      (
+                        identificador,
+                        titulo,
+                        descripcion,
+                        orden,
+                        estado,
+                        fecha
+                      )
+                      VALUES(
+                        '$identificador',
+                        '$titulo',
+                        '$descripcion',
+                        '$orden',
+                        '$estado',
+                        '$fecha'
+                      ); ";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-        }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Insertar
-    public function save($bean_textos)
-    {
-        try{
-            $id = $bean_textos->getId();
-            $identificador = $bean_textos->getIdentificador();
-            $titulo = $bean_textos->getTitulo();
-            $descripcion = $bean_textos->getDescripcion();
-            $orden = $bean_textos->getOrden();
-            $estado = $bean_textos->getEstado();
-            $fecha = $bean_textos->getFecha();
+  # Método Actualizar
+  public function update($bean_textos)
+  {
+    try{
+      $id = $bean_textos->getId();
+      $identificador = $bean_textos->getIdentificador();
+      $titulo = $bean_textos->getTitulo();
+      $descripcion = $bean_textos->getDescripcion();
+      $orden = $bean_textos->getOrden();
+      $fecha = $bean_textos->getFecha();
 
-            $this->query = "INSERT INTO textos
-                            (
-                                identificador,
-                                titulo,
-                                descripcion,
-                                orden,
-                                estado,
-                                fecha
-                            )
-                            VALUES(
-                                '$identificador',
-                                '$titulo',
-                                '$descripcion',
-                                '$orden',
-                                '$estado',
-                                '$fecha'
-                            )";
+      $this->query = "UPDATE textos SET 
+                        identificador = '$identificador',
+                        titulo = '$titulo',
+                        descripcion = '$descripcion',
+                        orden = '$orden',
+                        fecha = '$fecha'
+                      WHERE id = '$id'
+                      LIMIT 1 ;";
 
-            $this->execute_query();
+      $this->executeQuery();
 
-            $data = $this->status_exe  ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
+    }catch(exception $e){
 
-         }catch(exception $e){
+      throw new Exception($e->getMessage());
 
-             throw new Exception($e->getMessage());
-
-         }
     }
+  }
 
-    # Método Actualizar
-    public function update($bean_textos)
-    {
-        try{
-            $id = $bean_textos->getId();
-            $identificador = $bean_textos->getIdentificador();
-            $titulo = $bean_textos->getTitulo();
-            $descripcion = $bean_textos->getDescripcion();
-            $orden = $bean_textos->getOrden();
-            $estado = $bean_textos->getEstado();
-            $fecha = $bean_textos->getFecha();
+  # Método Eliminar(Actualizar Estado)
+  public function updateEstado($bean_textos)
+  {
+    try{
+      $id = $bean_textos->getId();
+      $estado = $bean_textos->getEstado();
 
-            $this->query = "UPDATE textos SET 
-                                identificador = '$identificador,
-                                titulo = '$titulo,
-                                descripcion = '$descripcion,
-                                orden = '$orden,
-                                estado = '$estado,
-                                fecha = '$fecha
-                            WHERE id = '$id'
-                            LIMIT 1 ";
-            $this->execute_query();
+      $this->query = "UPDATE textos SET 
+                        estado = '$estado'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
 
-            $data = $this->status_exe  ;
+      $this->executeQuery();
 
-            return $data;
+      $data = $this->status_exe  ;
 
-         }catch(exception $e){
+      return $data;
 
-            throw new Exception($e->getMessage());
+    }catch(exception $e){
 
-         }
+      throw new Exception($e->getMessage());
+
     }
+  }
 
-    # Método Eliminar(Actualizar Estado)
-    public function updateEstado($bean_textos)
-    {
-        try{
-            $id = $bean_textos->getId();
-            $estado = $bean_textos->getEstado();
+  # Método Buscar por ID
+  public function find($bean_textos)
+  {
+    try{
+      $id = $bean_textos->getId();
 
-            $this->query = "UPDATE textos SET 
-                                estado = '$estado'
-                            WHERE id='$id'
-                            LIMIT 1 ";
+      $this->query = "SELECT * FROM textos WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_query();
+      $this->executeFind();
 
-            $data = $this->status_exe  ;
+      $data = $this->rows ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
+  }
 
-    # Método Buscar por ID
-    public function getById($bean_textos)
-    {
-        try{
-            $id = $bean_textos->getId();
+  # Método deleteById
+  public function deleteById($bean_textos)
+  {
+    try{
+      $id = $bean_textos->getId();
 
-            $this->query = "SELECT * FROM textos WHERE id = '$id' LIMIT 1";
+      $this->query = "DELETE FROM textos
+                      WHERE id = '$id' LIMIT 1; ";
 
-            $this->execute_find();
+      $this->executeQuery();
 
-            $data = $this->rows ;
+      $data = $this->status_exe  ;
 
-            return $data;
+      return $data;
 
-        }catch(exception $e){
+    }catch(exception $e){
 
-            throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-        }
     }
-
-    # Método deleteById
-    public function deleteById($bean_textos)
-    {
-        try{
-            $id = $bean_textos->getId();
-
-            $this->query = "DELETE FROM textos WHERE id = '$id' LIMIT 1";
-
-            $this->execute_query();
-
-            $data = $this->status_exe  ;
-
-            return $data;
-
-        }catch(exception $e){
-
-            throw new Exception($e->getMessage());
-
-        }
-    }
+  }
 
 }
-?>

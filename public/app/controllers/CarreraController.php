@@ -1,186 +1,199 @@
 <?php
-# Autor: Armando Enrique Pisfil Puemape tw: @armandoaepp
+
+/**
+ * [Class Controller Generada]
+ * Autor: Armando E. Pisfil Puemape
+ * twitter: @armandoaepp
+ * email: armandoaepp@gmail.com
+*/
+
  class CarreraController
 {
-    private $cnx;
+  private $cnx;
 
-    public function __construct($cnx = null)
-    {
-        $this->cnx = $cnx;
-    }
+  public function __construct($cnx = null)
+  {
+    $this->cnx = $cnx;
+  }
     
-    public function getAll()
+  public function getAll()
+  {
+    try
     {
-        try
-        {
-            $carrera  = new Carrera();
+      $carrera  = new Carrera();
 
-            $data = $carrera->getAll();
+      $data = $carrera->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      return $data ;
     }
-
-    public function setCarrera($params = array() )
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $carrera  = new Carrera($this->cnx);
-
-            $bean_carrera = new BeanCarrera();
-            
-            $bean_carrera->setId($id);
-            $bean_carrera->setTitulo($titulo);
-            $bean_carrera->setDescripcion($descripcion);
-            $bean_carrera->setSlide($slide);
-            $bean_carrera->setImagen($imagen);
-            $bean_carrera->setPresentacion($presentacion);
-            $bean_carrera->setPorque($porque);
-            $bean_carrera->setDonde($donde);
-            $bean_carrera->setCertificacion($certificacion);
-            $bean_carrera->setTitulos($titulos);
-            $bean_carrera->setInversion($inversion);
-            $bean_carrera->setTitulacion($titulacion);
-            $bean_carrera->setDetalleduracion($detalleduracion);
-            $bean_carrera->setDetalledia($detalledia);
-            $bean_carrera->setDetallehorario($detallehorario);
-            $bean_carrera->setDetallelugar($detallelugar);
-            $bean_carrera->setDetalleprecio($detalleprecio);
-            $bean_carrera->setDetalleequipos($detalleequipos);
-            $bean_carrera->setDetalleconsultas($detalleconsultas);
-            $bean_carrera->setDetalledirigido($detalledirigido);
-            $bean_carrera->setAquien($aquien);
-            $bean_carrera->setTemas($temas);
-            $bean_carrera->setNombreseo($nombreseo);
-            $bean_carrera->setOrden($orden);
-            $bean_carrera->setFecha($fecha);
-            
-            $data = $carrera->save($bean_carrera) ;
-
-            return $data ;
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
 
-    public function updateCarrera($params = array())
+  public function save($params = array() )
+  {
+    try
     {
-        try
-        {
             
-            extract($params) ; 
+      extract($params) ; 
 
-            $carrera  = new Carrera($this->cnx);
-            $bean_carrera = new BeanCarrera();
-            
-            $bean_carrera->setId($id);
-            $bean_carrera->setTitulo($titulo);
-            $bean_carrera->setDescripcion($descripcion);
-            $bean_carrera->setSlide($slide);
-            $bean_carrera->setImagen($imagen);
-            $bean_carrera->setPresentacion($presentacion);
-            $bean_carrera->setPorque($porque);
-            $bean_carrera->setDonde($donde);
-            $bean_carrera->setCertificacion($certificacion);
-            $bean_carrera->setTitulos($titulos);
-            $bean_carrera->setInversion($inversion);
-            $bean_carrera->setTitulacion($titulacion);
-            $bean_carrera->setDetalleduracion($detalleduracion);
-            $bean_carrera->setDetalledia($detalledia);
-            $bean_carrera->setDetallehorario($detallehorario);
-            $bean_carrera->setDetallelugar($detallelugar);
-            $bean_carrera->setDetalleprecio($detalleprecio);
-            $bean_carrera->setDetalleequipos($detalleequipos);
-            $bean_carrera->setDetalleconsultas($detalleconsultas);
-            $bean_carrera->setDetalledirigido($detalledirigido);
-            $bean_carrera->setAquien($aquien);
-            $bean_carrera->setTemas($temas);
-            $bean_carrera->setNombreseo($nombreseo);
-            $bean_carrera->setOrden($orden);
-            $bean_carrera->setFecha($fecha);
+      $carrera  = new Carrera($this->cnx);
 
-            $data = $carrera->update($bean_carrera) ;
+      $bean_carrera = new BeanCarrera();
             
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+      $bean_carrera->setTitulo($titulo);
+      $bean_carrera->setDescripcion($descripcion);
+      $bean_carrera->setSlide($slide);
+      $bean_carrera->setImagen($imagen);
+      $bean_carrera->setPresentacion($presentacion);
+      $bean_carrera->setPorque($porque);
+      $bean_carrera->setDonde($donde);
+      $bean_carrera->setCertificacion($certificacion);
+      $bean_carrera->setTitulos($titulos);
+      $bean_carrera->setInversion($inversion);
+      $bean_carrera->setTitulacion($titulacion);
+      $bean_carrera->setDetalleduracion($detalleduracion);
+      $bean_carrera->setDetalledia($detalledia);
+      $bean_carrera->setDetallehorario($detallehorario);
+      $bean_carrera->setDetallelugar($detallelugar);
+      $bean_carrera->setDetalleprecio($detalleprecio);
+      $bean_carrera->setDetalleequipos($detalleequipos);
+      $bean_carrera->setDetalleconsultas($detalleconsultas);
+      $bean_carrera->setDetalledirigido($detalledirigido);
+      $bean_carrera->setAquien($aquien);
+      $bean_carrera->setTemas($temas);
+      $bean_carrera->setNombreseo($nombreseo);
+      $bean_carrera->setOrden($orden);
+      $bean_carrera->setFecha($fecha);
+            
+      $data = $carrera->save($bean_carrera) ;
+
+      return $data ;
     }
-
-    public function updateEstado($params = array())
+    catch (Exception $e)
     {
-        try
-        {
-            
-            extract($params) ; 
-
-            $carrera  = new Carrera($this->cnx);
-            $bean_carrera = new BeanCarrera();
-            
-            $bean_carrera->setId($id);
-            $bean_carrera->setEstado($estado);
-
-            $data = $carrera->update($bean_carrera) ;
-            
-            return $data;
-        }
-        catch (Exception $e)
-        {
-           throw new Exception($e->getMessage());
-        }
+        throw new Exception($e->getMessage());
     }
+  }
 
-    public function getById($id)
+  public function update($params = array())
+  {
+    try
     {
-        try
-        {
-            $carrera  = new Carrera();
+            
+      extract($params) ; 
 
-            $bean_carrera = new BeanCarrera();
+      $carrera  = new Carrera($this->cnx);
+      $bean_carrera = new BeanCarrera();
+            
+      $bean_carrera->setId($id);
+      $bean_carrera->setTitulo($titulo);
+      $bean_carrera->setDescripcion($descripcion);
+      $bean_carrera->setSlide($slide);
+      $bean_carrera->setImagen($imagen);
+      $bean_carrera->setPresentacion($presentacion);
+      $bean_carrera->setPorque($porque);
+      $bean_carrera->setDonde($donde);
+      $bean_carrera->setCertificacion($certificacion);
+      $bean_carrera->setTitulos($titulos);
+      $bean_carrera->setInversion($inversion);
+      $bean_carrera->setTitulacion($titulacion);
+      $bean_carrera->setDetalleduracion($detalleduracion);
+      $bean_carrera->setDetalledia($detalledia);
+      $bean_carrera->setDetallehorario($detallehorario);
+      $bean_carrera->setDetallelugar($detallelugar);
+      $bean_carrera->setDetalleprecio($detalleprecio);
+      $bean_carrera->setDetalleequipos($detalleequipos);
+      $bean_carrera->setDetalleconsultas($detalleconsultas);
+      $bean_carrera->setDetalledirigido($detalledirigido);
+      $bean_carrera->setAquien($aquien);
+      $bean_carrera->setTemas($temas);
+      $bean_carrera->setNombreseo($nombreseo);
+      $bean_carrera->setOrden($orden);
+      $bean_carrera->setFecha($fecha);
 
-            $bean_carrera->setId($id);
-
-            $data = $carrera->getById( $bean_carrera) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      $data = $carrera->update($bean_carrera) ;
+            
+      return $data;
     }
-
-    public function deleteById($id)
+    catch (Exception $e)
     {
-        try
-        {
-            $carrera  = new Carrera();
-
-            $bean_carrera = new BeanCarrera();
-
-            $bean_carrera->setId($id);
-
-            $data = $carrera->deleteById( $bean_carrera ) ;
-
-            return $data;
-
-        }
-        catch (Exception $e)
-        {
-            throw new Exception($e->getMessage());
-        }
+      throw new Exception($e->getMessage());
     }
+  }
+
+  public function updateEstado($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $carrera  = new Carrera($this->cnx);
+      $bean_carrera = new BeanCarrera();
+            
+      $bean_carrera->setId($id);
+      $bean_carrera->setEstado($estado);
+
+      $data = $carrera->updateEstado($bean_carrera) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function find($id)
+  {
+    try
+    {
+      $carrera  = new Carrera();
+
+      $bean_carrera = new BeanCarrera();
+
+      $bean_carrera->setId($id);
+
+      $data = $carrera->find( $bean_carrera) ;
+      $data = Serialize::unSerializeArray($data);
+        
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function deleteById($params)
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $carrera  = new Carrera();
+
+      $bean_carrera = new BeanCarrera();
+
+      $bean_carrera->setId($id);
+
+      $data = $carrera->deleteById( $bean_carrera ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }
