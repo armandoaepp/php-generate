@@ -4,7 +4,8 @@ Class Connection
   private static $db_host = 'localhost';
   private static $db_user = 'root';
   private static $db_pass = '';
-  protected $db_name      = 'db_admin_prod';
+  // protected $db_name      = 'db_admin_prod';
+  protected $db_name      = 'escuelac_w_ne16';
   protected $db_port      = '3306';
   protected $db_driver    = 'mysql';
 
@@ -12,10 +13,6 @@ Class Connection
   protected $rows      = array();
   protected $conn      = null  ;
   protected $status_exe = false ;
-
-  function __construct() {
-
-  }
 
   # Conectar a la base de datos utilizamos la libreria pdo
   private function openConnection()

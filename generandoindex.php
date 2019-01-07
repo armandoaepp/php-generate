@@ -250,8 +250,8 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
         # EVENTE DELETE
         $texto .= '  case "delete":' . PHP_EOL;
-        $texto .= '  try' . PHP_EOL;
-        $texto .= '  {' . PHP_EOL;
+        $texto .= '    try' . PHP_EOL;
+        $texto .= '    {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         if (count($atributos) > 0) {
              $texto .= '      $'.strtolower($atributos[0]).' = $inputs->id;'. PHP_EOL;

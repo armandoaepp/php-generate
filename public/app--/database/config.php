@@ -1,5 +1,7 @@
 <?php
 return [
+	// Más configuración arriba
+	// 'Datasources' => [
   'db_sources' => [
     'default' => [
       'driver'     => 'mysql',
