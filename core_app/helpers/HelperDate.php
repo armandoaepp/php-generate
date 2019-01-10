@@ -19,19 +19,21 @@ class HelperDate
     /**
      * value[number days add]
      */
-    public static function dateUpDay($value)
+    public static function dateNowUpDay($value)
     {
-        $date = date("d-m-Y");
+        $date = date("Y-m-d");
         $new_date = date("d-m-Y", strtotime($date . "+ $value days"));
+        return $new_date;
     }
 
     /**
      * value[number days subtract]
      */
-    public static function dateDownDay($value)
+    public static function dateNowDownDay($value)
     {
-        $date = date("d-m-Y");
-        $new_date = date("d-m-Y", strtotime($date . "- $value days"));
+        $date = date("Y-m-d");
+        $new_date = date("Y-m-d", strtotime($date . "- $value days"));
+        return $new_date;
     }
 
 }

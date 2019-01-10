@@ -81,7 +81,7 @@ switch($evento)
               ) ; 
         
       $data = $red_controller->save($params) ;
-
+        
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -136,7 +136,7 @@ switch($evento)
               ) ; 
         
       $data = $red_controller->update($params) ;
-
+        
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -202,8 +202,8 @@ switch($evento)
   break;
 
   case "delete":
-  try
-  {
+    try
+    {
 
       $id = $inputs->id;
       $estado = $inputs->estado; 

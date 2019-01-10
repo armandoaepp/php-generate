@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Red extends Connection {
-  # CONSTRUCT
+  # CONSTRUCT 
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -117,7 +117,7 @@ class Red extends Connection {
       $orden = $bean_red->getOrden();
       $fecha = $bean_red->getFecha();
 
-      $this->query = "UPDATE red SET
+      $this->query = "UPDATE red SET 
                         titulo = '$titulo',
                         subtitulo = '$subtitulo',
                         tipo = '$tipo',
@@ -153,7 +153,7 @@ class Red extends Connection {
       $id = $bean_red->getId();
       $estado = $bean_red->getEstado();
 
-      $this->query = "UPDATE red SET
+      $this->query = "UPDATE red SET 
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -204,26 +204,6 @@ class Red extends Connection {
       $this->executeQuery();
 
       $data = $this->status_exe  ;
-
-      return $data;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-  }
-
-  public function getByUpDate($date)
-  {
-    try{
-
-      $this->query = "SELECT * FROM red
-                    WHERE red.fecha >= '$date';";
-
-      $this->executeQuery();
-
-      $data = $this->rows ;
 
       return $data;
 

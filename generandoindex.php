@@ -78,8 +78,6 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto .= "" . PHP_EOL;
         $texto .= '       $data = $'.$tabla.'_controller->getAll() ;' . PHP_EOL;
         $texto .= "" . PHP_EOL;
-        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        // $texto .= "" . PHP_EOL;
         $texto .= '      $data = array(\'msg\' => \'Listado correcto\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '    }' . PHP_EOL;
         $texto .= '    catch (Exception $e)' . PHP_EOL;
@@ -122,9 +120,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto  .= '        ' . PHP_EOL;
 
         $texto .= '      $data = $'.$tabla.'_controller->save($params) ;' . PHP_EOL;
-        $texto .= "" . PHP_EOL;
-        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        // $texto .= '        ' . PHP_EOL;
+        $texto .= '        ' . PHP_EOL;
         $texto .= '      $connection->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '      $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
@@ -172,9 +168,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto  .= '        ' . PHP_EOL;
 
         $texto .= '      $data = $'.$tabla.'_controller->update($params) ;' . PHP_EOL;
-        $texto .= "" . PHP_EOL;
-        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        // $texto .= '        ' . PHP_EOL;
+        $texto .= '        ' . PHP_EOL;
         $texto .= '      $connection->commit();' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '      $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
@@ -214,9 +208,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto .= '      $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '      $data = $'.$tabla.'_controller->updateEstado( $params ) ;' . PHP_EOL;
-        $texto .= "" . PHP_EOL;
-        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        // $texto .= '' . PHP_EOL;
+        $texto .= '' . PHP_EOL;
         $texto .= '      $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
 
@@ -241,9 +233,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto .= '      $'.$tabla.'_controller = new '.$cmTable.'Controller() ; ' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         $texto .= '      $data = $'.$tabla.'_controller->find( $id) ;' . PHP_EOL;
-        $texto .= "" . PHP_EOL;
-        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        // $texto .= '' . PHP_EOL;
+        $texto .= '' . PHP_EOL;
         $texto .= '      $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
 
@@ -260,8 +250,8 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
         # EVENTE DELETE
         $texto .= '  case "delete":' . PHP_EOL;
-        $texto .= '  try' . PHP_EOL;
-        $texto .= '  {' . PHP_EOL;
+        $texto .= '    try' . PHP_EOL;
+        $texto .= '    {' . PHP_EOL;
         $texto .= '' . PHP_EOL;
         if (count($atributos) > 0) {
              $texto .= '      $'.strtolower($atributos[0]).' = $inputs->id;'. PHP_EOL;
