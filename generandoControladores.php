@@ -169,9 +169,8 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($id);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        $texto  .= '      $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
-        $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
-        $texto .= '        ' . PHP_EOL;
+        $texto .= '      $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
+        $texto .= '      $data = Serialize::unSerializeRow($data);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '      return $data;'. PHP_EOL;
         $texto  .= '' . PHP_EOL;
