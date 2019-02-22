@@ -4,6 +4,8 @@
 
 	require_once __DIR__.'/config/config.php' ;
 
+	require_once __DIR__.'/database/DB.php' ;
+
 	function loadModelFiles($file_name){
 		$fullpath = APP.'models'.DS. $file_name . '.php' ;
 		if( file_exists($fullpath) ) {

@@ -1,5 +1,5 @@
 <?php
-Class Connection
+Class Connection extends DB_driver
 {
   private static $db_host = 'localhost';
   private static $db_user = 'root';
@@ -13,6 +13,11 @@ Class Connection
   protected $conn      = null  ;
   protected $status_exe = false ;
 
+  public function __construct($params)
+  {
+      parent::__construct($params);
+  }
+
   # Conectar a la base de datos utilizamos la libreria pdo
   private function openConnection()
   {
@@ -23,6 +28,7 @@ Class Connection
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     # codificacion utf-8
     $this->conn->query("SET NAMES 'utf8'");
+
   }
 
   # Desconectar la base de datos

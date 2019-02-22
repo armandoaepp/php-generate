@@ -40,18 +40,22 @@ class DB  {
 		}
 		//Load the DB driver class
 		require_once(APP.'database/DB_driver.php');
+		// var_dump($params);
 
-		// Load the DB driver PDO
-		$driver_file = APP.'database/'.$params['dbdriver'].'_driver.php';
+		$DB = new DB_driver($params);
 
-		file_exists($driver_file) OR die('Invalid DB driver');
-		require_once($driver_file);
+		// // Load the DB driver PDO
+		// $driver_file = APP.'database/'.$params['dbdriver'].'_driver.php';
 
-		// Instantiate the DB adapter
-		$driver = $params['dbdriver'].'_driver';
-		$DB = new $driver($params);
+		// file_exists($driver_file) OR die('Invalid DB driver');
+		// require_once($driver_file);
+
+		// // Instantiate the DB adapter
+		// $driver = $params['dbdriver'].'_driver';
+		// $DB = new $driver($params);
 
 	}
 
 }
 
+$db = new DB();

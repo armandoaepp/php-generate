@@ -7,7 +7,8 @@
  * This class will not be called directly. Rather, the adapter
  * class for the specific database will extend and instantiate it.
  */
-abstract class DB_driver
+// abstract class DB_driver
+class DB_driver
 {
 
     /**
@@ -182,8 +183,12 @@ abstract class DB_driver
      */
     public function __construct($params)
     {
+        echo "DB_driver" ;
+        var_dump($params);
         if (is_array($params)) {
             foreach ($params as $key => $val) {
+
+                // echo $key ." = ". $val ."<br> ";
                 $this->$key = $val;
             }
         }

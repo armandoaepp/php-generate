@@ -124,8 +124,7 @@
       $bean_admision->setId($id);
 
       $data = $admision->find( $bean_admision) ;
-      $data = Serialize::unSerializeArray($data);
-        
+      $data = Serialize::unSerializeRow($data);
 
       return $data;
 
