@@ -4,7 +4,7 @@ Class Connection
   private static $db_host = 'localhost';
   private static $db_user = 'root';
   private static $db_pass = '';
-  protected $db_name      = 'db_admin_prod';
+  protected $db_name      = 'escuelac_w_ne16';
   protected $db_port      = '3306';
   protected $db_driver    = 'mysql';
 
@@ -13,20 +13,19 @@ Class Connection
   protected $conn      = null  ;
   protected $status_exe = false ;
 
-  function __construct() {
-
-  }
+  public function __construct() { }
 
   # Conectar a la base de datos utilizamos la libreria pdo
   private function openConnection()
   {
-    $cadena = $this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
+    $string_conn = $this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
 
-    $this->conn = new PDO($cadena,self::$db_user,self::$db_pass);
+    $this->conn = new PDO($string_conn,self::$db_user,self::$db_pass);
     # para manejar errores y excepcciones especiales para el manejo de transacciones
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     # codificacion utf-8
     $this->conn->query("SET NAMES 'utf8'");
+
   }
 
   # Desconectar la base de datos
