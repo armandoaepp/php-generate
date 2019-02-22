@@ -1,25 +1,52 @@
 const path = require('path');
-console.log(__dirname);
-module.exports = {
+// import path from 'path';
 
+// ===========================
+var config = {
+  // TODO: Add common Configuration
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
+  }
+};
+
+var appConfig = Object.assign({}, config, {
+  name: "app",
   entry: {
-    // app: './src/js/app.js',
+    app: './src/js/app.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, './js')
+  },
+});
+
+var adminConfig = Object.assign({}, config, {
+  name: "admin",
+  entry: {
     admin: './src/js/admin.js',
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './admin/js')
   },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['es2017'],
-        }
-      }
-    ]
-  }
+});
 
-};
+
+
+// Return Array of Configurations
+module.exports = [
+  // appConfig,
+  adminConfig,
+  // appCssConfig
+];

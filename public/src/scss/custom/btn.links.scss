@@ -1,0 +1,28 @@
+a.no-decoration,
+a.no-decoration:hover {
+  text-decoration: none !important;
+}
+
+.link-primary {
+  color: $primary;
+
+  @include hover {
+    color: darken($primary, 10%);
+  }
+}
+
+.link-secondary {
+  color: $secondary;
+
+  @include hover {
+    color: darken($secondary, 10%);
+  }
+}
+
+.link-white {
+  color: $white;
+
+  @include hover {
+    color: darken($white, 10%);
+  }
+}

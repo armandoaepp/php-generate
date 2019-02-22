@@ -1,0 +1,162 @@
+<?php
+$sidebar = !empty($sidebar) ? $sidebar : [] ;
+extract($sidebar);
+
+$sidebar_class  = !empty($sidebar_class ) ? $sidebar_class : "sidebar" ;
+$sidebar_toggle = !empty($sidebar_toggle ) ? $sidebar_toggle : "all" ;
+$sidebar_active = !empty($sidebar_active ) ? $sidebar_active : [0,0] ;
+
+?>
+<nav class="sidebar <?php echo $sidebar_class; ?> scroll-item" data-sidebar="menu" data-menu-toggle="<?php echo $sidebar_toggle; ?>">
+  <!-- <div class="sidebar-header">
+    <span> Planeatec </span>
+  </div> -->
+  <span class="heading">Components</span>
+  <ul class="sidenav">
+    <li>
+      <a class="menu <?php if($sidebar_active[0] == 1){echo 'active';} ?>" href="#" role="button">
+        <i class="icofont icofont-puzzle"></i> UI Elements
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 1){echo 'active';} ?>" href="../ui-elements/buttons.php">
+            <i class="icofont icofont-curved-right"></i> Buttons
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 2){echo 'active';} ?>" href="../ui-elements/bagdes.php">
+            <i class="icofont icofont-curved-right"></i> Bagdes
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 3){echo 'active';} ?>" href="../ui-elements/typography.php">
+            <i class="icofont icofont-curved-right"></i> Typography
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 4){echo 'active';} ?>" href="../ui-elements/alerts.php">
+            <i class="icofont icofont-curved-right"></i> Alerts
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 5){echo 'active';} ?>" href="../ui-elements/cards.php">
+            <i class="icofont icofont-curved-right"></i> Cards
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 6){echo 'active';} ?>" href="../ui-elements/collapse.php">
+            <i class="icofont icofont-curved-right"></i> Collapse
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 7){echo 'active';} ?>" href="../ui-elements/accordion.php">
+            <i class="icofont icofont-curved-right"></i> Accordions
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 8){echo 'active';} ?>" href="../ui-elements/list-group.php">
+            <i class="icofont icofont-curved-right"></i> List Group
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 9){echo 'active';} ?>" href="../ui-elements/media-object.php">
+            <i class="icofont icofont-curved-right"></i> Media Object
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 10){echo 'active';} ?>" href="../ui-elements/pagination.php">
+            <i class="icofont icofont-curved-right"></i> Pagination
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if($sidebar_active[0] == 1 && $sidebar_active[1] == 11){echo 'active';} ?>" href="../ui-elements/progress.php">
+            <i class="icofont icofont-curved-right"></i> Progress
+          </a>
+        </li>
+
+
+      </ul>
+    </li>
+
+    <li>
+      <a class="menu <?php if($sidebar_active[0] == 2){echo 'active';} ?>" href="#" role="button">
+        <i class="icofont icofont-puzzle"></i> Navigation
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if($sidebar_active[0] == 2 && $sidebar_active[1] == 1){echo 'active';} ?>" href="../navigation/navbars.php">
+            <i class="icofont icofont-curved-right"></i> Navbars
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if($sidebar_active[0] == 2 && $sidebar_active[1] == 2){echo 'active';} ?>" href="../navigation/navbars-variants.php">
+            <i class="icofont icofont-curved-right"></i> Navbars Variants
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if($sidebar_active[0] == 2 && $sidebar_active[1] == 3){echo 'active';} ?>" href="../navigation/sidebar.php">
+            <i class="icofont icofont-curved-right"></i> Sidebar </a>
+        </li>
+
+        <li>
+          <a class="<?php if($sidebar_active[0] == 2 && $sidebar_active[1] == 4){echo 'active';} ?>" href="../navigation/sidebar-menu-all.php">
+            <i class="icofont icofont-curved-right"></i> Sidebar Menu All
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if($sidebar_active[0] == 2 && $sidebar_active[1] == 5){echo 'active';} ?>" href="../navigation/breadcrumb.php">
+            <i class="icofont icofont-curved-right"></i> Breadcrumb
+          </a>
+        </li>
+
+
+
+      </ul>
+    </li>
+
+    <li>
+      <a class="menu <?php if($sidebar_active[0] == 3){echo 'active';} ?>" href="#" role="button">
+        <i class="icofont icofont-puzzle"></i> Content
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if($sidebar_active[0] == 3 && $sidebar_active[1] == 1){echo 'active';} ?>" href="../content/images.php">
+            <i class="icofont icofont-curved-right"></i> Images
+          </a>
+        </li>
+        <li>
+          <a class="<?php if($sidebar_active[0] == 3 && $sidebar_active[1] == 2){echo 'active';} ?>" href="../content/tables.php">
+            <i class="icofont icofont-curved-right"></i> Tables
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+
+
+
+    <li>
+      <a class="menu" href="#" role="button">
+        <i class="icofont icofont-location-arrow"></i> Menu 4
+      </a>
+      <ul class="menu-items">
+        <li class="nav-item ">
+          <a href="buttons/buttons.html ">
+            <i class="icofont icofont-curved-right "></i> Buttons
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a href="buttons/button-group.html ">
+            <i class="icofont icofont-curved-right "></i> Buttons Group
+          </a>
+        </li>
+
+      </ul>
+    </li>
+  </ul>
+</nav>

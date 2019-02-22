@@ -19,11 +19,6 @@ if (!empty($_SESSION['LOGIN'])){
       min-height: calc(100vh - 56px);
     }
 
-   /*  @media(min-width: 996px) {
-      .screen-main {
-        min-height: calc(100vh - 208px);
-      }
-    } */
   </style>
 </head>
 
@@ -79,7 +74,7 @@ if (!empty($_SESSION['LOGIN'])){
   </footer>
 
   <?php  require_once("layout/foot_links.phtml") ?>
-  
+
 
 
 </body>

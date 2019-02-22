@@ -1,47 +1,48 @@
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="./admin">Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
-      aria-expanded="false" aria-label="Toggle navigation">
+<!-- header -->
+<header>
+  <nav data-navbar="fixed-top"
+    class="navbar navbar-theme navbar-sidebar navbar-sidebar navbar-expand-lg navbar-dark bg-primary">
+    <a class="toggler-icon-siderbar d-md-none" data-sidebar="toggle">
+      <i class="fas fa-bars"></i>
+    </a>
+    <a class="navbar-brand" href="#">
+
+      <img class="img-fluid logo-admin" src="img/instituto-superior-de-gastronomia-cumbre-logo-white.svg" alt="">
+      <!-- Esc. Cumbre -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample04">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="./" target="_blank" >Home Público
-            <span class="sr-only">(current)</span>
+        <li class="nav-item d-none d-md-block">
+          <a class="toggler-icon-siderbar nav-link" data-sidebar="toggle">
+            <i class="fas fa-bars"></i>
           </a>
         </li>
+        <!--  <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li> -->
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="admin/categoria/categoria.php">Categorías</a>
-             <a class="dropdown-item" href="admin/marca/marca.php">Marcas</a>
-            <!-- <a class="dropdown-item" href="admin/productos/productos.php">Proyectos</a> -->
-            <!-- <a class="dropdown-item" href="admin/noticias/noticias.php">Noticias</a> -->
-            <!-- <a class="dropdown-item" href="admin/usuarios/usuarios.php">Usuarios</a> -->
-          </div>
-        </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false"> <?php echo $_SESSION['USER']['nombre']  ?> </a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> <?php echo $_SESSION['USER']['nombre']  ?> </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="./admin">Home Admin</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="logout">
-
               Cerrar Sessión
             </a>
 
-            <form id="formLogout"  style="display: none;">
+            <form id="formLogout" style="display: none;">
               <input type="hidden" value="43378389-1111985-958478073">
             </form>
-            <div class="dropdown-divider"></div>
           </div>
         </li>
       </ul>
@@ -49,4 +50,3 @@
     </div>
   </nav>
 </header>
-

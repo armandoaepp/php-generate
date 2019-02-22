@@ -1,0 +1,43 @@
+.screen-main {
+  min-height: calc(100vh - 112px);
+}
+
+// @media(min-width: 996px) {
+//   .screen-main {
+//     min-height: calc(100vh - 208px);
+//   }
+// }
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.05rem rgba(0, 204, 255, 0.25);
+}
+
+.btn-bar {
+  padding: 6px 12px;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  font-size: .9rem!important;
+}
+
+.btn-bar i {
+  font-size: 1.25rem!important;
+}
+
+.table tbody td {
+  padding: 0.4rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table .btn-table i{
+  font-size: 1rem ;
+}
+
+.table-striped tbody tr.tr-estado{
+  background-color: rgba(249, 67, 67, 0.085);
+}
+.table-striped tbody tr.tr-estado td{
+  border-bottom: 1px solid rgba(255, 0, 0, 0.25) !important;
+}

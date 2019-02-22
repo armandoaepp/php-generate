@@ -1,0 +1,99 @@
+// Bootstrap 
+@import './variables';
+@import './variables_themes';
+
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_mixins";
+
+@import "components/mixins/_components.mixin";
+
+//  ---------------------------------------------------
+//     Sidebar Colors
+// ----------------------------------------------------- 
+
+.sidebar-blue {
+  @include sidebar-variant($sidebar-blue-bg-color,
+  $sidebar-blue-bg-header-color,
+  $sidebar-blue-text-color,
+  $sidebar-blue-text-hover-color,
+  $sidebar-blue-text-active-color,
+  $sidebar-blue-bg-active-color,
+  $sidebar-blue-bg-menu-items-color,
+  $sidebar-blue-bg-menu-items-active-color);
+}
+
+.sidebar-dark {
+  @include sidebar-variant($sidebar-dark-bg-color,
+  $sidebar-dark-bg-header-color,
+  $sidebar-dark-text-color,
+  $sidebar-dark-text-hover-color,
+  $sidebar-dark-text-active-color,
+  $sidebar-dark-bg-active-color,
+  $sidebar-dark-bg-menu-items-color,
+  $sidebar-dark-bg-menu-items-active-color,
+  $sidebar-dark-border-color-li-menu-items);
+}
+
+
+.sidebar-dark-green {
+  @include sidebar-variant($sidebar-dark-green-bg-color,
+  $sidebar-dark-green-bg-header-color,
+  $sidebar-dark-green-text-color,
+  $sidebar-dark-green-text-hover-color,
+  $sidebar-dark-green-text-active-color,
+  $sidebar-dark-green-bg-active-color,
+  $sidebar-dark-green-bg-menu-items-color,
+  $sidebar-dark-green-bg-menu-items-active-color,
+  $sidebar-dark-green-border-color-li-menu-items);
+}
+
+
+
+.button-list .btn {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.button-list .dropdown {
+  display: inline-block;
+}
+
+.badge-icon {
+  margin-right: 1.5rem;
+}
+
+.badge-icon:first-child {
+  margin-left: 1.5rem;
+}
+
+
+
+//
+// Code snippets
+// //
+
+// .highlight {
+//   padding: 1rem;
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+//   background-color: $gray-100;
+//   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+// }
+
+
+
+// .highlight {
+//   pre {
+//     padding: 0;
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     background-color: transparent;
+//     border: 0;
+//   }
+
+//   pre code {
+//     font-size: inherit;
+//     color: $gray-900; // Effectively the base text color
+//   }
+// }

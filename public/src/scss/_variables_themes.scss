@@ -1,0 +1,31 @@
+// sidebar-blue -------------------------------------
+
+$sidebar-blue-bg-color       : $white !default;
+$sidebar-blue-bg-header-color: $gray-100;
+
+$sidebar-blue-text-color      : $gray-800 !default;
+$sidebar-blue-text-hover-color: rgba($blue, .95) !default;
+
+$sidebar-blue-text-active-color: $white;
+$sidebar-blue-bg-active-color  : $blue;
+
+$sidebar-blue-bg-menu-items-color       : transparent !default;
+$sidebar-blue-bg-menu-items-active-color: transparent !default;
+
+// sidebar-dark -------------------------------------
+
+$sidebar-dark-bg-color       : #2f353a !default;
+$sidebar-dark-bg-header-color: rgba($black, 0.08);
+
+$sidebar-dark-text-color      : rgba($white,0.75) !default;
+$sidebar-dark-text-hover-color: $white  !default;
+
+$sidebar-dark-text-active-color: $white;
+$sidebar-dark-bg-active-color  : #20a8d8;
+
+$sidebar-dark-bg-menu-items-color       : transparent !default;
+$sidebar-dark-bg-menu-items-active-color: rgba(0, 0, 0, .2) !default;
+
+$sidebar-dark-border-color-li-menu-items: rgba($white, 0.04) !default;
+
+
