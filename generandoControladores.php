@@ -44,6 +44,8 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '      $data = $'.($tabla).'->getAll();' . PHP_EOL;
+        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
+        // $texto .= '        ' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '      return $data ;'. PHP_EOL;
         $texto  .= '    }' . PHP_EOL;
@@ -167,8 +169,9 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($id);' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        $texto  .= '      $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
-        $texto  .= '' . PHP_EOL;
+        $texto .= '      $data = $'.($tabla).'->find( $bean_'.($tabla).') ;' . PHP_EOL;
+        // $texto .= '      $data = Serialize::unSerializeRow($data);' . PHP_EOL;
+        // $texto  .= '' . PHP_EOL;
         $texto  .= '      return $data;'. PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '    }' . PHP_EOL;
@@ -257,6 +260,8 @@ function generandoControladores($atributos, $tabla, $nameatri)
             $texto  .= '' . PHP_EOL;
             $texto  .= '      $data = $'.($tabla).'->getPublished($bean_'.($tabla).') ;' . PHP_EOL;
             $texto  .= '      ' . PHP_EOL;
+            // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
+            // $texto .= '        ' . PHP_EOL;
             $texto  .= '      return $data;'. PHP_EOL;
             $texto  .= '    }' . PHP_EOL;
             $texto  .= '    catch (Exception $e)' . PHP_EOL;

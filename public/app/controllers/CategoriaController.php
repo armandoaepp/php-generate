@@ -23,6 +23,8 @@
       $categoria  = new Categoria();
 
       $data = $categoria->getAll();
+      $data = Serialize::unSerializeArray($data);
+        
 
       return $data ;
     }
@@ -118,6 +120,7 @@
       $bean_categoria->setIdcategoria($id);
 
       $data = $categoria->find( $bean_categoria) ;
+      $data = Serialize::unSerializeRow($data);
 
       return $data;
 
@@ -189,6 +192,8 @@
 
       $data = $categoria->getPublished($bean_categoria) ;
       
+      $data = Serialize::unSerializeArray($data);
+        
       return $data;
     }
     catch (Exception $e)

@@ -3,8 +3,8 @@ Class Connection
 {
   private static $db_host = 'localhost';
   private static $db_user = 'root';
-  private static $db_pass = 'root';
-  protected $db_name      = 'db_admin_prod';
+  private static $db_pass = '';
+  protected $db_name      = 'escuelac_w_ne16';
   protected $db_port      = '3306';
   protected $db_driver    = 'mysql';
 

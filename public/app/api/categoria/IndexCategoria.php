@@ -174,8 +174,8 @@ switch($evento)
   break;
 
   case "delete":
-  try
-  {
+    try
+    {
 
       $idcategoria = $inputs->id;
       $estado = $inputs->estado; 
