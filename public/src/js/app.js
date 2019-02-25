@@ -1,8 +1,9 @@
 
-// require('./bootstrap');
+require('./bootstrap');
 
-// require('./libs/app.libs');
+require('./libs/app.libs');
 
 // require('./components/navbar-fixed');
-// require('./components/_components');
+require('./components/_components');
 
+ 

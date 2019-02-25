@@ -34,8 +34,8 @@
     &.active {
       background: $gray-200;
       color: $breadcrumb-active-color;
-      padding-left: 1.35rem;
-      padding-right: 1.35rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
       clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0 100%, 15px 50%, 0 0);
     }
   }

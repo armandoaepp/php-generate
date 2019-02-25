@@ -20,9 +20,28 @@
 
 <head>
   <?php
-    $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
-    require_once "../layout/head_links.phtml";
+    /* $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
+    require_once "../layout/head_links.phtml" */;
   ?>
+
+  <?php
+
+$setvar = array(
+  'titulo'     => 'Administrador | Escuela Cumbre ',
+  'follow'      => '',
+  'description' => 'Escuela Cumbre Administrador',
+  'keywords'    => 'Escuela cumbre',
+  'active'      => [1,0]
+);
+
+$sidebar = array(
+  'sidebar_class'     => '',
+  'sidebar_toggle'      => 'only',
+  'sidebar_active'      => [2,1],
+ );
+
+ require_once "../layout/head_links.phtml";
+?>
 
   <link rel="stylesheet" href="plugins/datatables/css/dataTables.bootstrap4.min.css">
 </head>
@@ -30,72 +49,92 @@
 <body>
   <?php require "../layout/header.phtml"; ?>
 
-  <main role="main" class="screen-main">
+  <div class="app-wrap">
+    <?php require_once "../layout/sidebar.phtml";?>
+    <main role="main" class="main">
+      <!-- <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="admin">
+              <i class="material-icons">home</i>
+            </a>
+          </li>
+          <li class="breadcrumb-item" aria-current="page">
+            <a href="admin/taller/taller.php">
+              <?php echo $title_page ?></a>
+          </li>
+        </ol>
+      </nav> -->
 
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="admin">
-            <i class="material-icons">home</i>
-          </a>
-        </li>
-        <li class="breadcrumb-item" aria-current="page">
-          <a href="admin/taller/taller.php">
-            <?php echo $title_page ?></a>
-        </li>
-      </ol>
-    </nav>
+      <nav class="full-content" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
+          <li class="breadcrumb-item">
+            <a href="admin">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
 
-    <div class="container py-2">
-      <div class="row">
-        <div class="col-12">
-          <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
-        </div>
-        <div class="col-12 mb-3">
-          <a href="admin/taller/taller.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
-            <i class="material-icons ">format_list_bulleted</i> Listar
-          </a>
-          <a href="admin/taller/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
-            <i class="material-icons ">insert_drive_file</i> Nuevo
-          </a>
-        </div>
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+            <?php echo $title_page ?>
+          </li>
+        </ol>
+      </nav>
 
-        <div class="col-12">
-        
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-              <thead>
-                <tr>
-                  <th width="50">Id </th>
-                  <th>Titulo </th>
-                  <th>Descripcion </th>
-                  <th>Slide </th>
-                  <th>Certificacion </th>
-                  <th>Titulos </th>
-                  <th>Inversion </th>
-                  <th>Titulacion </th>
-                  <th>Detalleduracion </th>
-                  <th>Detalledia </th>
-                  <th>Detallehorario </th>
-                  <th>Detallelugar </th>
-                  <th>Detalleprecio </th>
-                  <th>Detalleequipos </th>
-                  <th>Detalleconsultas </th>
-                  <th>Detalledirigido </th>
-                  <th>Aquien </th>
-                  <th>Temas </th>
-                  <th>Nombreseo </th>
-                  <th>Orden </th>
-                  <th>Fecha </th>
-                  <th width="70"></th>
-                </tr>
-              </thead>
+      <div class="container-full py-2 fs-x-14">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
+          </div>
+          <div class="col-12 mb-3">
+            <a href="admin/taller/taller.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+              <!-- <i class="material-icons ">format_list_bulleted</i> -->
+              <i class="fas fa-list-ul"></i>
+              Listar
+            </a>
+            <a href="admin/taller/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+              <!-- <i class="material-icons ">insert_drive_file</i>  -->
+              <i class="fas fa-file"></i>
+              Nuevo
+            </a>
+          </div>
 
-              <tbody>
-                <?php foreach ($data as &$row) {?>
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                  <tr>
+                    <th width="50">Id </th>
+                    <th>Titulo </th>
+                    <th>Descripcion </th>
+                    <th>Slide </th>
+                    <th>Certificacion </th>
+                    <th>Titulos </th>
+                    <th>Inversion </th>
+                    <th>Titulacion </th>
+                    <th>Detalleduracion </th>
+                    <th>Detalledia </th>
+                    <th>Detallehorario </th>
+                    <th>Detallelugar </th>
+                    <th>Detalleprecio </th>
+                    <th>Detalleequipos </th>
+                    <th>Detalleconsultas </th>
+                    <th>Detalledirigido </th>
+                    <th>Aquien </th>
+                    <th>Temas </th>
+                    <th>Nombreseo </th>
+                    <th>Orden </th>
+                    <th>Fecha </th>
+                    <th width="100"></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php foreach ($data as &$row) {?>
 
                   <?php
                     $classBtn = "" ;
                     $title = "" ;
+                   if(!empty($row["publicar"])){
                     if($row["publicar"] == "S"){
                       $classBtn =  "btn-success";
                       $title = "Desactivar" ;
@@ -104,66 +143,75 @@
                       $classBtn =  "btn-outline-success";
                       $title = "Publicar" ;
                     }
+                   }
 
                     /* estado */
                     $title_estado = "" ;
-                    if($row["estado"] == 1){
-                      $title_estado = "Eliminar" ;
-                    }
-                    else {
-                      $title_estado = "Recuperar" ;
+                    if(!empty($row["estado"])){
+                      if($row["estado"] == 1){
+                        $title_estado = "Eliminar" ;
+                      }
+                      else {
+                        $title_estado = "Recuperar" ;
+                      }
                     }
                   ?>
 
-                <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
-                
-                  <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["titulo"] ?> </td>
-                  <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["slide"] ?> </td>
-                  <td> <?php echo $row["certificacion"] ?> </td>
-                  <td> <?php echo $row["titulos"] ?> </td>
-                  <td> <?php echo $row["inversion"] ?> </td>
-                  <td> <?php echo $row["titulacion"] ?> </td>
-                  <td> <?php echo $row["detalleduracion"] ?> </td>
-                  <td> <?php echo $row["detalledia"] ?> </td>
-                  <td> <?php echo $row["detallehorario"] ?> </td>
-                  <td> <?php echo $row["detallelugar"] ?> </td>
-                  <td> <?php echo $row["detalleprecio"] ?> </td>
-                  <td> <?php echo $row["detalleequipos"] ?> </td>
-                  <td> <?php echo $row["detalleconsultas"] ?> </td>
-                  <td> <?php echo $row["detalledirigido"] ?> </td>
-                  <td> <?php echo $row["aquien"] ?> </td>
-                  <td> <?php echo $row["temas"] ?> </td>
-                  <td> <?php echo $row["nombreseo"] ?> </td>
-                  <td> <?php echo $row["orden"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>">
 
-                  <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/taller/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
-                      <i class="material-icons">edit</i>
-                    </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
-                      <i class="material-icons">delete</i>
-                    </button>
-                    <span class="sr-only"><?php echo $row["estado"] ?></span>
-                  </td>
-                </tr>
-                <?php }?>
-              </tbody>
+                    <td> <?php echo $row["id"] ?> </td>
+                    <td> <?php echo $row["titulo"] ?> </td>
+                    <td> <?php echo $row["descripcion"] ?> </td>
+                    <td> <?php echo $row["slide"] ?> </td>
+                    <td> <?php echo $row["certificacion"] ?> </td>
+                    <td> <?php echo $row["titulos"] ?> </td>
+                    <td> <?php echo $row["inversion"] ?> </td>
+                    <td> <?php echo $row["titulacion"] ?> </td>
+                    <td> <?php echo $row["detalleduracion"] ?> </td>
+                    <td> <?php echo $row["detalledia"] ?> </td>
+                    <td> <?php echo $row["detallehorario"] ?> </td>
+                    <td> <?php echo $row["detallelugar"] ?> </td>
+                    <td> <?php echo $row["detalleprecio"] ?> </td>
+                    <td> <?php echo $row["detalleequipos"] ?> </td>
+                    <td> <?php echo $row["detalleconsultas"] ?> </td>
+                    <td> <?php echo $row["detalledirigido"] ?> </td>
+                    <td> <?php echo $row["aquien"] ?> </td>
+                    <td> <?php echo $row["temas"] ?> </td>
+                    <td> <?php echo $row["nombreseo"] ?> </td>
+                    <td> <?php echo $row["orden"] ?> </td>
+                    <td> <?php echo $row["fecha"] ?> </td>
 
-            </table> 
+                    <td class="text-center">
+                      <a class="btn btn-outline-primary btn-sm lh-1 btn-table"
+                        href="admin/taller/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                        <!-- <i class="material-icons">edit</i> -->
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <button class="btn btn-outline-danger btn-sm lh-1 btn-table"
+                        onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);"
+                        title="<?php echo $title_estado ;?>">
+                        <!-- <i class="material-icons">delete</i> -->
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                      <span class="sr-only"><?php echo $row["estado"] ?></span>
+                    </td>
+                  </tr>
+                  <?php }?>
+                </tbody>
+
+              </table>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-    </div>
+    </main>
+  </div>
 
-  </main>
 
-  <footer class="footer bg-dark sticky-bottom">
-    <?php require "../layout/footer.phtml"; ?>
-  </footer>
 
   <?php require_once "../layout/foot_links.phtml"?>
 
@@ -174,7 +222,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalTitle">
-            <span> Eliminar </span>
+              <span> Eliminar </span>
               <?php echo $title_page; ?>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -199,7 +247,7 @@
                 </div>
 
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="historial" id="no" value="0" >
+                  <input class="form-check-input" type="radio" name="historial" id="no" value="0">
                   <label class="form-check-label" for="no">NO</label>
                 </div>
               </div>
@@ -215,6 +263,8 @@
       </div>
     </div>
   </form>
+
+  <?php require_once "../layout/foot_links.phtml"?>
 
   <script src="plugins/datatables/js/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
@@ -283,15 +333,14 @@
       $("#btn-send").text(title);
 
       $("#estado").val(estado);
-      if( estado === "0" )
-      {
+      if (estado === "0") {
         $("#btn-send").addClass("btn-outline-danger");
         $("#modalHistorial").addClass("d-none");
         $("#modalHistorial").removeClass("d-block");
 
 
       }
-      else if( estado === "1" ) {
+      else if (estado === "1") {
         $("#modalHistorial").addClass("d-block");
       }
       $("#btn-send").removeClass("btn-outline-danger");
@@ -316,8 +365,7 @@
 
       $("#btn-send").removeClass("btn-outline-success");
 
-      if( publicar.toLowerCase() === "n" )
-      {
+      if (publicar.toLowerCase() === "n") {
         $("#btn-send").addClass("btn-outline-success");
       }
 

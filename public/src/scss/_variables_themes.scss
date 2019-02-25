@@ -15,7 +15,7 @@ $sidebar-blue-bg-menu-items-active-color: transparent !default;
 // sidebar-dark -------------------------------------
 
 $sidebar-dark-bg-color       : #2f353a !default;
-$sidebar-dark-bg-header-color: rgba($black, 0.08);
+$sidebar-dark-bg-header-color: rgba($black, 0.08); 
 
 $sidebar-dark-text-color      : rgba($white,0.75) !default;
 $sidebar-dark-text-hover-color: $white  !default;
@@ -29,3 +29,18 @@ $sidebar-dark-bg-menu-items-active-color: rgba(0, 0, 0, .2) !default;
 $sidebar-dark-border-color-li-menu-items: rgba($white, 0.04) !default;
 
 
+// sidebar-dark-green -------------------------------------
+
+$sidebar-dark-green-bg-color       : #3a4651 !default;
+$sidebar-dark-green-bg-header-color: rgba($black, 0.08); 
+
+$sidebar-dark-green-text-color      : rgba($white,0.75) !default;
+$sidebar-dark-green-text-hover-color: $white  !default;
+
+$sidebar-dark-green-text-active-color: $white;
+$sidebar-dark-green-bg-active-color  : #85CE36;
+
+$sidebar-dark-green-bg-menu-items-color       : transparent !default;
+$sidebar-dark-green-bg-menu-items-active-color: rgba(0, 0, 0, .2) !default; // #333e48
+
+$sidebar-dark-green-border-color-li-menu-items: rgba($white, 0.04) !default;

@@ -8,9 +8,7 @@
   overflow-y: auto;
   transition: all 0.3s;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.06);
-  // border-right: 1px solid rgba(#000000, .05); 
   z-index: 129;
-  // height: calc(100vh - #{$nav-height});
 
   &.sidebar-hidden {
     margin-left: -$sidebar-width;
@@ -19,7 +17,7 @@
 }
 
 //  ---------------------------------------------------
-//     SIDEBAR STYLE NAVs and Colores 
+//     SIDEBAR STYLE NAVs and Colores
 // -----------------------------------------------------
 .sidebar {
   background-color: $sidebar-bg-color;
@@ -27,13 +25,14 @@
   font-size: $sidebar-font-size;
 
   .sidebar-header {
-    padding: 1rem;
-    font-size: 1.125rem;
+    padding: 0.5rem;
+    font-size: 1.12rem;
     background-color: $sidebar-bg-header-color;
     min-height: $sidebar-header-height;
-    display: flex;
-    align-items: center;
-    justify-content: center !important;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center !important;
+    text-align: center ;
     font-weight: 700;
   }
 
@@ -107,7 +106,8 @@
     color: $sidebar-text-hover-color;
   }
 
-  .sidenav li>a.menu.active {
+  .sidenav li>a.menu.active,
+  .sidenav li>a.active {
     color: $sidebar-text-active-color;
     background-color: $sidebar-bg-active-color;
     font-weight: 600;
@@ -121,7 +121,7 @@
   .sidenav li>a.menu~ul.menu-items {
     max-height: 0;
     transition: max-height 0.5s ease;
-    overflow-y: hidden;    
+    overflow-y: hidden;
     background-color: $sidebar-bg-menu-items-color;
   }
 
@@ -166,7 +166,7 @@
   }
 }
 
-.main {
+.sidebar~.main {
   margin-left: $sidebar-width;
 }
 
