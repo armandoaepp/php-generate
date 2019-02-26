@@ -8,13 +8,19 @@ function processForLogin(event) {
   var params = JSON.stringify(inputs);
   // console.log(params);
 
-   axios.post('api/ajax/user/IndexLogin.php', params)
-    .then(function (response) {
-      // console.log(response);
-      var data = response.data ;
+  $.ajax({
+    url: './app/auth/IndexAuth.php',
+    dataType: 'json',
+    type: 'post',
+    contentType: 'application/json',
+    data: params,
+    processData: false,
+    success: function (data, textStatus, jQxhr) {
 
-      // console.log(data);
 
+      console.log(data);
+      // console.log(textStatus);
+      // console.log(jQxhr);
       if (!data.error && data.data['login']) {
         $('#alertMensaje').html(data.msg);
         $('#formLogin')[0].reset();
@@ -29,10 +35,11 @@ function processForLogin(event) {
 
       setTimeout(function () { $('#alertConfirmPrincipal').removeClass('show'); }, 5000);
 
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    },
+    error: function (jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
+    }
+  });
 
 }
 $('#formLogin').submit(processForLogin);

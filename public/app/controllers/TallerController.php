@@ -23,8 +23,6 @@
       $taller  = new Taller();
 
       $data = $taller->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
 
       return $data ;
     }
@@ -154,9 +152,6 @@
       $bean_taller->setId($id);
 
       $data = $taller->find( $bean_taller) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }

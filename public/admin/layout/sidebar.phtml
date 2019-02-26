@@ -1,0 +1,45 @@
+<?php
+$sidebar = !empty($sidebar) ? $sidebar : [];
+extract($sidebar);
+
+$sidebar_class = !empty($sidebar_class) ? $sidebar_class : "sidebar";
+$sidebar_toggle = !empty($sidebar_toggle) ? $sidebar_toggle : "all";
+$sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
+
+?>
+<nav class="sidebar <?php echo $sidebar_class; ?> scroll-item" data-sidebar="menu" data-menu-toggle="<?php echo $sidebar_toggle; ?>">
+  <!-- <div class="sidebar-header">
+    <span> Planeatec </span>
+  </div> -->
+  <span class="heading">Opciones</span>
+  <ul class="sidenav">
+    <li>
+      <a class="menu <?php if ($sidebar_active[0] == 1) {echo 'active';}?>" href="#" role="button">
+        <i class="fa fa-list"></i> Configuración Global
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="../ui-elements/buttons.php">
+            <i class="icofont icofont-curved-right"></i> Configuración
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+    <li>
+      <a class="<?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="admin/taller/taller.php" role="button">
+      <i class="fas fa-list-ul"></i> Talleres
+      </a>
+      <!-- <ul class="menu-items">
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="../ui-elements/buttons.php">
+            <i class="icofont icofont-curved-right"></i> Configuración
+          </a>
+        </li>
+
+      </ul> -->
+    </li>
+
+  </ul>
+</nav>

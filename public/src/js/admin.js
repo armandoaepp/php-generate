@@ -1,7 +1,9 @@
-require('./bootstrap') ;
 
-require('./serialize-form-json') ;
-require('./admin/login') ;
-require('./admin/logout') ;
+require('./bootstrap');
 
-// datables 
+require('./libs/app.libs');
+
+// require('./components/navbar-fixed');
+require('./components/_components');
+require('./admin/app.admin');
+

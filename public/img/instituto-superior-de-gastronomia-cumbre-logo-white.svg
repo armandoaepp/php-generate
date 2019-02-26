@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2480px" height="907px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2480 907"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:red}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2748212313184">
+   <circle id="XMLID_20_" class="fil0" cx="453" cy="453" r="453"/>
+   <g id="XMLID_4_">
+    <path id="XMLID_18_" class="fil1" d="M1095 454l0 0c0,-62 47,-113 115,-113 41,0 66,13 86,34l-30 35c-17,-16 -35,-25 -56,-25 -38,0 -64,31 -64,68l0 1c0,38 26,70 64,70 25,0 41,-11 58,-26l31 30c-23,24 -48,39 -90,39 -66,0 -114,-50 -114,-113z"/>
+    <path id="XMLID_16_" class="fil1" d="M1345 469l0 -125 48 0 0 124c0,35 18,55 48,55 29,0 47,-19 47,-53l0 -125 48 0 0 124c0,66 -38,99 -97,99 -59,-2 -94,-34 -94,-99z"/>
+    <polygon id="XMLID_14_" class="fil1" points="1583,344 1635,344 1693,437 1751,344 1803,344 1803,563 1755,563 1755,420 1694,513 1693,513 1631,420 1631,562 1584,562 1584,344 "/>
+    <path id="XMLID_10_" class="fil1" d="M1849 344l103 0c25,0 44,7 57,20 10,10 14,22 14,37l0 1c0,25 -13,39 -28,48 25,10 41,24 41,53l0 1c0,40 -33,61 -82,61l-105 0 0 -221zm91 89c22,0 36,-7 36,-23l0 -1c0,-15 -12,-23 -32,-23l-48 0 0 47 44 0zm14 87c22,0 34,-8 34,-24l0 -1c0,-14 -11,-24 -35,-24l-56 0 0 48 57 0 0 1z"/>
+    <path id="XMLID_7_" class="fil1" d="M2082 344l100 0c29,0 50,8 64,23 12,12 19,29 19,50l0 1c0,35 -19,58 -46,68l53 79 -57 0 -46 -71 -1 0 -38 0 0 71 -48 0 0 -221zm98 106c24,0 38,-13 38,-31l0 -1c0,-20 -15,-32 -38,-32l-48 0 0 63 48 0 0 1z"/>
+    <polygon id="XMLID_5_" class="fil1" points="2313,344 2478,344 2478,386 2361,386 2361,431 2464,431 2464,474 2361,474 2361,519 2480,519 2480,562 2313,562 "/>
+   </g>
+   <path id="XMLID_3_" class="fil1" d="M810 593c-95,-82 -201,-178 -276,-271 0,-2 -1,-2 -2,-2 -1,0 -3,0 -3,2l-2 2c0,0 -1,1 -1,1 -17,-30 -30,-53 -37,-72 -14,-27 -21,-43 -33,-43 -14,0 -31,21 -73,72 -50,61 -134,163 -285,317 -5,3 -7,7 -7,10 0,4 3,8 8,8 3,0 7,-4 8,-4l207 -174c4,13 -16,52 -31,80 -17,32 -23,44 -19,50 1,1 2,2 4,2l0 0c13,0 60,-39 257,-236 61,99 144,186 274,281 0,0 8,5 16,-5 5,-9 -5,-18 -5,-18z"/>
+  </g>
+ </g>
+</svg>
