@@ -36,20 +36,6 @@
 
     <main role="main" class="main">
 
-      <!-- <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="admin">
-              <i class="material-icons">home</i>
-            </a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="admin/taller/taller.php"><?php echo $title_page ;?>s</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">Nuevo <?php echo $title_page ;?></li>
-        </ol>
-      </nav> -->
-
       <nav class="full-content" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
           <li class="breadcrumb-item">

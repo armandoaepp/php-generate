@@ -116,16 +116,17 @@
                   <?php
                     $classBtn = "" ;
                     $title = "" ;
-                   if(!empty($row["publicar"])){
-                    if($row["publicar"] == "S"){
-                      $classBtn =  "btn-success";
-                      $title = "Desactivar" ;
+
+                    if(!empty($row["publicar"])){
+                      if($row["publicar"] == "S"){
+                        $classBtn =  "btn-success";
+                        $title = "Desactivar" ;
+                      }
+                      else {
+                        $classBtn =  "btn-outline-success";
+                        $title = "Publicar" ;
+                      }
                     }
-                    else {
-                      $classBtn =  "btn-outline-success";
-                      $title = "Publicar" ;
-                    }
-                   }
 
                     /* estado */
                     $title_estado = "" ;
@@ -312,9 +313,9 @@
       $("#dataTextModal").html(text);
       $("#btn-send").text(title);
 
+      $("#btn-send").addClass("btn-outline-danger");
       $("#estado").val(estado);
       if (estado === "0") {
-        $("#btn-send").addClass("btn-outline-danger");
         $("#modalHistorial").addClass("d-none");
         $("#modalHistorial").removeClass("d-block");
 
@@ -323,8 +324,7 @@
       else if (estado === "1") {
         $("#modalHistorial").addClass("d-block");
       }
-      $("#btn-send").removeClass("btn-outline-danger");
-      console.log(estado);
+
 
       $("#myModal").modal("show");
     }
@@ -343,10 +343,13 @@
       $("#dataTextModal").html(text);
       $("#btn-send").text(title);
 
+      $("#btn-send").removeClass("btn-outline-danger");
       $("#btn-send").removeClass("btn-outline-success");
 
       if (publicar.toLowerCase() === "n") {
         $("#btn-send").addClass("btn-outline-success");
+      }else{
+        $("#btn-send").addClass("btn-outline-danger");
       }
 
       $("#myModal").modal("show");

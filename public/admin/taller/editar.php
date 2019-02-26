@@ -23,22 +23,22 @@ $title_page = "Taller"
 <head>
   <?php
 
-$setvar = array(
-    'titulo' => 'Talleres',
-    'follow' => '',
-    'description' => 'Administrador',
-    'keywords' => 'administrador',
-    'active' => [1, 0],
-);
+    $setvar = array(
+        'titulo' => 'Talleres',
+        'follow' => '',
+        'description' => 'Administrador',
+        'keywords' => 'administrador',
+        'active' => [1, 0],
+    );
 
-$sidebar = array(
-    'sidebar_class' => '',
-    'sidebar_toggle' => 'only',
-    'sidebar_active' => [2, 1],
-);
+    $sidebar = array(
+        'sidebar_class' => '',
+        'sidebar_toggle' => 'only',
+        'sidebar_active' => [2, 1],
+    );
 
-require_once "../layout/head_links.phtml";
-?>
+    require_once "../layout/head_links.phtml";
+  ?>
 </head>
 
 <body>
@@ -48,40 +48,26 @@ require_once "../layout/head_links.phtml";
     <?php require_once "../layout/sidebar.phtml";?>
     <main role="main" class="main">
 
-      <!-- <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+      <nav class="full-content" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
           <li class="breadcrumb-item">
             <a href="admin">
-              <i class="material-icons">home</i>
+              <i class="fas fa-home"></i> Home
             </a>
           </li>
+
           <li class="breadcrumb-item">
-            <a href="admin/taller/taller.php"><?php echo $title_page; ?>s</a>
+            <a href="admin/taller/taller.php">
+              <i class="fas fa-list"></i>
+              <?php echo $title_page ;?>s
+            </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Editar <?php echo $title_page; ?></li>
+
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+            Editar <?php echo $title_page ?>
+          </li>
         </ol>
-      </nav> -->
-
-      <nav class="full-content" aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
-            <li class="breadcrumb-item">
-              <a href="admin">
-                <i class="fas fa-home"></i> Home
-              </a>
-            </li>
-
-            <li class="breadcrumb-item">
-              <a href="admin/taller/taller.php">
-                <i class="fas fa-list"></i>
-                <?php echo $title_page ;?>s
-              </a>
-            </li>
-
-            <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-                Editar <?php echo $title_page ?>
-            </li>
-          </ol>
-        </nav>
+      </nav>
 
       <div class="container py-2 py-md-3">
         <div class="row">
