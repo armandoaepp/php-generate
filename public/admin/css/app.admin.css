@@ -11898,4 +11898,9 @@ ul.social li a {
 .logo-admin {
   max-width: 140px;
 }
+
+.table.dataTable td {
+  padding: 0.35rem 0.65rem;
+  vertical-align: middle;
+}
 /*# sourceMappingURL=app.admin.css.map */

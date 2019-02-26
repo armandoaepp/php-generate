@@ -35,7 +35,7 @@ class UploadFiles {
           $imagen_url = "{$new_name}" ;
         }
 
-        $imagen_url = IMAGES_DIR. DS."{$imagen_url}" ;
+        $imagen_url = IMAGES_DIR. "/{$imagen_url}" ;
 
       # ruta destino(donde se movera el archivo )
         $ruta_destino = IMAGES.'/../'."{$imagen_url}";

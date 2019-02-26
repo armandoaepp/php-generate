@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-
+    
   public function getAll()
   {
     try
@@ -23,8 +23,6 @@
       $taller  = new Taller();
 
       $data = $taller->getAll();
-      $data = Serialize::unSerializeArray($data);
-
 
       return $data ;
     }
@@ -38,13 +36,13 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $taller  = new Taller($this->cnx);
 
       $bean_taller = new BeanTaller();
-
+            
       $bean_taller->setTitulo($titulo);
       $bean_taller->setDescripcion($descripcion);
       $bean_taller->setSlide($slide);
@@ -66,7 +64,7 @@
       $bean_taller->setNombreseo($nombreseo);
       $bean_taller->setOrden($orden);
       $bean_taller->setFecha($fecha);
-
+            
       $data = $taller->save($bean_taller) ;
 
       return $data ;
@@ -81,12 +79,12 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $taller  = new Taller($this->cnx);
       $bean_taller = new BeanTaller();
-
+            
       $bean_taller->setId($id);
       $bean_taller->setTitulo($titulo);
       $bean_taller->setDescripcion($descripcion);
@@ -111,7 +109,7 @@
       $bean_taller->setFecha($fecha);
 
       $data = $taller->update($bean_taller) ;
-
+            
       return $data;
     }
     catch (Exception $e)
@@ -124,17 +122,17 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $taller  = new Taller($this->cnx);
       $bean_taller = new BeanTaller();
-
+            
       $bean_taller->setId($id);
       $bean_taller->setEstado($estado);
 
       $data = $taller->updateEstado($bean_taller) ;
-
+            
       return $data;
     }
     catch (Exception $e)
@@ -154,9 +152,6 @@
       $bean_taller->setId($id);
 
       $data = $taller->find( $bean_taller) ;
-      $data = Serialize::unSerializeRow($data);
-
-
       return $data;
 
     }
