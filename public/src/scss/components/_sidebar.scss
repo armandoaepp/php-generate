@@ -107,7 +107,7 @@
   }
 
   .sidenav li>a.menu.active,
-  .sidenav li>a.active {
+  .sidenav>li>a.active {
     color: $sidebar-text-active-color;
     background-color: $sidebar-bg-active-color;
     font-weight: 600;

@@ -45,7 +45,7 @@ require_once "layout/head_links.phtml";
             <div class="w-75 mx-auto mb-4">
               <img class="img-fluid" src="img/instituto-superior-de-gastronomia-cumbre-logo-white.svg" alt="">
             </div>
-            <h1 class="f-open-sans h4 mb-3 text-gray-500 "> Ingreso al Sistema </h1>
+            <h1 class="f-open-sans h5 mb-3 text-gray-500 "> Ingreso al Sistema </h1>
           </div>
 
           <form id="formLogin" class="form-login mb-3">

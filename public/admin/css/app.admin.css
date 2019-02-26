@@ -11358,7 +11358,7 @@ $breadcrumb-divider-color
 }
 
 .sidebar .sidenav li > a.menu.active,
-.sidebar .sidenav li > a.active {
+.sidebar .sidenav > li > a.active {
   color: #ffffff;
   background-color: #EC3237;
   font-weight: 600;

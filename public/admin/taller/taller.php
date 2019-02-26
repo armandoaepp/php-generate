@@ -20,28 +20,23 @@
 
 <head>
   <?php
-    /* $setvar = array("titulo" => $title_page . " | Admin ", "follow" => "", "active" => [1, 1]);
-    require_once "../layout/head_links.phtml" */;
+
+    $setvar = array(
+      'titulo'     => 'Talleres',
+      'follow'      => '',
+      'description' => 'Administrador',
+      'keywords'    => 'administrador',
+      'active'      => [1,0]
+    );
+
+    $sidebar = array(
+      'sidebar_class'     => '',
+      'sidebar_toggle'      => 'only',
+      'sidebar_active'      => [2,1],
+    );
+
+    require_once "../layout/head_links.phtml";
   ?>
-
-  <?php
-
-$setvar = array(
-  'titulo'     => 'Administrador | Escuela Cumbre ',
-  'follow'      => '',
-  'description' => 'Escuela Cumbre Administrador',
-  'keywords'    => 'Escuela cumbre',
-  'active'      => [1,0]
-);
-
-$sidebar = array(
-  'sidebar_class'     => '',
-  'sidebar_toggle'      => 'only',
-  'sidebar_active'      => [2,1],
- );
-
- require_once "../layout/head_links.phtml";
-?>
 
   <link rel="stylesheet" href="plugins/datatables/css/dataTables.bootstrap4.min.css">
 </head>
@@ -52,19 +47,6 @@ $sidebar = array(
   <div class="app-wrap">
     <?php require_once "../layout/sidebar.phtml";?>
     <main role="main" class="main">
-      <!-- <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="admin">
-              <i class="material-icons">home</i>
-            </a>
-          </li>
-          <li class="breadcrumb-item" aria-current="page">
-            <a href="admin/taller/taller.php">
-              <?php echo $title_page ?></a>
-          </li>
-        </ol>
-      </nav> -->
 
       <nav class="full-content" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
@@ -106,11 +88,11 @@ $sidebar = array(
                     <th width="50">Id </th>
                     <th>Titulo </th>
                     <th>Descripcion </th>
-                    <th>Slide </th>
+                    <!-- <th>Slide </th>
                     <th>Certificacion </th>
                     <th>Titulos </th>
                     <th>Inversion </th>
-                    <th>Titulacion </th>
+                     <th>Titulacion </th>
                     <th>Detalleduracion </th>
                     <th>Detalledia </th>
                     <th>Detallehorario </th>
@@ -122,7 +104,7 @@ $sidebar = array(
                     <th>Aquien </th>
                     <th>Temas </th>
                     <th>Nombreseo </th>
-                    <th>Orden </th>
+                    <th>Orden </th> -->
                     <th>Fecha </th>
                     <th width="100"></th>
                   </tr>
@@ -162,7 +144,7 @@ $sidebar = array(
                     <td> <?php echo $row["id"] ?> </td>
                     <td> <?php echo $row["titulo"] ?> </td>
                     <td> <?php echo $row["descripcion"] ?> </td>
-                    <td> <?php echo $row["slide"] ?> </td>
+                    <!-- <td> <?php echo $row["slide"] ?> </td>
                     <td> <?php echo $row["certificacion"] ?> </td>
                     <td> <?php echo $row["titulos"] ?> </td>
                     <td> <?php echo $row["inversion"] ?> </td>
@@ -178,19 +160,17 @@ $sidebar = array(
                     <td> <?php echo $row["aquien"] ?> </td>
                     <td> <?php echo $row["temas"] ?> </td>
                     <td> <?php echo $row["nombreseo"] ?> </td>
-                    <td> <?php echo $row["orden"] ?> </td>
+                    <td> <?php echo $row["orden"] ?> </td> -->
                     <td> <?php echo $row["fecha"] ?> </td>
 
                     <td class="text-center">
                       <a class="btn btn-outline-primary btn-sm lh-1 btn-table"
                         href="admin/taller/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
-                        <!-- <i class="material-icons">edit</i> -->
                         <i class="fas fa-pencil-alt"></i>
                       </a>
                       <button class="btn btn-outline-danger btn-sm lh-1 btn-table"
                         onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);"
                         title="<?php echo $title_estado ;?>">
-                        <!-- <i class="material-icons">delete</i> -->
                         <i class="far fa-trash-alt"></i>
                       </button>
                       <span class="sr-only"><?php echo $row["estado"] ?></span>
