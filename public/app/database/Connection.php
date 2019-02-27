@@ -1,30 +1,34 @@
 <?php
 Class Connection
 {
-  private static $db_host = 'localhost';
-  private static $db_user = 'root';
-  private static $db_pass = '';
-  protected $db_name      = 'escuelac_w_ne16';
-  protected $db_port      = '3306';
-  protected $db_driver    = 'mysql';
+  protected $db_host   = 'localhost';
+  protected $db_user   = 'root';
+  protected $db_pass   = '';
+  protected $db_name   = 'escuelac_w_ne16';
+  protected $db_port   = '3306';
+  protected $db_driver = 'mysql';
 
-  protected $query     = '';
-  protected $rows      = array();
-  protected $conn      = null  ;
-  protected $status_exe = false ;
+  protected $query  = '';
+  protected $rows   = array();
+  protected $conn   = null  ;
+  protected $status = false ;
 
   public function __construct() { }
 
   # Conectar a la base de datos utilizamos la libreria pdo
   private function openConnection()
   {
-    $string_conn = $this->db_driver.":host=".self::$db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
+    $str_conn = $this->db_driver.":host=".$this->db_host.";port=".$this->db_port.";dbname=" .$this->db_name;
 
-    $this->conn = new PDO($string_conn,self::$db_user,self::$db_pass);
+    $this->conn = new PDO($str_conn,$this->db_user,$this->db_pass);
+
     # para manejar errores y excepcciones especiales para el manejo de transacciones
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     # codificacion utf-8
     $this->conn->query("SET NAMES 'utf8'");
+
+    return $this->conn ;
 
   }
 
@@ -42,7 +46,8 @@ Class Connection
   protected function executeQuery()
   {
     $rows = array();
-    $this->status_exe = false ;
+    $this->status = false ;
+
     # conn si es nulo inicializamos la conexion
     if( $this->conn == null )
     {
@@ -51,18 +56,20 @@ Class Connection
 
     $stm = $this->conn->prepare($this->query);
 
-    $this->status_exe = $stm->execute() ;
+    $this->status = $stm->execute() ;
 
 
-    if($this->status_exe)
+    if($this->status)
     {
       # Verificacmos si el resultado tiene columnas para no tener problemas con los INSERT, UPDATE o DELETE
       # esto para que el metodo de conexion no duelva error cuando se trabaja con transacciones
       $column_count = $stm->columnCount() ;
+
       if ($column_count > 0)
       {
         # solo se accede por nombres de columnas y facil convertir en json
         $rows  = $stm->fetchAll(PDO::FETCH_ASSOC) ;
+        // $rows  = $stm->fetchAll(PDO::FETCH_OBJ) ;
       }
 
     }
@@ -99,7 +106,7 @@ Class Connection
     $this->closeConnection();
   }
 
-  # este metoo nos siver para iniciar la conexion desde una capa externa al models
+  # este metodo nos siver para iniciar la conexion desde una capa externa al models
   # trabajar con multiples clases para transacciones
   public function getConnection()
   {
@@ -117,16 +124,13 @@ Class Connection
   protected function executeFind()
   {
     try{
-      $rows = array();
 
       $this->executeQuery();
 
-      if(count($this->rows) > 0 )
+      if(count($this->rows) == 1 )
       {
-          $rows = $this->rows[0] ;
+        $this->rows = $this->rows[0] ;
       }
-
-      $this->rows =  $rows ;
 
     }catch(exception $e){
 

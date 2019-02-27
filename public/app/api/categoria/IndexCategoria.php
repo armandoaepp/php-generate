@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,38 +25,41 @@ switch($evento)
   case "list":
     try
     {
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
-       $data = $categoria_controller->getAll() ;
+      $data = $categoria_controller->getAll() ;
+      echo "<pre>";
+      print_r($data);
+      echo "</pre>";
 
-      $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
+      // $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
     catch (Exception $e)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $categoria_controller = new CategoriaController($cnx) ; 
+
+      $categoria_controller = new CategoriaController($cnx) ;
       $connection->beginTransaction();
-        
+
       $idcategoria = $inputs->idcategoria;
       $nombre = $inputs->nombre;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'nombre'=> $nombre,
@@ -64,10 +67,10 @@ switch($evento)
                 'imagen'=> $imagen,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $categoria_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -77,7 +80,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -87,17 +90,17 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $categoria_controller = new CategoriaController($cnx) ; 
+
+      $categoria_controller = new CategoriaController($cnx) ;
       $connection->beginTransaction();
-        
+
       $idcategoria = $inputs->idcategoria;
       $nombre = $inputs->nombre;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'nombre'=> $nombre,
@@ -105,10 +108,10 @@ switch($evento)
                 'imagen'=> $imagen,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $categoria_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -119,7 +122,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -134,9 +137,9 @@ switch($evento)
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
       $data = $categoria_controller->updateEstado( $params ) ;
 
@@ -147,7 +150,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -157,7 +160,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
       $data = $categoria_controller->find( $id) ;
 
@@ -168,7 +171,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -178,7 +181,7 @@ switch($evento)
     {
 
       $idcategoria = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -189,9 +192,9 @@ switch($evento)
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -213,7 +216,7 @@ switch($evento)
 			else
 			{
 				$data = $categoria_controller->updateEstado($params);
-			} 
+			}
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -222,7 +225,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
@@ -243,9 +246,9 @@ switch($evento)
       $params = array(
                 'idcategoria'=> $idcategoria,
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
       $data = $categoria_controller->updatePublish( $params ) ;
 
@@ -256,7 +259,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -269,9 +272,9 @@ switch($evento)
 
       $params = array(
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $categoria_controller = new CategoriaController() ; 
+      $categoria_controller = new CategoriaController() ;
 
       $data = $categoria_controller->getPublished( $params ) ;
 
@@ -282,7 +285,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
