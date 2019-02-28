@@ -12,7 +12,7 @@
     "css-minify": "npm-run-all --parallel css-minify-*",
     "css-minify-main": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output admin/css/app.admin.min.css admin/css/app.admin.css",
     "css-prefix-main": "postcss --config build/postcss.config.js --replace \"admin/css/*.css\" \"!admin/css/*.min.css\"",
-      "css-prefix": "postcss --config build/postcss.config.js --replace \"admin/css/*.css\" \"!admin/css/*.min.css\"",
+    "css-prefix": "postcss --config build/postcss.config.js --replace \"admin/css/*.css\" \"!admin/css/*.min.css\"",
     "prod": "npm run css & npm run js ",
     "dev": "npm run sass & npm run js"
   },
@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "fine-uploader": "^5.16.2",
     "helper-css-light": "^2.5.8",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",

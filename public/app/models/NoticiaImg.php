@@ -19,7 +19,7 @@ class NoticiaImg extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM noticia_img";
+      $this->query = "SELECT * FROM noticia_img; ";
 
       $this->executeQuery();
 
@@ -62,27 +62,29 @@ class NoticiaImg extends Connection {
   public function save($bean_noticia_img)
   {
     try{
+      $bean_noticia_img->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_noticia_img->getId();
       $noticia_id = $bean_noticia_img->getNoticiaId();
       $imagen = $bean_noticia_img->getImagen();
-      $jerarquia = $bean_noticia_img->getJerarquia();
+      $item = $bean_noticia_img->getItem();
       $estado = $bean_noticia_img->getEstado();
-      $fecha = $bean_noticia_img->getFecha();
+      $created_up = $bean_noticia_img->getCreatedUp();
 
       $this->query = "INSERT INTO noticia_img
                       (
                         noticia_id,
                         imagen,
-                        jerarquia,
+                        item,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$noticia_id',
                         '$imagen',
-                        '$jerarquia',
+                        '$item',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
@@ -106,14 +108,12 @@ class NoticiaImg extends Connection {
       $id = $bean_noticia_img->getId();
       $noticia_id = $bean_noticia_img->getNoticiaId();
       $imagen = $bean_noticia_img->getImagen();
-      $jerarquia = $bean_noticia_img->getJerarquia();
-      $fecha = $bean_noticia_img->getFecha();
+      $item = $bean_noticia_img->getItem();
 
       $this->query = "UPDATE noticia_img SET 
                         noticia_id = '$noticia_id',
                         imagen = '$imagen',
-                        jerarquia = '$jerarquia',
-                        fecha = '$fecha'
+                        item = '$item'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 

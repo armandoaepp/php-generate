@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -52,20 +52,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
 
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setTitulo($titulo);
       $bean_evento->setDescripcion($descripcion);
       $bean_evento->setImagen($imagen);
-      $bean_evento->setUrlSeo($url_seo);
+      $bean_evento->setUrlSeo($url);
       $bean_evento->setItem($item);
       $bean_evento->setPublicar($publicar);
-            
+
       $data = $evento->save($bean_evento) ;
 
       return $data ;
@@ -80,22 +80,22 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setId($id);
       $bean_evento->setTitulo($titulo);
       $bean_evento->setDescripcion($descripcion);
       $bean_evento->setImagen($imagen);
-      $bean_evento->setUrlSeo($url_seo);
+      $bean_evento->setUrlSeo($url);
       $bean_evento->setItem($item);
       $bean_evento->setPublicar($publicar);
 
       $data = $evento->update($bean_evento) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -108,17 +108,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setId($id);
       $bean_evento->setEstado($estado);
 
       $data = $evento->updateEstado($bean_evento) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -175,17 +175,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setId($id);
       $bean_evento->setPublicar($publicar);
 
       $data = $evento->updatePublish($bean_evento) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -198,16 +198,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setPublicar($publicar);
 
       $data = $evento->getPublished($bean_evento) ;
-      
+
       return $data;
     }
     catch (Exception $e)

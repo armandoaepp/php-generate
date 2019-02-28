@@ -13,7 +13,7 @@
 
   $titulo   = $_POST["titulo"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $url_seo   = $_POST["url_seo"] ;
+  $url   = $_POST["url"] ;
   $item   = $_POST["item"] ;
   $publicar   = $_POST["publicar"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
@@ -24,7 +24,7 @@
   $params = array(
     "titulo"   => $titulo,
     "descripcion"   => $descripcion,
-    "url_seo"   => $url_seo,
+    "url"   => $url,
     "item"   => $item,
     "publicar"   => $publicar,
     "imagen"  => $imagen,

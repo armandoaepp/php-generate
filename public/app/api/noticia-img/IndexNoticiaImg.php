@@ -53,15 +53,15 @@ switch($evento)
       $id = $inputs->id;
       $noticia_id = $inputs->noticia_id;
       $imagen = $inputs->imagen;
-      $jerarquia = $inputs->jerarquia;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
                 'noticia_id'=> $noticia_id,
                 'imagen'=> $imagen,
-                'jerarquia'=> $jerarquia,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $noticia_img_controller->save($params) ;
@@ -92,15 +92,15 @@ switch($evento)
       $id = $inputs->id;
       $noticia_id = $inputs->noticia_id;
       $imagen = $inputs->imagen;
-      $jerarquia = $inputs->jerarquia;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
                 'noticia_id'=> $noticia_id,
                 'imagen'=> $imagen,
-                'jerarquia'=> $jerarquia,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $noticia_img_controller->update($params) ;

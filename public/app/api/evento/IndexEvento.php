@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
        $data = $evento_controller->getAll() ;
 
@@ -35,43 +35,43 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $evento_controller = new EventoController($cnx) ; 
+
+      $evento_controller = new EventoController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
-      $url_seo = $inputs->url_seo;
+      $url = $inputs->url;
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
-                'url_seo'=> $url_seo,
+                'url'=> $url,
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $evento_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -81,7 +81,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -91,32 +91,32 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $evento_controller = new EventoController($cnx) ; 
+
+      $evento_controller = new EventoController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
-      $url_seo = $inputs->url_seo;
+      $url = $inputs->url;
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
-                'url_seo'=> $url_seo,
+                'url'=> $url,
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $evento_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -127,7 +127,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -142,9 +142,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
       $data = $evento_controller->updateEstado( $params ) ;
 
@@ -155,7 +155,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -165,7 +165,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
       $data = $evento_controller->find( $id) ;
 
@@ -176,7 +176,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -186,7 +186,7 @@ switch($evento)
     {
 
       $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -197,9 +197,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -221,7 +221,7 @@ switch($evento)
 			else
 			{
 				$data = $evento_controller->updateEstado($params);
-			} 
+			}
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -230,7 +230,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
@@ -251,9 +251,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
       $data = $evento_controller->updatePublish( $params ) ;
 
@@ -264,7 +264,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -277,9 +277,9 @@ switch($evento)
 
       $params = array(
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $evento_controller = new EventoController() ; 
+      $evento_controller = new EventoController() ;
 
       $data = $evento_controller->getPublished( $params ) ;
 
@@ -290,7 +290,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;

@@ -82,14 +82,8 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="jerarquia">jerarquia : </label>
-                  <input type="text" class="form-control" name="jerarquia" id="jerarquia" required placeholder="jerarquia">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="fecha">fecha : </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="fecha">
+                  <label for="item">item : </label>
+                  <input type="text" class="form-control" name="item" id="item" required placeholder="item">
                 </div>
               </div>
 

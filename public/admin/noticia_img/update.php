@@ -14,8 +14,7 @@
   $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $noticia_id   = $_POST["noticia_id"] ;
-  $jerarquia   = $_POST["jerarquia"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -29,8 +28,7 @@
   $params = array(
     "id"   => $id,
     "noticia_id"   => $noticia_id,
-    "jerarquia"   => $jerarquia,
-    "fecha"   => $fecha,
+    "item"   => $item,
     "imagen"  => $imagen,
   );
 

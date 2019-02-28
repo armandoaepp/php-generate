@@ -64,7 +64,7 @@
         </ol>
       </nav>
 
-      <div class="container-full py-2 fs-x-14">
+      <div class="container-full p-2 fs-x-14">
         <div class="row">
           <div class="col-12">
             <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
@@ -88,8 +88,7 @@
                 <tr>
                   <th width="50">Id </th>
                   <th>Noticia_id </th>
-                  <th>Jerarquia </th>
-                  <th>Fecha </th>
+                  <th>Item </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -131,8 +130,7 @@
                 
                   <td> <?php echo $row["id"] ?> </td>
                   <td> <?php echo $row["noticia_id"] ?> </td>
-                  <td> <?php echo $row["jerarquia"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <td> <?php echo $row["item"] ?> </td>
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/noticia_img/editar.php?id=<?php echo $row["id"] ?>" title="Editar">

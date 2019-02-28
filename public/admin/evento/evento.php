@@ -82,14 +82,14 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Id </th>
                   <th>Titulo </th>
                   <th>Descripcion </th>
-                  <th>Url_seo </th>
+                  <th>url </th>
                   <th>Item </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
@@ -130,11 +130,11 @@
                   ?>
 
                 <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
-                
+
                   <td> <?php echo $row["id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
                   <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["url_seo"] ?> </td>
+                  <td> <?php echo $row["url"] ?> </td>
                   <td> <?php echo $row["item"] ?> </td>
 
                   <td class="text-center">
@@ -143,7 +143,7 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-            
+
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/evento/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
@@ -158,7 +158,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

@@ -64,7 +64,7 @@
         </ol>
       </nav>
 
-      <div class="container-full py-2 fs-x-14">
+      <div class="container-full p-2 fs-x-14">
         <div class="row">
           <div class="col-12">
             <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>

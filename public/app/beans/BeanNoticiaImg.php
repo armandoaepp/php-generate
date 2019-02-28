@@ -15,9 +15,9 @@ class BeanNoticiaImg{
     private $id;
     private $noticia_id;
     private $imagen = "" ;
-    private $jerarquia;
+    private $item;
     private $estado = 1 ;
-    private $fecha;
+    private $created_up = NULL ;
 
     # METODOS
     public function setId($id_)
@@ -50,14 +50,14 @@ class BeanNoticiaImg{
         return $this->imagen;
     }
 
-    public function setJerarquia($jerarquia_)
+    public function setItem($item_)
     {
-        $this->jerarquia = Validation::validate( $jerarquia_ );
+        $this->item = Validation::validate( $item_ );
     }
 
-    public function getJerarquia()
+    public function getItem()
     {
-        return $this->jerarquia;
+        return $this->item;
     }
 
     public function setEstado($estado_)
@@ -70,14 +70,14 @@ class BeanNoticiaImg{
         return $this->estado;
     }
 
-    public function setFecha($fecha_)
+    public function setCreatedUp($created_up_)
     {
-        $this->fecha = Validation::validate( $fecha_ );
+        $this->created_up = Validation::validate( $created_up_ );
     }
 
-    public function getFecha()
+    public function getCreatedUp()
     {
-        return $this->fecha;
+        return $this->created_up;
     }
 
 }

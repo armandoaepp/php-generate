@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Evento extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -68,7 +68,7 @@ class Evento extends Connection {
       $titulo = $bean_evento->getTitulo();
       $descripcion = $bean_evento->getDescripcion();
       $imagen = $bean_evento->getImagen();
-      $url_seo = $bean_evento->getUrlSeo();
+      $url = $bean_evento->getUrlSeo();
       $item = $bean_evento->getItem();
       $publicar = $bean_evento->getPublicar();
       $estado = $bean_evento->getEstado();
@@ -79,7 +79,7 @@ class Evento extends Connection {
                         titulo,
                         descripcion,
                         imagen,
-                        url_seo,
+                        url,
                         item,
                         publicar,
                         estado,
@@ -89,7 +89,7 @@ class Evento extends Connection {
                         '$titulo',
                         '$descripcion',
                         '$imagen',
-                        '$url_seo',
+                        '$url',
                         '$item',
                         '$publicar',
                         '$estado',
@@ -118,15 +118,15 @@ class Evento extends Connection {
       $titulo = $bean_evento->getTitulo();
       $descripcion = $bean_evento->getDescripcion();
       $imagen = $bean_evento->getImagen();
-      $url_seo = $bean_evento->getUrlSeo();
+      $url = $bean_evento->getUrlSeo();
       $item = $bean_evento->getItem();
       $publicar = $bean_evento->getPublicar();
 
-      $this->query = "UPDATE evento SET 
+      $this->query = "UPDATE evento SET
                         titulo = '$titulo',
                         descripcion = '$descripcion',
                         imagen = '$imagen',
-                        url_seo = '$url_seo',
+                        url = '$url',
                         item = '$item',
                         publicar = '$publicar'
                       WHERE id = '$id'
@@ -152,7 +152,7 @@ class Evento extends Connection {
       $id = $bean_evento->getId();
       $estado = $bean_evento->getEstado();
 
-      $this->query = "UPDATE evento SET 
+      $this->query = "UPDATE evento SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -221,7 +221,7 @@ class Evento extends Connection {
       $id = $bean_evento->getId();
       $publicar = $bean_evento->getPublicar() ;
 
-      $this->query = "UPDATE evento SET 
+      $this->query = "UPDATE evento SET
                         publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ; ";

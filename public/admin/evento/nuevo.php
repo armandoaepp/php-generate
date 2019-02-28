@@ -67,7 +67,7 @@
             <form action="admin/evento/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="titulo">titulo : </label>
@@ -88,8 +88,8 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="url_seo">url_seo : </label>
-                  <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo">
+                  <label for="url">url : </label>
+                  <input type="text" class="form-control" name="url" id="url" required placeholder="url">
                 </div>
               </div>
               <div class="col-md-6">

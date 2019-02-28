@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -15,7 +15,7 @@ class BeanNoticia{
     private $id;
     private $titulo;
     private $descripcion;
-    private $url_seo;
+    private $url;
     private $glosa;
     private $publicar = "S" ;
     private $estado = 1 ;
@@ -54,12 +54,12 @@ class BeanNoticia{
 
     public function setUrlSeo($url_seo_)
     {
-        $this->url_seo = Validation::validate( $url_seo_ );
+        $this->url = Validation::validate( $url_seo_ );
     }
 
     public function getUrlSeo()
     {
-        return $this->url_seo;
+        return $this->url;
     }
 
     public function setGlosa($glosa_)

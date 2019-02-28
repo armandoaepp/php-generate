@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -16,7 +16,7 @@ class BeanEvento{
     private $titulo;
     private $descripcion;
     private $imagen = "" ;
-    private $url_seo;
+    private $url;
     private $item;
     private $publicar = "S" ;
     private $estado = 1 ;
@@ -65,12 +65,12 @@ class BeanEvento{
 
     public function setUrlSeo($url_seo_)
     {
-        $this->url_seo = Validation::validate( $url_seo_ );
+        $this->url = Validation::validate( $url_seo_ );
     }
 
     public function getUrlSeo()
     {
-        return $this->url_seo;
+        return $this->url;
     }
 
     public function setItem($item_)

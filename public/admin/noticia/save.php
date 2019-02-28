@@ -11,21 +11,56 @@
 
   $noticia_controller = new NoticiaController();
 
-  $titulo   = $_POST["titulo"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $url_seo   = $_POST["url_seo"] ;
-  $glosa   = $_POST["glosa"] ;
-  $publicar   = $_POST["publicar"] ;
+  $titulo      = $_POST["titulo"] ;
+  $descripcion = $_POST["descripcion"] ;
+  // $imagen      = $_POST["imagen"] ;
+  $glosa       = $_POST["glosa"] ;
+  $publicar    = $_POST["publicar"] ;
+
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+
+  $url = UrlHelper::urlFriendly($titulo);
+
   $params = array(
-    "titulo"   => $titulo,
-    "descripcion"   => $descripcion,
-    "url_seo"   => $url_seo,
-    "glosa"   => $glosa,
-    "publicar"   => $publicar,
+    "titulo"      => $titulo,
+    "descripcion" => $descripcion,
+    "url"         => $url,
+    "glosa"       => $glosa,
+    "publicar"    => $publicar,
   );
 
+  $noticia_id = $noticia_controller->save($params);
 
-  $response = $noticia_controller->save($params);
+  # --------------------------------------------------------
+
+
+
+  $imagen  = "";
+  // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
+  $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia") ;
+
+  if($noticia_id > 0)
+  {
+    $noticia_img_controller = new NoticiaImgController();
+
+    for ($i=0; $i < count($imagenes) ; $i++) {
+
+      $params_det = array(
+        "noticia_id" => $noticia_id,
+        "item"       => ($i + 1),
+        "imagen"     => $imagenes[$i] ,
+      );
+
+      $response = $noticia_img_controller->save($params_det);
+
+    }
+  }
+
+
+
+
+
+  # --------------------------------------------------------
 
   if($response){
     header("Location: ./noticia.php ", true, 301);

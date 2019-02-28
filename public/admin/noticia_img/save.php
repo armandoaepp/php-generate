@@ -12,8 +12,7 @@
   $noticia_img_controller = new NoticiaImgController();
 
   $noticia_id   = $_POST["noticia_id"] ;
-  $jerarquia   = $_POST["jerarquia"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
@@ -21,8 +20,7 @@
 
   $params = array(
     "noticia_id"   => $noticia_id,
-    "jerarquia"   => $jerarquia,
-    "fecha"   => $fecha,
+    "item"   => $item,
     "imagen"  => $imagen,
   );
 

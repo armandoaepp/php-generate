@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
        $data = $noticia_controller->getAll() ;
 
@@ -35,41 +35,41 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $noticia_controller = new NoticiaController($cnx) ; 
+
+      $noticia_controller = new NoticiaController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
-      $url_seo = $inputs->url_seo;
+      $url = $inputs->url;
       $glosa = $inputs->glosa;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
-                'url_seo'=> $url_seo,
+                'url'=> $url,
                 'glosa'=> $glosa,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $noticia_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -79,7 +79,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -89,30 +89,30 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $noticia_controller = new NoticiaController($cnx) ; 
+
+      $noticia_controller = new NoticiaController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
-      $url_seo = $inputs->url_seo;
+      $url = $inputs->url;
       $glosa = $inputs->glosa;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
-                'url_seo'=> $url_seo,
+                'url'=> $url,
                 'glosa'=> $glosa,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $noticia_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -123,7 +123,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -138,9 +138,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
       $data = $noticia_controller->updateEstado( $params ) ;
 
@@ -151,7 +151,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -161,7 +161,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
       $data = $noticia_controller->find( $id) ;
 
@@ -172,7 +172,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -182,7 +182,7 @@ switch($evento)
     {
 
       $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -193,9 +193,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -217,7 +217,7 @@ switch($evento)
 			else
 			{
 				$data = $noticia_controller->updateEstado($params);
-			} 
+			}
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -226,7 +226,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
@@ -247,9 +247,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
       $data = $noticia_controller->updatePublish( $params ) ;
 
@@ -260,7 +260,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -273,9 +273,9 @@ switch($evento)
 
       $params = array(
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_controller = new NoticiaController() ;
 
       $data = $noticia_controller->getPublished( $params ) ;
 
@@ -286,7 +286,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;

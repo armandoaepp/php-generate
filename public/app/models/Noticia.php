@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Noticia extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -19,7 +19,7 @@ class Noticia extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM noticia";
+      $this->query = "SELECT * FROM noticia; ";
 
       $this->executeQuery();
 
@@ -64,20 +64,20 @@ class Noticia extends Connection {
     try{
       $bean_noticia->setCreatedUp( HelperDate::timestampsBd() );
 
-      $id = $bean_noticia->getId();
-      $titulo = $bean_noticia->getTitulo();
+      $id          = $bean_noticia->getId();
+      $titulo      = $bean_noticia->getTitulo();
       $descripcion = $bean_noticia->getDescripcion();
-      $url_seo = $bean_noticia->getUrlSeo();
-      $glosa = $bean_noticia->getGlosa();
-      $publicar = $bean_noticia->getPublicar();
-      $estado = $bean_noticia->getEstado();
-      $created_up = $bean_noticia->getCreatedUp();
+      $url         = $bean_noticia->getUrlSeo();
+      $glosa       = $bean_noticia->getGlosa();
+      $publicar    = $bean_noticia->getPublicar();
+      $estado      = $bean_noticia->getEstado();
+      $created_up  = $bean_noticia->getCreatedUp();
 
       $this->query = "INSERT INTO noticia
                       (
                         titulo,
                         descripcion,
-                        url_seo,
+                        url,
                         glosa,
                         publicar,
                         estado,
@@ -86,7 +86,7 @@ class Noticia extends Connection {
                       VALUES(
                         '$titulo',
                         '$descripcion',
-                        '$url_seo',
+                        '$url',
                         '$glosa',
                         '$publicar',
                         '$estado',
@@ -95,7 +95,9 @@ class Noticia extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status  ;
+      // $data = $this->status  ;
+      $data = $this->lastInsertId() ;
+
 
       return $data;
 
@@ -114,14 +116,14 @@ class Noticia extends Connection {
       $id = $bean_noticia->getId();
       $titulo = $bean_noticia->getTitulo();
       $descripcion = $bean_noticia->getDescripcion();
-      $url_seo = $bean_noticia->getUrlSeo();
+      $url = $bean_noticia->getUrlSeo();
       $glosa = $bean_noticia->getGlosa();
       $publicar = $bean_noticia->getPublicar();
 
-      $this->query = "UPDATE noticia SET 
+      $this->query = "UPDATE noticia SET
                         titulo = '$titulo',
                         descripcion = '$descripcion',
-                        url_seo = '$url_seo',
+                        url = '$url',
                         glosa = '$glosa',
                         publicar = '$publicar'
                       WHERE id = '$id'
@@ -147,7 +149,7 @@ class Noticia extends Connection {
       $id = $bean_noticia->getId();
       $estado = $bean_noticia->getEstado();
 
-      $this->query = "UPDATE noticia SET 
+      $this->query = "UPDATE noticia SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -216,7 +218,7 @@ class Noticia extends Connection {
       $id = $bean_noticia->getId();
       $publicar = $bean_noticia->getPublicar() ;
 
-      $this->query = "UPDATE noticia SET 
+      $this->query = "UPDATE noticia SET
                         publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ; ";

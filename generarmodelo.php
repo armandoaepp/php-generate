@@ -50,7 +50,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
              //QUERY
             $concat = "";
-            $concat .= '      $this->query = "SELECT * FROM '.$tabla.'";';
+            $concat .= '      $this->query = "SELECT * FROM '.$tabla.'; ";';
             //end QUERY
 
             $texto .=  $concat.PHP_EOL;

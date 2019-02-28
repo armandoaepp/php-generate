@@ -19,7 +19,7 @@ class Categoria extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM categoria";
+      $this->query = "SELECT * FROM categoria; ";
 
       $this->executeQuery();
 
@@ -92,7 +92,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -124,7 +124,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -149,7 +149,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -192,7 +192,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -218,7 +218,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

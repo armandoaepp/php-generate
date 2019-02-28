@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -52,19 +52,19 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
 
       $bean_noticia = new BeanNoticia();
-            
+
       $bean_noticia->setTitulo($titulo);
       $bean_noticia->setDescripcion($descripcion);
-      $bean_noticia->setUrlSeo($url_seo);
+      $bean_noticia->setUrlSeo($url);
       $bean_noticia->setGlosa($glosa);
       $bean_noticia->setPublicar($publicar);
-            
+
       $data = $noticia->save($bean_noticia) ;
 
       return $data ;
@@ -79,21 +79,21 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
       $bean_noticia = new BeanNoticia();
-            
+
       $bean_noticia->setId($id);
       $bean_noticia->setTitulo($titulo);
       $bean_noticia->setDescripcion($descripcion);
-      $bean_noticia->setUrlSeo($url_seo);
+      $bean_noticia->setUrlSeo($url);
       $bean_noticia->setGlosa($glosa);
       $bean_noticia->setPublicar($publicar);
 
       $data = $noticia->update($bean_noticia) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -106,17 +106,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
       $bean_noticia = new BeanNoticia();
-            
+
       $bean_noticia->setId($id);
       $bean_noticia->setEstado($estado);
 
       $data = $noticia->updateEstado($bean_noticia) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -173,17 +173,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
       $bean_noticia = new BeanNoticia();
-            
+
       $bean_noticia->setId($id);
       $bean_noticia->setPublicar($publicar);
 
       $data = $noticia->updatePublish($bean_noticia) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -196,16 +196,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
       $bean_noticia = new BeanNoticia();
-            
+
       $bean_noticia->setPublicar($publicar);
 
       $data = $noticia->getPublished($bean_noticia) ;
-      
+
       return $data;
     }
     catch (Exception $e)

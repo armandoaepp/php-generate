@@ -61,8 +61,7 @@
             
       $bean_noticia_img->setNoticiaId($noticia_id);
       $bean_noticia_img->setImagen($imagen);
-      $bean_noticia_img->setJerarquia($jerarquia);
-      $bean_noticia_img->setFecha($fecha);
+      $bean_noticia_img->setItem($item);
             
       $data = $noticia_img->save($bean_noticia_img) ;
 
@@ -87,8 +86,7 @@
       $bean_noticia_img->setId($id);
       $bean_noticia_img->setNoticiaId($noticia_id);
       $bean_noticia_img->setImagen($imagen);
-      $bean_noticia_img->setJerarquia($jerarquia);
-      $bean_noticia_img->setFecha($fecha);
+      $bean_noticia_img->setItem($item);
 
       $data = $noticia_img->update($bean_noticia_img) ;
             
