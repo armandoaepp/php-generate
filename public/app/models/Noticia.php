@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
-class Categoria extends Connection {
+class Noticia extends Connection {
   # CONSTRUCT 
   public function __construct($cnx  = null)
   {
@@ -19,7 +19,7 @@ class Categoria extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM categoria";
+      $this->query = "SELECT * FROM noticia";
 
       $this->executeQuery();
 
@@ -36,12 +36,12 @@ class Categoria extends Connection {
 
 
   # Method getByEstado
-  public function getByEstado($bean_categoria)
+  public function getByEstado($bean_noticia)
   {
     try{
-      $estado = $bean_categoria->getEstado() ;
+      $estado = $bean_noticia->getEstado() ;
 
-      $this->query = "SELECT * FROM categoria
+      $this->query = "SELECT * FROM noticia
                       WHERE estado = '$estado'; ";
 
 
@@ -59,32 +59,35 @@ class Categoria extends Connection {
   }
 
   # Method SAVE
-  public function save($bean_categoria)
+  public function save($bean_noticia)
   {
     try{
-      $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
+      $bean_noticia->setCreatedUp( HelperDate::timestampsBd() );
 
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $nombre = $bean_categoria->getNombre();
-      $url = $bean_categoria->getUrl();
-      $imagen = $bean_categoria->getImagen();
-      $publicar = $bean_categoria->getPublicar();
-      $estado = $bean_categoria->getEstado();
-      $created_up = $bean_categoria->getCreatedUp();
+      $id = $bean_noticia->getId();
+      $titulo = $bean_noticia->getTitulo();
+      $descripcion = $bean_noticia->getDescripcion();
+      $url_seo = $bean_noticia->getUrlSeo();
+      $glosa = $bean_noticia->getGlosa();
+      $publicar = $bean_noticia->getPublicar();
+      $estado = $bean_noticia->getEstado();
+      $created_up = $bean_noticia->getCreatedUp();
 
-      $this->query = "INSERT INTO categoria
+      $this->query = "INSERT INTO noticia
                       (
-                        nombre,
-                        url,
-                        imagen,
+                        titulo,
+                        descripcion,
+                        url_seo,
+                        glosa,
                         publicar,
                         estado,
                         created_up
                       )
                       VALUES(
-                        '$nombre',
-                        '$url',
-                        '$imagen',
+                        '$titulo',
+                        '$descripcion',
+                        '$url_seo',
+                        '$glosa',
                         '$publicar',
                         '$estado',
                         $created_up
@@ -92,7 +95,7 @@ class Categoria extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -105,26 +108,28 @@ class Categoria extends Connection {
   }
 
   # Method Actualizar
-  public function update($bean_categoria)
+  public function update($bean_noticia)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $nombre = $bean_categoria->getNombre();
-      $url = $bean_categoria->getUrl();
-      $imagen = $bean_categoria->getImagen();
-      $publicar = $bean_categoria->getPublicar();
+      $id = $bean_noticia->getId();
+      $titulo = $bean_noticia->getTitulo();
+      $descripcion = $bean_noticia->getDescripcion();
+      $url_seo = $bean_noticia->getUrlSeo();
+      $glosa = $bean_noticia->getGlosa();
+      $publicar = $bean_noticia->getPublicar();
 
-      $this->query = "UPDATE categoria SET 
-                        nombre = '$nombre',
-                        url = '$url',
-                        imagen = '$imagen',
+      $this->query = "UPDATE noticia SET 
+                        titulo = '$titulo',
+                        descripcion = '$descripcion',
+                        url_seo = '$url_seo',
+                        glosa = '$glosa',
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE id = '$id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -136,20 +141,20 @@ class Categoria extends Connection {
   }
 
   # Method Eliminar(Update Estado)
-  public function updateEstado($bean_categoria)
+  public function updateEstado($bean_noticia)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $estado = $bean_categoria->getEstado();
+      $id = $bean_noticia->getId();
+      $estado = $bean_noticia->getEstado();
 
-      $this->query = "UPDATE categoria SET 
+      $this->query = "UPDATE noticia SET 
                         estado = '$estado'
-                      WHERE idcategoria='$idcategoria'
+                      WHERE id='$id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -161,12 +166,12 @@ class Categoria extends Connection {
   }
 
   # Method Buscar por ID
-  public function find($bean_categoria)
+  public function find($bean_noticia)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $id = $bean_noticia->getId();
 
-      $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "SELECT * FROM noticia WHERE id = '$id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -182,17 +187,17 @@ class Categoria extends Connection {
   }
 
   # Method deleteById
-  public function deleteById($bean_categoria)
+  public function deleteById($bean_noticia)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $id = $bean_noticia->getId();
 
-      $this->query = "DELETE FROM categoria
-                      WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "DELETE FROM noticia
+                      WHERE id = '$id' LIMIT 1; ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -205,20 +210,20 @@ class Categoria extends Connection {
 
 
   # Method updatePublish
-  public function updatePublish($bean_categoria)
+  public function updatePublish($bean_noticia)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
-      $publicar = $bean_categoria->getPublicar() ;
+      $id = $bean_noticia->getId();
+      $publicar = $bean_noticia->getPublicar() ;
 
-      $this->query = "UPDATE categoria SET 
+      $this->query = "UPDATE noticia SET 
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE id = '$id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -231,12 +236,12 @@ class Categoria extends Connection {
 
 
   # Method getPublished
-  public function getPublished($bean_categoria)
+  public function getPublished($bean_noticia)
   {
     try{
-      $publicar = $bean_categoria->getPublicar() ;
+      $publicar = $bean_noticia->getPublicar() ;
 
-      $this->query = "SELECT * FROM categoria
+      $this->query = "SELECT * FROM noticia
                       WHERE publicar = '$publicar'
                       AND estado = 1 ; ";
 

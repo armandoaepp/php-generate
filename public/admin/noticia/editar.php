@@ -6,16 +6,16 @@
   $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
   if ($id <= 0) {
-      header("Location: ./evento.php ", true, 301);
+      header("Location: ./noticia.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $evento_controller = new EventoController();
+  $noticia_controller = new NoticiaController();
 
-  $evento = $evento_controller->find($id);
+  $noticia = $noticia_controller->find($id);
 
-  $publicar = trim($evento["publicar"]);
+  $publicar = trim($noticia["publicar"]);
 
   $si = "";
   $no = "";
@@ -26,7 +26,7 @@
       $no = "checked='checked'";
   }
 
-  $title_page = "Evento"
+  $title_page = "Noticia"
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/evento/evento.php">
+            <a href="admin/noticia/noticia.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -90,7 +90,7 @@
         <div class="row">
 
           <div class="col-12 col-md-10">
-            <form action="admin/evento/update.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/noticia/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
@@ -98,39 +98,25 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo"  value="<?php echo $evento['titulo'] ?>" >
+                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo"  value="<?php echo $noticia['titulo'] ?>" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="descripcion">descripcion : </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion"  value="<?php echo $evento['descripcion'] ?>" >
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $evento['imagen']; ?>">
-
-                <img src="<?php echo $evento['imagen'] ?>" class="img-fluid mb-1">
-                <div class="col-auto">
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="imagen">Nueva Imagen</label>
-                    </div>
-                    <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
-                  </div>
-                </div>
-              </div>
-                            <div class="col-md-6">
-                <div class="form-group">
-                  <label for="url_seo">url_seo : </label>
-                  <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo"  value="<?php echo $evento['url_seo'] ?>" >
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion"  value="<?php echo $noticia['descripcion'] ?>" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item"  value="<?php echo $evento['item'] ?>" >
+                  <label for="url_seo">url_seo : </label>
+                  <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo"  value="<?php echo $noticia['url_seo'] ?>" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="glosa">glosa : </label>
+                  <input type="text" class="form-control" name="glosa" id="glosa" required placeholder="glosa"  value="<?php echo $noticia['glosa'] ?>" >
                 </div>
               </div>
 
@@ -151,7 +137,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/evento/evento.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/noticia/noticia.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 

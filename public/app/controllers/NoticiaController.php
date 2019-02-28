@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
- class EventoController
+ class NoticiaController
 {
   private $cnx;
 
@@ -20,9 +20,9 @@
   {
     try
     {
-      $evento  = new Evento();
+      $noticia  = new Noticia();
 
-      $data = $evento->getAll();
+      $data = $noticia->getAll();
 
       return $data ;
     }
@@ -36,9 +36,9 @@
   {
     try
     {
-      $evento  = new Evento();
+      $noticia  = new Noticia();
 
-      $data = $evento->getByEstado();
+      $data = $noticia->getByEstado();
 
       return $data ;
     }
@@ -55,18 +55,17 @@
             
       extract($params) ; 
 
-      $evento  = new Evento($this->cnx);
+      $noticia  = new Noticia($this->cnx);
 
-      $bean_evento = new BeanEvento();
+      $bean_noticia = new BeanNoticia();
             
-      $bean_evento->setTitulo($titulo);
-      $bean_evento->setDescripcion($descripcion);
-      $bean_evento->setImagen($imagen);
-      $bean_evento->setUrlSeo($url_seo);
-      $bean_evento->setItem($item);
-      $bean_evento->setPublicar($publicar);
+      $bean_noticia->setTitulo($titulo);
+      $bean_noticia->setDescripcion($descripcion);
+      $bean_noticia->setUrlSeo($url_seo);
+      $bean_noticia->setGlosa($glosa);
+      $bean_noticia->setPublicar($publicar);
             
-      $data = $evento->save($bean_evento) ;
+      $data = $noticia->save($bean_noticia) ;
 
       return $data ;
     }
@@ -83,18 +82,17 @@
             
       extract($params) ; 
 
-      $evento  = new Evento($this->cnx);
-      $bean_evento = new BeanEvento();
+      $noticia  = new Noticia($this->cnx);
+      $bean_noticia = new BeanNoticia();
             
-      $bean_evento->setId($id);
-      $bean_evento->setTitulo($titulo);
-      $bean_evento->setDescripcion($descripcion);
-      $bean_evento->setImagen($imagen);
-      $bean_evento->setUrlSeo($url_seo);
-      $bean_evento->setItem($item);
-      $bean_evento->setPublicar($publicar);
+      $bean_noticia->setId($id);
+      $bean_noticia->setTitulo($titulo);
+      $bean_noticia->setDescripcion($descripcion);
+      $bean_noticia->setUrlSeo($url_seo);
+      $bean_noticia->setGlosa($glosa);
+      $bean_noticia->setPublicar($publicar);
 
-      $data = $evento->update($bean_evento) ;
+      $data = $noticia->update($bean_noticia) ;
             
       return $data;
     }
@@ -111,13 +109,13 @@
             
       extract($params) ; 
 
-      $evento  = new Evento($this->cnx);
-      $bean_evento = new BeanEvento();
+      $noticia  = new Noticia($this->cnx);
+      $bean_noticia = new BeanNoticia();
             
-      $bean_evento->setId($id);
-      $bean_evento->setEstado($estado);
+      $bean_noticia->setId($id);
+      $bean_noticia->setEstado($estado);
 
-      $data = $evento->updateEstado($bean_evento) ;
+      $data = $noticia->updateEstado($bean_noticia) ;
             
       return $data;
     }
@@ -131,13 +129,13 @@
   {
     try
     {
-      $evento  = new Evento();
+      $noticia  = new Noticia();
 
-      $bean_evento = new BeanEvento();
+      $bean_noticia = new BeanNoticia();
 
-      $bean_evento->setId($id);
+      $bean_noticia->setId($id);
 
-      $data = $evento->find( $bean_evento) ;
+      $data = $noticia->find( $bean_noticia) ;
       return $data;
 
     }
@@ -154,13 +152,13 @@
 
       extract($params) ;
 
-      $evento  = new Evento();
+      $noticia  = new Noticia();
 
-      $bean_evento = new BeanEvento();
+      $bean_noticia = new BeanNoticia();
 
-      $bean_evento->setId($id);
+      $bean_noticia->setId($id);
 
-      $data = $evento->deleteById( $bean_evento ) ;
+      $data = $noticia->deleteById( $bean_noticia ) ;
 
       return $data;
 
@@ -178,13 +176,13 @@
             
       extract($params) ; 
 
-      $evento  = new Evento($this->cnx);
-      $bean_evento = new BeanEvento();
+      $noticia  = new Noticia($this->cnx);
+      $bean_noticia = new BeanNoticia();
             
-      $bean_evento->setId($id);
-      $bean_evento->setPublicar($publicar);
+      $bean_noticia->setId($id);
+      $bean_noticia->setPublicar($publicar);
 
-      $data = $evento->updatePublish($bean_evento) ;
+      $data = $noticia->updatePublish($bean_noticia) ;
             
       return $data;
     }
@@ -201,12 +199,12 @@
             
       extract($params) ; 
 
-      $evento  = new Evento($this->cnx);
-      $bean_evento = new BeanEvento();
+      $noticia  = new Noticia($this->cnx);
+      $bean_noticia = new BeanNoticia();
             
-      $bean_evento->setPublicar($publicar);
+      $bean_noticia->setPublicar($publicar);
 
-      $data = $evento->getPublished($bean_evento) ;
+      $data = $noticia->getPublished($bean_noticia) ;
       
       return $data;
     }

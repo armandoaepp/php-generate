@@ -6,15 +6,15 @@
 
     require_once "../../app/autoload.php";
 
-    $evento_controller = new EventoController();
+    $noticia_controller = new NoticiaController();
 
-    $data = $evento_controller->getAll();
+    $data = $noticia_controller->getAll();
 
-    $title_page = "eventos"
+    $title_page = "noticias"
 
 ?>
 
-<?php $title_page = "Eventos" ; ?>
+<?php $title_page = "Noticias" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,7 +57,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/evento/evento.php">
+            <a class="link-white" href="admin/noticia/noticia.php">
               <?php echo $title_page ?>
             </a>
           </li>
@@ -70,11 +70,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/evento/evento.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/noticia/noticia.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/evento/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/noticia/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -90,7 +90,7 @@
                   <th>Titulo </th>
                   <th>Descripcion </th>
                   <th>Url_seo </th>
-                  <th>Item </th>
+                  <th>Glosa </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -135,7 +135,7 @@
                   <td> <?php echo $row["titulo"] ?> </td>
                   <td> <?php echo $row["descripcion"] ?> </td>
                   <td> <?php echo $row["url_seo"] ?> </td>
-                  <td> <?php echo $row["item"] ?> </td>
+                  <td> <?php echo $row["glosa"] ?> </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
@@ -146,7 +146,7 @@
             
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/evento/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/noticia/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">

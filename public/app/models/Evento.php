@@ -14,7 +14,7 @@ class Evento extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
@@ -34,42 +34,71 @@ class Evento extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_evento)
+  {
+    try{
+      $estado = $bean_evento->getEstado() ;
+
+      $this->query = "SELECT * FROM evento
+                      WHERE estado = '$estado'; ";
+
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_evento)
   {
     try{
+      $bean_evento->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_evento->getId();
       $titulo = $bean_evento->getTitulo();
       $descripcion = $bean_evento->getDescripcion();
       $imagen = $bean_evento->getImagen();
-      $nombreseo = $bean_evento->getNombreseo();
-      $orden = $bean_evento->getOrden();
+      $url_seo = $bean_evento->getUrlSeo();
+      $item = $bean_evento->getItem();
+      $publicar = $bean_evento->getPublicar();
       $estado = $bean_evento->getEstado();
-      $fecha = $bean_evento->getFecha();
+      $created_up = $bean_evento->getCreatedUp();
 
       $this->query = "INSERT INTO evento
                       (
                         titulo,
                         descripcion,
                         imagen,
-                        nombreseo,
-                        orden,
+                        url_seo,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
                         '$descripcion',
                         '$imagen',
-                        '$nombreseo',
-                        '$orden',
+                        '$url_seo',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -81,7 +110,7 @@ class Evento extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_evento)
   {
     try{
@@ -89,23 +118,23 @@ class Evento extends Connection {
       $titulo = $bean_evento->getTitulo();
       $descripcion = $bean_evento->getDescripcion();
       $imagen = $bean_evento->getImagen();
-      $nombreseo = $bean_evento->getNombreseo();
-      $orden = $bean_evento->getOrden();
-      $fecha = $bean_evento->getFecha();
+      $url_seo = $bean_evento->getUrlSeo();
+      $item = $bean_evento->getItem();
+      $publicar = $bean_evento->getPublicar();
 
       $this->query = "UPDATE evento SET 
                         titulo = '$titulo',
                         descripcion = '$descripcion',
                         imagen = '$imagen',
-                        nombreseo = '$nombreseo',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        url_seo = '$url_seo',
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -116,7 +145,7 @@ class Evento extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_evento)
   {
     try{
@@ -130,7 +159,7 @@ class Evento extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -141,7 +170,7 @@ class Evento extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_evento)
   {
     try{
@@ -162,7 +191,7 @@ class Evento extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_evento)
   {
     try{
@@ -173,7 +202,57 @@ class Evento extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_evento)
+  {
+    try{
+      $id = $bean_evento->getId();
+      $publicar = $bean_evento->getPublicar() ;
+
+      $this->query = "UPDATE evento SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_evento)
+  {
+    try{
+      $publicar = $bean_evento->getPublicar() ;
+
+      $this->query = "SELECT * FROM evento
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

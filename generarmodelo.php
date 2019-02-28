@@ -15,8 +15,6 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $abrir      = fopen($nomarchivo . $extension, "w");
 
 
-
-
         $texto .= '<?php ' . PHP_EOL;
 
         $texto .= '' . PHP_EOL ;
@@ -38,10 +36,10 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '  }' . PHP_EOL;
 
 
-        # METODOS
-        //  START METODO LIST
+        # MethodS
+        //  START Method getALL
         $texto .= PHP_EOL;
-        $texto .= '  # Método getALl' . PHP_EOL;
+        $texto .= '  # Method get all rows' . PHP_EOL;
         $texto .= '  public function getAll()' . PHP_EOL;
         $texto .= '  {' . PHP_EOL;
 
@@ -72,11 +70,54 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
         $texto .= '  }' . PHP_EOL;
         $texto .= PHP_EOL;
-        //  END METODO LIST
+        //  END Method getALL
+
+        if ( in_array('estado', $atributos) )
+        {
+            //Method GETPUBLISHED
+            $texto .= PHP_EOL;
+            $texto .= '  # Method getByEstado' . PHP_EOL;
+            $texto .= '  public function getByEstado($bean_'.$tabla.')' . PHP_EOL;
+            $texto .= '  {' . PHP_EOL;
+            $texto .= '    try{' . PHP_EOL;
+            //SQL
+
+                 $texto .= '      $estado = $bean_'.$tabla.'->getEstado() ;' . PHP_EOL;
+
+                $texto .= '' . PHP_EOL;
+
+                //QUERY
+                $concat = "";
+                $concat .= '      $this->query = "SELECT * FROM '.$tabla.'';
+                $concat .= PHP_EOL;
+                // $concat.= '                      WHERE estado'." = '".'$estado'."'";
+                $concat.= '                      WHERE estado'." = '".'$estado'."'" .'; ";';
+                $concat.= PHP_EOL;
+                // $concat.="                       ".'";';
+                $texto .=  $concat.PHP_EOL;
+                $texto .=  PHP_EOL;
+                //end QUERY
+
+                $texto .= '      $this->executeQuery();' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      $data = $this->rows ;' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      return $data;' . PHP_EOL;
+                $texto .= PHP_EOL;
+
+                $texto .= '    }catch(exception $e){' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '    }' . PHP_EOL;
+            $texto .= '  }' . PHP_EOL;
+            // END  GETPUBLISHED
+            $texto .= PHP_EOL;
+        }
 
 
-        $texto .= '  # Método SAVE' . PHP_EOL;
-        //Inicia Metodo INSERTAR
+        $texto .= '  # Method SAVE' . PHP_EOL;
+        //Start Method INSERTAR
         $texto .= '  public function save($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '  {' . PHP_EOL;
 
@@ -92,8 +133,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         }
         $texto .= '' . PHP_EOL;
 
-        //comenzamos a insertar Registros
-
+        //Start a insertar Registros
 
         $concat = "";
         $campos = "";
@@ -128,7 +168,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
         $texto .= '      $this->executeQuery();' . PHP_EOL;
         $texto .= PHP_EOL;
-        $texto .= '      $data = $this->status_exe  ;' . PHP_EOL;
+        $texto .= '      $data = $this->status  ;' . PHP_EOL;
         $texto .= PHP_EOL;
         $texto .= '      return $data;' . PHP_EOL;
         $texto .= PHP_EOL;
@@ -144,7 +184,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
 
         $texto .= PHP_EOL;
-        $texto .= '  # Método Actualizar' . PHP_EOL;
+        $texto .= '  # Method Actualizar' . PHP_EOL;
         //Inicia Metodo Actualizar
         $texto .= '  public function update($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '  {' . PHP_EOL;
@@ -183,7 +223,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
             $texto .= '      $this->executeQuery();' . PHP_EOL;
             $texto .= PHP_EOL;
-            $texto .= '      $data = $this->status_exe  ;' . PHP_EOL;
+            $texto .= '      $data = $this->status  ;' . PHP_EOL;
             $texto .= PHP_EOL;
             $texto .= '      return $data;' . PHP_EOL;
             $texto .= PHP_EOL;
@@ -199,8 +239,8 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         {
 
             $texto .= PHP_EOL;
-            //METODO Actualizar Estado
-            $texto .= '  # Método Eliminar(Actualizar Estado)' . PHP_EOL;
+            //Method Update Estado
+            $texto .= '  # Method Eliminar(Update Estado)' . PHP_EOL;
             $texto .= '  public function updateEstado($bean_'.$tabla.')' . PHP_EOL;
             $texto .= '  {' . PHP_EOL;
             $texto .= '    try{' . PHP_EOL;
@@ -226,7 +266,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $texto .= PHP_EOL;
                 $texto .= '      $this->executeQuery();' . PHP_EOL;
                 $texto .= PHP_EOL;
-                $texto .= '      $data = $this->status_exe  ;' . PHP_EOL;
+                $texto .= '      $data = $this->status  ;' . PHP_EOL;
                 $texto .= PHP_EOL;
                 $texto .= '      return $data;' . PHP_EOL;
                 $texto .= PHP_EOL;
@@ -238,14 +278,14 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= PHP_EOL;
             $texto .= '    }' . PHP_EOL;
             $texto .= '  }' . PHP_EOL;
-            // fin del metodo actualizar estado
+            // End Method Update estado
 
         }
 
 
-        //  START METODO BUSCAR POR ID
+        //  START Method BUSCAR POR ID
         $texto .= PHP_EOL;
-        $texto .= '  # Método Buscar por ID' . PHP_EOL;
+        $texto .= '  # Method Buscar por ID' . PHP_EOL;
         $texto .= '  public function find($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '  {' . PHP_EOL;
         $texto .= '    try{' . PHP_EOL;
@@ -276,12 +316,12 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= PHP_EOL;
         $texto .= '    }' . PHP_EOL;
         $texto .= '  }' . PHP_EOL;
-        //  END METODO BUSCAR POR ID
+        //  END Method BUSCAR POR ID
 
 
-        //metodo DELETE(ELIMINAR DE LA BASE DE DATOS)
+        //Method DELETE(ELIMINAR DE LA BASE DE DATOS)
         $texto .= PHP_EOL;
-        $texto .= '  # Método deleteById' . PHP_EOL;
+        $texto .= '  # Method deleteById' . PHP_EOL;
         $texto .= '  public function deleteById($bean_'.$tabla.')' . PHP_EOL;
         $texto .= '  {' . PHP_EOL;
         $texto .= '    try{' . PHP_EOL;
@@ -300,7 +340,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
             $texto .= '      $this->executeQuery();' . PHP_EOL;
             $texto .= PHP_EOL;
-            $texto .= '      $data = $this->status_exe  ;' . PHP_EOL;
+            $texto .= '      $data = $this->status  ;' . PHP_EOL;
             $texto .= PHP_EOL;
             $texto .= '      return $data;' . PHP_EOL;
             $texto .= PHP_EOL;
@@ -311,14 +351,14 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= PHP_EOL;
             $texto .= '    }' . PHP_EOL;
         $texto .= '  }' . PHP_EOL;
-        // fin del metodo Eliminar actualizar
+        // fin del Method Eliminar actualizar
         $texto .= PHP_EOL;
 
         if ( in_array('publicar', $atributos) )
         {
-            //METODO UPDATE PUBLICAR
+            //Method UPDATE PUBLICAR
             $texto .= PHP_EOL;
-            $texto .= '  # Método updatePublish' . PHP_EOL;
+            $texto .= '  # Method updatePublish' . PHP_EOL;
             $texto .= '  public function updatePublish($bean_'.$tabla.')' . PHP_EOL;
             $texto .= '  {' . PHP_EOL;
             $texto .= '    try{' . PHP_EOL;
@@ -344,7 +384,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
                 $texto .= '      $this->executeQuery();' . PHP_EOL;
                 $texto .= PHP_EOL;
-                $texto .= '      $data = $this->status_exe  ;' . PHP_EOL;
+                $texto .= '      $data = $this->status  ;' . PHP_EOL;
                 $texto .= PHP_EOL;
                 $texto .= '      return $data;' . PHP_EOL;
                 $texto .= PHP_EOL;
@@ -358,9 +398,9 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             // END UPDATE PUBLICAR
             $texto .= PHP_EOL;
 
-            //METODO GETPUBLISHED
+            //Method GETPUBLISHED
             $texto .= PHP_EOL;
-            $texto .= '  # Método getPublished' . PHP_EOL;
+            $texto .= '  # Method getPublished' . PHP_EOL;
             $texto .= '  public function getPublished($bean_'.$tabla.')' . PHP_EOL;
             $texto .= '  {' . PHP_EOL;
             $texto .= '    try{' . PHP_EOL;

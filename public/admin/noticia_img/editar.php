@@ -6,27 +6,16 @@
   $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
   if ($id <= 0) {
-      header("Location: ./evento.php ", true, 301);
+      header("Location: ./noticia_img.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $evento_controller = new EventoController();
+  $noticia_img_controller = new NoticiaImgController();
 
-  $evento = $evento_controller->find($id);
+  $noticia_img = $noticia_img_controller->find($id);
 
-  $publicar = trim($evento["publicar"]);
-
-  $si = "";
-  $no = "";
-
-  if ($publicar == "S") {
-      $si = "checked='checked'";
-  } elseif ($publicar == "N") {
-      $no = "checked='checked'";
-  }
-
-  $title_page = "Evento"
+  $title_page = "NoticiaImg"
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +59,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/evento/evento.php">
+            <a href="admin/noticia-img/noticia-img.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -90,28 +79,22 @@
         <div class="row">
 
           <div class="col-12 col-md-10">
-            <form action="admin/evento/update.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/noticia-img/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo"  value="<?php echo $evento['titulo'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="descripcion">descripcion : </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion"  value="<?php echo $evento['descripcion'] ?>" >
+                  <label for="noticia_id">noticia_id : </label>
+                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="noticia_id"  value="<?php echo $noticia_img['noticia_id'] ?>" >
                 </div>
               </div>
 
               <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $evento['imagen']; ?>">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $noticia_img['imagen']; ?>">
 
-                <img src="<?php echo $evento['imagen'] ?>" class="img-fluid mb-1">
+                <img src="<?php echo $noticia_img['imagen'] ?>" class="img-fluid mb-1">
                 <div class="col-auto">
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -123,35 +106,21 @@
               </div>
                             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="url_seo">url_seo : </label>
-                  <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo"  value="<?php echo $evento['url_seo'] ?>" >
+                  <label for="jerarquia">jerarquia : </label>
+                  <input type="text" class="form-control" name="jerarquia" id="jerarquia" required placeholder="jerarquia"  value="<?php echo $noticia_img['jerarquia'] ?>" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item"  value="<?php echo $evento['item'] ?>" >
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
-                    <label class="form-check-label" for="no">NO</label>
-                  </div>
+                  <label for="fecha">fecha : </label>
+                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="fecha"  value="<?php echo $noticia_img['fecha'] ?>" >
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/evento/evento.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/noticia-img/noticia-img.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 

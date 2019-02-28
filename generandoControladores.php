@@ -36,7 +36,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
 
 
 
-        # FUNCTION get
+        # Method get
         $texto  .= '  public function getAll()' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -56,9 +56,29 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '  }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
+        # Method get
+        $texto  .= '  public function getByEstado()' . PHP_EOL;
+        $texto  .= '  {' . PHP_EOL;
+        $texto  .= '    try' . PHP_EOL;
+        $texto  .= '    {' . PHP_EOL;
+        $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
+        $texto  .= '      $data = $'.($tabla).'->getByEstado();' . PHP_EOL;
+        // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
+        // $texto .= '        ' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
+        $texto  .= '      return $data ;'. PHP_EOL;
+        $texto  .= '    }' . PHP_EOL;
+        $texto  .= '    catch (Exception $e)' . PHP_EOL;
+        $texto  .= '    {' . PHP_EOL;
+        $texto  .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+        $texto  .= '    }' . PHP_EOL;
+        $texto  .= '  }' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
 
 
-        # FUNCTION set
+
+        # Method set
         $texto  .= '  public function save($params = array() )' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -96,7 +116,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
 
 
 
-        # FUNCTION upd
+        # Method upd
         $texto  .= '  public function update($params = array())' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -129,7 +149,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
 
 
-        # FUNCTION UPDATE ESTADO
+        # Method UPDATE ESTADO
         $texto  .= '  public function updateEstado($params = array())' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -157,7 +177,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '  }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        # FUNCTION FIND
+        # Method FIND
         $texto  .= '  public function find($id)' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -182,7 +202,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '  }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-         # FUNCTION DELETE
+         # Method DELETE
         $texto  .= '  public function deleteById($params)' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
@@ -212,7 +232,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         if ( in_array('publicar', $atributos) )
         {
 
-            # FUNCTION UPDATE PUBLICAR
+            # Method UPDATE PUBLICAR
             $texto  .= '  public function updatePublish($params = array())' . PHP_EOL;
             $texto  .= '  {' . PHP_EOL;
             $texto  .= '    try' . PHP_EOL;
@@ -241,7 +261,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
             $texto  .= '' . PHP_EOL;
 
 
-            # FUNCTION getPublished
+            # Method getPublished
             $texto  .= '  public function getPublished($params = array())' . PHP_EOL;
             $texto  .= '  {' . PHP_EOL;
             $texto  .= '    try' . PHP_EOL;

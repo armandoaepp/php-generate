@@ -76,6 +76,35 @@ Class Connection
     $this->rows =  $rows ;
 
   }
+
+  protected function _prepare()
+  {
+    # conn si es nulo inicializamos la conexion
+    if( $this->conn == null )
+    {
+      $this->openConnection();
+    }
+
+    return $this->conn->prepare($this->query);
+
+  }
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Execute the query
+	 *
+	 * @param	string	$sql	SQL query
+	 * @return	mixed
+	 */
+  protected function _execute($sql)
+	{
+		return $this->conn->query($sql);
+	}
+
+
+
+
   # Iniciar un transaccion
   public function beginTransaction()
   {

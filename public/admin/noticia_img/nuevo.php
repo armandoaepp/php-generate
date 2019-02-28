@@ -4,7 +4,7 @@
   loginRedirect("../login.php");
 
 ?>
-<?php $title_page = "Evento" ?>
+<?php $title_page = "NoticiaImg" ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/evento/evento.php">
+            <a href="admin/noticia-img/noticia-img.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -64,20 +64,14 @@
         <div class="row">
 
           <div class="col-12 col-md-10">
-            <form action="admin/evento/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/noticia-img/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="descripcion">descripcion : </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion">
+                  <label for="noticia_id">noticia_id : </label>
+                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="noticia_id">
                 </div>
               </div>
               <div class="col-md-6">
@@ -88,28 +82,14 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="url_seo">url_seo : </label>
-                  <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo">
+                  <label for="jerarquia">jerarquia : </label>
+                  <input type="text" class="form-control" name="jerarquia" id="jerarquia" required placeholder="jerarquia">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
-                    <label class="form-check-label" for="no">NO</label>
-                  </div>
+                  <label for="fecha">fecha : </label>
+                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="fecha">
                 </div>
               </div>
 
@@ -119,7 +99,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/evento/evento.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/noticia-img/noticia-img.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 

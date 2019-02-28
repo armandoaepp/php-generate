@@ -4,7 +4,7 @@
   loginRedirect("../login.php");
 
 ?>
-<?php $title_page = "Evento" ?>
+<?php $title_page = "Noticia" ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/evento/evento.php">
+            <a href="admin/noticia/noticia.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -64,7 +64,7 @@
         <div class="row">
 
           <div class="col-12 col-md-10">
-            <form action="admin/evento/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/noticia/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
               
@@ -82,20 +82,14 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen">Imagen(Recomendación Imagen de 350 x 200 pixeles ) </label>
-                  <input type="file"  class="form-control" name="imagen" id="imagen"  placeholder="Imagen" accept="image/*">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
                   <label for="url_seo">url_seo : </label>
                   <input type="text" class="form-control" name="url_seo" id="url_seo" required placeholder="url_seo">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item">
+                  <label for="glosa">glosa : </label>
+                  <input type="text" class="form-control" name="glosa" id="glosa" required placeholder="glosa">
                 </div>
               </div>
 
@@ -119,7 +113,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/evento/evento.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/noticia/noticia.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 

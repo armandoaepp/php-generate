@@ -6,15 +6,15 @@
 
     require_once "../../app/autoload.php";
 
-    $evento_controller = new EventoController();
+    $noticia_img_controller = new NoticiaImgController();
 
-    $data = $evento_controller->getAll();
+    $data = $noticia_img_controller->getAll();
 
-    $title_page = "eventos"
+    $title_page = "noticia_imgs"
 
 ?>
 
-<?php $title_page = "Eventos" ; ?>
+<?php $title_page = "NoticiaImgs" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,7 +57,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/evento/evento.php">
+            <a class="link-white" href="admin/noticia-img/noticia_img.php">
               <?php echo $title_page ?>
             </a>
           </li>
@@ -70,11 +70,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/evento/evento.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/noticia-img/noticia_img.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/evento/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/noticia-img/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -87,11 +87,9 @@
               <thead>
                 <tr>
                   <th width="50">Id </th>
-                  <th>Titulo </th>
-                  <th>Descripcion </th>
-                  <th>Url_seo </th>
-                  <th>Item </th>
-                  <th width="50" class="fs-x-13"> Publicar </th>
+                  <th>Noticia_id </th>
+                  <th>Jerarquia </th>
+                  <th>Fecha </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -132,24 +130,15 @@
                 <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
                 
                   <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["titulo"] ?> </td>
-                  <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["url_seo"] ?> </td>
-                  <td> <?php echo $row["item"] ?> </td>
+                  <td> <?php echo $row["noticia_id"] ?> </td>
+                  <td> <?php echo $row["jerarquia"] ?> </td>
+                  <td> <?php echo $row["fecha"] ?> </td>
 
                   <td class="text-center">
-                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
-                    <?php echo $icon_pub ;?>
-                    </button>
-                  </td>
-            
-
-                  <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/evento/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/noticia_img/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['noticia_id'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>

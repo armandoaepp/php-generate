@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
-class BeanEvento{
+class BeanNoticia{
     # Constructor
     public function __construct(){}
 
@@ -15,9 +15,8 @@ class BeanEvento{
     private $id;
     private $titulo;
     private $descripcion;
-    private $imagen = "" ;
     private $url_seo;
-    private $item;
+    private $glosa;
     private $publicar = "S" ;
     private $estado = 1 ;
     private $created_up = NULL ;
@@ -53,16 +52,6 @@ class BeanEvento{
         return $this->descripcion;
     }
 
-    public function setImagen($imagen_)
-    {
-        $this->imagen = Validation::validate( $imagen_ );
-    }
-
-    public function getImagen()
-    {
-        return $this->imagen;
-    }
-
     public function setUrlSeo($url_seo_)
     {
         $this->url_seo = Validation::validate( $url_seo_ );
@@ -73,14 +62,14 @@ class BeanEvento{
         return $this->url_seo;
     }
 
-    public function setItem($item_)
+    public function setGlosa($glosa_)
     {
-        $this->item = Validation::validate( $item_ );
+        $this->glosa = Validation::validate( $glosa_ );
     }
 
-    public function getItem()
+    public function getGlosa()
     {
-        return $this->item;
+        return $this->glosa;
     }
 
     public function setPublicar($publicar_)

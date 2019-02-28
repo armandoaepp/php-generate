@@ -4,25 +4,23 @@
   loginRedirect("../login.php");
 
   if (!isset($_POST)) {
-    header("Location: admin/evento/evento.php ", true, 301);
+    header("Location: admin/noticia_img/noticia_img.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $evento_controller = new EventoController();
+  $noticia_img_controller = new NoticiaImgController();
 
   $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $titulo   = $_POST["titulo"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $url_seo   = $_POST["url_seo"] ;
-  $item   = $_POST["item"] ;
-  $publicar   = $_POST["publicar"] ;
+  $noticia_id   = $_POST["noticia_id"] ;
+  $jerarquia   = $_POST["jerarquia"] ;
+  $fecha   = $_POST["fecha"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
-  $imagen = UploadFiles::uploadFile($file_imagen, "evento") ;
+  $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
 
   if (empty($imagen) ) { 
     $imagen = $img_bd ; 
@@ -30,16 +28,14 @@
 
   $params = array(
     "id"   => $id,
-    "titulo"   => $titulo,
-    "descripcion"   => $descripcion,
-    "url_seo"   => $url_seo,
-    "item"   => $item,
-    "publicar"   => $publicar,
+    "noticia_id"   => $noticia_id,
+    "jerarquia"   => $jerarquia,
+    "fecha"   => $fecha,
     "imagen"  => $imagen,
   );
 
 
-  $response = $evento_controller->update($params);
+  $response = $noticia_img_controller->update($params);
 
   if($response)
   {
@@ -49,7 +45,7 @@
       $status = UploadFiles::removeFile($img_bd) ;
     }
 
-    header("Location: ./evento.php ", true, 301);
+    header("Location: ./noticia_img.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;

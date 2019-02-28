@@ -25,9 +25,9 @@ switch($evento)
   case "list":
     try
     {
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
-       $data = $evento_controller->getAll() ;
+       $data = $noticia_controller->getAll() ;
 
       $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
@@ -47,15 +47,14 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $evento_controller = new EventoController($cnx) ; 
+      $noticia_controller = new NoticiaController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
-      $imagen = $inputs->imagen;
       $url_seo = $inputs->url_seo;
-      $item = $inputs->item;
+      $glosa = $inputs->glosa;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
@@ -63,14 +62,13 @@ switch($evento)
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
-                'imagen'=> $imagen,
                 'url_seo'=> $url_seo,
-                'item'=> $item,
+                'glosa'=> $glosa,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $evento_controller->save($params) ;
+      $data = $noticia_controller->save($params) ;
         
       $connection->commit();
 
@@ -92,15 +90,14 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $evento_controller = new EventoController($cnx) ; 
+      $noticia_controller = new NoticiaController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
       $titulo = $inputs->titulo;
       $descripcion = $inputs->descripcion;
-      $imagen = $inputs->imagen;
       $url_seo = $inputs->url_seo;
-      $item = $inputs->item;
+      $glosa = $inputs->glosa;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
@@ -108,14 +105,13 @@ switch($evento)
                 'id'=> $id,
                 'titulo'=> $titulo,
                 'descripcion'=> $descripcion,
-                'imagen'=> $imagen,
                 'url_seo'=> $url_seo,
-                'item'=> $item,
+                'glosa'=> $glosa,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $evento_controller->update($params) ;
+      $data = $noticia_controller->update($params) ;
         
       $connection->commit();
 
@@ -144,9 +140,9 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
-      $data = $evento_controller->updateEstado( $params ) ;
+      $data = $noticia_controller->updateEstado( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -165,9 +161,9 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
-      $data = $evento_controller->find( $id) ;
+      $data = $noticia_controller->find( $id) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -199,7 +195,7 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -207,20 +203,20 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$evento = $evento_controller->find($params);
+				$noticia = $noticia_controller->find($params);
 
-				$data = $evento_controller->deleteById($params);
+				$data = $noticia_controller->deleteById($params);
 
-				if( !empty($evento) && $data )
+				if( !empty($noticia) && $data )
 				{
-					$imagen = $evento["imagen"] ;
+					$imagen = $noticia["imagen"] ;
 					UploadFiles::removeFile($img_bd) ;
 				}
 
 			}
 			else
 			{
-				$data = $evento_controller->updateEstado($params);
+				$data = $noticia_controller->updateEstado($params);
 			} 
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -253,9 +249,9 @@ switch($evento)
                 'publicar'=> $publicar,
               ) ; 
 
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
-      $data = $evento_controller->updatePublish( $params ) ;
+      $data = $noticia_controller->updatePublish( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -279,9 +275,9 @@ switch($evento)
                 'publicar'=> $publicar,
               ) ; 
 
-      $evento_controller = new EventoController() ; 
+      $noticia_controller = new NoticiaController() ; 
 
-      $data = $evento_controller->getPublished( $params ) ;
+      $data = $noticia_controller->getPublished( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
