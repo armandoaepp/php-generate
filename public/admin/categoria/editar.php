@@ -1,32 +1,31 @@
-
 <?php
-  require_once "../sesion_admin.php";
-  loginRedirect("../login.php");
+require_once "../sesion_admin.php";
+loginRedirect("../login.php");
 
-  $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
+$id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
-  if ($id <= 0) {
-      header("Location: ./categoria.php ", true, 301);
-  }
+if ($id <= 0) {
+    header("Location: ./categoria.php ", true, 301);
+}
 
-  require_once "../../app/autoload.php";
+require_once "../../app/autoload.php";
 
-  $categoria_controller = new CategoriaController();
+$categoria_controller = new CategoriaController();
 
-  $categoria = $categoria_controller->find($id);
+$categoria = $categoria_controller->find($id);
 
-  $publicar = trim($categoria["publicar"]);
+$publicar = trim($categoria["publicar"]);
 
-  $si = "";
-  $no = "";
+$si = "";
+$no = "";
 
-  if ($publicar == "S") {
-      $si = "checked='checked'";
-  } elseif ($publicar == "N") {
-      $no = "checked='checked'";
-  }
+if ($publicar == "S") {
+    $si = "checked='checked'";
+} elseif ($publicar == "N") {
+    $no = "checked='checked'";
+}
 
-  $title_page = "Categoria";
+$title_page = "Categoria";
 
 ?>
 
@@ -37,27 +36,27 @@
 
   <?php
 
-    $setvar = array(
-        "titulo" => "$title_page",
-        "follow" => "",
-        "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
-    );
+$setvar = array(
+    "titulo" => "$title_page",
+    "follow" => "",
+    "description" => "Administrador",
+    "keywords" => "administrador",
+    "active" => [1, 0],
+);
 
-    $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
-    );
+$sidebar = array(
+    "sidebar_class" => "",
+    "sidebar_toggle" => "only",
+    "sidebar_active" => [1, 1],
+);
 
-    require_once "../layout/head_links.phtml";
-  ?>
+require_once "../layout/head_links.phtml";
+?>
 
 </head>
 
 <body>
-  <?php require "../layout/header.phtml"; ?>
+  <?php require "../layout/header.phtml";?>
 
   <div class="app-wrap">
     <?php require_once "../layout/sidebar.phtml";?>
@@ -73,7 +72,7 @@
           <li class="breadcrumb-item">
             <a href="admin/categoria/categoria.php">
               <i class="fas fa-list"></i>
-              <?php echo $title_page ;?>s
+              <?php echo $title_page; ?>s
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
@@ -95,32 +94,35 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombre">nombre : </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"  value="<?php echo $categoria['nombre'] ?>" >
-                </div>
-              </div>
 
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
-                    <label class="form-check-label" for="no">NO</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombre">nombre : </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"
+                      value="<?php echo $categoria['nombre'] ?>">
                   </div>
                 </div>
-              </div>
 
-              <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">
-                <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid img-view-edit mb-2">
-              </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?>>
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?>>
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 text-center">
+                  <input type="hidden" class="form-control" name="img_bd" id="img_bd"
+                    value="<?php echo $categoria['imagen']; ?>">
+                  <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid img-view-edit mb-2">
+                </div>
+
                 <div class="col-12 mb-3">
                   <hr>
                   <div class="form-group">
@@ -128,7 +130,8 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="imagen">Nueva Imagen</label>
                       </div>
-                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required
+                        placeholder="Imagen" accept="image/*">
                     </div>
                   </div>
                 </div>
@@ -136,7 +139,7 @@
                 <div class="col-12 mb-3">
                   <div class="preview-img" data-img-preview="preview" id="preview"></div>
                 </div>
-              
+
               </div>
 
               <div class="w-100 text-center">

@@ -32,6 +32,43 @@
     }
   }
 
+  public function getFindWithDetalle($id)
+  {
+    try
+    {
+
+      $data = array();
+
+      $noticia  = new Noticia();
+
+      $bean_noticia = new BeanNoticia();
+
+      $bean_noticia->setId($id);
+
+      $noticia = $noticia->find( $bean_noticia) ;
+
+      # Images of noticia
+
+      $noticia_img  = new NoticiaImg();
+
+      $bean_noticia_img = new BeanNoticiaImg();
+
+      $bean_noticia_img->setNoticiaId($id);
+
+      $noticia_img = $noticia_img->getByNoticiaId( $bean_noticia_img);
+
+      $data['noticia'] = $noticia ;
+      $data['noticia_img'] = $noticia_img ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
   public function getByEstado()
   {
     try

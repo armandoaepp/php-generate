@@ -91,7 +91,7 @@ require_once "../layout/head_links.phtml";
 
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="descripcion">descripcion : </label>
+                    <label for="descripcion">Descripcion : </label>
                     <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30"
                       rows="10"></textarea>
                   </div>
