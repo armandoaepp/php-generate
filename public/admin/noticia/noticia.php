@@ -82,7 +82,7 @@ require_once "../sesion_admin.php";
 
           <div class="col-12">
             <div class="table-responsive">
-
+            <?php echo date('YmdHms',time()) ;?>
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>

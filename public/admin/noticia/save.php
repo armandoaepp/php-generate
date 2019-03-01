@@ -37,7 +37,7 @@
 
   $imagen  = "";
   // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
-  $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia") ;
+  $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia", $noticia_id ) ;
 
   if($noticia_id > 0)
   {

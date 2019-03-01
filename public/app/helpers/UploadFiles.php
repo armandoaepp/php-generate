@@ -4,7 +4,7 @@ class UploadFiles {
 
   //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
    //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
-  static public function uploadFile(&$file, $path_relative = '')
+  static public function uploadFile(&$file, $path_relative = '', $pre_name = "")
   {
 
     #Verify directory name
@@ -26,7 +26,7 @@ class UploadFiles {
         $extension = $info->getExtension();
 
       # new name and url imgen
-        $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
+        $new_name = $pre_name.date('YmdHms',time()).mt_rand(1000,9999) .".{$extension}" ;
 
         if(!empty($path_relative)) {
           $imagen_url = "{$path_relative}/{$new_name}" ;
@@ -62,8 +62,18 @@ class UploadFiles {
    * path_root : path root where moved files
   */
   //  static public function uploadMultiFiles(&$files_arry, $path_url_img = 'img_admin/',$path_root = '../../')
-  static public function uploadMultiFiles(&$files_arry, $path_relative = '')
+  static public function uploadMultiFiles(&$files_arry, $path_relative = '', $pre_name = "")
   {
+
+    #Verify directory name
+    if (!file_exists(IMAGES)) {
+      mkdir(IMAGES, 0777);
+    }
+
+    if ( !file_exists(IMAGES . $path_relative) ) {
+      mkdir(IMAGES . $path_relative, 0777);
+    }
+
     $imagenes =  [];
 
     if(!empty($files_arry))
@@ -81,7 +91,7 @@ class UploadFiles {
               $extension = $info->getExtension();
 
             # new name and url imgen
-              $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
+              $new_name = $pre_name.date('YmdHms',time()).mt_rand(1000,9999) .".{$extension}" ;
 
               if(!empty($path_relative)) {
                 $imagen_url = "{$path_relative}/{$new_name}" ;
@@ -111,7 +121,7 @@ class UploadFiles {
     }
   }
 
-   static public function reArrayFiles(&$file_post) {
+  static public function reArrayFiles(&$file_post) {
 
     $file_ary = array();
     $file_count = count($file_post['name']);
