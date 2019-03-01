@@ -7,8 +7,8 @@
   width: $sidebar-width;
   overflow-y: auto;
   transition: all 0.3s;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.06);
-  z-index: 129;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.06); 
+  z-index: 129; 
 
   &.sidebar-hidden {
     margin-left: -$sidebar-width;
@@ -17,7 +17,7 @@
 }
 
 //  ---------------------------------------------------
-//     SIDEBAR STYLE NAVs and Colores
+//     SIDEBAR STYLE NAVs and Colores 
 // -----------------------------------------------------
 .sidebar {
   background-color: $sidebar-bg-color;
@@ -121,7 +121,7 @@
   .sidenav li>a.menu~ul.menu-items {
     max-height: 0;
     transition: max-height 0.5s ease;
-    overflow-y: hidden;
+    overflow-y: hidden;    
     background-color: $sidebar-bg-menu-items-color;
   }
 
@@ -186,7 +186,7 @@
     display: none;
   }
 
-  .main {
+  .sidebar~.main {
     margin-left: 0;
 
     &.sidebar-hidden {

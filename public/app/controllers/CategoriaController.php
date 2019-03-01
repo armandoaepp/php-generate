@@ -32,6 +32,22 @@
     }
   }
 
+  public function getByEstado()
+  {
+    try
+    {
+      $categoria  = new Categoria();
+
+      $data = $categoria->getByEstado();
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
   public function save($params = array() )
   {
     try

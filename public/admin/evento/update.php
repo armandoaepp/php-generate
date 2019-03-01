@@ -15,26 +15,26 @@
 
   $titulo   = $_POST["titulo"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $nombreseo   = $_POST["nombreseo"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $url   = $_POST["url"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "evento") ;
 
-  if (empty($imagen) ) { 
-    $imagen = $img_bd ; 
-  } 
+  if (empty($imagen) ) {
+    $imagen = $img_bd ;
+  }
 
   $params = array(
     "id"   => $id,
     "titulo"   => $titulo,
     "descripcion"   => $descripcion,
-    "nombreseo"   => $nombreseo,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "url"   => $url,
+    "item"   => $item,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
   );
 

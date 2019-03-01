@@ -68,7 +68,7 @@ class UploadFiles {
 
     if(!empty($files_arry))
     {
-        $img_desc = reArrayFiles($files_arry);
+        $img_desc = UploadFiles::reArrayFiles($files_arry);
         // print_r($img_desc);
 
         foreach($img_desc as $file)

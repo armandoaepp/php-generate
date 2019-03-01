@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -16,10 +16,11 @@ class BeanEvento{
     private $titulo;
     private $descripcion;
     private $imagen = "" ;
-    private $nombreseo;
-    private $orden;
+    private $url;
+    private $item;
+    private $publicar = "S" ;
     private $estado = 1 ;
-    private $fecha;
+    private $created_up = NULL ;
 
     # METODOS
     public function setId($id_)
@@ -62,24 +63,34 @@ class BeanEvento{
         return $this->imagen;
     }
 
-    public function setNombreseo($nombreseo_)
+    public function setUrlSeo($url_seo_)
     {
-        $this->nombreseo = Validation::validate( $nombreseo_ );
+        $this->url = Validation::validate( $url_seo_ );
     }
 
-    public function getNombreseo()
+    public function getUrlSeo()
     {
-        return $this->nombreseo;
+        return $this->url;
     }
 
-    public function setOrden($orden_)
+    public function setItem($item_)
     {
-        $this->orden = Validation::validate( $orden_ );
+        $this->item = Validation::validate( $item_ );
     }
 
-    public function getOrden()
+    public function getItem()
     {
-        return $this->orden;
+        return $this->item;
+    }
+
+    public function setPublicar($publicar_)
+    {
+        $this->publicar = Validation::validate( $publicar_ );
+    }
+
+    public function getPublicar()
+    {
+        return $this->publicar;
     }
 
     public function setEstado($estado_)
@@ -92,14 +103,14 @@ class BeanEvento{
         return $this->estado;
     }
 
-    public function setFecha($fecha_)
+    public function setCreatedUp($created_up_)
     {
-        $this->fecha = Validation::validate( $fecha_ );
+        $this->created_up = Validation::validate( $created_up_ );
     }
 
-    public function getFecha()
+    public function getCreatedUp()
     {
-        return $this->fecha;
+        return $this->created_up;
     }
 
 }

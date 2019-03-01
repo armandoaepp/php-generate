@@ -10,6 +10,7 @@
 class Model extends Connection {
 
   public $table  ;
+
   # CONSTRUCT
   public function __construct($cnx  = null)
   {
@@ -17,7 +18,7 @@ class Model extends Connection {
   }
 
   # Método getALl
-  public function getAll()
+  public function all()
   {
     try{
 
@@ -40,13 +41,16 @@ class Model extends Connection {
 
 
 
+
   # Método Buscar por ID
-  public function find($bean_buzon)
+  public function find($id)
   {
     try{
-      $id = $bean_buzon->getId();
 
-      $this->query = "SELECT * FROM $table WHERE id = '$id' LIMIT 1; ";
+
+      $this->query = "SELECT * FROM $this->table WHERE id = :id LIMIT 1; ";
+
+      // $stmt->bindValue(':nombre', $nombre); // Se enlaza al valor Morgan
 
       $this->executeFind();
 

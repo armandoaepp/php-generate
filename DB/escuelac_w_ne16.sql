@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-12-20 12:54:50
+Date: 2019-02-28 18:34:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `admision` (
 -- ----------------------------
 -- Records of admision
 -- ----------------------------
-INSERT INTO `admision` VALUES ('1', 'a:1:{s:2:\"es\";s:18:\"Admisión 2018 - I\";}', 'imagenes/resena/escuela-cumbre-admision-27-agosto-2018.jpg', 'a:1:{s:2:\"es\";s:400:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Certificado de secundaria visado por la GRED.</li>\r\n	<li>Partida de nacimiento ACTUAL.&nbsp;</li>\r\n	<li>Copia del documento de identidad.&nbsp;</li>\r\n	<li>Copia de recibo agua y luz.&nbsp;</li>\r\n	<li>Dos fotos tama&ntilde;o carnet a color.&nbsp;</li>\r\n	<li>Carnet de salud (vigente).&nbsp;</li>\r\n	<li>P&oacute;liza de seguro contra accidentes.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:467:\"<ul class=\"list_ul_cer text-left\" style=\"list-style-type:square;\">\r\n	<li><strong>LUNEA A VIERNES</strong></li>\r\n	<li><strong>Turno ma&ntilde;ana: </strong>7.30 am - 2.00 pm</li>\r\n	<li><strong>Turno noche: </strong>6:00 - 10:30 pm</li>\r\n	<li><strong style=\"line-height: 1.6em;\">Duraci&oacute;n</strong><span style=\"line-height: 1.6em;\">: <strong>3 a&ntilde;os</strong> / VI ciclos (4 meses x ciclo)</span></li>\r\n	<li><strong>INICIO</strong>: 27 de Agosto</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:305:\"<ul class=\"list_ul_cer text-left\">\r\n	<li><strong>MATR&Iacute;CULA</strong>: S/. 310.00</li>\r\n	<li><strong>UNIFORME</strong>: S/. 200.00 (pantal&oacute;n + polo + garibaldi + camisaco + mandil)</li>\r\n	<li><strong>MENSUALIDAD: </strong><br />\r\n	S/.520.00 (5 cuotas - Incluye insumos e idiomas)</li>\r\n</ul>\r\n\";}', null);
+INSERT INTO `admision` VALUES ('1', 'a:1:{s:2:\"es\";s:18:\"Admisión 2019 - I\";}', 'imagenes/resena/admison-18-marzo-2019.jpg', 'a:1:{s:2:\"es\";s:400:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Certificado de secundaria visado por la GRED.</li>\r\n	<li>Partida de nacimiento ACTUAL.&nbsp;</li>\r\n	<li>Copia del documento de identidad.&nbsp;</li>\r\n	<li>Copia de recibo agua y luz.&nbsp;</li>\r\n	<li>Dos fotos tama&ntilde;o carnet a color.&nbsp;</li>\r\n	<li>Carnet de salud (vigente).&nbsp;</li>\r\n	<li>P&oacute;liza de seguro contra accidentes.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:469:\"<ul class=\"list_ul_cer text-left\" style=\"list-style-type:square;\">\r\n	<li><strong>LUNEA A VIERNES</strong></li>\r\n	<li><strong>Turno ma&ntilde;ana: </strong>7.30 am - 2.00 pm</li>\r\n	<li><strong>Turno noche: </strong>6:00 - 10:30 pm</li>\r\n	<li><strong style=\"line-height: 1.6em;\">Duraci&oacute;n</strong><span style=\"line-height: 1.6em;\">: <strong>3 a&ntilde;os</strong> / VI ciclos (18 Semanas x ciclo)</span></li>\r\n	<li><strong>INICIO</strong>: 18 de marzo</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:305:\"<ul class=\"list_ul_cer text-left\">\r\n	<li><strong>MATR&Iacute;CULA</strong>: S/. 310.00</li>\r\n	<li><strong>UNIFORME</strong>: S/. 200.00 (pantal&oacute;n + polo + garibaldi + camisaco + mandil)</li>\r\n	<li><strong>MENSUALIDAD: </strong><br />\r\n	S/.650.00 (4 cuotas - Incluye insumos e idiomas)</li>\r\n</ul>\r\n\";}', null);
 
 -- ----------------------------
 -- Table structure for amigos
@@ -185,7 +185,7 @@ CREATE TABLE `carrera` (
 -- ----------------------------
 -- Records of carrera
 -- ----------------------------
-INSERT INTO `carrera` VALUES ('1', 'a:1:{s:2:\"es\";s:12:\"Gastronomía\";}', 'a:1:{s:2:\"es\";s:727:\"<p>Estudiar Gastronom&iacute;a en Chiclayo es un privilegio porque aqu&iacute; al parecer,&nbsp;se inici&oacute; la Historia del mundialmente reconocido Sabor Peruano.&nbsp;<br />\r\nEn Huaca Ventarr&oacute;n con m&aacute;s de 4,000 a&ntilde;os de antig&uuml;edad, se encontraron&nbsp;los primeros murales policromos de Am&eacute;rica.<br />\r\nEl Se&ntilde;or de Sip&aacute;n&nbsp;probablemente degustaba un &ldquo;chinguirito&rdquo; o pescado seco salado.<br />\r\nEl &ldquo;loche&rdquo;, &uacute;nico zapallo milenario da gusto a nuestras preparaciones&nbsp;desde tiempos inmemoriales.<br />\r\nDelicias a base de carnes de corral como&nbsp;el pato o cabrito seguir&aacute;n cautivando paladares hasta el final de los tiempos.</p>\r\n\";}', 'imagenes/carreras/head-carreras_2.jpg', 'imagenes/carreras/carrera-gastronomia.png', 'a:1:{s:2:\"es\";s:661:\"<h3>&iquest;QU&Eacute; ES GASTRONOM&Iacute;A?<br />\r\n<br />\r\n<span style=\"font-size: 13px; line-height: 1.6em;\">La Gastronom&iacute;a es una disciplina que abarca todo lo relacionado al placer de la alimentaci&oacute;n humana. Las preparaciones con sus historias y tradiciones, los insumos e ingredientes, el servicio en mesa, las bebidas, los vinos, el desarrollo y manejo de negocios como restaurantes, cafeter&iacute;as, catering de eventos y mucho m&aacute;s.&nbsp;</span><em style=\"font-size: 13px; line-height: 1.6em;\"><span class=\"text-danger\">Gastronom&iacute;a no s&oacute;lo es cocinar o comer rico, va mucho m&aacute;s all&aacute;.</span></em></h3>\r\n\";}', 'a:1:{s:2:\"es\";s:578:\"<h3>&iquest;POR QU&Eacute; ESTUDIAR GASTRONOM&Iacute;A?<br />\r\n<br />\r\n<span style=\"line-height: 1.6em; font-size: 13px;\">El mundo ha evolucionado en el aspecto gastron&oacute;mico, convirtiendo el alto nivel en servicio, en un est&aacute;ndar internacional. El turismo cada vez crece m&aacute;s, los paladares se sofistican cada d&iacute;a. Es necesario que el Per&uacute; profesionalice su afamada cocina. Un cocinero puede llegar a ser Chef, viajar por todo el mundo sirviendo con su arte y logrando satisfacciones tanto personales como de sus comensales.&nbsp;</span></h3>\r\n\";}', 'a:1:{s:2:\"es\";s:644:\"<h3>&iquest;D&Oacute;NDE PUEDES TRABAJAR?<br />\r\n<br />\r\n<span style=\"font-size: 13px; line-height: 1.6em;\">El campo laboral es muy amplio, estos son algunos de los trabajos en donde se pueden desempe&ntilde;ar nuestros egresados:</span></h3>\r\n\r\n<div class=\"text-block text-justify\">\r\n<ul class=\"list_ul\">\r\n	<li>Chef Ejecutivo de hoteles o restaurantes.</li>\r\n	<li>Gerente de Alimentos y Bebidas.</li>\r\n	<li><span style=\"line-height: 1.6em;\">Asesor o L&iacute;der de Empresas Gastron&oacute;micas.</span></li>\r\n	<li>Banquetes y eventos.&nbsp;</li>\r\n	<li>Chef ejecutivo, particular, asesor o instructor en establecimientos.</li>\r\n</ul>\r\n</div>\r\n\";}', 'a:1:{s:2:\"es\";s:174:\"M&oacute;dulo 1: Gastronom&iacute;a Regional<br />\r\nM&oacute;dulo 2: Gastronom&iacute;a Peruana<br />\r\nM&oacute;dulo 3: Gastronom&iacute;a Internacional<br />\r\n<br />\r\n&nbsp;\";}', 'a:1:{s:2:\"es\";s:317:\"<strong>CARRERA PROFESIONAL DE GASTRONOM&Iacute;A Y ARTE CULINARIO</strong><br />\r\nse entrega T&iacute;tulo a Nombre de la Naci&oacute;n<br />\r\n(R.M.N&deg; 0345 - 2008 - ED)<br />\r\n<strong>Duraci&oacute;n de la carrera: </strong>3 a&ntilde;os / VI Ciclos<br />\r\n(cada ciclo dura 4 meses)<br />\r\n<br />\r\n<br />\r\n&nbsp;\";}', 'a:1:{s:2:\"es\";s:340:\"<ul>\r\n	<li>Matr&iacute;cula: <strong>S/ 310.00</strong></li>\r\n	<li>Uniforme completo: <strong>S/ 200.00 </strong>(Pantal&oacute;n + Polo + Garibaldi + Camisaco + &nbsp;&nbsp;Mandil)</li>\r\n	<li>Total por ciclo: <strong>S/ 2600.00</strong></li>\r\n	<li>Total por ciclo (pago al contado): <strong>S/ 2470.00 </strong>(5% descuento)</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:179:\"<strong>19&deg; </strong>Programa de Asesor&iacute;a de Proyectos para optar <strong>T&iacute;tulo Profesional T&eacute;cnico </strong>en GAC (Gastronom&iacute;a y Arte Culinario)\";}', 'a:1:{s:2:\"es\";s:10:\"16 SEMANAS\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:21:\"Sábados 9.00 a 13:00\";}', 'a:1:{s:2:\"es\";s:27:\"Av. Eufemio Lora y Lora 625\";}', 'a:1:{s:2:\"es\";s:12:\"S/. 4,630.00\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:12:\"(074) 228790\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:236:\"Dirigido a egresados con estudios conclu&iacute;dos.<br />\r\n<strong>INICIO: </strong>19 DE ENERO 2019<br />\r\n<strong>INFORMES - INSCRIPCIONES Y FINANCIAMIENTO:</strong> Oficina de Secretar&iacute;a Acad&eacute;mica o Recaudaci&oacute;n.\";}', 'a:1:{s:2:\"es\";s:387:\"<ol>\r\n	<li>Seguridad e higiene alimentaria.</li>\r\n	<li>BPM.</li>\r\n	<li>&Aacute;rea de producci&oacute;n en cocina.</li>\r\n	<li>Marketing aplicado.</li>\r\n	<li>Etiqueta y protocolo.</li>\r\n	<li>T&eacute;cnicas b&aacute;sicas de cocina.</li>\r\n	<li>Repertorio de cocina regional y peruana.</li>\r\n	<li>Cata de vinos y maridaje.</li>\r\n	<li>Asesor&iacute;a de proyectos productivos.</li>\r\n</ol>\r\n\";}', 'gastronomia', '0', '1', '2018-09-27 10:33:00');
+INSERT INTO `carrera` VALUES ('1', 'a:1:{s:2:\"es\";s:12:\"Gastronomía\";}', 'a:1:{s:2:\"es\";s:727:\"<p>Estudiar Gastronom&iacute;a en Chiclayo es un privilegio porque aqu&iacute; al parecer,&nbsp;se inici&oacute; la Historia del mundialmente reconocido Sabor Peruano.&nbsp;<br />\r\nEn Huaca Ventarr&oacute;n con m&aacute;s de 4,000 a&ntilde;os de antig&uuml;edad, se encontraron&nbsp;los primeros murales policromos de Am&eacute;rica.<br />\r\nEl Se&ntilde;or de Sip&aacute;n&nbsp;probablemente degustaba un &ldquo;chinguirito&rdquo; o pescado seco salado.<br />\r\nEl &ldquo;loche&rdquo;, &uacute;nico zapallo milenario da gusto a nuestras preparaciones&nbsp;desde tiempos inmemoriales.<br />\r\nDelicias a base de carnes de corral como&nbsp;el pato o cabrito seguir&aacute;n cautivando paladares hasta el final de los tiempos.</p>\r\n\";}', 'imagenes/carreras/head-carreras_2.jpg', 'imagenes/carreras/carrera-gastronomia.png', 'a:1:{s:2:\"es\";s:653:\"<h3>&iquest;QU&Eacute; ES GASTRONOM&Iacute;A?</h3>\r\n<br />\r\n<span style=\"font-size: 13px; line-height: 1.6em;\">La Gastronom&iacute;a es una disciplina que abarca todo lo relacionado al placer de la alimentaci&oacute;n humana. Las preparaciones con sus historias y tradiciones, los insumos e ingredientes, el servicio en mesa, las bebidas, los vinos, el desarrollo y manejo de negocios como restaurantes, cafeter&iacute;as, catering de eventos y mucho m&aacute;s.&nbsp;</span><em style=\"font-size: 13px; line-height: 1.6em;\"><span class=\"text-danger\">Gastronom&iacute;a no s&oacute;lo es cocinar o comer rico, va mucho m&aacute;s all&aacute;.</span></em>\";}', 'a:1:{s:2:\"es\";s:578:\"<h3>&iquest;POR QU&Eacute; ESTUDIAR GASTRONOM&Iacute;A?<br />\r\n<br />\r\n<span style=\"line-height: 1.6em; font-size: 13px;\">El mundo ha evolucionado en el aspecto gastron&oacute;mico, convirtiendo el alto nivel en servicio, en un est&aacute;ndar internacional. El turismo cada vez crece m&aacute;s, los paladares se sofistican cada d&iacute;a. Es necesario que el Per&uacute; profesionalice su afamada cocina. Un cocinero puede llegar a ser Chef, viajar por todo el mundo sirviendo con su arte y logrando satisfacciones tanto personales como de sus comensales.&nbsp;</span></h3>\r\n\";}', 'a:1:{s:2:\"es\";s:638:\"<h3>&iquest;D&Oacute;NDE PUEDES TRABAJAR?</h3>\r\n<br />\r\n<span style=\"font-size: 13px; line-height: 1.6em;\">El campo laboral es muy amplio, estos son algunos de los trabajos en donde se pueden desempe&ntilde;ar nuestros egresados:</span>\r\n\r\n<div class=\"text-block text-justify\">\r\n<ul class=\"list_ul\">\r\n	<li>Chef Ejecutivo de hoteles o restaurantes.</li>\r\n	<li>Gerente de Alimentos y Bebidas.</li>\r\n	<li><span style=\"line-height: 1.6em;\">Asesor o L&iacute;der de Empresas Gastron&oacute;micas.</span></li>\r\n	<li>Banquetes y eventos.&nbsp;</li>\r\n	<li>Chef ejecutivo, particular, asesor o instructor en establecimientos.</li>\r\n</ul>\r\n</div>\r\n\";}', 'a:1:{s:2:\"es\";s:174:\"M&oacute;dulo 1: Gastronom&iacute;a Regional<br />\r\nM&oacute;dulo 2: Gastronom&iacute;a Peruana<br />\r\nM&oacute;dulo 3: Gastronom&iacute;a Internacional<br />\r\n<br />\r\n&nbsp;\";}', 'a:1:{s:2:\"es\";s:317:\"<strong>CARRERA PROFESIONAL DE GASTRONOM&Iacute;A Y ARTE CULINARIO</strong><br />\r\nse entrega T&iacute;tulo a Nombre de la Naci&oacute;n<br />\r\n(R.M.N&deg; 0345 - 2008 - ED)<br />\r\n<strong>Duraci&oacute;n de la carrera: </strong>3 a&ntilde;os / VI Ciclos<br />\r\n(cada ciclo dura 4 meses)<br />\r\n<br />\r\n<br />\r\n&nbsp;\";}', 'a:1:{s:2:\"es\";s:328:\"<ul>\r\n	<li>Matr&iacute;cula: <strong>S/ 310.00</strong></li>\r\n	<li>Uniforme completo: <strong>S/ 200.00 </strong>(pantal&oacute;n + polo + garibaldi + camisaco + mandil)</li>\r\n	<li>Total por ciclo: <strong>S/ 2600.00</strong></li>\r\n	<li>Total por ciclo (pago al contado): <strong>S/ 2470.00 </strong>(5% descuento)</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:179:\"<strong>19&deg; </strong>Programa de Asesor&iacute;a de Proyectos para optar <strong>T&iacute;tulo Profesional T&eacute;cnico </strong>en GAC (Gastronom&iacute;a y Arte Culinario)\";}', 'a:1:{s:2:\"es\";s:10:\"16 SEMANAS\";}', 'a:1:{s:2:\"es\";s:24:\"INICIO: 19 DE ENERO 2019\";}', 'a:1:{s:2:\"es\";s:21:\"Sábados 9.00 a 13:00\";}', 'a:1:{s:2:\"es\";s:27:\"Av. Eufemio Lora y Lora 625\";}', 'a:1:{s:2:\"es\";s:12:\"S/. 4,630.00\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:12:\"(074) 228790\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:58:\"Dirigido a egresados con estudios conclu&iacute;dos.&nbsp;\";}', 'a:1:{s:2:\"es\";s:387:\"<ol>\r\n	<li>Seguridad e higiene alimentaria.</li>\r\n	<li>BPM.</li>\r\n	<li>&Aacute;rea de producci&oacute;n en cocina.</li>\r\n	<li>Marketing aplicado.</li>\r\n	<li>Etiqueta y protocolo.</li>\r\n	<li>T&eacute;cnicas b&aacute;sicas de cocina.</li>\r\n	<li>Repertorio de cocina regional y peruana.</li>\r\n	<li>Cata de vinos y maridaje.</li>\r\n	<li>Asesor&iacute;a de proyectos productivos.</li>\r\n</ol>\r\n\";}', 'gastronomia', '0', '1', '2019-01-11 11:43:08');
 
 -- ----------------------------
 -- Table structure for categoria
@@ -193,31 +193,22 @@ INSERT INTO `carrera` VALUES ('1', 'a:1:{s:2:\"es\";s:12:\"Gastronomía\";}', 'a
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
   `idcategoria` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `visible` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'S',
-  `fechareg` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `imagen` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `publicar` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'S',
-  `estado` smallint(6) NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idcategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+  `nombre` varchar(150) COLLATE utf8mb4_bin NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_bin DEFAULT '',
+  `imagen` varchar(255) COLLATE utf8mb4_bin DEFAULT '',
+  `publicar` char(1) COLLATE utf8mb4_bin DEFAULT 'S',
+  `estado` smallint(5) unsigned NOT NULL DEFAULT '1',
+  `created_up` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of categoria
 -- ----------------------------
-INSERT INTO `categoria` VALUES ('1', 'Polo de entrenamiento - Conj', 'Se suda hasta la última gota de esfuerzo', 'S', '2016-04-18 16:37:08', 'polo-de-entrenamiento-conj', 'img_admin/categorias/20181022171022.jpg', 'S', '1', '2018-10-22 10:59:22');
-INSERT INTO `categoria` VALUES ('2', 'Polo de concentración', 'Ideal para los grandes partidos', 'S', '2016-04-18 16:37:08', 'polo-de-concentracion', 'img_admin/categorias/20181022181006.jpg', 'S', '1', '2018-10-22 11:00:06');
-INSERT INTO `categoria` VALUES ('3', 'Buzo', 'Para soportar cualquier clima de visita', 'S', '2016-04-18 16:37:08', 'buzo', 'img_admin/categorias/20181022181015.jpg', 'S', '1', '2018-10-22 11:00:15');
-INSERT INTO `categoria` VALUES ('5', 'Short', 'Ponte de corto y al campo...', 'S', '2016-05-14 00:52:45', 'short', 'img_admin/categorias/20181022181023.jpg', 'S', '1', '2018-10-22 11:00:23');
-INSERT INTO `categoria` VALUES ('6', 'Casacas de buzo', 'Para soportar cualquier clima de visita', 'S', '2016-05-18 01:22:46', 'casacas-de-buzo', 'img_admin/categorias/20181022181031.jpg', 'S', '1', '2018-10-22 11:00:31');
-INSERT INTO `categoria` VALUES ('7', 'Pantalón de buzo', 'Ideal para el frío de la \"pichanga\" por las noches', 'S', '2016-05-19 00:02:09', 'pantalon-de-buzo', 'img_admin/categorias/20181022181044.jpg', 'S', '1', '2018-10-22 11:26:44');
-INSERT INTO `categoria` VALUES ('8', 'Solo polo entreno', 'Se suda hasta la última gota de esfuerzo', 'S', '2016-05-18 01:23:15', 'solo-polo-entreno', 'img_admin/categorias/20181022181003.jpg', 'S', '1', '2018-10-22 11:27:03');
-INSERT INTO `categoria` VALUES ('9', 'Pack Apasionado', '', 'S', '2016-05-18 23:07:04', 'pack-apasionado', 'img_admin/categorias/20181022181035.jpg', 'S', '1', '2018-10-22 11:26:35');
-INSERT INTO `categoria` VALUES ('10', 'Arquero de Exportación', '', 'S', '2016-06-18 00:17:06', 'arquero-de-exportacion', 'img_admin/categorias/20181022181026.jpg', 'S', '1', '2018-10-22 11:26:26');
-INSERT INTO `categoria` VALUES ('11', 'Papá Hincha', '', 'S', '2016-06-18 00:23:42', 'papa-hincha', 'img_admin/categorias/20181022181019.jpg', 'S', '1', '2018-10-22 11:26:19');
+INSERT INTO `categoria` VALUES ('1', 'Categoría 123', 'categora-123', '', 'S', '1', '2018-08-08 17:08:01');
+INSERT INTO `categoria` VALUES ('2', 'Categoría 22', 'categoria-22', '', 'S', '1', '2018-08-08 17:08:09');
+INSERT INTO `categoria` VALUES ('3', 'Categoría 3 23', 'categoria-3-23', '', 'N', '1', '2018-08-08 17:08:14');
+INSERT INTO `categoria` VALUES ('4', 'fdgdfg', 'fdgdfg', '', 'S', '1', '2018-12-19 11:12:04');
 
 -- ----------------------------
 -- Table structure for chef
@@ -241,8 +232,8 @@ CREATE TABLE `chef` (
 -- ----------------------------
 INSERT INTO `chef` VALUES ('8', 'a:1:{s:2:\"es\";s:11:\"LUIS HUERTA\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:16:\"MASTER PATISSIER\";}', 'a:1:{s:2:\"es\";s:677:\"<ul>\r\n	<li>Especializaci&oacute;n en Artisan Gelato - Carpigiani Gelato University, Bologna - Italia.</li>\r\n	<li>Panader&iacute;a artesanal y del mundo - Institute of Culinary Education (ICE), New York.</li>\r\n	<li>Chocolater&iacute;a y Bomboner&iacute;a - Chocolate Academy, Chicago, USA.</li>\r\n	<li>Workshop con Valrhona&nbsp; Chocolate - Emirates Academy, Dub&aacute;i.</li>\r\n	<li>Pastry chef asociado &ndash; Miami Culinary Institute</li>\r\n	<li>Pastry chef en Resort Madinat Jumeirah, Dub&aacute;i.</li>\r\n	<li>Pastry chef en Resort Canyon Ranch Miami, USA.</li>\r\n	<li>Master Patissierie, Le Cordon Bleu Per&uacute;.</li>\r\n	<li>Linecook restaurant Malabar, Lima</li>\r\n</ul>\r\n\";}', 'imagenes/chef/1.jpg', '8', '1', '2017-09-09 11:48:00');
 INSERT INTO `chef` VALUES ('9', 'a:1:{s:2:\"es\";s:14:\"KEVIN SUÁREZ \";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:36:\"ESPECIALISTA EN COCINA INTERNACIONAL\";}', 'a:1:{s:2:\"es\";s:400:\"<ul>\r\n	<li>Cocinero en Restaurant R&eacute;gis &amp; Jacques MARCON &ndash; 3 Estrellas Michelin, Francia.</li>\r\n	<li>Cocinero en Restaurant Luis Bernard Puech- 1 Estrella Michelin, Francia.</li>\r\n	<li>Master Cucina en ICIF, Italia.</li>\r\n	<li>Master Cuisine en Escuela de Gastronom&iacute;a y Arte Culinario Cumbre.</li>\r\n	<li>Chef en Resturante Loche, Hotel Casa de la Luna, Chiclayo.</li>\r\n</ul>\r\n\";}', 'imagenes/chef/2.jpg', '9', '1', '2017-09-09 11:49:07');
-INSERT INTO `chef` VALUES ('10', 'a:1:{s:2:\"es\";s:14:\"BORIS STAKEEFF\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:46:\"ESPECIALISTA EN COCINA PERUANA E INTERNACIONAL\";}', 'a:1:{s:2:\"es\";s:362:\"<ul>\r\n	<li>Chef de partie del Ristorante Quadri, Venecia, Italia.</li>\r\n	<li>Master Cucina en ICIF, Italia.</li>\r\n	<li>Chef para el II Foro Mundial de Turismo Gastron&oacute;mico.</li>\r\n	<li>Capacitador para el MINCETUR &ndash; CENFOTUR.</li>\r\n	<li>Chef asesor en Supermercados Peruanos.</li>\r\n	<li>Coaching y trabajo en equipo - Pronabec (MINEDU).</li>\r\n</ul>\r\n\";}', 'imagenes/chef/3.jpg', '10', '1', '2017-09-09 11:49:57');
-INSERT INTO `chef` VALUES ('11', 'a:1:{s:2:\"es\";s:16:\"ANDRÉ KUNIYOSHI\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:30:\"ESPECIALISTA EN COCINA PERUANA\";}', 'a:1:{s:2:\"es\";s:301:\"<ul>\r\n	<li>Chef de partie en restaurant Andre Chatelard, Francia.</li>\r\n	<li>Chef Ejecutivo de la cadena Casa Andina Hotel.</li>\r\n	<li>Master Cuisine en Escuela de Gastronom&iacute;a y Arte Culinario Cumbre.</li>\r\n	<li>Asesor gastron&oacute;mico en diversos restaurantes a nivel nacional</li>\r\n</ul>\r\n\";}', 'imagenes/chef/4.jpg', '11', '1', '2017-09-09 11:51:35');
+INSERT INTO `chef` VALUES ('10', 'a:1:{s:2:\"es\";s:14:\"BORIS STAKEEFF\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:46:\"ESPECIALISTA EN COCINA PERUANA E INTERNACIONAL\";}', 'a:1:{s:2:\"es\";s:362:\"<ul>\r\n	<li>Chef de partie del Ristorante Quadri, Venecia, Italia.</li>\r\n	<li>Master Cucina en ICIF, Italia.</li>\r\n	<li>Chef para el II Foro Mundial de Turismo Gastron&oacute;mico.</li>\r\n	<li>Capacitador para el MINCETUR &ndash; CENFOTUR.</li>\r\n	<li>Chef asesor en Supermercados Peruanos.</li>\r\n	<li>Coaching y trabajo en equipo - Pronabec (MINEDU).</li>\r\n</ul>\r\n\";}', 'imagenes/chef/3.jpg', '10', '0', '2018-12-24 03:14:39');
+INSERT INTO `chef` VALUES ('11', 'a:1:{s:2:\"es\";s:16:\"ANDRÉ KUNIYOSHI\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:30:\"ESPECIALISTA EN COCINA PERUANA\";}', 'a:1:{s:2:\"es\";s:301:\"<ul>\r\n	<li>Chef de partie en restaurant Andre Chatelard, Francia.</li>\r\n	<li>Chef Ejecutivo de la cadena Casa Andina Hotel.</li>\r\n	<li>Master Cuisine en Escuela de Gastronom&iacute;a y Arte Culinario Cumbre.</li>\r\n	<li>Asesor gastron&oacute;mico en diversos restaurantes a nivel nacional</li>\r\n</ul>\r\n\";}', 'imagenes/chef/4.jpg', '11', '0', '2018-12-24 03:14:48');
 INSERT INTO `chef` VALUES ('12', 'a:1:{s:2:\"es\";s:13:\"JESÚS ZAMORA\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:30:\"ESPECIALISTA EN COCINA PERUANA\";}', 'a:1:{s:2:\"es\";s:351:\"<ul>\r\n	<li>Chef de partie en Restauant L&acute;Ambassade, Francia.</li>\r\n	<li>Master Cuisine en Escuela de Gastronom&iacute;a y Arte Culinario Cumbre.</li>\r\n	<li>Chef en Restaurant El Rinc&oacute;n Que No Conoces, Lima.</li>\r\n	<li>Administraci&oacute;n y gesti&oacute;n de restaurantes en la Escuela Nacional de Gastronom&iacute;a, Lima.</li>\r\n</ul>\r\n\";}', 'imagenes/chef/5.jpg', '12', '1', '2017-09-09 11:52:41');
 INSERT INTO `chef` VALUES ('13', 'a:1:{s:2:\"es\";s:15:\"AGUSTÍN JORDAN\";}', 'a:1:{s:2:\"es\";s:4:\"Chef\";}', 'a:1:{s:2:\"es\";s:31:\"ESPECIALISTA EN COCINA REGIONAL\";}', 'a:1:{s:2:\"es\";s:499:\"<ul>\r\n	<li>Chef ejecutivo del restaurante tur&iacute;stico &ldquo;El C&aacute;ntaro&rdquo;, Lambayeque.</li>\r\n	<li>Expositor en la Feria Internacional Mistura (dos a&ntilde;os consecutivos).</li>\r\n	<li>Investigador y gestor de la gastronom&iacute;a regional e identidad lambayecana.</li>\r\n	<li>Expositor en ferias de gastronom&iacute;a y turismo, congresos y talleres a nivel nacional e internacional.</li>\r\n	<li>Estudios de Alta Cocina en Hospitalily Management School Columbia, Lima.</li>\r\n</ul>\r\n\";}', 'imagenes/chef/6.jpg', '13', '1', '2017-09-09 11:53:34');
 
@@ -306,137 +297,6 @@ CREATE TABLE `diplomado` (
 -- Records of diplomado
 -- ----------------------------
 INSERT INTO `diplomado` VALUES ('1', 'a:1:{s:2:\"es\";s:11:\"Pastelería\";}', 'a:1:{s:2:\"es\";s:323:\"<div>Este curso &ndash; taller tiene como objetivo capacitar a emprendedores y apasionados por la pasteler&iacute;a para que puedan implementar su propio negocio en base a productos de tendencia.<br />\r\nLos asistentes podr&aacute;n realizar pr&aacute;ctica en talleres totalmente implementados.</div>\r\n\r\n<div>&nbsp;</div>\r\n\";}', 'imagenes/carreras/fond_diplomado.jpg', 'imagenes/carreras/diplomado-pasteleria.png', 'a:1:{s:2:\"es\";s:486:\"Los participantes recibir&aacute;n el CERTIFICADO EN <strong>TALLER DE PASTELER&Iacute;A </strong>a nombre de Cumbre.<br />\r\n<strong><em>&iquest;Por qu&eacute; estudiar este taller en Cumbre?</em></strong>\r\n<ul>\r\n	<li>T&eacute;cnicas y herramientas con enfoque pr&aacute;ctico.</li>\r\n	<li>Docente instructor con experiencia y trayectoria.</li>\r\n	<li>Asesor&iacute;a de chefs de primer nivel.</li>\r\n	<li>La escuela de gastronom&iacute;a n&uacute;mero 1 de la regi&oacute;n.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:633:\"<strong>Luis Huerta / MASTER PATISSIER</strong><br />\r\nMaster Patissierie con m&aacute;s de 20 a&ntilde;os de experiencia. Con especializaci&oacute;n en Artisan Gelato - Carpigiani Gelato University, Bologna &ndash; Italia; panader&iacute;a artesanal y del mundo en el Institute of Culinary Education (ICE), New York; Chocolater&iacute;a y Bomboner&iacute;a - Chocolate Academy, Chicago, USA.<br />\r\nAdem&aacute;s es Pastry chef asociado &ndash; Miami Culinary Institute, ha trabajado como Pastry chef en Resort Madinat Jumeirah, Dub&aacute;i; Pastry chef en Resort Canyon Ranch Miami, USA; y como Line cook restaurant Malabar, Lima.\";}', 'a:1:{s:2:\"es\";s:288:\"<div style=\"line-height: 20.8px;\">\r\n<ul>\r\n	<li>S/. 1800.00 Nuevos Soles (4 cuotas de S/. 450.00 soles)</li>\r\n	<li>S/. 1500.00 soles (al contado)</li>\r\n</ul>\r\n<strong>Incluye: </strong>Uniforme (Chaqueta, mandil y Garibaldi) / Recetario / Insumos / Degustaci&oacute;n / Certificado</div>\r\n\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:27:\"Av. Eufemio Lora y Lora 625\";}', 'a:1:{s:2:\"es\";s:24:\"S/. 1500.00 (al contado)\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:10:\"074 228790\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:333:\"<ul>\r\n	<li>Propietarios de negocios de gastronom&iacute;a.</li>\r\n	<li>Pasteleros que quieren implementar un negocio.</li>\r\n	<li>Empresarios que desean implementar una marca de gastronom&iacute;a (pasteler&iacute;a).</li>\r\n	<li>P&uacute;blico apasionado por la pasteler&iacute;a que quiere perfeccionar su m&eacute;todo.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:319:\"<strong>SESI&Oacute;N 01:</strong> &nbsp; FESTIVAL DE GALLETAS Y SABLES.<br />\r\n<strong>SESI&Oacute;N 02:</strong>&nbsp;&nbsp; PIES Y TARTAS.<br />\r\n<strong>SESI&Oacute;N 03:&nbsp;&nbsp; </strong>PIES Y TARTAS II.<br />\r\n<strong>SESI&Oacute;N 04:</strong>&nbsp;&nbsp; MASA CHOUX.<br />\r\n[ ...16 SESIONES ]<br />\r\n&nbsp;\";}', 'pasteleria', '1', '1', '2017-10-05 11:40:34');
-
--- ----------------------------
--- Table structure for evento
--- ----------------------------
-DROP TABLE IF EXISTS `evento`;
-CREATE TABLE `evento` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(120) DEFAULT NULL,
-  `descripcion` longtext,
-  `imagen` varchar(200) DEFAULT NULL,
-  `nombreseo` varchar(200) NOT NULL,
-  `orden` int(11) DEFAULT NULL,
-  `estado` int(1) DEFAULT '1',
-  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of evento
--- ----------------------------
-INSERT INTO `evento` VALUES ('1', 'a:1:{s:2:\"es\";s:24:\"Conferencias Magistrales\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/conferencias-magistrales.jpg', 'conferencias-magistrales', '1', '1', '2017-11-06 23:38:19');
-INSERT INTO `evento` VALUES ('2', 'a:1:{s:2:\"es\";s:18:\"Clases Magistrales\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/clases-magistrales.jpg', 'clases-magistrales', '2', '1', '2017-11-06 23:38:50');
-INSERT INTO `evento` VALUES ('3', 'a:1:{s:2:\"es\";s:11:\"Expo Cumbre\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/expo-cumbre_1.jpg', 'expo-cumbre', '3', '1', '2017-11-06 23:38:56');
-INSERT INTO `evento` VALUES ('4', 'a:1:{s:2:\"es\";s:14:\"Fiesta de Gala\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/fiesta-de-gala.jpg', 'fiesta-de-gala', '4', '1', '2017-11-06 23:39:03');
-INSERT INTO `evento` VALUES ('5', 'a:1:{s:2:\"es\";s:32:\"Imposición de camisacos I Ciclo\";}', 'a:1:{s:2:\"es\";s:182:\"Nuestros estudiantes de primer ciclo recibieron su primera chaqueta, s&iacute;mbolo de integridad y respeto hacia la pronta profesi&oacute;n que los acompa&ntilde;ar&aacute; siempre.\";}', 'imagenes/eventos/im-1.jpg', 'imposicion-de-camisacos-i-ciclo', '5', '1', '2017-10-11 22:50:36');
-INSERT INTO `evento` VALUES ('6', 'a:1:{s:2:\"es\";s:17:\"Activación Olmos\";}', 'a:1:{s:2:\"es\";s:352:\"Activaci&oacute;n en el Centro de esparcimiento <strong>&ldquo;Los Algarrobos&rdquo;</strong> &ndash; Olmos a las 9:00 am, el d&iacute;a 22 de Septiembre del presente. El motivo de nuestra presencia fue participar de la feria vocacional exponiendo nuestra carrera profesional de gastronom&iacute;a con la que cuenta la instituci&oacute;n.<br />\r\n&nbsp;\";}', 'imagenes/eventos/im-2.jpg', 'activacion-olmos', '6', '1', '2017-10-11 15:37:26');
-INSERT INTO `evento` VALUES ('7', 'a:1:{s:2:\"es\";s:11:\"Miss Cumbre\";}', 'a:1:{s:2:\"es\";s:353:\"La Escuela Peruana de Gastronom&iacute;a y Arte Culinario &ldquo;CUMBRE&rdquo;, organiza en el marco de su XI Aniversario Institucional <strong>&ldquo;MISS CUMBRE 2017&rdquo;, </strong>en la que se busca elegir a la dama que habr&aacute; de representar a la singular belleza gastron&oacute;mica, as&iacute; como tambi&eacute;n sus principios y virtudes.\";}', 'imagenes/eventos/im-3.jpg', 'miss-cumbre', '7', '1', '2017-10-11 15:45:37');
-INSERT INTO `evento` VALUES ('8', 'a:1:{s:2:\"es\";s:11:\"Cumbrematch\";}', 'a:1:{s:2:\"es\";s:527:\"La Escuela Peruana de Gastronom&iacute;a y Arte Culinario &ldquo;CUMBRE&rdquo;, organiza en el marco de su XI Aniversario Institucional el <strong>CUMBREMATCH 2017, Copa &ldquo;INGENIA&rdquo;</strong> con la participaci&oacute;n de todos los estudiantes y miembros de la instituci&oacute;n con el prop&oacute;sito de fomentar la pr&aacute;ctica del deporte, la sana competencia; as&iacute; como, estrechar los lazos de confraternidad que permitan un desarrollo integral del estudiante y la identificaci&oacute;n con su Escuela.\";}', 'imagenes/eventos/im-4.jpg', 'cumbrematch', '8', '1', '2017-10-11 15:48:45');
-INSERT INTO `evento` VALUES ('9', 'a:1:{s:2:\"es\";s:33:\"Seminario Magistral - Cumbre 2017\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/cha-cha.jpg', 'seminario-magistral-cumbre-2017', '9', '1', '2017-12-04 23:51:58');
-INSERT INTO `evento` VALUES ('10', 'a:1:{s:2:\"es\";s:21:\"Conferencia de Prensa\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/con-prensa_1.jpg', 'conferencia-de-prensa', '10', '1', '2017-12-05 00:13:45');
-INSERT INTO `evento` VALUES ('11', 'a:1:{s:2:\"es\";s:12:\"CUMBRE MATCH\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/cumbremacth.jpg', 'cumbre-match', '11', '1', '2017-12-05 00:18:43');
-INSERT INTO `evento` VALUES ('12', 'a:1:{s:2:\"es\";s:15:\"EXPOCUMBRE 2017\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/expocumbre.jpg', 'expocumbre-2017', '12', '1', '2017-12-05 00:24:19');
-INSERT INTO `evento` VALUES ('13', 'a:1:{s:2:\"es\";s:19:\"Fiesta de Gala 2017\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/fiesta-gala.jpg', 'fiesta-de-gala-2017', '13', '1', '2017-12-05 00:30:41');
-INSERT INTO `evento` VALUES ('14', 'a:1:{s:2:\"es\";s:17:\"Guerra de cocinas\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/guerra-de-cocinas.jpg', 'guerra-de-cocinas', '14', '1', '2017-12-05 00:35:57');
-INSERT INTO `evento` VALUES ('15', 'a:1:{s:2:\"es\";s:16:\"Miss Cumbre 2017\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'imagenes/eventos/miss-cumbre.jpg', 'miss-cumbre-2017', '15', '1', '2017-12-05 00:41:22');
-
--- ----------------------------
--- Table structure for evento_img
--- ----------------------------
-DROP TABLE IF EXISTS `evento_img`;
-CREATE TABLE `evento_img` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `imagen` varchar(200) DEFAULT NULL,
-  `id_padre` int(11) DEFAULT NULL,
-  `orden` int(11) DEFAULT NULL,
-  `estado` int(1) DEFAULT '1',
-  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of evento_img
--- ----------------------------
-INSERT INTO `evento_img` VALUES ('3', 'imagenes/eventos/03-jpg-1468583251.jpg', '1', '3', '1', '2016-07-15 06:47:31');
-INSERT INTO `evento_img` VALUES ('4', 'imagenes/eventos/04-jpg-1468583252.jpg', '1', '4', '1', '2016-07-15 06:47:32');
-INSERT INTO `evento_img` VALUES ('5', 'imagenes/eventos/05-jpg-1468583252.jpg', '1', '5', '1', '2016-07-15 06:47:32');
-INSERT INTO `evento_img` VALUES ('6', 'imagenes/eventos/05-1-jpg-1468583253.jpg', '1', '6', '1', '2016-07-15 06:47:33');
-INSERT INTO `evento_img` VALUES ('7', 'imagenes/eventos/05-2-jpg-1468583253.jpg', '1', '7', '1', '2016-07-15 06:47:33');
-INSERT INTO `evento_img` VALUES ('8', 'imagenes/eventos/06-jpg-1468583254.jpg', '1', '8', '1', '2016-07-15 06:47:34');
-INSERT INTO `evento_img` VALUES ('9', 'imagenes/eventos/07-jpg-1468583254.jpg', '1', '9', '1', '2016-07-15 06:47:34');
-INSERT INTO `evento_img` VALUES ('10', 'imagenes/eventos/08-jpg-1468583255.jpg', '1', '10', '1', '2016-07-15 06:47:35');
-INSERT INTO `evento_img` VALUES ('13', 'imagenes/eventos/03-jpg-1468584349.jpg', '2', '13', '1', '2016-07-15 07:05:49');
-INSERT INTO `evento_img` VALUES ('14', 'imagenes/eventos/05-jpg-1468584357.jpg', '2', '14', '1', '2016-07-15 07:05:57');
-INSERT INTO `evento_img` VALUES ('15', 'imagenes/eventos/05-1-jpg-1468584367.jpg', '2', '15', '1', '2016-07-15 07:06:07');
-INSERT INTO `evento_img` VALUES ('16', 'imagenes/eventos/06-jpg-1468584390.jpg', '2', '16', '1', '2016-07-15 07:06:30');
-INSERT INTO `evento_img` VALUES ('18', 'imagenes/eventos/09-jpg-1468584408.jpg', '2', '18', '1', '2016-07-15 07:06:48');
-INSERT INTO `evento_img` VALUES ('19', 'imagenes/eventos/01-jpg-1468595077.jpg', '2', '19', '1', '2016-07-15 10:04:37');
-INSERT INTO `evento_img` VALUES ('20', 'imagenes/eventos/02-jpg-1468595096.jpg', '2', '20', '1', '2016-07-15 10:04:56');
-INSERT INTO `evento_img` VALUES ('21', 'imagenes/eventos/03-jpg-1468595218.jpg', '2', '21', '1', '2016-07-15 10:06:58');
-INSERT INTO `evento_img` VALUES ('22', 'imagenes/eventos/04-jpg-1468595231.jpg', '2', '22', '1', '2016-07-15 10:07:11');
-INSERT INTO `evento_img` VALUES ('23', 'imagenes/eventos/05-jpg-1468595476.jpg', '2', '23', '1', '2016-07-15 10:11:16');
-INSERT INTO `evento_img` VALUES ('24', 'imagenes/eventos/06-jpg-1468595590.jpg', '2', '24', '1', '2016-07-15 10:13:10');
-INSERT INTO `evento_img` VALUES ('25', 'imagenes/eventos/01-jpg-1468595836.jpg', '3', '25', '1', '2016-07-15 10:17:16');
-INSERT INTO `evento_img` VALUES ('26', 'imagenes/eventos/02-jpg-1468595985.jpg', '3', '26', '1', '2016-07-15 10:19:45');
-INSERT INTO `evento_img` VALUES ('27', 'imagenes/eventos/03-jpg-1468596005.jpg', '3', '27', '1', '2016-07-15 10:20:05');
-INSERT INTO `evento_img` VALUES ('28', 'imagenes/eventos/04-jpg-1468596090.jpg', '3', '28', '1', '2016-07-15 10:21:30');
-INSERT INTO `evento_img` VALUES ('29', 'imagenes/eventos/06-jpg-1468596175.jpg', '3', '29', '1', '2016-07-15 10:22:55');
-INSERT INTO `evento_img` VALUES ('30', 'imagenes/eventos/05-jpg-1468596190.jpg', '3', '30', '1', '2016-07-15 10:23:10');
-INSERT INTO `evento_img` VALUES ('31', 'imagenes/eventos/02-jpg-1468596848.jpg', '3', '31', '1', '2016-07-15 10:34:08');
-INSERT INTO `evento_img` VALUES ('32', 'imagenes/eventos/05-jpg-1468597176.jpg', '3', '32', '1', '2016-07-15 10:39:36');
-INSERT INTO `evento_img` VALUES ('33', 'imagenes/eventos/06-jpg-1468597347.jpg', '3', '33', '1', '2016-07-15 10:42:27');
-INSERT INTO `evento_img` VALUES ('34', 'imagenes/eventos/03-jpg-1468597366.jpg', '3', '34', '1', '2016-07-15 10:42:46');
-INSERT INTO `evento_img` VALUES ('35', 'imagenes/eventos/01-jpg-1468599126.jpg', '4', '35', '1', '2016-07-15 11:12:06');
-INSERT INTO `evento_img` VALUES ('36', 'imagenes/eventos/02-jpg-1468599136.jpg', '4', '36', '1', '2016-07-15 11:12:16');
-INSERT INTO `evento_img` VALUES ('37', 'imagenes/eventos/03-jpg-1468599143.jpg', '4', '37', '1', '2016-07-15 11:12:23');
-INSERT INTO `evento_img` VALUES ('38', 'imagenes/eventos/04-jpg-1468599148.jpg', '4', '38', '1', '2016-07-15 11:12:28');
-INSERT INTO `evento_img` VALUES ('39', 'imagenes/eventos/05-jpg-1468599155.jpg', '4', '39', '1', '2016-07-15 11:12:35');
-INSERT INTO `evento_img` VALUES ('40', 'imagenes/eventos/06-jpg-1468599160.jpg', '4', '40', '1', '2016-07-15 11:12:40');
-INSERT INTO `evento_img` VALUES ('41', 'imagenes/eventos/07-jpg-1468599165.jpg', '4', '41', '1', '2016-07-15 11:12:45');
-INSERT INTO `evento_img` VALUES ('42', 'imagenes/eventos/08-jpg-1468599168.jpg', '4', '42', '1', '2016-07-15 11:12:48');
-INSERT INTO `evento_img` VALUES ('43', 'imagenes/eventos/09-jpg-1468599174.jpg', '4', '43', '1', '2016-07-15 11:12:54');
-INSERT INTO `evento_img` VALUES ('44', 'imagenes/eventos/camisacos-oct-2017-1.jpg', '5', '44', '1', '2017-11-07 09:27:22');
-INSERT INTO `evento_img` VALUES ('45', 'imagenes/eventos/camisacos-oct-2017-2.jpg', '5', '45', '1', '2017-11-07 09:27:22');
-INSERT INTO `evento_img` VALUES ('46', 'imagenes/eventos/activ-olmos-oct-2017-1.jpg', '6', '46', '1', '2017-11-07 16:42:02');
-INSERT INTO `evento_img` VALUES ('47', 'imagenes/eventos/activ-olmos-oct-2017-2.jpg', '6', '47', '1', '2017-11-07 16:42:02');
-INSERT INTO `evento_img` VALUES ('48', 'imagenes/eventos/activ-olmos-oct-2017-3.jpg', '6', '48', '1', '2017-11-07 16:42:02');
-INSERT INTO `evento_img` VALUES ('49', 'imagenes/eventos/mis-cumbre-oct-2017.jpg', '7', '49', '1', '2017-11-07 16:47:43');
-INSERT INTO `evento_img` VALUES ('50', 'imagenes/eventos/expo-cumbre-oct-2017.jpg', '8', '50', '1', '2017-11-07 16:51:10');
-INSERT INTO `evento_img` VALUES ('51', 'imagenes/eventos/seminarios-magistrales-17/cha1.jpg', '9', '1', '1', '2017-12-05 00:08:37');
-INSERT INTO `evento_img` VALUES ('52', 'imagenes/eventos/seminarios-magistrales-17/cha2.jpg', '9', '2', '1', '2017-12-05 00:08:37');
-INSERT INTO `evento_img` VALUES ('53', 'imagenes/eventos/seminarios-magistrales-17/cha3.jpg', '9', '3', '1', '2017-12-05 00:09:01');
-INSERT INTO `evento_img` VALUES ('54', 'imagenes/eventos/seminarios-magistrales-17/cha4.jpg', '9', '4', '1', '2017-12-05 00:09:01');
-INSERT INTO `evento_img` VALUES ('55', 'imagenes/eventos/seminarios-magistrales-17/cha5.jpg', '9', '5', '1', '2017-12-05 00:09:11');
-INSERT INTO `evento_img` VALUES ('56', 'imagenes/eventos/conf-prensa-nov17/con-prensa-1.jpg', '10', '1', '1', '2017-12-05 00:15:36');
-INSERT INTO `evento_img` VALUES ('57', 'imagenes/eventos/conf-prensa-nov17/con-prensa-2.jpg', '10', '2', '1', '2017-12-05 00:15:36');
-INSERT INTO `evento_img` VALUES ('58', 'imagenes/eventos/conf-prensa-nov17/con-prensa-3.jpg', '10', '3', '1', '2017-12-05 00:15:36');
-INSERT INTO `evento_img` VALUES ('59', 'imagenes/eventos/conf-prensa-nov17/con-prensa-4.jpg', '10', '4', '1', '2017-12-05 00:15:36');
-INSERT INTO `evento_img` VALUES ('60', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-1.jpg', '11', '1', '1', '2017-12-05 00:20:20');
-INSERT INTO `evento_img` VALUES ('61', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-2.jpg', '11', '2', '1', '2017-12-05 00:20:20');
-INSERT INTO `evento_img` VALUES ('62', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-3.jpg', '11', '3', '1', '2017-12-05 00:20:20');
-INSERT INTO `evento_img` VALUES ('70', 'imagenes/eventos/expocumbre-2017/expocumbre-1.jpg', '12', '1', '1', '2017-12-05 00:26:05');
-INSERT INTO `evento_img` VALUES ('71', 'imagenes/eventos/expocumbre-2017/expocumbre-2.jpg', '12', '2', '1', '2017-12-05 00:26:05');
-INSERT INTO `evento_img` VALUES ('72', 'imagenes/eventos/expocumbre-2017/expocumbre-3.jpg', '12', '3', '1', '2017-12-05 00:26:05');
-INSERT INTO `evento_img` VALUES ('73', 'imagenes/eventos/expocumbre-2017/expocumbre-4.jpg', '12', '4', '1', '2017-12-05 00:26:05');
-INSERT INTO `evento_img` VALUES ('74', 'imagenes/eventos/expocumbre-2017/expocumbre-5.jpg', '12', '5', '1', '2017-12-05 00:26:05');
-INSERT INTO `evento_img` VALUES ('75', 'imagenes/eventos/expocumbre-2017/expocumbre-6.jpg', '12', '6', '1', '2017-12-05 00:26:17');
-INSERT INTO `evento_img` VALUES ('76', 'imagenes/eventos/fiesta-gala-2017/1.jpg', '13', '1', '1', '2017-12-05 00:32:51');
-INSERT INTO `evento_img` VALUES ('77', 'imagenes/eventos/fiesta-gala-2017/2.jpg', '13', '2', '1', '2017-12-05 00:32:51');
-INSERT INTO `evento_img` VALUES ('78', 'imagenes/eventos/fiesta-gala-2017/3.jpg', '13', '3', '1', '2017-12-05 00:32:51');
-INSERT INTO `evento_img` VALUES ('79', 'imagenes/eventos/fiesta-gala-2017/4.jpg', '13', '4', '1', '2017-12-05 00:32:51');
-INSERT INTO `evento_img` VALUES ('80', 'imagenes/eventos/fiesta-gala-2017/5.jpg', '13', '5', '1', '2017-12-05 00:32:51');
-INSERT INTO `evento_img` VALUES ('81', 'imagenes/eventos/guerra-de-cocinas/1.jpg', '14', '1', '1', '2017-12-05 00:36:53');
-INSERT INTO `evento_img` VALUES ('82', 'imagenes/eventos/guerra-de-cocinas/2.jpg', '14', '2', '1', '2017-12-05 00:36:53');
-INSERT INTO `evento_img` VALUES ('83', 'imagenes/eventos/guerra-de-cocinas/3.jpg', '14', '3', '1', '2017-12-05 00:36:53');
-INSERT INTO `evento_img` VALUES ('84', 'imagenes/eventos/guerra-de-cocinas/4.jpg', '14', '4', '1', '2017-12-05 00:36:53');
-INSERT INTO `evento_img` VALUES ('85', 'imagenes/eventos/guerra-de-cocinas/5.jpg', '14', '5', '1', '2017-12-05 00:37:07');
-INSERT INTO `evento_img` VALUES ('86', 'imagenes/eventos/miss-cumbre-17/1.jpg', '15', '1', '1', '2017-12-05 00:43:14');
-INSERT INTO `evento_img` VALUES ('87', 'imagenes/eventos/miss-cumbre-17/2.jpg', '15', '2', '1', '2017-12-05 00:43:14');
-INSERT INTO `evento_img` VALUES ('88', 'imagenes/eventos/miss-cumbre-17/3.jpg', '15', '3', '1', '2017-12-05 00:43:14');
-INSERT INTO `evento_img` VALUES ('89', 'imagenes/eventos/miss-cumbre-17/4.jpg', '15', '4', '1', '2017-12-05 00:43:14');
-INSERT INTO `evento_img` VALUES ('90', 'imagenes/eventos/miss-cumbre-17/5.jpg', '15', '5', '1', '2017-12-05 00:43:14');
 
 -- ----------------------------
 -- Table structure for facultad
@@ -544,30 +404,149 @@ CREATE TABLE `mensaje` (
 INSERT INTO `mensaje` VALUES ('1', 'a:1:{s:2:\"es\";s:24:\"BIENVENIDOS AL NUEVO ISP\";}', 'imagenes/mensaje/foto_promotor.png', 'a:1:{s:2:\"es\";s:2396:\"<p>En nombre de <span>INSTITUTO ISP</span> queremos darles una cordial bienvenida y esperamos formar parte de su tan anhelado futuro profesional.</p>\r\n\r\n<p>En <span>ISP</span> tenemos propuestas educativas realmente innovadoras, para que puedas alcanzar en poco tiempo, un adecuado grado de conocimientos y as&iacute; poder insertarte con &eacute;xito en el cambiante mercado laboral. Acad&eacute;micamente, estamos estructurados de tal manera que, cada alumno reciba una formaci&oacute;n integral y para ello consideramos que la teor&iacute;a y la pr&aacute;ctica son la conjunci&oacute;n ideal para alcanzar los objetivos requeridos. Hoy la capacitaci&oacute;n es indispensable, pero para que ella sea efectiva es necesario adecuarla a los cambios continuos que se producen en nuestros d&iacute;as. Por ello nuestro Instituto est&aacute; en contacto con los centros de estudio m&aacute;s importantes del mundo, lo cual nos permite evaluar y enriquecer permanentemente nuestros planes de estudio.</p>\r\n\r\n<p>El Instituto de Educaci&oacute;n Superior Tecnol&oacute;gico Privado <span>ISP</span>, es una Instituci&oacute;n Educativa de car&aacute;cter privado, con m&aacute;s de 28 a&ntilde;os formando profesionales l&iacute;deres en las Ciencias de la Comunicaci&oacute;n, creado mediante R.M. N&ordm; 501-86-ED del 07 de Agosto de 1986, Resoluci&oacute;n Directoral N&ordm; 6950-86-ED DEL 17 de Diciembre de 1986 y Revalidado con R.D. N&ordm; 0089-2006-ED del 09 de Febrero del 2006, contamos tambi&eacute;n con Certificado de Adecuaci&oacute;n de Estudios de las Carreras Profesionales al nuevo Dise&ntilde;o Curricular B&aacute;sico N&ordm; 238-2014-DESTP, con fecha 08 de Julio del 2014 y Constancia de Adecuaci&oacute;n Institucional N&ordm; 565, de fecha 24 de Setiembre del 2014.</p>\r\n\r\n<p>El funcionamiento del Instituto se rige por lo establecido en la Ley General de Educaci&oacute;n N&ordm; 28044, el Reglamento de Apertura y Funcionamiento de Institutos Superiores Tecnol&oacute;gicos y Escuelas Superiores no Estatales aprobado por D.S. N&ordm; 015-87-ED, las Normas de Organizaci&oacute;n y Funciones de los Institutos Superiores Tecnol&oacute;gicos aprobado por R.M. N&ordm; 641-83 y otras de car&aacute;cter T&eacute;cnico-Pedag&oacute;gico y Administrativo expedidas por la Direcci&oacute;n General de Educaci&oacute;n Superior, as&iacute; como el D.S. N&ordm; 014-2002-ED.</p>\r\n\";}', 'a:1:{s:2:\"es\";s:1185:\"<div class=\"col-xs-12\">\r\n<p>Ello significa no solamente la partida de nacimiento de nuestra vida institucional, sino tambi&eacute;n el cumplimiento del anhelo largamente esperado por los locutores peruanos: el reconocimiento de su actividad como una PROFESI&Oacute;N. En realidad, este hecho no es por pura coincidencia. Y es que siempre estuvimos a la vanguardia en el mundo de las comunicaciones en el pa&iacute;s, pues somos creadores de otra carrera profesional: &ldquo;Periodismo Radial y Televisivo&rdquo;.</p>\r\n\r\n<p>Hoy en d&iacute;a somos una instituci&oacute;n educativa s&oacute;lida, que desarrolla al m&aacute;ximo el talento de nuestros alumnos para convertirlos en profesionales l&iacute;deres; por ese motivo hemos redoblado esfuerzos y tecnolog&iacute;as.</p>\r\n\r\n<p>Ingresamos a nuestra tercera d&eacute;cada renovando nuestro compromiso de formar los mejores profesionales, esa motivaci&oacute;n crece y la encontramos en la m&iacute;stica de nuestros egresados que triunfan en los medios de comunicaci&oacute;n del pa&iacute;s y el extranjero; as&iacute; como en el esfuerzo y dedicaci&oacute;n de nuestros estudiantes. &iexcl; Bienvenidos al nuevo ISP!</p>\r\n</div>\r\n\";}', 'a:1:{s:2:\"es\";s:424:\"El 7 de agosto de 1986, el ministro de educaci&oacute;n por Resoluci&oacute;n Ministerial N&ordm; 501-86-ED, reconoce como carrera profesional &ldquo;Locuci&oacute;n y Comunicaci&oacute;n Radial y Televisiva&rdquo;; propuesta dise&ntilde;ada por la Asociaci&oacute;n Educativa &ldquo;Sistema Per&uacute;&rdquo;, a la vez que autoriza su funcionamiento como Instituto Superior Tecnol&oacute;gico Privado SISTEMAS PER&Uacute;.\";}', 'a:1:{s:2:\"es\";s:344:\"<p>Formar profesionales t&eacute;cnicos; investigadores, creativos, competentes y comprometidos en la soluci&oacute;n de problemas en el campo de las comunicaciones. Generando y desarrollando t&eacute;cnicas con conocimientos cient&iacute;ficos, human&iacute;sticos y tecnol&oacute;gicos a trav&eacute;s de los cuales buscamos soluciones.</p>\r\n\";}', 'a:1:{s:2:\"es\";s:191:\"<p>Hacer de cada uno de nuestros estudiantes, un profesional a carta cabal que cumpla un rol importante con &eacute;tica y moral al servicio de la sociedad. Comprometidos con la verdad.</p>\r\n\";}', '1', '1', '2015-11-04 22:51:54');
 
 -- ----------------------------
--- Table structure for noticias
+-- Table structure for noticia
 -- ----------------------------
-DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE `noticias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` text NOT NULL,
-  `descripcion` text NOT NULL,
-  `imagen` varchar(200) DEFAULT NULL,
-  `banner` varchar(75) DEFAULT NULL,
-  `nombreseo` varchar(75) DEFAULT NULL,
-  `orden` int(11) NOT NULL,
+DROP TABLE IF EXISTS `noticia`;
+CREATE TABLE `noticia` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
+  `descripcion` longtext CHARACTER SET latin1,
+  `url` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `glosa` text,
+  `publicar` char(1) CHARACTER SET latin1 NOT NULL DEFAULT 'S',
   `estado` int(1) NOT NULL DEFAULT '1',
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `activo` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of noticias
+-- Records of noticia
 -- ----------------------------
-INSERT INTO `noticias` VALUES ('1', 'a:1:{s:2:\"es\";s:15:\"GROUND SHIPPING\";}', 'a:1:{s:2:\"es\";s:128:\"<p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Aenean in ante magna. Quisque sodales, exid fermentum tempor.</p>\r\n\";}', 'imagenes/noticias/noticia1.jpg', 'imagenes/noticias/noticia1_1.jpg', 'ground-shipping', '1', '1', '2015-11-05 22:27:31', '0');
-INSERT INTO `noticias` VALUES ('2', 'a:1:{s:2:\"es\";s:11:\"AIR FREIGHT\";}', 'a:1:{s:2:\"es\";s:128:\"<p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Aenean in ante magna. Quisque sodales, exid fermentum tempor.</p>\r\n\";}', 'imagenes/noticias/noticia2.jpg', 'imagenes/noticias/noticia1_2.jpg', 'air-freight', '2', '1', '2015-11-05 22:27:59', '1');
-INSERT INTO `noticias` VALUES ('3', 'a:1:{s:2:\"es\";s:12:\"SEA DELIVERY\";}', 'a:1:{s:2:\"es\";s:128:\"<p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Aenean in ante magna. Quisque sodales, exid fermentum tempor.</p>\r\n\";}', 'imagenes/noticias/noticia3.jpg', 'imagenes/noticias/noticia1_3.jpg', 'sea-delivery', '3', '1', '2015-11-05 22:31:16', '0');
-INSERT INTO `noticias` VALUES ('4', 'a:1:{s:2:\"es\";s:17:\"GROUND SHIPPING 2\";}', 'a:1:{s:2:\"es\";s:128:\"<p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Aenean in ante magna. Quisque sodales, exid fermentum tempor.</p>\r\n\";}', 'imagenes/noticias/noticia4.jpg', 'imagenes/noticias/noticia1_4.jpg', 'ground-shipping-2', '4', '1', '2015-11-05 22:31:28', '0');
+INSERT INTO `noticia` VALUES ('1', 'Conferencias Magistrales', '', 'conferencias-magistrales', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('2', 'Clases Magistrales', '', 'clases-magistrales', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('3', 'Expo Cumbre', '', 'expo-cumbre', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('4', 'Fiesta de Gala', '', 'fiesta-de-gala', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('5', 'Imposición de camisacos I Ciclo', 'Nuestros estudiantes de primer ciclo recibieron su primera chaqueta, s&amp;amp;iacute;mbolo de integridad y respeto hacia la pronta profesi&amp;amp;oacute;n que los acompa&amp;amp;ntilde;ar&amp;amp;aacute; siempre.', 'imposicion-de-camisacos-i-ciclo', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('6', 'Activación Olmos', 'Activaci&amp;amp;oacute;n en el Centro de esparcimiento &amp;lt;strong&amp;gt;&amp;amp;ldquo;Los Algarrobos&amp;amp;rdquo;&amp;lt;/strong&amp;gt; &amp;amp;ndash; Olmos a las 9:00 am, el d&amp;amp;iacute;a 22 de Septiembre del presente. El motivo de nuestra presencia fue participar de la feria vocacional exponiendo nuestra carrera profesional de gastronom&amp;amp;iacute;a con la que cuenta la instituci&amp;amp;oacute;n.&amp;lt;br /&amp;gt;&lt;br /&gt;<br />\r\n&amp;amp;nbsp;', 'activacion-olmos', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('7', 'Miss Cumbre', 'La Escuela Peruana de Gastronom&amp;amp;iacute;a y Arte Culinario &amp;amp;ldquo;CUMBRE&amp;amp;rdquo;, organiza en el marco de su XI Aniversario Institucional &amp;lt;strong&amp;gt;&amp;amp;ldquo;MISS CUMBRE 2017&amp;amp;rdquo;, &amp;lt;/strong&amp;gt;en la que se busca elegir a la dama que habr&amp;amp;aacute; de representar a la singular belleza gastron&amp;amp;oacute;mica, as&amp;amp;iacute; como tambi&amp;amp;eacute;n sus principios y virtudes.', 'miss-cumbre', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('8', 'Cumbrematch', 'La Escuela Peruana de Gastronom&amp;amp;iacute;a y Arte Culinario &amp;amp;ldquo;CUMBRE&amp;amp;rdquo;, organiza en el marco de su XI Aniversario Institucional el &amp;lt;strong&amp;gt;CUMBREMATCH 2017, Copa &amp;amp;ldquo;INGENIA&amp;amp;rdquo;&amp;lt;/strong&amp;gt; con la participaci&amp;amp;oacute;n de todos los estudiantes y miembros de la instituci&amp;amp;oacute;n con el prop&amp;amp;oacute;sito de fomentar la pr&amp;amp;aacute;ctica del deporte, la sana competencia; as&amp;amp;iacute; como, estrechar los lazos de confraternidad que permitan un desarrollo integral del estudiante y la identificaci&amp;amp;oacute;n con su Escuela.', 'cumbrematch', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('9', 'Seminario Magistral - Cumbre 2017', '', 'seminario-magistral-cumbre-2017', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('10', 'Conferencia de Prensa', '', 'conferencia-de-prensa', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('11', 'CUMBRE MATCH', '', 'cumbre-match', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('12', 'EXPOCUMBRE 2017', '', 'expocumbre-2017', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('13', 'Fiesta de Gala 2017', '', 'fiesta-de-gala-2017', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('14', 'Guerra de cocinas', '', 'guerra-de-cocinas', null, 'S', '1', '2019-02-28 12:07:50');
+INSERT INTO `noticia` VALUES ('15', 'Miss Cumbre 2017', '', 'miss-cumbre-2017', null, 'S', '1', '2019-02-28 12:07:51');
+INSERT INTO `noticia` VALUES ('16', 'I Programa de Actualización Docente y Fortalecimiento de Competencias Pedagógicas', '', 'i-programa-de-actualizacion-docente-y-fortalecimiento-de-competencias-pedagogicas', null, 'S', '1', '2019-02-28 12:07:51');
+INSERT INTO `noticia` VALUES ('17', 'Campaña de Protección ambiental', '', 'campanna-de-proteccion-ambiental', null, 'S', '1', '2019-02-28 12:07:51');
+INSERT INTO `noticia` VALUES ('18', 'CHARLA MAGISTRAL', '', 'charla-magistral', null, 'S', '1', '2019-02-28 12:07:51');
+INSERT INTO `noticia` VALUES ('19', 'CHARLA MAGISTRAL 2', '', 'charla-magistral-2', null, 'S', '1', '2019-02-28 12:07:51');
+INSERT INTO `noticia` VALUES ('20', 'masmmdmasmdmas', '&lt;p&gt;asdfasdf&lt;/p&gt;', 'masmmdmasmdmas', '&lt;p&gt;asdfasdf&lt;/p&gt;', 'S', '1', '2019-02-28 18:02:07');
+INSERT INTO `noticia` VALUES ('21', 'masmmdmasmdmas', '&lt;p&gt;asdfasdf&lt;/p&gt;', 'masmmdmasmdmas', '&lt;p&gt;asdfasdf&lt;/p&gt;', 'S', '1', '2019-02-28 18:02:39');
+INSERT INTO `noticia` VALUES ('22', 'pruenbas', '&lt;p&gt;asdfasdfasdf&lt;/p&gt;', 'pruenbas', '&lt;p&gt;asdfasdfasdf&lt;/p&gt;', 'S', '1', '2019-02-28 18:02:42');
+
+-- ----------------------------
+-- Table structure for noticia_img
+-- ----------------------------
+DROP TABLE IF EXISTS `noticia_img`;
+CREATE TABLE `noticia_img` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `noticia_id` int(11) unsigned NOT NULL,
+  `imagen` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `item` int(11) unsigned DEFAULT '0',
+  `estado` int(1) DEFAULT '1',
+  `created_up` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of noticia_img
+-- ----------------------------
+INSERT INTO `noticia_img` VALUES ('3', '1', 'imagenes/eventos/03-jpg-1468583251.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('4', '1', 'imagenes/eventos/04-jpg-1468583252.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('5', '1', 'imagenes/eventos/05-jpg-1468583252.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('6', '1', 'imagenes/eventos/05-1-jpg-1468583253.jpg', '6', '1', null);
+INSERT INTO `noticia_img` VALUES ('7', '1', 'imagenes/eventos/05-2-jpg-1468583253.jpg', '7', '1', null);
+INSERT INTO `noticia_img` VALUES ('8', '1', 'imagenes/eventos/06-jpg-1468583254.jpg', '8', '1', null);
+INSERT INTO `noticia_img` VALUES ('9', '1', 'imagenes/eventos/07-jpg-1468583254.jpg', '9', '1', null);
+INSERT INTO `noticia_img` VALUES ('10', '1', 'imagenes/eventos/08-jpg-1468583255.jpg', '10', '1', null);
+INSERT INTO `noticia_img` VALUES ('13', '2', 'imagenes/eventos/03-jpg-1468584349.jpg', '13', '1', null);
+INSERT INTO `noticia_img` VALUES ('14', '2', 'imagenes/eventos/05-jpg-1468584357.jpg', '14', '1', null);
+INSERT INTO `noticia_img` VALUES ('15', '2', 'imagenes/eventos/05-1-jpg-1468584367.jpg', '15', '1', null);
+INSERT INTO `noticia_img` VALUES ('16', '2', 'imagenes/eventos/06-jpg-1468584390.jpg', '16', '1', null);
+INSERT INTO `noticia_img` VALUES ('18', '2', 'imagenes/eventos/09-jpg-1468584408.jpg', '18', '1', null);
+INSERT INTO `noticia_img` VALUES ('19', '2', 'imagenes/eventos/01-jpg-1468595077.jpg', '19', '1', null);
+INSERT INTO `noticia_img` VALUES ('20', '2', 'imagenes/eventos/02-jpg-1468595096.jpg', '20', '1', null);
+INSERT INTO `noticia_img` VALUES ('21', '2', 'imagenes/eventos/03-jpg-1468595218.jpg', '21', '1', null);
+INSERT INTO `noticia_img` VALUES ('22', '2', 'imagenes/eventos/04-jpg-1468595231.jpg', '22', '1', null);
+INSERT INTO `noticia_img` VALUES ('23', '2', 'imagenes/eventos/05-jpg-1468595476.jpg', '23', '1', null);
+INSERT INTO `noticia_img` VALUES ('24', '2', 'imagenes/eventos/06-jpg-1468595590.jpg', '24', '1', null);
+INSERT INTO `noticia_img` VALUES ('25', '3', 'imagenes/eventos/01-jpg-1468595836.jpg', '25', '1', null);
+INSERT INTO `noticia_img` VALUES ('26', '3', 'imagenes/eventos/02-jpg-1468595985.jpg', '26', '1', null);
+INSERT INTO `noticia_img` VALUES ('27', '3', 'imagenes/eventos/03-jpg-1468596005.jpg', '27', '1', null);
+INSERT INTO `noticia_img` VALUES ('28', '3', 'imagenes/eventos/04-jpg-1468596090.jpg', '28', '1', null);
+INSERT INTO `noticia_img` VALUES ('29', '3', 'imagenes/eventos/06-jpg-1468596175.jpg', '29', '1', null);
+INSERT INTO `noticia_img` VALUES ('30', '3', 'imagenes/eventos/05-jpg-1468596190.jpg', '30', '1', null);
+INSERT INTO `noticia_img` VALUES ('31', '3', 'imagenes/eventos/02-jpg-1468596848.jpg', '31', '1', null);
+INSERT INTO `noticia_img` VALUES ('32', '3', 'imagenes/eventos/05-jpg-1468597176.jpg', '32', '1', null);
+INSERT INTO `noticia_img` VALUES ('33', '3', 'imagenes/eventos/06-jpg-1468597347.jpg', '33', '1', null);
+INSERT INTO `noticia_img` VALUES ('34', '3', 'imagenes/eventos/03-jpg-1468597366.jpg', '34', '1', null);
+INSERT INTO `noticia_img` VALUES ('35', '4', 'imagenes/eventos/01-jpg-1468599126.jpg', '35', '1', null);
+INSERT INTO `noticia_img` VALUES ('36', '4', 'imagenes/eventos/02-jpg-1468599136.jpg', '36', '1', null);
+INSERT INTO `noticia_img` VALUES ('37', '4', 'imagenes/eventos/03-jpg-1468599143.jpg', '37', '1', null);
+INSERT INTO `noticia_img` VALUES ('38', '4', 'imagenes/eventos/04-jpg-1468599148.jpg', '38', '1', null);
+INSERT INTO `noticia_img` VALUES ('39', '4', 'imagenes/eventos/05-jpg-1468599155.jpg', '39', '1', null);
+INSERT INTO `noticia_img` VALUES ('40', '4', 'imagenes/eventos/06-jpg-1468599160.jpg', '40', '1', null);
+INSERT INTO `noticia_img` VALUES ('41', '4', 'imagenes/eventos/07-jpg-1468599165.jpg', '41', '1', null);
+INSERT INTO `noticia_img` VALUES ('42', '4', 'imagenes/eventos/08-jpg-1468599168.jpg', '42', '1', null);
+INSERT INTO `noticia_img` VALUES ('43', '4', 'imagenes/eventos/09-jpg-1468599174.jpg', '43', '1', null);
+INSERT INTO `noticia_img` VALUES ('44', '5', 'imagenes/eventos/camisacos-oct-2017-1.jpg', '44', '1', null);
+INSERT INTO `noticia_img` VALUES ('45', '5', 'imagenes/eventos/camisacos-oct-2017-2.jpg', '45', '1', null);
+INSERT INTO `noticia_img` VALUES ('46', '6', 'imagenes/eventos/activ-olmos-oct-2017-1.jpg', '46', '1', null);
+INSERT INTO `noticia_img` VALUES ('47', '6', 'imagenes/eventos/activ-olmos-oct-2017-2.jpg', '47', '1', null);
+INSERT INTO `noticia_img` VALUES ('48', '6', 'imagenes/eventos/activ-olmos-oct-2017-3.jpg', '48', '1', null);
+INSERT INTO `noticia_img` VALUES ('49', '7', 'imagenes/eventos/mis-cumbre-oct-2017.jpg', '49', '1', null);
+INSERT INTO `noticia_img` VALUES ('50', '8', 'imagenes/eventos/expo-cumbre-oct-2017.jpg', '50', '1', null);
+INSERT INTO `noticia_img` VALUES ('51', '9', 'imagenes/eventos/seminarios-magistrales-17/cha1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('52', '9', 'imagenes/eventos/seminarios-magistrales-17/cha2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('53', '9', 'imagenes/eventos/seminarios-magistrales-17/cha3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('54', '9', 'imagenes/eventos/seminarios-magistrales-17/cha4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('55', '9', 'imagenes/eventos/seminarios-magistrales-17/cha5.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('56', '10', 'imagenes/eventos/conf-prensa-nov17/con-prensa-1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('57', '10', 'imagenes/eventos/conf-prensa-nov17/con-prensa-2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('58', '10', 'imagenes/eventos/conf-prensa-nov17/con-prensa-3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('59', '10', 'imagenes/eventos/conf-prensa-nov17/con-prensa-4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('60', '11', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('61', '11', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('62', '11', 'imagenes/eventos/cumbrematch-nov17/cumbre-match-3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('70', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('71', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('72', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('73', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('74', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-5.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('75', '12', 'imagenes/eventos/expocumbre-2017/expocumbre-6.jpg', '6', '1', null);
+INSERT INTO `noticia_img` VALUES ('76', '13', 'imagenes/eventos/fiesta-gala-2017/1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('77', '13', 'imagenes/eventos/fiesta-gala-2017/2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('78', '13', 'imagenes/eventos/fiesta-gala-2017/3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('79', '13', 'imagenes/eventos/fiesta-gala-2017/4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('80', '13', 'imagenes/eventos/fiesta-gala-2017/5.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('81', '14', 'imagenes/eventos/guerra-de-cocinas/1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('82', '14', 'imagenes/eventos/guerra-de-cocinas/2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('83', '14', 'imagenes/eventos/guerra-de-cocinas/3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('84', '14', 'imagenes/eventos/guerra-de-cocinas/4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('85', '14', 'imagenes/eventos/guerra-de-cocinas/5.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('86', '15', 'imagenes/eventos/miss-cumbre-17/1.jpg', '1', '1', null);
+INSERT INTO `noticia_img` VALUES ('87', '15', 'imagenes/eventos/miss-cumbre-17/2.jpg', '2', '1', null);
+INSERT INTO `noticia_img` VALUES ('88', '15', 'imagenes/eventos/miss-cumbre-17/3.jpg', '3', '1', null);
+INSERT INTO `noticia_img` VALUES ('89', '15', 'imagenes/eventos/miss-cumbre-17/4.jpg', '4', '1', null);
+INSERT INTO `noticia_img` VALUES ('90', '15', 'imagenes/eventos/miss-cumbre-17/5.jpg', '5', '1', null);
+INSERT INTO `noticia_img` VALUES ('91', '17', 'imagenes/eventos/web-01-1-jpg-1545418300.jpg', '51', '1', null);
+INSERT INTO `noticia_img` VALUES ('92', '17', 'imagenes/eventos/web-01-jpg-1545418301.jpg', '52', '1', null);
+INSERT INTO `noticia_img` VALUES ('93', '17', 'imagenes/eventos/willay-01-jpg-1545418304.jpg', '53', '1', null);
+INSERT INTO `noticia_img` VALUES ('94', '21', 'images/noticia/201902281802391502862122.jpg', '1', '1', '2019-02-28 18:02:39');
+INSERT INTO `noticia_img` VALUES ('95', '21', 'images/noticia/20190228180239877690824.jpg', '2', '1', '2019-02-28 18:02:39');
+INSERT INTO `noticia_img` VALUES ('96', '22', 'images/noticia/201902281802427023589.jpg', '1', '1', '2019-02-28 18:02:42');
+INSERT INTO `noticia_img` VALUES ('97', '22', 'images/noticia/20190228180242303864690.jpg', '2', '1', '2019-02-28 18:02:42');
 
 -- ----------------------------
 -- Table structure for red
@@ -589,18 +568,12 @@ CREATE TABLE `red` (
   `estado` int(1) NOT NULL DEFAULT '1',
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of red
 -- ----------------------------
-INSERT INTO `red` VALUES ('119', 'a:1:{s:2:\"es\";s:20:\"Restaurante de Hotel\";}', 'a:1:{s:2:\"es\";s:21:\"Hotel Casa de La Luna\";}', 'a:1:{s:2:\"es\";s:10:\"Prácticas\";}', 'a:1:{s:2:\"es\";s:2:\"01\";}', 'a:1:{s:2:\"es\";s:238:\"<ul>\r\n	<li>Conocimientos del arte culinario</li>\r\n	<li>Facilidad de palabra y atenci&oacute;n al p&uacute;blico.</li>\r\n	<li>Capacidad de trabajo en equipo.</li>\r\n	<li>Enviar CV a <strong>contacto@casadelaluna.com.pe</strong></li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:31:\"Administración Casa de la Luna\";}', 'a:1:{s:2:\"es\";s:13:\"(074) 270 156\";}', 'a:1:{s:2:\"es\";s:28:\"contacto@casadelaluna.com.pe\";}', '22', '1', '2018-09-27 10:48:34');
-INSERT INTO `red` VALUES ('120', 'a:1:{s:2:\"es\";s:11:\"Restaurante\";}', 'a:1:{s:2:\"es\";s:22:\"D´MAPHI Coffee Lounge\";}', 'a:1:{s:2:\"es\";s:2:\"02\";}', 'a:1:{s:2:\"es\";s:16:\"Practicante Chef\";}', 'a:1:{s:2:\"es\";s:131:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Responsabilidad</li>\r\n	<li>Apasionado por la cocina</li>\r\n	<li>Puntualidad</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:219:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Cocina variada</li>\r\n	<li>Pasteler&iacute;a</li>\r\n	<li>Cokteleria</li>\r\n	<li><strong>Direcci&oacute;n: </strong>Calle Los Dulantos 162 &ndash; Urb. Santa Victoria</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:16:\"Miltón Coronado\";}', 'a:1:{s:2:\"es\";s:9:\"987725161\";}', 'a:1:{s:2:\"es\";s:17:\"dmaphig@gmail.com\";}', '23', '1', '2018-10-03 16:28:00');
-INSERT INTO `red` VALUES ('121', 'a:1:{s:2:\"es\";s:11:\"Restaurante\";}', 'a:1:{s:2:\"es\";s:22:\"D´MAPHI Coffee Lounge\";}', 'a:1:{s:2:\"es\";s:21:\"Practicantes Azafatas\";}', 'a:1:{s:2:\"es\";s:2:\"04\";}', 'a:1:{s:2:\"es\";s:136:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Responsabilidad</li>\r\n	<li>Apasionado</li>\r\n	<li>Puntualidad</li>\r\n	<li>Carisma</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:203:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Atenci&oacute;n al cliente en Restauraci&oacute;n</li>\r\n	<li><strong>Direcci&oacute;n: </strong>Calle Los Dulantos 162 &ndash; Urb. Santa Victoria</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:16:\"Miltón Coronado\";}', 'a:1:{s:2:\"es\";s:9:\"987725161\";}', 'a:1:{s:2:\"es\";s:17:\"dmaphig@gmail.com\";}', '24', '1', '2018-10-03 16:30:32');
-INSERT INTO `red` VALUES ('122', 'a:1:{s:2:\"es\";s:11:\"Restaurante\";}', 'a:1:{s:2:\"es\";s:22:\"D´MAPHI Coffee Lounge\";}', 'a:1:{s:2:\"es\";s:30:\"Practicante Ayudante de cocina\";}', 'a:1:{s:2:\"es\";s:2:\"04\";}', 'a:1:{s:2:\"es\";s:117:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Responsabilidad</li>\r\n	<li>Apasionado</li>\r\n	<li>Puntualidad</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:219:\"<ul style=\"list-style-type:circle;\">\r\n	<li>Cocina variada</li>\r\n	<li>Pasteler&iacute;a</li>\r\n	<li>Cokteleria</li>\r\n	<li><strong>Direcci&oacute;n: </strong>Calle Los Dulantos 162 &ndash; Urb. Santa Victoria</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:16:\"Miltón Coronado\";}', 'a:1:{s:2:\"es\";s:9:\"987725161\";}', 'a:1:{s:2:\"es\";s:17:\"dmaphig@gmail.com\";}', '25', '1', '2018-10-03 16:33:43');
-INSERT INTO `red` VALUES ('123', 'a:1:{s:2:\"es\";s:14:\"Sushi Delivery\";}', 'a:1:{s:2:\"es\";s:8:\"MAKI Cix\";}', 'a:1:{s:2:\"es\";s:12:\"Practicantes\";}', 'a:1:{s:2:\"es\";s:2:\"02\";}', 'a:1:{s:2:\"es\";s:88:\"<ul>\r\n	<li>Ganas de aprender m&aacute;s sobre la cocina nikkei y de autor.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:69:\"<ul>\r\n	<li><strong>Horario: </strong>6:00 pm a 10:30 pm</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:21:\"Edgard Flores Guevara\";}', 'a:1:{s:2:\"es\";s:9:\"959692328\";}', 'a:1:{s:2:\"es\";s:32:\"edgard.floresguevara@gmail.com  \";}', '26', '1', '2018-10-03 16:37:25');
-INSERT INTO `red` VALUES ('124', 'a:1:{s:2:\"es\";s:11:\"Restaurante\";}', 'a:1:{s:2:\"es\";s:11:\"Restaurante\";}', 'a:1:{s:2:\"es\";s:11:\"Practicante\";}', 'a:1:{s:2:\"es\";s:2:\"01\";}', 'a:1:{s:2:\"es\";s:86:\"<ul>\r\n	<li>Aptitudes: Honradez, buen desenvolvimiento en el &aacute;rea.</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:142:\"<ul>\r\n	<li>Preparaci&oacute;n de pescados, marisco y comida criolla.</li>\r\n	<li>Direcci&oacute;n: Av. J. L. Ortiz 339 - Chiclayo</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:15:\"Agustín Vargas\";}', 'a:1:{s:2:\"es\";s:11:\"979 544 270\";}', 'a:1:{s:2:\"es\";s:27:\"agustin28vargas@hotmail.com\";}', '27', '1', '2018-10-10 14:52:06');
-INSERT INTO `red` VALUES ('125', 'a:1:{s:2:\"es\";s:9:\"RESTOBAR \";}', 'a:1:{s:2:\"es\";s:7:\"QUATTRO\";}', 'a:1:{s:2:\"es\";s:18:\"Ayudante de cocina\";}', 'a:1:{s:2:\"es\";s:2:\"02\";}', 'a:1:{s:2:\"es\";s:135:\"<ul>\r\n	<li>Horario: 9:30 am. A 4:30 pm.</li>\r\n	<li>Direcci&oacute;n: Los Manzanos 180 - Urb. Santa Victoria</li>\r\n</ul>\r\n<br />\r\n&nbsp;\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:9:\"Nina Soto\";}', 'a:1:{s:2:\"es\";s:11:\"989 913 918\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', '28', '1', '2018-10-11 10:33:15');
+INSERT INTO `red` VALUES ('134', 'a:1:{s:2:\"es\";s:13:\"Restaurantes \";}', 'a:1:{s:2:\"es\";s:20:\"El Sabor de la Pedro\";}', 'a:1:{s:2:\"es\";s:10:\"Prácticas\";}', 'a:1:{s:2:\"es\";s:2:\"02\";}', 'a:1:{s:2:\"es\";s:227:\"<ul>\r\n	<li><strong>Aptitudes:</strong> Comprometido, honesto, proactivo e Innovador.</li>\r\n	<li>Tiempo completo</li>\r\n	<li><strong>Direcci&oacute;n: </strong>Juan XXIII N&deg; 370 - Lambayeque ( frente a la UNPRG)</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:199:\"<ul>\r\n	<li>Platos criollos, platos de pescado y mariscos (preferente)</li>\r\n	<li>Preparaci&oacute;n de jugos frutales</li>\r\n	<li>Cotizaci&oacute;n de platos (costo de producci&oacute;n)</li>\r\n</ul>\r\n\";}', 'a:1:{s:2:\"es\";s:2:\"--\";}', 'a:1:{s:2:\"es\";s:35:\"Yurggen Salvador Bendezú Jáuregui\";}', 'a:1:{s:2:\"es\";s:9:\"939632397\";}', 'a:1:{s:2:\"es\";s:19:\"yurggenbj@gmail.com\";}', '5', '1', '2019-01-29 15:20:37');
 
 -- ----------------------------
 -- Table structure for slidehome
@@ -625,6 +598,32 @@ CREATE TABLE `slidehome` (
 INSERT INTO `slidehome` VALUES ('13', 'Campus', 'Gastronómico', '', 'imagenes/home/slider-1_2.jpg', 'campus-gastronomico', '1', '1', '2016-07-04 23:52:09');
 INSERT INTO `slidehome` VALUES ('14', 'Carrera de ', 'Gastronomía', '', 'imagenes/home/slider-2.jpg', 'carrera-de-gastronomia', '2', '1', '2016-07-04 23:55:18');
 INSERT INTO `slidehome` VALUES ('15', 'Diplomado de', 'Pasteleria', '', 'imagenes/slidehome/slider-3.jpg', 'diplomado-de-pasteleria', '3', '1', '2016-07-04 23:53:54');
+
+-- ----------------------------
+-- Table structure for suscrito
+-- ----------------------------
+DROP TABLE IF EXISTS `suscrito`;
+CREATE TABLE `suscrito` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `asunto` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `telefono` varchar(50) NOT NULL DEFAULT '',
+  `empresa` varchar(255) DEFAULT '',
+  `mensaje` text,
+  `estado` int(1) NOT NULL DEFAULT '1',
+  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of suscrito
+-- ----------------------------
+INSERT INTO `suscrito` VALUES ('1', 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'mensaje de prueba', '1', '2019-02-13 10:02:29');
+INSERT INTO `suscrito` VALUES ('2', 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'mensaje de prueba', '1', '2019-02-13 11:02:40');
+INSERT INTO `suscrito` VALUES ('3', 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'Mensaje de prueba desde la web cumbre: CONTACTANOS', '1', '2019-02-13 11:02:38');
+INSERT INTO `suscrito` VALUES ('4', 'fedra nury more castro', '', 'fedranury30@gmail.com', '', '', 'como puedo hacer para solicitar mi certificado de  haber  <br />\r\nterminado mis estudios', '1', '2019-02-27 00:02:41');
+INSERT INTO `suscrito` VALUES ('5', 'Belén', '', 'belen.paicob@gmail.com', '', '', 'Buenos días quisiera saber sobre la carrera y sobre tbm sus pagos y su número telefónico no da', '1', '2019-02-27 09:02:31');
 
 -- ----------------------------
 -- Table structure for taller
@@ -655,14 +654,21 @@ CREATE TABLE `taller` (
   `estado` int(1) NOT NULL DEFAULT '1',
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of taller
 -- ----------------------------
-INSERT INTO `taller` VALUES ('17', 'a:1:{s:2:\"es\";s:32:\"MASA HOJALDRE Y SUS APLICACIONES\";}', 'a:1:{s:2:\"es\";s:27:\"<strong>3 SESIONES</strong>\";}', '', 'imagenes/talleres/1.jpg', '', '', '', '', 'a:1:{s:2:\"es\";s:17:\"7, 8, 9 de agosto\";}', null, 'a:1:{s:2:\"es\";s:16:\"7:00 a 10:00 pm.\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:6:\"S/ 200\";}', null, null, 'a:1:{s:2:\"es\";s:0:\"\";}', null, null, null, '1', '1', '2018-07-25 06:09:33');
-INSERT INTO `taller` VALUES ('18', 'a:1:{s:2:\"es\";s:15:\"TORTAS MODERNAS\";}', 'a:1:{s:2:\"es\";s:41:\"<strong>3 SESIONES</strong><br />\r\n&nbsp;\";}', '', 'imagenes/talleres/2.jpg', '', '', '', '', 'a:1:{s:2:\"es\";s:20:\"14, 15, 16 de agosto\";}', null, 'a:1:{s:2:\"es\";s:16:\"7:00 a 10:00 pm.\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:6:\"S/ 200\";}', null, null, 'a:1:{s:2:\"es\";s:0:\"\";}', null, null, null, '2', '1', '2018-07-25 06:20:33');
-INSERT INTO `taller` VALUES ('19', 'a:1:{s:2:\"es\";s:10:\"MESA DULCE\";}', 'a:1:{s:2:\"es\";s:27:\"<strong>3 SESIONES</strong>\";}', '', 'imagenes/talleres/3.jpg', '', '', '', '', 'a:1:{s:2:\"es\";s:20:\"21, 22, 23 de agosto\";}', null, 'a:1:{s:2:\"es\";s:16:\"7:00 a 10:00 pm.\";}', 'a:1:{s:2:\"es\";s:0:\"\";}', 'a:1:{s:2:\"es\";s:6:\"S/ 200\";}', null, null, 'a:1:{s:2:\"es\";s:0:\"\";}', null, null, null, '3', '1', '2018-07-25 06:26:30');
+INSERT INTO `taller` VALUES ('17', 'MASA HOJALDRE Y SUS APLICACIONES', '&amp;amp;lt;strong&amp;amp;gt;3 SESIONES&amp;amp;lt;/strong&amp;amp;gt;', '', 'imagenes/talleres/1.jpg', '', '', '', '', '7, 8, 9 de agosto', '', '7:00 a 10:00 pm.', '', 'S/ 200', '', '', '', '', '', '', '1', '0', '2019-02-25 10:44:45');
+INSERT INTO `taller` VALUES ('18', 'TORTAS MODERNAS', '&lt;strong&gt;3 SESIONES&lt;/strong&gt;&lt;br /&gt;<br />\r\n&amp;nbsp;', '', 'imagenes/talleres/2.jpg', '', '', '', '', '14, 15, 16 de agosto', '', '7:00 a 10:00 pm.', '', 'S/ 200', '', '', '', '', '', '', '2', '0', '2019-02-25 10:44:49');
+INSERT INTO `taller` VALUES ('19', 'MESA DULCE', '&lt;strong&gt;3 SESIONES&lt;/strong&gt;', '', 'imagenes/talleres/3.jpg', '', '', '', '', '21, 22, 23 de agosto', '', '7:00 a 10:00 pm.', '', 'S/ 200', '', '', '', '', '', '', '3', '0', '2019-02-25 10:44:54');
+INSERT INTO `taller` VALUES ('20', 'TALLER DE EMPRENDEDORES', '&lt;strong&gt;Sesi&amp;oacute;n 1 &amp;ndash; 2&lt;/strong&gt;<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;B.P.M. buenas pr&amp;aacute;cticas en manipulaci&amp;oacute;n de alimentos&lt;/li&gt;<br />\r\n	&lt;li&gt;Bruselina de chocolate&lt;/li&gt;<br />\r\n	&lt;li&gt;Torta helada&lt;/li&gt;<br />\r\n	&lt;li&gt;Torta tres leche&lt;/li&gt;<br />\r\n	&lt;li&gt;Crema volteada&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 3 &amp;ndash; 4&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Dise&amp;ntilde;o y equipamiento de un taller de pasteler&amp;iacute;a.&lt;/li&gt;<br />\r\n	&lt;li&gt;Alfajores de maicena y alfajores cubiertos de chocolate.&lt;/li&gt;<br />\r\n	&lt;li&gt;Postres de t&amp;eacute;: brownies, magdalenas, bizcotelas.&lt;/li&gt;<br />\r\n	&lt;li&gt;Pay de lim&amp;oacute;n con merengue italiano.&lt;/li&gt;<br />\r\n	&lt;li&gt;Pay de manzana con masa frola.&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 5 &amp;ndash; 6&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Gesti&amp;oacute;n de compras y almac&amp;eacute;n&lt;/li&gt;<br />\r\n	&lt;li&gt;Bavarois de guindones&lt;/li&gt;<br />\r\n	&lt;li&gt;Pionono&lt;/li&gt;<br />\r\n	&lt;li&gt;Selva negra&lt;/li&gt;<br />\r\n	&lt;li&gt;Souffl&amp;eacute; de vainilla&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 7 &amp;ndash; 8&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Costos de producci&amp;oacute;n, costeo de recetas&lt;/li&gt;<br />\r\n	&lt;li&gt;Red velvet cake frosting y relleno&lt;/li&gt;<br />\r\n	&lt;li&gt;Torta damero cubierta con crema de chocolate y decorada con frutos del bosque&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/4.jpg', '', '', '', '', 'Lunes 11 hasta 26 febrero', '', '6 a 9 pm', '', 'S/ 500', '', '', '8 sesiones', '', '', '', '4', '1', '2019-02-25 11:38:36');
+INSERT INTO `taller` VALUES ('21', 'COCINA PARA PRINCIPIANTES', '&lt;strong&gt;MODULO I&lt;/strong&gt;<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Sesi&amp;oacute;n 1&lt;/strong&gt;: reconocimiento de utensilios, t&amp;eacute;cnica de cortes&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nFondos de cocci&amp;oacute;n&lt;br /&gt;<br />\r\nAderezos base&lt;br /&gt;<br />\r\nMinestrone &amp;ndash; estofado de pollo &amp;ndash; limonada<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Sesi&amp;oacute;n 2&lt;/strong&gt;:&amp;nbsp; principales m&amp;eacute;todos de cocci&amp;oacute;n&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nPapa a la huanca&amp;iacute;na, arroz con pollo, ensalada criolla, chicha morada&lt;br /&gt;<br />\r\n&amp;nbsp;&lt;br /&gt;<br />\r\n&amp;nbsp;&lt;br /&gt;<br />\r\n&lt;strong&gt;MODULO II&amp;nbsp;&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Sesi&amp;oacute;n 1 &lt;/strong&gt;&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Vinagretas&lt;/strong&gt;&lt;br /&gt;<br />\r\nEnsalada cesar y crutones&lt;br /&gt;<br />\r\nAsado con pur&amp;eacute;&lt;br /&gt;<br />\r\nIce tea<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Sesi&amp;oacute;n&lt;/strong&gt; 2&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Cocci&amp;oacute;n del arroz&lt;/strong&gt;&lt;br /&gt;<br />\r\nCausa lime&amp;ntilde;a&lt;br /&gt;<br />\r\nArroz con mariscos y limonada frozen<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Sesi&amp;oacute;n&lt;/strong&gt; 3&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Salteados y flambeados&lt;/strong&gt;&lt;br /&gt;<br />\r\nAj&amp;iacute; de gallina&lt;br /&gt;<br />\r\nLomo saltado&lt;br /&gt;<br />\r\nMaracuy&amp;aacute; frozen', '', 'imagenes/talleres/5.jpg', '', '', '', '', '11-12-13 febrero', '', '6 pm a 9 pm', '', '200.00', '', '', '', '', '', '', '5', '1', '2019-02-25 11:38:44');
+INSERT INTO `taller` VALUES ('22', 'BARRA CEVICHERA', '&lt;strong&gt;Chef: Manuel Arevalo&lt;/strong&gt;&lt;br /&gt;<br />\r\n&lt;br /&gt;<br />\r\nSesi&amp;oacute;n 1: &lt;strong&gt;leche de tigre y variantes&lt;/strong&gt;<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Leche de tigre tradicional: aperitivo marino preparado a base de pescado.&lt;/li&gt;<br />\r\n	&lt;li&gt;Leche de pantera: aperitivo marino preparado a base de conchas negras.&lt;/li&gt;<br />\r\n	&lt;li&gt;Leche de lagarto: aperitivo marino preparado a base de contundente leche de tigre, culantro y aj&amp;iacute; limo&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 2: &lt;strong&gt;ceviches carretilleros&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Ceviche de pescado: preparado a base pescado marinado con sal, aj&amp;iacute; limo, culantro, zumo de lim&amp;oacute;n y cebolla, con guarnici&amp;oacute;n de tortitas de cholo.&lt;/li&gt;<br />\r\n	&lt;li&gt;Ceviche mixto: preparado a base de pescado y mariscos (langostinos, caracol y pulpo), con guarnici&amp;oacute;n de yuca, camote, cholo y cancha.&lt;/li&gt;<br />\r\n	&lt;li&gt;Ceviche con chicharr&amp;oacute;n: ceviche tradicional con chicharr&amp;oacute;n de calamar.&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 3:&lt;strong&gt; ceviches compuestos&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Ceviche caliente: pescado marinado en crema de aj&amp;iacute; amarillo y cocido a las brasas y servido en panquita ahumada&lt;/li&gt;<br />\r\n	&lt;li&gt;Chancadito de cangrejo.&lt;/li&gt;<br />\r\n	&lt;li&gt;Choritos a la chalaca.&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/6.jpg', '', '', '', '', '11 -12 – 13 febrero', '', '5 a 8 pm', '', 's/ 200', '', '', '', '', '', '', '6', '1', '2019-02-27 11:53:38');
+INSERT INTO `taller` VALUES ('23', 'SANGUCHERÍA PERUANA', '&lt;strong&gt;Chef: Jimmy Ar&amp;eacute;valo&lt;/strong&gt;&lt;br /&gt;<br />\r\n&lt;br /&gt;<br />\r\nSesi&amp;oacute;n 1<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de chicharr&amp;oacute;n<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan franc&amp;eacute;s&lt;/li&gt;<br />\r\n		&lt;li&gt;Zarza criolla&lt;/li&gt;<br />\r\n		&lt;li&gt;Camote en chips&lt;/li&gt;<br />\r\n		&lt;li&gt;Cerdo pochado y frito previamente en salmuera&lt;/li&gt;<br />\r\n		&lt;li&gt;Aj&amp;iacute; parrillero&lt;/li&gt;<br />\r\n		&lt;li&gt;Lechuga&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de panceta agridulce<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan de hamburguesa con ajonjol&amp;iacute;&lt;/li&gt;<br />\r\n		&lt;li&gt;Encurtido de nabo y zanahoria&lt;/li&gt;<br />\r\n		&lt;li&gt;Panceta al horno&lt;/li&gt;<br />\r\n		&lt;li&gt;Salsa agridulce&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 2<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de asado de res<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Asado de res&lt;/li&gt;<br />\r\n		&lt;li&gt;Demi-glass&lt;/li&gt;<br />\r\n		&lt;li&gt;Chips de papa nativa&lt;/li&gt;<br />\r\n		&lt;li&gt;Lechuga lacia y tomate&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de lomo saltado<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Lomo en su jugo&lt;/li&gt;<br />\r\n		&lt;li&gt;Verduras crocantes&lt;/li&gt;<br />\r\n		&lt;li&gt;Pan franc&amp;eacute;s&lt;/li&gt;<br />\r\n		&lt;li&gt;Papas fritas&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 3<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de pavo asado criollo<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan franc&amp;eacute;s&lt;/li&gt;<br />\r\n		&lt;li&gt;Pechuga de pavo en su jugo&lt;/li&gt;<br />\r\n		&lt;li&gt;Zarza criolla&lt;/li&gt;<br />\r\n		&lt;li&gt;T&amp;aacute;rtara criolla (aj&amp;iacute; limo, culantro, huevo duro y mayonesa)&lt;/li&gt;<br />\r\n		&lt;li&gt;Lechuga&lt;/li&gt;<br />\r\n		&lt;li&gt;Chips de camote&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;nguche de pavo saludable<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan integral&lt;/li&gt;<br />\r\n		&lt;li&gt;Pechuga de pavo magra al horno&lt;/li&gt;<br />\r\n		&lt;li&gt;Lechuga, tomate, palta y ar&amp;uacute;gula&lt;/li&gt;<br />\r\n		&lt;li&gt;Vinagreta: vinagre bals&amp;aacute;mico, aceite de oliva, miel, mostaza&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/7.jpg', '', '', '', '', '18 – 19 -21 febrero', '', '6 a 9 pm', '', 's/ 200', '', '', '', '', '', '', '7', '1', '2019-02-27 11:54:28');
+INSERT INTO `taller` VALUES ('24', 'SANDWICH INTERNACIONALES', '&lt;strong&gt;Chef Jimmy Ar&amp;eacute;valo&lt;/strong&gt;&lt;br /&gt;<br />\r\n&lt;br /&gt;<br />\r\nSesi&amp;oacute;n 1<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;ndwich philadelfia (carne deshilachada y queso)<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Panini&lt;/li&gt;<br />\r\n		&lt;li&gt;Salsa de queso ahumado (bechamel)&lt;/li&gt;<br />\r\n		&lt;li&gt;Cebolla caramelizada&lt;/li&gt;<br />\r\n		&lt;li&gt;Carne en l&amp;aacute;minas&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Hamburguesa artesanal a la francesa<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan de hamburguesa con ajonjol&amp;iacute;&lt;/li&gt;<br />\r\n		&lt;li&gt;Carne molida, huevo, tomillo, romero, cebolla&lt;/li&gt;<br />\r\n		&lt;li&gt;Tocino crocante&lt;/li&gt;<br />\r\n		&lt;li&gt;Cebolla caramelizada (tomillo, romero y aceite de oliva)&lt;/li&gt;<br />\r\n		&lt;li&gt;Salsa de champi&amp;ntilde;ones (bechamel)&lt;/li&gt;<br />\r\n		&lt;li&gt;Lechuga y tomate&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 2<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;ndwich de pollo c&amp;eacute;sar<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Pan pita&lt;/li&gt;<br />\r\n		&lt;li&gt;Mis de lechuga&lt;/li&gt;<br />\r\n		&lt;li&gt;Pechuga de pollo a la plancha&lt;/li&gt;<br />\r\n		&lt;li&gt;Parmesano&lt;/li&gt;<br />\r\n		&lt;li&gt;Salsa c&amp;eacute;sar&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;S&amp;aacute;ndwich de pollo grillado y verduras<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Ciabatta&lt;/li&gt;<br />\r\n		&lt;li&gt;Pechuga de pollo al grill&lt;/li&gt;<br />\r\n		&lt;li&gt;Zuccini, tomate, lechuga&lt;/li&gt;<br />\r\n		&lt;li&gt;Chimichurri&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\nSesi&amp;oacute;n 3<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;&lt;strong&gt;Festival de club s&amp;aacute;ndwich:&lt;/strong&gt;<br />\r\n<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Club s&amp;aacute;ndwich cl&amp;aacute;sico:<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;Pan de molde sin corteza&lt;/li&gt;<br />\r\n			&lt;li&gt;Pollo con mayonesa y lechuga&lt;/li&gt;<br />\r\n			&lt;li&gt;Palta, tomate&lt;/li&gt;<br />\r\n			&lt;li&gt;Huevo y tocino&lt;/li&gt;<br />\r\n			&lt;li&gt;Chips de papa nativa&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n	&lt;li&gt;Club s&amp;aacute;ndwich criollo:<br />\r\n	&lt;ul&gt;<br />\r\n		&lt;li&gt;Pan de molde sin corteza&lt;/li&gt;<br />\r\n		&lt;li&gt;Salchicha de huacho y huevo&lt;/li&gt;<br />\r\n		&lt;li&gt;Jam&amp;oacute;n del pa&amp;iacute;s y queso paria&lt;/li&gt;<br />\r\n		&lt;li&gt;Pollo mechado (vinagre, panca y ajo)&lt;/li&gt;<br />\r\n		&lt;li&gt;Chips de camote.&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&amp;nbsp;<br />\r\n<br />\r\n&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n	&lt;li&gt;Club s&amp;aacute;ndwich franc&amp;eacute;s:<br />\r\n	&lt;ul&gt;<br />\r\n		&lt;li&gt;Pan de molde sin corteza&lt;/li&gt;<br />\r\n		&lt;li&gt;Jam&amp;oacute;n ingl&amp;eacute;s y queso Edam&lt;/li&gt;<br />\r\n		&lt;li&gt;Cebollas caramelizadas con champi&amp;ntilde;ones&lt;/li&gt;<br />\r\n		&lt;li&gt;Queso rallado y huevo montado&lt;/li&gt;<br />\r\n		&lt;li&gt;Chips de papas rejilla&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/8.jpg', '', '', '', '', '25 – 26 y 28 febrero', '', '6 a 9 pm', 'taller 702', 's/ 200', '', '', '', '', '', '', '8', '1', '2019-02-27 11:54:47');
+INSERT INTO `taller` VALUES ('25', 'EL MUNDO DE LAS EMPANADAS', '&lt;strong&gt;Chef Jimmy Ar&amp;eacute;valo&lt;/strong&gt;&lt;br /&gt;<br />\r\n&lt;br /&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 1&lt;/strong&gt;<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Masa bris&amp;eacute;e:<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Empanada de pollo a la finas hierbas:<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;pollo salteado&lt;/li&gt;<br />\r\n			&lt;li&gt;cebolla caramelizada&lt;/li&gt;<br />\r\n			&lt;li&gt;salsa bechamel&lt;/li&gt;<br />\r\n			&lt;li&gt;mayonesa al aj&amp;iacute; amarillo&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n		&lt;li&gt;Empanada de lomo saltado<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;lomo al jugo&lt;/li&gt;<br />\r\n			&lt;li&gt;verduras crocantes: cebolla, tomate y aj&amp;iacute;.&lt;/li&gt;<br />\r\n			&lt;li&gt;mayonesa oriental: mayonesa con aceite de ajonjol&amp;iacute;, ajo y kion.&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 2&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Masa frita<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Empanada argentina<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;mix de chorizo y fino corte de res&lt;/li&gt;<br />\r\n			&lt;li&gt;pimientos morroneados&lt;/li&gt;<br />\r\n			&lt;li&gt;salsa chimichurri&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n		&lt;li&gt;Empanada huachana:<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;salchicha de huacho&lt;/li&gt;<br />\r\n			&lt;li&gt;huevo&lt;/li&gt;<br />\r\n			&lt;li&gt;aj&amp;iacute; limo y cebolla china&lt;/li&gt;<br />\r\n			&lt;li&gt;crema de rocoto&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Sesi&amp;oacute;n 3 &lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Salte&amp;ntilde;a<br />\r\n	&lt;ul style=&quot;list-style-type:circle;&quot;&gt;<br />\r\n		&lt;li&gt;Empanada mexicana:<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;panceta de cerdo&lt;/li&gt;<br />\r\n			&lt;li&gt;cebolla caramelizada&lt;/li&gt;<br />\r\n			&lt;li&gt;chile (mexicano), tomate y culantro&lt;/li&gt;<br />\r\n			&lt;li&gt;pico de gallo con palta.&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n		&lt;li&gt;Empanada italiana:<br />\r\n		&lt;ul&gt;<br />\r\n			&lt;li&gt;-carne molida&lt;/li&gt;<br />\r\n			&lt;li&gt;-cebolla caramelizada y tomate&lt;/li&gt;<br />\r\n			&lt;li&gt;-albahaca y or&amp;eacute;gano&lt;/li&gt;<br />\r\n			&lt;li&gt;mayonesa de anchoas alcaparras y ajo.&lt;/li&gt;<br />\r\n		&lt;/ul&gt;<br />\r\n		&lt;/li&gt;<br />\r\n	&lt;/ul&gt;<br />\r\n	&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/9.jpg', '', '', '', '', '4 – 5 -7 marzo', '', 's/ 200', 'Taller 702', 's/ 200', '', '', '', '', '', '', '9', '1', '2019-02-27 11:55:06');
+INSERT INTO `taller` VALUES ('26', 'EL CHIFA Y SUS SECRETOS', '&lt;strong&gt;Chef Carlos Urbina&lt;/strong&gt;&lt;br /&gt;<br />\r\n&lt;br /&gt;<br />\r\n&lt;strong&gt;Primera sesi&amp;oacute;n:&lt;/strong&gt;<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Reconocimiento de ingredientes b&amp;aacute;sicos para la cocina chifa&lt;/li&gt;<br />\r\n	&lt;li&gt;Preparaci&amp;oacute;n de fondos (fondo de ave, fondos oscuros)&lt;/li&gt;<br />\r\n	&lt;li&gt;Elaboraci&amp;oacute;n de Siu Mai&lt;/li&gt;<br />\r\n	&lt;li&gt;Elaboraci&amp;oacute;n de la salsa tamarindo y wantanes rellenos fritos.&lt;/li&gt;<br />\r\n	&lt;li&gt;Preparaci&amp;oacute;n del marinado para el cerdo asado&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Segunda sesi&amp;oacute;n: elaboraci&amp;oacute;n de recetas&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Elaboraci&amp;oacute;n de arroz chaufa especial&lt;/li&gt;<br />\r\n	&lt;li&gt;Sopa Wantan especial&lt;/li&gt;<br />\r\n	&lt;li&gt;Ti pa kay&lt;/li&gt;<br />\r\n&lt;/ul&gt;<br />\r\n&lt;strong&gt;Tercera sesi&amp;oacute;n: elaboraci&amp;oacute;n de recetas&lt;/strong&gt;<br />\r\n<br />\r\n&lt;ul&gt;<br />\r\n	&lt;li&gt;Tallar&amp;iacute;n saltado.&lt;/li&gt;<br />\r\n	&lt;li&gt;Alitas kaypi.&lt;/li&gt;<br />\r\n	&lt;li&gt;Pollo chi&amp;nbsp; jau kay.&lt;/li&gt;<br />\r\n&lt;/ul&gt;', '', 'imagenes/talleres/10.jpg', '', '', '', '', '4,5,7 marzo', '', '6 a  9 pm', '', 's/ 200', '', '', '', '', '', '', '10', '1', '2019-02-27 11:55:27');
 
 -- ----------------------------
 -- Table structure for textos
@@ -756,7 +762,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'Armando', 'Pisfil Puemape', 'armandoaepp@gmail.com', '7b64d09060db17ca6b96c0af99575903', '1', '2018-07-05 16:07:03');
+INSERT INTO `user` VALUES ('1', 'Armando', 'Pisfil Puemape', 'armandoaepp@gmail.com', '7b64d09060db17ca6b96c0af99575903', '1', '2018-07-05 15:07:03');
 
 -- ----------------------------
 -- Table structure for users
@@ -788,7 +794,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', 0x7F000001, 'pedroclm', '$2y$08$RDkGGRyQX/8LZlHJlCMcH.SpItZwHvrAhLZEkNwfPsJteAbEkZZZu', 'NULL', 'info@webtilia.com', '', '', '1402679493', null, '1268889823', '1459094860', '1', 'Pedro', 'Calderon', 'WJHARIL', '940147037', 'imagenes/usuarios/wjharil.png');
-INSERT INTO `users` VALUES ('2', 0x3132372E302E302E31, 'cumbre', '$2y$08$xLjUc5GGv0qvypmFlMrXjOZVaLXGiAEGvP7dJoUHP7bsoeCF8/iJ6', null, 'usuario@isp.com', null, null, null, null, '1402679836', '1540479991', '1', 'Admin ', 'CUMBRE', 'ADMIN', '99999', 'imagenes/usuarios/logo.jpg');
+INSERT INTO `users` VALUES ('2', 0x3132372E302E302E31, 'cumbre', '$2y$08$xLjUc5GGv0qvypmFlMrXjOZVaLXGiAEGvP7dJoUHP7bsoeCF8/iJ6', null, 'usuario@isp.com', null, null, null, null, '1402679836', '1551283748', '1', 'Admin ', 'CUMBRE', 'ADMIN', '99999', 'imagenes/usuarios/logo.jpg');
 INSERT INTO `users` VALUES ('3', 0x3139302E3233342E3130352E3133, 'jallpas', '$2y$08$QdYMJ2UeSjU41K6MowdnyOv0Jva1tjxQkeJU3JDkKYPEd5Z9LvKcC', null, 'berzavlu@gmail.com', null, null, null, null, '1436487801', '1436574605', '1', 'Luis', 'Eduardo', 'wjharil', '-----', null);
 
 -- ----------------------------

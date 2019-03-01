@@ -13,9 +13,9 @@
 
   $titulo   = $_POST["titulo"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $nombreseo   = $_POST["nombreseo"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $url   = $_POST["url"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
@@ -24,9 +24,9 @@
   $params = array(
     "titulo"   => $titulo,
     "descripcion"   => $descripcion,
-    "nombreseo"   => $nombreseo,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "url"   => $url,
+    "item"   => $item,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
   );
 

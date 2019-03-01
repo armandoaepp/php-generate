@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -23,8 +23,22 @@
       $evento  = new Evento();
 
       $data = $evento->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $evento  = new Evento();
+
+      $data = $evento->getByEstado();
 
       return $data ;
     }
@@ -38,20 +52,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
 
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setTitulo($titulo);
       $bean_evento->setDescripcion($descripcion);
       $bean_evento->setImagen($imagen);
-      $bean_evento->setNombreseo($nombreseo);
-      $bean_evento->setOrden($orden);
-      $bean_evento->setFecha($fecha);
-            
+      $bean_evento->setUrlSeo($url);
+      $bean_evento->setItem($item);
+      $bean_evento->setPublicar($publicar);
+
       $data = $evento->save($bean_evento) ;
 
       return $data ;
@@ -66,22 +80,22 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setId($id);
       $bean_evento->setTitulo($titulo);
       $bean_evento->setDescripcion($descripcion);
       $bean_evento->setImagen($imagen);
-      $bean_evento->setNombreseo($nombreseo);
-      $bean_evento->setOrden($orden);
-      $bean_evento->setFecha($fecha);
+      $bean_evento->setUrlSeo($url);
+      $bean_evento->setItem($item);
+      $bean_evento->setPublicar($publicar);
 
       $data = $evento->update($bean_evento) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -94,17 +108,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $evento  = new Evento($this->cnx);
       $bean_evento = new BeanEvento();
-            
+
       $bean_evento->setId($id);
       $bean_evento->setEstado($estado);
 
       $data = $evento->updateEstado($bean_evento) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -124,9 +138,6 @@
       $bean_evento->setId($id);
 
       $data = $evento->find( $bean_evento) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -153,6 +164,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $evento  = new Evento($this->cnx);
+      $bean_evento = new BeanEvento();
+
+      $bean_evento->setId($id);
+      $bean_evento->setPublicar($publicar);
+
+      $data = $evento->updatePublish($bean_evento) ;
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $evento  = new Evento($this->cnx);
+      $bean_evento = new BeanEvento();
+
+      $bean_evento->setPublicar($publicar);
+
+      $data = $evento->getPublished($bean_evento) ;
+
+      return $data;
     }
     catch (Exception $e)
     {
