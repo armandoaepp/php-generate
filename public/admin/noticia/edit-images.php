@@ -259,7 +259,7 @@ foreach ($noticia_img as &$images) {
         // return;
 
         $.ajax({
-          url: './api/ajax/productos/IndexProductoDetalle.php',
+          url: './app/api/noticia-img/IndexNoticiaImg.php',
           dataType: 'json',
           type: 'POST',
           contentType: 'application/json',
