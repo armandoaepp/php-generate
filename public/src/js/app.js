@@ -1,6 +1,5 @@
 
 require('./bootstrap');
-require('./fine-uploader');
 
 require('./libs/app.libs');
 

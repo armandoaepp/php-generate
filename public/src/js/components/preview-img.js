@@ -28,7 +28,6 @@
         image.height = 100;
         image.title = file.name;
         image.src = this.result;
-        image.className = 'img-preview';
         preview.appendChild(image);
       });
 

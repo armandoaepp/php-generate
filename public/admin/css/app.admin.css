@@ -12078,6 +12078,10 @@ ul.social li a {
   max-width: 140px;
 }
 
+.img-view-edit {
+  max-height: 250px;
+}
+
 .table.dataTable td {
   padding: 0.35rem 0.65rem;
   vertical-align: middle;

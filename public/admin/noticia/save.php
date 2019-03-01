@@ -33,8 +33,6 @@
 
   # --------------------------------------------------------
 
-
-
   $imagen  = "";
   // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
   $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia", $noticia_id ) ;
@@ -55,10 +53,6 @@
 
     }
   }
-
-
-
-
 
   # --------------------------------------------------------
 

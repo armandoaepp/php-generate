@@ -21,7 +21,7 @@ $setvar = array(
 $sidebar = array(
     "sidebar_class" => "",
     "sidebar_toggle" => "only",
-    "sidebar_active" => [2, 1],
+    "sidebar_active" => [3, 1],
 );
 
 require_once "../layout/head_links.phtml";
@@ -104,7 +104,7 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
 
-                <div class="col-12 mb-3" id="imgContent">
+                <div class="col-12 mb-3">
                   <div class="form-group">
                     <label for="imagen">Imagen(es) :</label>
                     <input data-file-img="images" type="file" class="form-control" name="imagen[]" id="imagen" required
@@ -112,8 +112,9 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
 
-                <div class="col-12">
-                  <div data-img-preview="preview" id="preview"></div>
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview">
+                  </div>
                 </div>
 
               </div>

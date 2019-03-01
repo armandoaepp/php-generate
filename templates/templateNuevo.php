@@ -11,8 +11,10 @@ $html .= '
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
+  $title_page = "' .$cmTable. '" ;
+
 ?>
-<?php $title_page = "' .$cmTable. '" ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,7 +32,7 @@ $html .= '
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [1,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -58,7 +60,7 @@ $html .= '
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-          Nuevo <?php echo $title_page ;?>
+          Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -66,7 +68,7 @@ $html .= '
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Nuevo <?php echo $title_page ;?> </h4>
+            <h4 class="page-header-title">Nuevo <?php echo $title_page; ?> </h4>
           </div>
         </div>
         <div class="row">
@@ -79,7 +81,6 @@ $html .= '
 
 for ($i = 1; $i < count($atributos); $i++)
 {
-    // if (strtolower(trim($atributos[$i])) != "estado" && strtolower(trim($atributos[$i])) != "created_up" && strtolower(trim($atributos[$i])) != "imagen" )
     if ( !verificarItem($atributos[$i]) )
     {
 
@@ -89,8 +90,9 @@ for ($i = 1; $i < count($atributos); $i++)
             $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . $atributos[$i] .'">' . PHP_EOL;
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;
+
     }
-    elseif(strtolower(trim($atributos[$i])) == "imagen")
+    /* elseif(strtolower(trim($atributos[$i])) == "imagen")
     {
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
@@ -99,7 +101,7 @@ for ($i = 1; $i < count($atributos); $i++)
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;
 
-    }
+    } */
     elseif(strtolower(trim($atributos[$i])) == "publicar")
     {
     $html .= '
@@ -120,10 +122,25 @@ for ($i = 1; $i < count($atributos); $i++)
     }
 }
 
+// elseif(strtolower(trim($atributos[$i])) == "imagen")
+    if(in_array("imagen", $atributos))
+    {
+            $html .= '
+              <div class="col-12 mb-3">
+                <div class="form-group">
+                  <label for="imagen">Imagen :</label>
+                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                </div>
+              </div>
+
+              <div class="col-12 mb-3">
+                <div class="preview-img" data-img-preview="preview" id="preview"></div>
+              </div>
+            ' ;
+
+    }
+
 $html .= '
-
-
-
               </div>
 
               <div class="w-100 text-center">

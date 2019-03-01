@@ -26,7 +26,8 @@
       $no = "checked='checked'";
   }
 
-  $title_page = "Categoria"
+  $title_page = "Categoria";
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [2, 1],
+        "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -76,7 +77,7 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Editar <?php echo $title_page ;?>
+            Editar <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -84,7 +85,7 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page ;?> </h4>
+            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
           </div>
         </div>
         <div class="row">
@@ -102,20 +103,6 @@
                 </div>
               </div>
 
-              <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">
-
-                <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid mb-1">
-                <div class="col-auto">
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="imagen">Nueva Imagen</label>
-                    </div>
-                    <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
-                  </div>
-                </div>
-              </div>
-              
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
@@ -130,6 +117,26 @@
                 </div>
               </div>
 
+              <div class="col-sm-6 col-md-6 text-center">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $categoria['imagen']; ?>">
+                <img src="<?php echo $categoria['imagen'] ?>" class="img-fluid img-view-edit mb-2">
+              </div>
+                <div class="col-12 mb-3">
+                  <hr>
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="imagen">Nueva Imagen</label>
+                      </div>
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
+              
               </div>
 
               <div class="w-100 text-center">

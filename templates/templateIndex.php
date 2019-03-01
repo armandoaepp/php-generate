@@ -6,7 +6,6 @@ function templateIndex($table, $atributos, $arraycabeza = array() ){
   $url = toUrlFriendly($table) ;
 
 $html = '
-<?php $title_page = "'.$cmTable.'s" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +23,7 @@ $html = '
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [1,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -50,7 +49,7 @@ $html = '
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             <a class="link-white" href="admin/'.$url.'/'.$table.'.php">
-              <?php echo $title_page ?>
+              <?php echo $title_page; ?>
             </a>
           </li>
         </ol>
@@ -59,7 +58,7 @@ $html = '
       <div class="container-full p-2 fs-x-14">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
+            <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
             <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">

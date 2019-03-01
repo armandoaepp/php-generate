@@ -3,8 +3,10 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
+  $title_page = "Categoria" ;
+
 ?>
-<?php $title_page = "Categoria" ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [1,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -50,7 +52,7 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-          Nuevo <?php echo $title_page ;?>
+          Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -58,7 +60,7 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Nuevo <?php echo $title_page ;?> </h4>
+            <h4 class="page-header-title">Nuevo <?php echo $title_page; ?> </h4>
           </div>
         </div>
         <div class="row">
@@ -72,12 +74,6 @@
                 <div class="form-group">
                   <label for="nombre">nombre : </label>
                   <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="imagen">Imagen(Recomendación Imagen de 350 x 200 pixeles ) </label>
-                  <input type="file"  class="form-control" name="imagen" id="imagen"  placeholder="Imagen" accept="image/*">
                 </div>
               </div>
 
@@ -95,9 +91,17 @@
                 </div>
               </div>
 
+              <div class="col-12 mb-3">
+                <div class="form-group">
+                  <label for="imagen">Imagen :</label>
+                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                </div>
+              </div>
 
-
-
+              <div class="col-12 mb-3">
+                <div class="preview-img" data-img-preview="preview" id="preview"></div>
+              </div>
+            
               </div>
 
               <div class="w-100 text-center">

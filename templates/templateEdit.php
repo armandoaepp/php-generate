@@ -1,6 +1,6 @@
 <?php
 
-function templateEdit($table, $aatri){
+function templateEdit($table, $atributos){
 
   $cmTable = toCamelCase($table) ;
   $url = toUrlFriendly($table) ;
@@ -23,7 +23,7 @@ $html .= '
 
   $'. $table .' = $'. $table .'_controller->find($id);'. PHP_EOL;
 
-if(in_array('publicar', $aatri))
+if(in_array('publicar', $atributos))
 {
 
 $html .= '
@@ -41,7 +41,8 @@ $html .= '
 }
 
 $html .= '
-  $title_page = "' .$cmTable. '"
+  $title_page = "' .$cmTable. '";
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +63,7 @@ $html .= '
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [2, 1],
+        "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -91,7 +92,7 @@ $html .= '
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Editar <?php echo $title_page ;?>
+            Editar <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -99,7 +100,7 @@ $html .= '
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page ;?> </h4>
+            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
           </div>
         </div>
         <div class="row">
@@ -111,26 +112,26 @@ $html .= '
               <div class="row">
               '. PHP_EOL ;
 
-for ($i = 1; $i < count($aatri); $i++)
+for ($i = 1; $i < count($atributos); $i++)
 {
-    // if (strtolower(trim($aatri[$i])) != "estado" && strtolower(trim($aatri[$i])) != "created_up" && strtolower(trim($aatri[$i])) != "imagen" )
-    if ( !verificarItem($aatri[$i]) )
+    // if (strtolower(trim($atributos[$i])) != "estado" && strtolower(trim($atributos[$i])) != "created_up" && strtolower(trim($atributos[$i])) != "imagen" )
+    if ( !verificarItem($atributos[$i]) )
     {
 
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
-            $html .= '                  <label for="' . $aatri[$i] . '">' . $aatri[$i] . ' : </label>' . PHP_EOL;
-            $html .= '                  <input type="text" class="form-control" name="' . $aatri[$i] .'" id="' . $aatri[$i] .'" required placeholder="' . $aatri[$i] .'"  value="<?php echo $'. $table .'[\''. $aatri[$i]. '\'] ?>" >' . PHP_EOL;
+            $html .= '                  <label for="' . $atributos[$i] . '">' . $atributos[$i] . ' : </label>' . PHP_EOL;
+            $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . $atributos[$i] .'"  value="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" >' . PHP_EOL;
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;
     }
-    elseif(strtolower(trim($aatri[$i])) == "imagen")
+    /* elseif(strtolower(trim($atributos[$i])) == "imagen")
     {
       $html .= '
               <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\''. $aatri[$i]. '\']; ?>">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\''. $atributos[$i]. '\']; ?>">
 
-                <img src="<?php echo $'. $table .'[\''. $aatri[$i]. '\'] ?>" class="img-fluid mb-1">
+                <img src="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" class="img-fluid mb-1">
                 <div class="col-auto">
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -142,8 +143,8 @@ for ($i = 1; $i < count($aatri); $i++)
               </div>
               ' ;
 
-    }
-    elseif(strtolower(trim($aatri[$i])) == "publicar")
+    } */
+    elseif(strtolower(trim($atributos[$i])) == "publicar")
     {
     $html .= '
               <div class="col-md-6">
@@ -162,6 +163,32 @@ for ($i = 1; $i < count($aatri); $i++)
 
     }
 }
+
+    if(in_array("imagen", $atributos))
+    {
+      $html .= '
+              <div class="col-sm-6 col-md-6 text-center">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\'imagen\']; ?>">
+                <img src="<?php echo $'. $table .'[\'imagen\'] ?>" class="img-fluid img-view-edit mb-2">
+              </div>
+                <div class="col-12 mb-3">
+                  <hr>
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="imagen">Nueva Imagen</label>
+                      </div>
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
+              ' ;
+
+    }
 
 $html .= '
               </div>

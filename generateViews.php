@@ -32,7 +32,7 @@ function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace
         $texto      .= ''. PHP_EOL ;
         $texto      .= '    $data = $'.$tabla.'_controller->getAll();'. PHP_EOL ;
         $texto      .= ''. PHP_EOL ;
-        $texto      .= '    $title_page = "'.$tabla.'s"'. PHP_EOL ;
+        $texto      .= '    $title_page = "'.toCamelCase($tabla).'s";'. PHP_EOL ;
         $texto      .= ''. PHP_EOL ;
         $texto      .= '?>'. PHP_EOL ;
         $texto      .= templateIndex($tabla, $atributos, $arraycabeza) ;
