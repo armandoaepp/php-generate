@@ -12098,7 +12098,7 @@ ul.social li a {
 .close-danger {
   font-size: 1.25rem;
   position: absolute;
-  background-color: #EC3237 !important;
+  background-color: #000000 !important;
   right: -15px;
   top: -15px;
   border-radius: 50%;
@@ -12111,8 +12111,30 @@ ul.social li a {
 }
 
 .close-danger:hover {
-  opacity: 0.9 !important;
+  opacity: .9 !important;
   color: #fff !important;
+}
+
+.preview-img img {
+  margin-right: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.preview-img img:last-child {
+  margin-right: 0;
+}
+
+.ui-state-default .icon-move {
+  color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  cursor: pointer;
+  padding: 1px;
+}
+
+.ui-state-default:hover .icon-move,
+.ui-state-default .icon-move:hover {
+  color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .table.dataTable td {

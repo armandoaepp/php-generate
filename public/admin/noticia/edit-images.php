@@ -17,12 +17,6 @@ $data = $noticia_controller->getFindWithDetalle($id);
 $noticia = $data['noticia'];
 $noticia_img = $data['noticia_img'];
 
-//echo "<pre>";
-//print_r($noticia_img);
-//echo "</pre>" ;
-
-//return ;
-
 $title_page = "Noticia";
 ?>
 
@@ -51,11 +45,11 @@ require_once "../layout/head_links.phtml";
 ?>
 
   <!-- fancybox -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css">
   <!-- sortable -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+ 
 </head>
 
 <body>
@@ -111,8 +105,10 @@ require_once "../layout/head_links.phtml";
                       foreach ($noticia_img as &$images) {
                     ?>
 
-                    <div class="col-6 col-sm-2 mb-3 ">
+                    <div class="col-6 col-sm-3 col-md-2 mb-3 ">
                       <div class="card ui-state-default">
+                      <!-- <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> -->
+                      <span class="icon-move"> <i class="fas fa-arrows-alt"></i> </span>
                         <input type="hidden" name="ids_noticia_img[]"
                           value="<?php echo $images['id'] ?>">
                         <a href="<?php echo $images['imagen'] ?>" data-fancybox="gallery">

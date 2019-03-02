@@ -174,7 +174,7 @@
                 <?php
                     foreach ($noticia_img as &$images) {
                   ?>
-                <div class="col-6 col-sm-2">
+                <div class="col-6 col-sm-2 mb-3 px-2">
                   <a href="<?php echo $images["imagen"] ?>" data-fancybox="gallery"
                     data-caption="Caption for single image">
                     <img src="<?php echo $images["imagen"] ?>" class="img-fluid " alt="" />
@@ -198,6 +198,10 @@
   <?php require_once "../layout/foot_links.phtml"?>
 
   <?php require_once "../layout/ckeditor.phtml"?>
+
+  <!-- fancybox -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 
 </body>
 
