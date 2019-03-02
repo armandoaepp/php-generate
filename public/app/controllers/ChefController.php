@@ -23,8 +23,26 @@
       $chef  = new Chef();
 
       $data = $chef->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $chef  = new Chef();
+            
+      $bean_chef = new BeanChef();
+            
+      $bean_chef->setEstado($estado);
+
+      $data = $chef->getByEstado($bean_chef);
 
       return $data ;
     }
@@ -50,8 +68,8 @@
       $bean_chef->setResumen($resumen);
       $bean_chef->setDescripcion($descripcion);
       $bean_chef->setImagen($imagen);
-      $bean_chef->setOrden($orden);
-      $bean_chef->setFecha($fecha);
+      $bean_chef->setItem($item);
+      $bean_chef->setPublicar($publicar);
             
       $data = $chef->save($bean_chef) ;
 
@@ -79,8 +97,8 @@
       $bean_chef->setResumen($resumen);
       $bean_chef->setDescripcion($descripcion);
       $bean_chef->setImagen($imagen);
-      $bean_chef->setOrden($orden);
-      $bean_chef->setFecha($fecha);
+      $bean_chef->setItem($item);
+      $bean_chef->setPublicar($publicar);
 
       $data = $chef->update($bean_chef) ;
             
@@ -100,6 +118,7 @@
       extract($params) ; 
 
       $chef  = new Chef($this->cnx);
+            
       $bean_chef = new BeanChef();
             
       $bean_chef->setId($id);
@@ -126,9 +145,6 @@
       $bean_chef->setId($id);
 
       $data = $chef->find( $bean_chef) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -138,12 +154,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $chef  = new Chef();
 
@@ -155,6 +169,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $chef  = new Chef($this->cnx);
+      $bean_chef = new BeanChef();
+            
+      $bean_chef->setId($id);
+      $bean_chef->setPublicar($publicar);
+
+      $data = $chef->updatePublish($bean_chef) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $chef  = new Chef($this->cnx);
+      $bean_chef = new BeanChef();
+            
+      $bean_chef->setPublicar($publicar);
+
+      $data = $chef->getPublished($bean_chef) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

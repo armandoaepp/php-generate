@@ -56,8 +56,9 @@ switch($evento)
       $resumen = $inputs->resumen;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -66,8 +67,9 @@ switch($evento)
                 'resumen'=> $resumen,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $chef_controller->save($params) ;
@@ -101,8 +103,9 @@ switch($evento)
       $resumen = $inputs->resumen;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -111,8 +114,9 @@ switch($evento)
                 'resumen'=> $resumen,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $chef_controller->update($params) ;
@@ -207,14 +211,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$chef = $chef_controller->find($params);
+				$chef = $chef_controller->find( $id );
 
-				$data = $chef_controller->deleteById($params);
+				$data = $chef_controller->deleteById( $id );
 
 				if( !empty($chef) && $data )
 				{
-					$imagen = $chef["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $chef["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
@@ -233,6 +237,66 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
+  break;
+
+  case "publish":
+    try
+    {
+
+      $id = $inputs->id;
+      $publicar = $inputs->publicar;
+
+      if($publicar == "N"){
+                $publicar = "S" ;
+      }else{
+                $publicar = "N" ;
+      }
+
+      $params = array(
+                'id'=> $id,
+                'publicar'=> $publicar,
+              ) ; 
+
+      $chef_controller = new ChefController() ; 
+
+      $data = $chef_controller->updatePublish( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "published":
+    try
+    {
+
+      $publicar = $inputs->publicar;
+
+      $params = array(
+                'publicar'=> $publicar,
+              ) ; 
+
+      $chef_controller = new ChefController() ; 
+
+      $data = $chef_controller->getPublished( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
   break;
 
 }

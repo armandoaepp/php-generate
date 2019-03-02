@@ -14,12 +14,12 @@ class Chef extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM chef";
+      $this->query = "SELECT * FROM chef; ";
 
       $this->executeQuery();
 
@@ -34,19 +34,45 @@ class Chef extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_chef)
+  {
+    try{
+      $estado = $bean_chef->getEstado() ;
+
+      $this->query = "SELECT * FROM chef
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_chef)
   {
     try{
+      $bean_chef->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_chef->getId();
       $titulo = $bean_chef->getTitulo();
       $subtitulo = $bean_chef->getSubtitulo();
       $resumen = $bean_chef->getResumen();
       $descripcion = $bean_chef->getDescripcion();
       $imagen = $bean_chef->getImagen();
-      $orden = $bean_chef->getOrden();
+      $item = $bean_chef->getItem();
+      $publicar = $bean_chef->getPublicar();
       $estado = $bean_chef->getEstado();
-      $fecha = $bean_chef->getFecha();
+      $created_up = $bean_chef->getCreatedUp();
 
       $this->query = "INSERT INTO chef
                       (
@@ -55,9 +81,10 @@ class Chef extends Connection {
                         resumen,
                         descripcion,
                         imagen,
-                        orden,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
@@ -65,14 +92,15 @@ class Chef extends Connection {
                         '$resumen',
                         '$descripcion',
                         '$imagen',
-                        '$orden',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -84,7 +112,7 @@ class Chef extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_chef)
   {
     try{
@@ -94,8 +122,8 @@ class Chef extends Connection {
       $resumen = $bean_chef->getResumen();
       $descripcion = $bean_chef->getDescripcion();
       $imagen = $bean_chef->getImagen();
-      $orden = $bean_chef->getOrden();
-      $fecha = $bean_chef->getFecha();
+      $item = $bean_chef->getItem();
+      $publicar = $bean_chef->getPublicar();
 
       $this->query = "UPDATE chef SET 
                         titulo = '$titulo',
@@ -103,14 +131,14 @@ class Chef extends Connection {
                         resumen = '$resumen',
                         descripcion = '$descripcion',
                         imagen = '$imagen',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -121,7 +149,7 @@ class Chef extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_chef)
   {
     try{
@@ -135,7 +163,7 @@ class Chef extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +174,7 @@ class Chef extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_chef)
   {
     try{
@@ -167,7 +195,7 @@ class Chef extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_chef)
   {
     try{
@@ -178,7 +206,57 @@ class Chef extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_chef)
+  {
+    try{
+      $id = $bean_chef->getId();
+      $publicar = $bean_chef->getPublicar() ;
+
+      $this->query = "UPDATE chef SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_chef)
+  {
+    try{
+      $publicar = $bean_chef->getPublicar() ;
+
+      $this->query = "SELECT * FROM chef
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

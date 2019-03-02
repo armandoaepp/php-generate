@@ -15,8 +15,8 @@
   $subtitulo   = $_POST["subtitulo"] ;
   $resumen   = $_POST["resumen"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
@@ -27,8 +27,8 @@
     "subtitulo"   => $subtitulo,
     "resumen"   => $resumen,
     "descripcion"   => $descripcion,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "item"   => $item,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
   );
 

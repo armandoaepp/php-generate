@@ -32,36 +32,40 @@ try{
    }
  
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : [] ;
+  // var_dump($file_imagen);
+  // return ;
  
   # --------------------------------------------------------
 
   $imagenes = [];
   // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
   $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia", $noticia_id ) ;
-
-  var_dump($imagenes);
-
+ 
   if($noticia_id > 0)
   {
     // $noticia_img_controller = new NoticiaImgController();
+    if(count($imagenes) > 0 )
+    {
+      for ($i=0; $i < count($imagenes) ; $i++) {
 
-    for ($i=0; $i < count($imagenes) ; $i++) {
+        $params_det = array(
+          "noticia_id" => $noticia_id, 
+          'item' => ( $cant_item + $i + 1 ),
+          "imagen"     => $imagenes[$i] ,
+        );
 
-      $params_det = array(
-        "noticia_id" => $noticia_id, 
-        'item' => ( $cant_item + $i + 1 ),
-        "imagen"     => $imagenes[$i] ,
-      );
+        $response = $noticia_img_controller->save($params_det);
+        // echo $i;
 
-      $response = $noticia_img_controller->save($params_det);
-      echo $i;
-
+      }
     }
+   
+
   }
 
   # --------------------------------------------------------
  
-    // header("Location: ./edit-images.php ", true, 301);
+    header("Location: ./edit-images.php?id=$noticia_id", true, 301);
   
 }catch(Exception $e){
   echo "Error: {$e}" ;

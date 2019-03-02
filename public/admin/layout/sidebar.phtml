@@ -19,7 +19,7 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="../ui-elements/buttons.php">
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="admin/configuracion/configuracion.php">
             <i class="icofont icofont-curved-right"></i> Configuración
           </a>
         </li>
@@ -28,7 +28,21 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
     </li>
 
     <li>
-      <a class="<?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="admin/taller/taller.php" role="button">
+      <a class="menu <?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="#" role="button">
+        <i class="fa fa-list"></i> Personal
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="admin/chef/chef.php">
+            <i class="icofont icofont-curved-right"></i> Chefs
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+    <li>
+      <a class="<?php if ($sidebar_active[0] == 200002) {echo 'active';}?>" href="admin/taller/taller.php" role="button">
       <i class="fas fa-list-ul"></i> Talleres
       </a>
       <!-- <ul class="menu-items">

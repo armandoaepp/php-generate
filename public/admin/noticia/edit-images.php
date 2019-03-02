@@ -72,8 +72,16 @@ require_once "../layout/head_links.phtml";
               <?php echo $title_page; ?>s
             </a>
           </li>
+          <li class="breadcrumb-item">
+            <a href="admin/noticia/editar.php?id=$id">
+              <i class="fas fa-reply"></i>
+              <?php echo $title_page; ?> Editar
+            </a>
+          </li>
+
+          
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Editar <?php echo $title_page; ?>
+            Editar Imagenes
           </li>
         </ol>
       </nav>
