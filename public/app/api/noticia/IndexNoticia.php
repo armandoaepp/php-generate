@@ -203,14 +203,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$noticia = $noticia_controller->find($params);
+				$noticia = $noticia_controller->find($id);
 
-				$data = $noticia_controller->deleteById($params);
+				$data = $noticia_controller->deleteById($id);
 
 				if( !empty($noticia) && $data )
 				{
 					$imagen = $noticia["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

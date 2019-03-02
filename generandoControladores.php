@@ -62,8 +62,14 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '    try' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
-        $texto  .= '' . PHP_EOL;
-        $texto  .= '      $data = $'.($tabla).'->getByEstado();' . PHP_EOL;
+
+        $texto  .= '            ' . PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
+        $texto  .= '            ' . PHP_EOL;
+        // $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
+        $texto  .= '' . PHP_EOL;         
+        $texto  .= '      $data = $'.($tabla).'->getByEstado($bean_'.($tabla).');' . PHP_EOL;
         // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
         // $texto .= '        ' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
@@ -159,13 +165,14 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '      $'.($tabla).'  = new '.$cmTable.'($this->cnx);' . PHP_EOL;
-        $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
 
-        $texto .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
-        $texto .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
-
+        $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
+        $texto  .= '            ' . PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
         $texto  .= '' . PHP_EOL;
+
         $texto  .= '      $data = $'.($tabla).'->updateEstado($bean_'.($tabla).') ;' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
         $texto  .= '      return $data;'. PHP_EOL;
@@ -203,13 +210,13 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
 
          # Method DELETE
-        $texto  .= '  public function deleteById($params)' . PHP_EOL;
+        $texto  .= '  public function deleteById($'. $atributos[0] .')' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
-        $texto  .= '      extract($params) ;' . PHP_EOL;
-        $texto  .= '' . PHP_EOL;
+        // $texto  .= '      extract($params) ;' . PHP_EOL;
+        // $texto  .= '' . PHP_EOL;
         $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;

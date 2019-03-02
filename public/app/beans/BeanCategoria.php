@@ -12,7 +12,7 @@ class BeanCategoria{
     public function __construct(){}
 
     # Atributos
-    private $idcategoria;
+    private $categoria_id;
     private $nombre;
     private $url = "" ;
     private $imagen = "" ;
@@ -21,14 +21,14 @@ class BeanCategoria{
     private $created_up = NULL ;
 
     # METODOS
-    public function setIdcategoria($idcategoria_)
+    public function setCategoriaId($categoria_id_)
     {
-        $this->idcategoria = Validation::validate( $idcategoria_ );
+        $this->categoria_id = Validation::validate( $categoria_id_ );
     }
 
-    public function getIdcategoria()
+    public function getCategoriaId()
     {
-        return $this->idcategoria;
+        return $this->categoria_id;
     }
 
     public function setNombre($nombre_)

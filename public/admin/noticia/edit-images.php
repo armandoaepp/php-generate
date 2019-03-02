@@ -23,7 +23,7 @@ $noticia_img = $data['noticia_img'];
 
 //return ;
 
-$title_page = "Noticia Images";
+$title_page = "Noticia";
 ?>
 
 <!DOCTYPE html>
@@ -87,14 +87,14 @@ require_once "../layout/head_links.phtml";
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
+            <h4 class="page-header-title">Editar <?php echo $title_page; ?> Imagenes</h4>
           </div>
         </div>
         <div class="row">
 
           <div class="col-12 col-xl-12">
-            <form action="admin/noticia/update.php" method="POST" enctype="multipart/form-data">
-              <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
+            <form action="admin/noticia/save-images.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" class="form-control" name="accion" id="accionForm" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
 
@@ -115,11 +115,10 @@ require_once "../layout/head_links.phtml";
                       <div class="card ui-state-default">
                         <input type="hidden" name="ids_noticia_img[]"
                           value="<?php echo $images['id'] ?>">
-                        <a href="<?php echo $images['imagen'] ?>" data-fancybox="gallery"
-                          data-caption="<?php echo $images['descripcion'] ?>">
+                        <a href="<?php echo $images['imagen'] ?>" data-fancybox="gallery">
                           <img src="<?php echo $images['imagen'] ?>" class="img-fluid " alt="" />
                         </a>
-                        <button type="button" class="close ml-auto" aria-label="Close"
+                        <button type="button" class="close close-danger ml-auto" title="Eliminar" aria-label="Close"
                           onclick="event.preventDefault(); deleteItemImg(<?php echo $images['id'] ?>)">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -139,7 +138,7 @@ require_once "../layout/head_links.phtml";
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="imagen">Agregar Imagen</label>
                         </div>
-                        <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required
+                        <input data-file-img="images" type="file" class="form-control" name="imagen[]" id="imagen"
                           placeholder="Imagen" accept="image/*" multiple>
                       </div>
                     </div>
@@ -148,8 +147,6 @@ require_once "../layout/head_links.phtml";
                   <div class="col-12 mb-3">
                     <div class="preview-img" data-img-preview="preview" id="preview"></div>
                   </div>
-
-
 
               </div>
 
@@ -161,30 +158,7 @@ require_once "../layout/head_links.phtml";
             </form>
           </div>
 
-          <!-- imagenes detalle -->
-          <div class="col-12 mt-3 mt-md-5 text-right">
-            <a href="admin/noticia/edit-images.php?id=<?php echo $id; ?>">Editar Imagenes </a>
-            <hr>
-          </div>
-
-          <div class="col-12 mb-3">
-            <div class="row my-2">
-              <?php
-foreach ($noticia_img as &$images) {
-    ?>
-              <div class="col-6 col-sm-2">
-                <a href="<?php echo $images["imagen"] ?>" data-fancybox="gallery"
-                  data-caption="Caption for single image">
-                  <img src="<?php echo $images["imagen"] ?>" class="img-fluid " alt="" />
-                </a>
-              </div>
-
-              <?php
-}
-?>
-            </div>
-          </div>
-
+          
         </div>
 
       </div>
@@ -208,6 +182,7 @@ foreach ($noticia_img as &$images) {
 
               <input type="hidden" name="idRowModal" id="idRowModal">
               <input type="hidden" name="accion" id="accion">
+              <input type="hidden" name="estado" id="estado" value="1">
               <div id="dataTextModal">
               </div>
 
@@ -254,9 +229,7 @@ foreach ($noticia_img as &$images) {
         var inputs = $('#formModal').serializeFormJSON();
         var params = JSON.stringify(inputs);
 
-        console.log(params);
-        // console.log(inputs);
-        // return;
+        console.log(params); 
 
         $.ajax({
           url: './app/api/noticia-img/IndexNoticiaImg.php',
@@ -295,7 +268,8 @@ foreach ($noticia_img as &$images) {
     // modal DELETE
     function deleteItemImg(id, textRow) {
       $('#idRowModal').val(id);
-      $('#accion').val("deleteImg");
+      // $('#accion').val("deleteImg");
+      $('#accion').val("delete");
       var text = `¿Esta seguro de eliminar Imagen del <?php echo $title_page ?>?`;
       $('#dataTextModal').html(text);
       $('#btn-send').text("Eliminar");

@@ -152,7 +152,7 @@ $html = '
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/taller/IndexTaller.php",
+        url: "./app/api/'.$table.'/Index'.$cmTable.'.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",
@@ -301,18 +301,23 @@ $table_html .= '
                     }
 
                     /* estado */
-                    $title_estado = "" ;
-                    if(!empty($row["estado"])){
-                      if($row["estado"] == 1){
-                        $title_estado = "Eliminar" ;
-                      }
-                      else {
-                        $title_estado = "Recuperar" ;
-                      }
+                    $title_estado   = "";
+                    $class_estado   = "";
+                    $class_disabled = "";
+
+                    if($row["estado"] == 1)
+                    {
+                      $title_estado = "Eliminar" ;
+                    }
+                    else 
+                    {
+                      $title_estado   = "Recuperar" ;
+                      $class_estado   = "row-disabled";
+                      $class_disabled = "is-disabled";
                     }
                   ?>
 
-                <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
+                <tr class="<?php echo $class_estado ;?>" >
                 ' . PHP_EOL ;
 
 
@@ -331,7 +336,7 @@ $table_html .= '
             $table_html .= '
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.\' \' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -340,7 +345,7 @@ $table_html .= '
 
 $table_html .= '
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row[\'estado\'] ?>`);" title="<?php echo $title_estado ;?>">

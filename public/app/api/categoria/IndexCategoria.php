@@ -50,7 +50,7 @@ switch($evento)
       $categoria_controller = new CategoriaController($cnx) ; 
       $connection->beginTransaction();
         
-      $idcategoria = $inputs->idcategoria;
+      $categoria_id = $inputs->categoria_id;
       $nombre = $inputs->nombre;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
@@ -58,7 +58,7 @@ switch($evento)
       $created_up = $inputs->created_up;
         
       $params = array(
-                'idcategoria'=> $idcategoria,
+                'categoria_id'=> $categoria_id,
                 'nombre'=> $nombre,
                 'url'=> $url,
                 'imagen'=> $imagen,
@@ -91,7 +91,7 @@ switch($evento)
       $categoria_controller = new CategoriaController($cnx) ; 
       $connection->beginTransaction();
         
-      $idcategoria = $inputs->idcategoria;
+      $categoria_id = $inputs->categoria_id;
       $nombre = $inputs->nombre;
       $url = $inputs->url;
       $imagen = $inputs->imagen;
@@ -99,7 +99,7 @@ switch($evento)
       $created_up = $inputs->created_up;
         
       $params = array(
-                'idcategoria'=> $idcategoria,
+                'categoria_id'=> $categoria_id,
                 'nombre'=> $nombre,
                 'url'=> $url,
                 'imagen'=> $imagen,
@@ -128,11 +128,11 @@ switch($evento)
     try
     {
 
-      $idcategoria = $inputs->idcategoria;
+      $categoria_id = $inputs->categoria_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'idcategoria'=> $idcategoria,
+                'categoria_id'=> $categoria_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -177,7 +177,7 @@ switch($evento)
     try
     {
 
-      $idcategoria = $inputs->id;
+      $categoria_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -187,7 +187,7 @@ switch($evento)
       }
 
       $params = array(
-                'idcategoria'=> $idcategoria,
+                'categoria_id'=> $categoria_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -199,14 +199,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$categoria = $categoria_controller->find($params);
+				$categoria = $categoria_controller->find( $categoria_id );
 
-				$data = $categoria_controller->deleteById($params);
+				$data = $categoria_controller->deleteById( $categoria_id );
 
 				if( !empty($categoria) && $data )
 				{
-					$imagen = $categoria["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $categoria["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
@@ -231,7 +231,7 @@ switch($evento)
     try
     {
 
-      $idcategoria = $inputs->id;
+      $categoria_id = $inputs->id;
       $publicar = $inputs->publicar;
 
       if($publicar == "N"){
@@ -241,7 +241,7 @@ switch($evento)
       }
 
       $params = array(
-                'idcategoria'=> $idcategoria,
+                'categoria_id'=> $categoria_id,
                 'publicar'=> $publicar,
               ) ; 
 

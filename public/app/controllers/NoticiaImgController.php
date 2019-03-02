@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-
+    
   public function getAll()
   {
     try
@@ -58,8 +58,12 @@
     try
     {
       $noticia_img  = new NoticiaImg();
+            
+      $bean_noticia_img = new BeanNoticiaImg();
+            
+      $bean_noticia_img->setEstado($estado);
 
-      $data = $noticia_img->getByEstado();
+      $data = $noticia_img->getByEstado($bean_noticia_img);
 
       return $data ;
     }
@@ -73,17 +77,17 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $noticia_img  = new NoticiaImg($this->cnx);
 
       $bean_noticia_img = new BeanNoticiaImg();
-
+            
       $bean_noticia_img->setNoticiaId($noticia_id);
       $bean_noticia_img->setImagen($imagen);
       $bean_noticia_img->setItem($item);
-
+            
       $data = $noticia_img->save($bean_noticia_img) ;
 
       return $data ;
@@ -98,19 +102,19 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $noticia_img  = new NoticiaImg($this->cnx);
       $bean_noticia_img = new BeanNoticiaImg();
-
+            
       $bean_noticia_img->setId($id);
       $bean_noticia_img->setNoticiaId($noticia_id);
       $bean_noticia_img->setImagen($imagen);
       $bean_noticia_img->setItem($item);
 
       $data = $noticia_img->update($bean_noticia_img) ;
-
+            
       return $data;
     }
     catch (Exception $e)
@@ -123,17 +127,18 @@
   {
     try
     {
-
-      extract($params) ;
+            
+      extract($params) ; 
 
       $noticia_img  = new NoticiaImg($this->cnx);
+            
       $bean_noticia_img = new BeanNoticiaImg();
-
+            
       $bean_noticia_img->setId($id);
       $bean_noticia_img->setEstado($estado);
 
       $data = $noticia_img->updateEstado($bean_noticia_img) ;
-
+            
       return $data;
     }
     catch (Exception $e)
@@ -162,12 +167,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $noticia_img  = new NoticiaImg();
 
@@ -183,6 +186,30 @@
     catch (Exception $e)
     {
       throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updateItem($params = array() )
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $noticia_img  = new NoticiaImg($this->cnx);
+
+      $bean_noticia_img = new BeanNoticiaImg();
+            
+      $bean_noticia_img->setId($id); 
+      $bean_noticia_img->setItem($item);
+            
+      $data = $noticia_img->updateItem($bean_noticia_img) ;
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+        throw new Exception($e->getMessage());
     }
   }
 

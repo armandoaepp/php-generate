@@ -37,8 +37,12 @@
     try
     {
       $categoria  = new Categoria();
+            
+      $bean_categoria = new BeanCategoria();
+            
+      $bean_categoria->setEstado($estado);
 
-      $data = $categoria->getByEstado();
+      $data = $categoria->getByEstado($bean_categoria);
 
       return $data ;
     }
@@ -84,7 +88,7 @@
       $categoria  = new Categoria($this->cnx);
       $bean_categoria = new BeanCategoria();
             
-      $bean_categoria->setIdcategoria($idcategoria);
+      $bean_categoria->setCategoriaId($categoria_id);
       $bean_categoria->setNombre($nombre);
       $bean_categoria->setUrl($url);
       $bean_categoria->setImagen($imagen);
@@ -108,9 +112,10 @@
       extract($params) ; 
 
       $categoria  = new Categoria($this->cnx);
+            
       $bean_categoria = new BeanCategoria();
             
-      $bean_categoria->setIdcategoria($idcategoria);
+      $bean_categoria->setCategoriaId($categoria_id);
       $bean_categoria->setEstado($estado);
 
       $data = $categoria->updateEstado($bean_categoria) ;
@@ -131,7 +136,7 @@
 
       $bean_categoria = new BeanCategoria();
 
-      $bean_categoria->setIdcategoria($id);
+      $bean_categoria->setCategoriaId($id);
 
       $data = $categoria->find( $bean_categoria) ;
       return $data;
@@ -143,18 +148,16 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($categoria_id)
   {
     try
     {
-
-      extract($params) ;
 
       $categoria  = new Categoria();
 
       $bean_categoria = new BeanCategoria();
 
-      $bean_categoria->setIdcategoria($idcategoria);
+      $bean_categoria->setCategoriaId($categoria_id);
 
       $data = $categoria->deleteById( $bean_categoria ) ;
 
@@ -177,7 +180,7 @@
       $categoria  = new Categoria($this->cnx);
       $bean_categoria = new BeanCategoria();
             
-      $bean_categoria->setIdcategoria($idcategoria);
+      $bean_categoria->setCategoriaId($categoria_id);
       $bean_categoria->setPublicar($publicar);
 
       $data = $categoria->updatePublish($bean_categoria) ;

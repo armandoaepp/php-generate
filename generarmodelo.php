@@ -94,7 +94,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $concat.= '                      WHERE estado'." = '".'$estado'."'" .'; ";';
                 $concat.= PHP_EOL;
                 // $concat.="                       ".'";';
-                $texto .=  $concat.PHP_EOL;
+                $texto .=  $concat;
                 $texto .=  PHP_EOL;
                 //end QUERY
 

@@ -35,8 +35,7 @@
     );
 
     require_once "../layout/head_links.phtml";
-  ?>
-
+  ?> 
 </head>
 
 <body>
@@ -115,19 +114,20 @@
                     }
 
                     /* estado */
-                    $title_estado   = "";
-                    $class_estado   = "";
-                    $class_disabled = "";
-
-                    if($row["estado"] == 1)
+                    
+                    if(array_key_exists("estado",$row))
                     {
-                      $title_estado = "Eliminar" ;
-                    }
-                    else 
-                    {
-                      $title_estado   = "Recuperar" ;
-                      $class_estado   = "row-disabled";
-                      $class_disabled = "is-disabled";
+                      $title_estado = "";
+                      $class_estado = "";
+                      $class_disabled = "";
+                      if($row["estado"] == 1){
+                        $title_estado = "Eliminar" ;
+                      }
+                      else {
+                        $title_estado   = "Recuperar" ;
+                        $class_estado   = "row-disabled";
+                        $class_disabled = "is-disabled";
+                      }
                     }
                   ?>
 
@@ -139,14 +139,14 @@
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row['categoria_id'] ?>, `<?php echo $row['nombre'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row['categoria_id'] ?>, `<?php echo $row['nombre'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn .' ' .$class_disabled;  ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
             
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/categoria/editar.php?id=<?php echo $row["categoria_id"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" disabled href="admin/categoria/editar.php?id=<?php echo $row["categoria_id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["categoria_id"] ?>, `<?php echo $row['nombre'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">

@@ -44,7 +44,6 @@ class Categoria extends Connection {
       $this->query = "SELECT * FROM categoria
                       WHERE estado = '$estado'; ";
 
-
       $this->executeQuery();
 
       $data = $this->rows ;
@@ -64,7 +63,7 @@ class Categoria extends Connection {
     try{
       $bean_categoria->setCreatedUp( HelperDate::timestampsBd() );
 
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
       $nombre = $bean_categoria->getNombre();
       $url = $bean_categoria->getUrl();
       $imagen = $bean_categoria->getImagen();
@@ -108,7 +107,7 @@ class Categoria extends Connection {
   public function update($bean_categoria)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
       $nombre = $bean_categoria->getNombre();
       $url = $bean_categoria->getUrl();
       $imagen = $bean_categoria->getImagen();
@@ -119,7 +118,7 @@ class Categoria extends Connection {
                         url = '$url',
                         imagen = '$imagen',
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE categoria_id = '$categoria_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -139,12 +138,12 @@ class Categoria extends Connection {
   public function updateEstado($bean_categoria)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
       $estado = $bean_categoria->getEstado();
 
       $this->query = "UPDATE categoria SET 
                         estado = '$estado'
-                      WHERE idcategoria='$idcategoria'
+                      WHERE categoria_id='$categoria_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -164,9 +163,9 @@ class Categoria extends Connection {
   public function find($bean_categoria)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
 
-      $this->query = "SELECT * FROM categoria WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+      $this->query = "SELECT * FROM categoria WHERE categoria_id = '$categoria_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -185,10 +184,10 @@ class Categoria extends Connection {
   public function deleteById($bean_categoria)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
 
       $this->query = "DELETE FROM categoria
-                      WHERE idcategoria = '$idcategoria' LIMIT 1; ";
+                      WHERE categoria_id = '$categoria_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -208,12 +207,12 @@ class Categoria extends Connection {
   public function updatePublish($bean_categoria)
   {
     try{
-      $idcategoria = $bean_categoria->getIdcategoria();
+      $categoria_id = $bean_categoria->getCategoriaId();
       $publicar = $bean_categoria->getPublicar() ;
 
       $this->query = "UPDATE categoria SET 
                         publicar = '$publicar'
-                      WHERE idcategoria = '$idcategoria'
+                      WHERE categoria_id = '$categoria_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();

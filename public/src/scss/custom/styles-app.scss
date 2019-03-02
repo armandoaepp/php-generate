@@ -1,0 +1,44 @@
+.logo-admin {
+  max-width: 140px;
+}
+
+.img-view-edit {
+  max-height: 250px;
+}
+
+/* disabled row-disabled in table */
+
+.row-disabled {
+  color: $gray-600 !important;
+
+  .is-disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    // background-color: transparent !important;
+    pointer-events: none;
+  }
+
+}
+
+.close-danger {
+  font-size: 1.25rem;
+  position: absolute;
+  background-color: $danger !important;
+  right: -15px;
+  top: -15px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  opacity: .75;
+  color: $gray-100;
+  padding: 0;
+  transition: all 0.2s ease-in-out ;
+
+  &:hover {
+    opacity: .9!important;
+    color: #fff!important;
+
+  }
+}

@@ -7,4 +7,4 @@ if($('.scroll-item').length){
   
 }
 
-console.log('scroll-item', $('.scroll-item').length);
+// console.log('scroll-item', $('.scroll-item').length);

@@ -173,8 +173,9 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
-      $estado = $inputs->estado; 
+      // $id = $inputs->id;
+      $id = $inputs->idRowModal;
+      $estado = !empty($inputs->estado) ? $inputs->estado : 1; 
 
       if($estado == 1){
         $estado = 0 ;
@@ -195,14 +196,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$noticia_img = $noticia_img_controller->find($params);
+				$noticia_img = $noticia_img_controller->find( $id );
 
-				$data = $noticia_img_controller->deleteById($params);
+				$data = $noticia_img_controller->deleteById( $id );
 
 				if( !empty($noticia_img) && $data )
 				{
-					$imagen = $noticia_img["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $noticia_img["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

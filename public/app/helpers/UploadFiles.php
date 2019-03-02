@@ -140,7 +140,7 @@ class UploadFiles {
   {
     $path_file = IMAGES . '../' . $path_file ;
 
-    echo "path_file : ".$path_file ."\n" ;
+    // echo "path_file : ".$path_file ."\n" ;
 
     $unlink =  false ;
     if(!empty($path_file))

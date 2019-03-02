@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class NoticiaImg extends Connection {
-  # CONSTRUCT
+  # CONSTRUCT 
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -34,6 +34,7 @@ class NoticiaImg extends Connection {
     }
   }
 
+  # Method getByNoticiaId
   public function getByNoticiaId($bean_noticia_img)
   {
     try{
@@ -67,7 +68,6 @@ class NoticiaImg extends Connection {
 
       $this->query = "SELECT * FROM noticia_img
                       WHERE estado = '$estado'; ";
-
 
       $this->executeQuery();
 
@@ -134,7 +134,7 @@ class NoticiaImg extends Connection {
       $imagen = $bean_noticia_img->getImagen();
       $item = $bean_noticia_img->getItem();
 
-      $this->query = "UPDATE noticia_img SET
+      $this->query = "UPDATE noticia_img SET 
                         noticia_id = '$noticia_id',
                         imagen = '$imagen',
                         item = '$item'
@@ -161,7 +161,7 @@ class NoticiaImg extends Connection {
       $id = $bean_noticia_img->getId();
       $estado = $bean_noticia_img->getEstado();
 
-      $this->query = "UPDATE noticia_img SET
+      $this->query = "UPDATE noticia_img SET 
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -220,6 +220,31 @@ class NoticiaImg extends Connection {
       throw new Exception($e->getMessage());
 
     }
+  }
+
+  public function updateItem($bean_noticia_img){
+
+    try{
+
+      $id   = $bean_noticia_img->getId(); 
+      $item = $bean_noticia_img->getItem();
+
+      $this->query = "UPDATE noticia_img
+                      SET item = '$item'
+                      WHERE id = '$id';";
+
+      $this->executeQuery();
+
+      $status = $this->status ;
+
+      return $status;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+
   }
 
 }

@@ -280,14 +280,14 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 			if( $historial == 0 )
 			{
 
-				$' . $tabla . ' = $' . $tabla . '_controller->find($params);
+				$' . $tabla . ' = $' . $tabla . '_controller->find( $'.strtolower($atributos[0]).' );
 
-				$data = $' . $tabla . '_controller->deleteById($params);
+				$data = $' . $tabla . '_controller->deleteById( $'.strtolower($atributos[0]).' );
 
 				if( !empty($' . $tabla . ') && $data )
 				{
-					$imagen = $' . $tabla . '["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $' . $tabla . '["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
