@@ -50,7 +50,7 @@ switch($evento)
       $configuracion_controller = new ConfiguracionController($cnx) ; 
       $connection->beginTransaction();
         
-      $id = $inputs->id;
+      $configuracion_id = $inputs->configuracion_id;
       $titulo = $inputs->titulo;
       $horario = $inputs->horario;
       $direccion = $inputs->direccion;
@@ -64,7 +64,7 @@ switch($evento)
       $show_popup = $inputs->show_popup;
         
       $params = array(
-                'id'=> $id,
+                'configuracion_id'=> $configuracion_id,
                 'titulo'=> $titulo,
                 'horario'=> $horario,
                 'direccion'=> $direccion,
@@ -103,7 +103,7 @@ switch($evento)
       $configuracion_controller = new ConfiguracionController($cnx) ; 
       $connection->beginTransaction();
         
-      $id = $inputs->id;
+      $configuracion_id = $inputs->configuracion_id;
       $titulo = $inputs->titulo;
       $horario = $inputs->horario;
       $direccion = $inputs->direccion;
@@ -117,7 +117,7 @@ switch($evento)
       $show_popup = $inputs->show_popup;
         
       $params = array(
-                'id'=> $id,
+                'configuracion_id'=> $configuracion_id,
                 'titulo'=> $titulo,
                 'horario'=> $horario,
                 'direccion'=> $direccion,
@@ -152,11 +152,11 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
+      $configuracion_id = $inputs->configuracion_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'id'=> $id,
+                'configuracion_id'=> $configuracion_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -201,7 +201,7 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
+      $configuracion_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -211,7 +211,7 @@ switch($evento)
       }
 
       $params = array(
-                'id'=> $id,
+                'configuracion_id'=> $configuracion_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -223,14 +223,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$configuracion = $configuracion_controller->find($params);
+				$configuracion = $configuracion_controller->find( $configuracion_id );
 
-				$data = $configuracion_controller->deleteById($params);
+				$data = $configuracion_controller->deleteById( $configuracion_id );
 
 				if( !empty($configuracion) && $data )
 				{
-					$imagen = $configuracion["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $configuracion["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

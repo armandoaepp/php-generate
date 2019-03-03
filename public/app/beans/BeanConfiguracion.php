@@ -12,7 +12,7 @@ class BeanConfiguracion{
     public function __construct(){}
 
     # Atributos
-    private $id;
+    private $configuracion_id;
     private $titulo;
     private $horario;
     private $direccion;
@@ -24,16 +24,17 @@ class BeanConfiguracion{
     private $mapa;
     private $popup;
     private $show_popup;
+    private $estado = 1 ;
 
     # METODOS
-    public function setId($id_)
+    public function setConfiguracionId($configuracion_id_)
     {
-        $this->id = Validation::validate( $id_ );
+        $this->configuracion_id = Validation::validate( $configuracion_id_ );
     }
 
-    public function getId()
+    public function getConfiguracionId()
     {
-        return $this->id;
+        return $this->configuracion_id;
     }
 
     public function setTitulo($titulo_)
@@ -144,6 +145,16 @@ class BeanConfiguracion{
     public function getShowPopup()
     {
         return $this->show_popup;
+    }
+
+    public function setEstado($estado_)
+    {
+        $this->estado = Validation::validate( $estado_ );
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
     }
 
 }

@@ -23,8 +23,26 @@
       $configuracion  = new Configuracion();
 
       $data = $configuracion->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $configuracion  = new Configuracion();
+            
+      $bean_configuracion = new BeanConfiguracion();
+            
+      $bean_configuracion->setEstado($estado);
+
+      $data = $configuracion->getByEstado($bean_configuracion);
 
       return $data ;
     }
@@ -77,7 +95,7 @@
       $configuracion  = new Configuracion($this->cnx);
       $bean_configuracion = new BeanConfiguracion();
             
-      $bean_configuracion->setId($id);
+      $bean_configuracion->setConfiguracionId($configuracion_id);
       $bean_configuracion->setTitulo($titulo);
       $bean_configuracion->setHorario($horario);
       $bean_configuracion->setDireccion($direccion);
@@ -108,9 +126,10 @@
       extract($params) ; 
 
       $configuracion  = new Configuracion($this->cnx);
+            
       $bean_configuracion = new BeanConfiguracion();
             
-      $bean_configuracion->setId($id);
+      $bean_configuracion->setConfiguracionId($configuracion_id);
       $bean_configuracion->setEstado($estado);
 
       $data = $configuracion->updateEstado($bean_configuracion) ;
@@ -131,12 +150,9 @@
 
       $bean_configuracion = new BeanConfiguracion();
 
-      $bean_configuracion->setId($id);
+      $bean_configuracion->setConfiguracionId($id);
 
       $data = $configuracion->find( $bean_configuracion) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -146,18 +162,16 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($configuracion_id)
   {
     try
     {
-
-      extract($params) ;
 
       $configuracion  = new Configuracion();
 
       $bean_configuracion = new BeanConfiguracion();
 
-      $bean_configuracion->setId($id);
+      $bean_configuracion->setConfiguracionId($configuracion_id);
 
       $data = $configuracion->deleteById( $bean_configuracion ) ;
 

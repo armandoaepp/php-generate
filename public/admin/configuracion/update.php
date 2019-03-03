@@ -11,7 +11,7 @@
 
   $configuracion_controller = new ConfiguracionController();
 
-  $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $configuracion_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $titulo   = $_POST["titulo"] ;
   $horario   = $_POST["horario"] ;
@@ -25,7 +25,7 @@
   $popup   = $_POST["popup"] ;
   $show_popup   = $_POST["show_popup"] ;
   $params = array(
-    "id"   => $id,
+    "configuracion_id"   => $configuracion_id,
     "titulo"   => $titulo,
     "horario"   => $horario,
     "direccion"   => $direccion,

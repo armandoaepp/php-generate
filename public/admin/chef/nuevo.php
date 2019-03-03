@@ -151,9 +151,9 @@
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
-  <?php require_once "../layout/ckeditor.phtml"?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

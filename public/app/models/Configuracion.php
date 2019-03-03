@@ -14,12 +14,12 @@ class Configuracion extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM configuracion";
+      $this->query = "SELECT * FROM configuracion; ";
 
       $this->executeQuery();
 
@@ -34,11 +34,34 @@ class Configuracion extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_configuracion)
+  {
+    try{
+      $estado = $bean_configuracion->getEstado() ;
+
+      $this->query = "SELECT * FROM configuracion
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_configuracion)
   {
     try{
-      $id = $bean_configuracion->getId();
+      $configuracion_id = $bean_configuracion->getConfiguracionId();
       $titulo = $bean_configuracion->getTitulo();
       $horario = $bean_configuracion->getHorario();
       $direccion = $bean_configuracion->getDireccion();
@@ -50,6 +73,7 @@ class Configuracion extends Connection {
       $mapa = $bean_configuracion->getMapa();
       $popup = $bean_configuracion->getPopup();
       $show_popup = $bean_configuracion->getShowPopup();
+      $estado = $bean_configuracion->getEstado();
 
       $this->query = "INSERT INTO configuracion
                       (
@@ -63,7 +87,8 @@ class Configuracion extends Connection {
                         instagram,
                         mapa,
                         popup,
-                        show_popup
+                        show_popup,
+                        estado
                       )
                       VALUES(
                         '$titulo',
@@ -76,12 +101,13 @@ class Configuracion extends Connection {
                         '$instagram',
                         '$mapa',
                         '$popup',
-                        '$show_popup'
+                        '$show_popup',
+                        '$estado'
                       ); ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -93,11 +119,11 @@ class Configuracion extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_configuracion)
   {
     try{
-      $id = $bean_configuracion->getId();
+      $configuracion_id = $bean_configuracion->getConfiguracionId();
       $titulo = $bean_configuracion->getTitulo();
       $horario = $bean_configuracion->getHorario();
       $direccion = $bean_configuracion->getDireccion();
@@ -122,12 +148,12 @@ class Configuracion extends Connection {
                         mapa = '$mapa',
                         popup = '$popup',
                         show_popup = '$show_popup'
-                      WHERE id = '$id'
+                      WHERE configuracion_id = '$configuracion_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -138,13 +164,38 @@ class Configuracion extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Eliminar(Update Estado)
+  public function updateEstado($bean_configuracion)
+  {
+    try{
+      $configuracion_id = $bean_configuracion->getConfiguracionId();
+      $estado = $bean_configuracion->getEstado();
+
+      $this->query = "UPDATE configuracion SET 
+                        estado = '$estado'
+                      WHERE configuracion_id='$configuracion_id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method Buscar por ID
   public function find($bean_configuracion)
   {
     try{
-      $id = $bean_configuracion->getId();
+      $configuracion_id = $bean_configuracion->getConfiguracionId();
 
-      $this->query = "SELECT * FROM configuracion WHERE id = '$id' LIMIT 1; ";
+      $this->query = "SELECT * FROM configuracion WHERE configuracion_id = '$configuracion_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -159,18 +210,18 @@ class Configuracion extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_configuracion)
   {
     try{
-      $id = $bean_configuracion->getId();
+      $configuracion_id = $bean_configuracion->getConfiguracionId();
 
       $this->query = "DELETE FROM configuracion
-                      WHERE id = '$id' LIMIT 1; ";
+                      WHERE configuracion_id = '$configuracion_id' LIMIT 1; ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

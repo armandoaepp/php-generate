@@ -49,7 +49,7 @@ require_once "../layout/head_links.phtml";
   <!-- sortable -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
- 
+
 </head>
 
 <body>
@@ -79,7 +79,7 @@ require_once "../layout/head_links.phtml";
             </a>
           </li>
 
-          
+
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             Editar Imagenes
           </li>
@@ -89,7 +89,8 @@ require_once "../layout/head_links.phtml";
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> Imagenes</h4>
+            <h4 class="page-header-title">Editar
+              <?php echo $title_page; ?> Imagenes</h4>
           </div>
         </div>
         <div class="row">
@@ -115,10 +116,9 @@ require_once "../layout/head_links.phtml";
 
                     <div class="col-6 col-sm-3 col-md-2 mb-3 ">
                       <div class="card ui-state-default">
-                      <!-- <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> -->
-                      <span class="icon-move"> <i class="fas fa-arrows-alt"></i> </span>
-                        <input type="hidden" name="ids_noticia_img[]"
-                          value="<?php echo $images['id'] ?>">
+                        <!-- <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> -->
+                        <span class="icon-move"> <i class="fas fa-arrows-alt"></i> </span>
+                        <input type="hidden" name="ids_noticia_img[]" value="<?php echo $images['id'] ?>">
                         <a href="<?php echo $images['imagen'] ?>" data-fancybox="gallery">
                           <img src="<?php echo $images['imagen'] ?>" class="img-fluid " alt="" />
                         </a>
@@ -136,21 +136,21 @@ require_once "../layout/head_links.phtml";
                 </div>
 
                 <div class="col-12 mb-3">
-                    <hr>
-                    <div class="form-group">
-                      <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="imagen">Agregar Imagen</label>
-                        </div>
-                        <input data-file-img="images" type="file" class="form-control" name="imagen[]" id="imagen"
-                          placeholder="Imagen" accept="image/*" multiple>
+                  <hr>
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="imagen">Agregar Imagen</label>
                       </div>
+                      <input data-file-img="images" type="file" class="form-control" name="imagen[]" id="imagen"
+                        placeholder="Imagen" accept="image/*" multiple>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-12 mb-3">
-                    <div class="preview-img" data-img-preview="preview" id="preview"></div>
-                  </div>
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
 
               </div>
 
@@ -162,7 +162,7 @@ require_once "../layout/head_links.phtml";
             </form>
           </div>
 
-          
+
         </div>
 
       </div>
@@ -171,48 +171,50 @@ require_once "../layout/head_links.phtml";
 
   </div>
 
-   <!-- Modal Delete -->
-   <form id="formModal">
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle text-uppercase">Eliminar <?php echo $title_page ?> </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+  <!-- Modal Delete -->
+  <form id="formModal">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle text-uppercase">Eliminar
+              <?php echo $title_page ?>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-              <input type="hidden" name="idRowModal" id="idRowModal">
-              <input type="hidden" name="accion" id="accion">
-              <input type="hidden" name="estado" id="estado" value="1">
-              <div id="dataTextModal">
+            <input type="hidden" name="idRowModal" id="idRowModal">
+            <input type="hidden" name="accion" id="accion">
+            <input type="hidden" name="estado" id="estado" value="1">
+            <div id="dataTextModal">
+            </div>
+
+            <div class="col-12 my-3">
+              <label for="si" class="text-bold "> Conservar en historial: </label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="historial" id="si" value="1">
+                <label class="form-check-label" for="si">SI</label>
               </div>
 
-              <div class="col-12 my-3">
-                <label for="si" class="text-bold "> Conservar en historial: </label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="historial" id="si" value="1" >
-                  <label class="form-check-label" for="si">SI</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="historial" id="no" value="0" checked="checked">
-                  <label class="form-check-label" for="no">NO</label>
-                </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="historial" id="no" value="0" checked="checked">
+                <label class="form-check-label" for="no">NO</label>
               </div>
+            </div>
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-danger" id="btn-send">Eliminar </button>
-              <div id="alertModal"></div>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger" id="btn-send">Eliminar </button>
+            <div id="alertModal"></div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
+  </form>
 
   <?php require_once "../layout/foot_links.phtml"?>
 
@@ -220,7 +222,6 @@ require_once "../layout/head_links.phtml";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
   <!-- detalle -->
   <script>
-
     (function ($) {
       function processFormModal(event) {
         event.preventDefault();
@@ -233,7 +234,7 @@ require_once "../layout/head_links.phtml";
         var inputs = $('#formModal').serializeFormJSON();
         var params = JSON.stringify(inputs);
 
-        console.log(params); 
+        console.log(params);
 
         $.ajax({
           url: './app/api/noticia-img/IndexNoticiaImg.php',
@@ -249,8 +250,7 @@ require_once "../layout/head_links.phtml";
               $('#myModal').modal('hide');
               $("#formModal")[0].reset();
               location.reload();
-            }
-            else {
+            } else {
               $('#alertModal').html('Error en servidor: ' + data.data);
             }
 
