@@ -13,8 +13,9 @@
 
   $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $titulo   = $_POST["titulo"] ;
-  $subtitulo   = $_POST["subtitulo"] ;
+  $nombre   = $_POST["nombre"] ;
+  $apellidos   = $_POST["apellidos"] ;
+  $cargo   = $_POST["cargo"] ;
   $resumen   = $_POST["resumen"] ;
   $descripcion   = $_POST["descripcion"] ;
   $item   = $_POST["item"] ;
@@ -31,8 +32,9 @@
 
   $params = array(
     "id"   => $id,
-    "titulo"   => $titulo,
-    "subtitulo"   => $subtitulo,
+    "nombre"   => $nombre,
+    "apellidos"   => $apellidos,
+    "cargo"   => $cargo,
     "resumen"   => $resumen,
     "descripcion"   => $descripcion,
     "item"   => $item,

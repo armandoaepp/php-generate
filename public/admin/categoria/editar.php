@@ -84,8 +84,9 @@
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
+          <div class="col-12"> 
+            <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
@@ -98,8 +99,8 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombre">nombre : </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre"  value="<?php echo $categoria['nombre'] ?>" >
+                  <label for="nombre">Nombre : </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombre"  value="<?php echo $categoria['nombre'] ?>" >
                 </div>
               </div>
 

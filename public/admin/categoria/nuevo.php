@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-          Nuevo <?php echo $title_page; ?>
+            Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -60,7 +60,8 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Nuevo <?php echo $title_page; ?> </h4>
+            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
@@ -72,8 +73,8 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombre">nombre : </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="nombre">
+                  <label for="nombre">Nombre : </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombre">
                 </div>
               </div>
 

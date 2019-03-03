@@ -13,16 +13,17 @@
 
     try
     {
-      // $evento_controller = new EventoController() ;
-      $evento_controller = new NoticiaController() ;
+      // $controller = new EventoController() ;
+      // $controller = new NoticiaController() ;
+      $controller = new ChefController() ;
 
-       $data = $evento_controller->getAll() ;
+       $data = $controller->getAll() ;
        $data = Serialize::unSerializeArray($data);
 
        // for ($i=0; $i < 1; $i++) {
          for ($i=0; $i < count($data); $i++) {
           // print_r($data[$i]);
-            $evento_controller->update($data[$i]) ;
+            $controller->update($data[$i]) ;
        }
 
       // $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);

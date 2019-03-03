@@ -1,4 +1,3 @@
-
 <?php
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
@@ -38,17 +37,17 @@
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
-        "follow" => "",
+        "titulo"      => "$title_page",
+        "follow"      => "",
         "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
+        "keywords"    => "administrador",
+        "active"      => [1, 0],
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
+        "sidebar_class"  => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
+        "sidebar_active" => [2, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -77,7 +76,8 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Editar <?php echo $title_page; ?>
+            Editar
+            <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -85,66 +85,82 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
+            <h5 class="page-header-title">Editar
+              <?php echo $title_page; ?>
+            </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12">
             <form action="admin/chef/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo"  value="<?php echo $chef['titulo'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="subtitulo">subtitulo : </label>
-                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" required placeholder="subtitulo"  value="<?php echo $chef['subtitulo'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="resumen">resumen : </label>
-                  <input type="text" class="form-control" name="resumen" id="resumen" required placeholder="resumen"  value="<?php echo $chef['resumen'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="descripcion">descripcion : </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion"  value="<?php echo $chef['descripcion'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item"  value="<?php echo $chef['item'] ?>" >
-                </div>
-              </div>
 
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
-                    <label class="form-check-label" for="no">NO</label>
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="nombre">Nombre : </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombre"
+                      value="<?php echo $chef['nombre'] ?>">
                   </div>
                 </div>
-              </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="apellidos">Apellidos : </label>
+                    <input type="text" class="form-control" name="apellidos" id="apellidos" required placeholder="Apellidos"
+                      value="<?php echo $chef['apellidos'] ?>">
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="cargo">Cargo : </label>
+                    <input type="text" class="form-control" name="cargo" id="cargo" required placeholder="Cargo" value="<?php echo $chef['cargo'] ?>">
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-group">
+                    <label for="resumen">Resumen : </label>
+                    <input type="text" class="form-control" name="resumen" id="resumen" required placeholder="Resumen"
+                      value="<?php echo $chef['resumen'] ?>">
+                  </div>
+                </div>
 
-              <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $chef['imagen']; ?>">
-                <img src="<?php echo $chef['imagen'] ?>" class="img-fluid img-view-edit mb-2">
-              </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?>
+                      >
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?>
+                      >
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion : </label> 
+                  <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30" rows="6"><?php echo $chef['descripcion']; ?></textarea>
+
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="item">Item : </label>
+                    <input type="text" class="form-control" name="item" id="item" required placeholder="Item" value="<?php echo $chef['item'] ?>">
+                  </div>
+                </div> -->
+
+                <div class="col-sm-6 col-md-6 text-center">
+                  <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $chef['imagen']; ?>">
+                  <img src="<?php echo $chef['imagen'] ?>" class="img-fluid img-view-edit mb-2">
+                </div>
                 <div class="col-12 mb-3">
                   <hr>
                   <div class="form-group">
@@ -152,7 +168,7 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="imagen">Nueva Imagen</label>
                       </div>
-                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
                     </div>
                   </div>
                 </div>
@@ -160,7 +176,7 @@
                 <div class="col-12 mb-3">
                   <div class="preview-img" data-img-preview="preview" id="preview"></div>
                 </div>
-              
+
               </div>
 
               <div class="w-100 text-center">
@@ -179,7 +195,8 @@
 
   </div>
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

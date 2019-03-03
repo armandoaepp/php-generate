@@ -11,25 +11,27 @@
 
   $chef_controller = new ChefController();
 
-  $titulo   = $_POST["titulo"] ;
-  $subtitulo   = $_POST["subtitulo"] ;
-  $resumen   = $_POST["resumen"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $item   = $_POST["item"] ;
-  $publicar   = $_POST["publicar"] ;
-  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+  $nombre      = $_POST["nombre"] ;
+  $apellidos   = $_POST["apellidos"] ;
+  $cargo       = $_POST["cargo"] ;
+  $resumen     = $_POST["resumen"] ;
+  $descripcion = $_POST["descripcion"] ;
+  $item        = $_POST["item"] ;
+  $publicar    = $_POST["publicar"] ;
+  $file_imagen = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "chef") ;
 
   $params = array(
-    "titulo"   => $titulo,
-    "subtitulo"   => $subtitulo,
-    "resumen"   => $resumen,
-    "descripcion"   => $descripcion,
-    "item"   => $item,
-    "publicar"   => $publicar,
-    "imagen"  => $imagen,
+    "nombre"      => $nombre,
+    "apellidos"   => $apellidos,
+    "cargo"       => $cargo,
+    "resumen"     => $resumen,
+    "descripcion" => $descripcion,
+    "item"        => $item,
+    "publicar"    => $publicar,
+    "imagen"      => $imagen,
   );
 
 

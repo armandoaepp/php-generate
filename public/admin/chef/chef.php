@@ -86,11 +86,10 @@
               <thead>
                 <tr>
                   <th width="50">Id </th>
-                  <th>Titulo </th>
-                  <th>Subtitulo </th>
-                  <th>Resumen </th>
-                  <th>Descripcion </th>
-                  <th>Item </th>
+                  <th>Nombre </th>
+                  <th>Apellidos </th>
+                  <th>Cargo </th>
+                  <th>Resumen </th> 
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -137,15 +136,14 @@
                 <tr class="<?php echo $class_estado ;?>" >
                 
                   <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["titulo"] ?> </td>
-                  <td> <?php echo $row["subtitulo"] ?> </td>
+                  <td> <?php echo $row["nombre"] ?> </td>
+                  <td> <?php echo $row["apellidos"] ?> </td>
+                  <td> <?php echo $row["cargo"] ?> </td>
                   <td> <?php echo $row["resumen"] ?> </td>
-                  <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["item"] ?> </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['nombre'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -155,7 +153,7 @@
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/chef/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['nombre'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>

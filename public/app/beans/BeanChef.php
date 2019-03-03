@@ -13,8 +13,9 @@ class BeanChef{
 
     # Atributos
     private $id;
-    private $titulo;
-    private $subtitulo;
+    private $nombre;
+    private $apellidos;
+    private $cargo;
     private $resumen;
     private $descripcion;
     private $imagen = "" ;
@@ -34,24 +35,34 @@ class BeanChef{
         return $this->id;
     }
 
-    public function setTitulo($titulo_)
+    public function setNombre($nombre_)
     {
-        $this->titulo = Validation::validate( $titulo_ );
+        $this->nombre = Validation::validate( $nombre_ );
     }
 
-    public function getTitulo()
+    public function getNombre()
     {
-        return $this->titulo;
+        return $this->nombre;
     }
 
-    public function setSubtitulo($subtitulo_)
+    public function setApellidos($apellidos_)
     {
-        $this->subtitulo = Validation::validate( $subtitulo_ );
+        $this->apellidos = Validation::validate( $apellidos_ );
     }
 
-    public function getSubtitulo()
+    public function getApellidos()
     {
-        return $this->subtitulo;
+        return $this->apellidos;
+    }
+
+    public function setCargo($cargo_)
+    {
+        $this->cargo = Validation::validate( $cargo_ );
+    }
+
+    public function getCargo()
+    {
+        return $this->cargo;
     }
 
     public function setResumen($resumen_)

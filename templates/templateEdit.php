@@ -99,13 +99,14 @@ $html .= '
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
+          <div class="col-12"> 
+            <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12">
             <form action="admin/'. $url .'/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
@@ -120,8 +121,8 @@ for ($i = 1; $i < count($atributos); $i++)
 
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
-            $html .= '                  <label for="' . $atributos[$i] . '">' . $atributos[$i] . ' : </label>' . PHP_EOL;
-            $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . $atributos[$i] .'"  value="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" >' . PHP_EOL;
+            $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ' : </label>' . PHP_EOL;
+            $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . toCamelCase($atributos[$i]) .'"  value="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" >' . PHP_EOL;
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;
     }

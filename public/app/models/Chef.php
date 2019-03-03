@@ -63,21 +63,23 @@ class Chef extends Connection {
     try{
       $bean_chef->setCreatedUp( HelperDate::timestampsBd() );
 
-      $id = $bean_chef->getId();
-      $titulo = $bean_chef->getTitulo();
-      $subtitulo = $bean_chef->getSubtitulo();
-      $resumen = $bean_chef->getResumen();
+      $id          = $bean_chef->getId();
+      $nombre      = $bean_chef->getNombre();
+      $apellidos   = $bean_chef->getApellidos();
+      $cargo       = $bean_chef->getCargo();
+      $resumen     = $bean_chef->getResumen();
       $descripcion = $bean_chef->getDescripcion();
-      $imagen = $bean_chef->getImagen();
-      $item = $bean_chef->getItem();
-      $publicar = $bean_chef->getPublicar();
-      $estado = $bean_chef->getEstado();
-      $created_up = $bean_chef->getCreatedUp();
+      $imagen      = $bean_chef->getImagen();
+      $item        = $bean_chef->getItem();
+      $publicar    = $bean_chef->getPublicar();
+      $estado      = $bean_chef->getEstado();
+      $created_up  = $bean_chef->getCreatedUp();
 
       $this->query = "INSERT INTO chef
                       (
-                        titulo,
-                        subtitulo,
+                        nombre,
+                        apellidos,
+                        cargo,
                         resumen,
                         descripcion,
                         imagen,
@@ -87,8 +89,9 @@ class Chef extends Connection {
                         created_up
                       )
                       VALUES(
-                        '$titulo',
-                        '$subtitulo',
+                        '$nombre',
+                        '$apellidos',
+                        '$cargo',
                         '$resumen',
                         '$descripcion',
                         '$imagen',
@@ -116,22 +119,23 @@ class Chef extends Connection {
   public function update($bean_chef)
   {
     try{
-      $id = $bean_chef->getId();
-      $titulo = $bean_chef->getTitulo();
-      $subtitulo = $bean_chef->getSubtitulo();
-      $resumen = $bean_chef->getResumen();
+      $id          = $bean_chef->getId();
+      $nombre      = $bean_chef->getNombre();
+      $apellidos   = $bean_chef->getApellidos();
+      $cargo       = $bean_chef->getCargo();
+      $resumen     = $bean_chef->getResumen();
       $descripcion = $bean_chef->getDescripcion();
-      $imagen = $bean_chef->getImagen();
-      $item = $bean_chef->getItem();
-      $publicar = $bean_chef->getPublicar();
+      $imagen      = $bean_chef->getImagen();
+      // $item        = $bean_chef->getItem();
+      $publicar    = $bean_chef->getPublicar();
 
       $this->query = "UPDATE chef SET 
-                        titulo = '$titulo',
-                        subtitulo = '$subtitulo',
+                        nombre = '$nombre',
+                        apellidos = '$apellidos',
+                        cargo = '$cargo',
                         resumen = '$resumen',
                         descripcion = '$descripcion',
-                        imagen = '$imagen',
-                        item = '$item',
+                        imagen = '$imagen',                        
                         publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";

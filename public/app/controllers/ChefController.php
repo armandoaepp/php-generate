@@ -60,11 +60,16 @@
       extract($params) ; 
 
       $chef  = new Chef($this->cnx);
+      
+      # item + 1 
+      $all = $chef->getAll();
+      $item = count($all) + 1;
 
       $bean_chef = new BeanChef();
             
-      $bean_chef->setTitulo($titulo);
-      $bean_chef->setSubtitulo($subtitulo);
+      $bean_chef->setNombre($nombre);
+      $bean_chef->setApellidos($apellidos);
+      $bean_chef->setCargo($cargo);
       $bean_chef->setResumen($resumen);
       $bean_chef->setDescripcion($descripcion);
       $bean_chef->setImagen($imagen);
@@ -92,12 +97,13 @@
       $bean_chef = new BeanChef();
             
       $bean_chef->setId($id);
-      $bean_chef->setTitulo($titulo);
-      $bean_chef->setSubtitulo($subtitulo);
+      $bean_chef->setNombre($nombre);
+      $bean_chef->setApellidos($apellidos);
+      $bean_chef->setCargo($cargo);
       $bean_chef->setResumen($resumen);
       $bean_chef->setDescripcion($descripcion);
       $bean_chef->setImagen($imagen);
-      $bean_chef->setItem($item);
+      // $bean_chef->setItem($item);
       $bean_chef->setPublicar($publicar);
 
       $data = $chef->update($bean_chef) ;

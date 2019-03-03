@@ -51,8 +51,9 @@ switch($evento)
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $titulo = $inputs->titulo;
-      $subtitulo = $inputs->subtitulo;
+      $nombre = $inputs->nombre;
+      $apellidos = $inputs->apellidos;
+      $cargo = $inputs->cargo;
       $resumen = $inputs->resumen;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
@@ -62,8 +63,9 @@ switch($evento)
         
       $params = array(
                 'id'=> $id,
-                'titulo'=> $titulo,
-                'subtitulo'=> $subtitulo,
+                'nombre'=> $nombre,
+                'apellidos'=> $apellidos,
+                'cargo'=> $cargo,
                 'resumen'=> $resumen,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
@@ -98,8 +100,9 @@ switch($evento)
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $titulo = $inputs->titulo;
-      $subtitulo = $inputs->subtitulo;
+      $nombre = $inputs->nombre;
+      $apellidos = $inputs->apellidos;
+      $cargo = $inputs->cargo;
       $resumen = $inputs->resumen;
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
@@ -109,8 +112,9 @@ switch($evento)
         
       $params = array(
                 'id'=> $id,
-                'titulo'=> $titulo,
-                'subtitulo'=> $subtitulo,
+                'nombre'=> $nombre,
+                'apellidos'=> $apellidos,
+                'cargo'=> $cargo,
                 'resumen'=> $resumen,
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
