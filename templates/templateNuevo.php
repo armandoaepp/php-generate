@@ -32,7 +32,7 @@ $html .= '
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,7 +85,7 @@ for ($i = 1; $i < count($atributos); $i++)
     if ( !verificarItem($atributos[$i]) )
     {
 
-            $html .= '              <div class="col-md-6">' . PHP_EOL;
+            $html .= '              <div class="col-md-12">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
             $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
             $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . toCamelCase($atributos[$i]) .'">' . PHP_EOL;
@@ -106,7 +106,7 @@ for ($i = 1; $i < count($atributos); $i++)
     elseif(strtolower(trim($atributos[$i])) == "publicar")
     {
     $html .= '
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
                   <div class="form-check form-check-inline">
@@ -160,7 +160,7 @@ $html .= '
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
 </body>
 

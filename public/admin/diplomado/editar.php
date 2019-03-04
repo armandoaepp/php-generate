@@ -37,7 +37,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
+        "sidebar_active" => [1, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -73,7 +73,7 @@
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12"> 
+          <div class="col-12">
             <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
@@ -245,7 +245,7 @@
 
   </div>
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
 </body>
 

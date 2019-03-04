@@ -15,6 +15,17 @@
 
   $amigos = $amigos_controller->find($id);
 
+  $publicar = trim($amigos["publicar"]);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Amigos";
 
 ?>
@@ -37,7 +48,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
+        "sidebar_active" => [1, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -73,7 +84,7 @@
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12"> 
+          <div class="col-12">
             <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
@@ -106,14 +117,22 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="orden">Orden: </label>
-                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="Orden"  value="<?php echo $amigos['orden'] ?>" >
+                  <label for="item">Item: </label>
+                  <input type="text" class="form-control" name="item" id="item" required placeholder="Item"  value="<?php echo $amigos['item'] ?>" >
                 </div>
               </div>
+
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="fecha">Fecha: </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="Fecha"  value="<?php echo $amigos['fecha'] ?>" >
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
                 </div>
               </div>
 
@@ -155,7 +174,7 @@
 
   </div>
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
 </body>
 

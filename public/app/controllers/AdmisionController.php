@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $admision  = new Admision();
             
       $bean_admision = new BeanAdmision();
@@ -69,6 +72,7 @@
       $bean_admision->setHorarios($horarios);
       $bean_admision->setInversion($inversion);
       $bean_admision->setEmail($email);
+      $bean_admision->setPublicar($publicar);
             
       $data = $admision->save($bean_admision) ;
 
@@ -97,6 +101,7 @@
       $bean_admision->setHorarios($horarios);
       $bean_admision->setInversion($inversion);
       $bean_admision->setEmail($email);
+      $bean_admision->setPublicar($publicar);
 
       $data = $admision->update($bean_admision) ;
             
@@ -167,6 +172,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $admision  = new Admision($this->cnx);
+      $bean_admision = new BeanAdmision();
+            
+      $bean_admision->setId($id);
+      $bean_admision->setPublicar($publicar);
+
+      $data = $admision->updatePublish($bean_admision) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $admision  = new Admision($this->cnx);
+      $bean_admision = new BeanAdmision();
+            
+      $bean_admision->setPublicar($publicar);
+
+      $data = $admision->getPublished($bean_admision) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

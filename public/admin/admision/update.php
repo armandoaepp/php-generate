@@ -18,6 +18,7 @@
   $horarios   = $_POST["horarios"] ;
   $inversion   = $_POST["inversion"] ;
   $email   = $_POST["email"] ;
+  $publicar   = $_POST["publicar"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -35,6 +36,7 @@
     "horarios"   => $horarios,
     "inversion"   => $inversion,
     "email"   => $email,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
   );
 

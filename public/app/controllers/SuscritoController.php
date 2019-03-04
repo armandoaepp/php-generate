@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $suscrito  = new Suscrito();
             
       $bean_suscrito = new BeanSuscrito();

@@ -70,7 +70,7 @@
             <form action="admin/chef/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-6 col-lg-4">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
@@ -92,7 +92,7 @@
               <div class="col-md-10">
                 <div class="form-group">
                   <label for="resumen">Resumen: </label>
-                  <input type="text" class="form-control" name="resumen" id="resumen" required placeholder="Resumen">
+                  <input type="text" class="form-control" name="resumen" id="resumen" placeholder="Resumen">
                 </div>
               </div>
               <div class="col-md-2">
@@ -132,7 +132,7 @@
               <div class="col-12 mb-3">
                 <div class="preview-img" data-img-preview="preview" id="preview"></div>
               </div>
-            
+
               </div>
 
               <div class="w-100 text-center">

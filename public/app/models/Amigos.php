@@ -61,14 +61,17 @@ class Amigos extends Connection {
   public function save($bean_amigos)
   {
     try{
+      $bean_amigos->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_amigos->getId();
       $titulo = $bean_amigos->getTitulo();
       $imagen = $bean_amigos->getImagen();
       $imagen_2 = $bean_amigos->getImagen2();
       $email = $bean_amigos->getEmail();
-      $orden = $bean_amigos->getOrden();
+      $item = $bean_amigos->getItem();
+      $publicar = $bean_amigos->getPublicar();
       $estado = $bean_amigos->getEstado();
-      $fecha = $bean_amigos->getFecha();
+      $created_up = $bean_amigos->getCreatedUp();
 
       $this->query = "INSERT INTO amigos
                       (
@@ -76,18 +79,20 @@ class Amigos extends Connection {
                         imagen,
                         imagen_2,
                         email,
-                        orden,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
                         '$imagen',
                         '$imagen_2',
                         '$email',
-                        '$orden',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
@@ -113,16 +118,16 @@ class Amigos extends Connection {
       $imagen = $bean_amigos->getImagen();
       $imagen_2 = $bean_amigos->getImagen2();
       $email = $bean_amigos->getEmail();
-      $orden = $bean_amigos->getOrden();
-      $fecha = $bean_amigos->getFecha();
+      $item = $bean_amigos->getItem();
+      $publicar = $bean_amigos->getPublicar();
 
       $this->query = "UPDATE amigos SET 
                         titulo = '$titulo',
                         imagen = '$imagen',
                         imagen_2 = '$imagen_2',
                         email = '$email',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
@@ -197,6 +202,56 @@ class Amigos extends Connection {
       $this->executeQuery();
 
       $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_amigos)
+  {
+    try{
+      $id = $bean_amigos->getId();
+      $publicar = $bean_amigos->getPublicar() ;
+
+      $this->query = "UPDATE amigos SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_amigos)
+  {
+    try{
+      $publicar = $bean_amigos->getPublicar() ;
+
+      $this->query = "SELECT * FROM amigos
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

@@ -19,7 +19,8 @@
       // $controller = new TallerController() ;
       // $controller = new AdmisionController() ;
       // $controller = new AmigosController() ;
-      $controller = new CampusController() ;
+      // $controller = new CampusController() ;
+      $controller = new RedController() ;
 
        $data = $controller->getAll() ;
        $data = Serialize::unSerializeArray($data);

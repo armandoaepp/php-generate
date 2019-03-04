@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-          Nuevo <?php echo $title_page; ?>
+            Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -60,32 +60,33 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Nuevo <?php echo $title_page; ?> </h4>
+            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12">
             <form action="admin/noticia-img/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="noticia_id">noticia_id : </label>
-                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="noticia_id">
+                  <label for="noticia_id">NoticiaId: </label>
+                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="NoticiaId">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item">
+                  <label for="item">Item: </label>
+                  <input type="text" class="form-control" name="item" id="item" required placeholder="Item">
                 </div>
               </div>
 
               <div class="col-12 mb-3">
                 <div class="form-group">
-                  <label for="imagen">Imagen :</label>
+                  <label for="imagen">Imagen:</label>
                   <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
                 </div>
               </div>

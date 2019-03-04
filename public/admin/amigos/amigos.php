@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -89,8 +89,8 @@
                   <th>Titulo </th>
                   <th>Imagen_2 </th>
                   <th>Email </th>
-                  <th>Orden </th>
-                  <th>Fecha </th>
+                  <th>Item </th>
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -125,7 +125,7 @@
                     {
                       $title_estado = "Eliminar" ;
                     }
-                    else 
+                    else
                     {
                       $title_estado   = "Recuperar" ;
                       $class_estado   = "row-disabled";
@@ -139,8 +139,15 @@
                   <td> <?php echo $row["titulo"] ?> </td>
                   <td> <?php echo $row["imagen_2"] ?> </td>
                   <td> <?php echo $row["email"] ?> </td>
-                  <td> <?php echo $row["orden"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <td> <?php echo $row["item"] ?> </td>
+
+                  <td class="text-center">
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/amigos/editar.php?id=<?php echo $row["id"] ?>" title="Editar">

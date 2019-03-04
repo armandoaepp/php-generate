@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [5,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -70,77 +70,88 @@
             <form action="admin/red/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
-              <div class="col-md-6">
+
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
                   <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="subtitulo">Subtitulo: </label>
-                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" required placeholder="Subtitulo">
+                  <label for="subtitulo">Empresa: </label>
+                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" required placeholder="Empresa">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="tipo">Tipo: </label>
-                  <input type="text" class="form-control" name="tipo" id="tipo" required placeholder="Tipo">
+                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="vacantes">Vacantes: </label>
-                  <input type="text" class="form-control" name="vacantes" id="vacantes" required placeholder="Vacantes">
+                  <input type="text" class="form-control" name="vacantes" id="vacantes" placeholder="Vacantes">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="requisitos">Requisitos: </label>
-                  <input type="text" class="form-control" name="requisitos" id="requisitos" required placeholder="Requisitos">
+                  <!-- <input type="text" class="form-control" name="requisitos" id="requisitos" placeholder="Requisitos"> -->
+                  <textarea class="form-control ckeditor" name="requisitos" id="requisitos" cols="30" rows="10"></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="conocimientos">Conocimientos: </label>
-                  <input type="text" class="form-control" name="conocimientos" id="conocimientos" required placeholder="Conocimientos">
+                  <!-- <input type="text" class="form-control" name="conocimientos" id="conocimientos" placeholder="Conocimientos"> -->
+                  <textarea class="form-control ckeditor" name="conocimientos" id="conocimientos" cols="30" rows="10"></textarea>
+
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="salario">Salario: </label>
-                  <input type="text" class="form-control" name="salario" id="salario" required placeholder="Salario">
+                  <input type="text" class="form-control" name="salario" id="salario" placeholder="Salario">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nombrecontacto">Nombrecontacto: </label>
-                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" required placeholder="Nombrecontacto">
+                  <label for="nombrecontacto">Nombre Contacto: </label>
+                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" placeholder="Nombre Contacto">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="telefonocontacto">Telefonocontacto: </label>
-                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" required placeholder="Telefonocontacto">
+                  <label for="telefonocontacto">Teléfono Contacto: </label>
+                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="Teléfono Contacto">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="emailcontacto">Emailcontacto: </label>
-                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" required placeholder="Emailcontacto">
+                  <label for="emailcontacto">Email Contacto: </label>
+                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Email Contacto">
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-12">
                 <div class="form-group">
-                  <label for="orden">Orden: </label>
-                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="Orden">
+                  <label for="item">Item: </label>
+                  <input type="text" class="form-control" name="item" id="item" placeholder="Item">
                 </div>
-              </div>
-              <div class="col-md-6">
+              </div> -->
+
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="fecha">Fecha: </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="Fecha">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
                 </div>
               </div>
 
@@ -162,7 +173,8 @@
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

@@ -61,15 +61,18 @@ class Campus extends Connection {
   public function save($bean_campus)
   {
     try{
+      $bean_campus->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_campus->getId();
       $titulo = $bean_campus->getTitulo();
       $subtitulo = $bean_campus->getSubtitulo();
       $descripcion = $bean_campus->getDescripcion();
       $imagen = $bean_campus->getImagen();
       $url = $bean_campus->getUrl();
-      $orden = $bean_campus->getOrden();
+      $item = $bean_campus->getItem();
+      $publicar = $bean_campus->getPublicar();
       $estado = $bean_campus->getEstado();
-      $fecha = $bean_campus->getFecha();
+      $created_up = $bean_campus->getCreatedUp();
 
       $this->query = "INSERT INTO campus
                       (
@@ -78,9 +81,10 @@ class Campus extends Connection {
                         descripcion,
                         imagen,
                         url,
-                        orden,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
@@ -88,9 +92,10 @@ class Campus extends Connection {
                         '$descripcion',
                         '$imagen',
                         '$url',
-                        '$orden',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
@@ -117,8 +122,8 @@ class Campus extends Connection {
       $descripcion = $bean_campus->getDescripcion();
       $imagen = $bean_campus->getImagen();
       $url = $bean_campus->getUrl();
-      $orden = $bean_campus->getOrden();
-      $fecha = $bean_campus->getFecha();
+      $item = $bean_campus->getItem();
+      $publicar = $bean_campus->getPublicar();
 
       $this->query = "UPDATE campus SET 
                         titulo = '$titulo',
@@ -126,8 +131,8 @@ class Campus extends Connection {
                         descripcion = '$descripcion',
                         imagen = '$imagen',
                         url = '$url',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
@@ -202,6 +207,56 @@ class Campus extends Connection {
       $this->executeQuery();
 
       $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_campus)
+  {
+    try{
+      $id = $bean_campus->getId();
+      $publicar = $bean_campus->getPublicar() ;
+
+      $this->query = "UPDATE campus SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_campus)
+  {
+    try{
+      $publicar = $bean_campus->getPublicar() ;
+
+      $this->query = "SELECT * FROM campus
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

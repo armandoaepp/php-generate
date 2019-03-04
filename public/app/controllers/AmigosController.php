@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $amigos  = new Amigos();
             
       $bean_amigos = new BeanAmigos();
@@ -67,8 +70,8 @@
       $bean_amigos->setImagen($imagen);
       $bean_amigos->setImagen2($imagen_2);
       $bean_amigos->setEmail($email);
-      $bean_amigos->setOrden($orden);
-      $bean_amigos->setFecha($fecha);
+      $bean_amigos->setItem($item);
+      $bean_amigos->setPublicar($publicar);
             
       $data = $amigos->save($bean_amigos) ;
 
@@ -95,8 +98,8 @@
       $bean_amigos->setImagen($imagen);
       $bean_amigos->setImagen2($imagen_2);
       $bean_amigos->setEmail($email);
-      $bean_amigos->setOrden($orden);
-      $bean_amigos->setFecha($fecha);
+      $bean_amigos->setItem($item);
+      $bean_amigos->setPublicar($publicar);
 
       $data = $amigos->update($bean_amigos) ;
             
@@ -167,6 +170,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $amigos  = new Amigos($this->cnx);
+      $bean_amigos = new BeanAmigos();
+            
+      $bean_amigos->setId($id);
+      $bean_amigos->setPublicar($publicar);
+
+      $data = $amigos->updatePublish($bean_amigos) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $amigos  = new Amigos($this->cnx);
+      $bean_amigos = new BeanAmigos();
+            
+      $bean_amigos->setPublicar($publicar);
+
+      $data = $amigos->getPublished($bean_amigos) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

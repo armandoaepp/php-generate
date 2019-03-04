@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -102,6 +102,20 @@
                 </div>
               </div>
 
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-12 mb-3">
                 <div class="form-group">
                   <label for="imagen">Imagen:</label>
@@ -131,7 +145,7 @@
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
 </body>
 

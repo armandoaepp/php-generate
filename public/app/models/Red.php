@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Red extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -61,6 +61,8 @@ class Red extends Connection {
   public function save($bean_red)
   {
     try{
+      $bean_red->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_red->getId();
       $titulo = $bean_red->getTitulo();
       $subtitulo = $bean_red->getSubtitulo();
@@ -72,9 +74,10 @@ class Red extends Connection {
       $nombrecontacto = $bean_red->getNombrecontacto();
       $telefonocontacto = $bean_red->getTelefonocontacto();
       $emailcontacto = $bean_red->getEmailcontacto();
-      $orden = $bean_red->getOrden();
+      $item = $bean_red->getItem();
+      $publicar = $bean_red->getPublicar();
       $estado = $bean_red->getEstado();
-      $fecha = $bean_red->getFecha();
+      $created_up = $bean_red->getCreatedUp();
 
       $this->query = "INSERT INTO red
                       (
@@ -88,9 +91,10 @@ class Red extends Connection {
                         nombrecontacto,
                         telefonocontacto,
                         emailcontacto,
-                        orden,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
@@ -103,9 +107,10 @@ class Red extends Connection {
                         '$nombrecontacto',
                         '$telefonocontacto',
                         '$emailcontacto',
-                        '$orden',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
@@ -137,10 +142,10 @@ class Red extends Connection {
       $nombrecontacto = $bean_red->getNombrecontacto();
       $telefonocontacto = $bean_red->getTelefonocontacto();
       $emailcontacto = $bean_red->getEmailcontacto();
-      $orden = $bean_red->getOrden();
-      $fecha = $bean_red->getFecha();
+      $item = $bean_red->getItem();
+      $publicar = $bean_red->getPublicar();
 
-      $this->query = "UPDATE red SET 
+      $this->query = "UPDATE red SET
                         titulo = '$titulo',
                         subtitulo = '$subtitulo',
                         tipo = '$tipo',
@@ -151,8 +156,8 @@ class Red extends Connection {
                         nombrecontacto = '$nombrecontacto',
                         telefonocontacto = '$telefonocontacto',
                         emailcontacto = '$emailcontacto',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
@@ -176,7 +181,7 @@ class Red extends Connection {
       $id = $bean_red->getId();
       $estado = $bean_red->getEstado();
 
-      $this->query = "UPDATE red SET 
+      $this->query = "UPDATE red SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -227,6 +232,56 @@ class Red extends Connection {
       $this->executeQuery();
 
       $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_red)
+  {
+    try{
+      $id = $bean_red->getId();
+      $publicar = $bean_red->getPublicar() ;
+
+      $this->query = "UPDATE red SET
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_red)
+  {
+    try{
+      $publicar = $bean_red->getPublicar() ;
+
+      $this->query = "SELECT * FROM red
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

@@ -12167,4 +12167,16 @@ ul.social li a {
 .form-group label {
   font-weight: 500;
 }
+
+select:invalid {
+  color: #A9ABAE;
+}
+
+select [disabled] {
+  color: gray;
+}
+
+select option {
+  color: #212121;
+}
 /*# sourceMappingURL=app.admin.css.map */

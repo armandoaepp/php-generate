@@ -23,8 +23,8 @@
   $nombrecontacto   = $_POST["nombrecontacto"] ;
   $telefonocontacto   = $_POST["telefonocontacto"] ;
   $emailcontacto   = $_POST["emailcontacto"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $params = array(
     "id"   => $id,
     "titulo"   => $titulo,
@@ -37,8 +37,8 @@
     "nombrecontacto"   => $nombrecontacto,
     "telefonocontacto"   => $telefonocontacto,
     "emailcontacto"   => $emailcontacto,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "item"   => $item,
+    "publicar"   => $publicar,
   );
 
 

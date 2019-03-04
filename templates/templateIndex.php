@@ -23,7 +23,7 @@ $html = '
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -309,7 +309,7 @@ $table_html .= '
                     {
                       $title_estado = "Eliminar" ;
                     }
-                    else 
+                    else
                     {
                       $title_estado   = "Recuperar" ;
                       $class_estado   = "row-disabled";

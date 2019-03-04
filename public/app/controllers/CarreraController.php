@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $carrera  = new Carrera();
             
       $bean_carrera = new BeanCarrera();

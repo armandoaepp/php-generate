@@ -19,6 +19,9 @@ class BeanAdmision{
     private $horarios;
     private $inversion;
     private $email;
+    private $publicar = "S" ;
+    private $estado = 1 ;
+    private $created_up = NULL ;
 
     # METODOS
     public function setId($id_)
@@ -89,6 +92,36 @@ class BeanAdmision{
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function setPublicar($publicar_)
+    {
+        $this->publicar = Validation::validate( $publicar_ );
+    }
+
+    public function getPublicar()
+    {
+        return $this->publicar;
+    }
+
+    public function setEstado($estado_)
+    {
+        $this->estado = Validation::validate( $estado_ );
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function setCreatedUp($created_up_)
+    {
+        $this->created_up = Validation::validate( $created_up_ );
+    }
+
+    public function getCreatedUp()
+    {
+        return $this->created_up;
     }
 
 }

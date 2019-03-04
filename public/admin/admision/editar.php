@@ -15,6 +15,17 @@
 
   $admision = $admision_controller->find($id);
 
+  $publicar = trim($admision["publicar"]);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Admision";
 
 ?>
@@ -37,7 +48,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
+        "sidebar_active" => [1, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -73,7 +84,7 @@
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12"> 
+          <div class="col-12">
             <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
@@ -117,6 +128,20 @@
                 </div>
               </div>
 
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-sm-6 col-md-6 text-center">
                 <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $admision['imagen']; ?>">
                 <img src="<?php echo $admision['imagen'] ?>" class="img-fluid img-view-edit mb-2">
@@ -155,7 +180,7 @@
 
   </div>
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
 
 </body>
 
