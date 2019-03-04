@@ -14,12 +14,12 @@ class Red extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM red";
+      $this->query = "SELECT * FROM red; ";
 
       $this->executeQuery();
 
@@ -34,10 +34,35 @@ class Red extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_red)
+  {
+    try{
+      $estado = $bean_red->getEstado() ;
+
+      $this->query = "SELECT * FROM red
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_red)
   {
     try{
+      $bean_red->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_red->getId();
       $titulo = $bean_red->getTitulo();
       $subtitulo = $bean_red->getSubtitulo();
@@ -49,9 +74,10 @@ class Red extends Connection {
       $nombrecontacto = $bean_red->getNombrecontacto();
       $telefonocontacto = $bean_red->getTelefonocontacto();
       $emailcontacto = $bean_red->getEmailcontacto();
-      $orden = $bean_red->getOrden();
+      $item = $bean_red->getItem();
+      $publicar = $bean_red->getPublicar();
       $estado = $bean_red->getEstado();
-      $fecha = $bean_red->getFecha();
+      $created_up = $bean_red->getCreatedUp();
 
       $this->query = "INSERT INTO red
                       (
@@ -65,9 +91,10 @@ class Red extends Connection {
                         nombrecontacto,
                         telefonocontacto,
                         emailcontacto,
-                        orden,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
@@ -80,14 +107,15 @@ class Red extends Connection {
                         '$nombrecontacto',
                         '$telefonocontacto',
                         '$emailcontacto',
-                        '$orden',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -99,7 +127,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_red)
   {
     try{
@@ -114,8 +142,8 @@ class Red extends Connection {
       $nombrecontacto = $bean_red->getNombrecontacto();
       $telefonocontacto = $bean_red->getTelefonocontacto();
       $emailcontacto = $bean_red->getEmailcontacto();
-      $orden = $bean_red->getOrden();
-      $fecha = $bean_red->getFecha();
+      $item = $bean_red->getItem();
+      $publicar = $bean_red->getPublicar();
 
       $this->query = "UPDATE red SET 
                         titulo = '$titulo',
@@ -128,14 +156,14 @@ class Red extends Connection {
                         nombrecontacto = '$nombrecontacto',
                         telefonocontacto = '$telefonocontacto',
                         emailcontacto = '$emailcontacto',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +174,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_red)
   {
     try{
@@ -160,7 +188,7 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -171,7 +199,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_red)
   {
     try{
@@ -192,7 +220,7 @@ class Red extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_red)
   {
     try{
@@ -203,7 +231,57 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_red)
+  {
+    try{
+      $id = $bean_red->getId();
+      $publicar = $bean_red->getPublicar() ;
+
+      $this->query = "UPDATE red SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_red)
+  {
+    try{
+      $publicar = $bean_red->getPublicar() ;
+
+      $this->query = "SELECT * FROM red
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

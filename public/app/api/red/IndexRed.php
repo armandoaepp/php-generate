@@ -61,8 +61,9 @@ switch($evento)
       $nombrecontacto = $inputs->nombrecontacto;
       $telefonocontacto = $inputs->telefonocontacto;
       $emailcontacto = $inputs->emailcontacto;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -76,8 +77,9 @@ switch($evento)
                 'nombrecontacto'=> $nombrecontacto,
                 'telefonocontacto'=> $telefonocontacto,
                 'emailcontacto'=> $emailcontacto,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $red_controller->save($params) ;
@@ -116,8 +118,9 @@ switch($evento)
       $nombrecontacto = $inputs->nombrecontacto;
       $telefonocontacto = $inputs->telefonocontacto;
       $emailcontacto = $inputs->emailcontacto;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -131,8 +134,9 @@ switch($evento)
                 'nombrecontacto'=> $nombrecontacto,
                 'telefonocontacto'=> $telefonocontacto,
                 'emailcontacto'=> $emailcontacto,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $red_controller->update($params) ;
@@ -227,14 +231,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$red = $red_controller->find($params);
+				$red = $red_controller->find( $id );
 
-				$data = $red_controller->deleteById($params);
+				$data = $red_controller->deleteById( $id );
 
 				if( !empty($red) && $data )
 				{
-					$imagen = $red["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $red["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
@@ -253,6 +257,66 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
+  break;
+
+  case "publish":
+    try
+    {
+
+      $id = $inputs->id;
+      $publicar = $inputs->publicar;
+
+      if($publicar == "N"){
+                $publicar = "S" ;
+      }else{
+                $publicar = "N" ;
+      }
+
+      $params = array(
+                'id'=> $id,
+                'publicar'=> $publicar,
+              ) ; 
+
+      $red_controller = new RedController() ; 
+
+      $data = $red_controller->updatePublish( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "published":
+    try
+    {
+
+      $publicar = $inputs->publicar;
+
+      $params = array(
+                'publicar'=> $publicar,
+              ) ; 
+
+      $red_controller = new RedController() ; 
+
+      $data = $red_controller->getPublished( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
   break;
 
 }

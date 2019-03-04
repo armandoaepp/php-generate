@@ -57,7 +57,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 1],
+        "sidebar_active" => [4, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -120,10 +120,10 @@
                   <div class="form-group">
                     <label for="chef_id">Chef: </label>
                     <select class="custom-select" name="chef_id" id="chef_id" placeholder="ChefId">
-                      <option selected>Seleccionar Chef</option>
+                      <option value="" selected disabled hidden>Seleccionar Chef</option>
                       <?php foreach ($chefs as &$row) {?>
                       <option value="<?php echo $row["id"]; ?>" <?php if($row["id"] == $taller["chef_id"] ) echo 'selected="selected"' ?> >
-                        <?php echo $row["nombre"]. " ".$row["apellidos"] ; ?> 
+                        <?php echo $row["nombre"]. " ".$row["apellidos"] ; ?>
                       </option>
                       <?php } ?>
                     </select>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="descripcion">Descripcion: </label>                   
+                    <label for="descripcion">Descripcion: </label>
                     <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30" rows="10"><?php echo $taller['descripcion'] ?></textarea>
                   </div>
                 </div>
@@ -204,12 +204,12 @@
                     <textarea class="form-control ckeditor" name="temas" id="temas" cols="30" rows="10"><?php echo $taller['temas']; ?></textarea>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                   <div class="form-group">
                     <label for="item">Item: </label>
                     <input type="text" class="form-control" name="item" id="item" placeholder="Item" value="<?php echo $taller['item'] ?>">
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="glosa">Glosa: </label>
