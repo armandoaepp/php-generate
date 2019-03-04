@@ -23,13 +23,13 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [4,1],
     );
 
     require_once "../layout/head_links.phtml";
 
     require_once "../../app/autoload.php";
-    
+
     # load chefs
     $estado = 1 ;
     $params = array(
@@ -97,10 +97,10 @@
                     <label for="chef_id">Chef: </label>
                     <!-- <input type="text" class="form-control" name="chef_id" id="chef_id" placeholder="ChefId"> -->
                     <select class="custom-select" name="chef_id" id="chef_id" placeholder="ChefId">
-                      <option selected>Seleccionar Chef</option>
+                      <option value="" selected disabled hidden>Seleccionar Chef</option>
                       <?php foreach ($chefs as &$row) {?>
                       <option value="<?php echo $row["id"]; ?>" ><?php echo $row["nombre"]. " ".$row["apellidos"]; ?></option>
-                      <?php } ?> 
+                      <?php } ?>
                     </select>
                   </div>
                 </div>

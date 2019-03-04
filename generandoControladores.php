@@ -57,10 +57,13 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '' . PHP_EOL;
 
         # Method get
-        $texto  .= '  public function getByEstado()' . PHP_EOL;
+        $texto  .= '  public function getByEstado( $params = array() )' . PHP_EOL;
         $texto  .= '  {' . PHP_EOL;
         $texto  .= '    try' . PHP_EOL;
         $texto  .= '    {' . PHP_EOL;
+        $texto  .= '            ' . PHP_EOL;
+        $texto  .= '      extract($params) ; ' . PHP_EOL;
+        $texto  .= '' . PHP_EOL;
         $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
 
         $texto  .= '            ' . PHP_EOL;
@@ -68,7 +71,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '            ' . PHP_EOL;
         // $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
         $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
-        $texto  .= '' . PHP_EOL;         
+        $texto  .= '' . PHP_EOL;
         $texto  .= '      $data = $'.($tabla).'->getByEstado($bean_'.($tabla).');' . PHP_EOL;
         // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
         // $texto .= '        ' . PHP_EOL;

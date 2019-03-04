@@ -73,13 +73,14 @@
 
       <div class="container py-2 py-md-3">
         <div class="row">
-          <div class="col-12">
-            <h4 class="page-header-title">Editar <?php echo $title_page; ?> </h4>
+          <div class="col-12"> 
+            <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12">
             <form action="admin/noticia-img/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
@@ -87,14 +88,14 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="noticia_id">noticia_id : </label>
-                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="noticia_id"  value="<?php echo $noticia_img['noticia_id'] ?>" >
+                  <label for="noticia_id">NoticiaId: </label>
+                  <input type="text" class="form-control" name="noticia_id" id="noticia_id" required placeholder="NoticiaId"  value="<?php echo $noticia_img['noticia_id'] ?>" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="item">item : </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="item"  value="<?php echo $noticia_img['item'] ?>" >
+                  <label for="item">Item: </label>
+                  <input type="text" class="form-control" name="item" id="item" required placeholder="Item"  value="<?php echo $noticia_img['item'] ?>" >
                 </div>
               </div>
 

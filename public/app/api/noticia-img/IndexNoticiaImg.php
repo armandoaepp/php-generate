@@ -173,9 +173,8 @@ switch($evento)
     try
     {
 
-      // $id = $inputs->id;
-      $id = $inputs->idRowModal;
-      $estado = !empty($inputs->estado) ? $inputs->estado : 1; 
+      $id = $inputs->id;
+      $estado = $inputs->estado; 
 
       if($estado == 1){
         $estado = 0 ;
