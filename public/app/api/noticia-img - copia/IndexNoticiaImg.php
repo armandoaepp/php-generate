@@ -25,9 +25,9 @@ switch($evento)
   case "list":
     try
     {
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_img_controller = new NoticiaImgController() ; 
 
-       $data = $noticia_controller->getAll() ;
+       $data = $noticia_img_controller->getAll() ;
 
       $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
@@ -47,32 +47,24 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $noticia_controller = new NoticiaController($cnx) ; 
+      $noticia_img_controller = new NoticiaImgController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $titulo = $inputs->titulo;
-      $descripcion = $inputs->descripcion;
+      $noticia_id = $inputs->noticia_id;
       $imagen = $inputs->imagen;
-      $url = $inputs->url;
       $item = $inputs->item;
-      $glosa = $inputs->glosa;
-      $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
-                'titulo'=> $titulo,
-                'descripcion'=> $descripcion,
+                'noticia_id'=> $noticia_id,
                 'imagen'=> $imagen,
-                'url'=> $url,
                 'item'=> $item,
-                'glosa'=> $glosa,
-                'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $noticia_controller->save($params) ;
+      $data = $noticia_img_controller->save($params) ;
         
       $connection->commit();
 
@@ -94,32 +86,24 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $noticia_controller = new NoticiaController($cnx) ; 
+      $noticia_img_controller = new NoticiaImgController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $titulo = $inputs->titulo;
-      $descripcion = $inputs->descripcion;
+      $noticia_id = $inputs->noticia_id;
       $imagen = $inputs->imagen;
-      $url = $inputs->url;
       $item = $inputs->item;
-      $glosa = $inputs->glosa;
-      $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
-                'titulo'=> $titulo,
-                'descripcion'=> $descripcion,
+                'noticia_id'=> $noticia_id,
                 'imagen'=> $imagen,
-                'url'=> $url,
                 'item'=> $item,
-                'glosa'=> $glosa,
-                'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $noticia_controller->update($params) ;
+      $data = $noticia_img_controller->update($params) ;
         
       $connection->commit();
 
@@ -148,9 +132,9 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_img_controller = new NoticiaImgController() ; 
 
-      $data = $noticia_controller->updateEstado( $params ) ;
+      $data = $noticia_img_controller->updateEstado( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -169,9 +153,9 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_img_controller = new NoticiaImgController() ; 
 
-      $data = $noticia_controller->find( $id) ;
+      $data = $noticia_img_controller->find( $id) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -189,8 +173,9 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
-      $estado = $inputs->estado; 
+      // $id = $inputs->id;
+      $id = $inputs->idRowModal;
+      $estado = !empty($inputs->estado) ? $inputs->estado : 1; 
 
       if($estado == 1){
         $estado = 0 ;
@@ -203,7 +188,7 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $noticia_controller = new NoticiaController() ; 
+      $noticia_img_controller = new NoticiaImgController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -211,20 +196,20 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$noticia = $noticia_controller->find( $id );
+				$noticia_img = $noticia_img_controller->find( $id );
 
-				$data = $noticia_controller->deleteById( $id );
+				$data = $noticia_img_controller->deleteById( $id );
 
-				if( !empty($noticia) && $data )
+				if( !empty($noticia_img) && $data )
 				{
-					$imagen = $noticia["imagen"] ; 
+					$imagen = $noticia_img["imagen"] ; 
 					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
 			else
 			{
-				$data = $noticia_controller->updateEstado($params);
+				$data = $noticia_img_controller->updateEstado($params);
 			} 
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -237,66 +222,6 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
-  break;
-
-  case "publish":
-    try
-    {
-
-      $id = $inputs->id;
-      $publicar = $inputs->publicar;
-
-      if($publicar == "N"){
-                $publicar = "S" ;
-      }else{
-                $publicar = "N" ;
-      }
-
-      $params = array(
-                'id'=> $id,
-                'publicar'=> $publicar,
-              ) ; 
-
-      $noticia_controller = new NoticiaController() ; 
-
-      $data = $noticia_controller->updatePublish( $params ) ;
-
-      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
-
-    }
-    catch (Exception $e)
-    {
-      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
-    }
-        
-    $jsn  = json_encode($data);
-    print_r($jsn) ;
-  break;
-
-  case "published":
-    try
-    {
-
-      $publicar = $inputs->publicar;
-
-      $params = array(
-                'publicar'=> $publicar,
-              ) ; 
-
-      $noticia_controller = new NoticiaController() ; 
-
-      $data = $noticia_controller->getPublished( $params ) ;
-
-      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
-
-    }
-    catch (Exception $e)
-    {
-      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
-    }
-        
-    $jsn  = json_encode($data);
-    print_r($jsn) ;
   break;
 
 }

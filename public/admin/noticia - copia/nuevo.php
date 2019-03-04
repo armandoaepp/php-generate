@@ -2,10 +2,8 @@
 require_once "../sesion_admin.php";
 loginRedirect("../login.php");
 
-$title_page = "Noticia";
-
 ?>
-
+<?php $title_page = "Noticia";?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,6 +26,7 @@ $sidebar = array(
 
 require_once "../layout/head_links.phtml";
 ?>
+
 </head>
 
 <body>
@@ -59,46 +58,24 @@ require_once "../layout/head_links.phtml";
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
-            <hr class="hr dashed">
+            <h4 class="page-header-title">Nuevo <?php echo $title_page; ?> </h4>
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12">
+          <div class="col-12 col-md-10">
             <form action="admin/noticia/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
 
-                <div class="col-md-12">
+                <div class="col-md-10">
                   <div class="form-group">
-                    <label for="titulo">Titulo: </label>
-                    <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="descripcion">Descripcion: </label>
-                    <!-- <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="Descripcion"> -->
-                    <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30"
-                      rows="10"></textarea>
-                  </div>
-                </div>
-                <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="item">Item: </label>
-                  <input type="text" class="form-control" name="item" id="item" required placeholder="Item">
-                </div>
-              </div> -->
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="glosa">Glosa: </label>
-                    <!-- <input type="text" class="form-control" name="glosa" id="glosa" required placeholder="Glosa"> -->
-                    <textarea class="form-control ckeditor" name="glosa" id="glosa" cols="30" rows="10"></textarea>
+                    <label for="titulo">titulo : </label>
+                    <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo">
                   </div>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-2">
                   <div class="form-group">
                     <label for="email" class="d-block">Publicar </label>
                     <div class="form-check form-check-inline">
@@ -112,12 +89,21 @@ require_once "../layout/head_links.phtml";
                   </div>
                 </div>
 
-                <!-- <div class="col-12 mb-3">
-                <div class="form-group">
-                  <label for="imagen">Imagen:</label>
-                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion : </label>
+                    <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30"
+                      rows="10"></textarea>
+                  </div>
                 </div>
-              </div> -->
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="glosa">glosa : </label>
+                    <textarea class="form-control ckeditor" name="glosa" id="glosa" cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+
                 <div class="col-12 mb-3">
                   <div class="form-group">
                     <label for="imagen">Imagen(es) :</label>
@@ -127,7 +113,8 @@ require_once "../layout/head_links.phtml";
                 </div>
 
                 <div class="col-12 mb-3">
-                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                  <div class="preview-img" data-img-preview="preview" id="preview">
+                  </div>
                 </div>
 
               </div>
@@ -148,8 +135,55 @@ require_once "../layout/head_links.phtml";
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml";?>
-  <?php require_once "../layout/ckeditor.phtml";?>
+  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/ckeditor.phtml"?>
+
+
+  <script>
+    /* function previewImages() {
+
+      // var preview = document.querySelector('#preview');
+      var preview = document.querySelector("[data-img-preview=\"preview\"]");
+
+      if (preview) {
+        preview.innerHTML = "";
+
+        if (this.files) {
+          [].forEach.call(this.files, readAndPreview);
+        }
+
+      }
+
+      function readAndPreview(file) {
+
+        // Make sure `file.name` matches our extensions criteria
+        if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+          return alert(file.name + " is not an image");
+        } // else...
+
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+          var image = new Image();
+          image.height = 100;
+          image.title = file.name;
+          image.src = this.result;
+          image.className = 'img-preview';
+          preview.appendChild(image);
+        });
+
+        reader.readAsDataURL(file);
+
+      }
+
+    }
+
+    img_preview = document.querySelector("[data-file-img=\"images\"]");
+    if (img_preview) {
+      img_preview.addEventListener("change", previewImages);
+    } */
+
+  </script>
 
 </body>
 

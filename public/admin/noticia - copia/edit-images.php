@@ -232,7 +232,6 @@ require_once "../layout/head_links.phtml";
         // });
 
         var inputs = $('#formModal').serializeFormJSON();
-        inputs.id =  $('#idRowModal').val();
         var params = JSON.stringify(inputs);
 
         console.log(params);

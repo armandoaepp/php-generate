@@ -69,20 +69,13 @@
     }
   }
 
-  public function getByEstado( $params = array() )
+  public function getByEstado()
   {
     try
     {
-
-      extract($params) ;
-
       $noticia  = new Noticia();
 
-      $bean_noticia = new BeanNoticia();
-
-      $bean_noticia->setEstado($estado);
-
-      $data = $noticia->getByEstado($bean_noticia);
+      $data = $noticia->getByEstado();
 
       return $data ;
     }
@@ -105,9 +98,7 @@
 
       $bean_noticia->setTitulo($titulo);
       $bean_noticia->setDescripcion($descripcion);
-      $bean_noticia->setImagen($imagen);
-      $bean_noticia->setUrl($url);
-      $bean_noticia->setItem($item);
+      $bean_noticia->setUrlSeo($url);
       $bean_noticia->setGlosa($glosa);
       $bean_noticia->setPublicar($publicar);
 
@@ -134,9 +125,7 @@
       $bean_noticia->setId($id);
       $bean_noticia->setTitulo($titulo);
       $bean_noticia->setDescripcion($descripcion);
-      $bean_noticia->setImagen($imagen);
-      $bean_noticia->setUrl($url);
-      $bean_noticia->setItem($item);
+      $bean_noticia->setUrlSeo($url);
       $bean_noticia->setGlosa($glosa);
       $bean_noticia->setPublicar($publicar);
 
@@ -158,7 +147,6 @@
       extract($params) ;
 
       $noticia  = new Noticia($this->cnx);
-
       $bean_noticia = new BeanNoticia();
 
       $bean_noticia->setId($id);
@@ -194,10 +182,12 @@
     }
   }
 
-  public function deleteById($id)
+  public function deleteById($params)
   {
     try
     {
+
+      extract($params) ;
 
       $noticia  = new Noticia();
 

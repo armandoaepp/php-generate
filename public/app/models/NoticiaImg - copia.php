@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class NoticiaImg extends Connection {
-  # CONSTRUCT
+  # CONSTRUCT 
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -58,6 +58,7 @@ class NoticiaImg extends Connection {
     }
 
   }
+
 
   # Method getByEstado
   public function getByEstado($bean_noticia_img)
@@ -133,7 +134,7 @@ class NoticiaImg extends Connection {
       $imagen = $bean_noticia_img->getImagen();
       $item = $bean_noticia_img->getItem();
 
-      $this->query = "UPDATE noticia_img SET
+      $this->query = "UPDATE noticia_img SET 
                         noticia_id = '$noticia_id',
                         imagen = '$imagen',
                         item = '$item'
@@ -160,7 +161,7 @@ class NoticiaImg extends Connection {
       $id = $bean_noticia_img->getId();
       $estado = $bean_noticia_img->getEstado();
 
-      $this->query = "UPDATE noticia_img SET
+      $this->query = "UPDATE noticia_img SET 
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -225,7 +226,7 @@ class NoticiaImg extends Connection {
 
     try{
 
-      $id   = $bean_noticia_img->getId();
+      $id   = $bean_noticia_img->getId(); 
       $item = $bean_noticia_img->getItem();
 
       $this->query = "UPDATE noticia_img

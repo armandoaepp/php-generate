@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * [Class Bean Generada]
@@ -15,7 +15,9 @@ class BeanNoticia{
     private $id;
     private $titulo;
     private $descripcion;
-    private $url;
+    private $imagen = "" ;
+    private $url = "" ;
+    private $item;
     private $glosa;
     private $publicar = "S" ;
     private $estado = 1 ;
@@ -52,14 +54,34 @@ class BeanNoticia{
         return $this->descripcion;
     }
 
-    public function setUrlSeo($url_seo_)
+    public function setImagen($imagen_)
     {
-        $this->url = Validation::validate( $url_seo_ );
+        $this->imagen = Validation::validate( $imagen_ );
     }
 
-    public function getUrlSeo()
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    public function setUrl($url_)
+    {
+        $this->url = Validation::validate( $url_ );
+    }
+
+    public function getUrl()
     {
         return $this->url;
+    }
+
+    public function setItem($item_)
+    {
+        $this->item = Validation::validate( $item_ );
+    }
+
+    public function getItem()
+    {
+        return $this->item;
     }
 
     public function setGlosa($glosa_)

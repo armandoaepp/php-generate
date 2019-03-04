@@ -13,29 +13,28 @@
 
   $titulo      = $_POST["titulo"] ;
   $descripcion = $_POST["descripcion"] ;
-  // $item        = $_POST["item"] ;
-  $glosa       = !empty($_POST["glosa"])? $_POST["glosa"] : "";
+  // $imagen      = $_POST["imagen"] ;
+  $glosa       = $_POST["glosa"] ;
   $publicar    = $_POST["publicar"] ;
-  $file_imagen = !empty($_FILES["imagen"]) ? $_FILES["imagen"]: [] ;
+
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $url = UrlHelper::urlFriendly($titulo);
 
   $params = array(
     "titulo"      => $titulo,
     "descripcion" => $descripcion,
-    // "item"        => $item,
+    "url"         => $url,
     "glosa"       => $glosa,
     "publicar"    => $publicar,
-    "imagen"      => $imagen,
-    "url"         => $url,
   );
-
 
   $noticia_id = $noticia_controller->save($params);
 
   # --------------------------------------------------------
 
-  $imagen  = [];
+  $imagen  = "";
+  // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
   $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "noticia", $noticia_id ) ;
 
   if($noticia_id > 0)
@@ -56,7 +55,6 @@
   }
 
   # --------------------------------------------------------
-
 
   if($response){
     header("Location: ./noticia.php ", true, 301);

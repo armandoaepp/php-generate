@@ -44,6 +44,7 @@ class Noticia extends Connection {
       $this->query = "SELECT * FROM noticia
                       WHERE estado = '$estado'; ";
 
+
       $this->executeQuery();
 
       $data = $this->rows ;
@@ -66,9 +67,7 @@ class Noticia extends Connection {
       $id          = $bean_noticia->getId();
       $titulo      = $bean_noticia->getTitulo();
       $descripcion = $bean_noticia->getDescripcion();
-      $imagen      = $bean_noticia->getImagen();
-      $url         = $bean_noticia->getUrl();
-      $item        = $bean_noticia->getItem();
+      $url         = $bean_noticia->getUrlSeo();
       $glosa       = $bean_noticia->getGlosa();
       $publicar    = $bean_noticia->getPublicar();
       $estado      = $bean_noticia->getEstado();
@@ -78,9 +77,7 @@ class Noticia extends Connection {
                       (
                         titulo,
                         descripcion,
-                        imagen,
                         url,
-                        item,
                         glosa,
                         publicar,
                         estado,
@@ -89,9 +86,7 @@ class Noticia extends Connection {
                       VALUES(
                         '$titulo',
                         '$descripcion',
-                        '$imagen',
                         '$url',
-                        '$item',
                         '$glosa',
                         '$publicar',
                         '$estado',
@@ -102,6 +97,7 @@ class Noticia extends Connection {
 
       // $data = $this->status  ;
       $data = $this->lastInsertId() ;
+
 
       return $data;
 
@@ -120,18 +116,14 @@ class Noticia extends Connection {
       $id = $bean_noticia->getId();
       $titulo = $bean_noticia->getTitulo();
       $descripcion = $bean_noticia->getDescripcion();
-      $imagen = $bean_noticia->getImagen();
-      $url = $bean_noticia->getUrl();
-      $item = $bean_noticia->getItem();
+      $url = $bean_noticia->getUrlSeo();
       $glosa = $bean_noticia->getGlosa();
       $publicar = $bean_noticia->getPublicar();
 
       $this->query = "UPDATE noticia SET
                         titulo = '$titulo',
                         descripcion = '$descripcion',
-                        imagen = '$imagen',
                         url = '$url',
-                        item = '$item',
                         glosa = '$glosa',
                         publicar = '$publicar'
                       WHERE id = '$id'
