@@ -11711,6 +11711,10 @@ $breadcrumb-divider-color
   padding-bottom: 0 !important;
 }
 
+.navbar-sidebar .nav-item {
+  font-size: 1rem !important;
+}
+
 .navbar-sidebar .toggler-icon-siderbar {
   padding: 0.5rem;
   font-size: 1em;

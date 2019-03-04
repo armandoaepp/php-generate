@@ -15,7 +15,8 @@
     {
       // $controller = new EventoController() ;
       // $controller = new NoticiaController() ;
-      $controller = new ChefController() ;
+      // $controller = new ChefController() ;
+      $controller = new TallerController() ;
 
        $data = $controller->getAll() ;
        $data = Serialize::unSerializeArray($data);

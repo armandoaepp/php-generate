@@ -121,7 +121,7 @@ for ($i = 1; $i < count($atributos); $i++)
 
             $html .= '              <div class="col-md-6">' . PHP_EOL;
             $html .= '                <div class="form-group">' . PHP_EOL;
-            $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ' : </label>' . PHP_EOL;
+            $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
             $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . toCamelCase($atributos[$i]) .'"  value="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" >' . PHP_EOL;
             $html .= '                </div>' . PHP_EOL;
             $html .= '              </div>' . PHP_EOL;

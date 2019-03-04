@@ -13,26 +13,23 @@
 
   $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
+  $chef_id   = $_POST["chef_id"] ;
   $titulo   = $_POST["titulo"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $slide   = $_POST["slide"] ;
   $certificacion   = $_POST["certificacion"] ;
   $titulos   = $_POST["titulos"] ;
-  $inversion   = $_POST["inversion"] ;
   $titulacion   = $_POST["titulacion"] ;
-  $detalleduracion   = $_POST["detalleduracion"] ;
-  $detalledia   = $_POST["detalledia"] ;
-  $detallehorario   = $_POST["detallehorario"] ;
-  $detallelugar   = $_POST["detallelugar"] ;
-  $detalleprecio   = $_POST["detalleprecio"] ;
-  $detalleequipos   = $_POST["detalleequipos"] ;
-  $detalleconsultas   = $_POST["detalleconsultas"] ;
-  $detalledirigido   = $_POST["detalledirigido"] ;
-  $aquien   = $_POST["aquien"] ;
+  $duracion   = $_POST["duracion"] ;
+  $dia   = $_POST["dia"] ;
+  $horario   = $_POST["horario"] ;
+  $lugar   = $_POST["lugar"] ;
+  $precio   = $_POST["precio"] ;
+  $dirigido   = $_POST["dirigido"] ;
+  $sesiones   = $_POST["sesiones"] ;
   $temas   = $_POST["temas"] ;
-  $nombreseo   = $_POST["nombreseo"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
+  $glosa   = $_POST["glosa"] ;
+  $publicar   = $_POST["publicar"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -43,29 +40,29 @@
     $imagen = $img_bd ; 
   } 
 
+  $url = UrlHelper::urlFriendly($chef_id); 
+
   $params = array(
     "id"   => $id,
+    "chef_id"   => $chef_id,
     "titulo"   => $titulo,
     "descripcion"   => $descripcion,
-    "slide"   => $slide,
     "certificacion"   => $certificacion,
     "titulos"   => $titulos,
-    "inversion"   => $inversion,
     "titulacion"   => $titulacion,
-    "detalleduracion"   => $detalleduracion,
-    "detalledia"   => $detalledia,
-    "detallehorario"   => $detallehorario,
-    "detallelugar"   => $detallelugar,
-    "detalleprecio"   => $detalleprecio,
-    "detalleequipos"   => $detalleequipos,
-    "detalleconsultas"   => $detalleconsultas,
-    "detalledirigido"   => $detalledirigido,
-    "aquien"   => $aquien,
+    "duracion"   => $duracion,
+    "dia"   => $dia,
+    "horario"   => $horario,
+    "lugar"   => $lugar,
+    "precio"   => $precio,
+    "dirigido"   => $dirigido,
+    "sesiones"   => $sesiones,
     "temas"   => $temas,
-    "nombreseo"   => $nombreseo,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "item"   => $item,
+    "glosa"   => $glosa,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
+    "url"  => $url,
   );
 
 

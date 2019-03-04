@@ -14,12 +14,12 @@ class Taller extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM taller";
+      $this->query = "SELECT * FROM taller; ";
 
       $this->executeQuery();
 
@@ -34,87 +34,109 @@ class Taller extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_taller)
+  {
+    try{
+      $estado = $bean_taller->getEstado() ;
+
+      $this->query = "SELECT * FROM taller
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_taller)
   {
     try{
+      $bean_taller->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_taller->getId();
+      $chef_id = $bean_taller->getChefId();
       $titulo = $bean_taller->getTitulo();
       $descripcion = $bean_taller->getDescripcion();
-      $slide = $bean_taller->getSlide();
       $imagen = $bean_taller->getImagen();
       $certificacion = $bean_taller->getCertificacion();
       $titulos = $bean_taller->getTitulos();
-      $inversion = $bean_taller->getInversion();
       $titulacion = $bean_taller->getTitulacion();
-      $detalleduracion = $bean_taller->getDetalleduracion();
-      $detalledia = $bean_taller->getDetalledia();
-      $detallehorario = $bean_taller->getDetallehorario();
-      $detallelugar = $bean_taller->getDetallelugar();
-      $detalleprecio = $bean_taller->getDetalleprecio();
-      $detalleequipos = $bean_taller->getDetalleequipos();
-      $detalleconsultas = $bean_taller->getDetalleconsultas();
-      $detalledirigido = $bean_taller->getDetalledirigido();
-      $aquien = $bean_taller->getAquien();
+      $duracion = $bean_taller->getDuracion();
+      $dia = $bean_taller->getDia();
+      $horario = $bean_taller->getHorario();
+      $lugar = $bean_taller->getLugar();
+      $precio = $bean_taller->getPrecio();
+      $dirigido = $bean_taller->getDirigido();
+      $sesiones = $bean_taller->getSesiones();
       $temas = $bean_taller->getTemas();
-      $nombreseo = $bean_taller->getNombreseo();
-      $orden = $bean_taller->getOrden();
+      $url = $bean_taller->getUrl();
+      $item = $bean_taller->getItem();
+      $glosa = $bean_taller->getGlosa();
+      $publicar = $bean_taller->getPublicar();
       $estado = $bean_taller->getEstado();
-      $fecha = $bean_taller->getFecha();
+      $created_up = $bean_taller->getCreatedUp();
 
       $this->query = "INSERT INTO taller
                       (
+                        chef_id,
                         titulo,
                         descripcion,
-                        slide,
                         imagen,
                         certificacion,
                         titulos,
-                        inversion,
                         titulacion,
-                        detalleduracion,
-                        detalledia,
-                        detallehorario,
-                        detallelugar,
-                        detalleprecio,
-                        detalleequipos,
-                        detalleconsultas,
-                        detalledirigido,
-                        aquien,
+                        duracion,
+                        dia,
+                        horario,
+                        lugar,
+                        precio,
+                        dirigido,
+                        sesiones,
                         temas,
-                        nombreseo,
-                        orden,
+                        url,
+                        item,
+                        glosa,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
+                        '$chef_id',
                         '$titulo',
                         '$descripcion',
-                        '$slide',
                         '$imagen',
                         '$certificacion',
                         '$titulos',
-                        '$inversion',
                         '$titulacion',
-                        '$detalleduracion',
-                        '$detalledia',
-                        '$detallehorario',
-                        '$detallelugar',
-                        '$detalleprecio',
-                        '$detalleequipos',
-                        '$detalleconsultas',
-                        '$detalledirigido',
-                        '$aquien',
+                        '$duracion',
+                        '$dia',
+                        '$horario',
+                        '$lugar',
+                        '$precio',
+                        '$dirigido',
+                        '$sesiones',
                         '$temas',
-                        '$nombreseo',
-                        '$orden',
+                        '$url',
+                        '$item',
+                        '$glosa',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -126,61 +148,57 @@ class Taller extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_taller)
   {
     try{
       $id = $bean_taller->getId();
+      $chef_id = $bean_taller->getChefId();
       $titulo = $bean_taller->getTitulo();
       $descripcion = $bean_taller->getDescripcion();
-      $slide = $bean_taller->getSlide();
       $imagen = $bean_taller->getImagen();
       $certificacion = $bean_taller->getCertificacion();
       $titulos = $bean_taller->getTitulos();
-      $inversion = $bean_taller->getInversion();
       $titulacion = $bean_taller->getTitulacion();
-      $detalleduracion = $bean_taller->getDetalleduracion();
-      $detalledia = $bean_taller->getDetalledia();
-      $detallehorario = $bean_taller->getDetallehorario();
-      $detallelugar = $bean_taller->getDetallelugar();
-      $detalleprecio = $bean_taller->getDetalleprecio();
-      $detalleequipos = $bean_taller->getDetalleequipos();
-      $detalleconsultas = $bean_taller->getDetalleconsultas();
-      $detalledirigido = $bean_taller->getDetalledirigido();
-      $aquien = $bean_taller->getAquien();
+      $duracion = $bean_taller->getDuracion();
+      $dia = $bean_taller->getDia();
+      $horario = $bean_taller->getHorario();
+      $lugar = $bean_taller->getLugar();
+      $precio = $bean_taller->getPrecio();
+      $dirigido = $bean_taller->getDirigido();
+      $sesiones = $bean_taller->getSesiones();
       $temas = $bean_taller->getTemas();
-      $nombreseo = $bean_taller->getNombreseo();
-      $orden = $bean_taller->getOrden();
-      $fecha = $bean_taller->getFecha();
+      $url = $bean_taller->getUrl();
+      $item = $bean_taller->getItem();
+      $glosa = $bean_taller->getGlosa();
+      $publicar = $bean_taller->getPublicar();
 
       $this->query = "UPDATE taller SET 
+                        chef_id = '$chef_id',
                         titulo = '$titulo',
                         descripcion = '$descripcion',
-                        slide = '$slide',
                         imagen = '$imagen',
                         certificacion = '$certificacion',
                         titulos = '$titulos',
-                        inversion = '$inversion',
                         titulacion = '$titulacion',
-                        detalleduracion = '$detalleduracion',
-                        detalledia = '$detalledia',
-                        detallehorario = '$detallehorario',
-                        detallelugar = '$detallelugar',
-                        detalleprecio = '$detalleprecio',
-                        detalleequipos = '$detalleequipos',
-                        detalleconsultas = '$detalleconsultas',
-                        detalledirigido = '$detalledirigido',
-                        aquien = '$aquien',
+                        duracion = '$duracion',
+                        dia = '$dia',
+                        horario = '$horario',
+                        lugar = '$lugar',
+                        precio = '$precio',
+                        dirigido = '$dirigido',
+                        sesiones = '$sesiones',
                         temas = '$temas',
-                        nombreseo = '$nombreseo',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        url = '$url',
+                        item = '$item',
+                        glosa = '$glosa',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -191,7 +209,7 @@ class Taller extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_taller)
   {
     try{
@@ -205,7 +223,7 @@ class Taller extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -216,7 +234,7 @@ class Taller extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_taller)
   {
     try{
@@ -237,7 +255,7 @@ class Taller extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_taller)
   {
     try{
@@ -248,7 +266,57 @@ class Taller extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_taller)
+  {
+    try{
+      $id = $bean_taller->getId();
+      $publicar = $bean_taller->getPublicar() ;
+
+      $this->query = "UPDATE taller SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_taller)
+  {
+    try{
+      $publicar = $bean_taller->getPublicar() ;
+
+      $this->query = "SELECT * FROM taller
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

@@ -1,10 +1,11 @@
-
 <?php
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
+  $title_page = "Taller" ;
+
 ?>
-<?php $title_page = "Taller" ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,10 +23,22 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [1,1],
     );
 
     require_once "../layout/head_links.phtml";
+
+    require_once "../../app/autoload.php";
+
+    $estado = 1 ;
+    $params = array(
+                'estado' => $estado,
+              );
+
+    $chef_controller = new ChefController();
+
+    $chefs = $chef_controller->getByEstado($params);
+
   ?>
 </head>
 
@@ -50,7 +63,8 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-          Nuevo <?php echo $title_page ;?>
+            Nuevo
+            <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -58,145 +72,152 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h4 class="page-header-title">Nuevo <?php echo $title_page ;?> </h4>
+            <h5 class="page-header-title">Nuevo
+              <?php echo $title_page; ?>
+            </h5>
+            <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
-          <div class="col-12 col-md-10">
+          <div class="col-12">
             <form action="admin/taller/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="descripcion">descripcion : </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="descripcion">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="slide">slide : </label>
-                  <input type="text" class="form-control" name="slide" id="slide" required placeholder="slide">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="imagen">Imagen(Recomendación Imagen de 350 x 200 pixeles ) </label>
-                  <input type="file"  class="form-control" name="imagen" id="imagen"  placeholder="Imagen" accept="image/*">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="certificacion">certificacion : </label>
-                  <input type="text" class="form-control" name="certificacion" id="certificacion" required placeholder="certificacion">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="titulos">titulos : </label>
-                  <input type="text" class="form-control" name="titulos" id="titulos" required placeholder="titulos">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="inversion">inversion : </label>
-                  <input type="text" class="form-control" name="inversion" id="inversion" required placeholder="inversion">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="titulacion">titulacion : </label>
-                  <input type="text" class="form-control" name="titulacion" id="titulacion" required placeholder="titulacion">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalleduracion">detalleduracion : </label>
-                  <input type="text" class="form-control" name="detalleduracion" id="detalleduracion" required placeholder="detalleduracion">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalledia">detalledia : </label>
-                  <input type="text" class="form-control" name="detalledia" id="detalledia" required placeholder="detalledia">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detallehorario">detallehorario : </label>
-                  <input type="text" class="form-control" name="detallehorario" id="detallehorario" required placeholder="detallehorario">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detallelugar">detallelugar : </label>
-                  <input type="text" class="form-control" name="detallelugar" id="detallelugar" required placeholder="detallelugar">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalleprecio">detalleprecio : </label>
-                  <input type="text" class="form-control" name="detalleprecio" id="detalleprecio" required placeholder="detalleprecio">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalleequipos">detalleequipos : </label>
-                  <input type="text" class="form-control" name="detalleequipos" id="detalleequipos" required placeholder="detalleequipos">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalleconsultas">detalleconsultas : </label>
-                  <input type="text" class="form-control" name="detalleconsultas" id="detalleconsultas" required placeholder="detalleconsultas">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="detalledirigido">detalledirigido : </label>
-                  <input type="text" class="form-control" name="detalledirigido" id="detalledirigido" required placeholder="detalledirigido">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="aquien">aquien : </label>
-                  <input type="text" class="form-control" name="aquien" id="aquien" required placeholder="aquien">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="temas">temas : </label>
-                  <input type="text" class="form-control" name="temas" id="temas" required placeholder="temas">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombreseo">nombreseo : </label>
-                  <input type="text" class="form-control" name="nombreseo" id="nombreseo" required placeholder="nombreseo">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="orden">orden : </label>
-                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="orden">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="fecha">fecha : </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="fecha">
-                </div>
-              </div>
 
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="titulo">Titulo: </label>
+                    <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="chef_id">Chef: </label>
+                    <!-- <input type="text" class="form-control" name="chef_id" id="chef_id" placeholder="ChefId"> -->
+                    <select class="custom-select" name="chef_id" id="chef_id" placeholder="ChefId">
+                      <option selected>Seleccionar Chef</option>
+                      <?php foreach ($chefs as &$row) {?>
+                      <option value="<?php echo $row["id"]; ?>" ><?php echo $row["nombre"]. " ".$row["apellidos"]; ?></option>
+                      <?php } ?> 
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion: </label>
+                    <!-- <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion"> -->
+                    <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="certificacion">Certificacion: </label>
+                    <input type="text" class="form-control" name="certificacion" id="certificacion" placeholder="Certificacion">
+                  </div>
+                </div> -->
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="titulos">Titulos: </label>
+                    <input type="text" class="form-control" name="titulos" id="titulos" placeholder="Titulos">
+                  </div>
+                </div> -->
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="titulacion">Titulacion: </label>
+                    <input type="text" class="form-control" name="titulacion" id="titulacion" placeholder="Titulacion">
+                  </div>
+                </div> -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="duracion">Duracion: </label>
+                    <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion">
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="dia">Dia: </label>
+                    <input type="text" class="form-control" name="dia" id="dia" placeholder="Dia">
+                  </div>
+                </div> -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="horario">Horario: </label>
+                    <input type="text" class="form-control" name="horario" id="horario" placeholder="Horario">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="lugar">Lugar: </label>
+                    <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Lugar">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="precio">Precio: </label>
+                    <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="dirigido">Dirigido: </label>
+                    <input type="text" class="form-control" name="dirigido" id="dirigido" placeholder="Dirigido">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="sesiones">Num Sesiones: </label>
+                    <input type="text" class="form-control" name="sesiones" id="sesiones" placeholder="Sesiones">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="temas">Temas(Sesiones): </label>
+                    <!-- <input type="text" class="form-control" name="temas" id="temas" placeholder="Temas"> -->
+                    <textarea class="form-control ckeditor" name="temas" id="temas" cols="30" rows="10"></textarea>
 
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="item">Item: </label>
+                    <input type="text" class="form-control" name="item" id="item" placeholder="Item">
+                  </div>
+                </div> -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="glosa">Glosa: </label>
+                    <!-- <input type="text" class="form-control" name="glosa" id="glosa" placeholder="Glosa"> -->
+                    <textarea class="form-control ckeditor" name="glosa" id="glosa" cols="30" rows="10"></textarea>
 
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen"
+                      placeholder="Imagen" accept="image/*">
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
 
               </div>
 
@@ -216,7 +237,8 @@
   </div>
 
 
-  <?php require_once "../layout/foot_links.phtml"?>
+  <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

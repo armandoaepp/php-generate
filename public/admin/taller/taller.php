@@ -10,11 +10,10 @@
 
     $data = $taller_controller->getAll();
 
-    $title_page = "tallers"
+    $title_page = "Tallers";
 
 ?>
 
-<?php $title_page = "Tallers" ; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [1,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -58,16 +57,16 @@
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             <a class="link-white" href="admin/taller/taller.php">
-              <?php echo $title_page ?>
+              <?php echo $title_page; ?>
             </a>
           </li>
         </ol>
       </nav>
 
-      <div class="container-full py-2 fs-x-14">
+      <div class="container-full p-2 fs-x-14">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Lista de <?php echo $title_page ?> </h5>
+            <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
             <a href="admin/taller/taller.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
@@ -88,25 +87,24 @@
                 <tr>
                   <th width="50">Id </th>
                   <th>Titulo </th>
+                  <!-- 
+                  <th>Chef_id </th>
                   <th>Descripcion </th>
-                  <th>Slide </th>
                   <th>Certificacion </th>
                   <th>Titulos </th>
-                  <th>Inversion </th>
                   <th>Titulacion </th>
-                  <th>Detalleduracion </th>
-                  <th>Detalledia </th>
-                  <th>Detallehorario </th>
-                  <th>Detallelugar </th>
-                  <th>Detalleprecio </th>
-                  <th>Detalleequipos </th>
-                  <th>Detalleconsultas </th>
-                  <th>Detalledirigido </th>
-                  <th>Aquien </th>
+                  <th>Duracion </th>
+                  <th>Dia </th>
+                  <th>Horario </th>
+                  <th>Lugar </th>
+                  <th>Precio </th>
+                  <th>Dirigido </th>
+                  <th>Sesiones </th>
                   <th>Temas </th>
-                  <th>Nombreseo </th>
-                  <th>Orden </th>
-                  <th>Fecha </th>
+                  <th>Url </th>
+                  <th>Item </th>
+                  <th>Glosa </th> -->
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -133,46 +131,56 @@
                     }
 
                     /* estado */
-                    $title_estado = "" ;
-                    if(!empty($row["estado"])){
-                      if($row["estado"] == 1){
-                        $title_estado = "Eliminar" ;
-                      }
-                      else {
-                        $title_estado = "Recuperar" ;
-                      }
+                    $title_estado   = "";
+                    $class_estado   = "";
+                    $class_disabled = "";
+
+                    if($row["estado"] == 1)
+                    {
+                      $title_estado = "Eliminar" ;
+                    }
+                    else 
+                    {
+                      $title_estado   = "Recuperar" ;
+                      $class_estado   = "row-disabled";
+                      $class_disabled = "is-disabled";
                     }
                   ?>
 
-                <tr class="<?php if($row["estado"] == 0 ) echo "tr-estado" ;?>" >
+                <tr class="<?php echo $class_estado ;?>" >
                 
                   <td> <?php echo $row["id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
+                  <!-- <td> <?php echo $row["chef_id"] ?> </td>
                   <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["slide"] ?> </td>
                   <td> <?php echo $row["certificacion"] ?> </td>
                   <td> <?php echo $row["titulos"] ?> </td>
-                  <td> <?php echo $row["inversion"] ?> </td>
                   <td> <?php echo $row["titulacion"] ?> </td>
-                  <td> <?php echo $row["detalleduracion"] ?> </td>
-                  <td> <?php echo $row["detalledia"] ?> </td>
-                  <td> <?php echo $row["detallehorario"] ?> </td>
-                  <td> <?php echo $row["detallelugar"] ?> </td>
-                  <td> <?php echo $row["detalleprecio"] ?> </td>
-                  <td> <?php echo $row["detalleequipos"] ?> </td>
-                  <td> <?php echo $row["detalleconsultas"] ?> </td>
-                  <td> <?php echo $row["detalledirigido"] ?> </td>
-                  <td> <?php echo $row["aquien"] ?> </td>
+                  <td> <?php echo $row["duracion"] ?> </td>
+                  <td> <?php echo $row["dia"] ?> </td>
+                  <td> <?php echo $row["horario"] ?> </td>
+                  <td> <?php echo $row["lugar"] ?> </td>
+                  <td> <?php echo $row["precio"] ?> </td>
+                  <td> <?php echo $row["dirigido"] ?> </td>
+                  <td> <?php echo $row["sesiones"] ?> </td>
                   <td> <?php echo $row["temas"] ?> </td>
-                  <td> <?php echo $row["nombreseo"] ?> </td>
-                  <td> <?php echo $row["orden"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <td> <?php echo $row["url"] ?> </td>
+                  <td> <?php echo $row["item"] ?> </td>
+                  <td> <?php echo $row["glosa"] ?> </td> -->
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table" href="admin/taller/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['chef_id'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
+
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/taller/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['chef_id'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>

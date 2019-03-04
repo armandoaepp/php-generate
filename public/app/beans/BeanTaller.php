@@ -13,28 +13,27 @@ class BeanTaller{
 
     # Atributos
     private $id;
+    private $chef_id;
     private $titulo;
     private $descripcion;
-    private $slide;
     private $imagen = "" ;
     private $certificacion;
     private $titulos;
-    private $inversion;
     private $titulacion;
-    private $detalleduracion;
-    private $detalledia;
-    private $detallehorario;
-    private $detallelugar;
-    private $detalleprecio;
-    private $detalleequipos;
-    private $detalleconsultas;
-    private $detalledirigido;
-    private $aquien;
+    private $duracion;
+    private $dia;
+    private $horario;
+    private $lugar;
+    private $precio;
+    private $dirigido;
+    private $sesiones;
     private $temas;
-    private $nombreseo;
-    private $orden;
+    private $url = "" ;
+    private $item;
+    private $glosa;
+    private $publicar = "S" ;
     private $estado = 1 ;
-    private $fecha;
+    private $created_up = NULL ;
 
     # METODOS
     public function setId($id_)
@@ -45,6 +44,16 @@ class BeanTaller{
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setChefId($chef_id_)
+    {
+        $this->chef_id = Validation::validate( $chef_id_ );
+    }
+
+    public function getChefId()
+    {
+        return $this->chef_id;
     }
 
     public function setTitulo($titulo_)
@@ -65,16 +74,6 @@ class BeanTaller{
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    public function setSlide($slide_)
-    {
-        $this->slide = Validation::validate( $slide_ );
-    }
-
-    public function getSlide()
-    {
-        return $this->slide;
     }
 
     public function setImagen($imagen_)
@@ -107,16 +106,6 @@ class BeanTaller{
         return $this->titulos;
     }
 
-    public function setInversion($inversion_)
-    {
-        $this->inversion = Validation::validate( $inversion_ );
-    }
-
-    public function getInversion()
-    {
-        return $this->inversion;
-    }
-
     public function setTitulacion($titulacion_)
     {
         $this->titulacion = Validation::validate( $titulacion_ );
@@ -127,94 +116,74 @@ class BeanTaller{
         return $this->titulacion;
     }
 
-    public function setDetalleduracion($detalleduracion_)
+    public function setDuracion($duracion_)
     {
-        $this->detalleduracion = Validation::validate( $detalleduracion_ );
+        $this->duracion = Validation::validate( $duracion_ );
     }
 
-    public function getDetalleduracion()
+    public function getDuracion()
     {
-        return $this->detalleduracion;
+        return $this->duracion;
     }
 
-    public function setDetalledia($detalledia_)
+    public function setDia($dia_)
     {
-        $this->detalledia = Validation::validate( $detalledia_ );
+        $this->dia = Validation::validate( $dia_ );
     }
 
-    public function getDetalledia()
+    public function getDia()
     {
-        return $this->detalledia;
+        return $this->dia;
     }
 
-    public function setDetallehorario($detallehorario_)
+    public function setHorario($horario_)
     {
-        $this->detallehorario = Validation::validate( $detallehorario_ );
+        $this->horario = Validation::validate( $horario_ );
     }
 
-    public function getDetallehorario()
+    public function getHorario()
     {
-        return $this->detallehorario;
+        return $this->horario;
     }
 
-    public function setDetallelugar($detallelugar_)
+    public function setLugar($lugar_)
     {
-        $this->detallelugar = Validation::validate( $detallelugar_ );
+        $this->lugar = Validation::validate( $lugar_ );
     }
 
-    public function getDetallelugar()
+    public function getLugar()
     {
-        return $this->detallelugar;
+        return $this->lugar;
     }
 
-    public function setDetalleprecio($detalleprecio_)
+    public function setPrecio($precio_)
     {
-        $this->detalleprecio = Validation::validate( $detalleprecio_ );
+        $this->precio = Validation::validate( $precio_ );
     }
 
-    public function getDetalleprecio()
+    public function getPrecio()
     {
-        return $this->detalleprecio;
+        return $this->precio;
     }
 
-    public function setDetalleequipos($detalleequipos_)
+    public function setDirigido($dirigido_)
     {
-        $this->detalleequipos = Validation::validate( $detalleequipos_ );
+        $this->dirigido = Validation::validate( $dirigido_ );
     }
 
-    public function getDetalleequipos()
+    public function getDirigido()
     {
-        return $this->detalleequipos;
+        return $this->dirigido;
     }
 
-    public function setDetalleconsultas($detalleconsultas_)
+    public function setSesiones($sesiones_)
     {
-        $this->detalleconsultas = Validation::validate( $detalleconsultas_ );
+        $this->sesiones = Validation::validate( $sesiones_ );
     }
 
-    public function getDetalleconsultas()
+    public function getSesiones()
     {
-        return $this->detalleconsultas;
-    }
-
-    public function setDetalledirigido($detalledirigido_)
-    {
-        $this->detalledirigido = Validation::validate( $detalledirigido_ );
-    }
-
-    public function getDetalledirigido()
-    {
-        return $this->detalledirigido;
-    }
-
-    public function setAquien($aquien_)
-    {
-        $this->aquien = Validation::validate( $aquien_ );
-    }
-
-    public function getAquien()
-    {
-        return $this->aquien;
+        return $this->sesiones;
     }
 
     public function setTemas($temas_)
@@ -227,24 +196,44 @@ class BeanTaller{
         return $this->temas;
     }
 
-    public function setNombreseo($nombreseo_)
+    public function setUrl($url_)
     {
-        $this->nombreseo = Validation::validate( $nombreseo_ );
+        $this->url = Validation::validate( $url_ );
     }
 
-    public function getNombreseo()
+    public function getUrl()
     {
-        return $this->nombreseo;
+        return $this->url;
     }
 
-    public function setOrden($orden_)
+    public function setItem($item_)
     {
-        $this->orden = Validation::validate( $orden_ );
+        $this->item = Validation::validate( $item_ );
     }
 
-    public function getOrden()
+    public function getItem()
     {
-        return $this->orden;
+        return $this->item;
+    }
+
+    public function setGlosa($glosa_)
+    {
+        $this->glosa = Validation::validate( $glosa_ );
+    }
+
+    public function getGlosa()
+    {
+        return $this->glosa;
+    }
+
+    public function setPublicar($publicar_)
+    {
+        $this->publicar = Validation::validate( $publicar_ );
+    }
+
+    public function getPublicar()
+    {
+        return $this->publicar;
     }
 
     public function setEstado($estado_)
@@ -257,14 +246,14 @@ class BeanTaller{
         return $this->estado;
     }
 
-    public function setFecha($fecha_)
+    public function setCreatedUp($created_up_)
     {
-        $this->fecha = Validation::validate( $fecha_ );
+        $this->created_up = Validation::validate( $created_up_ );
     }
 
-    public function getFecha()
+    public function getCreatedUp()
     {
-        return $this->fecha;
+        return $this->created_up;
     }
 
 }

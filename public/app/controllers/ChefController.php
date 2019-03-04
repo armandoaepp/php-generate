@@ -32,10 +32,12 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado($params = array() )
   {
     try
     {
+      extract($params) ; 
+
       $chef  = new Chef();
             
       $bean_chef = new BeanChef();
