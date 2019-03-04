@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $campus  = new Campus();
             
       $bean_campus = new BeanCampus();
@@ -68,8 +71,8 @@
       $bean_campus->setDescripcion($descripcion);
       $bean_campus->setImagen($imagen);
       $bean_campus->setUrl($url);
-      $bean_campus->setOrden($orden);
-      $bean_campus->setFecha($fecha);
+      $bean_campus->setItem($item);
+      $bean_campus->setPublicar($publicar);
             
       $data = $campus->save($bean_campus) ;
 
@@ -97,8 +100,8 @@
       $bean_campus->setDescripcion($descripcion);
       $bean_campus->setImagen($imagen);
       $bean_campus->setUrl($url);
-      $bean_campus->setOrden($orden);
-      $bean_campus->setFecha($fecha);
+      $bean_campus->setItem($item);
+      $bean_campus->setPublicar($publicar);
 
       $data = $campus->update($bean_campus) ;
             
@@ -169,6 +172,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $campus  = new Campus($this->cnx);
+      $bean_campus = new BeanCampus();
+            
+      $bean_campus->setId($id);
+      $bean_campus->setPublicar($publicar);
+
+      $data = $campus->updatePublish($bean_campus) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $campus  = new Campus($this->cnx);
+      $bean_campus = new BeanCampus();
+            
+      $bean_campus->setPublicar($publicar);
+
+      $data = $campus->getPublished($bean_campus) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

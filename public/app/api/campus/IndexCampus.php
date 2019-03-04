@@ -56,8 +56,9 @@ switch($evento)
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
       $url = $inputs->url;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -66,8 +67,9 @@ switch($evento)
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
                 'url'=> $url,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $campus_controller->save($params) ;
@@ -101,8 +103,9 @@ switch($evento)
       $descripcion = $inputs->descripcion;
       $imagen = $inputs->imagen;
       $url = $inputs->url;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -111,8 +114,9 @@ switch($evento)
                 'descripcion'=> $descripcion,
                 'imagen'=> $imagen,
                 'url'=> $url,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $campus_controller->update($params) ;
@@ -233,6 +237,66 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
+  break;
+
+  case "publish":
+    try
+    {
+
+      $id = $inputs->id;
+      $publicar = $inputs->publicar;
+
+      if($publicar == "N"){
+                $publicar = "S" ;
+      }else{
+                $publicar = "N" ;
+      }
+
+      $params = array(
+                'id'=> $id,
+                'publicar'=> $publicar,
+              ) ; 
+
+      $campus_controller = new CampusController() ; 
+
+      $data = $campus_controller->updatePublish( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "published":
+    try
+    {
+
+      $publicar = $inputs->publicar;
+
+      $params = array(
+                'publicar'=> $publicar,
+              ) ; 
+
+      $campus_controller = new CampusController() ; 
+
+      $data = $campus_controller->getPublished( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
   break;
 
 }

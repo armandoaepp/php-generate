@@ -32,10 +32,13 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+            
+      extract($params) ; 
+
       $diplomado  = new Diplomado();
             
       $bean_diplomado = new BeanDiplomado();

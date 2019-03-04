@@ -91,6 +91,7 @@
                   <th>Horarios </th>
                   <th>Inversion </th>
                   <th>Email </th>
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -141,6 +142,14 @@
                   <td> <?php echo $row["horarios"] ?> </td>
                   <td> <?php echo $row["inversion"] ?> </td>
                   <td> <?php echo $row["email"] ?> </td>
+
+                  <td class="text-center">
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/admision/editar.php?id=<?php echo $row["id"] ?>" title="Editar">

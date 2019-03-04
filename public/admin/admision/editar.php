@@ -15,6 +15,17 @@
 
   $admision = $admision_controller->find($id);
 
+  $publicar = trim($admision["publicar"]);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Admision";
 
 ?>
@@ -114,6 +125,20 @@
                 <div class="form-group">
                   <label for="email">Email: </label>
                   <input type="text" class="form-control" name="email" id="email" required placeholder="Email"  value="<?php echo $admision['email'] ?>" >
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
                 </div>
               </div>
 

@@ -16,8 +16,8 @@
   $titulo   = $_POST["titulo"] ;
   $imagen_2   = $_POST["imagen_2"] ;
   $email   = $_POST["email"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -33,8 +33,8 @@
     "titulo"   => $titulo,
     "imagen_2"   => $imagen_2,
     "email"   => $email,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "item"   => $item,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
   );
 
