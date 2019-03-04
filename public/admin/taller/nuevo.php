@@ -29,7 +29,8 @@
     require_once "../layout/head_links.phtml";
 
     require_once "../../app/autoload.php";
-
+    
+    # load chefs
     $estado = 1 ;
     $params = array(
                 'estado' => $estado,
@@ -175,7 +176,6 @@
                     <label for="temas">Temas(Sesiones): </label>
                     <!-- <input type="text" class="form-control" name="temas" id="temas" placeholder="Temas"> -->
                     <textarea class="form-control ckeditor" name="temas" id="temas" cols="30" rows="10"></textarea>
-
                   </div>
                 </div>
                 <!-- <div class="col-md-12">
