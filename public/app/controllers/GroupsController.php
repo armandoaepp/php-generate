@@ -23,8 +23,26 @@
       $groups  = new Groups();
 
       $data = $groups->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $groups  = new Groups();
+            
+      $bean_groups = new BeanGroups();
+            
+      $bean_groups->setEstado($estado);
+
+      $data = $groups->getByEstado($bean_groups);
 
       return $data ;
     }
@@ -90,6 +108,7 @@
       extract($params) ; 
 
       $groups  = new Groups($this->cnx);
+            
       $bean_groups = new BeanGroups();
             
       $bean_groups->setId($id);
@@ -116,9 +135,6 @@
       $bean_groups->setId($id);
 
       $data = $groups->find( $bean_groups) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -128,12 +144,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $groups  = new Groups();
 

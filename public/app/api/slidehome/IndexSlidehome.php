@@ -207,14 +207,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$slidehome = $slidehome_controller->find($params);
+				$slidehome = $slidehome_controller->find( $id );
 
-				$data = $slidehome_controller->deleteById($params);
+				$data = $slidehome_controller->deleteById( $id );
 
 				if( !empty($slidehome) && $data )
 				{
-					$imagen = $slidehome["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $slidehome["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

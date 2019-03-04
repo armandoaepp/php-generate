@@ -215,14 +215,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$mensaje = $mensaje_controller->find($params);
+				$mensaje = $mensaje_controller->find( $id );
 
-				$data = $mensaje_controller->deleteById($params);
+				$data = $mensaje_controller->deleteById( $id );
 
 				if( !empty($mensaje) && $data )
 				{
-					$imagen = $mensaje["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $mensaje["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

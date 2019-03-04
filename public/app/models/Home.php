@@ -14,12 +14,12 @@ class Home extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM home";
+      $this->query = "SELECT * FROM home; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Home extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_home)
+  {
+    try{
+      $estado = $bean_home->getEstado() ;
+
+      $this->query = "SELECT * FROM home
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_home)
   {
     try{
@@ -87,7 +110,7 @@ class Home extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -99,7 +122,7 @@ class Home extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_home)
   {
     try{
@@ -135,7 +158,7 @@ class Home extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +169,7 @@ class Home extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_home)
   {
     try{
@@ -160,7 +183,7 @@ class Home extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -171,7 +194,7 @@ class Home extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_home)
   {
     try{
@@ -192,7 +215,7 @@ class Home extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_home)
   {
     try{
@@ -203,7 +226,7 @@ class Home extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

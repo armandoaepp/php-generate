@@ -3,149 +3,165 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
+  $title_page = "Red" ;
+
 ?>
-<?php $title_page = "Red" ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <?php
-$setvar = array("titulo" => "Nuevo ".$title_page." | Admin ", "follow" => "", "active" => [1, 1]);
-require_once "../layout/head_links.phtml";
-?>
+
+    $setvar = array(
+      "titulo"     => "$title_page",
+      "follow"      => "",
+      "description" => "Administrador",
+      "keywords"    => "administrador",
+      "active"      => [1,0]
+    );
+
+    $sidebar = array(
+      "sidebar_class"     => "",
+      "sidebar_toggle"      => "only",
+      "sidebar_active"      => [1,1],
+    );
+
+    require_once "../layout/head_links.phtml";
+  ?>
 </head>
 
 <body>
-  <?php
-    require "../layout/header.phtml";
-  ?>
+  <?php require "../layout/header.phtml"; ?>
 
-  <main role="main" class="screen-main">
+  <div class="app-wrap">
+    <?php require_once "../layout/sidebar.phtml";?>
+    <main role="main" class="main">
 
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="admin">
-            <i class="material-icons">home</i>
-          </a>
-        </li>
-        <li class="breadcrumb-item">
-          <a href="admin/red/red.php"><?php echo $title_page ;?>s</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Nuevo <?php echo $title_page ;?></li>
-      </ol>
-    </nav>
+      <nav class="full-content" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-shape shadow-sm radius-0">
+          <li class="breadcrumb-item">
+            <a href="admin">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="admin/red/red.php">
+              <i class="fas fa-list"></i>
+              <?php echo $title_page ;?>s
+            </a>
+          </li>
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+            Nuevo <?php echo $title_page; ?>
+          </li>
+        </ol>
+      </nav>
 
-    <div class="container py-2 py-md-3">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="page-header-title">Nuevo <?php echo $title_page ;?> </h4>
+      <div class="container py-2 py-md-3">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
+            <hr class="hr dashed">
+          </div>
         </div>
-      </div>
-      <div class="row">
+        <div class="row">
 
-        <div class="col-12 col-md-10">
-          <form action="admin/red/save.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" class="form-control" name="accion" id="accion" value="new">
-            <div class="row">
-            
+          <div class="col-12">
+            <form action="admin/red/save.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" class="form-control" name="accion" id="accion" value="new">
+              <div class="row">
+              
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="titulo">titulo : </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="titulo">
+                  <label for="titulo">Titulo: </label>
+                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="subtitulo">subtitulo : </label>
-                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" required placeholder="subtitulo">
+                  <label for="subtitulo">Subtitulo: </label>
+                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" required placeholder="Subtitulo">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="tipo">tipo : </label>
-                  <input type="text" class="form-control" name="tipo" id="tipo" required placeholder="tipo">
+                  <label for="tipo">Tipo: </label>
+                  <input type="text" class="form-control" name="tipo" id="tipo" required placeholder="Tipo">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="vacantes">vacantes : </label>
-                  <input type="text" class="form-control" name="vacantes" id="vacantes" required placeholder="vacantes">
+                  <label for="vacantes">Vacantes: </label>
+                  <input type="text" class="form-control" name="vacantes" id="vacantes" required placeholder="Vacantes">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="requisitos">requisitos : </label>
-                  <input type="text" class="form-control" name="requisitos" id="requisitos" required placeholder="requisitos">
+                  <label for="requisitos">Requisitos: </label>
+                  <input type="text" class="form-control" name="requisitos" id="requisitos" required placeholder="Requisitos">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="conocimientos">conocimientos : </label>
-                  <input type="text" class="form-control" name="conocimientos" id="conocimientos" required placeholder="conocimientos">
+                  <label for="conocimientos">Conocimientos: </label>
+                  <input type="text" class="form-control" name="conocimientos" id="conocimientos" required placeholder="Conocimientos">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="salario">salario : </label>
-                  <input type="text" class="form-control" name="salario" id="salario" required placeholder="salario">
+                  <label for="salario">Salario: </label>
+                  <input type="text" class="form-control" name="salario" id="salario" required placeholder="Salario">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombrecontacto">nombrecontacto : </label>
-                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" required placeholder="nombrecontacto">
+                  <label for="nombrecontacto">Nombrecontacto: </label>
+                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" required placeholder="Nombrecontacto">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="telefonocontacto">telefonocontacto : </label>
-                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" required placeholder="telefonocontacto">
+                  <label for="telefonocontacto">Telefonocontacto: </label>
+                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" required placeholder="Telefonocontacto">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="emailcontacto">emailcontacto : </label>
-                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" required placeholder="emailcontacto">
+                  <label for="emailcontacto">Emailcontacto: </label>
+                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" required placeholder="Emailcontacto">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="orden">orden : </label>
-                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="orden">
+                  <label for="orden">Orden: </label>
+                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="Orden">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="fecha">fecha : </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="fecha">
+                  <label for="fecha">Fecha: </label>
+                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="Fecha">
                 </div>
               </div>
 
+              </div>
 
+              <div class="w-100 text-center">
+                <a href="admin/red/red.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+              </div>
 
+            </form>
+          </div>
 
-            </div>
-
-            <div class="w-100 text-center">
-              <a href="admin/red/red.php" type="button" class="btn btn-dark ">Cancelar</a>
-              <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
-            </div>
-
-          </form>
         </div>
 
       </div>
 
-    </div>
+    </main>
+  </div>
 
-  </main>
 
-  <footer class="footer bg-dark sticky-bottom">
-    <?php
-      require "../layout/footer.phtml";
-    ?>
-  </footer>
   <?php require_once "../layout/foot_links.phtml"?>
 
 </body>

@@ -199,14 +199,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$buzon = $buzon_controller->find($params);
+				$buzon = $buzon_controller->find( $id );
 
-				$data = $buzon_controller->deleteById($params);
+				$data = $buzon_controller->deleteById( $id );
 
 				if( !empty($buzon) && $data )
 				{
-					$imagen = $buzon["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $buzon["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

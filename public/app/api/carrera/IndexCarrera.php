@@ -275,14 +275,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$carrera = $carrera_controller->find($params);
+				$carrera = $carrera_controller->find( $id );
 
-				$data = $carrera_controller->deleteById($params);
+				$data = $carrera_controller->deleteById( $id );
 
 				if( !empty($carrera) && $data )
 				{
-					$imagen = $carrera["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $carrera["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

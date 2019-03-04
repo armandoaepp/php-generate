@@ -14,12 +14,12 @@ class Traslados extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM traslados";
+      $this->query = "SELECT * FROM traslados; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,7 @@ class Traslados extends Connection {
     }
   }
 
-  # Método SAVE
+  # Method SAVE
   public function save($bean_traslados)
   {
     try{
@@ -84,7 +84,7 @@ class Traslados extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -96,7 +96,7 @@ class Traslados extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_traslados)
   {
     try{
@@ -132,7 +132,7 @@ class Traslados extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -143,7 +143,7 @@ class Traslados extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_traslados)
   {
     try{
@@ -164,7 +164,7 @@ class Traslados extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_traslados)
   {
     try{
@@ -175,7 +175,7 @@ class Traslados extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

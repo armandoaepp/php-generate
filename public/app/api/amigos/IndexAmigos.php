@@ -203,14 +203,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$amigos = $amigos_controller->find($params);
+				$amigos = $amigos_controller->find( $id );
 
-				$data = $amigos_controller->deleteById($params);
+				$data = $amigos_controller->deleteById( $id );
 
 				if( !empty($amigos) && $data )
 				{
-					$imagen = $amigos["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $amigos["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

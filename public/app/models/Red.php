@@ -14,12 +14,12 @@ class Red extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM red";
+      $this->query = "SELECT * FROM red; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Red extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_red)
+  {
+    try{
+      $estado = $bean_red->getEstado() ;
+
+      $this->query = "SELECT * FROM red
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_red)
   {
     try{
@@ -87,7 +110,7 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -99,7 +122,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_red)
   {
     try{
@@ -135,7 +158,7 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +169,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_red)
   {
     try{
@@ -160,7 +183,7 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -171,7 +194,7 @@ class Red extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_red)
   {
     try{
@@ -192,7 +215,7 @@ class Red extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_red)
   {
     try{
@@ -203,7 +226,7 @@ class Red extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

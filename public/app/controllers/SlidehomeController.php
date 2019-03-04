@@ -23,8 +23,26 @@
       $slidehome  = new Slidehome();
 
       $data = $slidehome->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $slidehome  = new Slidehome();
+            
+      $bean_slidehome = new BeanSlidehome();
+            
+      $bean_slidehome->setEstado($estado);
+
+      $data = $slidehome->getByEstado($bean_slidehome);
 
       return $data ;
     }
@@ -100,6 +118,7 @@
       extract($params) ; 
 
       $slidehome  = new Slidehome($this->cnx);
+            
       $bean_slidehome = new BeanSlidehome();
             
       $bean_slidehome->setId($id);
@@ -126,9 +145,6 @@
       $bean_slidehome->setId($id);
 
       $data = $slidehome->find( $bean_slidehome) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -138,12 +154,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $slidehome  = new Slidehome();
 

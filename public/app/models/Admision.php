@@ -14,12 +14,12 @@ class Admision extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM admision";
+      $this->query = "SELECT * FROM admision; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,7 @@ class Admision extends Connection {
     }
   }
 
-  # Método SAVE
+  # Method SAVE
   public function save($bean_admision)
   {
     try{
@@ -66,7 +66,7 @@ class Admision extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -78,7 +78,7 @@ class Admision extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_admision)
   {
     try{
@@ -102,7 +102,7 @@ class Admision extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -113,7 +113,7 @@ class Admision extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_admision)
   {
     try{
@@ -134,7 +134,7 @@ class Admision extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_admision)
   {
     try{
@@ -145,7 +145,7 @@ class Admision extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

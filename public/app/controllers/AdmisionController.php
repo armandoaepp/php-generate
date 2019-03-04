@@ -23,8 +23,26 @@
       $admision  = new Admision();
 
       $data = $admision->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $admision  = new Admision();
+            
+      $bean_admision = new BeanAdmision();
+            
+      $bean_admision->setEstado($estado);
+
+      $data = $admision->getByEstado($bean_admision);
 
       return $data ;
     }
@@ -98,6 +116,7 @@
       extract($params) ; 
 
       $admision  = new Admision($this->cnx);
+            
       $bean_admision = new BeanAdmision();
             
       $bean_admision->setId($id);
@@ -124,8 +143,6 @@
       $bean_admision->setId($id);
 
       $data = $admision->find( $bean_admision) ;
-      $data = Serialize::unSerializeRow($data);
-
       return $data;
 
     }
@@ -135,12 +152,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $admision  = new Admision();
 

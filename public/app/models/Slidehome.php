@@ -14,12 +14,12 @@ class Slidehome extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM slidehome";
+      $this->query = "SELECT * FROM slidehome; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Slidehome extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_slidehome)
+  {
+    try{
+      $estado = $bean_slidehome->getEstado() ;
+
+      $this->query = "SELECT * FROM slidehome
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_slidehome)
   {
     try{
@@ -72,7 +95,7 @@ class Slidehome extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -84,7 +107,7 @@ class Slidehome extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_slidehome)
   {
     try{
@@ -110,7 +133,7 @@ class Slidehome extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -121,7 +144,7 @@ class Slidehome extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_slidehome)
   {
     try{
@@ -135,7 +158,7 @@ class Slidehome extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +169,7 @@ class Slidehome extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_slidehome)
   {
     try{
@@ -167,7 +190,7 @@ class Slidehome extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_slidehome)
   {
     try{
@@ -178,7 +201,7 @@ class Slidehome extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

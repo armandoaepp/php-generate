@@ -14,12 +14,12 @@ class Facultad extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM facultad";
+      $this->query = "SELECT * FROM facultad; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Facultad extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_facultad)
+  {
+    try{
+      $estado = $bean_facultad->getEstado() ;
+
+      $this->query = "SELECT * FROM facultad
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_facultad)
   {
     try{
@@ -69,7 +92,7 @@ class Facultad extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -81,7 +104,7 @@ class Facultad extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_facultad)
   {
     try{
@@ -105,7 +128,7 @@ class Facultad extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -116,7 +139,7 @@ class Facultad extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_facultad)
   {
     try{
@@ -130,7 +153,7 @@ class Facultad extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -141,7 +164,7 @@ class Facultad extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_facultad)
   {
     try{
@@ -162,7 +185,7 @@ class Facultad extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_facultad)
   {
     try{
@@ -173,7 +196,7 @@ class Facultad extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

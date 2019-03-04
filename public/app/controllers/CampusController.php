@@ -23,8 +23,26 @@
       $campus  = new Campus();
 
       $data = $campus->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $campus  = new Campus();
+            
+      $bean_campus = new BeanCampus();
+            
+      $bean_campus->setEstado($estado);
+
+      $data = $campus->getByEstado($bean_campus);
 
       return $data ;
     }
@@ -100,6 +118,7 @@
       extract($params) ; 
 
       $campus  = new Campus($this->cnx);
+            
       $bean_campus = new BeanCampus();
             
       $bean_campus->setId($id);
@@ -126,9 +145,6 @@
       $bean_campus->setId($id);
 
       $data = $campus->find( $bean_campus) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -138,12 +154,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $campus  = new Campus();
 

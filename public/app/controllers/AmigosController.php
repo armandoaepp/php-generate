@@ -23,8 +23,26 @@
       $amigos  = new Amigos();
 
       $data = $amigos->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $amigos  = new Amigos();
+            
+      $bean_amigos = new BeanAmigos();
+            
+      $bean_amigos->setEstado($estado);
+
+      $data = $amigos->getByEstado($bean_amigos);
 
       return $data ;
     }
@@ -98,6 +116,7 @@
       extract($params) ; 
 
       $amigos  = new Amigos($this->cnx);
+            
       $bean_amigos = new BeanAmigos();
             
       $bean_amigos->setId($id);
@@ -124,9 +143,6 @@
       $bean_amigos->setId($id);
 
       $data = $amigos->find( $bean_amigos) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -136,12 +152,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $amigos  = new Amigos();
 

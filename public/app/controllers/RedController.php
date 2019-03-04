@@ -23,8 +23,26 @@
       $red  = new Red();
 
       $data = $red->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $red  = new Red();
+            
+      $bean_red = new BeanRed();
+            
+      $bean_red->setEstado($estado);
+
+      $data = $red->getByEstado($bean_red);
 
       return $data ;
     }
@@ -110,6 +128,7 @@
       extract($params) ; 
 
       $red  = new Red($this->cnx);
+            
       $bean_red = new BeanRed();
             
       $bean_red->setId($id);
@@ -136,9 +155,6 @@
       $bean_red->setId($id);
 
       $data = $red->find( $bean_red) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -148,12 +164,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $red  = new Red();
 

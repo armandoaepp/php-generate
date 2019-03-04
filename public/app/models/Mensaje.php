@@ -14,12 +14,12 @@ class Mensaje extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM mensaje";
+      $this->query = "SELECT * FROM mensaje; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Mensaje extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_mensaje)
+  {
+    try{
+      $estado = $bean_mensaje->getEstado() ;
+
+      $this->query = "SELECT * FROM mensaje
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_mensaje)
   {
     try{
@@ -78,7 +101,7 @@ class Mensaje extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -90,7 +113,7 @@ class Mensaje extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_mensaje)
   {
     try{
@@ -120,7 +143,7 @@ class Mensaje extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -131,7 +154,7 @@ class Mensaje extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_mensaje)
   {
     try{
@@ -145,7 +168,7 @@ class Mensaje extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -156,7 +179,7 @@ class Mensaje extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_mensaje)
   {
     try{
@@ -177,7 +200,7 @@ class Mensaje extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_mensaje)
   {
     try{
@@ -188,7 +211,7 @@ class Mensaje extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

@@ -187,14 +187,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$groups = $groups_controller->find($params);
+				$groups = $groups_controller->find( $id );
 
-				$data = $groups_controller->deleteById($params);
+				$data = $groups_controller->deleteById( $id );
 
 				if( !empty($groups) && $data )
 				{
-					$imagen = $groups["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $groups["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

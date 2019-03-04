@@ -14,12 +14,12 @@ class Buzon extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM buzon";
+      $this->query = "SELECT * FROM buzon; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Buzon extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_buzon)
+  {
+    try{
+      $estado = $bean_buzon->getEstado() ;
+
+      $this->query = "SELECT * FROM buzon
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_buzon)
   {
     try{
@@ -66,7 +89,7 @@ class Buzon extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -78,7 +101,7 @@ class Buzon extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_buzon)
   {
     try{
@@ -100,7 +123,7 @@ class Buzon extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -111,7 +134,7 @@ class Buzon extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_buzon)
   {
     try{
@@ -125,7 +148,7 @@ class Buzon extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -136,7 +159,7 @@ class Buzon extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_buzon)
   {
     try{
@@ -157,7 +180,7 @@ class Buzon extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_buzon)
   {
     try{
@@ -168,7 +191,7 @@ class Buzon extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

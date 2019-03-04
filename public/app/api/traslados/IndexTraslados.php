@@ -227,14 +227,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$traslados = $traslados_controller->find($params);
+				$traslados = $traslados_controller->find( $id );
 
-				$data = $traslados_controller->deleteById($params);
+				$data = $traslados_controller->deleteById( $id );
 
 				if( !empty($traslados) && $data )
 				{
-					$imagen = $traslados["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $traslados["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

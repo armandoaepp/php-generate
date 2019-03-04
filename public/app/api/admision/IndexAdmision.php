@@ -203,14 +203,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$admision = $admision_controller->find($params);
+				$admision = $admision_controller->find( $id );
 
-				$data = $admision_controller->deleteById($params);
+				$data = $admision_controller->deleteById( $id );
 
 				if( !empty($admision) && $data )
 				{
-					$imagen = $admision["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $admision["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

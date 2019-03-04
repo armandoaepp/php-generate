@@ -199,14 +199,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$textos = $textos_controller->find($params);
+				$textos = $textos_controller->find( $id );
 
-				$data = $textos_controller->deleteById($params);
+				$data = $textos_controller->deleteById( $id );
 
 				if( !empty($textos) && $data )
 				{
-					$imagen = $textos["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $textos["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

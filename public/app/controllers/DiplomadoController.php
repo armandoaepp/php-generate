@@ -23,8 +23,26 @@
       $diplomado  = new Diplomado();
 
       $data = $diplomado->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $diplomado  = new Diplomado();
+            
+      $bean_diplomado = new BeanDiplomado();
+            
+      $bean_diplomado->setEstado($estado);
+
+      $data = $diplomado->getByEstado($bean_diplomado);
 
       return $data ;
     }
@@ -128,6 +146,7 @@
       extract($params) ; 
 
       $diplomado  = new Diplomado($this->cnx);
+            
       $bean_diplomado = new BeanDiplomado();
             
       $bean_diplomado->setId($id);
@@ -154,9 +173,6 @@
       $bean_diplomado->setId($id);
 
       $data = $diplomado->find( $bean_diplomado) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -166,12 +182,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $diplomado  = new Diplomado();
 

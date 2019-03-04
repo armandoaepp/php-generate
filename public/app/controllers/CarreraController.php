@@ -23,8 +23,26 @@
       $carrera  = new Carrera();
 
       $data = $carrera->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $carrera  = new Carrera();
+            
+      $bean_carrera = new BeanCarrera();
+            
+      $bean_carrera->setEstado($estado);
+
+      $data = $carrera->getByEstado($bean_carrera);
 
       return $data ;
     }
@@ -134,6 +152,7 @@
       extract($params) ; 
 
       $carrera  = new Carrera($this->cnx);
+            
       $bean_carrera = new BeanCarrera();
             
       $bean_carrera->setId($id);
@@ -160,9 +179,6 @@
       $bean_carrera->setId($id);
 
       $data = $carrera->find( $bean_carrera) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -172,12 +188,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $carrera  = new Carrera();
 

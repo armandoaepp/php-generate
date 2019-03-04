@@ -14,12 +14,12 @@ class Campus extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM campus";
+      $this->query = "SELECT * FROM campus; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Campus extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_campus)
+  {
+    try{
+      $estado = $bean_campus->getEstado() ;
+
+      $this->query = "SELECT * FROM campus
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_campus)
   {
     try{
@@ -72,7 +95,7 @@ class Campus extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -84,7 +107,7 @@ class Campus extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_campus)
   {
     try{
@@ -110,7 +133,7 @@ class Campus extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -121,7 +144,7 @@ class Campus extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_campus)
   {
     try{
@@ -135,7 +158,7 @@ class Campus extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -146,7 +169,7 @@ class Campus extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_campus)
   {
     try{
@@ -167,7 +190,7 @@ class Campus extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_campus)
   {
     try{
@@ -178,7 +201,7 @@ class Campus extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

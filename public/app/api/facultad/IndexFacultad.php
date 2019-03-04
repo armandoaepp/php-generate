@@ -203,14 +203,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$facultad = $facultad_controller->find($params);
+				$facultad = $facultad_controller->find( $id );
 
-				$data = $facultad_controller->deleteById($params);
+				$data = $facultad_controller->deleteById( $id );
 
 				if( !empty($facultad) && $data )
 				{
-					$imagen = $facultad["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $facultad["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

@@ -227,14 +227,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$home = $home_controller->find($params);
+				$home = $home_controller->find( $id );
 
-				$data = $home_controller->deleteById($params);
+				$data = $home_controller->deleteById( $id );
 
 				if( !empty($home) && $data )
 				{
-					$imagen = $home["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $home["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

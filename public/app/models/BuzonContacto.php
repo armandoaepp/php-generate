@@ -14,12 +14,12 @@ class BuzonContacto extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM buzon_contacto";
+      $this->query = "SELECT * FROM buzon_contacto; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,7 @@ class BuzonContacto extends Connection {
     }
   }
 
-  # Método SAVE
+  # Method SAVE
   public function save($bean_buzon_contacto)
   {
     try{
@@ -63,7 +63,7 @@ class BuzonContacto extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -75,7 +75,7 @@ class BuzonContacto extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_buzon_contacto)
   {
     try{
@@ -97,7 +97,7 @@ class BuzonContacto extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -108,7 +108,7 @@ class BuzonContacto extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_buzon_contacto)
   {
     try{
@@ -129,7 +129,7 @@ class BuzonContacto extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_buzon_contacto)
   {
     try{
@@ -140,7 +140,7 @@ class BuzonContacto extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

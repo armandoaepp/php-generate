@@ -25,9 +25,9 @@ switch($evento)
   case "list":
     try
     {
-      $evento_img_controller = new EventoImgController() ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController() ; 
 
-       $data = $evento_img_controller->getAll() ;
+       $data = $traslado_pregunta_controller->getAll() ;
 
       $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
@@ -47,24 +47,24 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $evento_img_controller = new EventoImgController($cnx) ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $imagen = $inputs->imagen;
-      $id_padre = $inputs->id_padre;
+      $pregunta = $inputs->pregunta;
+      $respuesta = $inputs->respuesta;
       $orden = $inputs->orden;
       $fecha = $inputs->fecha;
         
       $params = array(
                 'id'=> $id,
-                'imagen'=> $imagen,
-                'id_padre'=> $id_padre,
+                'pregunta'=> $pregunta,
+                'respuesta'=> $respuesta,
                 'orden'=> $orden,
                 'fecha'=> $fecha,
               ) ; 
         
-      $data = $evento_img_controller->save($params) ;
+      $data = $traslado_pregunta_controller->save($params) ;
         
       $connection->commit();
 
@@ -86,24 +86,24 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $evento_img_controller = new EventoImgController($cnx) ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController($cnx) ; 
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $imagen = $inputs->imagen;
-      $id_padre = $inputs->id_padre;
+      $pregunta = $inputs->pregunta;
+      $respuesta = $inputs->respuesta;
       $orden = $inputs->orden;
       $fecha = $inputs->fecha;
         
       $params = array(
                 'id'=> $id,
-                'imagen'=> $imagen,
-                'id_padre'=> $id_padre,
+                'pregunta'=> $pregunta,
+                'respuesta'=> $respuesta,
                 'orden'=> $orden,
                 'fecha'=> $fecha,
               ) ; 
         
-      $data = $evento_img_controller->update($params) ;
+      $data = $traslado_pregunta_controller->update($params) ;
         
       $connection->commit();
 
@@ -132,9 +132,9 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $evento_img_controller = new EventoImgController() ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController() ; 
 
-      $data = $evento_img_controller->updateEstado( $params ) ;
+      $data = $traslado_pregunta_controller->updateEstado( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -153,9 +153,9 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $evento_img_controller = new EventoImgController() ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController() ; 
 
-      $data = $evento_img_controller->find( $id) ;
+      $data = $traslado_pregunta_controller->find( $id) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -187,7 +187,7 @@ switch($evento)
                 'estado'=> $estado,
               ) ; 
 
-      $evento_img_controller = new EventoImgController() ; 
+      $traslado_pregunta_controller = new TrasladoPreguntaController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -195,20 +195,20 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$evento_img = $evento_img_controller->find($params);
+				$traslado_pregunta = $traslado_pregunta_controller->find( $id );
 
-				$data = $evento_img_controller->deleteById($params);
+				$data = $traslado_pregunta_controller->deleteById( $id );
 
-				if( !empty($evento_img) && $data )
+				if( !empty($traslado_pregunta) && $data )
 				{
-					$imagen = $evento_img["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $traslado_pregunta["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
 			else
 			{
-				$data = $evento_img_controller->updateEstado($params);
+				$data = $traslado_pregunta_controller->updateEstado($params);
 			} 
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);

@@ -23,8 +23,26 @@
       $traslados  = new Traslados();
 
       $data = $traslados->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $traslados  = new Traslados();
+            
+      $bean_traslados = new BeanTraslados();
+            
+      $bean_traslados->setEstado($estado);
+
+      $data = $traslados->getByEstado($bean_traslados);
 
       return $data ;
     }
@@ -110,6 +128,7 @@
       extract($params) ; 
 
       $traslados  = new Traslados($this->cnx);
+            
       $bean_traslados = new BeanTraslados();
             
       $bean_traslados->setId($id);
@@ -136,9 +155,6 @@
       $bean_traslados->setId($id);
 
       $data = $traslados->find( $bean_traslados) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -148,12 +164,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $traslados  = new Traslados();
 

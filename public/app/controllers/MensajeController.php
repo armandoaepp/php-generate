@@ -23,8 +23,26 @@
       $mensaje  = new Mensaje();
 
       $data = $mensaje->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $mensaje  = new Mensaje();
+            
+      $bean_mensaje = new BeanMensaje();
+            
+      $bean_mensaje->setEstado($estado);
+
+      $data = $mensaje->getByEstado($bean_mensaje);
 
       return $data ;
     }
@@ -104,6 +122,7 @@
       extract($params) ; 
 
       $mensaje  = new Mensaje($this->cnx);
+            
       $bean_mensaje = new BeanMensaje();
             
       $bean_mensaje->setId($id);
@@ -130,9 +149,6 @@
       $bean_mensaje->setId($id);
 
       $data = $mensaje->find( $bean_mensaje) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -142,12 +158,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $mensaje  = new Mensaje();
 

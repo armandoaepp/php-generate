@@ -23,8 +23,26 @@
       $buzon  = new Buzon();
 
       $data = $buzon->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $buzon  = new Buzon();
+            
+      $bean_buzon = new BeanBuzon();
+            
+      $bean_buzon->setEstado($estado);
+
+      $data = $buzon->getByEstado($bean_buzon);
 
       return $data ;
     }
@@ -96,6 +114,7 @@
       extract($params) ; 
 
       $buzon  = new Buzon($this->cnx);
+            
       $bean_buzon = new BeanBuzon();
             
       $bean_buzon->setId($id);
@@ -122,9 +141,6 @@
       $bean_buzon->setId($id);
 
       $data = $buzon->find( $bean_buzon) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -134,12 +150,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $buzon  = new Buzon();
 

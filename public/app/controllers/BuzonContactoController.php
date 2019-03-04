@@ -23,8 +23,26 @@
       $buzon_contacto  = new BuzonContacto();
 
       $data = $buzon_contacto->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $buzon_contacto  = new BuzonContacto();
+            
+      $bean_buzon_contacto = new BeanBuzonContacto();
+            
+      $bean_buzon_contacto->setEstado($estado);
+
+      $data = $buzon_contacto->getByEstado($bean_buzon_contacto);
 
       return $data ;
     }
@@ -96,6 +114,7 @@
       extract($params) ; 
 
       $buzon_contacto  = new BuzonContacto($this->cnx);
+            
       $bean_buzon_contacto = new BeanBuzonContacto();
             
       $bean_buzon_contacto->setId($id);
@@ -122,9 +141,6 @@
       $bean_buzon_contacto->setId($id);
 
       $data = $buzon_contacto->find( $bean_buzon_contacto) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -134,12 +150,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $buzon_contacto  = new BuzonContacto();
 

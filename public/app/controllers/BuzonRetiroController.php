@@ -23,8 +23,26 @@
       $buzon_retiro  = new BuzonRetiro();
 
       $data = $buzon_retiro->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $buzon_retiro  = new BuzonRetiro();
+            
+      $bean_buzon_retiro = new BeanBuzonRetiro();
+            
+      $bean_buzon_retiro->setEstado($estado);
+
+      $data = $buzon_retiro->getByEstado($bean_buzon_retiro);
 
       return $data ;
     }
@@ -96,6 +114,7 @@
       extract($params) ; 
 
       $buzon_retiro  = new BuzonRetiro($this->cnx);
+            
       $bean_buzon_retiro = new BeanBuzonRetiro();
             
       $bean_buzon_retiro->setId($id);
@@ -122,9 +141,6 @@
       $bean_buzon_retiro->setId($id);
 
       $data = $buzon_retiro->find( $bean_buzon_retiro) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -134,12 +150,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $buzon_retiro  = new BuzonRetiro();
 

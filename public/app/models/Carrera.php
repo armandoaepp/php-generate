@@ -14,12 +14,12 @@ class Carrera extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM carrera";
+      $this->query = "SELECT * FROM carrera; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Carrera extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_carrera)
+  {
+    try{
+      $estado = $bean_carrera->getEstado() ;
+
+      $this->query = "SELECT * FROM carrera
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_carrera)
   {
     try{
@@ -123,7 +146,7 @@ class Carrera extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -135,7 +158,7 @@ class Carrera extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_carrera)
   {
     try{
@@ -195,7 +218,7 @@ class Carrera extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -206,7 +229,7 @@ class Carrera extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_carrera)
   {
     try{
@@ -220,7 +243,7 @@ class Carrera extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -231,7 +254,7 @@ class Carrera extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_carrera)
   {
     try{
@@ -252,7 +275,7 @@ class Carrera extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_carrera)
   {
     try{
@@ -263,7 +286,7 @@ class Carrera extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

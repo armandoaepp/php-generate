@@ -199,14 +199,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$buzon_contacto = $buzon_contacto_controller->find($params);
+				$buzon_contacto = $buzon_contacto_controller->find( $id );
 
-				$data = $buzon_contacto_controller->deleteById($params);
+				$data = $buzon_contacto_controller->deleteById( $id );
 
 				if( !empty($buzon_contacto) && $data )
 				{
-					$imagen = $buzon_contacto["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $buzon_contacto["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

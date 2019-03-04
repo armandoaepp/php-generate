@@ -227,14 +227,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$red = $red_controller->find($params);
+				$red = $red_controller->find( $id );
 
-				$data = $red_controller->deleteById($params);
+				$data = $red_controller->deleteById( $id );
 
 				if( !empty($red) && $data )
 				{
-					$imagen = $red["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $red["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

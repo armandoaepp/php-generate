@@ -23,8 +23,26 @@
       $facultad  = new Facultad();
 
       $data = $facultad->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $facultad  = new Facultad();
+            
+      $bean_facultad = new BeanFacultad();
+            
+      $bean_facultad->setEstado($estado);
+
+      $data = $facultad->getByEstado($bean_facultad);
 
       return $data ;
     }
@@ -98,6 +116,7 @@
       extract($params) ; 
 
       $facultad  = new Facultad($this->cnx);
+            
       $bean_facultad = new BeanFacultad();
             
       $bean_facultad->setId($id);
@@ -124,9 +143,6 @@
       $bean_facultad->setId($id);
 
       $data = $facultad->find( $bean_facultad) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -136,12 +152,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $facultad  = new Facultad();
 

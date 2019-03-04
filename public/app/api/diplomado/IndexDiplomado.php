@@ -263,14 +263,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$diplomado = $diplomado_controller->find($params);
+				$diplomado = $diplomado_controller->find( $id );
 
-				$data = $diplomado_controller->deleteById($params);
+				$data = $diplomado_controller->deleteById( $id );
 
 				if( !empty($diplomado) && $data )
 				{
-					$imagen = $diplomado["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $diplomado["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

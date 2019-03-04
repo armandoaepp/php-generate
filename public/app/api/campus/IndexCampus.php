@@ -207,14 +207,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$campus = $campus_controller->find($params);
+				$campus = $campus_controller->find( $id );
 
-				$data = $campus_controller->deleteById($params);
+				$data = $campus_controller->deleteById( $id );
 
 				if( !empty($campus) && $data )
 				{
-					$imagen = $campus["imagen"] ;
-					UploadFiles::removeFile($img_bd) ;
+					$imagen = $campus["imagen"] ; 
+					UploadFiles::removeFile($imagen) ;
 				}
 
 			}

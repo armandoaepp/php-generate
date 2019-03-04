@@ -14,12 +14,12 @@ class Textos extends Connection {
     $this->conn = $cnx;
   }
 
-  # Método getALl
+  # Method get all rows
   public function getAll()
   {
     try{
 
-      $this->query = "SELECT * FROM textos";
+      $this->query = "SELECT * FROM textos; ";
 
       $this->executeQuery();
 
@@ -34,7 +34,30 @@ class Textos extends Connection {
     }
   }
 
-  # Método SAVE
+
+  # Method getByEstado
+  public function getByEstado($bean_textos)
+  {
+    try{
+      $estado = $bean_textos->getEstado() ;
+
+      $this->query = "SELECT * FROM textos
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method SAVE
   public function save($bean_textos)
   {
     try{
@@ -66,7 +89,7 @@ class Textos extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -78,7 +101,7 @@ class Textos extends Connection {
     }
   }
 
-  # Método Actualizar
+  # Method Actualizar
   public function update($bean_textos)
   {
     try{
@@ -100,7 +123,7 @@ class Textos extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -111,7 +134,7 @@ class Textos extends Connection {
     }
   }
 
-  # Método Eliminar(Actualizar Estado)
+  # Method Eliminar(Update Estado)
   public function updateEstado($bean_textos)
   {
     try{
@@ -125,7 +148,7 @@ class Textos extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 
@@ -136,7 +159,7 @@ class Textos extends Connection {
     }
   }
 
-  # Método Buscar por ID
+  # Method Buscar por ID
   public function find($bean_textos)
   {
     try{
@@ -157,7 +180,7 @@ class Textos extends Connection {
     }
   }
 
-  # Método deleteById
+  # Method deleteById
   public function deleteById($bean_textos)
   {
     try{
@@ -168,7 +191,7 @@ class Textos extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status_exe  ;
+      $data = $this->status  ;
 
       return $data;
 

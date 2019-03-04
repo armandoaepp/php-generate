@@ -23,8 +23,26 @@
       $home  = new Home();
 
       $data = $home->getAll();
-      $data = Serialize::unSerializeArray($data);
-        
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByEstado()
+  {
+    try
+    {
+      $home  = new Home();
+            
+      $bean_home = new BeanHome();
+            
+      $bean_home->setEstado($estado);
+
+      $data = $home->getByEstado($bean_home);
 
       return $data ;
     }
@@ -110,6 +128,7 @@
       extract($params) ; 
 
       $home  = new Home($this->cnx);
+            
       $bean_home = new BeanHome();
             
       $bean_home->setId($id);
@@ -136,9 +155,6 @@
       $bean_home->setId($id);
 
       $data = $home->find( $bean_home) ;
-      $data = Serialize::unSerializeArray($data);
-        
-
       return $data;
 
     }
@@ -148,12 +164,10 @@
     }
   }
 
-  public function deleteById($params)
+  public function deleteById($id)
   {
     try
     {
-
-      extract($params) ;
 
       $home  = new Home();
 
