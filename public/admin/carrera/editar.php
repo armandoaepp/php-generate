@@ -15,6 +15,17 @@
 
   $carrera = $carrera_controller->find($id);
 
+  $publicar = trim($carrera["publicar"]);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Carrera";
 
 ?>
@@ -86,146 +97,148 @@
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
               
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo"  value="<?php echo $carrera['titulo'] ?>" >
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $carrera['titulo']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="Descripcion"  value="<?php echo $carrera['descripcion'] ?>" >
+                  <textarea class="form-control ckeditor" name="descripcion" id="descripcion" placeholder="Descripcion" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['descripcion']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="slide">Slide: </label>
-                  <input type="text" class="form-control" name="slide" id="slide" required placeholder="Slide"  value="<?php echo $carrera['slide'] ?>" >
+                  <input type="text" class="form-control" name="slide" id="slide" placeholder="Slide" value="<?php echo $carrera['slide']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="presentacion">Presentacion: </label>
-                  <input type="text" class="form-control" name="presentacion" id="presentacion" required placeholder="Presentacion"  value="<?php echo $carrera['presentacion'] ?>" >
+                  <textarea class="form-control ckeditor" name="presentacion" id="presentacion" placeholder="Presentacion" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['presentacion']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="porque">Porque: </label>
-                  <input type="text" class="form-control" name="porque" id="porque" required placeholder="Porque"  value="<?php echo $carrera['porque'] ?>" >
+                  <textarea class="form-control ckeditor" name="porque" id="porque" placeholder="Porque" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['porque']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="donde">Donde: </label>
-                  <input type="text" class="form-control" name="donde" id="donde" required placeholder="Donde"  value="<?php echo $carrera['donde'] ?>" >
+                  <textarea class="form-control ckeditor" name="donde" id="donde" placeholder="Donde" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['donde']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="certificacion">Certificacion: </label>
-                  <input type="text" class="form-control" name="certificacion" id="certificacion" required placeholder="Certificacion"  value="<?php echo $carrera['certificacion'] ?>" >
+                  <textarea class="form-control ckeditor" name="certificacion" id="certificacion" placeholder="Certificacion" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['certificacion']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulos">Titulos: </label>
-                  <input type="text" class="form-control" name="titulos" id="titulos" required placeholder="Titulos"  value="<?php echo $carrera['titulos'] ?>" >
+                  <textarea class="form-control ckeditor" name="titulos" id="titulos" placeholder="Titulos" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['titulos']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="inversion">Inversion: </label>
-                  <input type="text" class="form-control" name="inversion" id="inversion" required placeholder="Inversion"  value="<?php echo $carrera['inversion'] ?>" >
+                  <textarea class="form-control ckeditor" name="inversion" id="inversion" placeholder="Inversion" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['inversion']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulacion">Titulacion: </label>
-                  <input type="text" class="form-control" name="titulacion" id="titulacion" required placeholder="Titulacion"  value="<?php echo $carrera['titulacion'] ?>" >
+                  <textarea class="form-control ckeditor" name="titulacion" id="titulacion" placeholder="Titulacion" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['titulacion']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalleduracion">Detalleduracion: </label>
-                  <input type="text" class="form-control" name="detalleduracion" id="detalleduracion" required placeholder="Detalleduracion"  value="<?php echo $carrera['detalleduracion'] ?>" >
+                  <label for="duracion">Duracion: </label>
+                  <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion" value="<?php echo $carrera['duracion']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalledia">Detalledia: </label>
-                  <input type="text" class="form-control" name="detalledia" id="detalledia" required placeholder="Detalledia"  value="<?php echo $carrera['detalledia'] ?>" >
+                  <label for="dia">Dia: </label>
+                  <input type="text" class="form-control" name="dia" id="dia" placeholder="Dia" value="<?php echo $carrera['dia']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detallehorario">Detallehorario: </label>
-                  <input type="text" class="form-control" name="detallehorario" id="detallehorario" required placeholder="Detallehorario"  value="<?php echo $carrera['detallehorario'] ?>" >
+                  <label for="horario">Horario: </label>
+                  <input type="text" class="form-control" name="horario" id="horario" placeholder="Horario" value="<?php echo $carrera['horario']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detallelugar">Detallelugar: </label>
-                  <input type="text" class="form-control" name="detallelugar" id="detallelugar" required placeholder="Detallelugar"  value="<?php echo $carrera['detallelugar'] ?>" >
+                  <label for="lugar">Lugar: </label>
+                  <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Lugar" value="<?php echo $carrera['lugar']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalleprecio">Detalleprecio: </label>
-                  <input type="text" class="form-control" name="detalleprecio" id="detalleprecio" required placeholder="Detalleprecio"  value="<?php echo $carrera['detalleprecio'] ?>" >
+                  <label for="precio">Precio: </label>
+                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $carrera['precio']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalleequipos">Detalleequipos: </label>
-                  <input type="text" class="form-control" name="detalleequipos" id="detalleequipos" required placeholder="Detalleequipos"  value="<?php echo $carrera['detalleequipos'] ?>" >
+                  <label for="equipos">Equipos: </label>
+                  <input type="text" class="form-control" name="equipos" id="equipos" placeholder="Equipos" value="<?php echo $carrera['equipos']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalleconsultas">Detalleconsultas: </label>
-                  <input type="text" class="form-control" name="detalleconsultas" id="detalleconsultas" required placeholder="Detalleconsultas"  value="<?php echo $carrera['detalleconsultas'] ?>" >
+                  <label for="consultas">Consultas: </label>
+                  <input type="text" class="form-control" name="consultas" id="consultas" placeholder="Consultas" value="<?php echo $carrera['consultas']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="detalledirigido">Detalledirigido: </label>
-                  <input type="text" class="form-control" name="detalledirigido" id="detalledirigido" required placeholder="Detalledirigido"  value="<?php echo $carrera['detalledirigido'] ?>" >
+                  <label for="dirigido">Dirigido: </label>
+                  <input type="text" class="form-control" name="dirigido" id="dirigido" placeholder="Dirigido" value="<?php echo $carrera['dirigido']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="aquien">Aquien: </label>
-                  <input type="text" class="form-control" name="aquien" id="aquien" required placeholder="Aquien"  value="<?php echo $carrera['aquien'] ?>" >
+                  <input type="text" class="form-control" name="aquien" id="aquien" placeholder="Aquien" value="<?php echo $carrera['aquien']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="temas">Temas: </label>
-                  <input type="text" class="form-control" name="temas" id="temas" required placeholder="Temas"  value="<?php echo $carrera['temas'] ?>" >
+                  <textarea class="form-control ckeditor" name="temas" id="temas" placeholder="Temas" cols="30" rows="6"><?php echo htmlspecialchars_decode($carrera['temas']); ?></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nombreseo">Nombreseo: </label>
-                  <input type="text" class="form-control" name="nombreseo" id="nombreseo" required placeholder="Nombreseo"  value="<?php echo $carrera['nombreseo'] ?>" >
+                  <label for="item">Item: </label>
+                  <input type="text" class="form-control" name="item" id="item" placeholder="Item" value="<?php echo $carrera['item']; ?>">
                 </div>
-              </div>
-              <div class="col-md-6">
+              </div> -->
+
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="orden">Orden: </label>
-                  <input type="text" class="form-control" name="orden" id="orden" required placeholder="Orden"  value="<?php echo $carrera['orden'] ?>" >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="fecha">Fecha: </label>
-                  <input type="text" class="form-control" name="fecha" id="fecha" required placeholder="Fecha"  value="<?php echo $carrera['fecha'] ?>" >
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-sm-6 col-md-6 text-center">
+              <div class="col-md-12 text-center">
                 <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $carrera['imagen']; ?>">
                 <img src="<?php echo $carrera['imagen'] ?>" class="img-fluid img-view-edit mb-2">
               </div>
@@ -264,6 +277,7 @@
   </div>
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

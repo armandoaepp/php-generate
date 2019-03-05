@@ -19,6 +19,15 @@ include_once 'templates/load_template.php';
 // include_once 'templates/templateNuevo.php';
 // echo templateIndex('demosss')  ;
 
+// $sele = $_POST["sele"];
+
+// $tipo_input = $_POST["tipo_input"];
+// echo "<pre>";
+// print_r($sele);
+// print_r($tipo_input);
+// echo "</pre>";
+
+// return ;
 
 if (isset($_POST["btenviar"])) {
 
@@ -33,6 +42,7 @@ if (isset($_POST["btenviar"])) {
         $arrayva      = array();
         $arraycabeza  = array();
         $arrayenlace2 = array();
+        $tipo_inputs  = array();
         for ($i = 0; $i < count($sele); $i++) {
             $romper = explode("/", $sele[$i]);
             if ($tabla != $_POST["ttabla" . $romper[1]]) {
@@ -44,8 +54,10 @@ if (isset($_POST["btenviar"])) {
                 $arrayva[]      = $romper[0];
                 $consulta .= $_POST["ttabla" . $romper[1]] . "." . $capturarenlace[1] . " As '" . $_POST["tmostrar" . $romper[1]] . "',";
                 $arraycabeza[] = $_POST["tmostrar" . $romper[1]];
+                $tipo_inputs[] = $_POST["tipo_input" . $romper[1]];
             } else {
                 $arraycabeza[] = $_POST["tmostrar" . $romper[1]];
+                $tipo_inputs[] = $_POST["tipo_input" . $romper[1]];
                 $consulta .= $_POST["ttabla" . $romper[1]] . "." . $romper[0] . " As '" . $_POST["tmostrar" . $romper[1]] . "',";
             }
         }
@@ -78,14 +90,9 @@ if (isset($_POST["btenviar"])) {
         echo generarbean($atributos, $consulta, $tabla, $arraycabeza) . "<br/>";
         echo generarmodelo($atributos, $consulta, $tabla , $arraycabeza) . "<br/>";
         echo generandoControladores($atributos, $tabla,$arraycabeza) . "<br/>";
+
         echo generandoIndex($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
-
-        // echo generarmodelo($atributos, $consulta, $tabla) . "<br/>";
-
-        // echo generandoViewList($atributos, $consulta, $tabla) . "<br/>";
-
-        // echo generandoVistas($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
-        echo generateViews($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2) . "<br/>";
+        echo generateViews($atributos, $arraycabeza, $tabla, $arraytabla, $arrayenlace, $arrayenlace2, $tipo_inputs) . "<br/>";
 
 
         // echo generarprocedure($atributos, $consulta, $tabla) . "<br/>";

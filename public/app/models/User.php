@@ -19,7 +19,7 @@ class User extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM user; ";
+      $this->query = "SELECT * FROM user where user_id > 1; ";
 
       $this->executeQuery();
 
@@ -63,12 +63,12 @@ class User extends Connection {
     try{
       $bean_user->setCreatedUp( HelperDate::timestampsBd() );
 
-      $user_id = $bean_user->getUserId();
-      $nombre = $bean_user->getNombre();
-      $apellidos = $bean_user->getApellidos();
-      $email = $bean_user->getEmail();
-      $password = $bean_user->getPassword();
-      $estado = $bean_user->getEstado();
+      $user_id    = $bean_user->getUserId();
+      $nombre     = $bean_user->getNombre();
+      $apellidos  = $bean_user->getApellidos();
+      $email      = $bean_user->getEmail();
+      $password   =  Encript::md5($bean_user->getPassword());
+      $estado     = $bean_user->getEstado();
       $created_up = $bean_user->getCreatedUp();
 
       $this->query = "INSERT INTO user
@@ -107,17 +107,16 @@ class User extends Connection {
   public function update($bean_user)
   {
     try{
-      $user_id = $bean_user->getUserId();
-      $nombre = $bean_user->getNombre();
+      $user_id   = $bean_user->getUserId();
+      $nombre    = $bean_user->getNombre();
       $apellidos = $bean_user->getApellidos();
-      $email = $bean_user->getEmail();
-      $password = $bean_user->getPassword();
+      $email     = $bean_user->getEmail();
+      // $password  = $bean_user->getPassword();
 
       $this->query = "UPDATE user SET 
                         nombre = '$nombre',
                         apellidos = '$apellidos',
-                        email = '$email',
-                        password = '$password'
+                        email = '$email' 
                       WHERE user_id = '$user_id'
                       LIMIT 1 ;";
 
@@ -201,5 +200,33 @@ class User extends Connection {
 
     }
   }
+
+   # Method Password
+   public function updatePassword($bean_user)
+   {
+     try{
+       $user_id   = $bean_user->getUserId();
+      //  $nombre    = $bean_user->getNombre();
+      //  $apellidos = $bean_user->getApellidos();
+      //  $email     = $bean_user->getEmail();
+       $password  = Encript::md5($bean_user->getPassword());
+ 
+       $this->query = "UPDATE user SET  
+                         password = '$password' 
+                       WHERE user_id = '$user_id'
+                       LIMIT 1 ;";
+ 
+       $this->executeQuery();
+ 
+       $data = $this->status  ;
+ 
+       return $data;
+ 
+     }catch(exception $e){
+ 
+       throw new Exception($e->getMessage());
+ 
+     }
+   }
 
 }

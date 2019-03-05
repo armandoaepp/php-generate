@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_active"      => [2,2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -89,7 +89,8 @@
                   <th>Nombre </th>
                   <th>Apellidos </th>
                   <th>Email </th>
-                  <th>Password </th>
+                  <th class="text-center fs-x-13">Reset Password</th>
+                  <!-- <th>Password </th> -->
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -138,8 +139,13 @@
                   <td> <?php echo $row["nombre"] ?> </td>
                   <td> <?php echo $row["apellidos"] ?> </td>
                   <td> <?php echo $row["email"] ?> </td>
-                  <td> <?php echo $row["password"] ?> </td>
+                  <!-- <td> <?php echo $row["password"] ?> </td> -->
 
+                  <td class="text-center">
+                    <a class="btn btn-outline-info btn-sm lh-1 btn-table" href="admin/user/reset.php?id=<?php echo $row["user_id"] ?>" title="Reset Password ">
+                      <i class="fas fa-key"></i>
+                    </a>
+                  </td>
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/user/editar.php?id=<?php echo $row["user_id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>

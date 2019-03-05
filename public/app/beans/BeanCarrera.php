@@ -24,20 +24,21 @@ class BeanCarrera{
     private $titulos;
     private $inversion;
     private $titulacion;
-    private $detalleduracion;
-    private $detalledia;
-    private $detallehorario;
-    private $detallelugar;
-    private $detalleprecio;
-    private $detalleequipos;
-    private $detalleconsultas;
-    private $detalledirigido;
+    private $duracion;
+    private $dia;
+    private $horario;
+    private $lugar;
+    private $precio;
+    private $equipos;
+    private $consultas;
+    private $dirigido;
     private $aquien;
     private $temas;
-    private $nombreseo;
-    private $orden;
+    private $url = "" ;
+    private $item;
+    private $publicar = "S" ;
     private $estado = 1 ;
-    private $fecha;
+    private $created_up = NULL ;
 
     # METODOS
     public function setId($id_)
@@ -160,84 +161,84 @@ class BeanCarrera{
         return $this->titulacion;
     }
 
-    public function setDetalleduracion($detalleduracion_)
+    public function setDuracion($duracion_)
     {
-        $this->detalleduracion = Validation::validate( $detalleduracion_ );
+        $this->duracion = Validation::validate( $duracion_ );
     }
 
-    public function getDetalleduracion()
+    public function getDuracion()
     {
-        return $this->detalleduracion;
+        return $this->duracion;
     }
 
-    public function setDetalledia($detalledia_)
+    public function setDia($dia_)
     {
-        $this->detalledia = Validation::validate( $detalledia_ );
+        $this->dia = Validation::validate( $dia_ );
     }
 
-    public function getDetalledia()
+    public function getDia()
     {
-        return $this->detalledia;
+        return $this->dia;
     }
 
-    public function setDetallehorario($detallehorario_)
+    public function setHorario($horario_)
     {
-        $this->detallehorario = Validation::validate( $detallehorario_ );
+        $this->horario = Validation::validate( $horario_ );
     }
 
-    public function getDetallehorario()
+    public function getHorario()
     {
-        return $this->detallehorario;
+        return $this->horario;
     }
 
-    public function setDetallelugar($detallelugar_)
+    public function setLugar($lugar_)
     {
-        $this->detallelugar = Validation::validate( $detallelugar_ );
+        $this->lugar = Validation::validate( $lugar_ );
     }
 
-    public function getDetallelugar()
+    public function getLugar()
     {
-        return $this->detallelugar;
+        return $this->lugar;
     }
 
-    public function setDetalleprecio($detalleprecio_)
+    public function setPrecio($precio_)
     {
-        $this->detalleprecio = Validation::validate( $detalleprecio_ );
+        $this->precio = Validation::validate( $precio_ );
     }
 
-    public function getDetalleprecio()
+    public function getPrecio()
     {
-        return $this->detalleprecio;
+        return $this->precio;
     }
 
-    public function setDetalleequipos($detalleequipos_)
+    public function setEquipos($equipos_)
     {
-        $this->detalleequipos = Validation::validate( $detalleequipos_ );
+        $this->equipos = Validation::validate( $equipos_ );
     }
 
-    public function getDetalleequipos()
+    public function getEquipos()
     {
-        return $this->detalleequipos;
+        return $this->equipos;
     }
 
-    public function setDetalleconsultas($detalleconsultas_)
+    public function setConsultas($consultas_)
     {
-        $this->detalleconsultas = Validation::validate( $detalleconsultas_ );
+        $this->consultas = Validation::validate( $consultas_ );
     }
 
-    public function getDetalleconsultas()
+    public function getConsultas()
     {
-        return $this->detalleconsultas;
+        return $this->consultas;
     }
 
-    public function setDetalledirigido($detalledirigido_)
+    public function setDirigido($dirigido_)
     {
-        $this->detalledirigido = Validation::validate( $detalledirigido_ );
+        $this->dirigido = Validation::validate( $dirigido_ );
     }
 
-    public function getDetalledirigido()
+    public function getDirigido()
     {
-        return $this->detalledirigido;
+        return $this->dirigido;
     }
 
     public function setAquien($aquien_)
@@ -260,24 +261,34 @@ class BeanCarrera{
         return $this->temas;
     }
 
-    public function setNombreseo($nombreseo_)
+    public function setUrl($url_)
     {
-        $this->nombreseo = Validation::validate( $nombreseo_ );
+        $this->url = Validation::validate( $url_ );
     }
 
-    public function getNombreseo()
+    public function getUrl()
     {
-        return $this->nombreseo;
+        return $this->url;
     }
 
-    public function setOrden($orden_)
+    public function setItem($item_)
     {
-        $this->orden = Validation::validate( $orden_ );
+        $this->item = Validation::validate( $item_ );
     }
 
-    public function getOrden()
+    public function getItem()
     {
-        return $this->orden;
+        return $this->item;
+    }
+
+    public function setPublicar($publicar_)
+    {
+        $this->publicar = Validation::validate( $publicar_ );
+    }
+
+    public function getPublicar()
+    {
+        return $this->publicar;
     }
 
     public function setEstado($estado_)
@@ -290,14 +301,14 @@ class BeanCarrera{
         return $this->estado;
     }
 
-    public function setFecha($fecha_)
+    public function setCreatedUp($created_up_)
     {
-        $this->fecha = Validation::validate( $fecha_ );
+        $this->created_up = Validation::validate( $created_up_ );
     }
 
-    public function getFecha()
+    public function getCreatedUp()
     {
-        return $this->fecha;
+        return $this->created_up;
     }
 
 }

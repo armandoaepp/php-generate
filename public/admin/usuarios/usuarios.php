@@ -2,11 +2,13 @@
 require_once "../sesion_admin.php";
 loginRedirect('../login.php');
 
-require_once "../../api/autoload.php";
+// require_once "../../api/autoload.php";
+require_once "../../app/autoload.php";
+
 
 $user_controller = new UserController();
 
-$users = $user_controller->list();
+$users = $user_controller->getAll();
 // var_dump($users);
 
 ?>

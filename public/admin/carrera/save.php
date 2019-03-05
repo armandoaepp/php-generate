@@ -21,23 +21,24 @@
   $titulos   = $_POST["titulos"] ;
   $inversion   = $_POST["inversion"] ;
   $titulacion   = $_POST["titulacion"] ;
-  $detalleduracion   = $_POST["detalleduracion"] ;
-  $detalledia   = $_POST["detalledia"] ;
-  $detallehorario   = $_POST["detallehorario"] ;
-  $detallelugar   = $_POST["detallelugar"] ;
-  $detalleprecio   = $_POST["detalleprecio"] ;
-  $detalleequipos   = $_POST["detalleequipos"] ;
-  $detalleconsultas   = $_POST["detalleconsultas"] ;
-  $detalledirigido   = $_POST["detalledirigido"] ;
+  $duracion   = $_POST["duracion"] ;
+  $dia   = $_POST["dia"] ;
+  $horario   = $_POST["horario"] ;
+  $lugar   = $_POST["lugar"] ;
+  $precio   = $_POST["precio"] ;
+  $equipos   = $_POST["equipos"] ;
+  $consultas   = $_POST["consultas"] ;
+  $dirigido   = $_POST["dirigido"] ;
   $aquien   = $_POST["aquien"] ;
   $temas   = $_POST["temas"] ;
-  $nombreseo   = $_POST["nombreseo"] ;
-  $orden   = $_POST["orden"] ;
-  $fecha   = $_POST["fecha"] ;
+  $item   = $_POST["item"] ;
+  $publicar   = $_POST["publicar"] ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "carrera") ;
+
+  $url = UrlHelper::urlFriendly($titulo); 
 
   $params = array(
     "titulo"   => $titulo,
@@ -50,20 +51,20 @@
     "titulos"   => $titulos,
     "inversion"   => $inversion,
     "titulacion"   => $titulacion,
-    "detalleduracion"   => $detalleduracion,
-    "detalledia"   => $detalledia,
-    "detallehorario"   => $detallehorario,
-    "detallelugar"   => $detallelugar,
-    "detalleprecio"   => $detalleprecio,
-    "detalleequipos"   => $detalleequipos,
-    "detalleconsultas"   => $detalleconsultas,
-    "detalledirigido"   => $detalledirigido,
+    "duracion"   => $duracion,
+    "dia"   => $dia,
+    "horario"   => $horario,
+    "lugar"   => $lugar,
+    "precio"   => $precio,
+    "equipos"   => $equipos,
+    "consultas"   => $consultas,
+    "dirigido"   => $dirigido,
     "aquien"   => $aquien,
     "temas"   => $temas,
-    "nombreseo"   => $nombreseo,
-    "orden"   => $orden,
-    "fecha"   => $fecha,
+    "item"   => $item,
+    "publicar"   => $publicar,
     "imagen"  => $imagen,
+    "url"  => $url,
   );
 
 

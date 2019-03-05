@@ -9,7 +9,7 @@
   <?php require_once 'CPHPeru.php';
   $phperu= new PHPPeru() ;?>
   <form id="form1" name="form1" method="post" action="creandoarchivos.php" onsubmit="return confirmar();">
-    <table width="790" height="59" border="0">
+    <table  height="59" border="0">
       <tr>
         <td>&nbsp;</td>
       </tr>
@@ -35,14 +35,14 @@
           $tablaGet=$_GET["table"];
         } else{ $tablaGet="" ; }
         ?>
-        <table width="528" border="0" style="float:left">
+        <table  border="0" style="float:left">
           <tr>
             <td width="477"> Campos Encontrados en la Tabla:&nbsp;&nbsp;<strong><?php echo $tablaGet;?>
               <input type="hidden" name="nomtabla" id="nomtabla" value="<?php echo $tablaGet ;?>" />
             </strong></td>
           </tr>
           <tr>
-            <td><table width="521" height="55" border="1">
+            <td><table height="55" border="1">
               <tr>
                 <td colspan="4"><input type="button" name="bttodo" id="bttodo" value="Seleccionar Todo" onclick="ckb('form1','true')"/>
                   <input type="button" name="btlimpiar" id="btlimpiar" onclick="ckb('form1','false')" value="Limpiar Seleccion" /></td>
@@ -52,6 +52,7 @@
                   <td width="78">Tabla</td>
                   <td width="78">Enlace/Mostrar</td>
                   <td width="78">Encabezado(Alias)</td>
+                  <td width="78">Tipo Input</td>
                 </tr>
                 <?php
                 $arrayelementostabla=array();
@@ -90,6 +91,39 @@
                     <td><label>
                       <input name="tmostrar<?=$i?>" type="text" id="tmostrar<?=$i?>" value="<?=$rpta['cuerpo'][$i]['Field']?>" size="13" />
                     </label></td>
+
+                    <td>
+                      <!-- <label>
+                      <input name="tmostrar<?=$i?>" type="text" id="tmostrar<?=$i?>" value="<?=$rpta['cuerpo'][$i]['Field']?>" size="13" />
+                    </label> -->
+                    <label for="">
+                    <select class="custom-select" name="tipo_input<?=$i?>" id="tipo_input<?=$i?>"> 
+                        <option value="text">text</option>  
+                        <option value="textarea">text area</option>
+                        <option value="select">select</option> 
+                        <option value="email">email</option>   
+                        <option value="tel">tel</option>
+                        <option value="checkbox">checkbox</option>  
+                        <option value="date">date</option>  
+                        <option value="color">color</option>  
+                        <option value="datetime-local">datetime-local</option>  
+                        <option value="file">file</option>  
+                        <option value="hidden">hidden</option>  
+                        <option value="image">image</option>  
+                        <option value="month">month</option>  
+                        <option value="number">number</option>  
+                        <option value="password">password</option>  
+                        <option value="radio">radio</option>  
+                        <option value="range">range</option>  
+                        <option value="reset">reset</option>  
+                        <option value="search">search</option>   
+                        <option value="time">time</option>  
+                        <option value="url">url</option>  
+                        <option value="week">week</option>  
+                      </select>
+                    </label>
+                  </td>
+
                   </tr>
                   <?php
                   $acumu.=$rpta['cuerpo'][$i]['Field']."*";

@@ -13,29 +13,23 @@
 
   $user_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $nombre   = $_POST["nombre"] ;
-  $apellidos   = $_POST["apellidos"] ;
-  $email   = $_POST["email"] ;
-  // $password   = $_POST["password"] ;
+  // $nombre   = $_POST["nombre"] ;
+  // $apellidos   = $_POST["apellidos"] ;
+  // $email   = $_POST["email"] ;
+  $password   = $_POST["password"] ;
   $params = array(
     "user_id"   => $user_id,
-    "nombre"   => $nombre,
-    "apellidos"   => $apellidos,
-    "email"   => $email,
-    // "password"   => $password,
+    "password"   => $password,
+    // "nombre"   => $nombre,
+    // "apellidos"   => $apellidos,
+    // "email"   => $email,
   );
 
 
-  $response = $user_controller->update($params);
+  $response = $user_controller->updatePassword($params);
 
   if($response)
-  {
-
-    if( !empty($imagen) && $imagen != $img_bd )
-    {
-      $status = UploadFiles::removeFile($img_bd) ;
-    }
-
+  { 
     header("Location: ./user.php ", true, 301);
   }
   else {

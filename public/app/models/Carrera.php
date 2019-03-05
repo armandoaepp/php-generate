@@ -61,6 +61,8 @@ class Carrera extends Connection {
   public function save($bean_carrera)
   {
     try{
+      $bean_carrera->setCreatedUp( HelperDate::timestampsBd() );
+
       $id = $bean_carrera->getId();
       $titulo = $bean_carrera->getTitulo();
       $descripcion = $bean_carrera->getDescripcion();
@@ -73,20 +75,21 @@ class Carrera extends Connection {
       $titulos = $bean_carrera->getTitulos();
       $inversion = $bean_carrera->getInversion();
       $titulacion = $bean_carrera->getTitulacion();
-      $detalleduracion = $bean_carrera->getDetalleduracion();
-      $detalledia = $bean_carrera->getDetalledia();
-      $detallehorario = $bean_carrera->getDetallehorario();
-      $detallelugar = $bean_carrera->getDetallelugar();
-      $detalleprecio = $bean_carrera->getDetalleprecio();
-      $detalleequipos = $bean_carrera->getDetalleequipos();
-      $detalleconsultas = $bean_carrera->getDetalleconsultas();
-      $detalledirigido = $bean_carrera->getDetalledirigido();
+      $duracion = $bean_carrera->getDuracion();
+      $dia = $bean_carrera->getDia();
+      $horario = $bean_carrera->getHorario();
+      $lugar = $bean_carrera->getLugar();
+      $precio = $bean_carrera->getPrecio();
+      $equipos = $bean_carrera->getEquipos();
+      $consultas = $bean_carrera->getConsultas();
+      $dirigido = $bean_carrera->getDirigido();
       $aquien = $bean_carrera->getAquien();
       $temas = $bean_carrera->getTemas();
-      $nombreseo = $bean_carrera->getNombreseo();
-      $orden = $bean_carrera->getOrden();
+      $url = $bean_carrera->getUrl();
+      $item = $bean_carrera->getItem();
+      $publicar = $bean_carrera->getPublicar();
       $estado = $bean_carrera->getEstado();
-      $fecha = $bean_carrera->getFecha();
+      $created_up = $bean_carrera->getCreatedUp();
 
       $this->query = "INSERT INTO carrera
                       (
@@ -101,20 +104,21 @@ class Carrera extends Connection {
                         titulos,
                         inversion,
                         titulacion,
-                        detalleduracion,
-                        detalledia,
-                        detallehorario,
-                        detallelugar,
-                        detalleprecio,
-                        detalleequipos,
-                        detalleconsultas,
-                        detalledirigido,
+                        duracion,
+                        dia,
+                        horario,
+                        lugar,
+                        precio,
+                        equipos,
+                        consultas,
+                        dirigido,
                         aquien,
                         temas,
-                        nombreseo,
-                        orden,
+                        url,
+                        item,
+                        publicar,
                         estado,
-                        fecha
+                        created_up
                       )
                       VALUES(
                         '$titulo',
@@ -128,20 +132,21 @@ class Carrera extends Connection {
                         '$titulos',
                         '$inversion',
                         '$titulacion',
-                        '$detalleduracion',
-                        '$detalledia',
-                        '$detallehorario',
-                        '$detallelugar',
-                        '$detalleprecio',
-                        '$detalleequipos',
-                        '$detalleconsultas',
-                        '$detalledirigido',
+                        '$duracion',
+                        '$dia',
+                        '$horario',
+                        '$lugar',
+                        '$precio',
+                        '$equipos',
+                        '$consultas',
+                        '$dirigido',
                         '$aquien',
                         '$temas',
-                        '$nombreseo',
-                        '$orden',
+                        '$url',
+                        '$item',
+                        '$publicar',
                         '$estado',
-                        '$fecha'
+                        $created_up
                       ); ";
 
       $this->executeQuery();
@@ -174,19 +179,19 @@ class Carrera extends Connection {
       $titulos = $bean_carrera->getTitulos();
       $inversion = $bean_carrera->getInversion();
       $titulacion = $bean_carrera->getTitulacion();
-      $detalleduracion = $bean_carrera->getDetalleduracion();
-      $detalledia = $bean_carrera->getDetalledia();
-      $detallehorario = $bean_carrera->getDetallehorario();
-      $detallelugar = $bean_carrera->getDetallelugar();
-      $detalleprecio = $bean_carrera->getDetalleprecio();
-      $detalleequipos = $bean_carrera->getDetalleequipos();
-      $detalleconsultas = $bean_carrera->getDetalleconsultas();
-      $detalledirigido = $bean_carrera->getDetalledirigido();
+      $duracion = $bean_carrera->getDuracion();
+      $dia = $bean_carrera->getDia();
+      $horario = $bean_carrera->getHorario();
+      $lugar = $bean_carrera->getLugar();
+      $precio = $bean_carrera->getPrecio();
+      $equipos = $bean_carrera->getEquipos();
+      $consultas = $bean_carrera->getConsultas();
+      $dirigido = $bean_carrera->getDirigido();
       $aquien = $bean_carrera->getAquien();
       $temas = $bean_carrera->getTemas();
-      $nombreseo = $bean_carrera->getNombreseo();
-      $orden = $bean_carrera->getOrden();
-      $fecha = $bean_carrera->getFecha();
+      $url = $bean_carrera->getUrl();
+      $item = $bean_carrera->getItem();
+      $publicar = $bean_carrera->getPublicar();
 
       $this->query = "UPDATE carrera SET 
                         titulo = '$titulo',
@@ -200,19 +205,19 @@ class Carrera extends Connection {
                         titulos = '$titulos',
                         inversion = '$inversion',
                         titulacion = '$titulacion',
-                        detalleduracion = '$detalleduracion',
-                        detalledia = '$detalledia',
-                        detallehorario = '$detallehorario',
-                        detallelugar = '$detallelugar',
-                        detalleprecio = '$detalleprecio',
-                        detalleequipos = '$detalleequipos',
-                        detalleconsultas = '$detalleconsultas',
-                        detalledirigido = '$detalledirigido',
+                        duracion = '$duracion',
+                        dia = '$dia',
+                        horario = '$horario',
+                        lugar = '$lugar',
+                        precio = '$precio',
+                        equipos = '$equipos',
+                        consultas = '$consultas',
+                        dirigido = '$dirigido',
                         aquien = '$aquien',
                         temas = '$temas',
-                        nombreseo = '$nombreseo',
-                        orden = '$orden',
-                        fecha = '$fecha'
+                        url = '$url',
+                        item = '$item',
+                        publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 
@@ -287,6 +292,56 @@ class Carrera extends Connection {
       $this->executeQuery();
 
       $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method updatePublish
+  public function updatePublish($bean_carrera)
+  {
+    try{
+      $id = $bean_carrera->getId();
+      $publicar = $bean_carrera->getPublicar() ;
+
+      $this->query = "UPDATE carrera SET 
+                        publicar = '$publicar'
+                      WHERE id = '$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method getPublished
+  public function getPublished($bean_carrera)
+  {
+    try{
+      $publicar = $bean_carrera->getPublicar() ;
+
+      $this->query = "SELECT * FROM carrera
+                      WHERE publicar = '$publicar'
+                      AND estado = 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
 
       return $data;
 

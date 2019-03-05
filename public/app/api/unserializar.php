@@ -20,7 +20,8 @@
       // $controller = new AdmisionController() ;
       // $controller = new AmigosController() ;
       // $controller = new CampusController() ;
-      $controller = new RedController() ;
+      // $controller = new RedController() ;
+      $controller = new CarreraController() ;
 
        $data = $controller->getAll() ;
        $data = Serialize::unSerializeArray($data);

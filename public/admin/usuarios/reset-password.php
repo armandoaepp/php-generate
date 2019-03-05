@@ -8,7 +8,9 @@ if($id <= 0){
   header("Location: ./usuarios.php ", true, 301);
 }
 
-require_once "../../api/autoload.php";
+// require_once "../../api/autoload.php";
+require_once "../../app/autoload.php";
+
 
 $user_controller = new UserController();
 
@@ -16,7 +18,7 @@ $params = array(
   'user_id'   => $id,
 );
 
-$user = $user_controller->getById($params);
+$user = $user_controller->find($id);
 // var_dump($user);
 
 $nombre = $user['nombre'] ;

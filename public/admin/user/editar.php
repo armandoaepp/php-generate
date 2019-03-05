@@ -37,7 +37,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+        "sidebar_active" => [2, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -86,28 +86,28 @@
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
               
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombre"  value="<?php echo $user['nombre'] ?>" >
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $user['nombre']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="apellidos">Apellidos: </label>
-                  <input type="text" class="form-control" name="apellidos" id="apellidos" required placeholder="Apellidos"  value="<?php echo $user['apellidos'] ?>" >
+                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $user['apellidos']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="text" class="form-control" name="email" id="email" required placeholder="Email"  value="<?php echo $user['email'] ?>" >
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $user['email']; ?>">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="password">Password: </label>
-                  <input type="text" class="form-control" name="password" id="password" required placeholder="Password"  value="<?php echo $user['password'] ?>" >
+                  <input type="password" class="form-control" disabled name="password" id="password" placeholder="Password" value="<?php echo $user['password']; ?>">
                 </div>
               </div>
 

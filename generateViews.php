@@ -1,5 +1,5 @@
 <?php
-function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace, $arrayenlace2){
+function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace, $arrayenlace2, $tipo_inputs){
 
 
     if (file_exists(ADMIN."/" . $tabla)) {
@@ -45,7 +45,7 @@ function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace
         $nomarchivo = $carpeta . "nuevo";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateNuevo($tabla, $atributos, $arraycabeza) ;
+        $texto      = templateNuevo($tabla, $atributos, $arraycabeza,$tipo_inputs) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);
@@ -66,7 +66,7 @@ function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace
         $nomarchivo = $carpeta . "editar";
         $abrir      = fopen($nomarchivo . $extension, "w");
 
-        $texto      = templateEdit($tabla, $atributos, $arraycabeza) ;
+        $texto      = templateEdit($tabla, $atributos, $tipo_inputs) ;
 
         fwrite($abrir, $texto);
         fclose($abrir);

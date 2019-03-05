@@ -15,11 +15,12 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
   <ul class="sidenav">
     <li>
       <a class="menu <?php if ($sidebar_active[0] == 1) {echo 'active';}?>" href="#" role="button">
-        <i class="fa fa-list"></i> Configuración Global
+        <i class="fas fa-cogs"></i>
+        Configuración Global
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="admin/configuracion/configuracion.php">
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/configuracion/configuracion.php">
             <i class="icofont icofont-curved-right"></i> Configuración
           </a>
         </li>
@@ -33,8 +34,14 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 1) {echo 'active';}?> active" href="admin/chef/chef.php">
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/chef/chef.php">
             <i class="icofont icofont-curved-right"></i> Chefs
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/user/user.php">
+            <i class="icofont icofont-curved-right"></i> Usuarios
           </a>
         </li>
 
@@ -43,7 +50,7 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
     <li>
       <a class="<?php if ($sidebar_active[0] == 4) {echo 'active';}?>" href="admin/taller/taller.php" role="button">
-      <i class="fas fa-list-ul"></i> Talleres
+        <i class="fas fa-list-ul"></i> Talleres
       </a>
     </li>
 
@@ -56,8 +63,15 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
     <li>
       <a class="<?php if ($sidebar_active[0] == 5) {echo 'active';}?>" href="admin/red/red.php" role="button">
-        <i class="far fa-newspaper"></i>
+        <i class="fas fa-user-graduate"></i>
         Red Egresados
+      </a>
+    </li>
+
+    <li>
+      <a class="<?php if ($sidebar_active[0] == 6) {echo 'active';}?>" href="admin/carrera/carrera.php" role="button">
+        <i class="fas fa-graduation-cap"></i>
+        Carreras
       </a>
     </li>
 

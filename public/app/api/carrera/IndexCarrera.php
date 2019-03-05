@@ -62,19 +62,20 @@ switch($evento)
       $titulos = $inputs->titulos;
       $inversion = $inputs->inversion;
       $titulacion = $inputs->titulacion;
-      $detalleduracion = $inputs->detalleduracion;
-      $detalledia = $inputs->detalledia;
-      $detallehorario = $inputs->detallehorario;
-      $detallelugar = $inputs->detallelugar;
-      $detalleprecio = $inputs->detalleprecio;
-      $detalleequipos = $inputs->detalleequipos;
-      $detalleconsultas = $inputs->detalleconsultas;
-      $detalledirigido = $inputs->detalledirigido;
+      $duracion = $inputs->duracion;
+      $dia = $inputs->dia;
+      $horario = $inputs->horario;
+      $lugar = $inputs->lugar;
+      $precio = $inputs->precio;
+      $equipos = $inputs->equipos;
+      $consultas = $inputs->consultas;
+      $dirigido = $inputs->dirigido;
       $aquien = $inputs->aquien;
       $temas = $inputs->temas;
-      $nombreseo = $inputs->nombreseo;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $url = $inputs->url;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -89,19 +90,20 @@ switch($evento)
                 'titulos'=> $titulos,
                 'inversion'=> $inversion,
                 'titulacion'=> $titulacion,
-                'detalleduracion'=> $detalleduracion,
-                'detalledia'=> $detalledia,
-                'detallehorario'=> $detallehorario,
-                'detallelugar'=> $detallelugar,
-                'detalleprecio'=> $detalleprecio,
-                'detalleequipos'=> $detalleequipos,
-                'detalleconsultas'=> $detalleconsultas,
-                'detalledirigido'=> $detalledirigido,
+                'duracion'=> $duracion,
+                'dia'=> $dia,
+                'horario'=> $horario,
+                'lugar'=> $lugar,
+                'precio'=> $precio,
+                'equipos'=> $equipos,
+                'consultas'=> $consultas,
+                'dirigido'=> $dirigido,
                 'aquien'=> $aquien,
                 'temas'=> $temas,
-                'nombreseo'=> $nombreseo,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'url'=> $url,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $carrera_controller->save($params) ;
@@ -141,19 +143,20 @@ switch($evento)
       $titulos = $inputs->titulos;
       $inversion = $inputs->inversion;
       $titulacion = $inputs->titulacion;
-      $detalleduracion = $inputs->detalleduracion;
-      $detalledia = $inputs->detalledia;
-      $detallehorario = $inputs->detallehorario;
-      $detallelugar = $inputs->detallelugar;
-      $detalleprecio = $inputs->detalleprecio;
-      $detalleequipos = $inputs->detalleequipos;
-      $detalleconsultas = $inputs->detalleconsultas;
-      $detalledirigido = $inputs->detalledirigido;
+      $duracion = $inputs->duracion;
+      $dia = $inputs->dia;
+      $horario = $inputs->horario;
+      $lugar = $inputs->lugar;
+      $precio = $inputs->precio;
+      $equipos = $inputs->equipos;
+      $consultas = $inputs->consultas;
+      $dirigido = $inputs->dirigido;
       $aquien = $inputs->aquien;
       $temas = $inputs->temas;
-      $nombreseo = $inputs->nombreseo;
-      $orden = $inputs->orden;
-      $fecha = $inputs->fecha;
+      $url = $inputs->url;
+      $item = $inputs->item;
+      $publicar = $inputs->publicar;
+      $created_up = $inputs->created_up;
         
       $params = array(
                 'id'=> $id,
@@ -168,19 +171,20 @@ switch($evento)
                 'titulos'=> $titulos,
                 'inversion'=> $inversion,
                 'titulacion'=> $titulacion,
-                'detalleduracion'=> $detalleduracion,
-                'detalledia'=> $detalledia,
-                'detallehorario'=> $detallehorario,
-                'detallelugar'=> $detallelugar,
-                'detalleprecio'=> $detalleprecio,
-                'detalleequipos'=> $detalleequipos,
-                'detalleconsultas'=> $detalleconsultas,
-                'detalledirigido'=> $detalledirigido,
+                'duracion'=> $duracion,
+                'dia'=> $dia,
+                'horario'=> $horario,
+                'lugar'=> $lugar,
+                'precio'=> $precio,
+                'equipos'=> $equipos,
+                'consultas'=> $consultas,
+                'dirigido'=> $dirigido,
                 'aquien'=> $aquien,
                 'temas'=> $temas,
-                'nombreseo'=> $nombreseo,
-                'orden'=> $orden,
-                'fecha'=> $fecha,
+                'url'=> $url,
+                'item'=> $item,
+                'publicar'=> $publicar,
+                'created_up'=> $created_up,
               ) ; 
         
       $data = $carrera_controller->update($params) ;
@@ -301,6 +305,66 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
+  break;
+
+  case "publish":
+    try
+    {
+
+      $id = $inputs->id;
+      $publicar = $inputs->publicar;
+
+      if($publicar == "N"){
+                $publicar = "S" ;
+      }else{
+                $publicar = "N" ;
+      }
+
+      $params = array(
+                'id'=> $id,
+                'publicar'=> $publicar,
+              ) ; 
+
+      $carrera_controller = new CarreraController() ; 
+
+      $data = $carrera_controller->updatePublish( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "published":
+    try
+    {
+
+      $publicar = $inputs->publicar;
+
+      $params = array(
+                'publicar'=> $publicar,
+              ) ; 
+
+      $carrera_controller = new CarreraController() ; 
+
+      $data = $carrera_controller->getPublished( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
   break;
 
 }

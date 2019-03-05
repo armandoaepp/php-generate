@@ -77,19 +77,19 @@
       $bean_carrera->setTitulos($titulos);
       $bean_carrera->setInversion($inversion);
       $bean_carrera->setTitulacion($titulacion);
-      $bean_carrera->setDetalleduracion($detalleduracion);
-      $bean_carrera->setDetalledia($detalledia);
-      $bean_carrera->setDetallehorario($detallehorario);
-      $bean_carrera->setDetallelugar($detallelugar);
-      $bean_carrera->setDetalleprecio($detalleprecio);
-      $bean_carrera->setDetalleequipos($detalleequipos);
-      $bean_carrera->setDetalleconsultas($detalleconsultas);
-      $bean_carrera->setDetalledirigido($detalledirigido);
+      $bean_carrera->setDuracion($duracion);
+      $bean_carrera->setDia($dia);
+      $bean_carrera->setHorario($horario);
+      $bean_carrera->setLugar($lugar);
+      $bean_carrera->setPrecio($precio);
+      $bean_carrera->setEquipos($equipos);
+      $bean_carrera->setConsultas($consultas);
+      $bean_carrera->setDirigido($dirigido);
       $bean_carrera->setAquien($aquien);
       $bean_carrera->setTemas($temas);
-      $bean_carrera->setNombreseo($nombreseo);
-      $bean_carrera->setOrden($orden);
-      $bean_carrera->setFecha($fecha);
+      $bean_carrera->setUrl($url);
+      $bean_carrera->setItem($item);
+      $bean_carrera->setPublicar($publicar);
             
       $data = $carrera->save($bean_carrera) ;
 
@@ -123,19 +123,19 @@
       $bean_carrera->setTitulos($titulos);
       $bean_carrera->setInversion($inversion);
       $bean_carrera->setTitulacion($titulacion);
-      $bean_carrera->setDetalleduracion($detalleduracion);
-      $bean_carrera->setDetalledia($detalledia);
-      $bean_carrera->setDetallehorario($detallehorario);
-      $bean_carrera->setDetallelugar($detallelugar);
-      $bean_carrera->setDetalleprecio($detalleprecio);
-      $bean_carrera->setDetalleequipos($detalleequipos);
-      $bean_carrera->setDetalleconsultas($detalleconsultas);
-      $bean_carrera->setDetalledirigido($detalledirigido);
+      $bean_carrera->setDuracion($duracion);
+      $bean_carrera->setDia($dia);
+      $bean_carrera->setHorario($horario);
+      $bean_carrera->setLugar($lugar);
+      $bean_carrera->setPrecio($precio);
+      $bean_carrera->setEquipos($equipos);
+      $bean_carrera->setConsultas($consultas);
+      $bean_carrera->setDirigido($dirigido);
       $bean_carrera->setAquien($aquien);
       $bean_carrera->setTemas($temas);
-      $bean_carrera->setNombreseo($nombreseo);
-      $bean_carrera->setOrden($orden);
-      $bean_carrera->setFecha($fecha);
+      $bean_carrera->setUrl($url);
+      $bean_carrera->setItem($item);
+      $bean_carrera->setPublicar($publicar);
 
       $data = $carrera->update($bean_carrera) ;
             
@@ -206,6 +206,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $carrera  = new Carrera($this->cnx);
+      $bean_carrera = new BeanCarrera();
+            
+      $bean_carrera->setId($id);
+      $bean_carrera->setPublicar($publicar);
+
+      $data = $carrera->updatePublish($bean_carrera) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $carrera  = new Carrera($this->cnx);
+      $bean_carrera = new BeanCarrera();
+            
+      $bean_carrera->setPublicar($publicar);
+
+      $data = $carrera->getPublished($bean_carrera) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

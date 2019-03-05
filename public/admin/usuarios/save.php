@@ -6,7 +6,9 @@ if (!isset($_POST)) {
   header("Location: admin/usuarios/users.php ", true, 301);
 }
 
-require_once "../../api/autoload.php";
+// require_once "../../api/autoload.php";
+require_once "../../app/autoload.php";
+
 
 $user_controller = new UserController();
 

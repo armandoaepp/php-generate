@@ -95,7 +95,7 @@
       $bean_user->setNombre($nombre);
       $bean_user->setApellidos($apellidos);
       $bean_user->setEmail($email);
-      $bean_user->setPassword($password);
+      // $bean_user->setPassword($password);
 
       $data = $user->update($bean_user) ;
             
@@ -170,6 +170,33 @@
     catch (Exception $e)
     {
       throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePassword($params = array() )
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $user  = new User($this->cnx);
+
+      $bean_user = new BeanUser();
+      
+      $bean_user->setUserId($user_id);
+      // $bean_user->setNombre($nombre);
+      // $bean_user->setApellidos($apellidos);
+      // $bean_user->setEmail($email);
+      $bean_user->setPassword($password);
+            
+      $data = $user->updatePassword($bean_user) ;
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+        throw new Exception($e->getMessage());
     }
   }
 

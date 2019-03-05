@@ -87,7 +87,7 @@
                 <tr>
                   <th width="50">Id </th>
                   <th>Titulo </th>
-                  <th>Descripcion </th>
+                  <!-- <th>Descripcion </th>
                   <th>Slide </th>
                   <th>Presentacion </th>
                   <th>Porque </th>
@@ -96,19 +96,19 @@
                   <th>Titulos </th>
                   <th>Inversion </th>
                   <th>Titulacion </th>
-                  <th>Detalleduracion </th>
-                  <th>Detalledia </th>
-                  <th>Detallehorario </th>
-                  <th>Detallelugar </th>
-                  <th>Detalleprecio </th>
-                  <th>Detalleequipos </th>
-                  <th>Detalleconsultas </th>
-                  <th>Detalledirigido </th>
+                  <th>Duracion </th>
+                  <th>Dia </th>
+                  <th>Horario </th>
+                  <th>Lugar </th>
+                  <th>Precio </th>
+                  <th>Equipos </th>
+                  <th>Consultas </th>
+                  <th>Dirigido </th>
                   <th>Aquien </th>
                   <th>Temas </th>
-                  <th>Nombreseo </th>
-                  <th>Orden </th>
-                  <th>Fecha </th>
+                  <th>Url </th>
+                  <th>Item </th> -->
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -155,7 +155,7 @@
                 
                   <td> <?php echo $row["id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
-                  <td> <?php echo $row["descripcion"] ?> </td>
+                  <!-- <td> <?php echo $row["descripcion"] ?> </td>
                   <td> <?php echo $row["slide"] ?> </td>
                   <td> <?php echo $row["presentacion"] ?> </td>
                   <td> <?php echo $row["porque"] ?> </td>
@@ -164,19 +164,26 @@
                   <td> <?php echo $row["titulos"] ?> </td>
                   <td> <?php echo $row["inversion"] ?> </td>
                   <td> <?php echo $row["titulacion"] ?> </td>
-                  <td> <?php echo $row["detalleduracion"] ?> </td>
-                  <td> <?php echo $row["detalledia"] ?> </td>
-                  <td> <?php echo $row["detallehorario"] ?> </td>
-                  <td> <?php echo $row["detallelugar"] ?> </td>
-                  <td> <?php echo $row["detalleprecio"] ?> </td>
-                  <td> <?php echo $row["detalleequipos"] ?> </td>
-                  <td> <?php echo $row["detalleconsultas"] ?> </td>
-                  <td> <?php echo $row["detalledirigido"] ?> </td>
+                  <td> <?php echo $row["duracion"] ?> </td>
+                  <td> <?php echo $row["dia"] ?> </td>
+                  <td> <?php echo $row["horario"] ?> </td>
+                  <td> <?php echo $row["lugar"] ?> </td>
+                  <td> <?php echo $row["precio"] ?> </td>
+                  <td> <?php echo $row["equipos"] ?> </td>
+                  <td> <?php echo $row["consultas"] ?> </td>
+                  <td> <?php echo $row["dirigido"] ?> </td>
                   <td> <?php echo $row["aquien"] ?> </td>
                   <td> <?php echo $row["temas"] ?> </td>
-                  <td> <?php echo $row["nombreseo"] ?> </td>
-                  <td> <?php echo $row["orden"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <td> <?php echo $row["url"] ?> </td>
+                  <td> <?php echo $row["item"] ?> </td> -->
+
+                  <td class="text-center">
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/carrera/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
