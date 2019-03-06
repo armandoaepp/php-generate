@@ -54,11 +54,33 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
       </a>
     </li>
 
-    <li>
+    <!-- <li>
       <a class="<?php if ($sidebar_active[0] == 3) {echo 'active';}?>" href="admin/noticia/noticia.php" role="button">
         <i class="far fa-newspaper"></i>
         Noticias
       </a>
+    </li>  -->
+    
+    <li>
+      <a class="menu <?php if ($sidebar_active[0] == 3) {echo 'active';}?>" href="#" role="button">
+        <i class="far fa-newspaper"></i>
+        Noticias / Eventos
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/tipo-noticia/tipo-noticia.php">
+            <i class="far fa-newspaper"></i>
+            Tipo Noticias
+          </a>
+        </li>
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/noticia/noticia.php">
+            <i class="far fa-newspaper"></i>
+            Noticias
+          </a>
+        </li>
+
+      </ul>
     </li>
 
     <li>

@@ -48,7 +48,7 @@ $html = '
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/'.$url.'/'.$table.'.php">
+            <a class="link-white" href="admin/'.$url.'/'.$url.'.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -61,7 +61,7 @@ $html = '
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/'.$url.'/'.$table.'.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/'.$url.'/'.$url.'.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
@@ -73,7 +73,7 @@ $html = '
 
           <div class="col-12">
             <div class="table-responsive">
-            '. tableHtml($table, $atributos, $arraycabeza) .'
+            '. tableHtml($table, $atributos, $url, $arraycabeza) .'
             </div>
           </div>
 
@@ -152,7 +152,7 @@ $html = '
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/'.$table.'/Index'.$cmTable.'.php",
+        url: "./app/api/'.$url.'/Index'.$cmTable.'.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",
@@ -246,7 +246,7 @@ $html = '
 }
 
 
-function tableHtml($table, $atributos, $arraycabeza){
+function tableHtml($table, $atributos,$table_url , $arraycabeza){
 
 $table_html = '' ;
 $table_html .= '
@@ -345,7 +345,7 @@ $table_html .= '
 
 $table_html .= '
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table_url .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row[\'estado\'] ?>`);" title="<?php echo $title_estado ;?>">

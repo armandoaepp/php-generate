@@ -6,11 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $traslado_pregunta_controller = new TrasladoPreguntaController();
+    $tipo_noticia_controller = new TipoNoticiaController();
 
-    $data = $traslado_pregunta_controller->getAll();
+    $data = $tipo_noticia_controller->getAll();
 
-    $title_page = "TrasladoPreguntas";
+    $title_page = "Tipo Noticias";
 
 ?>
 
@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active" => [3, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/traslado-pregunta/traslado_pregunta.php">
+            <a class="link-white" href="admin/tipo-noticia/tipo-noticia.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,11 +69,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/traslado-pregunta/traslado_pregunta.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/tipo-noticia/tipo-noticia.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/traslado-pregunta/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/tipo-noticia/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -86,10 +86,9 @@
               <thead>
                 <tr>
                   <th width="50">Id </th>
-                  <th>Pregunta </th>
-                  <th>Respuesta </th>
-                  <th>Orden </th>
-                  <th>Fecha </th>
+                  <th>Nombre </th>
+                  <!-- <th>Url </th> -->
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -124,7 +123,7 @@
                     {
                       $title_estado = "Eliminar" ;
                     }
-                    else 
+                    else
                     {
                       $title_estado   = "Recuperar" ;
                       $class_estado   = "row-disabled";
@@ -134,17 +133,23 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
                 
-                  <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["pregunta"] ?> </td>
-                  <td> <?php echo $row["respuesta"] ?> </td>
-                  <td> <?php echo $row["orden"] ?> </td>
-                  <td> <?php echo $row["fecha"] ?> </td>
+                  <td> <?php echo $row["tipo_noticia_id"] ?> </td>
+                  <td> <?php echo $row["nombre"] ?> </td>
+                  <!-- <td> <?php echo $row["url"] ?> </td> -->
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/traslado_pregunta/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
+                    <button onclick="modalPublicar(<?php echo $row['tipo_noticia_id'] ?>, `<?php echo $row['nombre'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
+
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/tipo-noticia/editar.php?id=<?php echo $row["tipo_noticia_id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['pregunta'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["tipo_noticia_id"] ?>, `<?php echo $row['nombre'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>
@@ -232,7 +237,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/traslado_pregunta/IndexTrasladoPregunta.php",
+        url: "./app/api/tipo-noticia/IndexTipoNoticia.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

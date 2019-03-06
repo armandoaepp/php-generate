@@ -1,23 +1,28 @@
 <?php
 function generateViews($atributos, $arraycabeza, $tabla, $tablaref, $arrayenlace, $arrayenlace2, $tipo_inputs){
-
-
-    if (file_exists(ADMIN."/" . $tabla)) {
-        $carpeta = ADMIN."/" . $tabla . "/";
-    } else {
-        mkdir(ADMIN."/" . $tabla, 0777);
-        $carpeta = ADMIN."/" . $tabla . "/";
-    }
-
+    
     $extension = ".php";
     $cmTable     = toCamelCase($tabla);
+    $url     = toUrlFriendly($tabla);
+
+    if (file_exists(ADMIN."/" . $url)) {
+        $carpeta = ADMIN."/" . $url . "/";
+    } else {
+        mkdir(ADMIN."/" . $url, 0777);
+        $carpeta = ADMIN."/" . $url . "/";
+    }
+
+    
+    
+
     $versi=""; /*verificar esta variable*/
     if (!empty($tabla)) {
 
 
 
         # ARCHIVO LISTAR(INDEX)
-        $nomarchivo = $carpeta . "" . $tabla;
+        // $nomarchivo = $carpeta . "" . $tabla;
+        $nomarchivo = $carpeta . "" . $url;
         $abrir      = fopen($nomarchivo . $extension, "w");
 
         $texto       = '<?php'. PHP_EOL ;

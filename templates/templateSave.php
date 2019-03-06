@@ -3,7 +3,7 @@
 function templateSave($table, $atributos, $arraycabeza = array() ){
 
   $cmTable = toCamelCase($table) ;
-  // $url = toUrlFriendly($table) ;
+  $table_url = toUrlFriendly($table) ;
 
 $html = '';
 $html .= '
@@ -12,7 +12,7 @@ $html .= '
   loginRedirect("../login.php");
 
   if (!isset($_POST)) {
-    header("Location: admin/' . $table . '/' . $table . '.php ", true, 301);
+    header("Location: admin/' . $table_url . '/' . $table_url . '.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
@@ -36,7 +36,9 @@ if ( in_array('imagen', $atributos) )
   $html .= '  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;' . PHP_EOL;
   $html .= '' . PHP_EOL;
   $html .= '  $imagen  = "";' . PHP_EOL;
-  $html .= '  $imagen = UploadFiles::uploadFile($file_imagen, "'. $table .'") ;' . PHP_EOL;
+  $html .= '  if($file_imagen){' . PHP_EOL;
+  $html .= '    $imagen = UploadFiles::uploadFile($file_imagen, "'. $table_url .'") ;' . PHP_EOL;
+  $html .= '  }' . PHP_EOL;
   $html .= '' . PHP_EOL;
 }
 
@@ -75,7 +77,7 @@ $html .= '
   $response = $'. $table .'_controller->save($params);
 
   if($response){
-    header("Location: ./' . $table . '.php ", true, 301);
+    header("Location: ./' . $table_url . '.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;
