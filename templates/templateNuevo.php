@@ -89,7 +89,7 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"></textarea>' . PHP_EOL;              
+              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"></textarea>' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }
@@ -98,7 +98,6 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"></textarea>' . PHP_EOL;              
               $html .= '                  <select class="custom-select" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '">'.PHP_EOL;
               $html .= '                    <option value="" selected disabled hidden>Seleccionar </option> '.PHP_EOL;
               $html .= '                    <option value="text">text</option>'.PHP_EOL;
@@ -110,7 +109,7 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) .'">' . PHP_EOL;             
+              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) .'">' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }
