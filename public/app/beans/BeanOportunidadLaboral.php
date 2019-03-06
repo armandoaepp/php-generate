@@ -146,7 +146,7 @@ class BeanOportunidadLaboral{
 
     public function getItem()
     {
-        if(!empty($this->item))
+        if(empty($this->item))
         {
             $oportunidad_laboral  = new OportunidadLaboral();
 
