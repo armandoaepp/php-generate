@@ -48,7 +48,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+        "sidebar_active" => [6, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -249,7 +249,7 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="imagen">Nueva Imagen</label>
                       </div>
-                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
                     </div>
                   </div>
                 </div>

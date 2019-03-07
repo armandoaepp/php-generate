@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_active"      => [6,0],
     );
 
     require_once "../layout/head_links.phtml";
