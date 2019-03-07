@@ -72,48 +72,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= PHP_EOL;
         //  END Method getALL
 
-        if ( in_array('estado', $atributos) )
-        {
-            //Method GETPUBLISHED
-            $texto .= PHP_EOL;
-            $texto .= '  # Method getByEstado' . PHP_EOL;
-            $texto .= '  public function getByEstado($bean_'.$tabla.')' . PHP_EOL;
-            $texto .= '  {' . PHP_EOL;
-            $texto .= '    try{' . PHP_EOL;
-            //SQL
-
-                 $texto .= '      $estado = $bean_'.$tabla.'->getEstado() ;' . PHP_EOL;
-
-                $texto .= '' . PHP_EOL;
-
-                //QUERY
-                $concat = "";
-                $concat .= '      $this->query = "SELECT * FROM '.$tabla.'';
-                $concat .= PHP_EOL;
-                // $concat.= '                      WHERE estado'." = '".'$estado'."'";
-                $concat.= '                      WHERE estado'." = '".'$estado'."'" .'; ";';
-                $concat.= PHP_EOL;
-                // $concat.="                       ".'";';
-                $texto .=  $concat;
-                $texto .=  PHP_EOL;
-                //end QUERY
-
-                $texto .= '      $this->executeQuery();' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '      $data = $this->rows ;' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '      return $data;' . PHP_EOL;
-                $texto .= PHP_EOL;
-
-                $texto .= '    }catch(exception $e){' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '    }' . PHP_EOL;
-            $texto .= '  }' . PHP_EOL;
-            // END  GETPUBLISHED
-            $texto .= PHP_EOL;
-        }
+        
 
 
         $texto .= '  # Method SAVE' . PHP_EOL;
@@ -235,54 +194,6 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '    }' . PHP_EOL;
         $texto .= '  }' . PHP_EOL;
 
-        if (in_array('estado', $atributos))
-        {
-
-            $texto .= PHP_EOL;
-            //Method Update Estado
-            $texto .= '  # Method Eliminar(Update Estado)' . PHP_EOL;
-            $texto .= '  public function updateEstado($bean_'.$tabla.')' . PHP_EOL;
-            $texto .= '  {' . PHP_EOL;
-            $texto .= '    try{' . PHP_EOL;
-            //SQL
-
-                $texto .= '      $'.$atributos[0]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[0]). '();' . PHP_EOL;
-                // $texto .= '            $'.$atributos[count($atributos)-1]  .' = $bean_'.$tabla.'->get' . ucwords($name_set_get[count($atributos)-1]) . '();' . PHP_EOL;
-                $texto .= '      $estado = $bean_'.$tabla.'->getEstado();' . PHP_EOL;
-                $texto .= '' . PHP_EOL;
-
-                //QUERY
-                $concat = "";
-                $concat .= '      $this->query = "UPDATE '.$tabla.' SET ';
-                $concat .= PHP_EOL;
-                //  $concat.= '            '.$atributos[count($atributos)-1]." = '".''.$atributos[count($atributos)-1];
-                $concat.= '                        estado'." = '".'$estado'."'";
-                $concat .= PHP_EOL;
-                $concat.="                      WHERE ".$atributos[0]."='$".$atributos[0]."'";
-                $concat.= PHP_EOL;
-                $concat.="                      LIMIT 1 ; ".'";';
-                $texto .=  $concat.PHP_EOL;
-
-                $texto .= PHP_EOL;
-                $texto .= '      $this->executeQuery();' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '      $data = $this->status  ;' . PHP_EOL;
-                $texto .= PHP_EOL;
-                $texto .= '      return $data;' . PHP_EOL;
-                $texto .= PHP_EOL;
-
-            //END SQL
-            $texto .= '    }catch(exception $e){' . PHP_EOL;
-            $texto .= PHP_EOL;
-            $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
-            $texto .= PHP_EOL;
-            $texto .= '    }' . PHP_EOL;
-            $texto .= '  }' . PHP_EOL;
-            // End Method Update estado
-
-        }
-
-
         //  START Method BUSCAR POR ID
         $texto .= PHP_EOL;
         $texto .= '  # Method Buscar por ID' . PHP_EOL;
@@ -353,6 +264,92 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '  }' . PHP_EOL;
         // fin del Method Eliminar actualizar
         $texto .= PHP_EOL;
+
+        if (in_array('estado', $atributos))
+        {
+            //Method GETBYESTADO
+            $texto .= PHP_EOL;
+            $texto .= '  # Method getByEstado' . PHP_EOL;
+            $texto .= '  public function getByEstado($bean_'.$tabla.')' . PHP_EOL;
+            $texto .= '  {' . PHP_EOL;
+            $texto .= '    try{' . PHP_EOL;
+            //SQL
+
+                 $texto .= '      $estado = $bean_'.$tabla.'->getEstado() ;' . PHP_EOL;
+
+                $texto .= '' . PHP_EOL;
+
+                //QUERY
+                $concat = "";
+                $concat .= '      $this->query = "SELECT * FROM '.$tabla.'';
+                $concat .= PHP_EOL;
+                // $concat.= '                      WHERE estado'." = '".'$estado'."'";
+                $concat.= '                      WHERE estado'." = '".'$estado'."'" .'; ";';
+                $concat.= PHP_EOL;
+                // $concat.="                       ".'";';
+                $texto .=  $concat;
+                $texto .=  PHP_EOL;
+                //end QUERY
+
+                $texto .= '      $this->executeQuery();' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      $data = $this->rows ;' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      return $data;' . PHP_EOL;
+                $texto .= PHP_EOL;
+
+                $texto .= '    }catch(exception $e){' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '    }' . PHP_EOL;
+            $texto .= '  }' . PHP_EOL;
+            // END  GETBYESTADO
+            $texto .= PHP_EOL;
+
+            $texto .= PHP_EOL;
+            //Method Update Estado
+            $texto .= '  # Method Eliminar(Update Estado)' . PHP_EOL;
+            $texto .= '  public function updateEstado($bean_'.$tabla.')' . PHP_EOL;
+            $texto .= '  {' . PHP_EOL;
+            $texto .= '    try{' . PHP_EOL;
+            //SQL
+
+                $texto .= '      $'.$atributos[0]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[0]). '();' . PHP_EOL;
+                // $texto .= '            $'.$atributos[count($atributos)-1]  .' = $bean_'.$tabla.'->get' . ucwords($name_set_get[count($atributos)-1]) . '();' . PHP_EOL;
+                $texto .= '      $estado = $bean_'.$tabla.'->getEstado();' . PHP_EOL;
+                $texto .= '' . PHP_EOL;
+
+                //QUERY
+                $concat = "";
+                $concat .= '      $this->query = "UPDATE '.$tabla.' SET ';
+                $concat .= PHP_EOL;
+                //  $concat.= '            '.$atributos[count($atributos)-1]." = '".''.$atributos[count($atributos)-1];
+                $concat.= '                        estado'." = '".'$estado'."'";
+                $concat .= PHP_EOL;
+                $concat.="                      WHERE ".$atributos[0]."='$".$atributos[0]."'";
+                $concat.= PHP_EOL;
+                $concat.="                      LIMIT 1 ; ".'";';
+                $texto .=  $concat.PHP_EOL;
+
+                $texto .= PHP_EOL;
+                $texto .= '      $this->executeQuery();' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      $data = $this->status  ;' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      return $data;' . PHP_EOL;
+                $texto .= PHP_EOL;
+
+            //END SQL
+            $texto .= '    }catch(exception $e){' . PHP_EOL;
+            $texto .= PHP_EOL;
+            $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+            $texto .= PHP_EOL;
+            $texto .= '    }' . PHP_EOL;
+            $texto .= '  }' . PHP_EOL;
+            // End Method Update estado
+
+        }
 
         if ( in_array('publicar', $atributos) )
         {
@@ -439,7 +436,45 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= PHP_EOL;
 
         }
-      
+
+        if ( in_array('item', $atributos) )
+        {
+             
+
+            //Method GETPUBLISHED
+            $texto .= PHP_EOL;
+            $texto .= '  # Method getPublished' . PHP_EOL;
+            $texto .= '  public function countRows()' . PHP_EOL;
+            $texto .= '  {' . PHP_EOL;
+            $texto .= '    try{' . PHP_EOL; 
+            $texto  .=  PHP_EOL;
+
+                //QUERY
+                $concat  = "";
+                $concat .= '      $this->query = "SELECT count(*) AS num_rows FROM '.$tabla.';'.'";';
+                $concat .= PHP_EOL ;
+                $texto  .=  $concat.PHP_EOL;
+                // $texto  .=  PHP_EOL;
+                //end QUERY
+
+                $texto .= '      $this->executeFind();' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      $data = $this->rows ;' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      return $data;' . PHP_EOL;
+                $texto .= PHP_EOL;
+
+                $texto .= '    }catch(exception $e){' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+                $texto .= PHP_EOL;
+                $texto .= '    }' . PHP_EOL;
+            $texto .= '  }' . PHP_EOL;
+            // END  GETPUBLISHED
+            $texto .= PHP_EOL;
+
+        }
+
 
 
 
