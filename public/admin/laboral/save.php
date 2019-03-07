@@ -4,14 +4,12 @@
   loginRedirect("../login.php");
 
   if (!isset($_POST)) {
-    header("Location: admin/oportunidad-laboral/oportunidad-laboral.php ", true, 301);
+    header("Location: admin/laboral/laboral.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $oportunidad_laboral_controller = new OportunidadLaboralController();
-
-  $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $laboral_controller = new LaboralController();
 
   $empresa_id   = $_POST["empresa_id"] ;
   $titulo   = $_POST["titulo"] ;
@@ -25,9 +23,7 @@
   $emailcontacto   = $_POST["emailcontacto"] ;
   $item   = $_POST["item"] ;
   $publicar   = $_POST["publicar"] ;
-
   $params = array(
-    "id"   => $id,
     "empresa_id"   => $empresa_id,
     "titulo"   => $titulo,
     "tipo"   => $tipo,
@@ -43,17 +39,10 @@
   );
 
 
-  $response = $oportunidad_laboral_controller->update($params);
+  $response = $laboral_controller->save($params);
 
-  if($response)
-  {
-
-    if( !empty($imagen) && $imagen != $img_bd )
-    {
-      $status = UploadFiles::removeFile($img_bd) ;
-    }
-
-    header("Location: ./oportunidad-laboral.php ", true, 301);
+  if($response){
+    header("Location: ./laboral.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;

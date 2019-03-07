@@ -3,18 +3,7 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $title_page = "Oportunidad Laboral" ;
-  # load tipos empresas
-  require_once "../../app/autoload.php";
-
-  $estado = 1 ;
-  $params = array(
-              'estado' => $estado,
-            );
-
-  $empresa_controller = new EmpresaController();
-
-  $tipo_empresas = $empresa_controller->getByEstado($params);
+  $title_page = "Laboral" ;
 
 ?>
 
@@ -25,7 +14,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => " Nueva $title_page",
+      "titulo"     => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -35,11 +24,10 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [7,3],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
-
   ?>
 </head>
 
@@ -58,7 +46,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/oportunidad-laboral/oportunidad-laboral.php">
+            <a href="admin/laboral/laboral.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -79,28 +67,14 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/oportunidad-laboral/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/laboral/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="empresa_id">EmpresaId: </label>
-                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="EmpresaId">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
-                </div>
-              </div> -->
+              
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="empresa_id">Empresa: </label>
-                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="Empresa">
-                    <option value="" selected disabled hidden>Seleccionar Empresa </option>
-                    <?php foreach ($tipo_empresas as &$row) {?>
-                      <option value="<?php echo $row["empresa_id"]; ?>" ><?php echo $row["nombre"]; ?></option>
-                    <?php } ?>
-                  </select>
+                  <label for="empresa_id">EmpresaId: </label>
+                  <input type="text" class="form-control" name="empresa_id" id="empresa_id" placeholder="EmpresaId">
                 </div>
               </div>
               <div class="col-md-12">
@@ -124,13 +98,13 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="requisitos">Requisitos: </label>
-                  <textarea class="form-control ckeditor" name="requisitos" id="requisitos" placeholder="Requisitos" cols="30" rows="6"></textarea>
+                  <input type="text" class="form-control" name="requisitos" id="requisitos" placeholder="Requisitos">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="conocimientos">Conocimientos: </label>
-                  <textarea class="form-control ckeditor" name="conocimientos" id="conocimientos" placeholder="Conocimientos" cols="30" rows="6"></textarea>
+                  <input type="text" class="form-control" name="conocimientos" id="conocimientos" placeholder="Conocimientos">
                 </div>
               </div>
               <div class="col-md-12">
@@ -157,12 +131,12 @@
                   <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Emailcontacto">
                 </div>
               </div>
-              <!-- <div class="col-md-12">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="item">Item: </label>
                   <input type="text" class="form-control" name="item" id="item" placeholder="Item">
                 </div>
-              </div> -->
+              </div>
 
               <div class="col-md-12">
                 <div class="form-group">
@@ -181,7 +155,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/oportunidad-laboral/oportunidad-laboral.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/laboral/laboral.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 
@@ -197,7 +171,6 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
-  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

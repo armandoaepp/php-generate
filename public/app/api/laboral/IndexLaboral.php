@@ -25,9 +25,9 @@ switch($evento)
   case "list":
     try
     {
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
-       $data = $empresa_controller->getAll() ;
+       $data = $laboral_controller->getAll() ;
 
       $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
@@ -47,28 +47,42 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $empresa_controller = new EmpresaController($cnx) ; 
+      $laboral_controller = new LaboralController($cnx) ; 
       $connection->beginTransaction();
         
+      $id = $inputs->id;
       $empresa_id = $inputs->empresa_id;
-      $tipo_empresa_id = $inputs->tipo_empresa_id;
-      $nombre = $inputs->nombre;
-      $descripcion = $inputs->descripcion;
-      $imagen = $inputs->imagen;
+      $titulo = $inputs->titulo;
+      $tipo = $inputs->tipo;
+      $vacantes = $inputs->vacantes;
+      $requisitos = $inputs->requisitos;
+      $conocimientos = $inputs->conocimientos;
+      $salario = $inputs->salario;
+      $nombrecontacto = $inputs->nombrecontacto;
+      $telefonocontacto = $inputs->telefonocontacto;
+      $emailcontacto = $inputs->emailcontacto;
+      $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
       $params = array(
+                'id'=> $id,
                 'empresa_id'=> $empresa_id,
-                'tipo_empresa_id'=> $tipo_empresa_id,
-                'nombre'=> $nombre,
-                'descripcion'=> $descripcion,
-                'imagen'=> $imagen,
+                'titulo'=> $titulo,
+                'tipo'=> $tipo,
+                'vacantes'=> $vacantes,
+                'requisitos'=> $requisitos,
+                'conocimientos'=> $conocimientos,
+                'salario'=> $salario,
+                'nombrecontacto'=> $nombrecontacto,
+                'telefonocontacto'=> $telefonocontacto,
+                'emailcontacto'=> $emailcontacto,
+                'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $empresa_controller->save($params) ;
+      $data = $laboral_controller->save($params) ;
         
       $connection->commit();
 
@@ -90,28 +104,42 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $empresa_controller = new EmpresaController($cnx) ; 
+      $laboral_controller = new LaboralController($cnx) ; 
       $connection->beginTransaction();
         
+      $id = $inputs->id;
       $empresa_id = $inputs->empresa_id;
-      $tipo_empresa_id = $inputs->tipo_empresa_id;
-      $nombre = $inputs->nombre;
-      $descripcion = $inputs->descripcion;
-      $imagen = $inputs->imagen;
+      $titulo = $inputs->titulo;
+      $tipo = $inputs->tipo;
+      $vacantes = $inputs->vacantes;
+      $requisitos = $inputs->requisitos;
+      $conocimientos = $inputs->conocimientos;
+      $salario = $inputs->salario;
+      $nombrecontacto = $inputs->nombrecontacto;
+      $telefonocontacto = $inputs->telefonocontacto;
+      $emailcontacto = $inputs->emailcontacto;
+      $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
         
       $params = array(
+                'id'=> $id,
                 'empresa_id'=> $empresa_id,
-                'tipo_empresa_id'=> $tipo_empresa_id,
-                'nombre'=> $nombre,
-                'descripcion'=> $descripcion,
-                'imagen'=> $imagen,
+                'titulo'=> $titulo,
+                'tipo'=> $tipo,
+                'vacantes'=> $vacantes,
+                'requisitos'=> $requisitos,
+                'conocimientos'=> $conocimientos,
+                'salario'=> $salario,
+                'nombrecontacto'=> $nombrecontacto,
+                'telefonocontacto'=> $telefonocontacto,
+                'emailcontacto'=> $emailcontacto,
+                'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
               ) ; 
         
-      $data = $empresa_controller->update($params) ;
+      $data = $laboral_controller->update($params) ;
         
       $connection->commit();
 
@@ -132,17 +160,17 @@ switch($evento)
     try
     {
 
-      $empresa_id = $inputs->empresa_id;
+      $id = $inputs->id;
       $estado = $inputs->estado;
 
       $params = array(
-                'empresa_id'=> $empresa_id,
+                'id'=> $id,
                 'estado'=> $estado,
               ) ; 
 
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
-      $data = $empresa_controller->updateEstado( $params ) ;
+      $data = $laboral_controller->updateEstado( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -161,9 +189,9 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
-      $data = $empresa_controller->find( $id) ;
+      $data = $laboral_controller->find( $id) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -181,7 +209,7 @@ switch($evento)
     try
     {
 
-      $empresa_id = $inputs->id;
+      $id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -191,11 +219,11 @@ switch($evento)
       }
 
       $params = array(
-                'empresa_id'=> $empresa_id,
+                'id'=> $id,
                 'estado'=> $estado,
               ) ; 
 
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -203,20 +231,20 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$empresa = $empresa_controller->find( $empresa_id );
+				$laboral = $laboral_controller->find( $id );
 
-				$data = $empresa_controller->deleteById( $empresa_id );
+				$data = $laboral_controller->deleteById( $id );
 
-				if( !empty($empresa) && $data )
+				if( !empty($laboral) && $data )
 				{
-					$imagen = $empresa["imagen"] ; 
+					$imagen = $laboral["imagen"] ; 
 					UploadFiles::removeFile($imagen) ;
 				}
 
 			}
 			else
 			{
-				$data = $empresa_controller->updateEstado($params);
+				$data = $laboral_controller->updateEstado($params);
 			} 
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -235,7 +263,7 @@ switch($evento)
     try
     {
 
-      $empresa_id = $inputs->id;
+      $id = $inputs->id;
       $publicar = $inputs->publicar;
 
       if($publicar == "N"){
@@ -245,13 +273,13 @@ switch($evento)
       }
 
       $params = array(
-                'empresa_id'=> $empresa_id,
+                'id'=> $id,
                 'publicar'=> $publicar,
               ) ; 
 
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
-      $data = $empresa_controller->updatePublish( $params ) ;
+      $data = $laboral_controller->updatePublish( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -275,9 +303,9 @@ switch($evento)
                 'publicar'=> $publicar,
               ) ; 
 
-      $empresa_controller = new EmpresaController() ; 
+      $laboral_controller = new LaboralController() ; 
 
-      $data = $empresa_controller->getPublished( $params ) ;
+      $data = $laboral_controller->getPublished( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
