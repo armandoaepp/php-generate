@@ -45,8 +45,9 @@ if ( in_array('imagen', $atributos) )
 if ( in_array('url', $atributos) )
 {
   $html .= '  $url = UrlHelper::urlFriendly($'. $atributos[1].'); ' . PHP_EOL;
-  $html .= '' . PHP_EOL;
+  // $html .= '' . PHP_EOL;
 }
+$html .= '' . PHP_EOL;
 
 //START ARRAY
 

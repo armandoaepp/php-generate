@@ -280,16 +280,24 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 			if( $historial == 0 )
 			{
 
-				$' . $tabla . ' = $' . $tabla . '_controller->find( $'.strtolower($atributos[0]).' );
+        $' . $tabla . ' = $' . $tabla . '_controller->find( $'.strtolower($atributos[0]).' );
 
-				$data = $' . $tabla . '_controller->deleteById( $'.strtolower($atributos[0]).' );
+        $data = $' . $tabla . '_controller->deleteById( $'.strtolower($atributos[0]).' );' ;
 
+        if ( in_array('imagen', $atributos) )
+        {
+
+            $texto .= '
 				if( !empty($' . $tabla . ') && $data )
 				{
-					$imagen = $' . $tabla . '["imagen"] ; 
+					$imagen = $' . $tabla . '["imagen"] ;
 					UploadFiles::removeFile($imagen) ;
-				}
+                }' ;
+        }
 
+      $texto .= '' . PHP_EOL;
+
+      $texto .= '
 			}
 			else
 			{
@@ -297,7 +305,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 			} '. PHP_EOL;
 
         $texto .= '' . PHP_EOL;
-        $texto .= '        $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
+        $texto .= '      $data = array(\'msg\' => \'Operación Correcta\', \'error\' => false, \'data\' => $data);' . PHP_EOL;
         $texto .= '' . PHP_EOL;
 
         $texto .= '    }' . PHP_EOL;

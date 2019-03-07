@@ -72,7 +72,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= PHP_EOL;
         //  END Method getALL
 
-        
+
 
 
         $texto .= '  # Method SAVE' . PHP_EOL;
@@ -81,11 +81,12 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '  {' . PHP_EOL;
 
         $texto .= '    try{' . PHP_EOL;
+        $texto .= '' . PHP_EOL;
 
-        if (in_array('created_up', $atributos) ) {
-            $texto .= '      $bean_'.$tabla.'->set' . toCamelCase("created_up") . '( HelperDate::timestampsBd() );' . PHP_EOL;
-            $texto .= '' . PHP_EOL;
-        }
+        // if (in_array('created_up', $atributos) ) {
+        //     $texto .= '      $bean_'.$tabla.'->set' . toCamelCase("created_up") . '( HelperDate::timestampsBd() );' . PHP_EOL;
+        //     $texto .= '' . PHP_EOL;
+        // }
 
         for ($i = 0; $i < count($atributos); $i++) {
             $texto .= '      $'.$atributos[$i]  .' = $bean_'.$tabla.'->get' . toCamelCase($atributos[$i]) . '();' . PHP_EOL;
@@ -439,14 +440,14 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
         if ( in_array('item', $atributos) )
         {
-             
+
 
             //Method GETPUBLISHED
             $texto .= PHP_EOL;
             $texto .= '  # Method getPublished' . PHP_EOL;
             $texto .= '  public function countRows()' . PHP_EOL;
             $texto .= '  {' . PHP_EOL;
-            $texto .= '    try{' . PHP_EOL; 
+            $texto .= '    try{' . PHP_EOL;
             $texto  .=  PHP_EOL;
 
                 //QUERY

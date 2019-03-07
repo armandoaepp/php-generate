@@ -11,8 +11,8 @@
 
   $laboral_controller = new LaboralController();
 
-  $empresa_id   = $_POST["empresa_id"] ;
   $titulo   = $_POST["titulo"] ;
+  $subtitulo   = $_POST["subtitulo"] ;
   $tipo   = $_POST["tipo"] ;
   $vacantes   = $_POST["vacantes"] ;
   $requisitos   = $_POST["requisitos"] ;
@@ -23,9 +23,10 @@
   $emailcontacto   = $_POST["emailcontacto"] ;
   $item   = $_POST["item"] ;
   $publicar   = $_POST["publicar"] ;
+
   $params = array(
-    "empresa_id"   => $empresa_id,
     "titulo"   => $titulo,
+    "subtitulo"   => $subtitulo,
     "tipo"   => $tipo,
     "vacantes"   => $vacantes,
     "requisitos"   => $requisitos,

@@ -302,6 +302,34 @@ function generandoControladores($atributos, $tabla, $nameatri)
             $texto  .= '' . PHP_EOL;
         }
 
+        if ( in_array('item', $atributos) )
+        {
+            # Method Count Rows
+            $texto  .= '  public function countRows()' . PHP_EOL;
+            $texto  .= '  {' . PHP_EOL;
+            $texto  .= '    try' . PHP_EOL;
+            $texto  .= '    {' . PHP_EOL;
+            $texto  .= '      $'.($tabla).'  = new '.$cmTable.'();' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+            // $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
+            // $texto  .= '' . PHP_EOL;
+            // $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($id);' . PHP_EOL;
+            // $texto  .= '' . PHP_EOL;
+
+            $texto .= '      $data = $'.($tabla).'->countRows() ;' . PHP_EOL;
+            // $texto .= '      $data = Serialize::unSerializeRow($data);' . PHP_EOL;
+            // $texto  .= '' . PHP_EOL;
+            $texto  .= '      return $data;'. PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+            $texto  .= '    }' . PHP_EOL;
+            $texto  .= '    catch (Exception $e)' . PHP_EOL;
+            $texto  .= '    {' . PHP_EOL;
+            $texto  .= '      throw new Exception($e->getMessage());' . PHP_EOL;
+            $texto  .= '    }' . PHP_EOL;
+            $texto  .= '  }' . PHP_EOL;
+            $texto  .= '' . PHP_EOL;
+            }
+
 
 
 

@@ -73,14 +73,14 @@
               
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="empresa_id">EmpresaId: </label>
-                  <input type="text" class="form-control" name="empresa_id" id="empresa_id" placeholder="EmpresaId">
+                  <label for="titulo">Titulo: </label>
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo">
+                  <label for="subtitulo">Subtitulo: </label>
+                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" placeholder="Subtitulo">
                 </div>
               </div>
               <div class="col-md-12">

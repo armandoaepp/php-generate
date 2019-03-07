@@ -51,8 +51,8 @@ switch($evento)
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $empresa_id = $inputs->empresa_id;
       $titulo = $inputs->titulo;
+      $subtitulo = $inputs->subtitulo;
       $tipo = $inputs->tipo;
       $vacantes = $inputs->vacantes;
       $requisitos = $inputs->requisitos;
@@ -67,8 +67,8 @@ switch($evento)
         
       $params = array(
                 'id'=> $id,
-                'empresa_id'=> $empresa_id,
                 'titulo'=> $titulo,
+                'subtitulo'=> $subtitulo,
                 'tipo'=> $tipo,
                 'vacantes'=> $vacantes,
                 'requisitos'=> $requisitos,
@@ -108,8 +108,8 @@ switch($evento)
       $connection->beginTransaction();
         
       $id = $inputs->id;
-      $empresa_id = $inputs->empresa_id;
       $titulo = $inputs->titulo;
+      $subtitulo = $inputs->subtitulo;
       $tipo = $inputs->tipo;
       $vacantes = $inputs->vacantes;
       $requisitos = $inputs->requisitos;
@@ -124,8 +124,8 @@ switch($evento)
         
       $params = array(
                 'id'=> $id,
-                'empresa_id'=> $empresa_id,
                 'titulo'=> $titulo,
+                'subtitulo'=> $subtitulo,
                 'tipo'=> $tipo,
                 'vacantes'=> $vacantes,
                 'requisitos'=> $requisitos,
@@ -231,15 +231,9 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$laboral = $laboral_controller->find( $id );
+        $laboral = $laboral_controller->find( $id );
 
-				$data = $laboral_controller->deleteById( $id );
-
-				if( !empty($laboral) && $data )
-				{
-					$imagen = $laboral["imagen"] ; 
-					UploadFiles::removeFile($imagen) ;
-				}
+        $data = $laboral_controller->deleteById( $id );
 
 			}
 			else
@@ -247,7 +241,7 @@ switch($evento)
 				$data = $laboral_controller->updateEstado($params);
 			} 
 
-        $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
     }
     catch (Exception $e)

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
        $data = $oportunidad_laboral_controller->getAll() ;
 
@@ -35,21 +35,21 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $oportunidad_laboral_controller = new OportunidadLaboralController($cnx) ; 
+
+      $oportunidad_laboral_controller = new OportunidadLaboralController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $empresa_id = $inputs->empresa_id;
       $titulo = $inputs->titulo;
@@ -64,7 +64,7 @@ switch($evento)
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'empresa_id'=> $empresa_id,
@@ -80,10 +80,10 @@ switch($evento)
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $oportunidad_laboral_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -93,7 +93,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -103,10 +103,10 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $oportunidad_laboral_controller = new OportunidadLaboralController($cnx) ; 
+
+      $oportunidad_laboral_controller = new OportunidadLaboralController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $empresa_id = $inputs->empresa_id;
       $titulo = $inputs->titulo;
@@ -121,7 +121,7 @@ switch($evento)
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'empresa_id'=> $empresa_id,
@@ -137,10 +137,10 @@ switch($evento)
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $oportunidad_laboral_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -151,7 +151,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -166,9 +166,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
       $data = $oportunidad_laboral_controller->updateEstado( $params ) ;
 
@@ -179,7 +179,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -189,7 +189,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
       $data = $oportunidad_laboral_controller->find( $id) ;
 
@@ -200,7 +200,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -210,7 +210,7 @@ switch($evento)
     {
 
       $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -221,9 +221,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -234,18 +234,11 @@ switch($evento)
 				$oportunidad_laboral = $oportunidad_laboral_controller->find( $id );
 
 				$data = $oportunidad_laboral_controller->deleteById( $id );
-
-				if( !empty($oportunidad_laboral) && $data )
-				{
-					$imagen = $oportunidad_laboral["imagen"] ; 
-					UploadFiles::removeFile($imagen) ;
-				}
-
 			}
 			else
 			{
 				$data = $oportunidad_laboral_controller->updateEstado($params);
-			} 
+			}
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -254,7 +247,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
@@ -275,9 +268,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
       $data = $oportunidad_laboral_controller->updatePublish( $params ) ;
 
@@ -288,7 +281,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -301,9 +294,9 @@ switch($evento)
 
       $params = array(
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $oportunidad_laboral_controller = new OportunidadLaboralController() ; 
+      $oportunidad_laboral_controller = new OportunidadLaboralController() ;
 
       $data = $oportunidad_laboral_controller->getPublished( $params ) ;
 
@@ -314,7 +307,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;

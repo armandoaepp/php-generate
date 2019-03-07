@@ -66,8 +66,8 @@
 
       $bean_laboral = new BeanLaboral();
             
-      $bean_laboral->setEmpresaId($empresa_id);
       $bean_laboral->setTitulo($titulo);
+      $bean_laboral->setSubtitulo($subtitulo);
       $bean_laboral->setTipo($tipo);
       $bean_laboral->setVacantes($vacantes);
       $bean_laboral->setRequisitos($requisitos);
@@ -100,8 +100,8 @@
       $bean_laboral = new BeanLaboral();
             
       $bean_laboral->setId($id);
-      $bean_laboral->setEmpresaId($empresa_id);
       $bean_laboral->setTitulo($titulo);
+      $bean_laboral->setSubtitulo($subtitulo);
       $bean_laboral->setTipo($tipo);
       $bean_laboral->setVacantes($vacantes);
       $bean_laboral->setRequisitos($requisitos);
@@ -227,6 +227,22 @@
       $data = $laboral->getPublished($bean_laboral) ;
       
       return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function countRows()
+  {
+    try
+    {
+      $laboral  = new Laboral();
+
+      $data = $laboral->countRows() ;
+      return $data;
+
     }
     catch (Exception $e)
     {

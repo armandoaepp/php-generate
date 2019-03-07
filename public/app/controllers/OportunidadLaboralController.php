@@ -66,8 +66,6 @@
 
       $bean_oportunidad_laboral = new BeanOportunidadLaboral();
 
-      $item = !empty($item)? $item : 0 ;
-
       $bean_oportunidad_laboral->setEmpresaId($empresa_id);
       $bean_oportunidad_laboral->setTitulo($titulo);
       $bean_oportunidad_laboral->setTipo($tipo);
@@ -112,7 +110,7 @@
       $bean_oportunidad_laboral->setNombrecontacto($nombrecontacto);
       $bean_oportunidad_laboral->setTelefonocontacto($telefonocontacto);
       $bean_oportunidad_laboral->setEmailcontacto($emailcontacto);
-      $bean_oportunidad_laboral->setItem($item);
+      // $bean_oportunidad_laboral->setItem($item);
       $bean_oportunidad_laboral->setPublicar($publicar);
 
       $data = $oportunidad_laboral->update($bean_oportunidad_laboral) ;
@@ -236,22 +234,20 @@
     }
   }
 
-  public function countRow()
+  public function countRows()
   {
     try
     {
+      $oportunidad_laboral  = new OportunidadLaboral();
 
-      $oportunidad_laboral  = new OportunidadLaboral($this->cnx);
-
-      $data = $oportunidad_laboral->countRow() ;
-
+      $data = $oportunidad_laboral->countRows() ;
       return $data;
+
     }
     catch (Exception $e)
     {
       throw new Exception($e->getMessage());
     }
   }
-
 
 }

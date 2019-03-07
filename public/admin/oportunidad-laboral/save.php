@@ -13,15 +13,15 @@
 
   $empresa_id       = $_POST["empresa_id"] ;
   $titulo           = $_POST["titulo"] ;
-  $tipo             = !empty($_POST["tipo"])? $_POST["tipo"]: "" ;
-  $vacantes         = !empty($_POST["vacantes"])? $_POST["vacantes"]: "" ;
-  $requisitos       = !empty($_POST["requisitos"])? $_POST["requisitos"]: "" ;
-  $conocimientos    = !empty($_POST["conocimientos"])? $_POST["conocimientos"]: "" ;
-  $salario          = !empty($_POST["salario"])? $_POST["salario"]: "" ;
-  $nombrecontacto   = !empty($_POST["nombrecontacto"])? $_POST["nombrecontacto"]: "" ;
-  $telefonocontacto = !empty($_POST["telefonocontacto"])? $_POST["telefonocontacto"]: "" ;
-  $emailcontacto    = !empty($_POST["emailcontacto"])? $_POST["emailcontacto"]: "" ;
-  // $item             = $_POST["item"] ;
+  $tipo             = $_POST["tipo"] ;
+  $vacantes         = $_POST["vacantes"] ;
+  $requisitos       = $_POST["requisitos"] ;
+  $conocimientos    = $_POST["conocimientos"] ;
+  $salario          = $_POST["salario"] ;
+  $nombrecontacto   = $_POST["nombrecontacto"] ;
+  $telefonocontacto = $_POST["telefonocontacto"] ;
+  $emailcontacto    = $_POST["emailcontacto"] ;
+  $item             = $_POST["item"] ;
   $publicar         = $_POST["publicar"] ;
 
   $params = array(
@@ -35,10 +35,9 @@
     "nombrecontacto"   => $nombrecontacto,
     "telefonocontacto" => $telefonocontacto,
     "emailcontacto"    => $emailcontacto,
-    // "item"             => $item,
+    "item"             => $item,
     "publicar"         => $publicar,
   );
-
 
   $response = $oportunidad_laboral_controller->save($params);
 

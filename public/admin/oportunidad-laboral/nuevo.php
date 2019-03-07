@@ -4,17 +4,6 @@
   loginRedirect("../login.php");
 
   $title_page = "Oportunidad Laboral" ;
-  # load tipos empresas
-  require_once "../../app/autoload.php";
-
-  $estado = 1 ;
-  $params = array(
-              'estado' => $estado,
-            );
-
-  $empresa_controller = new EmpresaController();
-
-  $tipo_empresas = $empresa_controller->getByEstado($params);
 
 ?>
 
@@ -25,7 +14,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => " Nueva $title_page",
+      "titulo"     => "Nueva $title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -39,6 +28,17 @@
     );
 
     require_once "../layout/head_links.phtml";
+
+    # load tipos empresas
+    require_once "../../app/autoload.php";
+
+    $params = array(
+                'estado' => 1,
+              );
+
+    $empresa_controller = new EmpresaController();
+
+    $tipo_empresas = $empresa_controller->getByEstado($params);
 
   ?>
 </head>
@@ -60,7 +60,7 @@
           <li class="breadcrumb-item">
             <a href="admin/oportunidad-laboral/oportunidad-laboral.php">
               <i class="fas fa-list"></i>
-              <?php echo $title_page ;?>s
+              <?php echo $title_page ;?>es
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
@@ -83,19 +83,10 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
 
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="empresa_id">EmpresaId: </label>
-                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="EmpresaId">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
-                </div>
-              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="empresa_id">Empresa: </label>
-                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="Empresa">
+                  <select class="custom-select" name="empresa_id" id="empresa_id" required placeholder="Empresa">
                     <option value="" selected disabled hidden>Seleccionar Empresa </option>
                     <?php foreach ($tipo_empresas as &$row) {?>
                       <option value="<?php echo $row["empresa_id"]; ?>" ><?php echo $row["nombre"]; ?></option>
@@ -106,7 +97,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo">
+                  <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
                 </div>
               </div>
               <div class="col-md-12">
@@ -148,21 +139,21 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefonocontacto">Telefonocontacto: </label>
-                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="Telefonocontacto">
+                  <input type="tel" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="Telefonocontacto">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="emailcontacto">Emailcontacto: </label>
-                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Emailcontacto">
+                  <input type="email" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Emailcontacto">
                 </div>
               </div>
-              <!-- <div class="col-md-12">
+              <div class="col-md-12">
                 <div class="form-group">
                   <label for="item">Item: </label>
-                  <input type="text" class="form-control" name="item" id="item" placeholder="Item">
+                  <input type="number" class="form-control" name="item" id="item" placeholder="Item">
                 </div>
-              </div> -->
+              </div>
 
               <div class="col-md-12">
                 <div class="form-group">
@@ -198,6 +189,7 @@
 
   <?php require_once "../layout/foot_links.phtml"; ?>
   <?php require_once "../layout/ckeditor.phtml"; ?>
+
 
 </body>
 

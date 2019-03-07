@@ -3,30 +3,18 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
-
-  if ($id <= 0) {
-      header("Location: ./laboral.php ", true, 301);
-  }
-
+  $title_page = "Oportunidad Laboral" ;
+  # load tipos empresas
   require_once "../../app/autoload.php";
 
-  $laboral_controller = new LaboralController();
+  $estado = 1 ;
+  $params = array(
+              'estado' => $estado,
+            );
 
-  $laboral = $laboral_controller->find($id);
+  $empresa_controller = new EmpresaController();
 
-  $publicar = trim($laboral["publicar"]);
-
-  $si = "";
-  $no = "";
-
-  if ($publicar == "S") {
-      $si = "checked='checked'";
-  } elseif ($publicar == "N") {
-      $no = "checked='checked'";
-  }
-
-  $title_page = "Laboral";
+  $tipo_empresas = $empresa_controller->getByEstado($params);
 
 ?>
 
@@ -34,26 +22,25 @@
 <html lang="es">
 
 <head>
-
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
-        "follow" => "",
-        "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
+      "titulo"     => " Nueva $title_page",
+      "follow"      => "",
+      "description" => "Administrador",
+      "keywords"    => "administrador",
+      "active"      => [1,0]
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+      "sidebar_class"     => "",
+      "sidebar_toggle"      => "only",
+      "sidebar_active"      => [7,3],
     );
 
     require_once "../layout/head_links.phtml";
-  ?>
 
+  ?>
 </head>
 
 <body>
@@ -71,13 +58,13 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/laboral/laboral.php">
+            <a href="admin/oportunidad-laboral/oportunidad-laboral.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Editar <?php echo $title_page; ?>
+            Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -85,94 +72,107 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
+            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/laboral/update.php" method="POST" enctype="multipart/form-data">
-              <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
-              <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
+            <form action="admin/oportunidad-laboral/save.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
+              <!-- <div class="col-md-12">
+                <div class="form-group">
+                  <label for="empresa_id">EmpresaId: </label>
+                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="EmpresaId">
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <option value="text">text</option>
+                  </select>
+                </div>
+              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $laboral['titulo']; ?>">
+                  <label for="empresa_id">Empresa: </label>
+                  <select class="custom-select" name="empresa_id" id="empresa_id" placeholder="Empresa">
+                    <option value="" selected disabled hidden>Seleccionar Empresa </option>
+                    <?php foreach ($tipo_empresas as &$row) {?>
+                      <option value="<?php echo $row["empresa_id"]; ?>" ><?php echo $row["nombre"]; ?></option>
+                    <?php } ?>
+                  </select>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="subtitulo">Subtitulo: </label>
-                  <input type="text" class="form-control" name="subtitulo" id="subtitulo" placeholder="Subtitulo" value="<?php echo $laboral['subtitulo']; ?>">
+                  <label for="titulo">Titulo: </label>
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="tipo">Tipo: </label>
-                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo" value="<?php echo $laboral['tipo']; ?>">
+                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="vacantes">Vacantes: </label>
-                  <input type="text" class="form-control" name="vacantes" id="vacantes" placeholder="Vacantes" value="<?php echo $laboral['vacantes']; ?>">
+                  <input type="text" class="form-control" name="vacantes" id="vacantes" placeholder="Vacantes">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="requisitos">Requisitos: </label>
-                  <input type="text" class="form-control" name="requisitos" id="requisitos" placeholder="Requisitos" value="<?php echo $laboral['requisitos']; ?>">
+                  <textarea class="form-control ckeditor" name="requisitos" id="requisitos" placeholder="Requisitos" cols="30" rows="6"></textarea>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="conocimientos">Conocimientos: </label>
-                  <input type="text" class="form-control" name="conocimientos" id="conocimientos" placeholder="Conocimientos" value="<?php echo $laboral['conocimientos']; ?>">
+                  <textarea class="form-control ckeditor" name="conocimientos" id="conocimientos" placeholder="Conocimientos" cols="30" rows="6"></textarea>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="salario">Salario: </label>
-                  <input type="text" class="form-control" name="salario" id="salario" placeholder="Salario" value="<?php echo $laboral['salario']; ?>">
+                  <input type="text" class="form-control" name="salario" id="salario" placeholder="Salario">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombrecontacto">Nombrecontacto: </label>
-                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" placeholder="Nombrecontacto" value="<?php echo $laboral['nombrecontacto']; ?>">
+                  <input type="text" class="form-control" name="nombrecontacto" id="nombrecontacto" placeholder="Nombrecontacto">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefonocontacto">Telefonocontacto: </label>
-                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="Telefonocontacto" value="<?php echo $laboral['telefonocontacto']; ?>">
+                  <input type="text" class="form-control" name="telefonocontacto" id="telefonocontacto" placeholder="Telefonocontacto">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="emailcontacto">Emailcontacto: </label>
-                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Emailcontacto" value="<?php echo $laboral['emailcontacto']; ?>">
+                  <input type="text" class="form-control" name="emailcontacto" id="emailcontacto" placeholder="Emailcontacto">
                 </div>
               </div>
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <div class="form-group">
                   <label for="item">Item: </label>
-                  <input type="text" class="form-control" name="item" id="item" placeholder="Item" value="<?php echo $laboral['item']; ?>">
+                  <input type="text" class="form-control" name="item" id="item" placeholder="Item">
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
                     <label class="form-check-label" for="si">SI</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
                     <label class="form-check-label" for="no">NO</label>
                   </div>
                 </div>
@@ -181,7 +181,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/laboral/laboral.php" type="button" class="btn btn-dark ">Cancelar</a>
+                <a href="admin/oportunidad-laboral/oportunidad-laboral.php" type="button" class="btn btn-dark ">Cancelar</a>
                 <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
               </div>
 
@@ -193,10 +193,11 @@
       </div>
 
     </main>
-
   </div>
 
+
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

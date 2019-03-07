@@ -10,7 +10,12 @@
 
     $data = $oportunidad_laboral_controller->getAll();
 
-    $title_page = "OportunidadLaborals";
+    $title_page = "Oportunidades Laborales";
+
+    // $num_rows = $oportunidad_laboral_controller->countRow();
+
+    // echo $num_rows['num_rows'];
+    // return ;
 
 ?>
 
@@ -31,7 +36,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [7,3],
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -86,17 +91,17 @@
               <thead>
                 <tr>
                   <th width="50">Id </th>
-                  <th>Empresa </th>
+                  <th>Empresa_id </th>
                   <th>Titulo </th>
                   <th>Tipo </th>
                   <th>Vacantes </th>
-                  <!-- <th>Requisitos </th>
+                  <th>Requisitos </th>
                   <th>Conocimientos </th>
                   <th>Salario </th>
                   <th>Nombrecontacto </th>
                   <th>Telefonocontacto </th>
                   <th>Emailcontacto </th>
-                  <th>Item </th> -->
+                  <th>Item </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -143,21 +148,21 @@
                 <tr class="<?php echo $class_estado ;?>" >
 
                   <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["empresa"] ?> </td>
+                  <td> <?php echo $row["empresa_id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
                   <td> <?php echo $row["tipo"] ?> </td>
                   <td> <?php echo $row["vacantes"] ?> </td>
-                  <!-- <td> <?php echo $row["requisitos"] ?> </td>
+                  <td> <?php echo $row["requisitos"] ?> </td>
                   <td> <?php echo $row["conocimientos"] ?> </td>
                   <td> <?php echo $row["salario"] ?> </td>
                   <td> <?php echo $row["nombrecontacto"] ?> </td>
                   <td> <?php echo $row["telefonocontacto"] ?> </td>
                   <td> <?php echo $row["emailcontacto"] ?> </td>
-                  <td> <?php echo $row["item"] ?> </td> -->
+                  <td> <?php echo $row["item"] ?> </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['empresa_id'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -167,7 +172,7 @@
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/oportunidad-laboral/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['empresa_id'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>

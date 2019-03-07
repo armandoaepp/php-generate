@@ -34,38 +34,14 @@ class Laboral extends Connection {
     }
   }
 
-
-  # Method getByEstado
-  public function getByEstado($bean_laboral)
-  {
-    try{
-      $estado = $bean_laboral->getEstado() ;
-
-      $this->query = "SELECT * FROM laboral
-                      WHERE estado = '$estado'; ";
-
-      $this->executeQuery();
-
-      $data = $this->rows ;
-
-      return $data;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-  }
-
   # Method SAVE
   public function save($bean_laboral)
   {
     try{
-      $bean_laboral->setCreatedUp( HelperDate::timestampsBd() );
 
       $id = $bean_laboral->getId();
-      $empresa_id = $bean_laboral->getEmpresaId();
       $titulo = $bean_laboral->getTitulo();
+      $subtitulo = $bean_laboral->getSubtitulo();
       $tipo = $bean_laboral->getTipo();
       $vacantes = $bean_laboral->getVacantes();
       $requisitos = $bean_laboral->getRequisitos();
@@ -81,8 +57,8 @@ class Laboral extends Connection {
 
       $this->query = "INSERT INTO laboral
                       (
-                        empresa_id,
                         titulo,
+                        subtitulo,
                         tipo,
                         vacantes,
                         requisitos,
@@ -97,8 +73,8 @@ class Laboral extends Connection {
                         created_up
                       )
                       VALUES(
-                        '$empresa_id',
                         '$titulo',
+                        '$subtitulo',
                         '$tipo',
                         '$vacantes',
                         '$requisitos',
@@ -132,8 +108,8 @@ class Laboral extends Connection {
   {
     try{
       $id = $bean_laboral->getId();
-      $empresa_id = $bean_laboral->getEmpresaId();
       $titulo = $bean_laboral->getTitulo();
+      $subtitulo = $bean_laboral->getSubtitulo();
       $tipo = $bean_laboral->getTipo();
       $vacantes = $bean_laboral->getVacantes();
       $requisitos = $bean_laboral->getRequisitos();
@@ -146,8 +122,8 @@ class Laboral extends Connection {
       $publicar = $bean_laboral->getPublicar();
 
       $this->query = "UPDATE laboral SET 
-                        empresa_id = '$empresa_id',
                         titulo = '$titulo',
+                        subtitulo = '$subtitulo',
                         tipo = '$tipo',
                         vacantes = '$vacantes',
                         requisitos = '$requisitos',
@@ -160,31 +136,6 @@ class Laboral extends Connection {
                         publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
-
-      $this->executeQuery();
-
-      $data = $this->status  ;
-
-      return $data;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-  }
-
-  # Method Eliminar(Update Estado)
-  public function updateEstado($bean_laboral)
-  {
-    try{
-      $id = $bean_laboral->getId();
-      $estado = $bean_laboral->getEstado();
-
-      $this->query = "UPDATE laboral SET 
-                        estado = '$estado'
-                      WHERE id='$id'
-                      LIMIT 1 ; ";
 
       $this->executeQuery();
 
@@ -242,6 +193,54 @@ class Laboral extends Connection {
     }
   }
 
+
+  # Method getByEstado
+  public function getByEstado($bean_laboral)
+  {
+    try{
+      $estado = $bean_laboral->getEstado() ;
+
+      $this->query = "SELECT * FROM laboral
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method Eliminar(Update Estado)
+  public function updateEstado($bean_laboral)
+  {
+    try{
+      $id = $bean_laboral->getId();
+      $estado = $bean_laboral->getEstado();
+
+      $this->query = "UPDATE laboral SET 
+                        estado = '$estado'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
 
   # Method updatePublish
   public function updatePublish($bean_laboral)

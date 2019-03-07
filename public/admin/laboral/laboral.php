@@ -86,8 +86,8 @@
               <thead>
                 <tr>
                   <th width="50">Id </th>
-                  <th>Empresa_id </th>
                   <th>Titulo </th>
+                  <th>Subtitulo </th>
                   <th>Tipo </th>
                   <th>Vacantes </th>
                   <th>Requisitos </th>
@@ -143,8 +143,8 @@
                 <tr class="<?php echo $class_estado ;?>" >
                 
                   <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["empresa_id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
+                  <td> <?php echo $row["subtitulo"] ?> </td>
                   <td> <?php echo $row["tipo"] ?> </td>
                   <td> <?php echo $row["vacantes"] ?> </td>
                   <td> <?php echo $row["requisitos"] ?> </td>
@@ -157,7 +157,7 @@
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['empresa_id'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row['id'] ?>, `<?php echo $row['titulo'] ?>` ,`<?php echo $title ?>`, `<?php echo $row['publicar'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -167,7 +167,7 @@
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/laboral/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['empresa_id'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row["estado"] ?></span>

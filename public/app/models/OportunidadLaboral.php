@@ -19,30 +19,11 @@ class OportunidadLaboral extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM oportunidad_laboral; ";
-
-      $this->executeQuery();
-
-      $data = $this->rows ;
-
-      return $data;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-  }
-
-
-  # Method getByEstado
-  public function getByEstado($bean_oportunidad_laboral)
-  {
-    try{
-      $estado = $bean_oportunidad_laboral->getEstado() ;
-
-      $this->query = "SELECT * FROM oportunidad_laboral
-                      WHERE estado = '$estado'; ";
+      $this->query = "SELECT
+                        oportunidad_laboral.* ,
+                        empresa.nombre AS empresa
+                      FROM oportunidad_laboral
+                      INNER JOIN empresa ON empresa.empresa_id = oportunidad_laboral.empresa_id ; ";
 
       $this->executeQuery();
 
@@ -61,7 +42,6 @@ class OportunidadLaboral extends Connection {
   public function save($bean_oportunidad_laboral)
   {
     try{
-      $bean_oportunidad_laboral->setCreatedUp( HelperDate::timestampsBd() );
 
       $id               = $bean_oportunidad_laboral->getId();
       $empresa_id       = $bean_oportunidad_laboral->getEmpresaId();
@@ -142,8 +122,8 @@ class OportunidadLaboral extends Connection {
       $nombrecontacto   = $bean_oportunidad_laboral->getNombrecontacto();
       $telefonocontacto = $bean_oportunidad_laboral->getTelefonocontacto();
       $emailcontacto    = $bean_oportunidad_laboral->getEmailcontacto();
-      $item             = $bean_oportunidad_laboral->getItem();
-      $publicar = $bean_oportunidad_laboral->getPublicar();
+      // $item             = $bean_oportunidad_laboral->getItem();
+      $publicar         = $bean_oportunidad_laboral->getPublicar();
 
       $this->query = "UPDATE oportunidad_laboral SET
                         empresa_id = '$empresa_id',
@@ -156,35 +136,9 @@ class OportunidadLaboral extends Connection {
                         nombrecontacto = '$nombrecontacto',
                         telefonocontacto = '$telefonocontacto',
                         emailcontacto = '$emailcontacto',
-                        item = '$item',
                         publicar = '$publicar'
                       WHERE id = '$id'
                       LIMIT 1 ;";
-
-      $this->executeQuery();
-
-      $data = $this->status  ;
-
-      return $data;
-
-    }catch(exception $e){
-
-      throw new Exception($e->getMessage());
-
-    }
-  }
-
-  # Method Eliminar(Update Estado)
-  public function updateEstado($bean_oportunidad_laboral)
-  {
-    try{
-      $id = $bean_oportunidad_laboral->getId();
-      $estado = $bean_oportunidad_laboral->getEstado();
-
-      $this->query = "UPDATE oportunidad_laboral SET
-                        estado = '$estado'
-                      WHERE id='$id'
-                      LIMIT 1 ; ";
 
       $this->executeQuery();
 
@@ -243,6 +197,54 @@ class OportunidadLaboral extends Connection {
   }
 
 
+  # Method getByEstado
+  public function getByEstado($bean_oportunidad_laboral)
+  {
+    try{
+      $estado = $bean_oportunidad_laboral->getEstado() ;
+
+      $this->query = "SELECT * FROM oportunidad_laboral
+                      WHERE estado = '$estado'; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
+  # Method Eliminar(Update Estado)
+  public function updateEstado($bean_oportunidad_laboral)
+  {
+    try{
+      $id = $bean_oportunidad_laboral->getId();
+      $estado = $bean_oportunidad_laboral->getEstado();
+
+      $this->query = "UPDATE oportunidad_laboral SET
+                        estado = '$estado'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
   # Method updatePublish
   public function updatePublish($bean_oportunidad_laboral)
   {
@@ -292,11 +294,13 @@ class OportunidadLaboral extends Connection {
     }
   }
 
-  public function countRow()
+
+  # Method getPublished
+  public function countRows()
   {
     try{
 
-      $this->query = "SELECT count(*) AS num_rows FROM oportunidad_laboral  ";
+      $this->query = "SELECT count(*) AS num_rows FROM oportunidad_laboral;";
 
       $this->executeFind();
 
