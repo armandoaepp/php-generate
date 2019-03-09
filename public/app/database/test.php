@@ -1,4 +1,7 @@
 <?php
+
+print_r(PDO::getAvailableDrivers());
+return ;
  $db_host   = 'localhost';
  $db_user   = 'escuelac_webuser2019';
  $db_pass   = 'appcumbre+*-2019';
@@ -14,4 +17,3 @@ try {
     print "¡Error!: " . $e->getMessage() . "<br/>";
     die();
 }
- 
