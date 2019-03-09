@@ -13,13 +13,14 @@
 
   $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $titulo   = $_POST["titulo"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $item   = $_POST["item"] ;
-  $glosa   = $_POST["glosa"] ;
-  $publicar   = $_POST["publicar"] ;
-  $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
-  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+  $titulo          = $_POST["titulo"] ;
+  $descripcion     = $_POST["descripcion"] ;
+  // $item         = $_POST["item"] ;
+  $tipo_noticia_id = $_POST["tipo_noticia_id"] ; 
+  $glosa           = !empty($_POST["glosa"]) ? $_POST["glosa"] : "" ;
+  $publicar        = $_POST["publicar"] ;
+  $img_bd          = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
+  $file_imagen     = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : '' ;
 
   $imagen  = "";
   $imagen = UploadFiles::uploadFile($file_imagen, "noticia") ;
@@ -31,14 +32,15 @@
   $url = UrlHelper::urlFriendly($titulo); 
 
   $params = array(
-    "id"   => $id,
-    "titulo"   => $titulo,
-    "descripcion"   => $descripcion,
-    "item"   => $item,
-    "glosa"   => $glosa,
-    "publicar"   => $publicar,
-    "imagen"  => $imagen,
-    "url"  => $url,
+    "id"              => $id,
+    "titulo"          => $titulo,
+    "tipo_noticia_id" => $tipo_noticia_id,
+    "descripcion"     => $descripcion,
+    "item"            => $item,
+    "glosa"           => $glosa,
+    "publicar"        => $publicar,
+    "imagen"          => $imagen,
+    "url"             => $url,
   );
 
 

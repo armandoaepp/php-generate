@@ -34,4 +34,14 @@ class HelperDate
         $new_date = date("d-m-Y", strtotime($date . "- $value days"));
     }
 
+    /**
+     * value[number days subtract]
+     */
+    public static function dateNowDownDay($value)
+    {
+        $date = date("Y-m-d");
+        $new_date = date("Y-m-d", strtotime($date . "- $value days"));
+        return $new_date;
+    }
+
 }

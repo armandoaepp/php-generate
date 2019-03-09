@@ -73,7 +73,7 @@ require_once "../layout/head_links.phtml";
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/noticia/editar.php?id=$id">
+            <a href="admin/noticia/editar.php?id=<?php echo $id; ?> ">
               <i class="fas fa-reply"></i>
               <?php echo $title_page; ?> Editar
             </a>

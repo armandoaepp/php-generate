@@ -234,4 +234,31 @@
     }
   }
 
+  public function getCountRowByDate($num_day)
+  {
+    try
+    {
+      $red  = new Red();
+
+      $new_date = HelperDate::dateNowDownDay($num_day) ;
+
+      $data = $red->getByUpDate( $new_date) ;
+      $data = Serialize::unSerializeArray($data);
+
+      $num_row = 0 ;
+
+      if( is_array($data))
+      {
+        $num_row = count($data) ;
+      }
+
+      return $num_row;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 }

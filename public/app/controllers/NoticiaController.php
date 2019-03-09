@@ -103,7 +103,10 @@
 
       $bean_noticia = new BeanNoticia();
 
+      $item = !empty($item) ? $item : 0 ;
+
       $bean_noticia->setTitulo($titulo);
+      $bean_noticia->setTipoNoticiaId($tipo_noticia_id);
       $bean_noticia->setDescripcion($descripcion);
       $bean_noticia->setImagen($imagen);
       $bean_noticia->setUrl($url);
@@ -133,10 +136,11 @@
 
       $bean_noticia->setId($id);
       $bean_noticia->setTitulo($titulo);
+      $bean_noticia->setTipoNoticiaId($tipo_noticia_id);
       $bean_noticia->setDescripcion($descripcion);
       $bean_noticia->setImagen($imagen);
       $bean_noticia->setUrl($url);
-      $bean_noticia->setItem($item);
+      // $bean_noticia->setItem($item);
       $bean_noticia->setGlosa($glosa);
       $bean_noticia->setPublicar($publicar);
 
@@ -252,6 +256,46 @@
       $bean_noticia->setPublicar($publicar);
 
       $data = $noticia->getPublished($bean_noticia) ;
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getLastRow()
+  {
+    try
+    {
+      $noticia  = new Noticia();
+
+      $data = $noticia->getLastRow();
+      $data = Serialize::unSerializeRow($data);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublishedByTipoNoticiaId($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $noticia  = new Noticia($this->cnx);
+      $bean_noticia = new BeanNoticia();
+
+      $bean_noticia->setPublicar($publicar);
+      $bean_noticia->setTipoNoticiaId($tipo_noticia_id);
+
+      $data = $noticia->getPublishedByTipoNoticiaId($bean_noticia) ;
 
       return $data;
     }

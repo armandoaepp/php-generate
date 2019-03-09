@@ -13,11 +13,12 @@ class BeanNoticia{
 
     # Atributos
     private $id;
+    private $tipo_noticia_id;    
     private $titulo;
     private $descripcion;
     private $imagen = "" ;
     private $url = "" ;
-    private $item;
+    private $item = 0;
     private $glosa;
     private $publicar = "S" ;
     private $estado = 1 ;
@@ -32,6 +33,16 @@ class BeanNoticia{
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setTipoNoticiaId($tipo_noticia_id_)
+    {
+        $this->tipo_noticia_id = Validation::validate( $tipo_noticia_id_ );
+    }
+
+    public function getTipoNoticiaId()
+    {
+        return $this->tipo_noticia_id;
     }
 
     public function setTitulo($titulo_)

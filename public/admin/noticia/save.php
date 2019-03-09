@@ -11,23 +11,26 @@
 
   $noticia_controller = new NoticiaController();
 
-  $titulo      = $_POST["titulo"] ;
-  $descripcion = $_POST["descripcion"] ;
-  // $item        = $_POST["item"] ;
-  $glosa       = !empty($_POST["glosa"])? $_POST["glosa"] : "";
-  $publicar    = $_POST["publicar"] ;
-  $file_imagen = !empty($_FILES["imagen"]) ? $_FILES["imagen"]: [] ;
+  $titulo          = $_POST["titulo"] ;
+  $descripcion     = $_POST["descripcion"] ;
+  $tipo_noticia_id = $_POST["tipo_noticia_id"] ;
+  // $item         = $_POST["item"] ;
+  $item           = !empty($_POST["item"])? $_POST["item"] : 0;
+  $glosa           = !empty($_POST["glosa"])? $_POST["glosa"] : "";
+  $publicar        = $_POST["publicar"] ;
+  $file_imagen     = !empty($_FILES["imagen"]) ? $_FILES["imagen"]: [] ;
 
   $url = UrlHelper::urlFriendly($titulo);
 
   $params = array(
-    "titulo"      => $titulo,
-    "descripcion" => $descripcion,
-    // "item"        => $item,
-    "glosa"       => $glosa,
-    "publicar"    => $publicar,
-    "imagen"      => $imagen,
-    "url"         => $url,
+    "titulo"          => $titulo,
+    "tipo_noticia_id" => $tipo_noticia_id,
+    "descripcion"     => $descripcion,
+    "item"            => $item,
+    "glosa"           => $glosa,
+    "publicar"        => $publicar,
+    "imagen"          => '',
+    "url"             => $url,
   );
 
 
@@ -42,7 +45,8 @@
   {
     $noticia_img_controller = new NoticiaImgController();
 
-    for ($i=0; $i < count($imagenes) ; $i++) {
+    for ($i=0; $i < count($imagenes) ; $i++) 
+    {
 
       $params_det = array(
         "noticia_id" => $noticia_id,

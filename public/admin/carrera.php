@@ -6,11 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $noticia_controller = new NoticiaController();
+    $carrera_controller = new CarreraController();
 
-    $data = $noticia_controller->getAll();
+    $data = $carrera_controller->getAll();
 
-    $title_page = "Noticias";
+    $title_page = "Carreras";
 
 ?>
 
@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [3,2],
+      "sidebar_active"      => [6,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/noticia/noticia.php">
+            <a class="link-white" href="admin/carrera/carrera.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,11 +69,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/noticia/noticia.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/carrera/carrera.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/noticia/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/carrera/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -81,18 +81,33 @@
 
           <div class="col-12">
             <div class="table-responsive">
-
+            
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Id </th>
                   <th>Titulo </th>
                   <!-- <th>Descripcion </th>
+                  <th>Slide </th>
+                  <th>Presentacion </th>
+                  <th>Porque </th>
+                  <th>Donde </th>
+                  <th>Certificacion </th>
+                  <th>Titulos </th>
+                  <th>Inversion </th>
+                  <th>Titulacion </th>
+                  <th>Duracion </th>
+                  <th>Dia </th>
+                  <th>Horario </th>
+                  <th>Lugar </th>
+                  <th>Precio </th>
+                  <th>Equipos </th>
+                  <th>Consultas </th>
+                  <th>Dirigido </th>
+                  <th>Aquien </th>
+                  <th>Temas </th>
                   <th>Url </th>
-                  <th>Item </th>
-                  <th>Glosa </th> -->
-                  <th>Tipo Noticia </th>
-                  <th>Publicado </th>
+                  <th>Item </th> -->
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -137,15 +152,30 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-
+                
                   <td> <?php echo $row["id"] ?> </td>
                   <td> <?php echo $row["titulo"] ?> </td>
-                  <td> <?php echo $row["tipo_noticia"] ?> </td>
-                  <td> <?php echo $row["created_up"] ?> </td>
                   <!-- <td> <?php echo $row["descripcion"] ?> </td>
+                  <td> <?php echo $row["slide"] ?> </td>
+                  <td> <?php echo $row["presentacion"] ?> </td>
+                  <td> <?php echo $row["porque"] ?> </td>
+                  <td> <?php echo $row["donde"] ?> </td>
+                  <td> <?php echo $row["certificacion"] ?> </td>
+                  <td> <?php echo $row["titulos"] ?> </td>
+                  <td> <?php echo $row["inversion"] ?> </td>
+                  <td> <?php echo $row["titulacion"] ?> </td>
+                  <td> <?php echo $row["duracion"] ?> </td>
+                  <td> <?php echo $row["dia"] ?> </td>
+                  <td> <?php echo $row["horario"] ?> </td>
+                  <td> <?php echo $row["lugar"] ?> </td>
+                  <td> <?php echo $row["precio"] ?> </td>
+                  <td> <?php echo $row["equipos"] ?> </td>
+                  <td> <?php echo $row["consultas"] ?> </td>
+                  <td> <?php echo $row["dirigido"] ?> </td>
+                  <td> <?php echo $row["aquien"] ?> </td>
+                  <td> <?php echo $row["temas"] ?> </td>
                   <td> <?php echo $row["url"] ?> </td>
-                  <td> <?php echo $row["item"] ?> </td>
-                  <td> <?php echo $row["glosa"] ?> </td> -->
+                  <td> <?php echo $row["item"] ?> </td> -->
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row["publicar"] ?></span>
@@ -153,10 +183,10 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-
+            
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/noticia/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/carrera/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['titulo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
@@ -168,7 +198,7 @@
                 <?php }?>
               </tbody>
 
-            </table>
+            </table> 
             </div>
           </div>
 
@@ -247,7 +277,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/noticia/IndexNoticia.php",
+        url: "./app/api/carrera/IndexCarrera.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

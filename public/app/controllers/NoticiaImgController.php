@@ -216,4 +216,24 @@
     }
   }
 
+  public function getActivatedByNoticiaId($id)
+  {
+    try
+    {
+      $noticia_img  = new NoticiaImg();
+      $bean_noticia_img = new BeanNoticiaImg();
+
+      $bean_noticia_img->setId($id);
+
+      $data = $noticia_img->getActivatedByNoticiaId($bean_noticia_img);
+      // $data = Serialize::unSerializeArray($data);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 }

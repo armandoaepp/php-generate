@@ -12,21 +12,33 @@ $title_page = "Noticia";
 <head>
   <?php
 
-$setvar = array(
-    "titulo" => "$title_page",
-    "follow" => "",
-    "description" => "Administrador",
-    "keywords" => "administrador",
-    "active" => [1, 0],
-);
+    $setvar = array(
+        "titulo" => "Nueva $title_page",
+        "follow" => "",
+        "description" => "Administrador",
+        "keywords" => "administrador",
+        "active" => [1, 0],
+    );
 
-$sidebar = array(
-    "sidebar_class" => "",
-    "sidebar_toggle" => "only",
-    "sidebar_active" => [3, 2],
-);
+    $sidebar = array(
+        "sidebar_class" => "",
+        "sidebar_toggle" => "only",
+        "sidebar_active" => [3, 2],
+    );
 
-require_once "../layout/head_links.phtml";
+    require_once "../layout/head_links.phtml";
+
+    require_once "../../app/autoload.php";
+
+    # load tipos noticias
+    $estado = 1 ;
+    $params = array(
+                'estado' => $estado,
+              );
+
+    $tipo_noticia_controller = new TipoNoticiaController();
+
+    $tipo_noticias = $tipo_noticia_controller->getByEstado($params);
 ?>
 </head>
 
@@ -51,7 +63,7 @@ require_once "../layout/head_links.phtml";
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Nuevo <?php echo $title_page; ?>
+            Nueva <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -59,7 +71,7 @@ require_once "../layout/head_links.phtml";
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
+            <h5 class="page-header-title">Nueva <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
         </div>
@@ -70,12 +82,25 @@ require_once "../layout/head_links.phtml";
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
 
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="tipo_noticia_id">Tipo Noticia / Evento: </label>
+                     <select class="custom-select" name="tipo_noticia_id" id="tipo_noticia_id" placeholder="tipo noticia" required>
+                      <option value="" selected disabled hidden>Seleccionar Tipo Noticia</option>
+                      <?php foreach ($tipo_noticias as &$row) {?>
+                      <option value="<?php echo $row["tipo_noticia_id"]; ?>" ><?php echo $row["nombre"]; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="titulo">Titulo: </label>
                     <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo">
                   </div>
                 </div>
+
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="descripcion">Descripcion: </label>

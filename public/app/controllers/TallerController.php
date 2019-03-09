@@ -32,10 +32,12 @@
     }
   }
 
-  public function getByEstado()
+  public function getByEstado( $params = array() )
   {
     try
     {
+      extract($params) ; 
+      
       $taller  = new Taller();
             
       $bean_taller = new BeanTaller();

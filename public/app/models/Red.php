@@ -292,4 +292,24 @@ class Red extends Connection {
     }
   }
 
+  public function getByUpDate($date)
+  {
+    try{
+
+      $this->query = "SELECT * FROM red
+                    WHERE red.created_up >= '$date';";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
 }

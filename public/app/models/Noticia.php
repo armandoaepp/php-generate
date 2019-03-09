@@ -19,7 +19,13 @@ class Noticia extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM noticia; ";
+      // $this->query = "SELECT * FROM noticia; ";
+      $this->query = "SELECT
+                        noticia.* ,
+                        tipo_noticia.nombre AS tipo_noticia
+                      FROM noticia
+                      INNER JOIN tipo_noticia ON tipo_noticia.tipo_noticia_id = noticia.tipo_noticia_id ; ";
+
 
       $this->executeQuery();
 
@@ -63,20 +69,22 @@ class Noticia extends Connection {
     try{
       $bean_noticia->setCreatedUp( HelperDate::timestampsBd() );
 
-      $id          = $bean_noticia->getId();
-      $titulo      = $bean_noticia->getTitulo();
-      $descripcion = $bean_noticia->getDescripcion();
-      $imagen      = $bean_noticia->getImagen();
-      $url         = $bean_noticia->getUrl();
-      $item        = $bean_noticia->getItem();
-      $glosa       = $bean_noticia->getGlosa();
-      $publicar    = $bean_noticia->getPublicar();
-      $estado      = $bean_noticia->getEstado();
-      $created_up  = $bean_noticia->getCreatedUp();
+      $id              = $bean_noticia->getId();
+      $tipo_noticia_id = $bean_noticia->getTipoNoticiaId();
+      $titulo          = $bean_noticia->getTitulo();
+      $descripcion     = $bean_noticia->getDescripcion();
+      $imagen          = $bean_noticia->getImagen();
+      $url             = $bean_noticia->getUrl();
+      $item            = $bean_noticia->getItem();
+      $glosa           = $bean_noticia->getGlosa();
+      $publicar        = $bean_noticia->getPublicar();
+      $estado          = $bean_noticia->getEstado();
+      $created_up      = $bean_noticia->getCreatedUp();
 
       $this->query = "INSERT INTO noticia
                       (
                         titulo,
+                        tipo_noticia_id,
                         descripcion,
                         imagen,
                         url,
@@ -88,6 +96,7 @@ class Noticia extends Connection {
                       )
                       VALUES(
                         '$titulo',
+                        '$tipo_noticia_id',
                         '$descripcion',
                         '$imagen',
                         '$url',
@@ -117,21 +126,22 @@ class Noticia extends Connection {
   public function update($bean_noticia)
   {
     try{
-      $id = $bean_noticia->getId();
-      $titulo = $bean_noticia->getTitulo();
-      $descripcion = $bean_noticia->getDescripcion();
-      $imagen = $bean_noticia->getImagen();
-      $url = $bean_noticia->getUrl();
-      $item = $bean_noticia->getItem();
-      $glosa = $bean_noticia->getGlosa();
-      $publicar = $bean_noticia->getPublicar();
+      $id              = $bean_noticia->getId();
+      $tipo_noticia_id = $bean_noticia->getTipoNoticiaId();
+      $titulo          = $bean_noticia->getTitulo();
+      $descripcion     = $bean_noticia->getDescripcion();
+      $imagen          = $bean_noticia->getImagen();
+      $url             = $bean_noticia->getUrl();
+      // $item            = $bean_noticia->getItem();
+      $glosa           = $bean_noticia->getGlosa();
+      $publicar        = $bean_noticia->getPublicar();
 
       $this->query = "UPDATE noticia SET
                         titulo = '$titulo',
+                        tipo_noticia_id = '$tipo_noticia_id',
                         descripcion = '$descripcion',
                         imagen = '$imagen',
                         url = '$url',
-                        item = '$item',
                         glosa = '$glosa',
                         publicar = '$publicar'
                       WHERE id = '$id'
@@ -251,9 +261,20 @@ class Noticia extends Connection {
     try{
       $publicar = $bean_noticia->getPublicar() ;
 
-      $this->query = "SELECT * FROM noticia
+      /* $this->query = "SELECT * FROM noticia
                       WHERE publicar = '$publicar'
-                      AND estado = 1 ; ";
+                      AND estado = 1 ; "; */
+
+        $this->query = "SELECT noticia.*,
+                          (SELECT noticia_img.imagen FROM noticia_img
+                          WHERE noticia_img.noticia_id = noticia.id AND estado = 1
+                          ORDER BY item  ASC limit 1) as imagen_det
+                        FROM noticia
+                      WHERE publicar = '$publicar'
+                      AND estado = 1
+                      ORDER BY id DESC ;";
+
+
 
       $this->executeQuery();
 
@@ -267,5 +288,62 @@ class Noticia extends Connection {
 
     }
   }
+
+  # Método getActive
+  public function getLastRow()
+  {
+    try{
+
+      $this->query = "SELECT noticia.*,
+      (SELECT noticia_img.imagen FROM noticia_img
+                        WHERE noticia_img.noticia_id = noticia.id AND estado = 1
+                        ORDER BY item  ASC limit 1) as imagen_det
+        FROM noticia
+        WHERE estado = 1 ORDER BY created_up DESC LIMIT 1";
+
+      $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method getPublished
+  public function getPublishedByTipoNoticiaId($bean_noticia)
+  {
+    try{
+      $publicar        = $bean_noticia->getPublicar() ;
+      $tipo_noticia_id = $bean_noticia->getTipoNoticiaId() ;
+
+      $this->query = "SELECT noticia.*,
+                        (SELECT noticia_img.imagen FROM noticia_img
+                        WHERE noticia_img.noticia_id = noticia.id AND estado = 1
+                        ORDER BY item  ASC limit 1) as imagen_det
+                      FROM noticia
+                      WHERE publicar = '$publicar'
+                      AND tipo_noticia_id = '$tipo_noticia_id'
+                      AND estado = 1
+                      ORDER BY id DESC ;";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
 
 }

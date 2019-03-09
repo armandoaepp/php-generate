@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
        $data = $chef_controller->getAll() ;
 
@@ -35,21 +35,21 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $chef_controller = new ChefController($cnx) ; 
+
+      $chef_controller = new ChefController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $nombre = $inputs->nombre;
       $apellidos = $inputs->apellidos;
@@ -60,7 +60,7 @@ switch($evento)
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'nombre'=> $nombre,
@@ -72,10 +72,10 @@ switch($evento)
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $chef_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -85,7 +85,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -95,10 +95,10 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $chef_controller = new ChefController($cnx) ; 
+
+      $chef_controller = new ChefController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $nombre = $inputs->nombre;
       $apellidos = $inputs->apellidos;
@@ -109,7 +109,7 @@ switch($evento)
       $item = $inputs->item;
       $publicar = $inputs->publicar;
       $created_up = $inputs->created_up;
-        
+
       $params = array(
                 'id'=> $id,
                 'nombre'=> $nombre,
@@ -121,10 +121,10 @@ switch($evento)
                 'item'=> $item,
                 'publicar'=> $publicar,
                 'created_up'=> $created_up,
-              ) ; 
-        
+              ) ;
+
       $data = $chef_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -135,7 +135,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -150,9 +150,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
       $data = $chef_controller->updateEstado( $params ) ;
 
@@ -163,7 +163,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -173,7 +173,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
       $data = $chef_controller->find( $id) ;
 
@@ -184,7 +184,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -194,7 +194,7 @@ switch($evento)
     {
 
       $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -205,9 +205,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -221,7 +221,7 @@ switch($evento)
 
 				if( !empty($chef) && $data )
 				{
-					$imagen = $chef["imagen"] ; 
+					$imagen = $chef["imagen"] ;
 					UploadFiles::removeFile($imagen) ;
 				}
 
@@ -229,7 +229,7 @@ switch($evento)
 			else
 			{
 				$data = $chef_controller->updateEstado($params);
-			} 
+			}
 
         $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -238,7 +238,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
@@ -259,9 +259,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
       $data = $chef_controller->updatePublish( $params ) ;
 
@@ -272,7 +272,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -285,9 +285,9 @@ switch($evento)
 
       $params = array(
                 'publicar'=> $publicar,
-              ) ; 
+              ) ;
 
-      $chef_controller = new ChefController() ; 
+      $chef_controller = new ChefController() ;
 
       $data = $chef_controller->getPublished( $params ) ;
 
@@ -298,7 +298,38 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "find-template":
+    try
+    {
+
+      // $id = $_GET["id"] ;
+      $id = $inputs->id;
+      // $titulo = $inputs->titulo;
+      $chef_controller = new ChefController() ;
+
+      $data = $chef_controller->find($id) ;
+
+
+      $data_template = RenderTemplate::getTemplate(APP.'views/chef/modal-chef-info') ;
+
+      $template = RenderTemplate::render( $data_template, $data) ;
+
+      $template = htmlspecialchars_decode($template);
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $template);
+
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;

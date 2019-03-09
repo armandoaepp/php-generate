@@ -31,6 +31,17 @@
       $no = "checked='checked'";
   }
 
+  # load tipos noticias
+  $estado = 1 ;
+  $params = array(
+              'estado' => $estado,
+            );
+
+  $tipo_noticia_controller = new TipoNoticiaController();
+
+  $tipo_noticias = $tipo_noticia_controller->getByEstado($params);
+
+
   $title_page = "Noticia";
 
 ?>
@@ -43,7 +54,7 @@
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
+        "titulo" => "Editar $title_page",
         "follow" => "",
         "description" => "Administrador",
         "keywords" => "administrador",
@@ -104,11 +115,24 @@
 
                 <div class="col-md-12">
                   <div class="form-group">
+                    <label for="tipo_noticia_id">Tipo Noticia / Evento: </label>
+                     <select class="custom-select" name="tipo_noticia_id" id="tipo_noticia_id" required placeholder="tipo noticia">
+                      <option value="" selected disabled hidden>Seleccionar Tipo Noticia</option>
+                      <?php foreach ($tipo_noticias as &$row) {?>
+                      <option value="<?php echo $row["tipo_noticia_id"]; ?>" <?php if($row["tipo_noticia_id"] == $noticia["tipo_noticia_id"] ) echo 'selected="selected"' ?> ><?php echo $row["nombre"]; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
                     <label for="titulo">Titulo: </label>
                     <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Titulo"
                       value="<?php echo $noticia['titulo'] ?>">
                   </div>
                 </div>
+
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="descripcion">Descripcion: </label>

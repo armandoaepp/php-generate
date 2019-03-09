@@ -347,4 +347,32 @@ switch($evento)
     print_r($jsn) ;
   break;
 
+  case "find-template":
+    try
+    {
+
+      $id = $inputs->id;
+      $taller_controller = new TallerController() ;
+
+      $data = $taller_controller->find( $id) ;
+
+      $data_template = RenderTemplate::getTemplate(APP.'views/taller/modal-taller-info') ;
+
+      $template = RenderTemplate::render( $data_template, $data) ;
+
+      $template = htmlspecialchars_decode($template);
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $template);
+
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
 }

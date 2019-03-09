@@ -250,4 +250,31 @@
     }
   }
 
+  public function getByDateDias($params)
+  {
+    try
+    {
+      extract($params) ;
+
+      $oportunidad_laboral  = new OportunidadLaboral();
+
+      $bean_oportunidad_laboral = new BeanOportunidadLaboral();
+
+      $bean_oportunidad_laboral->setPublicar($publicar);
+
+      $new_date = HelperDate::dateNowDownDay($num_day) ;
+
+      $data = $oportunidad_laboral->getByUpDate($bean_oportunidad_laboral, $new_date) ;
+
+
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 }

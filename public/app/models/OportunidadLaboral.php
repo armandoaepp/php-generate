@@ -159,7 +159,16 @@ class OportunidadLaboral extends Connection {
     try{
       $id = $bean_oportunidad_laboral->getId();
 
-      $this->query = "SELECT * FROM oportunidad_laboral WHERE id = '$id' LIMIT 1; ";
+      // $this->query = "SELECT * FROM oportunidad_laboral WHERE id = '$id' LIMIT 1; ";
+      $this->query = "SELECT
+                        oportunidad_laboral.* ,
+                        empresa.nombre AS empresa,
+                      tipo_empresa.descripcion AS tipo_empresa
+                      FROM oportunidad_laboral
+                      INNER JOIN empresa ON empresa.empresa_id = oportunidad_laboral.empresa_id
+                      INNER JOIN tipo_empresa ON tipo_empresa.tipo_empresa_id = empresa.tipo_empresa_id
+                      WHERE  id = '$id'
+                      LIMIT 1 ; ";
 
       $this->executeFind();
 
@@ -277,9 +286,15 @@ class OportunidadLaboral extends Connection {
     try{
       $publicar = $bean_oportunidad_laboral->getPublicar() ;
 
-      $this->query = "SELECT * FROM oportunidad_laboral
-                      WHERE publicar = '$publicar'
-                      AND estado = 1 ; ";
+      $this->query = "SELECT
+                        oportunidad_laboral.* ,
+                        empresa.nombre AS empresa,
+                      tipo_empresa.descripcion AS tipo_empresa
+                      FROM oportunidad_laboral
+                      INNER JOIN empresa ON empresa.empresa_id = oportunidad_laboral.empresa_id
+                      INNER JOIN tipo_empresa ON tipo_empresa.tipo_empresa_id = empresa.tipo_empresa_id
+                      WHERE oportunidad_laboral.publicar = '$publicar'
+                      AND oportunidad_laboral.estado = 1 ; ";
 
       $this->executeQuery();
 
@@ -303,6 +318,38 @@ class OportunidadLaboral extends Connection {
       $this->query = "SELECT count(*) AS num_rows FROM oportunidad_laboral;";
 
       $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  public function getByUpDate($bean_oportunidad_laboral,$date)
+  {
+    try{
+
+      // $this->query = "SELECT * FROM red
+      //               WHERE red.created_up >= '$date';";
+      $publicar = $bean_oportunidad_laboral->getPublicar() ;
+
+      $this->query = "SELECT
+                        oportunidad_laboral.* ,
+                        empresa.nombre AS empresa,
+                        tipo_empresa.descripcion AS tipo_empresa
+                      FROM oportunidad_laboral
+                      INNER JOIN empresa ON empresa.empresa_id = oportunidad_laboral.empresa_id
+                      INNER JOIN tipo_empresa ON tipo_empresa.tipo_empresa_id = empresa.tipo_empresa_id
+                      WHERE oportunidad_laboral.publicar = '$publicar'
+                      AND oportunidad_laboral.created_up >= '$date'
+                      AND oportunidad_laboral.estado = 1 ; ";
+
+      $this->executeQuery();
 
       $data = $this->rows ;
 

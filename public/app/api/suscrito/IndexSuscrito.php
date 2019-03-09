@@ -50,29 +50,31 @@ switch($evento)
       $suscrito_controller = new SuscritoController($cnx) ; 
       $connection->beginTransaction();
         
-      $id = $inputs->id;
-      $nombre = $inputs->nombre;
-      $asunto = $inputs->asunto;
-      $email = $inputs->email;
-      $telefono = $inputs->telefono;
-      $empresa = $inputs->empresa;
-      $mensaje = $inputs->mensaje;
-      $created_up = $inputs->created_up;
+      // $id         = $inputs->id;
+      $nombre     = $inputs->nombre;
+      $email      = $inputs->email;
+      $mensaje    = $inputs->mensaje; 
+
+      $asunto = !empty($inputs->asunto) ? $inputs->asunto : '';
+      $empresa = !empty($inputs->empresa) ? $inputs->empresa : '';
+      $telefono = !empty($inputs->telefono) ? $inputs->telefono : '';
+
         
-      $params = array(
-                'id'=> $id,
-                'nombre'=> $nombre,
-                'asunto'=> $asunto,
-                'email'=> $email,
-                'telefono'=> $telefono,
-                'empresa'=> $empresa,
-                'mensaje'=> $mensaje,
-                'created_up'=> $created_up,
+      $params = array( 
+                'nombre'   => $nombre,
+                'asunto'   => $asunto,
+                'email'    => $email,
+                'telefono' => $telefono,
+                'empresa'  => $empresa,
+                'mensaje'  => $mensaje, 
               ) ; 
         
       $data = $suscrito_controller->save($params) ;
         
       $connection->commit();
+
+      # enviar correo
+      sendMail($params);
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
     }
@@ -234,5 +236,50 @@ switch($evento)
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
+
+}
+
+function sendMail($params)
+{
+
+    extract($params);
+
+    // $template_mail = RenderTemplate::getTemplate(APP.'views'.DS.'mails'.DS.'mail-contact') ;
+    $template_mail = RenderTemplate::getTemplate(APP . 'views/mails/mail-contact');
+
+    $data = array(
+        'nombre' => $nombre,
+        'email' => $email,
+        'mensaje' => $mensaje,
+    );
+
+    $BODY_MSJ = RenderTemplate::render($template_mail, $data);
+
+    // var_dump($BODY_MSJ);
+    //
+    $header = "MIME-Version: 1.0\r\n";
+    $header .= "Content-type: text/html; charset=utf-8\r\n";
+    $header .= "X-Priority: 3\n";
+    $header .= "X-MSMail-Priority: Normal\n";
+    $header .= "X-Mailer:PHP/" . phpversion() . "\n";
+    $header .= "From: Instituto Cumbre <informes@escuelacumbre.edu.pe> \r\n";
+    $header .= "Cc: marlon@catmedia.com.pe \r\n";
+    // $header .= "Bcc: armando@catmedia.com.pe \r\n";
+
+    $subject = "Instituto Cumbre: Solcitud de información desde la web";
+    // $to      = "armando@catmedia.com.pe";
+
+    # MAIL DESDE BASE DE DATOS
+    $id = 1 ;
+    $configuracion_controller = new ConfiguracionController() ;
+
+    $config = $configuracion_controller->find( $id ) ;
+
+    $to = !empty($config['email']) ? $config['email'] : "informes@escuelacumbre.edu.pe" ;
+
+    # SEND MAIL
+    $status = mail($to, $subject, utf8_decode($BODY_MSJ), $header);
+
+    return $status ;
 
 }

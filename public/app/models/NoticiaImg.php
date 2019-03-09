@@ -246,4 +246,30 @@ class NoticiaImg extends Connection {
 
   }
 
+  public function getActivatedByNoticiaId($bean_noticia_img)
+  {
+    try{
+      $id = $bean_noticia_img->getId();
+
+      $this->query = "SELECT noticia_img.*, noticia.titulo
+                      FROM noticia_img
+                      INNER JOIN noticia ON noticia_img.noticia_id =  noticia.id
+                      WHERE noticia_img.estado = 1
+                      AND noticia_img.noticia_id = $id
+                      ORDER BY noticia_img.item ASC ;";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
 }
