@@ -32,6 +32,8 @@ class Auth extends Connection {
                       AND estado = $estado
                       LIMIT 1 ;";
 
+      // echo $this->query ;
+
       $this->executeFind();
 
       $rows = $this->rows ;

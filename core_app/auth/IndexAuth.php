@@ -27,7 +27,6 @@ elseif (isset($_POST))
   $evento = $inputs->accion;
 }
 
-
 // $email = 'armandoaepp@gmail.com' ;
 // $password = 'armando' ;
 
@@ -44,12 +43,19 @@ switch($evento)
 
         $auth_controller = new AuthController();
 
+        // $params = array(
+        //       'email'    => $email,
+        //       'password' => $password,
+        //     );
+
         $params = array(
-              'email'    => $inputs->email,
-              'password' => $inputs->password,
-            );
+          'email'    => $inputs->email,
+          'password' => $inputs->password,
+        );
 
         $user = $auth_controller->login($params);
+
+        // var_dump($user);
 
         if(count($user) > 0 )
         {
@@ -61,7 +67,7 @@ switch($evento)
         {
           $_SESSION['LOGIN'] = false;
           $_SESSION['USER']  = array();
-          $mensaje = "Error al iniciar sesión";
+          $mensaje = "Verificar Usuario o Contraseña";
         }
 
       }

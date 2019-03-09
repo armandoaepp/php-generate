@@ -16,7 +16,7 @@ $path = '';
 $setvar = array(
     'titulo' => 'Login  | Escuela Cumbre ',
     'follow' => '',
-    'description' => 'login admin template boostrap 4, armandotuweb.net',
+    'description' => 'Login Admin Instituto Cumbre',
     'keywords' => 'login, login admin, tables css, tables bootstrap 4, admin template',
     'active' => [1, 0],
 );

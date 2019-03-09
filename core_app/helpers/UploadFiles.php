@@ -4,7 +4,7 @@ class UploadFiles {
 
   //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
    //  static public function uploadFile($file, $path_url_img = 'img_admin', $path_root = '../../')
-  static public function uploadFile(&$file, $path_relative = '')
+  static public function uploadFile(&$file, $path_relative = '', $pre_name = "")
   {
 
     #Verify directory name
@@ -26,7 +26,7 @@ class UploadFiles {
         $extension = $info->getExtension();
 
       # new name and url imgen
-        $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
+        $new_name = $pre_name.date('YmdHms',time()).mt_rand(1000,9999) .".{$extension}" ;
 
         if(!empty($path_relative)) {
           $imagen_url = "{$path_relative}/{$new_name}" ;
@@ -38,7 +38,7 @@ class UploadFiles {
         $imagen_url = IMAGES_DIR. "/{$imagen_url}" ;
 
       # ruta destino(donde se movera el archivo )
-        $ruta_destino = IMAGES.'/../'."{$imagen_url}";
+        $ruta_destino = IMAGES.'../'."{$imagen_url}";
         // echo $ruta_destino ;
 
         // echo $ruta_destino ;
@@ -62,65 +62,87 @@ class UploadFiles {
    * path_root : path root where moved files
   */
   //  static public function uploadMultiFiles(&$files_arry, $path_url_img = 'img_admin/',$path_root = '../../')
-  static public function uploadMultiFiles(&$files_arry, $path_relative = '')
+  static public function uploadMultiFiles(&$files_arry, $path_relative = '', $pre_name = "")
   {
+   
+    #Verify directory name
+    if (!file_exists(IMAGES)) {
+      mkdir(IMAGES, 0777);
+    }
+
+    if ( !file_exists(IMAGES . $path_relative) ) {
+      mkdir(IMAGES . $path_relative, 0777);
+    }
+
     $imagenes =  [];
 
-    if(!empty($files_arry))
+    $total = count($files_arry['name']);
+    
+    if( $total > 0)
     {
-        $img_desc = reArrayFiles($files_arry);
-        // print_r($img_desc);
+        $img_desc = UploadFiles::reArrayFiles($files_arry);
 
-        foreach($img_desc as $file)
+        if(count($img_desc) > 0)
         {
-          if (!empty($file['name']))
+       
+          foreach($img_desc as $file)
           {
-            $name = $file['name'] ;
-            # extension file
-              $info = new SplFileInfo($name);
-              $extension = $info->getExtension();
+            if (!empty($file['tmp_name']) &&  $file['tmp_name'] != "" )
+            {
+              $name = $file['name'] ;
+              # extension file
+                $info = new SplFileInfo($name);
+                $extension = $info->getExtension();
 
-            # new name and url imgen
-              $new_name = date('YmdHms',time()).mt_rand() .".{$extension}" ;
+              # new name and url imgen
+                $new_name = $pre_name.date('YmdHms',time()).mt_rand(1000,9999) .".{$extension}" ;
 
-              if(!empty($path_relative)) {
-                $imagen_url = "{$path_relative}/{$new_name}" ;
-              }
-              else{
-                $imagen_url = "{$new_name}" ;
-              }
+                if(!empty($path_relative)) {
+                  $imagen_url = "{$path_relative}/{$new_name}" ;
+                }
+                else{
+                  $imagen_url = "{$new_name}" ;
+                }
 
-              $imagen_url = IMAGES_DIR."/{$imagen_url}" ;
+                $imagen_url = IMAGES_DIR."/{$imagen_url}" ;
 
-            # ruta destino(donde se movera el archivo )
-              $ruta_destino = IMAGES.'/../'."{$imagen_url}";
+              # ruta destino(donde se movera el archivo )
+                $ruta_destino = IMAGES.'../'."{$imagen_url}";
 
-            # ruta destino(donde se movera el archivo )
-              $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
+              # ruta destino(donde se movera el archivo )
+                $file_ok = move_uploaded_file($file['tmp_name'], $ruta_destino);
 
-            $imagenes[] = $imagen_url ;
+              $imagenes[] = $imagen_url ;
 
-          }elseif ($file["error"] > 0)
-          {
-            echo "Error: " . $file['error'] . "<br>";
-            $imagenes[] = '';
+            }elseif ($file["error"] > 0)
+            {
+              echo "Error: " . $file['error'] . "<br>";
+              $imagenes[] = '';
+            }
+
           }
 
         }
+
         return $imagenes ;
     }
   }
 
-   static public function reArrayFiles(&$file_post) {
+
+  static public function reArrayFiles(&$file_post) {
 
     $file_ary = array();
     $file_count = count($file_post['name']);
     $file_keys = array_keys($file_post);
 
-    for ($i=0; $i<$file_count; $i++) {
+    for ($i=0; $i < $file_count; $i++) 
+    {
+      if($file_post['tmp_name'][$i] != '')
+      {
         foreach ($file_keys as $key) {
             $file_ary[$i][$key] = $file_post[$key][$i];
         }
+      }
     }
 
     return $file_ary;
@@ -130,7 +152,7 @@ class UploadFiles {
   {
     $path_file = IMAGES . '../' . $path_file ;
 
-    echo "path_file : ".$path_file ."\n" ;
+    // echo "path_file : ".$path_file ."\n" ;
 
     $unlink =  false ;
     if(!empty($path_file))
