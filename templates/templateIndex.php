@@ -191,7 +191,7 @@ $html = '
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Eliminar");
 
-    var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 
@@ -218,7 +218,7 @@ $html = '
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Publicar");
 
-    var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 
@@ -287,8 +287,8 @@ $table_html .= '
                     $title    = "" ;
                     $icon_pub = "" ;
 
-                    if(!empty($row["publicar"])){
-                      if($row["publicar"] == "S"){
+                    if(!empty($row->publicar)){
+                      if($row->publicar == "S"){
                         $classBtn =  "btn-outline-danger";
                         $title = "Desactivar/Ocultar" ;
                         $icon_pub = \'<i class="fas fa-times"></i>\';
@@ -305,7 +305,7 @@ $table_html .= '
                     $class_estado   = "";
                     $class_disabled = "";
 
-                    if($row["estado"] == 1)
+                    if($row->estado == 1)
                     {
                       $title_estado = "Eliminar" ;
                     }
@@ -325,7 +325,7 @@ $table_html .= '
         {
           if ( !itemsNotListTable( $atributos[$i] ) )
           {
-              $table_html .= '                  <td> <?php echo $row["' . $atributos[$i] . '"] ?> </td>' . PHP_EOL;
+              $table_html .= '                  <td> <?php echo $row->' . $atributos[$i] . ' ?> </td>' . PHP_EOL;
           }
         }
 
@@ -335,8 +335,8 @@ $table_html .= '
 
             $table_html .= '
                   <td class="text-center">
-                    <span class="sr-only"><?php echo $row["publicar"] ?></span>
-                    <button onclick="modalPublicar(<?php echo $row[\''. $atributos[0] .'\'] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>` ,`<?php echo $title ?>`, `<?php echo $row[\'publicar\'] ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.\' \' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <span class="sr-only"><?php echo $row->publicar ?></span>
+                    <button onclick="modalPublicar(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.\' \' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -345,13 +345,13 @@ $table_html .= '
 
 $table_html .= '
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table_url .'/editar.php?id=<?php echo $row["'. $atributos[0] .'"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table_url .'/editar.php?id=<?php echo $row->'. $atributos[0] .' ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["'. $atributos[0] .'"] ?>, `<?php echo $row[\''. $atributos[1] .'\'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row[\'estado\'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
-                    <span class="sr-only"><?php echo $row["estado"] ?></span>
+                    <span class="sr-only"><?php echo $row->estado ?></span>
                   </td>
                 </tr>
                 <?php }?>

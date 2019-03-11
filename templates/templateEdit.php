@@ -27,7 +27,7 @@ if(in_array('publicar', $atributos))
 {
 
 $html .= '
-  $publicar = trim($'. $table .'["publicar"]);
+  $publicar = trim($'. $table .'->publicar);
 
   $si = "";
   $no = "";
@@ -53,7 +53,7 @@ $html .= '
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
+        "titulo" => "Editar $title_page",
         "follow" => "",
         "description" => "Administrador",
         "keywords" => "administrador",
@@ -115,17 +115,8 @@ $html .= '
 
 for ($i = 1; $i < count($atributos); $i++)
 {
-    // if (strtolower(trim($atributos[$i])) != "estado" && strtolower(trim($atributos[$i])) != "created_up" && strtolower(trim($atributos[$i])) != "imagen" )
     if ( !verificarItem($atributos[$i]) )
     {
-
-            /* $html .= '              <div class="col-md-12">' . PHP_EOL;
-            $html .= '                <div class="form-group">' . PHP_EOL;
-            $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-            $html .= '                  <input type="text" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" required placeholder="' . toCamelCase($atributos[$i]) .'"  value="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" >' . PHP_EOL;
-            $html .= '                </div>' . PHP_EOL;
-            $html .= '              </div>' . PHP_EOL; */
-
             if($tipo_inputs[$i] == 'textarea')
             {
               $html .= '              <div class="col-md-12">' . PHP_EOL;
@@ -151,30 +142,12 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) .'" value="<?php echo $'. $table .'[\''. $atributos[$i]. '\']; ?>">' . PHP_EOL;
+              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) .'" value="<?php echo $'. $table .'->'. $atributos[$i]. '; ?>">' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }
     }
-    /* elseif(strtolower(trim($atributos[$i])) == "imagen")
-    {
-      $html .= '
-              <div class="col-sm-6 col-md-6 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\''. $atributos[$i]. '\']; ?>">
 
-                <img src="<?php echo $'. $table .'[\''. $atributos[$i]. '\'] ?>" class="img-fluid mb-1">
-                <div class="col-auto">
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="imagen">Nueva Imagen</label>
-                    </div>
-                    <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen" accept="image/*">
-                  </div>
-                </div>
-              </div>
-              ' ;
-
-    } */
     elseif(strtolower(trim($atributos[$i])) == "publicar")
     {
     $html .= '
@@ -199,8 +172,8 @@ for ($i = 1; $i < count($atributos); $i++)
     {
       $html .= '
               <div class="col-md-12 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'[\'imagen\']; ?>">
-                <img src="<?php echo $'. $table .'[\'imagen\'] ?>" class="img-fluid img-view-edit mb-2">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'->imagen; ?>">
+                <img src="<?php echo $'. $table .'->imagen; ?>" class="img-fluid img-view-edit mb-2">
               </div>
                 <div class="col-12 mb-3">
                   <hr>

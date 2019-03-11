@@ -4,7 +4,7 @@ class Connection
     protected $db_host = 'localhost';
     protected $db_user = 'root';
     protected $db_pass = '';
-    protected $db_name = 'escuelac_w_ne16';
+    protected $db_name = 'db_admin_prod';
 
     // protected $db_host   = 'localhost';
     // protected $db_user   = 'escuelac_webuser2019';
@@ -151,8 +151,12 @@ class Connection
 
             $this->executeQuery();
 
-            if (count($this->rows) == 1) {
-                $this->rows = $this->rows[0];
+            if (count($this->rows) == 1)
+            {
+                $this->rows = array_shift($this->rows);
+                return $this->rows ;
+
+                // $this->rows = $this->rows[0];
             }
 
         } catch (exception $e) {
