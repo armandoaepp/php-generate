@@ -29,7 +29,7 @@ class Connection
 
         $this->conn = new PDO($dns, $this->db_user, $this->db_pass);
 
-        # para manejar errores y excepcciones especiales para el manejo de transacciones
+        #Después de esto, cualquier consulta fallida generará una excepción.
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         # codificacion utf-8
@@ -79,7 +79,7 @@ class Connection
 
     }
 
-    protected function _prepare()
+    protected function prepare()
     {
         # conn si es nulo inicializamos la conexion
         if ($this->conn == null) {
@@ -151,13 +151,10 @@ class Connection
 
             $this->executeQuery();
 
-            if (count($this->rows) == 1)
-            {
-                $this->rows = array_shift($this->rows);
-                return $this->rows ;
-
-                // $this->rows = $this->rows[0];
-            }
+          if (count($this->rows) > 0) {
+              $this->rows = array_shift($this->rows);
+              return $this->rows;
+          }
 
         } catch (exception $e) {
 

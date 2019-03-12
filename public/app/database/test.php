@@ -1,6 +1,21 @@
 <?php
 
 print_r(PDO::getAvailableDrivers());
+
+function columnize(array $columns)
+{
+    return implode(', ',  $columns);
+}
+
+$array =
+[
+    'col1 as c',
+    'col2',
+    'col4',
+    'col4',
+    'col1',
+] ;
+var_export(columnize($array));
 return ;
  $db_host   = 'localhost';
  $db_user   = 'escuelac_webuser2019';
