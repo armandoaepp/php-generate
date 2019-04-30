@@ -55,7 +55,7 @@ switch($evento)
       $apellidos = $inputs->apellidos;
       $email = $inputs->email;
       $password = $inputs->password;
-      $created_up = $inputs->created_up;
+      $created_at = $inputs->created_at;
         
       $params = array(
                 'user_id'=> $user_id,
@@ -63,7 +63,7 @@ switch($evento)
                 'apellidos'=> $apellidos,
                 'email'=> $email,
                 'password'=> $password,
-                'created_up'=> $created_up,
+                'created_at'=> $created_at,
               ) ; 
         
       $data = $user_controller->save($params) ;
@@ -96,7 +96,7 @@ switch($evento)
       $apellidos = $inputs->apellidos;
       $email = $inputs->email;
       $password = $inputs->password;
-      $created_up = $inputs->created_up;
+      $created_at = $inputs->created_at;
         
       $params = array(
                 'user_id'=> $user_id,
@@ -104,7 +104,7 @@ switch($evento)
                 'apellidos'=> $apellidos,
                 'email'=> $email,
                 'password'=> $password,
-                'created_up'=> $created_up,
+                'created_at'=> $created_at,
               ) ; 
         
       $data = $user_controller->update($params) ;
@@ -199,15 +199,9 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-				$user = $user_controller->find( $user_id );
+        $user = $user_controller->find( $user_id );
 
-				$data = $user_controller->deleteById( $user_id );
-
-				if( !empty($user) && $data )
-				{
-					$imagen = $user["imagen"] ; 
-					UploadFiles::removeFile($imagen) ;
-				}
+        $data = $user_controller->deleteById( $user_id );
 
 			}
 			else
@@ -215,7 +209,7 @@ switch($evento)
 				$data = $user_controller->updateEstado($params);
 			} 
 
-        $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
     }
     catch (Exception $e)

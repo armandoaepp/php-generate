@@ -27,7 +27,7 @@ CREATE TABLE `empresa` (
   `imagen` varchar(255) NOT NULL DEFAULT '',
   `publicar` char(1) DEFAULT 'S',
   `estado` tinyint(4) NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`empresa_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -56,7 +56,7 @@ CREATE TABLE `oportunidad_laboral` (
   `item` int(11) NOT NULL,
   `publicar` char(1) COLLATE utf8mb4_bin NOT NULL DEFAULT 'S',
   `estado` int(1) NOT NULL DEFAULT '1',
-  `created_up` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=COMPACT;
 
@@ -74,7 +74,7 @@ CREATE TABLE `tipo_empresa` (
   `descripcion` varchar(255) NOT NULL,
   `glosa` varchar(255) NOT NULL DEFAULT '',
   `estado` tinyint(4) unsigned DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`tipo_empresa_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 

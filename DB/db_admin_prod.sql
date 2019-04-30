@@ -26,7 +26,7 @@ CREATE TABLE `categoria` (
   `imagen` varchar(255) COLLATE utf8mb4_bin DEFAULT '',
   `publicar` char(1) COLLATE utf8mb4_bin DEFAULT 'S',
   `estado` smallint(5) unsigned NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idcategoria`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -46,7 +46,7 @@ CREATE TABLE `marca` (
   `nombre` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `publicar` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'S',
   `estado` smallint(6) DEFAULT NULL,
-  `created_up` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idmarca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -66,7 +66,7 @@ CREATE TABLE `noticia` (
   `url` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `publicar` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
   `estado` smallint(255) unsigned NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idnoticia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -91,7 +91,7 @@ CREATE TABLE `producto` (
   `imagen` varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `publicar` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'S',
   `estado` smallint(5) unsigned NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idproducto`),
   KEY `fk_producto_marca1` (`idmarca`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -134,7 +134,7 @@ CREATE TABLE `producto_detalle` (
   `imagen` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `item` smallint(5) unsigned NOT NULL DEFAULT '0',
   `estado` smallint(5) unsigned NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_producto_detalle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -254,7 +254,7 @@ CREATE TABLE `suscrito` (
   `empresa` varchar(255) DEFAULT '',
   `mensaje` text,
   `estado` int(1) NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -273,7 +273,7 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(50) NOT NULL,
   `estado` smallint(5) unsigned NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 

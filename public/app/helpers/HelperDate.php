@@ -4,15 +4,15 @@ class HelperDate
 
     public static function timestampsBd($timestamps = true)
     {
-        $created_up = null;
+        $created_at = null;
 
         if ($timestamps) {
-            $created_up = date('Y-m-d H:m:s');
+            $created_at = date('Y-m-d H:m:s');
         }
 
-        $created_up = !empty($created_up) ? "'" . $created_up . "'" : "NULL";
+        $created_at = !empty($created_at) ? "'" . $created_at . "'" : "NULL";
 
-        return $created_up;
+        return $created_at;
 
     }
 

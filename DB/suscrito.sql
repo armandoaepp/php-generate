@@ -27,6 +27,6 @@ CREATE TABLE `suscrito` (
   `empresa` varchar(255) DEFAULT '',
   `mensaje` text,
   `estado` int(1) NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;

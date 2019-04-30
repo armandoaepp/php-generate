@@ -3,8 +3,8 @@
 // -----------------------------------------------------
 
 .main {
-  background-color: $bg-color-main;
-  padding: 1rem;
+  // background-color: $bg-color-main;
+  padding: $padding-main;
   transition: all 0.3s;
   position: relative;
   overflow-y: hidden;
@@ -17,9 +17,9 @@
   }
 
   .full-content{
-    margin-top: -1rem;
-    margin-right: -1rem;
-    margin-left: -1rem;
+    margin-top: -$padding-main;
+    margin-right: -$padding-main;
+    margin-left: -$padding-main;
     border-radius: 0;
   }
 }

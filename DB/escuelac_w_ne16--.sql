@@ -671,14 +671,14 @@ CREATE TABLE `suscrito` (
   `empresa` varchar(255) DEFAULT '',
   `mensaje` text,
   `estado` int(1) NOT NULL DEFAULT '1',
-  `created_up` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `suscrito`
 --
 
-INSERT INTO `suscrito` (`id`, `nombre`, `asunto`, `email`, `telefono`, `empresa`, `mensaje`, `estado`, `created_up`) VALUES
+INSERT INTO `suscrito` (`id`, `nombre`, `asunto`, `email`, `telefono`, `empresa`, `mensaje`, `estado`, `created_at`) VALUES
 (1, 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'mensaje de prueba', 1, '2019-02-13 15:02:29'),
 (2, 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'mensaje de prueba', 1, '2019-02-13 16:02:40'),
 (3, 'Armando E', '', 'armandoaepp@gmail.com', '', '', 'Mensaje de prueba desde la web cumbre: CONTACTANOS', 1, '2019-02-13 16:02:38'),

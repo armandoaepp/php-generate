@@ -3,14 +3,14 @@
 // -----------------------------------------------------
 .navbar-sidebar {
 
-  .navbar-collapse {    
+  .navbar-collapse {
     padding-top: 0 !important;
-    padding-bottom: 0 !important; 
+    padding-bottom: 0 !important;
   }
 
-  .nav-item {
-    font-size: 1rem !important;
-  }
+  // .nav-item {
+  //   font-size: 0.9em !important;
+  // }
 
   .toggler-icon-siderbar {
     padding: 0.5rem;
@@ -51,7 +51,7 @@
 
   // navbar-brand
   .navbar-brand {
-    // background: $bg-navbar-brand;  
+    // background: $bg-navbar-brand;
     margin-right: 0;
     justify-content: center;
 
@@ -115,7 +115,7 @@
     //   background: #fffffffa;
     //   bottom: -21px;
     //   z-index: 2000;
-    //   top: auto; 
+    //   top: auto;
     //   left: 50%;
     //   transform: rotate(45deg) translateX(-50%);
     // }

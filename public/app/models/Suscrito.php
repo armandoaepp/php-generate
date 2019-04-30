@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Suscrito extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -71,7 +71,7 @@ class Suscrito extends Connection {
       $empresa = $bean_suscrito->getEmpresa();
       $mensaje = $bean_suscrito->getMensaje();
       $estado = $bean_suscrito->getEstado();
-      $created_up = $bean_suscrito->getCreatedUp();
+      $created_at = $bean_suscrito->getCreatedUp();
 
       $this->query = "INSERT INTO suscrito
                       (
@@ -82,7 +82,7 @@ class Suscrito extends Connection {
                         empresa,
                         mensaje,
                         estado,
-                        created_up
+                        created_at
                       )
                       VALUES(
                         '$nombre',
@@ -92,7 +92,7 @@ class Suscrito extends Connection {
                         '$empresa',
                         '$mensaje',
                         '$estado',
-                        $created_up
+                        $created_at
                       ); ";
 
       $this->executeQuery();
@@ -121,7 +121,7 @@ class Suscrito extends Connection {
       $empresa = $bean_suscrito->getEmpresa();
       $mensaje = $bean_suscrito->getMensaje();
 
-      $this->query = "UPDATE suscrito SET 
+      $this->query = "UPDATE suscrito SET
                         nombre = '$nombre',
                         asunto = '$asunto',
                         email = '$email',
@@ -151,7 +151,7 @@ class Suscrito extends Connection {
       $id = $bean_suscrito->getId();
       $estado = $bean_suscrito->getEstado();
 
-      $this->query = "UPDATE suscrito SET 
+      $this->query = "UPDATE suscrito SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";

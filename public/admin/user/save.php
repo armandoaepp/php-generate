@@ -11,10 +11,11 @@
 
   $user_controller = new UserController();
 
-  $nombre   = $_POST["nombre"] ;
-  $apellidos   = $_POST["apellidos"] ;
-  $email   = $_POST["email"] ;
-  $password   = $_POST["password"] ;
+  $nombre    = $_POST["nombre"] ;
+  $apellidos = $_POST["apellidos"] ;
+  $email     = $_POST["email"] ;
+  $password  = $_POST["password"] ;
+
   $params = array(
     "nombre"   => $nombre,
     "apellidos"   => $apellidos,

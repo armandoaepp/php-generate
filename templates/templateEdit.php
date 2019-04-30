@@ -198,8 +198,8 @@ $html .= '
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/' .$table_url . '/' .$table_url . '.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/' .$table_url . '/' .$table_url . '.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 
             </form>

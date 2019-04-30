@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class User extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -33,7 +33,6 @@ class User extends Connection {
 
     }
   }
-
 
   # Method getByEstado
   public function getByEstado($bean_user)
@@ -61,7 +60,7 @@ class User extends Connection {
   public function save($bean_user)
   {
     try{
-      $bean_user->setCreatedUp( HelperDate::timestampsBd() );
+      $bean_user->setCreatedAt( HelperDate::timestampsBd() );
 
       $user_id    = $bean_user->getUserId();
       $nombre     = $bean_user->getNombre();
@@ -69,7 +68,7 @@ class User extends Connection {
       $email      = $bean_user->getEmail();
       $password   =  Encript::md5($bean_user->getPassword());
       $estado     = $bean_user->getEstado();
-      $created_up = $bean_user->getCreatedUp();
+      $created_at = $bean_user->getCreatedAt();
 
       $this->query = "INSERT INTO user
                       (
@@ -78,7 +77,7 @@ class User extends Connection {
                         email,
                         password,
                         estado,
-                        created_up
+                        created_at
                       )
                       VALUES(
                         '$nombre',
@@ -86,7 +85,7 @@ class User extends Connection {
                         '$email',
                         '$password',
                         '$estado',
-                        $created_up
+                        $created_at
                       ); ";
 
       $this->executeQuery();
@@ -113,10 +112,10 @@ class User extends Connection {
       $email     = $bean_user->getEmail();
       // $password  = $bean_user->getPassword();
 
-      $this->query = "UPDATE user SET 
+      $this->query = "UPDATE user SET
                         nombre = '$nombre',
                         apellidos = '$apellidos',
-                        email = '$email' 
+                        email = '$email'
                       WHERE user_id = '$user_id'
                       LIMIT 1 ;";
 
@@ -140,7 +139,7 @@ class User extends Connection {
       $user_id = $bean_user->getUserId();
       $estado = $bean_user->getEstado();
 
-      $this->query = "UPDATE user SET 
+      $this->query = "UPDATE user SET
                         estado = '$estado'
                       WHERE user_id='$user_id'
                       LIMIT 1 ; ";
@@ -210,22 +209,22 @@ class User extends Connection {
       //  $apellidos = $bean_user->getApellidos();
       //  $email     = $bean_user->getEmail();
        $password  = Encript::md5($bean_user->getPassword());
- 
-       $this->query = "UPDATE user SET  
-                         password = '$password' 
+
+       $this->query = "UPDATE user SET
+                         password = '$password'
                        WHERE user_id = '$user_id'
                        LIMIT 1 ;";
- 
+
        $this->executeQuery();
- 
+
        $data = $this->status  ;
- 
+
        return $data;
- 
+
      }catch(exception $e){
- 
+
        throw new Exception($e->getMessage());
- 
+
      }
    }
 

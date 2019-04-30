@@ -37,7 +37,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [2, 2],
+        "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,23 +85,23 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="reset">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" disabled class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $user['nombre']; ?>">
+                  <input type="text" disabled class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $user->nombre; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="apellidos">Apellidos: </label>
-                  <input type="text" disabled class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $user['apellidos']; ?>">
+                  <input type="text" disabled class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $user->apellidos; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="email" disabled class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $user['email']; ?>">
+                  <input type="email" disabled class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $user->email; ?>">
                 </div>
               </div>
               <div class="col-md-12">
@@ -114,8 +114,8 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/user/user.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/user/user.php" class="btn btn-outline-danger">Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  ">Guardar</button>
               </div>
 
             </form>
