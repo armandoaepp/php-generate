@@ -10,7 +10,7 @@
 
     $data = $region_controller->getAll();
 
-    $title_page = "Regions";
+    $title_page = "Regiones";
 
 ?>
 
@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_active"      => [2,2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -81,8 +81,8 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+
+            <table id="dataTableList" class="table table-striped table-bordered table-sm" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Region_id </th>
@@ -130,7 +130,7 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->region_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
 
@@ -147,7 +147,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

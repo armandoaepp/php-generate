@@ -6,11 +6,18 @@
 
     require_once "../../app/autoload.php";
 
-    $pais_controller = new PaisController();
+    $ubigeo_controller = new UbigeoController();
 
-    $data = $pais_controller->getAll();
+    // $data = $ubigeo_controller->getAll();
+     # departamentos
+     $array = array(
+      'tipo' => 1,
+      'pais_id' => 1,
+    ) ;
 
-    $title_page = "Paises";
+    $data = $ubigeo_controller->getByTipoAndPaisId($array);
+
+    $title_page = "Departamentos";
 
 ?>
 
@@ -31,7 +38,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,1],
+      "sidebar_active"      => [2,3],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +63,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/pais/pais.php">
+            <a class="link-white" href="admin/departamentos/departamentos.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,11 +76,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/pais/pais.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/departamentos/departamentos.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/pais/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/departamentos/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -82,11 +89,17 @@
           <div class="col-12">
             <div class="table-responsive">
 
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+            <table id="dataTableList" class="table table-striped table-bordered table-sm" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Pais_id </th>
+                  <th width="50"># </th>
+                  <th>Codigo </th>
                   <th>Nombre </th>
+                  <!-- <th>Descripcion </th> -->
+                  <!-- <th>Ubigeo_id_padre </th> -->
+                  <!-- <th>Pais_id </th> -->
+                  <th>Región </th>
+                  <th>País </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -131,14 +144,21 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
 
-                  <td> <?php echo $row->pais_id ?> </td>
+                  <td> <?php echo $row->ubigeo_id ?> </td>
+                  <td> <?php echo $row->codigo ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
+                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
+                  <!-- <td> <?php echo $row->ubigeo_id_padre ?> </td> -->
+                  <!-- <td> <?php echo $row->pais_id ?> </td> -->
+                  <td> <?php echo $row->region ?> </td>
+                  <td> <?php echo $row->pais ?> </td>
+                  <!-- <td> <?php echo $row->tipo ?> </td> -->
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/pais/editar.php?id=<?php echo $row->pais_id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/departamentos/editar.php?id=<?php echo $row->ubigeo_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->pais_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->ubigeo_id ?>, `<?php echo $row->codigo ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -226,7 +246,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/pais/IndexPais.php",
+        url: "./app/api/ubigeo/IndexUbigeo.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

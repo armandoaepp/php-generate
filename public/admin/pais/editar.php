@@ -35,9 +35,9 @@
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
+        "sidebar_class"  => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+        "sidebar_active" => [2,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,7 +85,7 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
@@ -97,7 +97,7 @@
 
               <div class="w-100 text-center">
                 <a href="admin/pais/pais.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 
             </form>

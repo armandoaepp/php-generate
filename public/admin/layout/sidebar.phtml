@@ -43,9 +43,23 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
         </li>
 
         <li>
-          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 2) {echo 'active';}?>" href="{{ url('admin/departamentos') }}">
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/region/region.php">
+            <i class="fa fa-list"></i>
+            Regiones
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 3) {echo 'active';}?>" href="admin/departamentos/departamentos.php">
             <i class="far fa-building"></i>
             Departamentos
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 4) {echo 'active';}?>" href="admin/provincias/provincias.php">
+            <i class="far fa-building"></i>
+            Provincias
           </a>
         </li>
 
