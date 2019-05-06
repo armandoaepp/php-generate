@@ -6,16 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $ubigeo_controller = new UbigeoController();
+    $actividad_controller = new ActividadController();
 
-    # distritos
-    $array = array(
-      'pais_id' => 1,
-    ) ;
+    $data = $actividad_controller->getAll();
 
-    $data = $ubigeo_controller->getDistritosByPaisId($array);
-
-    $title_page = "Distritos";
+    $title_page = "Actividades";
 
 ?>
 
@@ -26,7 +21,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -34,9 +29,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2, 5],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [3, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -61,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/distritos/distritos.php">
+            <a class="link-white" href="admin/actividades/actividades.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -74,44 +69,39 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/distritos/distritos.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/actividades/actividades.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/distritos/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/actividades/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
-              Nuevo
+              Nueva
             </a>
           </div>
 
           <div class="col-12">
             <div class="table-responsive">
 
-            <table id="dataTableList" class="table table-striped table-bordered table-sm" style="width:100%">
+            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50"># </th>
-                  <th>Codigo </th>
-                  <th>Distrito </th>
-                  <th>Provincia / Departamento </th>
+                  <th width="50">Tipo_paquete_id </th>
+                  <th>Nombre </th>
                   <!-- <th>Descripcion </th> -->
-                  <!-- <th>Ubigeo_id_padre </th> -->
-                  <!-- <th>Pais_id </th> -->
-                  <!-- <th>Departamento </th> -->
-                  <th>País </th>
+                  <th>Horas </th>
                   <th width="70"></th>
                 </tr>
               </thead>
 
               <tbody>
-                <?php foreach ($data as $index => &$row) {?>
+                <?php foreach ($data as &$row) {?>
 
                   <?php
                     $classBtn = "" ;
                     $title    = "" ;
                     $icon_pub = "" ;
 
-                    if( !empty($row->publicar) ){
+                    if(!empty($row->publicar)){
                       if($row->publicar == "S"){
                         $classBtn =  "btn-outline-danger";
                         $title = "Desactivar/Ocultar" ;
@@ -143,17 +133,16 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
 
-                  <td> <?php echo ($index + 1) . "-" . $row->ubigeo_id ?> </td>
-                  <td> <?php echo $row->codigo ?> </td>
+                  <td> <?php echo $row->tipo_paquete_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
-                  <td> <?php echo $row->prov_descripcion ?> </td>
-                  <td> <?php echo $row->pais ?> </td>
+                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
+                  <td> <?php echo $row->horas ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/distritos/editar.php?id=<?php echo $row->ubigeo_id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/actividades/editar.php?id=<?php echo $row->tipo_paquete_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->ubigeo_id ?>, `<?php echo $row->codigo ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->tipo_paquete_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -241,7 +230,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/ubigeo/IndexUbigeo.php",
+        url: "./app/api/actividades/IndexActividad.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

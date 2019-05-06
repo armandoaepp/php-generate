@@ -80,7 +80,7 @@ class Ubigeo extends Connection {
     }
   }
 
-  # Method ubigeos rows
+  # Method Provincias rows
   public function getProvinciasByPaisId($bean_ubigeo)
   {
     try{
@@ -110,7 +110,7 @@ class Ubigeo extends Connection {
     }
   }
 
-  # Method distritos por pais
+  # Method distritos rows
   public function getDistritosByPaisId($bean_ubigeo)
   {
     try{
@@ -120,11 +120,12 @@ class Ubigeo extends Connection {
       // $this->query = "SELECT * FROM ubigeo; ";
       $this->query = "SELECT
                       ubigeo.*,
-                      (SELECT departamento.nombre FROM ubigeo AS departamento WHERE departamento.ubigeo_id = ubigeo.ubigeo_id_padre  ) AS departamento,
+                      (SELECT provincia.nombre FROM ubigeo AS provincia WHERE provincia.ubigeo_id = ubigeo.ubigeo_id_padre  ) AS provincia,
+                      (SELECT provincia.descripcion FROM ubigeo AS provincia WHERE provincia.ubigeo_id = ubigeo.ubigeo_id_padre  ) AS prov_descripcion,
                       pais.nombre as pais
                     FROM ubigeo
                     INNER JOIN pais ON pais.pais_id = ubigeo.pais_id
-                    WHERE ubigeo.tipo = 2
+                    WHERE ubigeo.tipo = 3
                     AND ubigeo.pais_id = $pais_id ";
 
       $this->executeQuery();
@@ -139,7 +140,6 @@ class Ubigeo extends Connection {
 
     }
   }
-
 
 
   # Method SAVE
@@ -271,7 +271,6 @@ class Ubigeo extends Connection {
 
     }
   }
-
 
   # Method getByEstado
   public function getByEstado($bean_ubigeo)

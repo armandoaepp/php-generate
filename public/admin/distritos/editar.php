@@ -47,7 +47,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,4],
+      "sidebar_active"      => [2, 5],
     );
 
     require_once "../layout/head_links.phtml";
@@ -90,7 +90,7 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/provincias/update.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/distritos/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">

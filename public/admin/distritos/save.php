@@ -11,18 +11,18 @@
 
   $ubigeo_controller = new UbigeoController();
 
-  $codigo          = !empty($_POST["codigo"]) ? $_POST["codigo"] : '0000' ;
+  $codigo          = !empty($_POST["codigo"]) ? $_POST["codigo"] : '000000' ;
   $nombre          = $_POST["nombre"] ;
   $descripcion     = !empty($_POST["descripcion"]) ? $_POST["descripcion"] : $nombre;
-  $ubigeo_id_padre = !empty($_POST["departamento_id"]) ? $_POST["departamento_id"]: 0 ;
+  $ubigeo_id_padre = !empty($_POST["provincia_id"]) ? $_POST["provincia_id"]: 0 ;
   $pais_id         = !empty($_POST["pais_id"]) ? $_POST["pais_id"] : 1 ;
   $region_id       = 0 ; # la provincia ya pertenecea a una region de acuerdo al departamento
-  $tipo            = 2 ; # provincia
+  $tipo            = 3 ; # provincia
 
   $departamento = $ubigeo_controller->find($ubigeo_id_padre);
-  $depa_name    = $departamento->nombre ;
+  $prov_descripcion    = $departamento->descripcion ;
 
-  $descripcion  = $nombre . ", " . $depa_name ;
+  $descripcion  = $nombre . ", " . $prov_descripcion ;
 
   $params = array(
     "codigo"          => $codigo,
@@ -38,7 +38,7 @@
   $response = $ubigeo_controller->save($params);
 
   if($response){
-    header("Location: ./provincias.php ", true, 301);
+    header("Location: ./distritos.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;

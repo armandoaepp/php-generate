@@ -49,7 +49,7 @@
       $status = UploadFiles::removeFile($img_bd) ;
     }
 
-    header("Location: ./provincias.php ", true, 301);
+    header("Location: ./distritos.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;

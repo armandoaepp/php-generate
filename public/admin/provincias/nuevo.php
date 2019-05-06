@@ -59,7 +59,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/ubigeo/ubigeo.php">
+            <a href="admin/provincias/provincias.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -146,7 +146,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/departamentos/departamentos.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/provincias/provincias.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 

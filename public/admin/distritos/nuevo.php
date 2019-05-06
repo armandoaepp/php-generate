@@ -3,19 +3,19 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $title_page = "Provincia" ;
+  $title_page = "Distrito" ;
 
   require_once "../../app/autoload.php";
 
   $ubigeo_controller = new UbigeoController();
 
-  # departamentos
+  # provincias
   $array = array(
-    'tipo' => 1,
+    // 'tipo' => 1,
     'pais_id' => 1,
   ) ;
 
-  $departamentos = $ubigeo_controller->getByTipoAndPaisId($array);
+  $provincias = $ubigeo_controller->getProvinciasByPaisId($array);
 
 
 ?>
@@ -35,9 +35,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,4],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [2,5],
     );
 
     require_once "../layout/head_links.phtml";
@@ -80,7 +80,7 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/provincias/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/distritos/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
 
@@ -96,11 +96,11 @@
 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="departamento_id">Departamento: </label>
-                  <select class="custom-select js-select2" name="departamento_id" id="departamento_id" placeholder="Departamento">
+                  <label for="provincia_id">Provincia: </label>
+                  <select class="custom-select js-select2" name="provincia_id" id="provincia_id" placeholder="Departamento">
                     <option value="" selected disabled hidden>Seleccionar </option>
-                    <?php foreach ($departamentos as $row) { ?>
-                    <option value="<?php echo $row->ubigeo_id; ?>"> <?php echo $row->nombre; ?></option>
+                    <?php foreach ($provincias as $row) { ?>
+                    <option value="<?php echo $row->ubigeo_id; ?>"> <?php echo $row->descripcion; ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -108,14 +108,14 @@
 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="codigo">Codigo: </label>
+                  <label for="codigo">Codigo Ubigeo: </label>
                   <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo" maxlength="10">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required maxlength="255">
+                  <label for="nombre">Distrito: </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Distrito" required maxlength="255">
                 </div>
               </div>
 
@@ -146,7 +146,7 @@
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/departamentos/departamentos.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/provincias/provincias.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
@@ -163,14 +163,14 @@
 
   <?php require_once "../layout/foot_links.phtml"; ?>
 
-  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.full.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7-rc.0/css/select2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7-rc.0/js/select2.min.js"></script>
   <script>
     $(document).ready(function() {
       $('.js-select2').select2();
     });
-  </script> -->
+  </script>
+
 </body>
 
 </html>
