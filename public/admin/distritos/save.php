@@ -19,8 +19,8 @@
   $region_id       = 0 ; # la provincia ya pertenecea a una region de acuerdo al departamento
   $tipo            = 3 ; # provincia
 
-  $departamento = $ubigeo_controller->find($ubigeo_id_padre);
-  $prov_descripcion    = $departamento->descripcion ;
+  $provincia     = $ubigeo_controller->find($ubigeo_id_padre);
+  $prov_descripcion = $provincia->descripcion ;
 
   $descripcion  = $nombre . ", " . $prov_descripcion ;
 

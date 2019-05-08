@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete();
-            
+
       $bean_paquete = new BeanPaquete();
-            
+
       $bean_paquete->setEstado($estado);
 
       $data = $paquete->getByEstado($bean_paquete);
@@ -59,13 +59,33 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete($this->cnx);
 
       $bean_paquete = new BeanPaquete();
-            
+
+      $ubigeo_id       = $ubigeo_id ;
+      $nombre          = $nombre ;
+      $descripcion     = !empty($descripcion) ? $descripcion    : "" ;
+      $recomendacion   = !empty($recomendacion) ? $recomendacion: "" ;
+      $num_dias        = !empty($num_dias) ? $num_dias          : 0 ;
+      $num_noches      = !empty($num_noches) ? $num_noches      : 0 ;
+      $precio          = $precio ;
+      $descuento       = !empty($descuento) ? $descuento        : 0 ;
+      $fecha_ini_promo = $fecha_ini_promo ;
+      $fecha_fin_promo = $fecha_fin_promo ;
+      $url             = !empty($url) ? $url                    : "" ;
+      $num_visitas     = !empty($num_visitas) ? $num_visitas    : 0 ;
+      $publicar        = $publicar ;
+
+      $precio_descuento = $precio ;
+        if($descuento > 0){
+            $precio_descuento = $precio - ( $precio * ($descuento/100) ) ;
+        }
+
+
       $bean_paquete->setUbigeoId($ubigeo_id);
       $bean_paquete->setNombre($nombre);
       $bean_paquete->setDescripcion($descripcion);
@@ -80,7 +100,7 @@
       $bean_paquete->setUrl($url);
       $bean_paquete->setNumVisitas($num_visitas);
       $bean_paquete->setPublicar($publicar);
-            
+
       $data = $paquete->save($bean_paquete) ;
 
       return $data ;
@@ -95,12 +115,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete($this->cnx);
       $bean_paquete = new BeanPaquete();
-            
+
       $bean_paquete->setPaqueteId($paquete_id);
       $bean_paquete->setUbigeoId($ubigeo_id);
       $bean_paquete->setNombre($nombre);
@@ -118,7 +138,7 @@
       $bean_paquete->setPublicar($publicar);
 
       $data = $paquete->update($bean_paquete) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -131,18 +151,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete($this->cnx);
-            
+
       $bean_paquete = new BeanPaquete();
-            
+
       $bean_paquete->setPaqueteId($paquete_id);
       $bean_paquete->setEstado($estado);
 
       $data = $paquete->updateEstado($bean_paquete) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -197,17 +217,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete($this->cnx);
       $bean_paquete = new BeanPaquete();
-            
+
       $bean_paquete->setPaqueteId($paquete_id);
       $bean_paquete->setPublicar($publicar);
 
       $data = $paquete->updatePublish($bean_paquete) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -220,16 +240,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete  = new Paquete($this->cnx);
       $bean_paquete = new BeanPaquete();
-            
+
       $bean_paquete->setPublicar($publicar);
 
       $data = $paquete->getPublished($bean_paquete) ;
-      
+
       return $data;
     }
     catch (Exception $e)

@@ -13,18 +13,18 @@
 
   $ubigeo_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $codigo          = !empty($_POST["codigo"]) ? $_POST["codigo"] : '0000' ;
+  $codigo          = !empty($_POST["codigo"]) ? $_POST["codigo"] : '000000' ;
   $nombre          = $_POST["nombre"] ;
   $descripcion     = !empty($_POST["descripcion"]) ? $_POST["descripcion"] : $nombre;
-  $ubigeo_id_padre = !empty($_POST["departamento_id"]) ? $_POST["departamento_id"]: 0 ;
+  $ubigeo_id_padre = !empty($_POST["provincia_id"]) ? $_POST["provincia_id"]: 0 ;
   $pais_id         = !empty($_POST["pais_id"]) ? $_POST["pais_id"] : 1 ;
   $region_id       = 0 ; # la provincia ya pertenecea a una region de acuerdo al departamento
   $tipo            = 2 ; # provincia
 
-  $departamento = $ubigeo_controller->find($ubigeo_id_padre);
-  $depa_name    = $departamento->nombre ;
+  $provincia     = $ubigeo_controller->find($ubigeo_id_padre);
+  $prov_descripcion = $provincia->descripcion ;
 
-  $descripcion  = $nombre . ", " . $depa_name ;
+  $descripcion  = $nombre . ", " . $prov_descripcion ;
 
 
   $params = array(

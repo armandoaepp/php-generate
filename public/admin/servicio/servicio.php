@@ -82,7 +82,7 @@
           <div class="col-12">
             <div class="table-responsive">
 
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+            <table id="dataTableList" class="table table-striped table-bordered table-sm" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Id </th>

@@ -1,9 +1,39 @@
-
 <?php
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
   $title_page = "Paquete" ;
+
+  require_once "../../app/autoload.php";
+
+  #Distritos
+  $ubigeo_controller = new UbigeoController();
+
+  $array = array(
+    'pais_id' => 1,
+  ) ;
+
+  $distritos = $ubigeo_controller->getDistritosByPaisId($array);
+
+  # Actividades
+  $actividad_controller = new ActividadController();
+
+  $array = array(
+    'estado' => 1,
+  ) ;
+
+  $actividades = $actividad_controller->getByEstado($array);
+
+  # Servicios
+  $servicio_controller = new ServicioController();
+
+  $array = array(
+    'estado' => 1,
+  ) ;
+
+  $servicios = $servicio_controller->getByEstado($array);
+
+  // var_dump($servicios);
 
 ?>
 
@@ -22,9 +52,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [3, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -70,81 +100,131 @@
             <form action="admin/paquete/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ubigeo_id">UbigeoId: </label>
-                  <select class="custom-select" name="ubigeo_id" id="ubigeo_id" placeholder="UbigeoId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
-                    <option value="text">text</option>
+                  <label for="ubigeo_id">Distrito: </label>
+                  <select class="custom-select select2-box" name="ubigeo_id" id="ubigeo_id" placeholder="UbigeoId" required>
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <!-- <option value="text">text</option> -->
+                    <?php foreach ($distritos as $row) { ?>
+                    <option value="<?php echo $row->ubigeo_id; ?>"> <?php echo $row->descripcion; ?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
+
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                  <label for="nombre">Nombre Paquete y/o Tours: </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
                 </div>
               </div>
+
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="descripcion">Descripcion: </label>
-                  <textarea class="form-control ckeditor" name="descripcion" id="descripcion" placeholder="Descripcion" cols="30" rows="6"></textarea>
+                  <label for="descripcion">Descripción: </label>
+                  <textarea class="form-control ckeditor" name="descripcion" id="descripcion" placeholder="Descripción" cols="30" rows="6"></textarea>
                 </div>
               </div>
+
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="recomendacion">Recomendacion: </label>
-                  <textarea class="form-control ckeditor" name="recomendacion" id="recomendacion" placeholder="Recomendacion" cols="30" rows="6"></textarea>
+                  <label for="recomendacion">Recomendación: </label>
+                  <textarea class="form-control ckeditor" name="recomendacion" id="recomendacion" placeholder="Recomendación" cols="30" rows="6"></textarea>
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="num_dias">NumDias: </label>
-                  <input type="text" class="form-control" name="num_dias" id="num_dias" placeholder="NumDias">
+                  <label for="num_dias">Num. Días: </label>
+                  <input type="text" class="form-control" name="num_dias" id="num_dias" placeholder="Num. Días">
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="num_noches">NumNoches: </label>
-                  <input type="text" class="form-control" name="num_noches" id="num_noches" placeholder="NumNoches">
+                  <label for="num_noches">Num. Noches: </label>
+                  <input type="number" class="form-control" name="num_noches" id="num_noches" placeholder="Num. Noches">
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-6">
                 <div class="form-group">
                   <label for="precio">Precio: </label>
-                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+                  <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio">
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="descuento">Descuento: </label>
-                  <input type="text" class="form-control" name="descuento" id="descuento" placeholder="Descuento">
+                  <label for="descuento">Descuento(entre 0 y 100)%:: </label>
+                  <input type="number" class="form-control" name="descuento" id="descuento" value="0" placeholder="Descuento(entre 0 y 100)%:">
                 </div>
               </div>
-              <div class="col-md-12">
+
+             <!--  <div class="col-md-12">
                 <div class="form-group">
                   <label for="precio_descuento">PrecioDescuento: </label>
                   <input type="text" class="form-control" name="precio_descuento" id="precio_descuento" placeholder="PrecioDescuento">
                 </div>
-              </div>
-              <div class="col-md-12">
+              </div> -->
+
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="fecha_ini_promo">FechaIniPromo: </label>
-                  <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="FechaIniPromo">
+                  <label for="fecha_ini_promo">Fecha Inicio Promo: </label>
+                  <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="Fecha Inicio Promo">
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="fecha_fin_promo">FechaFinPromo: </label>
-                  <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="FechaFinPromo">
+                  <label for="fecha_fin_promo">Fecha Fin Promo: </label>
+                  <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="Fecha Fin Promo">
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <!-- <div class="col-md-12">
                 <div class="form-group">
                   <label for="num_visitas">NumVisitas: </label>
                   <input type="text" class="form-control" name="num_visitas" id="num_visitas" placeholder="NumVisitas">
                 </div>
+              </div> -->
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="actividad_ids">Actividades: </label>
+                  <select class="custom-select select2-box" name="actividad_ids[]" id="actividad_ids" multiple="multiple" placeholder="Actividades" required>
+                    <!-- <option value="" selected disabled hidden>Seleccionar </option> -->
+                    <!-- <option value="text">text</option> -->
+                    <?php foreach ($actividades as $row) { ?>
+                    <option value="<?php echo $row->actividad_id; ?>"> <?php echo $row->nombre; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="col-6 mb-3">
+                  <label class="fw-500" for="">Incluye </label>
+
+                  <?php
+                  foreach ($servicios as $servicio)
+                  {
+                    // if ($servicio->incluye === 1)
+                    // {
+                  ?>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="servicio_id_incluye[]"
+                          id="servicio_incluye<?php echo $servicio->id ?>" value="<?php echo $servicio->id ?>">
+                      <label class="custom-control-label" for="servicio_incluye<?php echo $servicio->id ?>">
+                          <?php echo $servicio->descripcion ?>
+                      </label>
+                  </div>
+                  <?php
+                    // }
+                  }
+                  ?>
               </div>
 
               <div class="col-md-12">
@@ -180,6 +260,9 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
+  <?php require_once "../layout/select2.phtml"; ?>
+
 
 </body>
 

@@ -11,36 +11,36 @@
 
   $paquete_controller = new PaqueteController();
 
-  $ubigeo_id   = $_POST["ubigeo_id"] ;
-  $nombre   = $_POST["nombre"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $recomendacion   = $_POST["recomendacion"] ;
-  $num_dias   = $_POST["num_dias"] ;
-  $num_noches   = $_POST["num_noches"] ;
-  $precio   = $_POST["precio"] ;
-  $descuento   = $_POST["descuento"] ;
-  $precio_descuento   = $_POST["precio_descuento"] ;
-  $fecha_ini_promo   = $_POST["fecha_ini_promo"] ;
-  $fecha_fin_promo   = $_POST["fecha_fin_promo"] ;
-  $num_visitas   = $_POST["num_visitas"] ;
-  $publicar   = $_POST["publicar"] ;
-  $url = UrlHelper::urlFriendly($ubigeo_id); 
+  $ubigeo_id        = $_POST["ubigeo_id"] ;
+  $nombre           = $_POST["nombre"] ;
+  $descripcion      = !empty($_POST["descripcion"]) ? $_POST["descripcion"] : "" ;
+  $recomendacion      = !empty($_POST["recomendacion"]) ? $_POST["recomendacion"] : "" ;
+  $num_dias         = $_POST["num_dias"] ;
+  $num_noches       = !empty($_POST["num_noches"]) ? $_POST["num_noches"] : 0 ;
+  $precio           = $_POST["precio"] ;
+  $descuento        = $_POST["descuento"] ;
+  // $precio_descuento = $_POST["precio_descuento"] ;
+  $fecha_ini_promo  = !empty($_POST["fecha_ini_promo"]) ? $_POST["fecha_ini_promo"] : null ;
+  $fecha_fin_promo  = !empty($_POST["fecha_fin_promo"]) ? $_POST["fecha_fin_promo"] : null ;
+  $num_visitas  = !empty($_POST["num_visitas"]) ? $_POST["num_visitas"] : 0 ;
+  $publicar         = $_POST["publicar"] ;
+  $url              = UrlHelper::urlFriendly($nombre);
 
   $params = array(
-    "ubigeo_id"   => $ubigeo_id,
-    "nombre"   => $nombre,
-    "descripcion"   => $descripcion,
-    "recomendacion"   => $recomendacion,
-    "num_dias"   => $num_dias,
-    "num_noches"   => $num_noches,
-    "precio"   => $precio,
-    "descuento"   => $descuento,
-    "precio_descuento"   => $precio_descuento,
-    "fecha_ini_promo"   => $fecha_ini_promo,
-    "fecha_fin_promo"   => $fecha_fin_promo,
-    "num_visitas"   => $num_visitas,
-    "publicar"   => $publicar,
-    "url"  => $url,
+    "ubigeo_id"        => $ubigeo_id,
+    "nombre"           => $nombre,
+    "descripcion"      => $descripcion,
+    "recomendacion"    => $recomendacion,
+    "num_dias"         => $num_dias,
+    "num_noches"       => $num_noches,
+    "precio"           => $precio,
+    "descuento"        => $descuento,
+    // "precio_descuento" => $precio_descuento,
+    "fecha_ini_promo"  => $fecha_ini_promo,
+    "fecha_fin_promo"  => $fecha_fin_promo,
+    "num_visitas"      => $num_visitas,
+    "publicar"         => $publicar,
+    "url"              => $url,
   );
 
 
