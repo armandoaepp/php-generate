@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-05-03 11:44:42
+Date: 2019-05-08 11:13:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,33 +20,37 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `actividad`;
 CREATE TABLE `actividad` (
-  `tipo_paquete_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `actividad_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
-  `descripcion` varchar(255) NOT NULL DEFAULT '',
+  `descripcion` text NOT NULL,
   `horas` int(11) NOT NULL DEFAULT '0',
   `estado` char(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`tipo_paquete_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`actividad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of actividad
 -- ----------------------------
+INSERT INTO `actividad` VALUES ('1', 'Actividades acuáticas', '&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;El concepto de actividades acuáticas ha sido acuñado recientemente en nuestra sociedad, pues a lo largo de historia el agua ha sido entendida bajo distintas concepciones, de las cuales la más conocida ha sido el término de natación. Pero, ¿Es natación todo lo que realizamos en piscina?&lt;/p&gt;', '4', '1');
+INSERT INTO `actividad` VALUES ('2', 'Actividades aéreas', '&lt;p&gt;Los deportes aeronáuticos exigen capacidad física, habilidad, destreza, competitividad, afán de superación , respeto por las normas . Los deportes aéreos contribuyen a la educación del cuerpo y la mente en un ambiente técnico y en un medio singularmente bello como es el aire.&lt;/p&gt;', '4', '1');
 
 -- ----------------------------
 -- Table structure for adicional
 -- ----------------------------
 DROP TABLE IF EXISTS `adicional`;
 CREATE TABLE `adicional` (
-  `adicional_id` int(11) NOT NULL,
+  `adicional_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(255) DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `estado` char(1) DEFAULT NULL,
   PRIMARY KEY (`adicional_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of adicional
 -- ----------------------------
+INSERT INTO `adicional` VALUES ('1', 'Recorrido en motaxi por la ciudad', '5.00', '1');
+INSERT INTO `adicional` VALUES ('2', 'Paseo en Caballo', '6.00', '1');
 
 -- ----------------------------
 -- Table structure for itinerario
@@ -120,17 +124,17 @@ CREATE TABLE `paquete` (
 -- ----------------------------
 DROP TABLE IF EXISTS `paquete_actividad`;
 CREATE TABLE `paquete_actividad` (
-  `paquete_actividad_id` int(11) NOT NULL,
+  `paquete_actividad_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `paquete_id` int(10) unsigned NOT NULL,
-  `tipo_paquete_id` int(10) unsigned NOT NULL,
+  `actividad_id` int(10) unsigned NOT NULL,
   `horas` int(11) NOT NULL COMMENT 'horas por defecto o horas personalizadas',
   `descripcion` varchar(255) NOT NULL DEFAULT '',
   `estado` char(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`paquete_actividad_id`),
   KEY `fk_paquete_actividad_paquete1_idx` (`paquete_id`),
-  KEY `fk_paquete_actividad_actividad1_idx` (`tipo_paquete_id`),
-  CONSTRAINT `fk_paquete_actividad_actividad1` FOREIGN KEY (`tipo_paquete_id`) REFERENCES `actividad` (`tipo_paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_paquete_actividad_actividad1_idx` (`actividad_id`),
+  CONSTRAINT `fk_paquete_actividad_actividad1` FOREIGN KEY (`actividad_id`) REFERENCES `actividad` (`actividad_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_paquete_actividad_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -145,7 +149,7 @@ DROP TABLE IF EXISTS `paquete_adicional`;
 CREATE TABLE `paquete_adicional` (
   `paquete_adicional_id` int(11) NOT NULL,
   `paquete_id` int(10) unsigned NOT NULL,
-  `adicional_id` int(11) NOT NULL,
+  `adicional_id` int(10) unsigned NOT NULL,
   `estado` char(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`paquete_adicional_id`),
@@ -209,7 +213,7 @@ CREATE TABLE `region` (
   `nombre` varchar(100) DEFAULT NULL,
   `estado` char(1) DEFAULT '1',
   PRIMARY KEY (`region_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of region
@@ -217,21 +221,6 @@ CREATE TABLE `region` (
 INSERT INTO `region` VALUES ('1', 'Costa', '1');
 INSERT INTO `region` VALUES ('2', 'Sierra', '1');
 INSERT INTO `region` VALUES ('3', 'Selva', '1');
-INSERT INTO `region` VALUES ('4', 'Centro', '1');
-INSERT INTO `region` VALUES ('5', 'Sur', '1');
-INSERT INTO `region` VALUES ('6', 'Norte', '1');
-INSERT INTO `region` VALUES ('7', 'Costa', '1');
-INSERT INTO `region` VALUES ('8', 'Sierra', '1');
-INSERT INTO `region` VALUES ('9', 'Selva', '1');
-INSERT INTO `region` VALUES ('10', 'Centro', '1');
-INSERT INTO `region` VALUES ('11', 'Sur', '1');
-INSERT INTO `region` VALUES ('12', 'Norte', '1');
-INSERT INTO `region` VALUES ('13', 'Costa', '1');
-INSERT INTO `region` VALUES ('14', 'Sierra', '1');
-INSERT INTO `region` VALUES ('15', 'Selva', '1');
-INSERT INTO `region` VALUES ('16', 'Centro', '1');
-INSERT INTO `region` VALUES ('17', 'Sur', '1');
-INSERT INTO `region` VALUES ('18', 'Norte', '1');
 
 -- ----------------------------
 -- Table structure for servicio
@@ -286,24 +275,19 @@ CREATE TABLE `ubigeo` (
   PRIMARY KEY (`ubigeo_id`),
   KEY `fk_ubigeo_pais1_idx` (`pais_id`),
   KEY `fk_ubigeo_region1_idx` (`region_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ubigeo
 -- ----------------------------
-INSERT INTO `ubigeo` VALUES ('1', '201520212', 'Trujillo', 'Trujillo', '0', '1', '1', '0', '1');
-INSERT INTO `ubigeo` VALUES ('3', 'dmeos', 'dmeos', '', '0', '0', '2', '0', '1');
-INSERT INTO `ubigeo` VALUES ('4', '140101', 'Lambayeque', 'Lambayeque', '0', '1', '2', '1', '1');
-INSERT INTO `ubigeo` VALUES ('5', '20152021', 'Armando Pisfil Puemape', 'Armando Pisfil Puemape', '0', '1', '3', '1', '1');
-INSERT INTO `ubigeo` VALUES ('6', '140101', 'Piura', 'Piura', '0', '1', '4', '1', '1');
-INSERT INTO `ubigeo` VALUES ('7', '20152021', 'Chiclayo', 'Trujillo', '0', '1', '5', '1', '1');
-INSERT INTO `ubigeo` VALUES ('8', '20152021', 'Chiclayo', 'Chiclayo, Armando Pisfil Puemape', '5', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('9', '140101', 'Ferreñafe', 'Ferreñafe', '0', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('11', '140101', 'Lambayeque 2', 'Lambayeque 2', '4', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('12', '140101', 'asdfasdfdsafasdf', 'asdfasdfdsafasdf, Armando Pisfil Puemape', '5', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('13', 'asdfasd', 'Perú', 'Perú, Piura', '6', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('14', '20152021', 'asdfasdfsd', 'asdfasdfsd, Lambayeque', '4', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('15', '20152021', 'monsefu', 'asdfasdfsd, Lambayeque', '14', '1', '0', '3', '1');
+INSERT INTO `ubigeo` VALUES ('19', '140101', 'Lambayeque', 'Lambayeque', '0', '1', '1', '1', '1');
+INSERT INTO `ubigeo` VALUES ('20', '13', 'Trujillo', 'Trujillo', '0', '1', '1', '1', '1');
+INSERT INTO `ubigeo` VALUES ('21', '1401', 'Chiclayo', 'Chiclayo, Lambayeque', '19', '1', '0', '2', '1');
+INSERT INTO `ubigeo` VALUES ('22', '1401', 'Ferreñafe', 'Ferreñafe, Lambayeque', '19', '1', '0', '2', '1');
+INSERT INTO `ubigeo` VALUES ('23', '1301', 'Trujillo', 'Trujillo, Trujillo', '20', '1', '0', '2', '1');
+INSERT INTO `ubigeo` VALUES ('24', '1302', 'El Porvenir', 'El Porvenir, Trujillo', '20', '1', '0', '2', '1');
+INSERT INTO `ubigeo` VALUES ('25', '140101', 'Chiclayo', 'Chiclayo, Ferreñafe, Lambayeque', '22', '1', '0', '3', '1');
+INSERT INTO `ubigeo` VALUES ('26', '15', 'San Martin', 'San Martin', '0', '1', '3', '1', '1');
 
 -- ----------------------------
 -- Table structure for user

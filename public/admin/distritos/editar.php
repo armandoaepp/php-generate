@@ -15,13 +15,14 @@
 
   $ubigeo_controller = new UbigeoController();
 
-  # departamentos
+  # distritos
   $array = array(
-    'tipo' => 1,
+    // 'tipo' => 1,
     'pais_id' => 1,
   ) ;
 
-  $departamentos = $ubigeo_controller->getByTipoAndPaisId($array);
+  $provincias = $ubigeo_controller->getProvinciasByPaisId($array);
+
 
   $ubigeo_controller = new UbigeoController();
   $ubigeo = $ubigeo_controller->find($id);
@@ -69,7 +70,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/departamentos/departamentos.php">
+            <a href="admin/distritos/distritos.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -95,68 +96,68 @@
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
 
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="pais_id">PaisId: </label>
-                  <select class="custom-select" name="pais_id" id="pais_id" placeholder="PaisId">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="pais_id">PaisId: </label>
+                    <select class="custom-select" name="pais_id" id="pais_id" placeholder="PaisId">
+                      <option value="" selected disabled hidden>Seleccionar </option>
+                      <option value="text">text</option>
+                    </select>
+                  </div>
+                </div> -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="provincia_id">Provincia: </label>
+                    <select class="custom-select" name="provincia_id" id="provincia_id" placeholder="Provincia">
+                      <option value="" selected disabled hidden>Seleccionar </option>
+                      <?php foreach ($provincias as $row) { ?>
+                      <option value="<?php echo $row->ubigeo_id; ?>" <?php if( $ubigeo->ubigeo_id_padre == $row->ubigeo_id ) echo "selected" ?> > <?php echo $row->descripcion; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
                 </div>
-              </div> -->
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="departamento_id">Departamento: </label>
-                  <select class="custom-select" name="departamento_id" id="departamento_id" placeholder="Región">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <?php foreach ($departamentos as $row) { ?>
-                    <option value="<?php echo $row->ubigeo_id; ?>" <?php if( $ubigeo->ubigeo_id_padre == $row->ubigeo_id ) echo "selected" ?> > <?php echo $row->nombre; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="codigo">Codigo: </label>
-                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo" maxlength="10" value="<?php echo $ubigeo->codigo; ?>">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="codigo">Codigo: </label>
+                    <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo" maxlength="10" value="<?php echo $ubigeo->codigo; ?>">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required maxlength="255"  value="<?php echo $ubigeo->nombre; ?>" >
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required maxlength="255"  value="<?php echo $ubigeo->nombre; ?>" >
+                  </div>
                 </div>
-              </div>
 
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
-                </div>
-              </div> -->
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion: </label>
+                    <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
+                  </div>
+                </div> -->
 
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="ubigeo_id_padre">UbigeoIdPadre: </label>
-                  <select class="custom-select" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
-                </div>
-              </div> -->
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="ubigeo_id_padre">UbigeoIdPadre: </label>
+                    <select class="custom-select" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre">
+                      <option value="" selected disabled hidden>Seleccionar </option>
+                      <option value="text">text</option>
+                    </select>
+                  </div>
+                </div> -->
 
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tipo">Tipo: </label>
-                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo">
-                </div>
-              </div> -->
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="tipo">Tipo: </label>
+                    <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo">
+                  </div>
+                </div> -->
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/departamentos/departamentos.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/distritos/distritos.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
