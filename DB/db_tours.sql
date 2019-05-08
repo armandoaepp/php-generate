@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-05-08 11:13:25
+Date: 2019-05-08 13:00:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,13 +26,59 @@ CREATE TABLE `actividad` (
   `horas` int(11) NOT NULL DEFAULT '0',
   `estado` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`actividad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of actividad
 -- ----------------------------
 INSERT INTO `actividad` VALUES ('1', 'Actividades acuáticas', '&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;El concepto de actividades acuáticas ha sido acuñado recientemente en nuestra sociedad, pues a lo largo de historia el agua ha sido entendida bajo distintas concepciones, de las cuales la más conocida ha sido el término de natación. Pero, ¿Es natación todo lo que realizamos en piscina?&lt;/p&gt;', '4', '1');
 INSERT INTO `actividad` VALUES ('2', 'Actividades aéreas', '&lt;p&gt;Los deportes aeronáuticos exigen capacidad física, habilidad, destreza, competitividad, afán de superación , respeto por las normas . Los deportes aéreos contribuyen a la educación del cuerpo y la mente en un ambiente técnico y en un medio singularmente bello como es el aire.&lt;/p&gt;', '4', '1');
+INSERT INTO `actividad` VALUES ('3', 'Actividades acuáticas', '', '2', '1');
+INSERT INTO `actividad` VALUES ('4', 'Actividades aéreas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('5', 'Andinismo, alpinismo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('6', 'Barranquismo, canyoning', '', '0', '1');
+INSERT INTO `actividad` VALUES ('7', 'Bicicleta', '', '0', '1');
+INSERT INTO `actividad` VALUES ('8', 'Buceo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('9', 'Buggies, areneros, off road', '', '0', '1');
+INSERT INTO `actividad` VALUES ('10', 'Bus turístico, panorámico', '', '0', '1');
+INSERT INTO `actividad` VALUES ('11', 'Caminata, senderismo, trekking', '', '0', '1');
+INSERT INTO `actividad` VALUES ('12', 'Canopy, zipline, tirolesa', '', '0', '1');
+INSERT INTO `actividad` VALUES ('13', 'Canotaje', '', '0', '1');
+INSERT INTO `actividad` VALUES ('14', 'Cata de Vinos o Licores', '', '0', '1');
+INSERT INTO `actividad` VALUES ('15', 'Compra de artesanía', '', '0', '1');
+INSERT INTO `actividad` VALUES ('16', 'Cuatrimoto, Quads, ATV', '', '0', '1');
+INSERT INTO `actividad` VALUES ('17', 'Degustación otras bebidas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('18', 'Escalada', '', '0', '1');
+INSERT INTO `actividad` VALUES ('19', 'Espeleología', '', '0', '1');
+INSERT INTO `actividad` VALUES ('20', 'Gastronomía', '', '0', '1');
+INSERT INTO `actividad` VALUES ('21', 'Kayak, piraguismo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('22', 'Kitesurf', '', '0', '1');
+INSERT INTO `actividad` VALUES ('23', 'Misticismo, chamanismo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('24', 'Moto Acuatica', '', '0', '1');
+INSERT INTO `actividad` VALUES ('25', 'Motocross', '', '0', '1');
+INSERT INTO `actividad` VALUES ('26', 'Museos, monumentos', '', '0', '1');
+INSERT INTO `actividad` VALUES ('27', 'Observación de aves', '', '0', '1');
+INSERT INTO `actividad` VALUES ('28', 'Observación fauna y flora', '', '0', '1');
+INSERT INTO `actividad` VALUES ('29', 'Off Road 4x4', '', '0', '1');
+INSERT INTO `actividad` VALUES ('30', 'Paintball', '', '0', '1');
+INSERT INTO `actividad` VALUES ('31', 'Parapente', '', '0', '1');
+INSERT INTO `actividad` VALUES ('32', 'Paseo Áreas Naturales', '', '0', '1');
+INSERT INTO `actividad` VALUES ('33', 'Paseos a caballo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('34', 'Paseos Aéreos', '', '0', '1');
+INSERT INTO `actividad` VALUES ('35', 'Paseos en Embarcaciones', '', '0', '1');
+INSERT INTO `actividad` VALUES ('36', 'Paseos en otros vehículos', '', '0', '1');
+INSERT INTO `actividad` VALUES ('37', 'Pesca Deportiva', '', '0', '1');
+INSERT INTO `actividad` VALUES ('38', 'Remo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('39', 'Sandboard', '', '0', '1');
+INSERT INTO `actividad` VALUES ('40', 'Shows y espectaculos', '', '0', '1');
+INSERT INTO `actividad` VALUES ('41', 'Surf', '', '0', '1');
+INSERT INTO `actividad` VALUES ('42', 'Teleférico, funicular, telecabinas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('43', 'Termalismo', '', '0', '1');
+INSERT INTO `actividad` VALUES ('44', 'Visitas arqueológicas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('45', 'Visitas culturales', '', '0', '1');
+INSERT INTO `actividad` VALUES ('46', 'Visitas guiadas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('47', 'Visitas Históricas', '', '0', '1');
+INSERT INTO `actividad` VALUES ('48', 'Windsurf', '', '0', '1');
 
 -- ----------------------------
 -- Table structure for adicional
@@ -233,11 +279,21 @@ CREATE TABLE `servicio` (
   `incluye` tinyint(4) NOT NULL DEFAULT '0',
   `estado` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of servicio
 -- ----------------------------
+INSERT INTO `servicio` VALUES ('1', 'Desayuno', '', '1', '1');
+INSERT INTO `servicio` VALUES ('2', 'Almuerzo', '', '1', '1');
+INSERT INTO `servicio` VALUES ('3', 'Cena', '', '1', '1');
+INSERT INTO `servicio` VALUES ('4', 'Hospedaje', '', '1', '1');
+INSERT INTO `servicio` VALUES ('5', 'Transporte', '', '1', '1');
+INSERT INTO `servicio` VALUES ('6', 'Guía', '', '1', '1');
+INSERT INTO `servicio` VALUES ('7', 'Traslados', '', '1', '1');
+INSERT INTO `servicio` VALUES ('8', 'Excursiones', '', '1', '1');
+INSERT INTO `servicio` VALUES ('9', 'Entradas', '', '1', '1');
+INSERT INTO `servicio` VALUES ('10', 'Carpa', '', '1', '1');
 
 -- ----------------------------
 -- Table structure for suscritor
@@ -275,7 +331,7 @@ CREATE TABLE `ubigeo` (
   PRIMARY KEY (`ubigeo_id`),
   KEY `fk_ubigeo_pais1_idx` (`pais_id`),
   KEY `fk_ubigeo_region1_idx` (`region_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ubigeo
@@ -286,8 +342,9 @@ INSERT INTO `ubigeo` VALUES ('21', '1401', 'Chiclayo', 'Chiclayo, Lambayeque', '
 INSERT INTO `ubigeo` VALUES ('22', '1401', 'Ferreñafe', 'Ferreñafe, Lambayeque', '19', '1', '0', '2', '1');
 INSERT INTO `ubigeo` VALUES ('23', '1301', 'Trujillo', 'Trujillo, Trujillo', '20', '1', '0', '2', '1');
 INSERT INTO `ubigeo` VALUES ('24', '1302', 'El Porvenir', 'El Porvenir, Trujillo', '20', '1', '0', '2', '1');
-INSERT INTO `ubigeo` VALUES ('25', '140101', 'Chiclayo', 'Chiclayo, Ferreñafe, Lambayeque', '22', '1', '0', '3', '1');
+INSERT INTO `ubigeo` VALUES ('25', '140101', 'Chiclayo', 'Chiclayo, Chiclayo, Lambayeque', '21', '1', '0', '3', '1');
 INSERT INTO `ubigeo` VALUES ('26', '15', 'San Martin', 'San Martin', '0', '1', '3', '1', '1');
+INSERT INTO `ubigeo` VALUES ('28', '1401021', 'Monsefu', 'Monsefu, Chiclayo, Lambayeque', '21', '1', '0', '3', '1');
 
 -- ----------------------------
 -- Table structure for user
