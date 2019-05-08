@@ -122,7 +122,7 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"><?php echo htmlspecialchars_decode($'. $table .'[\''. $atributos[$i]. '\']); ?></textarea>' . PHP_EOL;
+              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"><?php echo htmlspecialchars_decode($'. $table .'->'. $atributos[$i]. '); ?></textarea>' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }

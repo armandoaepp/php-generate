@@ -90,7 +90,7 @@
       $actividad  = new Actividad($this->cnx);
       $bean_actividad = new BeanActividad();
             
-      $bean_actividad->setTipoPaqueteId($tipo_paquete_id);
+      $bean_actividad->setActividadId($actividad_id);
       $bean_actividad->setNombre($nombre);
       $bean_actividad->setDescripcion($descripcion);
       $bean_actividad->setHoras($horas);
@@ -116,7 +116,7 @@
             
       $bean_actividad = new BeanActividad();
             
-      $bean_actividad->setTipoPaqueteId($tipo_paquete_id);
+      $bean_actividad->setActividadId($actividad_id);
       $bean_actividad->setEstado($estado);
 
       $data = $actividad->updateEstado($bean_actividad) ;
@@ -137,7 +137,7 @@
 
       $bean_actividad = new BeanActividad();
 
-      $bean_actividad->setTipoPaqueteId($id);
+      $bean_actividad->setActividadId($id);
 
       $data = $actividad->find( $bean_actividad) ;
       return $data;
@@ -149,7 +149,7 @@
     }
   }
 
-  public function deleteById($tipo_paquete_id)
+  public function deleteById($actividad_id)
   {
     try
     {
@@ -158,7 +158,7 @@
 
       $bean_actividad = new BeanActividad();
 
-      $bean_actividad->setTipoPaqueteId($tipo_paquete_id);
+      $bean_actividad->setActividadId($actividad_id);
 
       $data = $actividad->deleteById( $bean_actividad ) ;
 

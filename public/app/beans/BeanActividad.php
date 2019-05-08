@@ -12,7 +12,7 @@ class BeanActividad{
   public function __construct(){}
 
   # Atributos
-  private $tipo_paquete_id;
+  private $actividad_id;
   private $nombre;
   private $descripcion;
   private $horas;
@@ -21,14 +21,14 @@ class BeanActividad{
   #Auto Increment Item
 
   # METODOS
-  public function setTipoPaqueteId($tipo_paquete_id_)
+  public function setActividadId($actividad_id_)
   {
-    $this->tipo_paquete_id = Validation::validate( $tipo_paquete_id_ );
+    $this->actividad_id = Validation::validate( $actividad_id_ );
   }
 
-  public function getTipoPaqueteId()
+  public function getActividadId()
   {
-    return $this->tipo_paquete_id;
+    return $this->actividad_id;
   }
 
   public function setNombre($nombre_)

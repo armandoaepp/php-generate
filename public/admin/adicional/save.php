@@ -4,28 +4,26 @@
   loginRedirect("../login.php");
 
   if (!isset($_POST)) {
-    header("Location: admin/actividad/actividad.php ", true, 301);
+    header("Location: admin/adicional/adicional.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $actividad_controller = new ActividadController();
+  $adicional_controller = new AdicionalController();
 
-  $nombre   = $_POST["nombre"] ;
   $descripcion   = $_POST["descripcion"] ;
-  $horas   = $_POST["horas"] ;
+  $precio   = $_POST["precio"] ;
 
   $params = array(
-    "nombre"   => $nombre,
     "descripcion"   => $descripcion,
-    "horas"   => $horas,
+    "precio"   => $precio,
   );
 
 
-  $response = $actividad_controller->save($params);
+  $response = $adicional_controller->save($params);
 
   if($response){
-    header("Location: ./actividades.php ", true, 301);
+    header("Location: ./adicional.php ", true, 301);
   }
   else {
   echo "A Sucedido un Error al Rehgistrar". $response ;

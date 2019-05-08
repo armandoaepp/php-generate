@@ -6,16 +6,16 @@
   $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
   if ($id <= 0) {
-      header("Location: ./actividad.php ", true, 301);
+      header("Location: ./adicional.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $actividad_controller = new ActividadController();
+  $adicional_controller = new AdicionalController();
 
-  $actividad = $actividad_controller->find($id);
+  $adicional = $adicional_controller->find($id);
 
-  $title_page = "Actividad";
+  $title_page = "Adicional";
 
 ?>
 
@@ -37,7 +37,7 @@
     $sidebar = array(
         "sidebar_class"  => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [3, 2],
+        "sidebar_active" => [3, 4],
     );
 
     require_once "../layout/head_links.phtml";
@@ -60,7 +60,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/actividad/actividad.php">
+            <a href="admin/adicional/adicional.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -81,34 +81,28 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/actividad/update.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/adicional/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $actividad->nombre; ?>">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
                   <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $actividad->descripcion; ?>">
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $adicional->descripcion; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="horas">Horas: </label>
-                  <input type="text" class="form-control" name="horas" id="horas" placeholder="Horas" value="<?php echo $actividad->horas; ?>">
+                  <label for="precio">Precio: </label>
+                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $adicional->precio; ?>">
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/actividad/actividad.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/adicional/adicional.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 

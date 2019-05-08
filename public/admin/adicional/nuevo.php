@@ -3,7 +3,7 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $title_page = "Actividad" ;
+  $title_page = "Adicional" ;
 
 ?>
 
@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [3,2],
+      "sidebar_active" => [3, 4],
     );
 
     require_once "../layout/head_links.phtml";
@@ -46,13 +46,13 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/actividades/actividades.php">
+            <a href="admin/adicional/adicional.php">
               <i class="fas fa-list"></i>
-              <?php echo $title_page ;?>es
+              <?php echo $title_page ;?>s
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Nueva <?php echo $title_page; ?>
+            Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -60,42 +60,34 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Nueva <?php echo $title_page; ?> </h5>
+            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/actividades/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/adicional/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="nombre">Nombre: </label>
-                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
-                  </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="descripcion">Descripcion: </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
                 </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="horas">Horas: </label>
-                    <input type="text" class="form-control" name="horas" id="horas" placeholder="Horas">
-                  </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="precio">Precio: </label>
+                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
                 </div>
-
-                <div class="col-md-12 mb-3">
-                  <div class="form-group">
-                    <label for="descripcion">Descripción: </label>
-                    <textarea class="form-control ckeditor" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
-                  </div>
-                </div>
+              </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/actividades/actividades.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/adicional/adicional.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
@@ -111,7 +103,6 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
-  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

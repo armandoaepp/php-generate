@@ -6,11 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $actividad_controller = new ActividadController();
+    $paquete_controller = new PaqueteController();
 
-    $data = $actividad_controller->getAll();
+    $data = $paquete_controller->getAll();
 
-    $title_page = "Actividades";
+    $title_page = "Paquetes";
 
 ?>
 
@@ -21,7 +21,7 @@
   <?php
 
     $setvar = array(
-      "titulo"      => "$title_page",
+      "titulo"     => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -29,9 +29,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"  => "",
-      "sidebar_toggle" => "only",
-      "sidebar_active" => [3, 2],
+      "sidebar_class"     => "",
+      "sidebar_toggle"      => "only",
+      "sidebar_active"      => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/actividades/actividades.php">
+            <a class="link-white" href="admin/paquete/paquete.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,26 +69,37 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/actividades/actividades.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/paquete/paquete.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/actividades/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/paquete/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
-              Nueva
+              Nuevo
             </a>
           </div>
 
           <div class="col-12">
             <div class="table-responsive">
-
+            
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Tipo_paquete_id </th>
+                  <th width="50">Paquete_id </th>
+                  <th>Ubigeo_id </th>
                   <th>Nombre </th>
-                  <!-- <th>Descripcion </th> -->
-                  <th>Horas </th>
+                  <th>Descripcion </th>
+                  <th>Recomendacion </th>
+                  <th>Num_dias </th>
+                  <th>Num_noches </th>
+                  <th>Precio </th>
+                  <th>Descuento </th>
+                  <th>Precio_descuento </th>
+                  <th>Fecha_ini_promo </th>
+                  <th>Fecha_fin_promo </th>
+                  <th>Url </th>
+                  <th>Num_visitas </th>
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -132,17 +143,35 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-
-                  <td> <?php echo $row->tipo_paquete_id ?> </td>
+                
+                  <td> <?php echo $row->paquete_id ?> </td>
+                  <td> <?php echo $row->ubigeo_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
-                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
-                  <td> <?php echo $row->horas ?> </td>
+                  <td> <?php echo $row->descripcion ?> </td>
+                  <td> <?php echo $row->recomendacion ?> </td>
+                  <td> <?php echo $row->num_dias ?> </td>
+                  <td> <?php echo $row->num_noches ?> </td>
+                  <td> <?php echo $row->precio ?> </td>
+                  <td> <?php echo $row->descuento ?> </td>
+                  <td> <?php echo $row->precio_descuento ?> </td>
+                  <td> <?php echo $row->fecha_ini_promo ?> </td>
+                  <td> <?php echo $row->fecha_fin_promo ?> </td>
+                  <td> <?php echo $row->url ?> </td>
+                  <td> <?php echo $row->num_visitas ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/actividades/editar.php?id=<?php echo $row->tipo_paquete_id ?>" title="Editar">
+                    <span class="sr-only"><?php echo $row->publicar ?></span>
+                    <button onclick="modalPublicar(<?php echo $row->paquete_id ?>, `<?php echo $row->ubigeo_id ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
+
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete/editar.php?id=<?php echo $row->paquete_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->tipo_paquete_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_id ?>, `<?php echo $row->ubigeo_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -151,7 +180,7 @@
                 <?php }?>
               </tbody>
 
-            </table>
+            </table> 
             </div>
           </div>
 
@@ -230,7 +259,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/actividades/IndexActividad.php",
+        url: "./app/api/paquete/IndexPaquete.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

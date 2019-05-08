@@ -39,7 +39,7 @@ class Actividad extends Connection {
   {
     try{
 
-      $tipo_paquete_id = $bean_actividad->getTipoPaqueteId();
+      $actividad_id = $bean_actividad->getActividadId();
       $nombre = $bean_actividad->getNombre();
       $descripcion = $bean_actividad->getDescripcion();
       $horas = $bean_actividad->getHoras();
@@ -77,7 +77,7 @@ class Actividad extends Connection {
   public function update($bean_actividad)
   {
     try{
-      $tipo_paquete_id = $bean_actividad->getTipoPaqueteId();
+      $actividad_id = $bean_actividad->getActividadId();
       $nombre = $bean_actividad->getNombre();
       $descripcion = $bean_actividad->getDescripcion();
       $horas = $bean_actividad->getHoras();
@@ -86,7 +86,7 @@ class Actividad extends Connection {
                         nombre = '$nombre',
                         descripcion = '$descripcion',
                         horas = '$horas'
-                      WHERE tipo_paquete_id = '$tipo_paquete_id'
+                      WHERE actividad_id = '$actividad_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -106,9 +106,9 @@ class Actividad extends Connection {
   public function find($bean_actividad)
   {
     try{
-      $tipo_paquete_id = $bean_actividad->getTipoPaqueteId();
+      $actividad_id = $bean_actividad->getActividadId();
 
-      $this->query = "SELECT * FROM actividad WHERE tipo_paquete_id = '$tipo_paquete_id' LIMIT 1; ";
+      $this->query = "SELECT * FROM actividad WHERE actividad_id = '$actividad_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -127,10 +127,10 @@ class Actividad extends Connection {
   public function deleteById($bean_actividad)
   {
     try{
-      $tipo_paquete_id = $bean_actividad->getTipoPaqueteId();
+      $actividad_id = $bean_actividad->getActividadId();
 
       $this->query = "DELETE FROM actividad
-                      WHERE tipo_paquete_id = '$tipo_paquete_id' LIMIT 1; ";
+                      WHERE actividad_id = '$actividad_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -173,12 +173,12 @@ class Actividad extends Connection {
   public function updateEstado($bean_actividad)
   {
     try{
-      $tipo_paquete_id = $bean_actividad->getTipoPaqueteId();
+      $actividad_id = $bean_actividad->getActividadId();
       $estado = $bean_actividad->getEstado();
 
       $this->query = "UPDATE actividad SET 
                         estado = '$estado'
-                      WHERE tipo_paquete_id='$tipo_paquete_id'
+                      WHERE actividad_id='$actividad_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Quicksand:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 .f-quicksand {
   font-family: "Quicksand", sans-serif !important;
 }
@@ -12153,6 +12153,23 @@ ul.social li a {
 .ui-state-default .icon-move:hover {
   color: rgba(0, 0, 0, 0.95);
   background-color: rgba(0, 0, 0, 0.15);
+}
+
+.ck-editor__editable {
+  min-height: 120px;
+}
+
+.ck-editor__editable {
+  max-height: 200px;
+}
+
+@media (min-width: 768px) {
+  .ck-editor__editable {
+    min-height: 180px;
+  }
+  .ck-editor__editable {
+    max-height: 300px;
+  }
 }
 
 .sidebar-primary {

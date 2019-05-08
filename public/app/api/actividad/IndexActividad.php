@@ -50,13 +50,13 @@ switch($evento)
       $actividad_controller = new ActividadController($cnx) ; 
       $connection->beginTransaction();
         
-      $tipo_paquete_id = $inputs->tipo_paquete_id;
+      $actividad_id = $inputs->actividad_id;
       $nombre = $inputs->nombre;
       $descripcion = $inputs->descripcion;
       $horas = $inputs->horas;
         
       $params = array(
-                'tipo_paquete_id'=> $tipo_paquete_id,
+                'actividad_id'=> $actividad_id,
                 'nombre'=> $nombre,
                 'descripcion'=> $descripcion,
                 'horas'=> $horas,
@@ -87,13 +87,13 @@ switch($evento)
       $actividad_controller = new ActividadController($cnx) ; 
       $connection->beginTransaction();
         
-      $tipo_paquete_id = $inputs->tipo_paquete_id;
+      $actividad_id = $inputs->actividad_id;
       $nombre = $inputs->nombre;
       $descripcion = $inputs->descripcion;
       $horas = $inputs->horas;
         
       $params = array(
-                'tipo_paquete_id'=> $tipo_paquete_id,
+                'actividad_id'=> $actividad_id,
                 'nombre'=> $nombre,
                 'descripcion'=> $descripcion,
                 'horas'=> $horas,
@@ -120,11 +120,11 @@ switch($evento)
     try
     {
 
-      $tipo_paquete_id = $inputs->tipo_paquete_id;
+      $actividad_id = $inputs->actividad_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'tipo_paquete_id'=> $tipo_paquete_id,
+                'actividad_id'=> $actividad_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -169,7 +169,7 @@ switch($evento)
     try
     {
 
-      $tipo_paquete_id = $inputs->id;
+      $actividad_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -179,7 +179,7 @@ switch($evento)
       }
 
       $params = array(
-                'tipo_paquete_id'=> $tipo_paquete_id,
+                'actividad_id'=> $actividad_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -191,9 +191,9 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $actividad = $actividad_controller->find( $tipo_paquete_id );
+        $actividad = $actividad_controller->find( $actividad_id );
 
-        $data = $actividad_controller->deleteById( $tipo_paquete_id );
+        $data = $actividad_controller->deleteById( $actividad_id );
 
 			}
 			else

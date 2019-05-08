@@ -80,16 +80,30 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/paquete/paquete.php">
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/paquete/paquete.php">
             <i class="fa fa-list"></i>
             Paquetes
           </a>
         </li>
 
         <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/actividades/actividades.php">
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/actividad/actividad.php">
             <i class="fa fa-list"></i>
             Actividades
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 3) {echo 'active';}?>" href="admin/servicio/servicio.php">
+            <i class="fa fa-list"></i>
+            Serivicios
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 4) {echo 'active';}?>" href="admin/adicional/adicional.php">
+            <i class="fa fa-list"></i>
+            Adicionales
           </a>
         </li>
 
