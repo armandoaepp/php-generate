@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteAdicional extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -40,10 +40,10 @@ class PaqueteAdicional extends Connection {
     try{
 
       $paquete_adicional_id = $bean_paquete_adicional->getPaqueteAdicionalId();
-      $paquete_id = $bean_paquete_adicional->getPaqueteId();
-      $adicional_id = $bean_paquete_adicional->getAdicionalId();
-      $estado = $bean_paquete_adicional->getEstado();
-      $created_at = $bean_paquete_adicional->getCreatedAt();
+      $paquete_id           = $bean_paquete_adicional->getPaqueteId();
+      $adicional_id         = $bean_paquete_adicional->getAdicionalId();
+      $estado               = $bean_paquete_adicional->getEstado();
+      $created_at           = $bean_paquete_adicional->getCreatedAt();
 
       $this->query = "INSERT INTO paquete_adicional
                       (
@@ -81,7 +81,7 @@ class PaqueteAdicional extends Connection {
       $paquete_id = $bean_paquete_adicional->getPaqueteId();
       $adicional_id = $bean_paquete_adicional->getAdicionalId();
 
-      $this->query = "UPDATE paquete_adicional SET 
+      $this->query = "UPDATE paquete_adicional SET
                         paquete_id = '$paquete_id',
                         adicional_id = '$adicional_id'
                       WHERE paquete_adicional_id = '$paquete_adicional_id'
@@ -174,7 +174,7 @@ class PaqueteAdicional extends Connection {
       $paquete_adicional_id = $bean_paquete_adicional->getPaqueteAdicionalId();
       $estado = $bean_paquete_adicional->getEstado();
 
-      $this->query = "UPDATE paquete_adicional SET 
+      $this->query = "UPDATE paquete_adicional SET
                         estado = '$estado'
                       WHERE paquete_adicional_id='$paquete_adicional_id'
                       LIMIT 1 ; ";

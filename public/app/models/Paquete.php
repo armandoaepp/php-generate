@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Paquete extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -19,7 +19,13 @@ class Paquete extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM paquete; ";
+      $this->query = "SELECT
+                        paquete.*,
+                        ubigeo.nombre as distrito,
+                        ubigeo.descripcion as ubigeo_full
+                      FROM paquete
+                      INNER JOIN ubigeo ON ubigeo.ubigeo_id = paquete.ubigeo_id AND ubigeo.tipo = 3
+                      ; ";
 
       $this->executeQuery();
 
@@ -39,23 +45,23 @@ class Paquete extends Connection {
   {
     try{
 
-      $paquete_id = $bean_paquete->getPaqueteId();
-      $ubigeo_id = $bean_paquete->getUbigeoId();
-      $nombre = $bean_paquete->getNombre();
-      $descripcion = $bean_paquete->getDescripcion();
-      $recomendacion = $bean_paquete->getRecomendacion();
-      $num_dias = $bean_paquete->getNumDias();
-      $num_noches = $bean_paquete->getNumNoches();
-      $precio = $bean_paquete->getPrecio();
-      $descuento = $bean_paquete->getDescuento();
+      $paquete_id       = $bean_paquete->getPaqueteId();
+      $ubigeo_id        = $bean_paquete->getUbigeoId();
+      $nombre           = $bean_paquete->getNombre();
+      $descripcion      = $bean_paquete->getDescripcion();
+      $recomendacion    = $bean_paquete->getRecomendacion();
+      $num_dias         = $bean_paquete->getNumDias();
+      $num_noches       = $bean_paquete->getNumNoches();
+      $precio           = $bean_paquete->getPrecio();
+      $descuento        = $bean_paquete->getDescuento();
       $precio_descuento = $bean_paquete->getPrecioDescuento();
-      $fecha_ini_promo = $bean_paquete->getFechaIniPromo();
-      $fecha_fin_promo = $bean_paquete->getFechaFinPromo();
-      $url = $bean_paquete->getUrl();
-      $num_visitas = $bean_paquete->getNumVisitas();
-      $publicar = $bean_paquete->getPublicar();
-      $estado = $bean_paquete->getEstado();
-      $created_at = $bean_paquete->getCreatedAt();
+      $fecha_ini_promo  = $bean_paquete->getFechaIniPromo();
+      $fecha_fin_promo  = $bean_paquete->getFechaFinPromo();
+      $url              = $bean_paquete->getUrl();
+      $num_visitas      = $bean_paquete->getNumVisitas();
+      $publicar         = $bean_paquete->getPublicar();
+      $estado           = $bean_paquete->getEstado();
+      $created_at       = $bean_paquete->getCreatedAt();
 
       $this->query = "INSERT INTO paquete
                       (
@@ -97,7 +103,10 @@ class Paquete extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status  ;
+      $id = $this->lastInsertId();
+
+      // $data = $this->status  ;
+      $data = $id  ;
 
       return $data;
 
@@ -113,23 +122,23 @@ class Paquete extends Connection {
   public function update($bean_paquete)
   {
     try{
-      $paquete_id = $bean_paquete->getPaqueteId();
-      $ubigeo_id = $bean_paquete->getUbigeoId();
-      $nombre = $bean_paquete->getNombre();
-      $descripcion = $bean_paquete->getDescripcion();
-      $recomendacion = $bean_paquete->getRecomendacion();
-      $num_dias = $bean_paquete->getNumDias();
-      $num_noches = $bean_paquete->getNumNoches();
-      $precio = $bean_paquete->getPrecio();
-      $descuento = $bean_paquete->getDescuento();
+      $paquete_id       = $bean_paquete->getPaqueteId();
+      $ubigeo_id        = $bean_paquete->getUbigeoId();
+      $nombre           = $bean_paquete->getNombre();
+      $descripcion      = $bean_paquete->getDescripcion();
+      $recomendacion    = $bean_paquete->getRecomendacion();
+      $num_dias         = $bean_paquete->getNumDias();
+      $num_noches       = $bean_paquete->getNumNoches();
+      $precio           = $bean_paquete->getPrecio();
+      $descuento        = $bean_paquete->getDescuento();
       $precio_descuento = $bean_paquete->getPrecioDescuento();
-      $fecha_ini_promo = $bean_paquete->getFechaIniPromo();
-      $fecha_fin_promo = $bean_paquete->getFechaFinPromo();
-      $url = $bean_paquete->getUrl();
-      $num_visitas = $bean_paquete->getNumVisitas();
-      $publicar = $bean_paquete->getPublicar();
+      $fecha_ini_promo  = $bean_paquete->getFechaIniPromo();
+      $fecha_fin_promo  = $bean_paquete->getFechaFinPromo();
+      $url              = $bean_paquete->getUrl();
+      $num_visitas      = $bean_paquete->getNumVisitas();
+      $publicar         = $bean_paquete->getPublicar();
 
-      $this->query = "UPDATE paquete SET 
+      $this->query = "UPDATE paquete SET
                         ubigeo_id = '$ubigeo_id',
                         nombre = '$nombre',
                         descripcion = '$descripcion',
@@ -234,7 +243,7 @@ class Paquete extends Connection {
       $paquete_id = $bean_paquete->getPaqueteId();
       $estado = $bean_paquete->getEstado();
 
-      $this->query = "UPDATE paquete SET 
+      $this->query = "UPDATE paquete SET
                         estado = '$estado'
                       WHERE paquete_id='$paquete_id'
                       LIMIT 1 ; ";
@@ -259,7 +268,7 @@ class Paquete extends Connection {
       $paquete_id = $bean_paquete->getPaqueteId();
       $publicar = $bean_paquete->getPublicar() ;
 
-      $this->query = "UPDATE paquete SET 
+      $this->query = "UPDATE paquete SET
                         publicar = '$publicar'
                       WHERE paquete_id = '$paquete_id'
                       LIMIT 1 ; ";

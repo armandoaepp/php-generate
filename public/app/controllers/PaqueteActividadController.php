@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_actividad  = new PaqueteActividad();
-            
+
       $bean_paquete_actividad = new BeanPaqueteActividad();
-            
+
       $bean_paquete_actividad->setEstado($estado);
 
       $data = $paquete_actividad->getByEstado($bean_paquete_actividad);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_actividad  = new PaqueteActividad($this->cnx);
 
       $bean_paquete_actividad = new BeanPaqueteActividad();
-            
+
       $bean_paquete_actividad->setPaqueteId($paquete_id);
       $bean_paquete_actividad->setActividadId($actividad_id);
       $bean_paquete_actividad->setHoras($horas);
       $bean_paquete_actividad->setDescripcion($descripcion);
-            
+
       $data = $paquete_actividad->save($bean_paquete_actividad) ;
 
       return $data ;
@@ -85,12 +85,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_actividad  = new PaqueteActividad($this->cnx);
       $bean_paquete_actividad = new BeanPaqueteActividad();
-            
+
       $bean_paquete_actividad->setPaqueteActividadId($paquete_actividad_id);
       $bean_paquete_actividad->setPaqueteId($paquete_id);
       $bean_paquete_actividad->setActividadId($actividad_id);
@@ -98,7 +98,7 @@
       $bean_paquete_actividad->setDescripcion($descripcion);
 
       $data = $paquete_actividad->update($bean_paquete_actividad) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_actividad  = new PaqueteActividad($this->cnx);
-            
+
       $bean_paquete_actividad = new BeanPaqueteActividad();
-            
+
       $bean_paquete_actividad->setPaqueteActividadId($paquete_actividad_id);
       $bean_paquete_actividad->setEstado($estado);
 
       $data = $paquete_actividad->updateEstado($bean_paquete_actividad) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -142,6 +142,7 @@
       $bean_paquete_actividad->setPaqueteActividadId($id);
 
       $data = $paquete_actividad->find( $bean_paquete_actividad) ;
+
       return $data;
 
     }

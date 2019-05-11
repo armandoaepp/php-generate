@@ -81,24 +81,24 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Paquete_id </th>
-                  <th>Ubigeo_id </th>
+                  <th width="50">ID </th>
                   <th>Nombre </th>
+                  <th>Ubigeo </th>
                   <th>Descripcion </th>
-                  <th>Recomendacion </th>
+                  <!-- <th>Recomendacion </th> -->
                   <th>Num_dias </th>
                   <th>Num_noches </th>
                   <th>Precio </th>
                   <th>Descuento </th>
-                  <th>Precio_descuento </th>
-                  <th>Fecha_ini_promo </th>
-                  <th>Fecha_fin_promo </th>
-                  <th>Url </th>
-                  <th>Num_visitas </th>
+                  <!-- <th>Precio_descuento </th> -->
+                  <!-- <th>Fecha_ini_promo </th> -->
+                  <!-- <th>Fecha_fin_promo </th> -->
+                  <!-- <th>Url </th> -->
+                  <!-- <th>Num_visitas </th> -->
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -143,21 +143,21 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->paquete_id ?> </td>
-                  <td> <?php echo $row->ubigeo_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
+                  <td> <?php echo $row->ubigeo_full ?> </td>
                   <td> <?php echo $row->descripcion ?> </td>
-                  <td> <?php echo $row->recomendacion ?> </td>
+                  <!-- <td> <?php echo $row->recomendacion ?> </td> -->
                   <td> <?php echo $row->num_dias ?> </td>
                   <td> <?php echo $row->num_noches ?> </td>
                   <td> <?php echo $row->precio ?> </td>
                   <td> <?php echo $row->descuento ?> </td>
-                  <td> <?php echo $row->precio_descuento ?> </td>
-                  <td> <?php echo $row->fecha_ini_promo ?> </td>
-                  <td> <?php echo $row->fecha_fin_promo ?> </td>
-                  <td> <?php echo $row->url ?> </td>
-                  <td> <?php echo $row->num_visitas ?> </td>
+                  <!-- <td> <?php echo $row->precio_descuento ?> </td> -->
+                  <!-- <td> <?php echo $row->fecha_ini_promo ?> </td> -->
+                  <!-- <td> <?php echo $row->fecha_fin_promo ?> </td> -->
+                  <!-- <td> <?php echo $row->url ?> </td> -->
+                  <!-- <td> <?php echo $row->num_visitas ?> </td> -->
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
@@ -165,7 +165,7 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-            
+
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete/editar.php?id=<?php echo $row->paquete_id ?>" title="Editar">
@@ -180,7 +180,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

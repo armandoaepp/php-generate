@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Actividad extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -82,7 +82,7 @@ class Actividad extends Connection {
       $descripcion = $bean_actividad->getDescripcion();
       $horas = $bean_actividad->getHoras();
 
-      $this->query = "UPDATE actividad SET 
+      $this->query = "UPDATE actividad SET
                         nombre = '$nombre',
                         descripcion = '$descripcion',
                         horas = '$horas'
@@ -145,7 +145,6 @@ class Actividad extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_actividad)
   {
@@ -168,7 +167,6 @@ class Actividad extends Connection {
     }
   }
 
-
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_actividad)
   {
@@ -176,7 +174,7 @@ class Actividad extends Connection {
       $actividad_id = $bean_actividad->getActividadId();
       $estado = $bean_actividad->getEstado();
 
-      $this->query = "UPDATE actividad SET 
+      $this->query = "UPDATE actividad SET
                         estado = '$estado'
                       WHERE actividad_id='$actividad_id'
                       LIMIT 1 ; ";
@@ -193,4 +191,5 @@ class Actividad extends Connection {
 
     }
   }
+
 }

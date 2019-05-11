@@ -33,7 +33,18 @@
 
   $servicios = $servicio_controller->getByEstado($array);
 
-  // var_dump($servicios);
+  # Adicionales
+  $adicional_controller = new AdicionalController();
+
+  $array = array(
+    'estado' => 1,
+  ) ;
+
+  $adicionales = $adicional_controller->getByEstado($array);
+
+
+
+
 
 ?>
 
@@ -138,28 +149,28 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="num_dias">Num. Días: </label>
-                  <input type="text" class="form-control" name="num_dias" id="num_dias" placeholder="Num. Días">
+                  <input type="number" class="form-control" name="num_dias" id="num_dias" required="" placeholder="Número Días" pattern="\d*" min="1" max="60">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="num_noches">Num. Noches: </label>
-                  <input type="number" class="form-control" name="num_noches" id="num_noches" placeholder="Num. Noches">
+                  <input type="number" class="form-control" name="num_noches" id="num_noches" placeholder="Num. Noches" pattern="\d*" min="1" max="60">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="precio">Precio: </label>
-                  <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio">
+                  <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio" required="" pattern="\d*" min="0" max="99999">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="descuento">Descuento(entre 0 y 100)%:: </label>
-                  <input type="number" class="form-control" name="descuento" id="descuento" value="0" placeholder="Descuento(entre 0 y 100)%:">
+                  <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Descuento" pattern="\d*" min="0" max="100" value="0" required="">
                 </div>
               </div>
 
@@ -202,7 +213,6 @@
                     <?php } ?>
                   </select>
                 </div>
-
               </div>
 
               <div class="col-6 mb-3">
@@ -215,9 +225,9 @@
                     // {
                   ?>
                   <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" name="servicio_id_incluye[]"
-                          id="servicio_incluye<?php echo $servicio->id ?>" value="<?php echo $servicio->id ?>">
-                      <label class="custom-control-label" for="servicio_incluye<?php echo $servicio->id ?>">
+                      <input type="checkbox" class="custom-control-input" name="servicio_ids_incluye[]"
+                          id="servicio_ids_incluye<?php echo $servicio->id ?>" value="<?php echo $servicio->id ?>">
+                      <label class="custom-control-label" for="servicio_ids_incluye<?php echo $servicio->id ?>">
                           <?php echo $servicio->descripcion ?>
                       </label>
                   </div>
@@ -229,17 +239,42 @@
 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
-                    <label class="form-check-label" for="no">NO</label>
-                  </div>
+                  <label for="actividad_ids">Adicionales: </label>
+                  <select class="custom-select select2-box" name="adicionales_ids[]" id="adicionales_ids" multiple="multiple" placeholder="Adicionales" required>
+                    <!-- <option value="" selected disabled hidden>Seleccionar </option> -->
+                    <!-- <option value="text">text</option> -->
+                    <?php foreach ($adicionales as $row) { ?>
+                    <option value="<?php echo $row->adicional_id; ?>"> <?php echo $row->descripcion; ?></option>
+                    <?php } ?>
+                  </select>
                 </div>
               </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="form-group">
+                    <label for="imagen">Imagen(es) :</label>
+                    <input data-file-img="images" type="file" class="form-control" name="imagenes[]" id="imagenes" required
+                      placeholder="Imagen" accept="image/*" multiple>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
 
               </div>
 

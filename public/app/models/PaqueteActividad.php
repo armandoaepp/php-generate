@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteActividad extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -40,12 +40,12 @@ class PaqueteActividad extends Connection {
     try{
 
       $paquete_actividad_id = $bean_paquete_actividad->getPaqueteActividadId();
-      $paquete_id = $bean_paquete_actividad->getPaqueteId();
-      $actividad_id = $bean_paquete_actividad->getActividadId();
-      $horas = $bean_paquete_actividad->getHoras();
-      $descripcion = $bean_paquete_actividad->getDescripcion();
-      $estado = $bean_paquete_actividad->getEstado();
-      $created_at = $bean_paquete_actividad->getCreatedAt();
+      $paquete_id           = $bean_paquete_actividad->getPaqueteId();
+      $actividad_id         = $bean_paquete_actividad->getActividadId();
+      $horas                = $bean_paquete_actividad->getHoras();
+      $descripcion          = $bean_paquete_actividad->getDescripcion();
+      $estado               = $bean_paquete_actividad->getEstado();
+      $created_at           = $bean_paquete_actividad->getCreatedAt();
 
       $this->query = "INSERT INTO paquete_actividad
                       (
@@ -84,12 +84,12 @@ class PaqueteActividad extends Connection {
   {
     try{
       $paquete_actividad_id = $bean_paquete_actividad->getPaqueteActividadId();
-      $paquete_id = $bean_paquete_actividad->getPaqueteId();
-      $actividad_id = $bean_paquete_actividad->getActividadId();
-      $horas = $bean_paquete_actividad->getHoras();
-      $descripcion = $bean_paquete_actividad->getDescripcion();
+      $paquete_id           = $bean_paquete_actividad->getPaqueteId();
+      $actividad_id         = $bean_paquete_actividad->getActividadId();
+      $horas                = $bean_paquete_actividad->getHoras();
+      $descripcion          = $bean_paquete_actividad->getDescripcion();
 
-      $this->query = "UPDATE paquete_actividad SET 
+      $this->query = "UPDATE paquete_actividad SET
                         paquete_id = '$paquete_id',
                         actividad_id = '$actividad_id',
                         horas = '$horas',
@@ -117,7 +117,7 @@ class PaqueteActividad extends Connection {
       $paquete_actividad_id = $bean_paquete_actividad->getPaqueteActividadId();
 
       $this->query = "SELECT * FROM paquete_actividad WHERE paquete_actividad_id = '$paquete_actividad_id' LIMIT 1; ";
-
+      // echo $this->query ."<br>" ;
       $this->executeFind();
 
       $data = $this->rows ;
@@ -184,7 +184,7 @@ class PaqueteActividad extends Connection {
       $paquete_actividad_id = $bean_paquete_actividad->getPaqueteActividadId();
       $estado = $bean_paquete_actividad->getEstado();
 
-      $this->query = "UPDATE paquete_actividad SET 
+      $this->query = "UPDATE paquete_actividad SET
                         estado = '$estado'
                       WHERE paquete_actividad_id='$paquete_actividad_id'
                       LIMIT 1 ; ";

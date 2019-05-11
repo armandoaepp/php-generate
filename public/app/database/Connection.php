@@ -6,10 +6,10 @@ class Connection
     protected $db_pass = '';
     protected $db_name = 'db_tours';
 
-    // protected $db_host   = 'localhost';
-    // protected $db_user   = 'escuelac_webuser2019';
-    // protected $db_pass   = 'appcumbre+*-2019';
-    // protected $db_name   = 'escuelac_web2019';
+    /* protected $db_host   = 'localhost';
+    protected $db_user   = 'nervaesscm_webuser';
+    protected $db_pass   = 'appwebmaster+*-2019';
+    protected $db_name   = 'nervaesscm_web'; */
 
     protected $db_port = '3306';
     protected $db_driver = 'mysql';
