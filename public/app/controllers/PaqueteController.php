@@ -74,16 +74,14 @@
       $num_noches         = !empty($num_noches) ? $num_noches          : 0 ;
       $precio             = $precio ;
       $descuento          = !empty($descuento) ? $descuento            : 0 ;
-      $fecha_ini_promo    = !empty($fecha_ini_promo) ? $fecha_ini_promo: "1900-01-01" ;
-      $fecha_fin_promo    = !empty($fecha_fin_promo) ? $fecha_fin_promo: "1900-01-01" ;
+      $fecha_ini_promo    = !empty($fecha_ini_promo) ? $fecha_ini_promo: NULL;
+      $fecha_fin_promo    = !empty($fecha_fin_promo) ? $fecha_fin_promo: NULL;
       // $fecha_ini_promo = $fecha_ini_promo ;
       // $fecha_fin_promo = $fecha_fin_promo ;
       $url                = !empty($url) ? $url                        : "" ;
       $num_visitas        = !empty($num_visitas) ? $num_visitas        : 0 ;
       $publicar           = $publicar ;
 
-      $actividad_ids    = $actividad_ids ;
-      $servicio_ids_incluye = $servicio_ids_incluye ;
 
       $precio_descuento = $precio ;
       if($descuento > 0){
@@ -127,6 +125,31 @@
       $paquete  = new Paquete($this->cnx);
       $bean_paquete = new BeanPaquete();
 
+      $paquete_id         = $paquete_id ;
+      $ubigeo_id          = $ubigeo_id ;
+      $nombre             = $nombre ;
+      $descripcion        = !empty($descripcion) ? $descripcion        : "" ;
+      $recomendacion      = !empty($recomendacion) ? $recomendacion    : "" ;
+      $num_dias           = !empty($num_dias) ? $num_dias              : 0 ;
+      $num_noches         = !empty($num_noches) ? $num_noches          : 0 ;
+      $precio             = $precio ;
+      $descuento          = !empty($descuento) ? $descuento            : 0 ;
+      $fecha_ini_promo    = !empty($fecha_ini_promo) ? $fecha_ini_promo: "1900-01-01" ;
+      $fecha_fin_promo    = !empty($fecha_fin_promo) ? $fecha_fin_promo: "1900-01-01" ;
+      // $fecha_ini_promo = $fecha_ini_promo ;
+      // $fecha_fin_promo = $fecha_fin_promo ;
+      $url                = !empty($url) ? $url                        : "" ;
+      // $num_visitas        = !empty($num_visitas) ? $num_visitas        : 0 ;
+      $publicar           = $publicar ;
+
+
+      $precio_descuento = $precio ;
+      if($descuento > 0)
+      {
+        $precio_descuento = $precio - ( $precio * ($descuento/100) ) ;
+      }
+
+
       $bean_paquete->setPaqueteId($paquete_id);
       $bean_paquete->setUbigeoId($ubigeo_id);
       $bean_paquete->setNombre($nombre);
@@ -140,7 +163,7 @@
       $bean_paquete->setFechaIniPromo($fecha_ini_promo);
       $bean_paquete->setFechaFinPromo($fecha_fin_promo);
       $bean_paquete->setUrl($url);
-      $bean_paquete->setNumVisitas($num_visitas);
+      // $bean_paquete->setNumVisitas($num_visitas);
       $bean_paquete->setPublicar($publicar);
 
       $data = $paquete->update($bean_paquete) ;

@@ -27,9 +27,20 @@
   $url                 = UrlHelper::urlFriendly($nombre);
   $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
 
-  $actividad_ids    = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]: [] ;
-  $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"] : [] ;
-  $adicionales_ids = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"] : [] ;
+  $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
+  $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
+  $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
+
+  // echo date("Y-m-d", strtotime($fecha_ini_promo) );
+  echo($fecha_ini_promo)."<br>";
+  $fechas = explode ( '-' , $fecha_ini_promo ) ;
+  $fechas_ini = $fechas[0];
+  $fechas_fin = $fechas[1];
+  echo($fechas_ini)."<br>";
+  echo($fechas_fin)."<br>";
+
+
+  return ;
 
 
   $params = array(
@@ -72,7 +83,6 @@
         $itinerario_ctrl->save( $params_itinerario) ;
       }
     }
-
 
     ## Actividades Paquete
     $paquete_actividad_ctrl = new PaqueteActividadController() ;
@@ -168,9 +178,6 @@
     # ===================================================================
 
   }
-
-
-
 
 
   if($paquete_id>0){

@@ -153,7 +153,6 @@ class PaqueteActividad extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_paquete_actividad)
   {
@@ -175,7 +174,6 @@ class PaqueteActividad extends Connection {
 
     }
   }
-
 
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_paquete_actividad)
@@ -201,4 +199,29 @@ class PaqueteActividad extends Connection {
 
     }
   }
+
+    # Method getByPaqueteId
+    public function getByPaqueteId($bean_paquete_actividad)
+    {
+      try{
+        $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
+
+        $this->query = "SELECT * FROM paquete_actividad
+                        WHERE paquete_id = '$paquete_id'
+                        AND estado = 1; ";
+
+        $this->executeQuery();
+
+        $data = $this->rows ;
+
+        return $data;
+
+      }catch(exception $e){
+
+        throw new Exception($e->getMessage());
+
+      }
+    }
+
+
 }

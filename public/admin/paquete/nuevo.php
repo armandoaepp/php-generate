@@ -184,14 +184,14 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="fecha_ini_promo">Fecha Inicio Promo: </label>
-                  <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="Fecha Inicio Promo">
+                  <input type="text" class="form-control datepicker" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="Fecha Inicio Promo">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="fecha_fin_promo">Fecha Fin Promo: </label>
-                  <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="Fecha Fin Promo">
+                  <input type="text" class="form-control datepicker" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="Fecha Fin Promo">
                 </div>
               </div>
 
@@ -297,6 +297,30 @@
   <?php require_once "../layout/foot_links.phtml"; ?>
   <?php require_once "../layout/ckeditor.phtml"; ?>
   <?php require_once "../layout/select2.phtml"; ?>
+
+<!--   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <!-- <script>
+      $('.datepicker').datepicker({
+          uiLibrary: 'bootstrap4',
+          multidate: true
+      });
+  </script> -->
+
+<script>
+$(function() {
+  $('input.datepicker').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
 
 
 </body>

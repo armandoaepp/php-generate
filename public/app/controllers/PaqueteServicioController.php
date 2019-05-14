@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_servicio  = new PaqueteServicio();
-            
+
       $bean_paquete_servicio = new BeanPaqueteServicio();
-            
+
       $bean_paquete_servicio->setEstado($estado);
 
       $data = $paquete_servicio->getByEstado($bean_paquete_servicio);
@@ -59,17 +59,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_servicio  = new PaqueteServicio($this->cnx);
 
       $bean_paquete_servicio = new BeanPaqueteServicio();
-            
+
       $bean_paquete_servicio->setPaqueteId($paquete_id);
       $bean_paquete_servicio->setServicioId($servicio_id);
       $bean_paquete_servicio->setTipo($tipo);
-            
+
       $data = $paquete_servicio->save($bean_paquete_servicio) ;
 
       return $data ;
@@ -84,19 +84,19 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_servicio  = new PaqueteServicio($this->cnx);
       $bean_paquete_servicio = new BeanPaqueteServicio();
-            
+
       $bean_paquete_servicio->setId($id);
       $bean_paquete_servicio->setPaqueteId($paquete_id);
       $bean_paquete_servicio->setServicioId($servicio_id);
       $bean_paquete_servicio->setTipo($tipo);
 
       $data = $paquete_servicio->update($bean_paquete_servicio) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -109,18 +109,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_servicio  = new PaqueteServicio($this->cnx);
-            
+
       $bean_paquete_servicio = new BeanPaqueteServicio();
-            
+
       $bean_paquete_servicio->setId($id);
       $bean_paquete_servicio->setEstado($estado);
 
       $data = $paquete_servicio->updateEstado($bean_paquete_servicio) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -164,6 +164,29 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPaqueteId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_servicio  = new PaqueteServicio();
+
+      $bean_paquete_servicio = new BeanPaqueteServicio();
+
+      $bean_paquete_servicio->setPaqueteId($paquete_id);
+
+      $data = $paquete_servicio->getPaqueteId($bean_paquete_servicio);
+
+      return $data ;
     }
     catch (Exception $e)
     {

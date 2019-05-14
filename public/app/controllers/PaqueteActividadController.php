@@ -174,4 +174,27 @@
     }
   }
 
+  public function getByPaqueteId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_actividad  = new PaqueteActividad();
+
+      $bean_paquete_actividad = new BeanPaqueteActividad();
+
+      $bean_paquete_actividad->setPaqueteId($paquete_id);
+
+      $data = $paquete_actividad->getByPaqueteId($bean_paquete_actividad);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 }

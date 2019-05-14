@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_img  = new PaqueteImg();
-            
+
       $bean_paquete_img = new BeanPaqueteImg();
-            
+
       $bean_paquete_img->setEstado($estado);
 
       $data = $paquete_img->getByEstado($bean_paquete_img);
@@ -59,17 +59,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_img  = new PaqueteImg($this->cnx);
 
       $bean_paquete_img = new BeanPaqueteImg();
-            
+
       $bean_paquete_img->setPaqueteId($paquete_id);
       $bean_paquete_img->setImagen($imagen);
       $bean_paquete_img->setItem($item);
-            
+
       $data = $paquete_img->save($bean_paquete_img) ;
 
       return $data ;
@@ -84,19 +84,19 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_img  = new PaqueteImg($this->cnx);
       $bean_paquete_img = new BeanPaqueteImg();
-            
+
       $bean_paquete_img->setId($id);
       $bean_paquete_img->setPaqueteId($paquete_id);
       $bean_paquete_img->setImagen($imagen);
       $bean_paquete_img->setItem($item);
 
       $data = $paquete_img->update($bean_paquete_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -109,18 +109,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_img  = new PaqueteImg($this->cnx);
-            
+
       $bean_paquete_img = new BeanPaqueteImg();
-            
+
       $bean_paquete_img->setId($id);
       $bean_paquete_img->setEstado($estado);
 
       $data = $paquete_img->updateEstado($bean_paquete_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -187,4 +187,26 @@
     }
   }
 
+  public function getByPaqueId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_img  = new PaqueteImg();
+
+      $bean_paquete_img = new BeanPaqueteImg();
+
+      $bean_paquete_img->setPaqueteId($paquete_id);
+
+      $data = $paquete_img->getByPaqueId($bean_paquete_img);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 }

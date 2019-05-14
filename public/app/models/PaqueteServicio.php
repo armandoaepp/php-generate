@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteServicio extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -85,7 +85,7 @@ class PaqueteServicio extends Connection {
       $servicio_id = $bean_paquete_servicio->getServicioId();
       $tipo = $bean_paquete_servicio->getTipo();
 
-      $this->query = "UPDATE paquete_servicio SET 
+      $this->query = "UPDATE paquete_servicio SET
                         paquete_id = '$paquete_id',
                         servicio_id = '$servicio_id',
                         tipo = '$tipo'
@@ -148,7 +148,6 @@ class PaqueteServicio extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_paquete_servicio)
   {
@@ -171,7 +170,6 @@ class PaqueteServicio extends Connection {
     }
   }
 
-
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_paquete_servicio)
   {
@@ -179,7 +177,7 @@ class PaqueteServicio extends Connection {
       $id = $bean_paquete_servicio->getId();
       $estado = $bean_paquete_servicio->getEstado();
 
-      $this->query = "UPDATE paquete_servicio SET 
+      $this->query = "UPDATE paquete_servicio SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -196,4 +194,31 @@ class PaqueteServicio extends Connection {
 
     }
   }
+
+    # Method getPaqueteId
+    public function getPaqueteId($bean_paquete_servicio)
+    {
+      try{
+        $paquete_id = $bean_paquete_servicio->getPaqueteId() ;
+
+        $this->query = "SELECT * FROM paquete_servicio
+                        WHERE paquete_id = '$paquete_id'
+                        AND estado = 1; ";
+        // echo $this->query ;
+        // echo "<br>";
+
+        $this->executeQuery();
+
+        $data = $this->rows ;
+
+        return $data;
+
+      }catch(exception $e){
+
+        throw new Exception($e->getMessage());
+
+      }
+    }
+
+
 }

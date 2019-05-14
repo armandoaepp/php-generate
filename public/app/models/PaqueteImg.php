@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteImg extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -82,7 +82,7 @@ class PaqueteImg extends Connection {
       $imagen = $bean_paquete_img->getImagen();
       $item = $bean_paquete_img->getItem();
 
-      $this->query = "UPDATE paquete_img SET 
+      $this->query = "UPDATE paquete_img SET
                         paquete_id = '$paquete_id',
                         imagen = '$imagen',
                         item = '$item'
@@ -145,7 +145,6 @@ class PaqueteImg extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_paquete_img)
   {
@@ -168,7 +167,6 @@ class PaqueteImg extends Connection {
     }
   }
 
-
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_paquete_img)
   {
@@ -176,7 +174,7 @@ class PaqueteImg extends Connection {
       $id = $bean_paquete_img->getId();
       $estado = $bean_paquete_img->getEstado();
 
-      $this->query = "UPDATE paquete_img SET 
+      $this->query = "UPDATE paquete_img SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -202,6 +200,29 @@ class PaqueteImg extends Connection {
       $this->query = "SELECT count(*) AS num_rows FROM paquete_img;";
 
       $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method getBypaqueId
+  public function getByPaqueId($bean_paquete_img)
+  {
+    try{
+      $paquete_id = $bean_paquete_img->getPaqueteId() ;
+
+      $this->query = "SELECT * FROM paquete_img
+                      WHERE paquete_id = '$paquete_id'
+                      AND estado = 1; ";
+
+      $this->executeQuery();
 
       $data = $this->rows ;
 

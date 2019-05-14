@@ -143,7 +143,6 @@ class PaqueteAdicional extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_paquete_adicional)
   {
@@ -165,7 +164,6 @@ class PaqueteAdicional extends Connection {
 
     }
   }
-
 
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_paquete_adicional)
@@ -191,4 +189,29 @@ class PaqueteAdicional extends Connection {
 
     }
   }
+
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_adicional)
+  {
+    try{
+      $paquete_id = $bean_paquete_adicional->getPaqueteId() ;
+
+      $this->query = "SELECT * FROM paquete_adicional
+                      WHERE paquete_id = '$paquete_id'
+                      AND estado = 1; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+
 }

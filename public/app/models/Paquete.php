@@ -135,7 +135,7 @@ class Paquete extends Connection {
       $fecha_ini_promo  = $bean_paquete->getFechaIniPromo();
       $fecha_fin_promo  = $bean_paquete->getFechaFinPromo();
       $url              = $bean_paquete->getUrl();
-      $num_visitas      = $bean_paquete->getNumVisitas();
+      // $num_visitas      = $bean_paquete->getNumVisitas();
       $publicar         = $bean_paquete->getPublicar();
 
       $this->query = "UPDATE paquete SET
@@ -151,7 +151,6 @@ class Paquete extends Connection {
                         fecha_ini_promo = '$fecha_ini_promo',
                         fecha_fin_promo = '$fecha_fin_promo',
                         url = '$url',
-                        num_visitas = '$num_visitas',
                         publicar = '$publicar'
                       WHERE paquete_id = '$paquete_id'
                       LIMIT 1 ;";
