@@ -27,8 +27,8 @@ elseif (isset($_POST))
   $evento = $inputs->accion;
 }
 
-$email = 'armandoaepp@gmail.com' ;
-$password = 'armando' ;
+// $email = 'armandoaepp@gmail.com' ;
+// $password = 'armando' ;
 
 switch($evento)
 {
@@ -43,15 +43,15 @@ switch($evento)
 
         $auth_controller = new AuthController();
 
-        $params = array(
-              'email'    => $email,
-              'password' => $password,
-            );
-
         // $params = array(
-        //   'email'    => $inputs->email,
-        //   'password' => $inputs->password,
-        // );
+        //       'email'    => $email,
+        //       'password' => $password,
+        //     );
+
+        $params = array(
+          'email'    => $inputs->email,
+          'password' => $inputs->password,
+        );
 
         $user = $auth_controller->login($params);
 
