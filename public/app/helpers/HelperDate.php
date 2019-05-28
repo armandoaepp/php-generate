@@ -44,4 +44,48 @@ class HelperDate
         return $new_date;
     }
 
+    /**
+     * value[ dd/mm/yyyy ]
+     * return [ yyyy-mm-dd ]
+     */
+    public static function formatDate_dd_mm_yyyy_to_DB( $value )
+    {
+      $value = trim($value);
+
+      if(empty($value)) return null ;
+
+      $exploded = explode("/", $value);
+
+      //Reverse the order.
+      $exploded = array_reverse($exploded);
+
+      //Convert it back into a string.
+      $new_format = implode("-", $exploded);
+
+      return $new_format;
+
+    }
+
+    /**
+     * value[ dd/mm/yyyy ]
+     * return [ yyyy-mm-dd ]
+     */
+    public static function formatDate_DB_to_dd_mm_yyyyy( $value )
+    {
+      $value = trim($value);
+
+      if(empty($value)) return null ;
+
+      $exploded = explode("-", $value);
+
+      //Reverse the order.
+      $exploded = array_reverse($exploded);
+
+      //Convert it back into a string.
+      $new_format = implode("/", $exploded);
+
+      return $new_format;
+
+    }
+
 }

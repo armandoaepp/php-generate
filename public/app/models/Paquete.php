@@ -101,6 +101,8 @@ class Paquete extends Connection {
                         $created_at
                       ); ";
 
+      // echo $this->query."<br>" ;
+
       $this->executeQuery();
 
       $id = $this->lastInsertId();

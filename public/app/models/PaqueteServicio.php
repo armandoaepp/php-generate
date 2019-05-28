@@ -195,8 +195,8 @@ class PaqueteServicio extends Connection {
     }
   }
 
-    # Method getPaqueteId
-    public function getPaqueteId($bean_paquete_servicio)
+    # Method getByPaqueteId
+    public function getByPaqueteId($bean_paquete_servicio)
     {
       try{
         $paquete_id = $bean_paquete_servicio->getPaqueteId() ;

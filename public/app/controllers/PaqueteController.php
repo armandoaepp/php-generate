@@ -134,19 +134,16 @@
       $num_noches         = !empty($num_noches) ? $num_noches          : 0 ;
       $precio             = $precio ;
       $descuento          = !empty($descuento) ? $descuento            : 0 ;
-      $fecha_ini_promo    = !empty($fecha_ini_promo) ? $fecha_ini_promo: "1900-01-01" ;
-      $fecha_fin_promo    = !empty($fecha_fin_promo) ? $fecha_fin_promo: "1900-01-01" ;
-      // $fecha_ini_promo = $fecha_ini_promo ;
-      // $fecha_fin_promo = $fecha_fin_promo ;
+      $fecha_ini_promo    = !empty($fecha_ini_promo) ? $fecha_ini_promo: NULL;
+      $fecha_fin_promo    = !empty($fecha_fin_promo) ? $fecha_fin_promo: NULL;
       $url                = !empty($url) ? $url                        : "" ;
       // $num_visitas        = !empty($num_visitas) ? $num_visitas        : 0 ;
       $publicar           = $publicar ;
 
 
       $precio_descuento = $precio ;
-      if($descuento > 0)
-      {
-        $precio_descuento = $precio - ( $precio * ($descuento/100) ) ;
+      if($descuento > 0){
+          $precio_descuento = $precio - ( $precio * ($descuento/100) ) ;
       }
 
 

@@ -171,7 +171,7 @@
     }
   }
 
-  public function getPaqueteId( $params = array() )
+  public function getByPaqueteId( $params = array() )
   {
     try
     {
@@ -184,7 +184,7 @@
 
       $bean_paquete_servicio->setPaqueteId($paquete_id);
 
-      $data = $paquete_servicio->getPaqueteId($bean_paquete_servicio);
+      $data = $paquete_servicio->getByPaqueteId($bean_paquete_servicio);
 
       return $data ;
     }

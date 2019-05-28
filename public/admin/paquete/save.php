@@ -20,8 +20,10 @@
   $precio              = $_POST["precio"] ;
   $descuento           = $_POST["descuento"] ;
   // $precio_descuento = $_POST["precio_descuento"] ;
-  $fecha_ini_promo     = !empty($_POST["fecha_ini_promo"]) ? $_POST["fecha_ini_promo"]: null ;
-  $fecha_fin_promo     = !empty($_POST["fecha_fin_promo"]) ? $_POST["fecha_fin_promo"]: null ;
+  // $fecha_ini_promo     = !empty($_POST["fecha_ini_promo"]) ? $_POST["fecha_ini_promo"]: null ;
+  // $fecha_fin_promo     = !empty($_POST["fecha_fin_promo"]) ? $_POST["fecha_fin_promo"]: null ;
+  $fechas_promo     = !empty($_POST["fechas_promo"]) ? $_POST["fechas_promo"]: null ;
+
   // $num_visitas         = !empty($_POST["num_visitas"]) ? $_POST["num_visitas"] : 0 ;
   $publicar            = $_POST["publicar"] ;
   $url                 = UrlHelper::urlFriendly($nombre);
@@ -31,38 +33,36 @@
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
   $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
 
-  // echo date("Y-m-d", strtotime($fecha_ini_promo) );
-  echo($fecha_ini_promo)."<br>";
-  $fechas = explode ( '-' , $fecha_ini_promo ) ;
-  $fechas_ini = $fechas[0];
-  $fechas_fin = $fechas[1];
-  echo($fechas_ini)."<br>";
-  echo($fechas_fin)."<br>";
-
-
-  return ;
+  $fecha_ini_promo = NULL ;
+  $fecha_fin_promo = NULL ;
+  if( !empty($fechas_promo) )
+  {
+    $fechas = explode ( '-' , $fechas_promo ) ;
+    $fecha_ini_promo = HelperDate::formatDate_dd_mm_yyyy_to_DB($fechas[0]) ;
+    $fecha_fin_promo = HelperDate::formatDate_dd_mm_yyyy_to_DB($fechas[1]) ;
+  }
 
 
   $params = array(
-    "ubigeo_id"           => $ubigeo_id,
-    "nombre"              => $nombre,
-    "descripcion"         => $descripcion,
-    "recomendacion"       => $recomendacion,
-    "num_dias"            => $num_dias,
-    "num_noches"          => $num_noches,
-    "precio"              => $precio,
-    "descuento"           => $descuento,
-    // "precio_descuento" => $precio_descuento,
-    "fecha_ini_promo"     => $fecha_ini_promo,
-    "fecha_fin_promo"     => $fecha_fin_promo,
-    // "num_visitas"      => $num_visitas,
-    "publicar"            => $publicar,
-    "url"                 => $url,
-    "actividad_ids"       => $actividad_ids,
-    "servicio_ids_incluye"    => $servicio_ids_incluye,
+    "ubigeo_id"            => $ubigeo_id,
+    "nombre"               => $nombre,
+    "descripcion"          => $descripcion,
+    "recomendacion"        => $recomendacion,
+    "num_dias"             => $num_dias,
+    "num_noches"           => $num_noches,
+    "precio"               => $precio,
+    "descuento"            => $descuento,
+    // "precio_descuento"  => $precio_descuento,
+    "fecha_ini_promo"      => $fecha_ini_promo,
+    "fecha_fin_promo"      => $fecha_fin_promo,
+    // "num_visitas"       => $num_visitas,
+    "publicar"             => $publicar,
+    "url"                  => $url,
+    "actividad_ids"        => $actividad_ids,
+    "servicio_ids_incluye" => $servicio_ids_incluye,
 
   );
-
+  // var_dump($params);
   $paquete_id = $paquete_controller->save($params);
 
   if($paquete_id > 0 )

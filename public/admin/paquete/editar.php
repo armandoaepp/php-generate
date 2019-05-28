@@ -13,90 +13,94 @@
   require_once "../../app/autoload.php";
 
   #Distritos
-  $ubigeo_controller = new UbigeoController();
+    $ubigeo_controller = new UbigeoController();
 
-  $array = array(
-    'pais_id' => 1,
-  ) ;
+    $array = array(
+      'pais_id' => 1,
+    ) ;
 
-  $distritos = $ubigeo_controller->getDistritosByPaisId($array);
+    $distritos = $ubigeo_controller->getDistritosByPaisId($array);
 
   # Actividades
-  $actividad_controller = new ActividadController();
+    $actividad_controller = new ActividadController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $actividades = $actividad_controller->getByEstado($array);
+    $actividades = $actividad_controller->getByEstado($array);
 
 
   # Servicios
-  $servicio_controller = new ServicioController();
+    $servicio_controller = new ServicioController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $servicios = $servicio_controller->getByEstado($array);
+    $servicios = $servicio_controller->getByEstado($array);
 
   # Adicionales
-  $adicional_controller = new AdicionalController();
+    $adicional_controller = new AdicionalController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $adicionales = $adicional_controller->getByEstado($array);
+    $adicionales = $adicional_controller->getByEstado($array);
 
-  $paquete_controller = new PaqueteController();
+  # paquete by IDs
+    $paquete_controller = new PaqueteController();
 
-  $paquete = $paquete_controller->find($paquete_id);
+    $paquete = $paquete_controller->find($paquete_id);
 
-  $publicar = trim($paquete->publicar);
+    $publicar = trim($paquete->publicar);
 
-  $si = "";
-  $no = "";
+    $si = "";
+    $no = "";
 
-  if ($publicar == "S") {
-      $si = "checked='checked'";
-  } elseif ($publicar == "N") {
-      $no = "checked='checked'";
-  }
+    if ($publicar == "S") {
+        $si = "checked='checked'";
+    } elseif ($publicar == "N") {
+        $no = "checked='checked'";
+    }
 
-  $title_page = "Paquete";
+    $title_page = "Paquete";
 
   # actividades paquete seleccionado
-  $paquete_actividad_controller = new PaqueteActividadController();
-  $array = array(
-    'paquete_id' => $paquete_id,
-  ) ;
+    $paquete_actividad_controller = new PaqueteActividadController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-  $actividades_paquete = $paquete_actividad_controller->getByPaqueteId($array);
+    $actividades_paquete = $paquete_actividad_controller->getByPaqueteId($array);
 
-  $paquete_actividad_ids = array_column($actividades_paquete, 'paquete_actividad_id');
+    $paquete_actividad_ids = array_column($actividades_paquete, 'paquete_actividad_id');
 
   # servicios paquete seleccionado
-  $paquete_servicio_controller = new PaqueteServicioController();
-  $array = array(
-    'paquete_id' => $paquete_id,
-  ) ;
+    $paquete_servicio_controller = new PaqueteServicioController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-  $paquete_servicios = $paquete_servicio_controller->getPaqueteId($array);
+    $paquete_servicios = $paquete_servicio_controller->getByPaqueteId($array);
 
-  $paquete_servicio_ids = array_column($paquete_servicios, 'servicio_id');
+    $paquete_servicio_ids = array_column($paquete_servicios, 'servicio_id');
 
   # adicionales paquete seleccionado
-  $paquete_adicionales_controller = new PaqueteServicioController();
+  $paquete_adicionales_controller = new PaqueteAdicionalController();
   $array = array(
     'paquete_id' => $paquete_id,
   ) ;
 
-  $paquete_adicioales = $paquete_adicionales_controller->getPaqueteId($array);
+  $paquete_adicioales = $paquete_adicionales_controller->getByPaqueteId($array);
 
   $paquete_adicional_ids = array_column($paquete_adicioales, 'adicional_id');
 
-  # adicionales paquete seleccionado
+  // var_dump($paquete_adicioales);
+  // var_dump($paquete_adicional_ids);
+
+  # Imgs paquete seleccionado
   $paquete_adicionales_controller = new PaqueteImgController();
   $array = array(
     'paquete_id' => $paquete_id,
@@ -104,12 +108,8 @@
 
   $paquete_imgs = $paquete_adicionales_controller->getByPaqueId($array);
 
-  // $paquete_imgs_ids = array_column($paquete_imgs, 'adicional_id');
-
-  // echo "<pre>";
-  // var_dump($paquete_servicios_paquete);
-  // print_r($paquete_imgs);
-  // echo "</pre>";
+  $fecha_ini_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_ini_promo);
+  $fecha_fin_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_fin_promo);
 
 ?>
 
@@ -247,7 +247,7 @@
                 </div>
               </div> -->
 
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group">
                   <label for="fecha_ini_promo">Fecha Inicio Promo: </label>
                   <input type="text" class="form-control datepicker" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="Fecha Inicio Promo" value="<?php echo $paquete->fecha_ini_promo; ?>">
@@ -259,7 +259,16 @@
                   <label for="fecha_fin_promo">Fecha Fin Promo: </label>
                   <input type="text" class="form-control datepicker" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="Fecha Fin Promo" value="<?php echo $paquete->fecha_fin_promo; ?>">
                 </div>
+              </div> -->
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fechas_promo">Fechas  Promo: </label>
+                  <input type="text" data-filter-type="date-range" class="form-control" name="fechas_promo" id="fechas_promo" placeholder="Fecha Fin Promo" value="<?php echo $fecha_ini_promo." - ".$fecha_fin_promo; ?>">
+                </div>
               </div>
+
+
 
               <!-- <div class="col-md-12">
                 <div class="form-group">
@@ -310,7 +319,7 @@
                     <!-- <option value="" selected disabled hidden>Seleccionar </option> -->
                     <!-- <option value="text">text</option>  -->
                     <?php foreach ($adicionales as $row) { ?>
-                    <option value="<?php echo $row->adicional_id; ?>" <?php if( in_array($row->adicional_id, $paquete_adicional_ids) ) echo "checked" ?>> <?php echo $row->descripcion; ?></option>
+                    <option value="<?php echo $row->adicional_id; ?>" <?php if( in_array($row->adicional_id, $paquete_adicional_ids) ) echo "selected" ?>> <?php echo $row->descripcion; ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -389,15 +398,7 @@
   <?php require_once "../layout/ckeditor.phtml"; ?>
   <?php require_once "../layout/select2.phtml"; ?>
   <?php require_once "../layout/fancybox.phtml"; ?>
-
-  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-  <script>
-      $('.datepicker').datepicker({
-          uiLibrary: 'bootstrap4'
-      });
-  </script>
-
+  <?php require_once "../layout/daterangepicker.phtml"; ?>
 
 </body>
 
