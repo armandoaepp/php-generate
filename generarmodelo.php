@@ -83,8 +83,8 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '    try{' . PHP_EOL;
         $texto .= '' . PHP_EOL;
 
-        // if (in_array('created_up', $atributos) ) {
-        //     $texto .= '      $bean_'.$tabla.'->set' . toCamelCase("created_up") . '( HelperDate::timestampsBd() );' . PHP_EOL;
+        // if (in_array('created_at', $atributos) ) {
+        //     $texto .= '      $bean_'.$tabla.'->set' . toCamelCase("created_at") . '( HelperDate::timestampsBd() );' . PHP_EOL;
         //     $texto .= '' . PHP_EOL;
         // }
 
@@ -100,7 +100,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         for ($i = 1; $i < count($atributos); $i++) {
             $campos .= "                        " . $atributos[$i] ;
 
-            if ($atributos[$i] == "created_up") {
+            if ($atributos[$i] == "created_at") {
                 $concat .= "                        " . '$' . $atributos[$i]."" ;
             }
             else{

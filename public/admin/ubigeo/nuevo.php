@@ -70,7 +70,7 @@
             <form action="admin/ubigeo/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="codigo">Codigo: </label>
@@ -79,8 +79,8 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ubigeo">Ubigeo: </label>
-                  <input type="text" class="form-control" name="ubigeo" id="ubigeo" placeholder="Ubigeo">
+                  <label for="nombre">Nombre: </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
                 </div>
               </div>
               <div class="col-md-12">
@@ -92,39 +92,42 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="ubigeo_id_padre">UbigeoIdPadre: </label>
-                  <input type="text" class="form-control" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre">
+                  <select class="custom-select" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre">
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <option value="text">text</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="pais_id">PaisId: </label>
                   <select class="custom-select" name="pais_id" id="pais_id" placeholder="PaisId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="" selected disabled hidden>Seleccionar </option>
                     <option value="text">text</option>
                   </select>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tipo_ubigeo_id">TipoUbigeoId: </label>
-                  <input type="text" class="form-control" name="tipo_ubigeo_id" id="tipo_ubigeo_id" placeholder="TipoUbigeoId">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="region_id">RegionId: </label>
                   <select class="custom-select" name="region_id" id="region_id" placeholder="RegionId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="" selected disabled hidden>Seleccionar </option>
                     <option value="text">text</option>
                   </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="tipo">Tipo: </label>
+                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo">
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/ubigeo/ubigeo.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/ubigeo/ubigeo.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
             </form>

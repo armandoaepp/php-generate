@@ -27,7 +27,7 @@
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
+        "titulo" => "Editar $title_page",
         "follow" => "",
         "description" => "Administrador",
         "keywords" => "administrador",
@@ -35,9 +35,9 @@
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
+        "sidebar_class"  => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+        "sidebar_active" => [2,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,37 +85,19 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $pais['nombre']; ?>">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tld">Tld: </label>
-                  <input type="text" class="form-control" name="tld" id="tld" placeholder="Tld" value="<?php echo $pais['tld']; ?>">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="code">Code: </label>
-                  <input type="text" class="form-control" name="code" id="code" placeholder="Code" value="<?php echo $pais['code']; ?>">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="code_int">CodeInt: </label>
-                  <input type="text" class="form-control" name="code_int" id="code_int" placeholder="CodeInt" value="<?php echo $pais['code_int']; ?>">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $pais->nombre; ?>">
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/pais/pais.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/pais/pais.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 
             </form>

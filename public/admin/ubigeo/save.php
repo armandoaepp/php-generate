@@ -12,21 +12,21 @@
   $ubigeo_controller = new UbigeoController();
 
   $codigo   = $_POST["codigo"] ;
-  $ubigeo   = $_POST["ubigeo"] ;
+  $nombre   = $_POST["nombre"] ;
   $descripcion   = $_POST["descripcion"] ;
   $ubigeo_id_padre   = $_POST["ubigeo_id_padre"] ;
   $pais_id   = $_POST["pais_id"] ;
-  $tipo_ubigeo_id   = $_POST["tipo_ubigeo_id"] ;
   $region_id   = $_POST["region_id"] ;
+  $tipo   = $_POST["tipo"] ;
 
   $params = array(
     "codigo"   => $codigo,
-    "ubigeo"   => $ubigeo,
+    "nombre"   => $nombre,
     "descripcion"   => $descripcion,
     "ubigeo_id_padre"   => $ubigeo_id_padre,
     "pais_id"   => $pais_id,
-    "tipo_ubigeo_id"   => $tipo_ubigeo_id,
     "region_id"   => $region_id,
+    "tipo"   => $tipo,
   );
 
 

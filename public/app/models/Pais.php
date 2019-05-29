@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Pais extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -39,26 +39,17 @@ class Pais extends Connection {
   {
     try{
 
-      $id = $bean_pais->getId();
+      $pais_id = $bean_pais->getPaisId();
       $nombre = $bean_pais->getNombre();
-      $tld = $bean_pais->getTld();
-      $code = $bean_pais->getCode();
-      $code_int = $bean_pais->getCodeInt();
       $estado = $bean_pais->getEstado();
 
       $this->query = "INSERT INTO pais
                       (
                         nombre,
-                        tld,
-                        code,
-                        code_int,
                         estado
                       )
                       VALUES(
                         '$nombre',
-                        '$tld',
-                        '$code',
-                        '$code_int',
                         '$estado'
                       ); ";
 
@@ -80,18 +71,12 @@ class Pais extends Connection {
   public function update($bean_pais)
   {
     try{
-      $id = $bean_pais->getId();
+      $pais_id = $bean_pais->getPaisId();
       $nombre = $bean_pais->getNombre();
-      $tld = $bean_pais->getTld();
-      $code = $bean_pais->getCode();
-      $code_int = $bean_pais->getCodeInt();
 
-      $this->query = "UPDATE pais SET 
-                        nombre = '$nombre',
-                        tld = '$tld',
-                        code = '$code',
-                        code_int = '$code_int'
-                      WHERE id = '$id'
+      $this->query = "UPDATE pais SET
+                        nombre = '$nombre'
+                      WHERE pais_id = '$pais_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -111,9 +96,9 @@ class Pais extends Connection {
   public function find($bean_pais)
   {
     try{
-      $id = $bean_pais->getId();
+      $pais_id = $bean_pais->getPaisId();
 
-      $this->query = "SELECT * FROM pais WHERE id = '$id' LIMIT 1; ";
+      $this->query = "SELECT * FROM pais WHERE pais_id = '$pais_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -132,10 +117,10 @@ class Pais extends Connection {
   public function deleteById($bean_pais)
   {
     try{
-      $id = $bean_pais->getId();
+      $pais_id = $bean_pais->getPaisId();
 
       $this->query = "DELETE FROM pais
-                      WHERE id = '$id' LIMIT 1; ";
+                      WHERE pais_id = '$pais_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -178,12 +163,12 @@ class Pais extends Connection {
   public function updateEstado($bean_pais)
   {
     try{
-      $id = $bean_pais->getId();
+      $pais_id = $bean_pais->getPaisId();
       $estado = $bean_pais->getEstado();
 
-      $this->query = "UPDATE pais SET 
+      $this->query = "UPDATE pais SET
                         estado = '$estado'
-                      WHERE id='$id'
+                      WHERE pais_id='$pais_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();

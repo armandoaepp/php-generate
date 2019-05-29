@@ -167,8 +167,8 @@ $html .= '
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/' .$url . '/' .$url . '.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/' .$url . '/' .$url . '.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
             </form>

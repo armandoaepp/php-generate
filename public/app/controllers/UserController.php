@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
- class UserController
+class UserController
 {
   private $cnx;
 
@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $user  = new User();
-            
+
       $bean_user = new BeanUser();
-            
+
       $bean_user->setEstado($estado);
 
       $data = $user->getByEstado($bean_user);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $user  = new User($this->cnx);
 
       $bean_user = new BeanUser();
-            
+
       $bean_user->setNombre($nombre);
       $bean_user->setApellidos($apellidos);
       $bean_user->setEmail($email);
       $bean_user->setPassword($password);
-            
+
       $data = $user->save($bean_user) ;
 
       return $data ;
@@ -85,12 +85,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $user  = new User($this->cnx);
       $bean_user = new BeanUser();
-            
+
       $bean_user->setUserId($user_id);
       $bean_user->setNombre($nombre);
       $bean_user->setApellidos($apellidos);
@@ -98,7 +98,7 @@
       // $bean_user->setPassword($password);
 
       $data = $user->update($bean_user) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $user  = new User($this->cnx);
-            
+
       $bean_user = new BeanUser();
-            
+
       $bean_user->setUserId($user_id);
       $bean_user->setEstado($estado);
 
       $data = $user->updateEstado($bean_user) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -177,19 +177,19 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $user  = new User($this->cnx);
 
       $bean_user = new BeanUser();
-      
+
       $bean_user->setUserId($user_id);
       // $bean_user->setNombre($nombre);
       // $bean_user->setApellidos($apellidos);
       // $bean_user->setEmail($email);
       $bean_user->setPassword($password);
-            
+
       $data = $user->updatePassword($bean_user) ;
 
       return $data ;

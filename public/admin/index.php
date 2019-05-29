@@ -38,7 +38,7 @@
           <div class="col-12 text-center">
             <h1 class="open-sans"> Bienvenido </h1>
             <h2 class="open-sans"> Administrador :
-              <?php echo  $_SESSION['USER']['nombre'] . ' ' . $_SESSION['USER']['apellidos']  ?> </h2>
+              <?php echo  $_SESSION['USER']->nombre . ' ' . $_SESSION['USER']->apellidos  ?> </h2>
           </div>
         </div>
     </main>

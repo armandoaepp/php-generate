@@ -4,7 +4,7 @@ function verificarItem($item){
 
   $item = strtolower( trim($item) ) ;
 
-  $items = array('estado', 'created_up', 'imagen', 'url', 'publicar') ;
+  $items = array('estado', 'created_at', 'imagen', 'url', 'publicar') ;
 
   if ( in_array($item, $items) )
   {
@@ -18,7 +18,7 @@ function verificarItemViewSave($item){
 
   $item = strtolower( trim($item) ) ;
 
-  $items = array('estado', 'created_up', 'imagen', 'url') ;
+  $items = array('estado', 'created_at', 'imagen', 'url') ;
 
   if ( in_array($item, $items) )
   {
@@ -38,7 +38,7 @@ function itemsDefaultBeans($item)
     'imagen'     => '""' ,
     'publicar'   => '"S"' ,
     'estado'     => 1,
-    'created_up' => 'NULL',
+    'created_at' => 'NULL',
   );
 
   if ( array_key_exists($item , $items) ) {
@@ -54,7 +54,7 @@ function itemsNotUpdateMetodo($item){
 
   $item = strtolower( trim($item) ) ;
 
-  $items = array('estado','created_up') ;
+  $items = array('estado','created_at') ;
 
   if ( in_array($item, $items) )
   {
@@ -68,7 +68,7 @@ function itemsNotSetController($item){
 
   $item = strtolower( trim($item) ) ;
 
-  $items = array('estado', 'created_up') ;
+  $items = array('estado', 'created_at') ;
 
   if ( in_array($item, $items) )
   {
@@ -82,7 +82,7 @@ function itemsNotListTable($item){
 
   $item = strtolower( trim($item) ) ;
 
-  $items = array('estado', 'created_up', 'imagen', 'publicar') ;
+  $items = array('estado', 'created_at', 'imagen', 'publicar') ;
 
   if ( in_array($item, $items) )
   {

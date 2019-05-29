@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $pais  = new Pais();
-            
+
       $bean_pais = new BeanPais();
-            
+
       $bean_pais->setEstado($estado);
 
       $data = $pais->getByEstado($bean_pais);
@@ -59,18 +59,15 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $pais  = new Pais($this->cnx);
 
       $bean_pais = new BeanPais();
-            
+
       $bean_pais->setNombre($nombre);
-      $bean_pais->setTld($tld);
-      $bean_pais->setCode($code);
-      $bean_pais->setCodeInt($code_int);
-            
+
       $data = $pais->save($bean_pais) ;
 
       return $data ;
@@ -85,20 +82,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $pais  = new Pais($this->cnx);
       $bean_pais = new BeanPais();
-            
-      $bean_pais->setId($id);
+
+      $bean_pais->setPaisId($pais_id);
       $bean_pais->setNombre($nombre);
-      $bean_pais->setTld($tld);
-      $bean_pais->setCode($code);
-      $bean_pais->setCodeInt($code_int);
 
       $data = $pais->update($bean_pais) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +105,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $pais  = new Pais($this->cnx);
-            
+
       $bean_pais = new BeanPais();
-            
-      $bean_pais->setId($id);
+
+      $bean_pais->setPaisId($pais_id);
       $bean_pais->setEstado($estado);
 
       $data = $pais->updateEstado($bean_pais) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -139,7 +133,7 @@
 
       $bean_pais = new BeanPais();
 
-      $bean_pais->setId($id);
+      $bean_pais->setPaisId($id);
 
       $data = $pais->find( $bean_pais) ;
       return $data;
@@ -151,7 +145,7 @@
     }
   }
 
-  public function deleteById($id)
+  public function deleteById($pais_id)
   {
     try
     {
@@ -160,7 +154,7 @@
 
       $bean_pais = new BeanPais();
 
-      $bean_pais->setId($id);
+      $bean_pais->setPaisId($pais_id);
 
       $data = $pais->deleteById( $bean_pais ) ;
 

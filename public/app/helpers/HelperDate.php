@@ -4,15 +4,15 @@ class HelperDate
 
     public static function timestampsBd($timestamps = true)
     {
-        $created_up = null;
+        $created_at = null;
 
         if ($timestamps) {
-            $created_up = date('Y-m-d H:m:s');
+            $created_at = date('Y-m-d H:m:s');
         }
 
-        $created_up = !empty($created_up) ? "'" . $created_up . "'" : "NULL";
+        $created_at = !empty($created_at) ? "'" . $created_at . "'" : "NULL";
 
-        return $created_up;
+        return $created_at;
 
     }
 
@@ -42,6 +42,50 @@ class HelperDate
         $date = date("Y-m-d");
         $new_date = date("Y-m-d", strtotime($date . "- $value days"));
         return $new_date;
+    }
+
+    /**
+     * value[ dd/mm/yyyy ]
+     * return [ yyyy-mm-dd ]
+     */
+    public static function formatDate_dd_mm_yyyy_to_DB( $value )
+    {
+      $value = trim($value);
+
+      if(empty($value)) return null ;
+
+      $exploded = explode("/", $value);
+
+      //Reverse the order.
+      $exploded = array_reverse($exploded);
+
+      //Convert it back into a string.
+      $new_format = implode("-", $exploded);
+
+      return $new_format;
+
+    }
+
+    /**
+     * value[ dd/mm/yyyy ]
+     * return [ yyyy-mm-dd ]
+     */
+    public static function formatDate_DB_to_dd_mm_yyyyy( $value )
+    {
+      $value = trim($value);
+
+      if(empty($value)) return null ;
+
+      $exploded = explode("-", $value);
+
+      //Reverse the order.
+      $exploded = array_reverse($exploded);
+
+      //Convert it back into a string.
+      $new_format = implode("/", $exploded);
+
+      return $new_format;
+
     }
 
 }

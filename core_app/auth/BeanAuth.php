@@ -18,7 +18,7 @@ class BeanAuth{
     private $email;
     private $password;
     private $estado = 1 ;
-    private $created_up = NULL ;
+    private $created_at = NULL ;
 
     # METODOS
     public function setUserId($user_id_)
@@ -81,14 +81,14 @@ class BeanAuth{
         return $this->estado;
     }
 
-    public function setCreatedUp($created_up_)
+    public function setCreatedUp($created_at_)
     {
-        $this->created_up = Validation::validate( $created_up_ );
+        $this->created_at = Validation::validate( $created_at_ );
     }
 
     public function getCreatedUp()
     {
-        return $this->created_up;
+        return $this->created_at;
     }
 
 }

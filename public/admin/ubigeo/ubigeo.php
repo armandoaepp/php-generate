@@ -81,18 +81,18 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Id </th>
+                  <th width="50">Ubigeo_id </th>
                   <th>Codigo </th>
-                  <th>Ubigeo </th>
+                  <th>Nombre </th>
                   <th>Descripcion </th>
                   <th>Ubigeo_id_padre </th>
                   <th>Pais_id </th>
-                  <th>Tipo_ubigeo_id </th>
                   <th>Region_id </th>
+                  <th>Tipo </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -105,8 +105,8 @@
                     $title    = "" ;
                     $icon_pub = "" ;
 
-                    if(!empty($row["publicar"])){
-                      if($row["publicar"] == "S"){
+                    if(!empty($row->publicar)){
+                      if($row->publicar == "S"){
                         $classBtn =  "btn-outline-danger";
                         $title = "Desactivar/Ocultar" ;
                         $icon_pub = '<i class="fas fa-times"></i>';
@@ -123,7 +123,7 @@
                     $class_estado   = "";
                     $class_disabled = "";
 
-                    if($row["estado"] == 1)
+                    if($row->estado == 1)
                     {
                       $title_estado = "Eliminar" ;
                     }
@@ -136,30 +136,30 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
-                  <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["codigo"] ?> </td>
-                  <td> <?php echo $row["ubigeo"] ?> </td>
-                  <td> <?php echo $row["descripcion"] ?> </td>
-                  <td> <?php echo $row["ubigeo_id_padre"] ?> </td>
-                  <td> <?php echo $row["pais_id"] ?> </td>
-                  <td> <?php echo $row["tipo_ubigeo_id"] ?> </td>
-                  <td> <?php echo $row["region_id"] ?> </td>
+
+                  <td> <?php echo $row->ubigeo_id ?> </td>
+                  <td> <?php echo $row->codigo ?> </td>
+                  <td> <?php echo $row->nombre ?> </td>
+                  <td> <?php echo $row->descripcion ?> </td>
+                  <td> <?php echo $row->ubigeo_id_padre ?> </td>
+                  <td> <?php echo $row->pais_id ?> </td>
+                  <td> <?php echo $row->region_id ?> </td>
+                  <td> <?php echo $row->tipo ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/ubigeo/editar.php?id=<?php echo $row["id"] ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/ubigeo/editar.php?id=<?php echo $row->ubigeo_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["id"] ?>, `<?php echo $row['codigo'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->ubigeo_id ?>, `<?php echo $row->codigo ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
-                    <span class="sr-only"><?php echo $row["estado"] ?></span>
+                    <span class="sr-only"><?php echo $row->estado ?></span>
                   </td>
                 </tr>
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 
@@ -277,7 +277,11 @@
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Eliminar");
 
+<<<<<<< HEAD
     var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+=======
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
+>>>>>>> 14_db_object
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 
@@ -304,7 +308,11 @@
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Publicar");
 
+<<<<<<< HEAD
     var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+=======
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
+>>>>>>> 14_db_object
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 

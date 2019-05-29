@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -12,27 +12,27 @@ class BeanUbigeo{
   public function __construct(){}
 
   # Atributos
-  private $id;
+  private $ubigeo_id;
   private $codigo;
-  private $ubigeo;
-  private $descripcion;
-  private $ubigeo_id_padre;
-  private $pais_id;
-  private $tipo_ubigeo_id;
+  private $nombre;
+  private $descripcion = "";
+  private $ubigeo_id_padre = 0;
+  private $pais_id = 1 ;
   private $region_id;
+  private $tipo = 1;
   private $estado = 1 ;
 
   #Auto Increment Item
 
   # METODOS
-  public function setId($id_)
+  public function setUbigeoId($ubigeo_id_)
   {
-    $this->id = Validation::validate( $id_ );
+    $this->ubigeo_id = Validation::validate( $ubigeo_id_ );
   }
 
-  public function getId()
+  public function getUbigeoId()
   {
-    return $this->id;
+    return $this->ubigeo_id;
   }
 
   public function setCodigo($codigo_)
@@ -45,14 +45,14 @@ class BeanUbigeo{
     return $this->codigo;
   }
 
-  public function setUbigeo($ubigeo_)
+  public function setNombre($nombre_)
   {
-    $this->ubigeo = Validation::validate( $ubigeo_ );
+    $this->nombre = Validation::validate( $nombre_ );
   }
 
-  public function getUbigeo()
+  public function getNombre()
   {
-    return $this->ubigeo;
+    return $this->nombre;
   }
 
   public function setDescripcion($descripcion_)
@@ -85,16 +85,6 @@ class BeanUbigeo{
     return $this->pais_id;
   }
 
-  public function setTipoUbigeoId($tipo_ubigeo_id_)
-  {
-    $this->tipo_ubigeo_id = Validation::validate( $tipo_ubigeo_id_ );
-  }
-
-  public function getTipoUbigeoId()
-  {
-    return $this->tipo_ubigeo_id;
-  }
-
   public function setRegionId($region_id_)
   {
     $this->region_id = Validation::validate( $region_id_ );
@@ -103,6 +93,16 @@ class BeanUbigeo{
   public function getRegionId()
   {
     return $this->region_id;
+  }
+
+  public function setTipo($tipo_)
+  {
+    $this->tipo = Validation::validate( $tipo_ );
+  }
+
+  public function getTipo()
+  {
+    return $this->tipo;
   }
 
   public function setEstado($estado_)

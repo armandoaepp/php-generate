@@ -27,7 +27,7 @@
   <?php
 
     $setvar = array(
-        "titulo" => "$title_page",
+        "titulo" => "Editar $title_page",
         "follow" => "",
         "description" => "Administrador",
         "keywords" => "administrador",
@@ -85,61 +85,64 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="codigo">Codigo: </label>
-                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo" value="<?php echo $ubigeo['codigo']; ?>">
+                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo" value="<?php echo $ubigeo->codigo; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ubigeo">Ubigeo: </label>
-                  <input type="text" class="form-control" name="ubigeo" id="ubigeo" placeholder="Ubigeo" value="<?php echo $ubigeo['ubigeo']; ?>">
+                  <label for="nombre">Nombre: </label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $ubigeo->nombre; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $ubigeo['descripcion']; ?>">
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $ubigeo->descripcion; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="ubigeo_id_padre">UbigeoIdPadre: </label>
-                  <input type="text" class="form-control" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre" value="<?php echo $ubigeo['ubigeo_id_padre']; ?>">
+                  <select class="custom-select" name="ubigeo_id_padre" id="ubigeo_id_padre" placeholder="UbigeoIdPadre">
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <option value="text">text</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="pais_id">PaisId: </label>
                   <select class="custom-select" name="pais_id" id="pais_id" placeholder="PaisId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="" selected disabled hidden>Seleccionar </option>
                     <option value="text">text</option>
                   </select>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tipo_ubigeo_id">TipoUbigeoId: </label>
-                  <input type="text" class="form-control" name="tipo_ubigeo_id" id="tipo_ubigeo_id" placeholder="TipoUbigeoId" value="<?php echo $ubigeo['tipo_ubigeo_id']; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="region_id">RegionId: </label>
                   <select class="custom-select" name="region_id" id="region_id" placeholder="RegionId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="" selected disabled hidden>Seleccionar </option>
                     <option value="text">text</option>
                   </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="tipo">Tipo: </label>
+                  <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo" value="<?php echo $ubigeo->tipo; ?>">
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/ubigeo/ubigeo.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/ubigeo/ubigeo.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 
             </form>

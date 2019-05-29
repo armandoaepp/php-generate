@@ -11,18 +11,12 @@
 
   $pais_controller = new PaisController();
 
-  $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $pais_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $nombre   = $_POST["nombre"] ;
-  $tld   = $_POST["tld"] ;
-  $code   = $_POST["code"] ;
-  $code_int   = $_POST["code_int"] ;
   $params = array(
-    "id"   => $id,
+    "pais_id"   => $pais_id,
     "nombre"   => $nombre,
-    "tld"   => $tld,
-    "code"   => $code,
-    "code_int"   => $code_int,
   );
 
 

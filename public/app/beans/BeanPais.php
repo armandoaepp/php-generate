@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -12,24 +12,21 @@ class BeanPais{
   public function __construct(){}
 
   # Atributos
-  private $id;
+  private $pais_id;
   private $nombre;
-  private $tld;
-  private $code;
-  private $code_int;
   private $estado = 1 ;
 
   #Auto Increment Item
 
   # METODOS
-  public function setId($id_)
+  public function setPaisId($pais_id_)
   {
-    $this->id = Validation::validate( $id_ );
+    $this->pais_id = Validation::validate( $pais_id_ );
   }
 
-  public function getId()
+  public function getPaisId()
   {
-    return $this->id;
+    return $this->pais_id;
   }
 
   public function setNombre($nombre_)
@@ -40,36 +37,6 @@ class BeanPais{
   public function getNombre()
   {
     return $this->nombre;
-  }
-
-  public function setTld($tld_)
-  {
-    $this->tld = Validation::validate( $tld_ );
-  }
-
-  public function getTld()
-  {
-    return $this->tld;
-  }
-
-  public function setCode($code_)
-  {
-    $this->code = Validation::validate( $code_ );
-  }
-
-  public function getCode()
-  {
-    return $this->code;
-  }
-
-  public function setCodeInt($code_int_)
-  {
-    $this->code_int = Validation::validate( $code_int_ );
-  }
-
-  public function getCodeInt()
-  {
-    return $this->code_int;
   }
 
   public function setEstado($estado_)

@@ -80,12 +80,12 @@ function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
               $texto .= '    }' . PHP_EOL;
             }
 
-            if ($nameMetodo[$i] == 'created_up' )
+            if ($nameMetodo[$i] == 'created_at' )
             {
 
-              $texto .= '    if(empty($this->created_up))' . PHP_EOL;
+              $texto .= '    if(empty($this->created_at))' . PHP_EOL;
               $texto .= '    {' . PHP_EOL;
-              $texto .= '      $this->created_up = HelperDate::timestampsBd();' . PHP_EOL;
+              $texto .= '      $this->created_at = HelperDate::timestampsBd();' . PHP_EOL;
               // $bean_laboral->setCreatedUp( HelperDate::timestampsBd() );
               $texto .= '    }' . PHP_EOL;
             }

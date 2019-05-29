@@ -1,29 +1,3 @@
 //  ---------------------------------------------------
 //     BREADCRUMB STYLE
 // -----------------------------------------------------
-/* @mixin breadcrumb-variant($breadcrumb-bg,
-$breadcrumb-active-color,
-$breadcrumb-divider-color
-) {
-
-  background-color: $breadcrumb-bg;
-
-  .breadcrumb-item {
- 
-    +.breadcrumb-item {
-      &::before {
-        color: $breadcrumb-divider-color;
-      }
-    }
-
-    // stylelint-disable-next-line no-duplicate-selectors
-    +.breadcrumb-item:hover::before {
-      text-decoration: none;
-    }
-
-    &.active {
-      color: $breadcrumb-active-color;
-    }
-  }
-
-} */

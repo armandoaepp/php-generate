@@ -12,15 +12,9 @@
   $pais_controller = new PaisController();
 
   $nombre   = $_POST["nombre"] ;
-  $tld   = $_POST["tld"] ;
-  $code   = $_POST["code"] ;
-  $code_int   = $_POST["code_int"] ;
 
   $params = array(
     "nombre"   => $nombre,
-    "tld"   => $tld,
-    "code"   => $code,
-    "code_int"   => $code_int,
   );
 
 

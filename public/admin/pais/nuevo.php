@@ -22,9 +22,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [2,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -70,37 +70,18 @@
             <form action="admin/pais/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
                   <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tld">Tld: </label>
-                  <input type="text" class="form-control" name="tld" id="tld" placeholder="Tld">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="code">Code: </label>
-                  <input type="text" class="form-control" name="code" id="code" placeholder="Code">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="code_int">CodeInt: </label>
-                  <input type="text" class="form-control" name="code_int" id="code_int" placeholder="CodeInt">
-                </div>
-              </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/pais/pais.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/pais/pais.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
             </form>

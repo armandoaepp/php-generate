@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $pais_controller = new PaisController() ; 
+      $pais_controller = new PaisController() ;
 
        $data = $pais_controller->getAll() ;
 
@@ -35,37 +35,31 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $pais_controller = new PaisController($cnx) ; 
+
+      $pais_controller = new PaisController($cnx) ;
       $connection->beginTransaction();
-        
-      $id = $inputs->id;
+
+      $pais_id = $inputs->pais_id;
       $nombre = $inputs->nombre;
-      $tld = $inputs->tld;
-      $code = $inputs->code;
-      $code_int = $inputs->code_int;
-        
+
       $params = array(
-                'id'=> $id,
+                'pais_id'=> $pais_id,
                 'nombre'=> $nombre,
-                'tld'=> $tld,
-                'code'=> $code,
-                'code_int'=> $code_int,
-              ) ; 
-        
+              ) ;
+
       $data = $pais_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -75,7 +69,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -85,26 +79,20 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $pais_controller = new PaisController($cnx) ; 
+
+      $pais_controller = new PaisController($cnx) ;
       $connection->beginTransaction();
-        
-      $id = $inputs->id;
+
+      $pais_id = $inputs->pais_id;
       $nombre = $inputs->nombre;
-      $tld = $inputs->tld;
-      $code = $inputs->code;
-      $code_int = $inputs->code_int;
-        
+
       $params = array(
-                'id'=> $id,
+                'pais_id'=> $pais_id,
                 'nombre'=> $nombre,
-                'tld'=> $tld,
-                'code'=> $code,
-                'code_int'=> $code_int,
-              ) ; 
-        
+              ) ;
+
       $data = $pais_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -115,7 +103,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -124,15 +112,15 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
+      $pais_id = $inputs->pais_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'id'=> $id,
+                'pais_id'=> $pais_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $pais_controller = new PaisController() ; 
+      $pais_controller = new PaisController() ;
 
       $data = $pais_controller->updateEstado( $params ) ;
 
@@ -143,7 +131,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -153,7 +141,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $pais_controller = new PaisController() ; 
+      $pais_controller = new PaisController() ;
 
       $data = $pais_controller->find( $id) ;
 
@@ -164,7 +152,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -173,8 +161,8 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $pais_id = $inputs->id;
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -183,11 +171,11 @@ switch($evento)
       }
 
       $params = array(
-                'id'=> $id,
+                'pais_id'=> $pais_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $pais_controller = new PaisController() ; 
+      $pais_controller = new PaisController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -195,15 +183,15 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $pais = $pais_controller->find( $id );
+        $pais = $pais_controller->find( $pais_id );
 
-        $data = $pais_controller->deleteById( $id );
+        $data = $pais_controller->deleteById( $pais_id );
 
 			}
 			else
 			{
 				$data = $pais_controller->updateEstado($params);
-			} 
+			}
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -212,7 +200,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
