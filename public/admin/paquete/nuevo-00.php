@@ -204,8 +204,6 @@
                     <?php
                     foreach ($servicios as $servicio)
                     {
-                      // if ($servicio->incluye === 1)
-                      // {
                     ?>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="servicio_ids_incluye[]"
@@ -215,7 +213,6 @@
                         </label>
                     </div>
                     <?php
-                      // }
                     }
                     ?>
                 </div>

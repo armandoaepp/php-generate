@@ -88,10 +88,10 @@
                   <th width="50">ID </th>
                   <th>Nombre </th>
                   <th>Ubigeo </th>
-                  <th>Descripcion </th>
+                  <!-- <th>Descripcion </th> -->
                   <!-- <th>Recomendacion </th> -->
-                  <th>Num_dias </th>
-                  <th>Num_noches </th>
+                  <th>Días </th>
+                  <th>Noches </th>
                   <th>Precio </th>
                   <th>Descuento </th>
                   <!-- <th>Precio_descuento </th> -->
@@ -147,7 +147,7 @@
                   <td> <?php echo $row->paquete_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->ubigeo_full ?> </td>
-                  <td> <?php echo $row->descripcion ?> </td>
+                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
                   <!-- <td> <?php echo $row->recomendacion ?> </td> -->
                   <td> <?php echo $row->num_dias ?> </td>
                   <td> <?php echo $row->num_noches ?> </td>
