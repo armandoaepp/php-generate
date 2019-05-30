@@ -206,9 +206,14 @@ class PaqueteActividad extends Connection {
       try{
         $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
 
-        $this->query = "SELECT * FROM paquete_actividad
-                        WHERE paquete_id = '$paquete_id'
-                        AND estado = 1; ";
+        $this->query = "SELECT
+                          paquete_actividad.* ,
+                          actividad.nombre as desc_actividad
+                        FROM paquete_actividad
+                        INNER JOIN actividad ON actividad.actividad_id = paquete_actividad.actividad_id
+                        WHERE paquete_actividad.paquete_id = '$paquete_id'
+                        AND paquete_actividad.estado = 1; ";
+
 
         $this->executeQuery();
 

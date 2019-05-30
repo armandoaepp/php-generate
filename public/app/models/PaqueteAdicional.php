@@ -42,6 +42,7 @@ class PaqueteAdicional extends Connection {
       $paquete_adicional_id = $bean_paquete_adicional->getPaqueteAdicionalId();
       $paquete_id           = $bean_paquete_adicional->getPaqueteId();
       $adicional_id         = $bean_paquete_adicional->getAdicionalId();
+      $precio               = $bean_paquete_adicional->getPrecio();
       $estado               = $bean_paquete_adicional->getEstado();
       $created_at           = $bean_paquete_adicional->getCreatedAt();
 
@@ -49,12 +50,14 @@ class PaqueteAdicional extends Connection {
                       (
                         paquete_id,
                         adicional_id,
+                        precio,
                         estado,
                         created_at
                       )
                       VALUES(
                         '$paquete_id',
                         '$adicional_id',
+                        '$precio',
                         '$estado',
                         $created_at
                       ); ";
@@ -80,10 +83,12 @@ class PaqueteAdicional extends Connection {
       $paquete_adicional_id = $bean_paquete_adicional->getPaqueteAdicionalId();
       $paquete_id = $bean_paquete_adicional->getPaqueteId();
       $adicional_id = $bean_paquete_adicional->getAdicionalId();
+      $precio               = $bean_paquete_adicional->getPrecio();
 
       $this->query = "UPDATE paquete_adicional SET
                         paquete_id = '$paquete_id',
-                        adicional_id = '$adicional_id'
+                        adicional_id = '$adicional_id',
+                        precio = '$precio'
                       WHERE paquete_adicional_id = '$paquete_adicional_id'
                       LIMIT 1 ;";
 
@@ -196,9 +201,13 @@ class PaqueteAdicional extends Connection {
     try{
       $paquete_id = $bean_paquete_adicional->getPaqueteId() ;
 
-      $this->query = "SELECT * FROM paquete_adicional
-                      WHERE paquete_id = '$paquete_id'
-                      AND estado = 1; ";
+      $this->query = "SELECT
+                        paquete_adicional.* ,
+                        adicional.descripcion AS desc_adicional
+                      FROM paquete_adicional
+                      INNER JOIN adicional ON adicional.adicional_id = paquete_adicional.adicional_id
+                      WHERE paquete_adicional.paquete_id = '$paquete_id'
+                      AND paquete_adicional.estado = 1;";
 
       $this->executeQuery();
 

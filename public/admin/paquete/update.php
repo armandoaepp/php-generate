@@ -31,9 +31,16 @@
   $url                 = UrlHelper::urlFriendly($nombre);
   $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
 
-  $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
+  // $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
+  // $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
+
+  $actividad_ids    = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"] : [] ;
+  $actividad_horas  = !empty($_POST["actividad_horas"]) ? $_POST["actividad_horas"] : [] ;
+
+  $adicional_ids     = !empty($_POST["adicional_ids"]) ? $_POST["adicional_ids"]: [] ;
+  $actividad_precios = !empty($_POST["actividad_precios"]) ? $_POST["actividad_precios"] : [] ;
+
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
-  $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
 
   $fecha_ini_promo = NULL ;
   $fecha_fin_promo = NULL ;
@@ -61,8 +68,8 @@
     // "num_visitas"       => $num_visitas,
     "publicar"             => $publicar,
     "url"                  => $url,
-    "actividad_ids"        => $actividad_ids,
-    "servicio_ids_incluye" => $servicio_ids_incluye,
+    // "actividad_ids"        => $actividad_ids,
+    // "servicio_ids_incluye" => $servicio_ids_incluye,
 
   );
 
@@ -78,13 +85,15 @@
 
     for ($i=0; $i < count($actividad_ids) ; $i++)
     {
-      $actividad_id = $actividad_ids[$i];
 
-      $actividad_default = $actividad_ctrl->find($actividad_id) ;
+      $actividad_id = $actividad_ids[$i];
+      $horas = $actividad_horas[$i];
+
+      // $actividad_default = $actividad_ctrl->find($actividad_id) ;
 
       // $paquete_id = $paquete_id;
       // $actividad_id = $actividad_id ;
-      $horas = $actividad_default->horas ;
+      // $horas = $actividad_default->horas ;
       $descripcion = "";
 
       $params_acti = array(

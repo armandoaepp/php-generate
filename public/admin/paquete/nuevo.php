@@ -7,44 +7,40 @@
   require_once "../../app/autoload.php";
 
   #Distritos
-  $ubigeo_controller = new UbigeoController();
+    $ubigeo_controller = new UbigeoController();
 
-  $array = array(
-    'pais_id' => 1,
-  ) ;
+    $array = array(
+      'pais_id' => 1,
+    ) ;
 
-  $distritos = $ubigeo_controller->getDistritosByPaisId($array);
+    $distritos = $ubigeo_controller->getDistritosByPaisId($array);
 
   # Actividades
-  $actividad_controller = new ActividadController();
+    $actividad_controller = new ActividadController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $actividades = $actividad_controller->getByEstado($array);
+    $actividades = $actividad_controller->getByEstado($array);
 
   # Servicios
-  $servicio_controller = new ServicioController();
+    $servicio_controller = new ServicioController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $servicios = $servicio_controller->getByEstado($array);
+    $servicios = $servicio_controller->getByEstado($array);
 
   # Adicionales
-  $adicional_controller = new AdicionalController();
+    $adicional_controller = new AdicionalController();
 
-  $array = array(
-    'estado' => 1,
-  ) ;
+    $array = array(
+      'estado' => 1,
+    ) ;
 
-  $adicionales = $adicional_controller->getByEstado($array);
-
-
-
-
+    $adicionales = $adicional_controller->getByEstado($array);
 
 ?>
 
@@ -187,6 +183,22 @@
                             <input type="text" data-filter-type="date-range" class="form-control" name="fechas_promo" id="fechas_promo" placeholder="Fecha Inicio Promo">
                           </div>
                         </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="email" class="d-block">Publicar </label>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                              <label class="form-check-label" for="si">SI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                              <label class="form-check-label" for="no">NO</label>
+                            </div>
+                          </div>
+                        </div>
+
+
                       </div>
                     </div>
                   </div>
@@ -328,6 +340,37 @@
 
                 </div>
 
+                <div class="accordion-item">
+                    <h6 class="accordion-toggle gotham-bold"> Imagenes
+                      <i class="icon fas fa-chevron-circle-right"></i>
+                    </h6>
+                    <div class="accordion-body">
+                      <div class="accordion-content">
+
+                        <div class="row m-0">
+                          <div class="col-12 mb-3">
+                            <div class="form-group">
+                              <label for="imagen">Imagen(es) :</label>
+                              <input data-file-img="images" type="file" class="form-control" name="imagenes[]" id="imagenes" required
+                                placeholder="Imagen" accept="image/*" multiple>
+                            </div>
+                          </div>
+
+                          <div class="col-12 mb-3">
+                            <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="w-100 text-center py-3">
+                    <a href="admin/paquete/paquete.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
+                  </div>
+
 
               </div>
             </form>
@@ -402,6 +445,8 @@
 
                 $('#table-item-actividades > tbody:last-child').append($html);
 
+                $("#actividad_id").val('') ;
+
             }
             // console.log(array_actividades[i].actividad_id);
         }
@@ -428,7 +473,7 @@
 
     $("#addAdicional").on("click",function() {
 
-      adicional_id = $("#adicional_id").val()
+      adicional_id = $("#adicional_id").val() ;
       console.log(adicional_id);
       if ( array_sel_adicionales.indexOf(adicional_id) === -1 && adicional_id > 0)
       {
@@ -440,8 +485,8 @@
             {
 
               adicional_id = array_adicionales[i].adicional_id ;
-              precio        = array_adicionales[i].precio ;
-              descripcion       = array_adicionales[i].descripcion ;
+              precio       = array_adicionales[i].precio ;
+              descripcion  = array_adicionales[i].descripcion ;
 
                 // console.log(array_sel_adicionales.indexOf(adicional_id));
 
@@ -453,7 +498,7 @@
                             <input type="hidden" name="adicional_ids[]" value="${adicional_id}">
                           </td>
                           <td>
-                            <input type="number" name="actividad_precios[]" maxlength="2" pattern="\d*"   min="0" max="99"  required class="form-control" value="${precio}">
+                            <input type="number" name="actividad_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
                           </td>
                           <td>
                             <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">
@@ -463,6 +508,8 @@
                         </tr>` ;
 
                 $('#table-item-adicionales > tbody:last-child').append($html);
+
+                $("#adicional_id").val('') ;
 
             }
             // console.log(array_actividades[i].adicional_id);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -15,6 +15,7 @@ class BeanPaqueteAdicional{
   private $paquete_adicional_id;
   private $paquete_id;
   private $adicional_id;
+  private $precio;
   private $estado = 1 ;
   private $created_at = NULL ;
 
@@ -49,6 +50,16 @@ class BeanPaqueteAdicional{
   public function getAdicionalId()
   {
     return $this->adicional_id;
+  }
+
+  public function setPrecio($precio_)
+  {
+    $this->precio = Validation::validate( $precio_ );
+  }
+
+  public function getPrecio()
+  {
+    return $this->precio;
   }
 
   public function setEstado($estado_)

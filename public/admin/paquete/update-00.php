@@ -11,6 +11,8 @@
 
   $paquete_controller = new PaqueteController();
 
+  $paquete_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+
   $ubigeo_id           = $_POST["ubigeo_id"] ;
   $nombre              = $_POST["nombre"] ;
   $descripcion         = !empty($_POST["descripcion"]) ? $_POST["descripcion"]: "" ;
@@ -29,15 +31,9 @@
   $url                 = UrlHelper::urlFriendly($nombre);
   $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
 
-  $actividad_ids    = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"] : [] ;
-  $actividad_horas  = !empty($_POST["actividad_horas"]) ? $_POST["actividad_horas"] : [] ;
-
-  $adicional_ids    = !empty($_POST["adicional_ids"]) ? $_POST["adicional_ids"] : [] ;
-  $actividad_precios  = !empty($_POST["actividad_precios"]) ? $_POST["actividad_precios"] : [] ;
-
-
+  $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
-  // $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
+  $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
 
   $fecha_ini_promo = NULL ;
   $fecha_fin_promo = NULL ;
@@ -50,6 +46,7 @@
 
 
   $params = array(
+    "paquete_id"          => $paquete_id,
     "ubigeo_id"            => $ubigeo_id,
     "nombre"               => $nombre,
     "descripcion"          => $descripcion,
@@ -64,31 +61,16 @@
     // "num_visitas"       => $num_visitas,
     "publicar"             => $publicar,
     "url"                  => $url,
-    // "actividad_ids"        => $actividad_ids,
-    // "servicio_ids_incluye" => $servicio_ids_incluye,
+    "actividad_ids"        => $actividad_ids,
+    "servicio_ids_incluye" => $servicio_ids_incluye,
 
   );
-  // var_dump($params);
-  $paquete_id = $paquete_controller->save($params);
+
+  $paquete_id = $paquete_controller->update($params);
 
   if($paquete_id > 0 )
   {
-    ## Itinerario
-    if($num_dias > 0)
-    {
-      $itinerario_ctrl = new ItinerarioController() ;
-      for ($i=0; $i < $num_dias ; $i++)
-      {
-        $params_itinerario = array(
-          'paquete_id'  => $paquete_id,
-          'dia'         => ( $i + 1),
-          'titulo'      => "",
-          'descripcion' => "",
-        ) ;
 
-        $itinerario_ctrl->save( $params_itinerario) ;
-      }
-    }
 
     ## Actividades Paquete
     $paquete_actividad_ctrl = new PaqueteActividadController() ;
@@ -97,13 +79,12 @@
     for ($i=0; $i < count($actividad_ids) ; $i++)
     {
       $actividad_id = $actividad_ids[$i];
-      $horas = $actividad_horas[$i];
 
-      // $actividad_default = $actividad_ctrl->find($actividad_id) ;
+      $actividad_default = $actividad_ctrl->find($actividad_id) ;
 
       // $paquete_id = $paquete_id;
       // $actividad_id = $actividad_id ;
-      // $horas = $actividad_default->horas ;
+      $horas = $actividad_default->horas ;
       $descripcion = "";
 
       $params_acti = array(
@@ -142,17 +123,15 @@
     $paquete_adicional_ctrl = new PaqueteAdicionalController() ;
     $tipo = 1 ;
 
-    for ($i=0; $i < count($adicional_ids) ; $i++)
+    for ($i=0; $i < count($adicionales_ids) ; $i++)
     {
-      $adicional_id = $adicional_ids[$i];
-      $precio = $actividad_precios[$i];
+      $adicional_id = $adicionales_ids[$i];
 
       $descripcion = "";
 
       $params_serv = array(
         'paquete_id'  => $paquete_id,
         'adicional_id' => $adicional_id,
-        'precio' => $precio,
       ) ;
 
       $paquete_adicional_ctrl->save( $params_serv) ;

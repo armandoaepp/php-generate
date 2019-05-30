@@ -68,6 +68,7 @@
 
       $bean_paquete_adicional->setPaqueteId($paquete_id);
       $bean_paquete_adicional->setAdicionalId($adicional_id);
+      $bean_paquete_adicional->setPrecio($precio);
 
       $data = $paquete_adicional->save($bean_paquete_adicional) ;
 
@@ -92,6 +93,7 @@
       $bean_paquete_adicional->setPaqueteAdicionalId($paquete_adicional_id);
       $bean_paquete_adicional->setPaqueteId($paquete_id);
       $bean_paquete_adicional->setAdicionalId($adicional_id);
+      $bean_paquete_adicional->setPrecio($precio);
 
       $data = $paquete_adicional->update($bean_paquete_adicional) ;
 
