@@ -31,9 +31,17 @@
   $url                 = UrlHelper::urlFriendly($nombre);
   $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
 
-  $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
+  // $actividad_ids        = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"]              : [] ;
+  // $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
+
+  $actividad_ids    = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"] : [] ;
+  $actividad_horas  = !empty($_POST["actividad_horas"]) ? $_POST["actividad_horas"] : [] ;
+  $paquete_actividad_ids  = !empty($_POST["paquete_actividad_ids"]) ? $_POST["paquete_actividad_ids"] : [] ;
+
+  $adicional_ids     = !empty($_POST["adicional_ids"]) ? $_POST["adicional_ids"]: [] ;
+  $adicional_precios = !empty($_POST["adicional_precios"]) ? $_POST["adicional_precios"] : [] ;
+
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
-  $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
 
   $fecha_ini_promo = NULL ;
   $fecha_fin_promo = NULL ;
@@ -61,8 +69,8 @@
     // "num_visitas"       => $num_visitas,
     "publicar"             => $publicar,
     "url"                  => $url,
-    "actividad_ids"        => $actividad_ids,
-    "servicio_ids_incluye" => $servicio_ids_incluye,
+    // "actividad_ids"        => $actividad_ids,
+    // "servicio_ids_incluye" => $servicio_ids_incluye,
 
   );
 
@@ -70,21 +78,23 @@
 
   if($paquete_id > 0 )
   {
-
-
     ## Actividades Paquete
     $paquete_actividad_ctrl = new PaqueteActividadController() ;
     $actividad_ctrl = new ActividadController() ;
 
     for ($i=0; $i < count($actividad_ids) ; $i++)
     {
-      $actividad_id = $actividad_ids[$i];
 
-      $actividad_default = $actividad_ctrl->find($actividad_id) ;
+      $actividad_id = $actividad_ids[$i];
+      $horas = $actividad_horas[$i];
+      $paquete_actividad_id = $paquete_actividad_ids[$i];
+
+      $paq_act_exit = $paquete_actividad_ctrl->find($paquete_actividad_id) ;
+
 
       // $paquete_id = $paquete_id;
       // $actividad_id = $actividad_id ;
-      $horas = $actividad_default->horas ;
+      // $horas = $actividad_default->horas ;
       $descripcion = "";
 
       $params_acti = array(
@@ -94,7 +104,24 @@
         'descripcion'  => $descripcion,
       ) ;
 
-      $paquete_actividad_ctrl->save( $params_acti) ;
+      if(empty($paq_act_exit) )
+      {
+        $paquete_actividad_ctrl->save( $params_acti) ;
+      }
+      else
+      {
+
+        $params_acti_upd = array(
+          'paquete_actividad_id'   => $paquete_actividad_id,
+          'horas'        => $horas,
+          'descripcion'  => $descripcion,
+        ) ;
+
+        $paquete_actividad_ctrl->update( $params_acti_upd) ;
+
+      }
+
+
 
     }
 
@@ -119,9 +146,8 @@
 
     }
 
-    ## Adicionales Paquete(Servivio incluye: TIPO 1)
+    ## Adicionales Paquete
     $paquete_adicional_ctrl = new PaqueteAdicionalController() ;
-    $tipo = 1 ;
 
     for ($i=0; $i < count($adicionales_ids) ; $i++)
     {
@@ -168,6 +194,7 @@
   }
 
 
+  return ;
   if($paquete_id>0){
     header("Location: ./paquete.php ", true, 301);
   }

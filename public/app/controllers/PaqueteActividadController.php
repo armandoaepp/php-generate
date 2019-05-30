@@ -92,8 +92,8 @@
       $bean_paquete_actividad = new BeanPaqueteActividad();
 
       $bean_paquete_actividad->setPaqueteActividadId($paquete_actividad_id);
-      $bean_paquete_actividad->setPaqueteId($paquete_id);
-      $bean_paquete_actividad->setActividadId($actividad_id);
+      // $bean_paquete_actividad->setPaqueteId($paquete_id);
+      // $bean_paquete_actividad->setActividadId($actividad_id);
       $bean_paquete_actividad->setHoras($horas);
       $bean_paquete_actividad->setDescripcion($descripcion);
 
@@ -188,6 +188,30 @@
       $bean_paquete_actividad->setPaqueteId($paquete_id);
 
       $data = $paquete_actividad->getByPaqueteId($bean_paquete_actividad);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByPaqueteIdActividadId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_actividad  = new PaqueteActividad();
+
+      $bean_paquete_actividad = new BeanPaqueteActividad();
+
+      $bean_paquete_actividad->setPaqueteId($paquete_id);
+      $bean_paquete_actividad->setActividadId($actividad_id);
+
+      $data = $paquete_actividad->getByPaqueteIdActividadId($bean_paquete_actividad);
 
       return $data ;
     }

@@ -268,8 +268,6 @@
                         </div>
 
 
-
-
                       </div>
                     </div>
                   </div>
@@ -322,6 +320,7 @@
                               <tr>
                                 <td> <?php echo $row->desc_actividad; ?>
                                   <input type="hidden" name="actividad_ids[]" value="<?php echo $row->actividad_id; ?>">
+                                  <input type="hidden" name="paquete_actividad_ids[]" value="<?php echo $row->paquete_actividad_id; ?>">
                                 </td>
                                 <td>
                                   <input type="number" name="actividad_horas[]" maxlength="2" pattern="\d*"   min="0" max="99"  required class="form-control" value="<?php echo $row->horas; ?>">
@@ -424,7 +423,7 @@
                                     <input type="hidden" name="adicional_ids[]" value="<?php echo $row->adicional_id; ?>">
                                   </td>
                                   <td>
-                                    <input type="number" name="actividad_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="<?php echo $row->precio; ?>">
+                                    <input type="number" name="adicional_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="<?php echo $row->precio; ?>">
                                   </td>
                                   <td>
                                     <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">
@@ -549,6 +548,7 @@
                 $html = `<tr>
                           <td> ${nombre}
                             <input type="hidden" name="actividad_ids[]" value="${actividad_id}">
+                            <input type="hidden" name="paquete_actividad_ids[]" value="0">
                           </td>
                           <td>
                             <input type="number" name="actividad_horas[]" maxlength="2" pattern="\d*"   min="0" max="99"  required class="form-control" value="${horas}">
@@ -616,7 +616,7 @@
                             <input type="hidden" name="adicional_ids[]" value="${adicional_id}">
                           </td>
                           <td>
-                            <input type="number" name="actividad_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
+                            <input type="number" name="adicional_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
                           </td>
                           <td>
                             <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">

@@ -195,30 +195,59 @@ class PaqueteServicio extends Connection {
     }
   }
 
-    # Method getByPaqueteId
-    public function getByPaqueteId($bean_paquete_servicio)
-    {
-      try{
-        $paquete_id = $bean_paquete_servicio->getPaqueteId() ;
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_servicio)
+  {
+    try{
+      $paquete_id = $bean_paquete_servicio->getPaqueteId() ;
 
-        $this->query = "SELECT * FROM paquete_servicio
-                        WHERE paquete_id = '$paquete_id'
-                        AND estado = 1; ";
-        // echo $this->query ;
-        // echo "<br>";
+      $this->query = "SELECT * FROM paquete_servicio
+                      WHERE paquete_id = '$paquete_id'
+                      AND estado = 1; ";
+      // echo $this->query ;
+      // echo "<br>";
 
-        $this->executeQuery();
+      $this->executeQuery();
 
-        $data = $this->rows ;
+      $data = $this->rows ;
 
-        return $data;
+      return $data;
 
-      }catch(exception $e){
+    }catch(exception $e){
 
-        throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-      }
     }
+  }
+
+  # Method getByPaqueteId
+  public function getByPaqueteIdServicioId($bean_paquete_servicio)
+  {
+    try{
+      $paquete_id = $bean_paquete_servicio->getPaqueteId() ;
+      $servicio_id = $bean_paquete_servicio->getServicioId() ;
+
+      $this->query = "SELECT * FROM paquete_servicio
+                      WHERE paquete_id = '$paquete_id'
+                      AND servicio_id = '$servicio_id'
+                      AND estado = 1
+                      LIMIT 1; ";
+      // echo $this->query ;
+      // echo "<br>";
+
+      $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
 
 
 }

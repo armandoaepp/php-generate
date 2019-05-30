@@ -33,7 +33,7 @@
   $actividad_horas  = !empty($_POST["actividad_horas"]) ? $_POST["actividad_horas"] : [] ;
 
   $adicional_ids    = !empty($_POST["adicional_ids"]) ? $_POST["adicional_ids"] : [] ;
-  $actividad_precios  = !empty($_POST["actividad_precios"]) ? $_POST["actividad_precios"] : [] ;
+  $adicional_precios  = !empty($_POST["adicional_precios"]) ? $_POST["adicional_precios"] : [] ;
 
 
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
@@ -138,14 +138,13 @@
 
     }
 
-    ## Adicionales Paquete(Servivio incluye: TIPO 1)
+    ## Adicionales Paquete
     $paquete_adicional_ctrl = new PaqueteAdicionalController() ;
-    $tipo = 1 ;
 
     for ($i=0; $i < count($adicional_ids) ; $i++)
     {
       $adicional_id = $adicional_ids[$i];
-      $precio = $actividad_precios[$i];
+      $precio = $adicional_precios[$i];
 
       $descripcion = "";
 

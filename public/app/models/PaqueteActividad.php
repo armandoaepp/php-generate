@@ -84,18 +84,24 @@ class PaqueteActividad extends Connection {
   {
     try{
       $paquete_actividad_id = $bean_paquete_actividad->getPaqueteActividadId();
-      $paquete_id           = $bean_paquete_actividad->getPaqueteId();
-      $actividad_id         = $bean_paquete_actividad->getActividadId();
+      // $paquete_id           = $bean_paquete_actividad->getPaqueteId();
+      // $actividad_id         = $bean_paquete_actividad->getActividadId();
       $horas                = $bean_paquete_actividad->getHoras();
       $descripcion          = $bean_paquete_actividad->getDescripcion();
 
-      $this->query = "UPDATE paquete_actividad SET
+      /* $this->query = "UPDATE paquete_actividad SET
                         paquete_id = '$paquete_id',
                         actividad_id = '$actividad_id',
                         horas = '$horas',
                         descripcion = '$descripcion'
                       WHERE paquete_actividad_id = '$paquete_actividad_id'
-                      LIMIT 1 ;";
+                      LIMIT 1 ;"; */
+
+      $this->query = "UPDATE paquete_actividad SET
+                      horas = '$horas',
+                      descripcion = '$descripcion'
+                    WHERE paquete_actividad_id = '$paquete_actividad_id'
+                    LIMIT 1 ;";
 
       $this->executeQuery();
 
@@ -200,33 +206,64 @@ class PaqueteActividad extends Connection {
     }
   }
 
-    # Method getByPaqueteId
-    public function getByPaqueteId($bean_paquete_actividad)
-    {
-      try{
-        $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_actividad)
+  {
+    try{
+      $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
 
-        $this->query = "SELECT
-                          paquete_actividad.* ,
-                          actividad.nombre as desc_actividad
-                        FROM paquete_actividad
-                        INNER JOIN actividad ON actividad.actividad_id = paquete_actividad.actividad_id
-                        WHERE paquete_actividad.paquete_id = '$paquete_id'
-                        AND paquete_actividad.estado = 1; ";
+      $this->query = "SELECT
+                        paquete_actividad.* ,
+                        actividad.nombre as desc_actividad
+                      FROM paquete_actividad
+                      INNER JOIN actividad ON actividad.actividad_id = paquete_actividad.actividad_id
+                      WHERE paquete_actividad.paquete_id = '$paquete_id'
+                      AND paquete_actividad.estado = 1; ";
 
 
-        $this->executeQuery();
+      $this->executeQuery();
 
-        $data = $this->rows ;
+      $data = $this->rows ;
 
-        return $data;
+      return $data;
 
-      }catch(exception $e){
+    }catch(exception $e){
 
-        throw new Exception($e->getMessage());
+      throw new Exception($e->getMessage());
 
-      }
     }
+  }
+
+  # Method getByPaqueteId
+  public function getByPaqueteIdActividadId($bean_paquete_actividad)
+  {
+    try{
+      $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
+      $actividad_id = $bean_paquete_actividad->getActividadId() ;
+
+      $this->query = "SELECT
+                        paquete_actividad.* ,
+                        actividad.nombre as desc_actividad
+                      FROM paquete_actividad
+                      INNER JOIN actividad ON actividad.actividad_id = paquete_actividad.actividad_id
+                      WHERE paquete_actividad.paquete_id = '$paquete_id'
+                      AND paquete_actividad.actividad_id = '$actividad_id'
+                      AND paquete_actividad.estado = 1
+                      LIMIT 1; ";
+
+
+      $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
 
 
 }

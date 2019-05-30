@@ -81,13 +81,20 @@ class PaqueteAdicional extends Connection {
   {
     try{
       $paquete_adicional_id = $bean_paquete_adicional->getPaqueteAdicionalId();
-      $paquete_id = $bean_paquete_adicional->getPaqueteId();
-      $adicional_id = $bean_paquete_adicional->getAdicionalId();
+      // $paquete_id           = $bean_paquete_adicional->getPaqueteId();
+      // $adicional_id         = $bean_paquete_adicional->getAdicionalId();
       $precio               = $bean_paquete_adicional->getPrecio();
 
+      /*
       $this->query = "UPDATE paquete_adicional SET
                         paquete_id = '$paquete_id',
                         adicional_id = '$adicional_id',
+                        precio = '$precio'
+                      WHERE paquete_adicional_id = '$paquete_adicional_id'
+                      LIMIT 1 ;";
+      */
+
+      $this->query = "UPDATE paquete_adicional SET
                         precio = '$precio'
                       WHERE paquete_adicional_id = '$paquete_adicional_id'
                       LIMIT 1 ;";
@@ -210,6 +217,36 @@ class PaqueteAdicional extends Connection {
                       AND paquete_adicional.estado = 1;";
 
       $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method getByPaqueteId
+  public function getByPaqueteIdAdicionalId($bean_paquete_adicional)
+  {
+    try{
+      $paquete_id = $bean_paquete_adicional->getPaqueteId() ;
+      $adicioanl_id = $bean_paquete_adicional->getAdicionalId() ;
+
+      $this->query = "SELECT
+                        paquete_adicional.* ,
+                        adicional.descripcion AS desc_adicional
+                      FROM paquete_adicional
+                      INNER JOIN adicional ON adicional.adicional_id = paquete_adicional.adicional_id
+                      WHERE paquete_adicional.paquete_id = '$paquete_id'
+                      AND paquete_adicional.adicional_id = '$adicional_id'
+                      AND paquete_adicional.estado = 1;
+                      LIMIT 1";
+
+      $this->executeFind();
 
       $data = $this->rows ;
 

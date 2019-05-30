@@ -209,4 +209,29 @@
       throw new Exception($e->getMessage());
     }
   }
+
+  public function updateItem($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_img  = new PaqueteImg($this->cnx);
+
+      $bean_paquete_img = new BeanPaqueteImg();
+
+      $bean_paquete_img->setId($id);
+      $bean_paquete_img->setItem($item);
+
+      $data = $paquete_img->updateItem($bean_paquete_img) ;
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 }

@@ -91,8 +91,8 @@
       $bean_paquete_adicional = new BeanPaqueteAdicional();
 
       $bean_paquete_adicional->setPaqueteAdicionalId($paquete_adicional_id);
-      $bean_paquete_adicional->setPaqueteId($paquete_id);
-      $bean_paquete_adicional->setAdicionalId($adicional_id);
+      // $bean_paquete_adicional->setPaqueteId($paquete_id);
+      // $bean_paquete_adicional->setAdicionalId($adicional_id);
       $bean_paquete_adicional->setPrecio($precio);
 
       $data = $paquete_adicional->update($bean_paquete_adicional) ;
@@ -185,6 +185,30 @@
       $bean_paquete_adicional->setPaqueteId($paquete_id);
 
       $data = $paquete_adicional->getByPaqueteId($bean_paquete_adicional);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByPaqueteIdAdicionalId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_adicional  = new PaqueteAdicional();
+
+      $bean_paquete_adicional = new BeanPaqueteAdicional();
+
+      $bean_paquete_adicional->setPaqueteId($paquete_id);
+      $bean_paquete_adicional->setAdicionalId($adicional_id);
+
+      $data = $paquete_adicional->getByPaqueteIdAdicionalId($bean_paquete_adicional);
 
       return $data ;
     }

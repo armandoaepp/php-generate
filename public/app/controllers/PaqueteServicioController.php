@@ -94,7 +94,6 @@
       $bean_paquete_servicio->setPaqueteId($paquete_id);
       $bean_paquete_servicio->setServicioId($servicio_id);
       $bean_paquete_servicio->setTipo($tipo);
-
       $data = $paquete_servicio->update($bean_paquete_servicio) ;
 
       return $data;
@@ -194,4 +193,27 @@
     }
   }
 
+  public function getByPaqueteIdServicioId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_servicio  = new PaqueteServicio();
+
+      $bean_paquete_servicio = new BeanPaqueteServicio();
+
+      $bean_paquete_servicio->setPaqueteId($paquete_id);
+      $bean_paquete_servicio->setServicioId($servicio_id);
+
+      $data = $paquete_servicio->getByPaqueteIdServicioId($bean_paquete_servicio);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 }

@@ -498,7 +498,7 @@
                             <input type="hidden" name="adicional_ids[]" value="${adicional_id}">
                           </td>
                           <td>
-                            <input type="number" name="actividad_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
+                            <input type="number" name="adicional_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
                           </td>
                           <td>
                             <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">

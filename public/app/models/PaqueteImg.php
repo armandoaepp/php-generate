@@ -220,11 +220,37 @@ class PaqueteImg extends Connection {
 
       $this->query = "SELECT * FROM paquete_img
                       WHERE paquete_id = '$paquete_id'
-                      AND estado = 1; ";
+                      AND estado = 1
+                      ORDER BY item, id ASC; ";
 
       $this->executeQuery();
 
       $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method Eliminar(Update Estado)
+  public function updateItem($bean_paquete_img)
+  {
+    try{
+      $id = $bean_paquete_img->getId();
+      $item = $bean_paquete_img->getItem();
+
+      $this->query = "UPDATE paquete_img SET
+                        item = '$item'
+                      WHERE id='$id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
 
       return $data;
 
