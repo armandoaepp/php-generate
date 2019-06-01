@@ -29,7 +29,7 @@
   // $num_visitas         = !empty($_POST["num_visitas"]) ? $_POST["num_visitas"] : 0 ;
   $publicar            = $_POST["publicar"] ;
   $url                 = UrlHelper::urlFriendly($nombre);
-  $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
+  // $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
 
   $actividad_ids    = !empty($_POST["actividad_ids"]) ? $_POST["actividad_ids"] : [] ;
   $actividad_horas  = !empty($_POST["actividad_horas"]) ? $_POST["actividad_horas"] : [] ;

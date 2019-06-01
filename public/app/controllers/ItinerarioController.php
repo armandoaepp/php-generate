@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $itinerario  = new Itinerario();
-            
+
       $bean_itinerario = new BeanItinerario();
-            
+
       $bean_itinerario->setEstado($estado);
 
       $data = $itinerario->getByEstado($bean_itinerario);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $itinerario  = new Itinerario($this->cnx);
 
       $bean_itinerario = new BeanItinerario();
-            
+
       $bean_itinerario->setPaqueteId($paquete_id);
       $bean_itinerario->setDia($dia);
       $bean_itinerario->setTitulo($titulo);
       $bean_itinerario->setDescripcion($descripcion);
-            
+
       $data = $itinerario->save($bean_itinerario) ;
 
       return $data ;
@@ -85,12 +85,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $itinerario  = new Itinerario($this->cnx);
       $bean_itinerario = new BeanItinerario();
-            
+
       $bean_itinerario->setId($id);
       $bean_itinerario->setPaqueteId($paquete_id);
       $bean_itinerario->setDia($dia);
@@ -98,7 +98,7 @@
       $bean_itinerario->setDescripcion($descripcion);
 
       $data = $itinerario->update($bean_itinerario) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $itinerario  = new Itinerario($this->cnx);
-            
+
       $bean_itinerario = new BeanItinerario();
-            
+
       $bean_itinerario->setId($id);
       $bean_itinerario->setEstado($estado);
 
       $data = $itinerario->updateEstado($bean_itinerario) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -166,6 +166,55 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByPaqueteId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $itinerario  = new Itinerario();
+
+      $bean_itinerario = new BeanItinerario();
+
+      $bean_itinerario->setPaqueteId($paquete_id);
+
+      $data = $itinerario->getByPaqueteId($bean_itinerario);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updateItinerario($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $itinerario  = new Itinerario($this->cnx);
+      $bean_itinerario = new BeanItinerario();
+
+      $bean_itinerario->setId($id);
+      // $bean_itinerario->setPaqueteId($paquete_id);
+      // $bean_itinerario->setDia($dia);
+      $bean_itinerario->setTitulo($titulo);
+      $bean_itinerario->setDescripcion($descripcion);
+
+      $data = $itinerario->updateItinerario($bean_itinerario) ;
+
+      return $data;
     }
     catch (Exception $e)
     {

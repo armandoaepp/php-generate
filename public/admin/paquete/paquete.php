@@ -100,7 +100,7 @@
                   <!-- <th>Url </th> -->
                   <!-- <th>Num_visitas </th> -->
                   <th width="50" class="fs-x-13"> Publicar </th>
-                  <th width="70"></th>
+                  <th width="100"></th>
                 </tr>
               </thead>
 
@@ -161,18 +161,21 @@
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
-                    <button onclick="modalPublicar(<?php echo $row->paquete_id ?>, `<?php echo $row->ubigeo_id ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row->paquete_id ?>, `<?php echo $row->nombre ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
 
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete/editar.php?id=<?php echo $row->paquete_id ?>" title="Editar">
-                    <i class="fas fa-pencil-alt"></i>
+                    <a class="btn btn-outline-success btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete/itinerario.php?id=<?php echo $row->paquete_id ?>" title="Itienerario">
+                      <i class="fas fa-list-ol"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_id ?>, `<?php echo $row->ubigeo_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
-                    <i class="far fa-trash-alt"></i>
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete/editar.php?id=<?php echo $row->paquete_id ?>" title="Editar">
+                      <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                      <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
                   </td>

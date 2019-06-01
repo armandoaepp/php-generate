@@ -284,5 +284,30 @@
     }
   }
 
+  public function updateDias($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete  = new Paquete($this->cnx);
+      $bean_paquete = new BeanPaquete();
+
+      $paquete_id         = $paquete_id ;
+      // $num_dias           = !empty($num_dias) ? $num_dias              : 0 ;
+
+      $bean_paquete->setPaqueteId($paquete_id);
+      $bean_paquete->setNumDias($num_dias);
+
+      $data = $paquete->updateDias($bean_paquete) ;
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
 
 }

@@ -213,7 +213,6 @@ class Paquete extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_paquete)
   {
@@ -310,5 +309,33 @@ class Paquete extends Connection {
 
     }
   }
+    # Method Actualizar
+    public function updateDias($bean_paquete)
+    {
+      try{
+
+        $paquete_id       = $bean_paquete->getPaqueteId();
+        $num_dias         = $bean_paquete->getNumDias();
+
+        $this->query = "UPDATE paquete SET
+                          num_dias = '$num_dias'
+                        WHERE paquete_id = '$paquete_id'
+                        LIMIT 1 ;";
+
+        // echo $this->query."<br>" ;
+
+        $this->executeQuery();
+
+        $data = $this->status  ;
+
+        return $data;
+
+      }catch(exception $e){
+
+        throw new Exception($e->getMessage());
+
+      }
+    }
+
 
 }

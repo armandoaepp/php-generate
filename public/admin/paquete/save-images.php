@@ -53,6 +53,7 @@ try{
           "paquete_id" => $paquete_id,
           'item' => ( $cant_item + $i + 1 ),
           "imagen"     => $imagenes[$i] ,
+          "desc_img"   => '' ,
         );
 
         $response = $paquete_img_controller->save($params_det);

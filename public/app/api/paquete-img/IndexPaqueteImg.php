@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $paquete_img_controller = new PaqueteImgController() ; 
+      $paquete_img_controller = new PaqueteImgController() ;
 
        $data = $paquete_img_controller->getAll() ;
 
@@ -35,35 +35,35 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $paquete_img_controller = new PaqueteImgController($cnx) ; 
+
+      $paquete_img_controller = new PaqueteImgController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $paquete_id = $inputs->paquete_id;
       $imagen = $inputs->imagen;
       $item = $inputs->item;
-        
+
       $params = array(
                 'id'=> $id,
                 'paquete_id'=> $paquete_id,
                 'imagen'=> $imagen,
                 'item'=> $item,
-              ) ; 
-        
+              ) ;
+
       $data = $paquete_img_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -73,7 +73,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -83,24 +83,24 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $paquete_img_controller = new PaqueteImgController($cnx) ; 
+
+      $paquete_img_controller = new PaqueteImgController($cnx) ;
       $connection->beginTransaction();
-        
+
       $id = $inputs->id;
       $paquete_id = $inputs->paquete_id;
       $imagen = $inputs->imagen;
       $item = $inputs->item;
-        
+
       $params = array(
                 'id'=> $id,
                 'paquete_id'=> $paquete_id,
                 'imagen'=> $imagen,
                 'item'=> $item,
-              ) ; 
-        
+              ) ;
+
       $data = $paquete_img_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -111,7 +111,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -126,9 +126,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $paquete_img_controller = new PaqueteImgController() ; 
+      $paquete_img_controller = new PaqueteImgController() ;
 
       $data = $paquete_img_controller->updateEstado( $params ) ;
 
@@ -139,7 +139,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -149,7 +149,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $paquete_img_controller = new PaqueteImgController() ; 
+      $paquete_img_controller = new PaqueteImgController() ;
 
       $data = $paquete_img_controller->find( $id) ;
 
@@ -160,7 +160,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -170,7 +170,7 @@ switch($evento)
     {
 
       $id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -181,9 +181,9 @@ switch($evento)
       $params = array(
                 'id'=> $id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $paquete_img_controller = new PaqueteImgController() ; 
+      $paquete_img_controller = new PaqueteImgController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -196,15 +196,15 @@ switch($evento)
         $data = $paquete_img_controller->deleteById( $id );
 				if( !empty($paquete_img) && $data )
 				{
-					$imagen = $paquete_img["imagen"] ;
+					$imagen = $paquete_img->imagen ;
 					UploadFiles::removeFile($imagen) ;
-                }
+        }
 
 			}
 			else
 			{
 				$data = $paquete_img_controller->updateEstado($params);
-			} 
+			}
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -213,7 +213,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;

@@ -464,8 +464,8 @@
                             ?>
                             <div class="col-6 col-sm-2 mb-3 px-2">
                               <a href="<?php echo $images->imagen ?>" data-fancybox="gallery"
-                                data-caption="<?php echo $images->descripcion ?>">
-                                <img src="<?php echo $images->imagen ?>" class="img-fluid " alt="<?php echo $images->descripcion ?>" />
+                                data-caption="<?php echo $images->desc_img ?>">
+                                <img src="<?php echo $images->imagen ?>" class="img-fluid " alt="<?php echo $images->desc_img ?>" />
                               </a>
                             </div>
 

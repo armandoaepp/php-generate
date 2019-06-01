@@ -124,12 +124,12 @@
                       <div class="card ui-state-default">
                         <!-- <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> -->
                         <span class="icon-move"> <i class="fas fa-arrows-alt"></i> </span>
-                        <input type="hidden" name="ids_paquete_img[]" value="<?php echo $images->paquete_id; ?>">
+                        <input type="hidden" name="ids_paquete_img[]" value="<?php echo $images->id; ?>">
                         <a href="<?php echo $images->imagen; ?>" data-fancybox="gallery">
                           <img src="<?php echo $images->imagen; ?>" class="img-fluid " alt="" />
                         </a>
                         <button type="button" class="close close-danger ml-auto" title="Eliminar" aria-label="Close"
-                          onclick="event.preventDefault(); deleteItemImg(<?php echo $images->paquete_id; ?>)">
+                          onclick="event.preventDefault(); deleteItemImg(<?php echo $images->id; ?>)">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -244,7 +244,7 @@
         console.log(params);
 
         $.ajax({
-          url: './app/api/noticia-img/IndexNoticiaImg.php',
+          url: './app/api/paquete-img/IndexPaqueteImg.php',
           dataType: 'json',
           type: 'POST',
           contentType: 'application/json',

@@ -66,9 +66,12 @@
 
       $bean_paquete_img = new BeanPaqueteImg();
 
+      $desc_img = !empty($desc_img) ? $desc_img : '' ;
+
       $bean_paquete_img->setPaqueteId($paquete_id);
       $bean_paquete_img->setImagen($imagen);
       $bean_paquete_img->setItem($item);
+      $bean_paquete_img->setDescImg($desc_img);
 
       $data = $paquete_img->save($bean_paquete_img) ;
 
@@ -90,10 +93,13 @@
       $paquete_img  = new PaqueteImg($this->cnx);
       $bean_paquete_img = new BeanPaqueteImg();
 
+      $desc_img = !empty($desc_img) ? $desc_img : '' ;
+
       $bean_paquete_img->setId($id);
       $bean_paquete_img->setPaqueteId($paquete_id);
       $bean_paquete_img->setImagen($imagen);
       $bean_paquete_img->setItem($item);
+      $bean_paquete_img->setDescImg($desc_img);
 
       $data = $paquete_img->update($bean_paquete_img) ;
 

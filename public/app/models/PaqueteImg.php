@@ -39,23 +39,26 @@ class PaqueteImg extends Connection {
   {
     try{
 
-      $id = $bean_paquete_img->getId();
+      $id         = $bean_paquete_img->getId();
       $paquete_id = $bean_paquete_img->getPaqueteId();
-      $imagen = $bean_paquete_img->getImagen();
-      $item = $bean_paquete_img->getItem();
-      $estado = $bean_paquete_img->getEstado();
+      $imagen     = $bean_paquete_img->getImagen();
+      $item       = $bean_paquete_img->getItem();
+      $desc_img   = $bean_paquete_img->getDescImg();
+      $estado     = $bean_paquete_img->getEstado();
 
       $this->query = "INSERT INTO paquete_img
                       (
                         paquete_id,
                         imagen,
                         item,
+                        desc_img,
                         estado
                       )
                       VALUES(
                         '$paquete_id',
                         '$imagen',
                         '$item',
+                        '$desc_img',
                         '$estado'
                       ); ";
 
@@ -77,15 +80,17 @@ class PaqueteImg extends Connection {
   public function update($bean_paquete_img)
   {
     try{
-      $id = $bean_paquete_img->getId();
+      $id         = $bean_paquete_img->getId();
       $paquete_id = $bean_paquete_img->getPaqueteId();
-      $imagen = $bean_paquete_img->getImagen();
-      $item = $bean_paquete_img->getItem();
+      $imagen     = $bean_paquete_img->getImagen();
+      $item       = $bean_paquete_img->getItem();
+      $desc_img   = $bean_paquete_img->getDescImg();
 
       $this->query = "UPDATE paquete_img SET
                         paquete_id = '$paquete_id',
                         imagen = '$imagen',
                         item = '$item'
+                        desc_img = '$desc_img'
                       WHERE id = '$id'
                       LIMIT 1 ;";
 

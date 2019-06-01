@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Itinerario extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -86,7 +86,7 @@ class Itinerario extends Connection {
       $titulo = $bean_itinerario->getTitulo();
       $descripcion = $bean_itinerario->getDescripcion();
 
-      $this->query = "UPDATE itinerario SET 
+      $this->query = "UPDATE itinerario SET
                         paquete_id = '$paquete_id',
                         dia = '$dia',
                         titulo = '$titulo',
@@ -150,7 +150,6 @@ class Itinerario extends Connection {
     }
   }
 
-
   # Method getByEstado
   public function getByEstado($bean_itinerario)
   {
@@ -173,7 +172,6 @@ class Itinerario extends Connection {
     }
   }
 
-
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_itinerario)
   {
@@ -181,7 +179,7 @@ class Itinerario extends Connection {
       $id = $bean_itinerario->getId();
       $estado = $bean_itinerario->getEstado();
 
-      $this->query = "UPDATE itinerario SET 
+      $this->query = "UPDATE itinerario SET
                         estado = '$estado'
                       WHERE id='$id'
                       LIMIT 1 ; ";
@@ -198,4 +196,59 @@ class Itinerario extends Connection {
 
     }
   }
+
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_actividad)
+  {
+    try{
+      $paquete_id = $bean_paquete_actividad->getPaqueteId() ;
+
+      $this->query = "SELECT * FROM itinerario
+                      WHERE itinerario.paquete_id = '$paquete_id'
+                      AND itinerario.estado = 1; ";
+
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+    # Method Actualizar
+    public function updateItinerario($bean_itinerario)
+    {
+      try{
+        $id = $bean_itinerario->getId();
+        // $paquete_id = $bean_itinerario->getPaqueteId();
+        // $dia = $bean_itinerario->getDia();
+        $titulo = $bean_itinerario->getTitulo();
+        $descripcion = $bean_itinerario->getDescripcion();
+
+        $this->query = "UPDATE itinerario SET
+                          titulo = '$titulo',
+                          descripcion = '$descripcion'
+                        WHERE id = '$id'
+                        LIMIT 1 ;";
+
+        $this->executeQuery();
+
+        $data = $this->status  ;
+
+        return $data;
+
+      }catch(exception $e){
+
+        throw new Exception($e->getMessage());
+
+      }
+    }
+
+
 }

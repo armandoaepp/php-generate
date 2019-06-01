@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -16,6 +16,7 @@ class BeanPaqueteImg{
   private $paquete_id;
   private $imagen = "" ;
   private $item;
+  private $desc_img = "";
   private $estado = 1 ;
 
   #Auto Increment Item
@@ -69,6 +70,16 @@ class BeanPaqueteImg{
       }
     }
     return $this->item;
+  }
+
+  public function setDescImg($desc_img)
+  {
+    $this->desc_img = Validation::validate( $desc_img );
+  }
+
+  public function getDescImg()
+  {
+    return $this->desc_img;
   }
 
   public function setEstado($estado_)
