@@ -161,7 +161,6 @@
 
 
     # ===================================================================
-
     // $imagenes = [];
     $imagenes = UploadFiles::uploadMultiFiles($file_imagenes, "paquetes", $paquete_id ) ;
 

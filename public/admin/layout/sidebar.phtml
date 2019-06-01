@@ -110,5 +110,30 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
       </ul>
     </li>
 
+    <li>
+      <a class="menu <?php if ($sidebar_active[0] == 4) {echo 'active';}?>" href="#" role="button">
+        <i class="far fa-handshake"></i>
+        Convenios
+      </a>
+      <ul class="menu-items">
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 4 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/tipo-convenio/tipo-convenio.php">
+            <i class="fa fa-list"></i>
+            Tipos de  Convenios
+          </a>
+        </li>
+
+        <li>
+          <a class="<?php if ($sidebar_active[0] == 4 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/convenio/convenio.php">
+            <i class="fa fa-list"></i>
+            Convenios
+          </a>
+        </li>
+
+
+
+      </ul>
+    </li>
+
   </ul>
 </nav>
