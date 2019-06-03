@@ -48,7 +48,16 @@
 
     $adicionales = $adicional_controller->getByEstado($array);
 
-    # paquete by IDs
+  # covenios
+    $convenio_controller = new ConvenioController();
+
+    $array = array(
+      'estado' => 1,
+    ) ;
+
+    $convenios = $convenio_controller->getByEstado($array);
+
+  # paquete by IDs
       $paquete_controller = new PaqueteController();
 
       $paquete = $paquete_controller->find($paquete_id);
@@ -66,49 +75,59 @@
 
       $title_page = "Paquete";
 
-    # actividades paquete seleccionado
-      $paquete_actividad_controller = new PaqueteActividadController();
-      $array = array(
-        'paquete_id' => $paquete_id,
-      ) ;
+  # actividades paquete seleccionado
+    $paquete_actividad_controller = new PaqueteActividadController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-      $actividades_paquete = $paquete_actividad_controller->getByPaqueteId($array);
+    $actividades_paquete = $paquete_actividad_controller->getByPaqueteId($array);
 
-      $paquete_actividad_ids = array_column($actividades_paquete, 'actividad_id');
+    $paquete_actividad_ids = array_column($actividades_paquete, 'actividad_id');
 
-    # servicios paquete seleccionado
-      $paquete_servicio_controller = new PaqueteServicioController();
-      $array = array(
-        'paquete_id' => $paquete_id,
-      ) ;
+  # servicios paquete seleccionado
+    $paquete_servicio_controller = new PaqueteServicioController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-      $paquete_servicios = $paquete_servicio_controller->getByPaqueteId($array);
+    $paquete_servicios = $paquete_servicio_controller->getByPaqueteId($array);
 
-      $paquete_servicio_ids = array_column($paquete_servicios, 'servicio_id');
+    $paquete_servicio_ids = array_column($paquete_servicios, 'servicio_id');
 
-    # adicionales paquete seleccionado
-      $paquete_adicionales_controller = new PaqueteAdicionalController();
-      $array = array(
-        'paquete_id' => $paquete_id,
-      ) ;
+  # adicionales paquete seleccionado
+    $paquete_adicionales_controller = new PaqueteAdicionalController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-      $paquete_adicioales = $paquete_adicionales_controller->getByPaqueteId($array);
+    $paquete_adicioales = $paquete_adicionales_controller->getByPaqueteId($array);
 
-      $paquete_adicional_ids = array_column($paquete_adicioales, 'adicional_id');
+    $paquete_adicional_ids = array_column($paquete_adicioales, 'adicional_id');
+
+  # convenios paquete seleccionado
+    $paquete_convenio_controller = new PaqueteConvenioController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
+
+    $paquete_convenios = $paquete_convenio_controller->getByPaqueteId($array);
+
+    $paquete_convenio_ids = array_column($paquete_convenios, 'convenio_id');
 
 
-    # Imgs paquete seleccionado
-      $paquete_adicionales_controller = new PaqueteImgController();
-      $array = array(
-        'paquete_id' => $paquete_id,
-      ) ;
+  # Imgs paquete seleccionado
+    $paquete_adicionales_controller = new PaqueteImgController();
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
 
-      $paquete_imgs = $paquete_adicionales_controller->getByPaqueId($array);
+    $paquete_imgs = $paquete_adicionales_controller->getByPaqueId($array);
 
-      $fecha_ini_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_ini_promo);
-      $fecha_fin_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_fin_promo);
+    $fecha_ini_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_ini_promo);
+    $fecha_fin_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_fin_promo);
 
-    # video paquete seleccionado
+  # video paquete seleccionado
     $paquete_video_controller = new PaqueteVideoController();
 
     $array = array(
@@ -116,10 +135,6 @@
     ) ;
 
     $paquete_videos = $paquete_video_controller->getByPaqueteId($array);
-
-    // var_dump($paquete_videos);
-
-    // $paquete_adicional_ids = array_column($paquete_videos, 'adicional_id');
 
 ?>
 
@@ -196,7 +211,7 @@
               <div class="accordion accordion-blue-gray">
 
                 <div class="accordion-item active">
-                  <h6 class="accordion-toggle gotham-bold"> Inormacion Tours
+                  <h6 class="accordion-toggle gotham-bold"> Información Tours
                     <i class="icon fas fa-chevron-circle-right"></i>
                   </h6>
                   <div class="accordion-body">
@@ -294,6 +309,7 @@
                   </div>
                 </div>
 
+                <!-- Actividades -->
                 <div class="accordion-item">
                   <h6 class="accordion-toggle gotham-bold"> Actividades
                     <i class="icon fas fa-chevron-circle-right"></i>
@@ -565,6 +581,33 @@
 
                         </div>
 
+
+                      </div>
+                    </div>
+
+                </div>
+
+                <!-- convenios -->
+                <div class="accordion-item">
+                    <h6 class="accordion-toggle gotham-bold"> Convenios
+                      <i class="icon fas fa-chevron-circle-right"></i>
+                    </h6>
+                    <div class="accordion-body">
+                      <div class="accordion-content">
+
+                          <div class="row m-0">
+                              <div class="col-md-12 ">
+                                <div class="form-group row d-flex align-items-center">
+                                  <label class="col-sm-3 col-md-2" for="convenio_id">Convenio: </label>
+                                  <select class="custom-select select2-box col-sm-9 col-md-10" name="convenio_ids[]" id="convenio_ids" multiple="multiple" placeholder="Convenio">
+                                    <!-- <option value="" selected disabled hidden>Seleccionar </option> -->
+                                    <?php foreach ($convenios as $row) { ?>
+                                      <option value="<?php echo $row->convenio_id; ?>" <?php if (in_array($row->convenio_id, $paquete_convenio_ids) ) echo "selected" ?> > <?php echo $row->nombre." - ".$row->desc_convenio; ?></option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                          </div>
 
                       </div>
                     </div>

@@ -13,12 +13,12 @@
 
   $paquete_convenio_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $paquete_paquete_id   = $_POST["paquete_paquete_id"] ;
-  $convenio_convenio_id   = $_POST["convenio_convenio_id"] ;
+  $paquete_id   = $_POST["paquete_id"] ;
+  $convenio_id   = $_POST["convenio_id"] ;
   $params = array(
     "paquete_convenio_id"   => $paquete_convenio_id,
-    "paquete_paquete_id"   => $paquete_paquete_id,
-    "convenio_convenio_id"   => $convenio_convenio_id,
+    "paquete_id"   => $paquete_id,
+    "convenio_id"   => $convenio_id,
   );
 
 

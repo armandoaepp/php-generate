@@ -91,7 +91,7 @@
       $paquete_video  = new PaqueteVideo($this->cnx);
       $bean_paquete_video = new BeanPaqueteVideo();
 
-      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
+      $bean_paquete_video->setPaqueteVideoId($paquete_video_id);
       $bean_paquete_video->setPaqueteId($paquete_id);
       $bean_paquete_video->setUrlVideo($url_video);
       $bean_paquete_video->setItem($item);
@@ -118,7 +118,7 @@
 
       $bean_paquete_video = new BeanPaqueteVideo();
 
-      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
+      $bean_paquete_video->setPaqueteVideoId($paquete_video_id);
       $bean_paquete_video->setEstado($estado);
 
       $data = $paquete_video->updateEstado($bean_paquete_video) ;
@@ -151,7 +151,7 @@
     }
   }
 
-  public function deleteById($paquete_img_id)
+  public function deleteById($paquete_video_id)
   {
     try
     {
@@ -160,7 +160,7 @@
 
       $bean_paquete_video = new BeanPaqueteVideo();
 
-      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
+      $bean_paquete_video->setPaqueteVideoId($paquete_video_id);
 
       $data = $paquete_video->deleteById( $bean_paquete_video ) ;
 

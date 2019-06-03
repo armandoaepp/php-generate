@@ -73,14 +73,14 @@
               
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="paquete_paquete_id">PaquetePaqueteId: </label>
-                  <input type="text" class="form-control" name="paquete_paquete_id" id="paquete_paquete_id" placeholder="PaquetePaqueteId">
+                  <label for="paquete_id">PaqueteId: </label>
+                  <input type="text" class="form-control" name="paquete_id" id="paquete_id" placeholder="PaqueteId">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="convenio_convenio_id">ConvenioConvenioId: </label>
-                  <input type="text" class="form-control" name="convenio_convenio_id" id="convenio_convenio_id" placeholder="ConvenioConvenioId">
+                  <label for="convenio_id">ConvenioId: </label>
+                  <input type="text" class="form-control" name="convenio_id" id="convenio_id" placeholder="ConvenioId">
                 </div>
               </div>
 

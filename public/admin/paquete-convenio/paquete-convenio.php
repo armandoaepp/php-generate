@@ -86,8 +86,8 @@
               <thead>
                 <tr>
                   <th width="50">Paquete_convenio_id </th>
-                  <th>Paquete_paquete_id </th>
-                  <th>Convenio_convenio_id </th>
+                  <th>Paquete_id </th>
+                  <th>Convenio_id </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -133,14 +133,14 @@
                 <tr class="<?php echo $class_estado ;?>" >
                 
                   <td> <?php echo $row->paquete_convenio_id ?> </td>
-                  <td> <?php echo $row->paquete_paquete_id ?> </td>
-                  <td> <?php echo $row->convenio_convenio_id ?> </td>
+                  <td> <?php echo $row->paquete_id ?> </td>
+                  <td> <?php echo $row->convenio_id ?> </td>
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete-convenio/editar.php?id=<?php echo $row->paquete_convenio_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_convenio_id ?>, `<?php echo $row->paquete_paquete_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_convenio_id ?>, `<?php echo $row->paquete_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>

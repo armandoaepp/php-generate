@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteConvenio extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -40,19 +40,19 @@ class PaqueteConvenio extends Connection {
     try{
 
       $paquete_convenio_id = $bean_paquete_convenio->getPaqueteConvenioId();
-      $paquete_paquete_id = $bean_paquete_convenio->getPaquetePaqueteId();
-      $convenio_convenio_id = $bean_paquete_convenio->getConvenioConvenioId();
+      $paquete_id = $bean_paquete_convenio->getPaqueteId();
+      $convenio_id = $bean_paquete_convenio->getConvenioId();
       $estado = $bean_paquete_convenio->getEstado();
 
       $this->query = "INSERT INTO paquete_convenio
                       (
-                        paquete_paquete_id,
-                        convenio_convenio_id,
+                        paquete_id,
+                        convenio_id,
                         estado
                       )
                       VALUES(
-                        '$paquete_paquete_id',
-                        '$convenio_convenio_id',
+                        '$paquete_id',
+                        '$convenio_id',
                         '$estado'
                       ); ";
 
@@ -75,12 +75,12 @@ class PaqueteConvenio extends Connection {
   {
     try{
       $paquete_convenio_id = $bean_paquete_convenio->getPaqueteConvenioId();
-      $paquete_paquete_id = $bean_paquete_convenio->getPaquetePaqueteId();
-      $convenio_convenio_id = $bean_paquete_convenio->getConvenioConvenioId();
+      $paquete_id = $bean_paquete_convenio->getPaqueteId();
+      $convenio_id = $bean_paquete_convenio->getConvenioId();
 
-      $this->query = "UPDATE paquete_convenio SET 
-                        paquete_paquete_id = '$paquete_paquete_id',
-                        convenio_convenio_id = '$convenio_convenio_id'
+      $this->query = "UPDATE paquete_convenio SET
+                        paquete_id = '$paquete_id',
+                        convenio_id = '$convenio_id'
                       WHERE paquete_convenio_id = '$paquete_convenio_id'
                       LIMIT 1 ;";
 
@@ -171,7 +171,7 @@ class PaqueteConvenio extends Connection {
       $paquete_convenio_id = $bean_paquete_convenio->getPaqueteConvenioId();
       $estado = $bean_paquete_convenio->getEstado();
 
-      $this->query = "UPDATE paquete_convenio SET 
+      $this->query = "UPDATE paquete_convenio SET
                         estado = '$estado'
                       WHERE paquete_convenio_id='$paquete_convenio_id'
                       LIMIT 1 ; ";
@@ -188,4 +188,86 @@ class PaqueteConvenio extends Connection {
 
     }
   }
+
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_convenio)
+  {
+    try{
+
+      $paquete_id = $bean_paquete_convenio->getPaqueteId();
+
+      $this->query = "SELECT
+                        paquete_convenio.*,
+                        convenio.nombre AS desc_convenio
+                      FROM paquete_convenio
+                      INNER JOIN convenio ON convenio.convenio_id = paquete_convenio.convenio_id
+                      WHERE paquete_convenio.paquete_id = '$paquete_id'
+                      AND paquete_convenio.estado = 1; ";
+
+      // echo $this->query."<br>" ;
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method Eliminar(Update Estado)
+  public function updateEstadoByPaqueteId($bean_paquete_convenio)
+  {
+    try{
+      $paquete_id = $bean_paquete_convenio->getPaqueteId();
+      $estado = $bean_paquete_convenio->getEstado();
+
+      $this->query = "UPDATE paquete_convenio SET
+                        estado = '$estado'
+                      WHERE paquete_id = '$paquete_id'; ";
+
+      // echo $this->query."<br>" ;
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method Buscar por ID
+  public function getByPaqueteIdConvenioId($bean_paquete_convenio)
+  {
+    try{
+
+      $paquete_id = $bean_paquete_convenio->getPaqueteId();
+      $convenio_id = $bean_paquete_convenio->getConvenioId();
+
+      $this->query = "SELECT * FROM paquete_convenio
+                      WHERE convenio_id = '$convenio_id'
+                      AND paquete_id = '$paquete_id'
+                      LIMIT 1; ";
+
+      $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
 }

@@ -42,7 +42,7 @@
 
   $url_videos  = !empty($_POST["url_videos"]) ? $_POST["url_videos"]  : [] ;
   $desc_videos = !empty($_POST["desc_videos"]) ? $_POST["desc_videos"]: [] ;
-  $convenio_id = !empty($_POST["convenio_id"]) ? $_POST["convenio_id"]: [] ;
+  $convenio_ids = !empty($_POST["convenio_ids"]) ? $_POST["convenio_ids"]: [] ;
 
 
   $fecha_ini_promo = NULL ;
@@ -187,6 +187,25 @@
 
       }
 
+    }
+
+  ## convenios Paquete
+    $paquete_convenio_ctrl = new PaqueteConvenioController() ;
+
+    if(count($convenio_ids) > 0)
+    {
+      for ($i=0; $i < count($convenio_ids) ; $i++)
+      {
+        $convenio_id = $convenio_ids[$i];
+
+        $params_conv = array(
+          'paquete_id'  => $paquete_id,
+          'convenio_id' => $convenio_id,
+        ) ;
+
+        $paquete_convenio_ctrl->save( $params_conv) ;
+
+      }
     }
 
     # ===================================================================

@@ -234,7 +234,7 @@ class PaqueteAdicional extends Connection {
   {
     try{
       $paquete_id = $bean_paquete_adicional->getPaqueteId() ;
-      $adicioanl_id = $bean_paquete_adicional->getAdicionalId() ;
+      $adicional_id = $bean_paquete_adicional->getAdicionalId() ;
 
       $this->query = "SELECT
                         paquete_adicional.* ,

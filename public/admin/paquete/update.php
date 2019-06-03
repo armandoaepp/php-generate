@@ -45,7 +45,7 @@
   $paquete_video_ids  = !empty($_POST["paquete_video_ids"]) ? $_POST["paquete_video_ids"]  : [] ;
   $url_videos  = !empty($_POST["url_videos"]) ? $_POST["url_videos"]  : [] ;
   $desc_videos = !empty($_POST["desc_videos"]) ? $_POST["desc_videos"]: [] ;
-
+  $convenio_ids = !empty($_POST["convenio_ids"]) ? $_POST["convenio_ids"]: [] ;
 
   $fecha_ini_promo = NULL ;
   $fecha_fin_promo = NULL ;
@@ -235,8 +235,51 @@
 
     }
 
-  }
+    ## convenios Paquete
+    $paquete_convenio_ctrl = new PaqueteConvenioController() ;
 
+    if(count($convenio_ids) > 0)
+    {
+      $params_conv = array(
+        'paquete_id' => $paquete_id,
+        'estado'     => 0,
+      ) ;
+
+      $paquete_convenio_ctrl->updateEstadoByPaqueteId( $params_conv) ;
+
+      for ($i=0; $i < count($convenio_ids) ; $i++)
+      {
+        $convenio_id = $convenio_ids[$i];
+
+        $params_conv = array(
+          'paquete_id'  => $paquete_id,
+          'convenio_id' => $convenio_id,
+        ) ;
+
+        $paquete_convenio_exit =  $paquete_convenio_ctrl->getByPaqueteIdConvenioId($params_conv);
+
+        if( empty($paquete_convenio_exit) )
+        {
+          $paquete_convenio_ctrl->save( $params_conv ) ;
+        }
+        else{
+
+          $paquete_convenio_id = $paquete_convenio_exit->paquete_convenio_id ;
+
+          $params_conv = array(
+            'paquete_convenio_id' => $paquete_convenio_id,
+            'estado'              => 1,
+          ) ;
+
+          $paquete_convenio_ctrl->updateEstado( $params_conv ) ;
+
+        }
+
+      }
+    }
+
+
+  }
 
   if($paquete_id>0){
     header("Location: ./paquete.php ", true, 301);

@@ -11,12 +11,12 @@
 
   $paquete_convenio_controller = new PaqueteConvenioController();
 
-  $paquete_paquete_id   = $_POST["paquete_paquete_id"] ;
-  $convenio_convenio_id   = $_POST["convenio_convenio_id"] ;
+  $paquete_id   = $_POST["paquete_id"] ;
+  $convenio_id   = $_POST["convenio_id"] ;
 
   $params = array(
-    "paquete_paquete_id"   => $paquete_paquete_id,
-    "convenio_convenio_id"   => $convenio_convenio_id,
+    "paquete_id"   => $paquete_id,
+    "convenio_id"   => $convenio_id,
   );
 
 

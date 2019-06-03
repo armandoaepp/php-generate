@@ -88,14 +88,14 @@
               
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="paquete_paquete_id">PaquetePaqueteId: </label>
-                  <input type="text" class="form-control" name="paquete_paquete_id" id="paquete_paquete_id" placeholder="PaquetePaqueteId" value="<?php echo $paquete_convenio->paquete_paquete_id; ?>">
+                  <label for="paquete_id">PaqueteId: </label>
+                  <input type="text" class="form-control" name="paquete_id" id="paquete_id" placeholder="PaqueteId" value="<?php echo $paquete_convenio->paquete_id; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="convenio_convenio_id">ConvenioConvenioId: </label>
-                  <input type="text" class="form-control" name="convenio_convenio_id" id="convenio_convenio_id" placeholder="ConvenioConvenioId" value="<?php echo $paquete_convenio->convenio_convenio_id; ?>">
+                  <label for="convenio_id">ConvenioId: </label>
+                  <input type="text" class="form-control" name="convenio_id" id="convenio_id" placeholder="ConvenioId" value="<?php echo $paquete_convenio->convenio_id; ?>">
                 </div>
               </div>
 

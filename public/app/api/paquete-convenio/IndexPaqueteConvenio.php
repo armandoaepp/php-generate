@@ -51,13 +51,13 @@ switch($evento)
       $connection->beginTransaction();
         
       $paquete_convenio_id = $inputs->paquete_convenio_id;
-      $paquete_paquete_id = $inputs->paquete_paquete_id;
-      $convenio_convenio_id = $inputs->convenio_convenio_id;
+      $paquete_id = $inputs->paquete_id;
+      $convenio_id = $inputs->convenio_id;
         
       $params = array(
                 'paquete_convenio_id'=> $paquete_convenio_id,
-                'paquete_paquete_id'=> $paquete_paquete_id,
-                'convenio_convenio_id'=> $convenio_convenio_id,
+                'paquete_id'=> $paquete_id,
+                'convenio_id'=> $convenio_id,
               ) ; 
         
       $data = $paquete_convenio_controller->save($params) ;
@@ -86,13 +86,13 @@ switch($evento)
       $connection->beginTransaction();
         
       $paquete_convenio_id = $inputs->paquete_convenio_id;
-      $paquete_paquete_id = $inputs->paquete_paquete_id;
-      $convenio_convenio_id = $inputs->convenio_convenio_id;
+      $paquete_id = $inputs->paquete_id;
+      $convenio_id = $inputs->convenio_id;
         
       $params = array(
                 'paquete_convenio_id'=> $paquete_convenio_id,
-                'paquete_paquete_id'=> $paquete_paquete_id,
-                'convenio_convenio_id'=> $convenio_convenio_id,
+                'paquete_id'=> $paquete_id,
+                'convenio_id'=> $convenio_id,
               ) ; 
         
       $data = $paquete_convenio_controller->update($params) ;

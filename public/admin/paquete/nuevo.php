@@ -42,7 +42,17 @@
 
     $adicionales = $adicional_controller->getByEstado($array);
 
-    # covenios
+  /* # tipos covenios
+    $tipo_convenio_controller = new TipoConvenioController();
+
+    $array = array(
+      'estado' => 1,
+    ) ;
+
+    $tipo_convenios = $tipo_convenio_controller->getByEstado($array); */
+
+
+  # covenios
     $convenio_controller = new ConvenioController();
 
     $array = array(
@@ -50,7 +60,6 @@
     ) ;
 
     $convenios = $convenio_controller->getByEstado($array);
-    // var_dump($convenios);
 
 ?>
 
@@ -126,7 +135,7 @@
               <div class="accordion accordion-blue-gray">
 
                 <div class="accordion-item active">
-                  <h6 class="accordion-toggle gotham-bold"> Inormacion Tours
+                  <h6 class="accordion-toggle gotham-bold"> Información Tours
                     <i class="icon fas fa-chevron-circle-right"></i>
                   </h6>
                   <div class="accordion-body">
@@ -446,28 +455,18 @@
                       <div class="accordion-content">
 
                           <div class="row m-0">
-                              <div class="col-md-10 ">
+                              <div class="col-md-12 ">
                                 <div class="form-group row d-flex align-items-center">
                                   <label class="col-sm-3 col-md-2" for="convenio_id">Convenio: </label>
-                                  <select class="custom-select col-sm-9 col-md-10" name="convenio_id" id="convenio_id" placeholder="Convenio">
-                                    <option value="" selected disabled hidden>Seleccionar </option>
+                                  <select class="custom-select select2-box col-sm-9 col-md-10" name="convenio_ids[]" id="convenio_ids" multiple="multiple" placeholder="Convenio">
+                                    <!-- <option value="" selected disabled hidden>Seleccionar </option> -->
                                     <?php foreach ($convenios as $row) { ?>
-                                      <option value="<?php echo $row->convenio_id; ?>"> <?php echo $row->nombre." ".$row->nombre; ?></option>
+                                      <option value="<?php echo $row->convenio_id; ?>"> <?php echo $row->nombre." - ".$row->desc_convenio; ?></option>
                                       <?php } ?>
                                   </select>
                                 </div>
                               </div>
-                              <!-- <div class="col-2">
-                                <button type="button" class="btn btn-primary btn-sm mt-1" id="addAdicional" >
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                              </div> -->
-                              <div class="col-12">
-                                <hr>
-                              </div>
                           </div>
-
-
 
                       </div>
                     </div>
@@ -491,8 +490,6 @@
 
     </main>
   </div>
-
-
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
