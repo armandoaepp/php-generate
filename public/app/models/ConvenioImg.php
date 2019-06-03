@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class ConvenioImg extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -39,7 +39,7 @@ class ConvenioImg extends Connection {
   {
     try{
 
-      $cnvenio_img_id = $bean_convenio_img->getCnvenioImgId();
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
       $convenio_id = $bean_convenio_img->getConvenioId();
       $imagen = $bean_convenio_img->getImagen();
       $item = $bean_convenio_img->getItem();
@@ -80,18 +80,18 @@ class ConvenioImg extends Connection {
   public function update($bean_convenio_img)
   {
     try{
-      $cnvenio_img_id = $bean_convenio_img->getCnvenioImgId();
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
       $convenio_id = $bean_convenio_img->getConvenioId();
       $imagen = $bean_convenio_img->getImagen();
       $item = $bean_convenio_img->getItem();
       $desc_img = $bean_convenio_img->getDescImg();
 
-      $this->query = "UPDATE convenio_img SET 
+      $this->query = "UPDATE convenio_img SET
                         convenio_id = '$convenio_id',
                         imagen = '$imagen',
                         item = '$item',
                         desc_img = '$desc_img'
-                      WHERE cnvenio_img_id = '$cnvenio_img_id'
+                      WHERE convenio_img_id = '$convenio_img_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -111,9 +111,9 @@ class ConvenioImg extends Connection {
   public function find($bean_convenio_img)
   {
     try{
-      $cnvenio_img_id = $bean_convenio_img->getCnvenioImgId();
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
 
-      $this->query = "SELECT * FROM convenio_img WHERE cnvenio_img_id = '$cnvenio_img_id' LIMIT 1; ";
+      $this->query = "SELECT * FROM convenio_img WHERE convenio_img_id = '$convenio_img_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -132,10 +132,10 @@ class ConvenioImg extends Connection {
   public function deleteById($bean_convenio_img)
   {
     try{
-      $cnvenio_img_id = $bean_convenio_img->getCnvenioImgId();
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
 
       $this->query = "DELETE FROM convenio_img
-                      WHERE cnvenio_img_id = '$cnvenio_img_id' LIMIT 1; ";
+                      WHERE convenio_img_id = '$convenio_img_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -178,12 +178,12 @@ class ConvenioImg extends Connection {
   public function updateEstado($bean_convenio_img)
   {
     try{
-      $cnvenio_img_id = $bean_convenio_img->getCnvenioImgId();
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
       $estado = $bean_convenio_img->getEstado();
 
-      $this->query = "UPDATE convenio_img SET 
+      $this->query = "UPDATE convenio_img SET
                         estado = '$estado'
-                      WHERE cnvenio_img_id='$cnvenio_img_id'
+                      WHERE convenio_img_id='$convenio_img_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -209,6 +209,55 @@ class ConvenioImg extends Connection {
       $this->executeFind();
 
       $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method getByConvenioId
+  public function getByConvenioId($bean_convenio_img)
+  {
+    try{
+      $convenio_id = $bean_convenio_img->getConvenioId() ;
+
+      $this->query = "SELECT * FROM convenio_img
+                      WHERE convenio_id = '$convenio_id'
+                      AND estado = 1
+                      ORDER BY item, convenio_img_id ASC; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method updateItem
+  public function updateItem($bean_convenio_img)
+  {
+    try{
+      $convenio_img_id = $bean_convenio_img->getConvenioImgId();
+      $item = $bean_convenio_img->getItem();
+
+      $this->query = "UPDATE convenio_img SET
+                        item = '$item'
+                      WHERE convenio_img_id = '$convenio_img_id'
+                      LIMIT 1 ; ";
+
+      $this->executeQuery();
+
+      $data = $this->status  ;
 
       return $data;
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -12,7 +12,7 @@ class BeanConvenioImg{
   public function __construct(){}
 
   # Atributos
-  private $cnvenio_img_id;
+  private $convenio_img_id;
   private $convenio_id;
   private $imagen = "" ;
   private $item;
@@ -23,14 +23,14 @@ class BeanConvenioImg{
   public $item_autoincrement = true;
 
   # METODOS
-  public function setCnvenioImgId($cnvenio_img_id_)
+  public function setConvenioImgId($convenio_img_id_)
   {
-    $this->cnvenio_img_id = Validation::validate( $cnvenio_img_id_ );
+    $this->convenio_img_id = Validation::validate( $convenio_img_id_ );
   }
 
-  public function getCnvenioImgId()
+  public function getConvenioImgId()
   {
-    return $this->cnvenio_img_id;
+    return $this->convenio_img_id;
   }
 
   public function setConvenioId($convenio_id_)

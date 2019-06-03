@@ -3,9 +3,9 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
+  $convenio_id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
-  if ($id <= 0) {
+  if ($convenio_id <= 0) {
       header("Location: ./convenio.php ", true, 301);
   }
 
@@ -13,7 +13,7 @@
 
   $convenio_controller = new ConvenioController();
 
-  $convenio = $convenio_controller->find($id);
+  $convenio = $convenio_controller->find($convenio_id);
 
   $publicar = trim($convenio->publicar);
 
@@ -27,6 +27,24 @@
   }
 
   $title_page = "Convenio";
+
+  # tipo de convenios
+
+    $tipo_convenio_controller = new TipoConvenioController();
+
+    $params = array(
+      'estado' => 1
+    );
+
+    $tipo_convenios = $tipo_convenio_controller->getByEstado($params);
+
+  # Imgs convenio seleccionado
+    $convenio_img_controller = new ConvenioImgController();
+    $array = array(
+      'convenio_id' => $convenio_id,
+    ) ;
+
+    $convenio_imgs = $convenio_img_controller->getByConvenioId($array);
 
 ?>
 
@@ -48,7 +66,7 @@
     $sidebar = array(
         "sidebar_class" => "",
         "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+        "sidebar_active" => [4, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -94,56 +112,58 @@
           <div class="col-12">
             <form action="admin/convenio/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
-              <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
+              <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $convenio_id ?>">
               <div class="row">
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="tipo_convenio_id">TipoConvenioId: </label>
-                  <select class="custom-select" name="tipo_convenio_id" id="tipo_convenio_id" placeholder="TipoConvenioId">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="tipo_convenio_id">Tipo Convenio: </label>
+                    <select class="custom-select" name="tipo_convenio_id" id="tipo_convenio_id" placeholder="Tipo Convenio" required>
+                      <option value="" selected disabled hidden>Seleccionar </option>
+                      <?php foreach ($tipo_convenios as $row) { ?>
+                      <option value="<?php echo $row->tipo_convenio_id; ?>" <?php if( $convenio->tipo_convenio_id == $row->tipo_convenio_id ) echo "selected" ?> > <?php echo $row->desc_convenio; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $convenio->nombre; ?>">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $convenio->nombre; ?>" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="caracteristica">Caracteristica: </label>
-                  <textarea class="form-control ckeditor" name="caracteristica" id="caracteristica" placeholder="Caracteristica" cols="30" rows="6"><?php echo htmlspecialchars_decode($convenio->caracteristica); ?></textarea>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="caracteristica">Caracteristicas: </label>
+                    <textarea class="form-control ckeditor" name="caracteristica" id="caracteristica" placeholder="Caracteristica" cols="30" rows="6"><?php echo htmlspecialchars_decode($convenio->caracteristica); ?></textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="precio">Precio: </label>
-                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $convenio->precio; ?>">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="precio">Precio: </label>
+                    <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $convenio->precio; ?>">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="glosa">Glosa: </label>
-                  <textarea class="form-control ckeditor" name="glosa" id="glosa" placeholder="Glosa" cols="30" rows="6"><?php echo htmlspecialchars_decode($convenio->glosa); ?></textarea>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="glosa">Glosa: </label>
+                    <textarea class="form-control ckeditor" name="glosa" id="glosa" placeholder="Glosa" cols="30" rows="6"><?php echo htmlspecialchars_decode($convenio->glosa); ?></textarea>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
-                    <label class="form-check-label" for="si">SI</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
-                    <label class="form-check-label" for="no">NO</label>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
                   </div>
                 </div>
-              </div>
 
               </div>
 
@@ -155,6 +175,31 @@
             </form>
           </div>
 
+          <!-- imagenes detalle -->
+          <div class="col-12 mt-3 mt-md-5 text-right">
+            <a href="admin/convenio/edit-images.php?id=<?php echo $convenio_id ; ?>">Editar Imagenes </a>
+            <hr>
+          </div>
+
+          <div class="col-12 mb-3">
+            <div class="row my-2">
+              <?php
+              // var_dump($convenio_imgs);
+              foreach ($convenio_imgs as $images) {
+              ?>
+              <div class="col-6 col-sm-2 mb-3 px-2">
+                <a href="<?php echo $images->imagen ?>" data-fancybox="gallery"
+                  data-caption="<?php echo $images->desc_img ?>">
+                  <img src="<?php echo $images->imagen ?>" class="img-fluid " alt="<?php echo $images->desc_img ?>" />
+                </a>
+              </div>
+
+              <?php
+                }
+              ?>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -164,6 +209,7 @@
   </div>
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

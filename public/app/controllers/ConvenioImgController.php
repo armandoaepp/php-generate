@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio_img  = new ConvenioImg();
-            
+
       $bean_convenio_img = new BeanConvenioImg();
-            
+
       $bean_convenio_img->setEstado($estado);
 
       $data = $convenio_img->getByEstado($bean_convenio_img);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio_img  = new ConvenioImg($this->cnx);
 
       $bean_convenio_img = new BeanConvenioImg();
-            
+
       $bean_convenio_img->setConvenioId($convenio_id);
       $bean_convenio_img->setImagen($imagen);
       $bean_convenio_img->setItem($item);
       $bean_convenio_img->setDescImg($desc_img);
-            
+
       $data = $convenio_img->save($bean_convenio_img) ;
 
       return $data ;
@@ -85,20 +85,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio_img  = new ConvenioImg($this->cnx);
       $bean_convenio_img = new BeanConvenioImg();
-            
-      $bean_convenio_img->setCnvenioImgId($cnvenio_img_id);
+
+      $bean_convenio_img->setConvenioImgId($convenio_img_id);
       $bean_convenio_img->setConvenioId($convenio_id);
       $bean_convenio_img->setImagen($imagen);
       $bean_convenio_img->setItem($item);
       $bean_convenio_img->setDescImg($desc_img);
 
       $data = $convenio_img->update($bean_convenio_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio_img  = new ConvenioImg($this->cnx);
-            
+
       $bean_convenio_img = new BeanConvenioImg();
-            
-      $bean_convenio_img->setCnvenioImgId($cnvenio_img_id);
+
+      $bean_convenio_img->setConvenioImgId($convenio_img_id);
       $bean_convenio_img->setEstado($estado);
 
       $data = $convenio_img->updateEstado($bean_convenio_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -139,7 +139,7 @@
 
       $bean_convenio_img = new BeanConvenioImg();
 
-      $bean_convenio_img->setCnvenioImgId($id);
+      $bean_convenio_img->setConvenioImgId($id);
 
       $data = $convenio_img->find( $bean_convenio_img) ;
       return $data;
@@ -151,7 +151,7 @@
     }
   }
 
-  public function deleteById($cnvenio_img_id)
+  public function deleteById($convenio_img_id)
   {
     try
     {
@@ -160,7 +160,7 @@
 
       $bean_convenio_img = new BeanConvenioImg();
 
-      $bean_convenio_img->setCnvenioImgId($cnvenio_img_id);
+      $bean_convenio_img->setConvenioImgId($convenio_img_id);
 
       $data = $convenio_img->deleteById( $bean_convenio_img ) ;
 
@@ -188,5 +188,53 @@
       throw new Exception($e->getMessage());
     }
   }
+
+  public function getByConvenioId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $convenio_img  = new ConvenioImg();
+
+      $bean_convenio_img = new BeanConvenioImg();
+
+      $bean_convenio_img->setConvenioId($convenio_id);
+
+      $data = $convenio_img->getByConvenioId($bean_convenio_img);
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updateItem($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $convenio_img  = new ConvenioImg($this->cnx);
+
+      $bean_convenio_img = new BeanConvenioImg();
+
+      $bean_convenio_img->setConvenioImgId($id);
+      $bean_convenio_img->setItem($item);
+
+      $data = $convenio_img->updateItem($bean_convenio_img) ;
+
+      return $data;
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
 
 }

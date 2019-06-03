@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class PaqueteVideo extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -39,12 +39,12 @@ class PaqueteVideo extends Connection {
   {
     try{
 
-      $id = $bean_paquete_video->getId();
-      $paquete_id = $bean_paquete_video->getPaqueteId();
-      $url_video = $bean_paquete_video->getUrlVideo();
-      $item = $bean_paquete_video->getItem();
-      $desc_video = $bean_paquete_video->getDescVideo();
-      $estado = $bean_paquete_video->getEstado();
+      // $paquete_video_id = $bean_paquete_video->getPaqueteVideoId();
+      $paquete_id     = $bean_paquete_video->getPaqueteId();
+      $url_video      = $bean_paquete_video->getUrlVideo();
+      $item           = $bean_paquete_video->getItem();
+      $desc_video     = $bean_paquete_video->getDescVideo();
+      $estado         = $bean_paquete_video->getEstado();
 
       $this->query = "INSERT INTO paquete_video
                       (
@@ -80,18 +80,17 @@ class PaqueteVideo extends Connection {
   public function update($bean_paquete_video)
   {
     try{
-      $id = $bean_paquete_video->getId();
-      $paquete_id = $bean_paquete_video->getPaqueteId();
-      $url_video = $bean_paquete_video->getUrlVideo();
-      $item = $bean_paquete_video->getItem();
-      $desc_video = $bean_paquete_video->getDescVideo();
+      $paquete_video_id = $bean_paquete_video->getPaqueteVideoId();
+      // $paquete_id     = $bean_paquete_video->getPaqueteId();
+      $url_video      = $bean_paquete_video->getUrlVideo();
+      $item           = $bean_paquete_video->getItem();
+      $desc_video     = $bean_paquete_video->getDescVideo();
 
-      $this->query = "UPDATE paquete_video SET 
-                        paquete_id = '$paquete_id',
+      $this->query = "UPDATE paquete_video SET
                         url_video = '$url_video',
                         item = '$item',
                         desc_video = '$desc_video'
-                      WHERE id = '$id'
+                      WHERE paquete_video_id = '$paquete_video_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -111,9 +110,9 @@ class PaqueteVideo extends Connection {
   public function find($bean_paquete_video)
   {
     try{
-      $id = $bean_paquete_video->getId();
+      $paquete_video_id = $bean_paquete_video->getPaqueteVideoId();
 
-      $this->query = "SELECT * FROM paquete_video WHERE id = '$id' LIMIT 1; ";
+      $this->query = "SELECT * FROM paquete_video WHERE paquete_video_id = '$paquete_video_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -132,10 +131,10 @@ class PaqueteVideo extends Connection {
   public function deleteById($bean_paquete_video)
   {
     try{
-      $id = $bean_paquete_video->getId();
+      $paquete_video_id = $bean_paquete_video->getPaqueteVideoId();
 
       $this->query = "DELETE FROM paquete_video
-                      WHERE id = '$id' LIMIT 1; ";
+                      WHERE paquete_video_id = '$paquete_video_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -173,17 +172,16 @@ class PaqueteVideo extends Connection {
     }
   }
 
-
   # Method Eliminar(Update Estado)
   public function updateEstado($bean_paquete_video)
   {
     try{
-      $id = $bean_paquete_video->getId();
-      $estado = $bean_paquete_video->getEstado();
+      $paquete_video_id = $bean_paquete_video->getPaqueteVideoId();
+      $estado         = $bean_paquete_video->getEstado();
 
-      $this->query = "UPDATE paquete_video SET 
+      $this->query = "UPDATE paquete_video SET
                         estado = '$estado'
-                      WHERE id='$id'
+                      WHERE paquete_video_id='$paquete_video_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -207,6 +205,33 @@ class PaqueteVideo extends Connection {
       $this->query = "SELECT count(*) AS num_rows FROM paquete_video;";
 
       $this->executeFind();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
+  # Method getByPaqueteId
+  public function getByPaqueteId($bean_paquete_video)
+  {
+    try{
+      $paquete_id = $bean_paquete_video->getPaqueteId() ;
+
+      $this->query = "SELECT
+                        paquete_video.*
+                      FROM paquete_video
+                      WHERE paquete_video.paquete_id = '$paquete_id'
+                      AND paquete_video.estado = 1; ";
+
+      $this->executeQuery();
+
+      // echo "Sql: ".$this->query ."<br>" ;
 
       $data = $this->rows ;
 

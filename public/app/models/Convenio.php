@@ -175,8 +175,12 @@ class Convenio extends Connection {
     try{
       $estado = $bean_convenio->getEstado() ;
 
-      $this->query = "SELECT * FROM convenio
-                      WHERE estado = '$estado'; ";
+      $this->query = "SELECT
+                        convenio.*,
+                        tipo_convenio.desc_convenio
+                      FROM convenio
+                      INNER JOIN tipo_convenio ON tipo_convenio.tipo_convenio_id = convenio.tipo_convenio_id
+                      WHERE tipo_convenio.estado = '$estado'; ";
 
       $this->executeQuery();
 

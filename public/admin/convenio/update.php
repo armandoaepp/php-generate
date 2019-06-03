@@ -13,20 +13,22 @@
 
   $convenio_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $tipo_convenio_id   = $_POST["tipo_convenio_id"] ;
-  $nombre   = $_POST["nombre"] ;
-  $caracteristica   = $_POST["caracteristica"] ;
-  $precio   = $_POST["precio"] ;
-  $glosa   = $_POST["glosa"] ;
-  $publicar   = $_POST["publicar"] ;
+
+  $tipo_convenio_id = $_POST["tipo_convenio_id"] ;
+  $nombre           = $_POST["nombre"] ;
+  $caracteristica   = !empty($_POST["caracteristica"]) ? $_POST["caracteristica"] : "" ;
+  $precio           = !empty($_POST["precio"]) ? $_POST["precio"] : 0 ;
+  $glosa            = !empty($_POST["glosa"]) ? $_POST["glosa"] : "" ;
+  $publicar         = !empty($_POST["publicar"]) ? $_POST["publicar"] : "N" ;
+
   $params = array(
-    "convenio_id"   => $convenio_id,
-    "tipo_convenio_id"   => $tipo_convenio_id,
-    "nombre"   => $nombre,
+    "convenio_id"      => $convenio_id,
+    "tipo_convenio_id" => $tipo_convenio_id,
+    "nombre"           => $nombre,
     "caracteristica"   => $caracteristica,
-    "precio"   => $precio,
-    "glosa"   => $glosa,
-    "publicar"   => $publicar,
+    "precio"           => $precio,
+    "glosa"            => $glosa,
+    "publicar"         => $publicar,
   );
 
 

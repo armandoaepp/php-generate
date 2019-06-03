@@ -39,6 +39,12 @@
   $servicio_ids_incluye = !empty($_POST["servicio_ids_incluye"]) ? $_POST["servicio_ids_incluye"]: [] ;
   // $adicionales_ids      = !empty($_POST["adicionales_ids"]) ? $_POST["adicionales_ids"]          : [] ;
 
+
+  $url_videos  = !empty($_POST["url_videos"]) ? $_POST["url_videos"]  : [] ;
+  $desc_videos = !empty($_POST["desc_videos"]) ? $_POST["desc_videos"]: [] ;
+  $convenio_id = !empty($_POST["convenio_id"]) ? $_POST["convenio_id"]: [] ;
+
+
   $fecha_ini_promo = NULL ;
   $fecha_fin_promo = NULL ;
   if( !empty($fechas_promo) )
@@ -158,7 +164,30 @@
 
     }
 
+    ## Videos Paquete
+    $paquete_video_ctrl = new PaqueteVideoController() ;
 
+    if (count($url_videos) > 0)
+    {
+      for ($i=0; $i < count($url_videos) ; $i++)
+      {
+        $url_video  = $url_videos[$i];
+        $desc_video = $desc_videos[$i];
+
+        $descripcion = "";
+
+        $params_video = array(
+          'paquete_id' => $paquete_id,
+          'url_video'  => $url_video,
+          'item'       => ($i + 1),
+          'desc_video' => $desc_video,
+        ) ;
+
+        $paquete_video_ctrl->save( $params_video) ;
+
+      }
+
+    }
 
     # ===================================================================
     // $imagenes = [];

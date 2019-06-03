@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_active"      => [4, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -87,7 +87,7 @@
                 <tr>
                   <th width="50">ID </th>
                   <th>Nombre </th>
-                  <!-- <th>Caracteristica </th> -->
+                  <th>Caracteristica </th>
                   <th>Precio </th>
                   <!-- <th>Glosa </th> -->
                   <th>Tipo Convenio </th>
@@ -138,7 +138,7 @@
 
                   <td> <?php echo $row->convenio_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
-                  <!-- <td> <?php echo $row->caracteristica ?> </td> -->
+                  <td> <?php echo htmlspecialchars_decode($row->caracteristica) ?> </td>
                   <td> <?php echo $row->precio ?> </td>
                   <!-- <td> <?php echo $row->glosa ?> </td> -->
                   <td> <?php echo $row->desc_convenio ?> </td>

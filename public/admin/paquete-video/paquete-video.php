@@ -10,7 +10,7 @@
 
     $data = $paquete_video_controller->getAll();
 
-    $title_page = "PaqueteVideos";
+    $title_page = "Paquetes Videos";
 
 ?>
 
@@ -81,11 +81,11 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Id </th>
+                  <th width="50">Paquete_img_id </th>
                   <th>Paquete_id </th>
                   <th>Url_video </th>
                   <th>Item </th>
@@ -133,18 +133,18 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
-                  <td> <?php echo $row->id ?> </td>
+
+                  <td> <?php echo $row->paquete_img_id ?> </td>
                   <td> <?php echo $row->paquete_id ?> </td>
                   <td> <?php echo $row->url_video ?> </td>
                   <td> <?php echo $row->item ?> </td>
                   <td> <?php echo $row->desc_video ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete-video/editar.php?id=<?php echo $row->id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/paquete-video/editar.php?id=<?php echo $row->paquete_img_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->id ?>, `<?php echo $row->paquete_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->paquete_img_id ?>, `<?php echo $row->paquete_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -153,7 +153,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

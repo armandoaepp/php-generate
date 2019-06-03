@@ -42,6 +42,16 @@
 
     $adicionales = $adicional_controller->getByEstado($array);
 
+    # covenios
+    $convenio_controller = new ConvenioController();
+
+    $array = array(
+      'estado' => 1,
+    ) ;
+
+    $convenios = $convenio_controller->getByEstado($array);
+    // var_dump($convenios);
+
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +76,12 @@
 
     require_once "../layout/head_links.phtml";
   ?>
+
+  <style>
+    .img-video-paquete{
+      max-width: 75px;
+    }
+  </style>
 </head>
 
 <body>
@@ -204,6 +220,7 @@
                   </div>
                 </div>
 
+                <!-- actividades -->
                 <div class="accordion-item">
                   <h6 class="accordion-toggle gotham-bold"> Actividades
                     <i class="icon fas fa-chevron-circle-right"></i>
@@ -257,6 +274,7 @@
                   </div>
                 </div>
 
+                <!-- Servicios que Incluye -->
                 <div class="accordion-item">
                     <h6 class="accordion-toggle gotham-bold"> Servicios que Incluye
                       <i class="icon fas fa-chevron-circle-right"></i>
@@ -287,6 +305,7 @@
                   </div>
                 </div>
 
+                <!-- Servicios Adicionales -->
                 <div class="accordion-item">
                     <h6 class="accordion-toggle gotham-bold"> Servicios Adicionales
                       <i class="icon fas fa-chevron-circle-right"></i>
@@ -340,6 +359,7 @@
 
                 </div>
 
+                <!-- imagenes -->
                 <div class="accordion-item">
                     <h6 class="accordion-toggle gotham-bold"> Imagenes
                       <i class="icon fas fa-chevron-circle-right"></i>
@@ -360,6 +380,94 @@
                             <div class="preview-img" data-img-preview="preview" id="preview"></div>
                           </div>
                         </div>
+
+                      </div>
+                    </div>
+
+                </div>
+
+                <!-- Videos -->
+                <div class="accordion-item">
+                    <h6 class="accordion-toggle gotham-bold"> Videos
+                      <i class="icon fas fa-chevron-circle-right"></i>
+                    </h6>
+                    <div class="accordion-body">
+                      <div class="accordion-content">
+
+                        <div class="row m-0">
+                            <div class="col-md-10">
+                              <div class="form-group row d-flex align-items-center">
+                                <label class="col-sm-3 col-md-2" for="url_video_add">Url Video: </label>
+                                <input type="url" class="form-control col-sm-9 " name="url_video_add" id="url_video_add" placeholder="ejemplo : https://www.youtube.com/watch?v=B5YrrRBHGP0&t=6s">
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <button type="button" class="btn btn-primary btn-sm mt-1" id="addVideo" >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-12">
+                              <hr>
+                            </div>
+                        </div>
+                        <!-- content videos -->
+                        <div class="row m-0">
+
+                          <div class="col-12">
+
+                            <table id="table-item-videos" class="table table-sm">
+                              <thead>
+                                <tr>
+                                  <th>Video</th>
+                                  <th>Descripción</th>
+                                  <th>Eliminar</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                            </table>
+                          </div>
+
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                </div>
+
+                <!-- convenios -->
+                <div class="accordion-item">
+                    <h6 class="accordion-toggle gotham-bold"> Convenios
+                      <i class="icon fas fa-chevron-circle-right"></i>
+                    </h6>
+                    <div class="accordion-body">
+                      <div class="accordion-content">
+
+                          <div class="row m-0">
+                              <div class="col-md-10 ">
+                                <div class="form-group row d-flex align-items-center">
+                                  <label class="col-sm-3 col-md-2" for="convenio_id">Convenio: </label>
+                                  <select class="custom-select col-sm-9 col-md-10" name="convenio_id" id="convenio_id" placeholder="Convenio">
+                                    <option value="" selected disabled hidden>Seleccionar </option>
+                                    <?php foreach ($convenios as $row) { ?>
+                                      <option value="<?php echo $row->convenio_id; ?>"> <?php echo $row->nombre." ".$row->nombre; ?></option>
+                                      <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                              <!-- <div class="col-2">
+                                <button type="button" class="btn btn-primary btn-sm mt-1" id="addAdicional" >
+                                  <i class="fas fa-plus"></i>
+                                </button>
+                              </div> -->
+                              <div class="col-12">
+                                <hr>
+                              </div>
+                          </div>
+
+
 
                       </div>
                     </div>
@@ -469,7 +577,7 @@
     var array_adicionales=<?php echo json_encode($adicionales);?>;
     var array_sel_adicionales = [];
 
-    console.log(array_adicionales);
+    // console.log(array_adicionales);
 
     $("#addAdicional").on("click",function() {
 
@@ -488,28 +596,28 @@
               precio       = array_adicionales[i].precio ;
               descripcion  = array_adicionales[i].descripcion ;
 
-                // console.log(array_sel_adicionales.indexOf(adicional_id));
+              // console.log(array_sel_adicionales.indexOf(adicional_id));
 
-                array_sel_adicionales.push(adicional_id) ;
-                // console.log(array_sel_actividades);
+              array_sel_adicionales.push(adicional_id) ;
+              // console.log(array_sel_actividades);
 
-                $html = `<tr>
-                          <td> ${descripcion}
-                            <input type="hidden" name="adicional_ids[]" value="${adicional_id}">
-                          </td>
-                          <td>
-                            <input type="number" name="adicional_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
-                          </td>
-                          <td>
-                            <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">
-                              <i class="fas fa-minus"></i>
-                            </button>
-                          </td>
-                        </tr>` ;
+              $html = `<tr>
+                        <td> ${descripcion}
+                          <input type="hidden" name="adicional_ids[]" value="${adicional_id}">
+                        </td>
+                        <td>
+                          <input type="number" name="adicional_precios[]" maxlength="2" pattern="\d*" min="0" max="99"  required class="form-control" value="${precio}">
+                        </td>
+                        <td>
+                          <button class="btn btn-danger btn-sm deleteActividadRow" title="Eliminar">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </td>
+                      </tr>` ;
 
-                $('#table-item-adicionales > tbody:last-child').append($html);
+              $('#table-item-adicionales > tbody:last-child').append($html);
 
-                $("#adicional_id").val('') ;
+              $("#adicional_id").val('') ;
 
             }
             // console.log(array_actividades[i].adicional_id);
@@ -527,6 +635,53 @@
         $(this).closest('tr').remove();
         return false;
     });
+
+    // Videos
+    // ==========================================================
+
+    $("#addVideo").on("click",function() {
+
+      url_video_add = $("#url_video_add").val() ;
+      console.log(url_video_add);
+
+      if ( url_video_add != "" )
+      {
+        var codigo = url_video_add.replace("https://www.youtube.com/watch?v=", "");
+          $html = `<tr>
+                    <td class="align-middle">
+                      <input type="hidden" name="paquete_video_ids[]" value="0">
+                      <img class="img-video-paquete" src="http://img.youtube.com/vi/${codigo}/default.jpg" alt="">
+                      <input type="hidden" name="url_videos[]" class="form-control" value="${codigo}">
+                    </td>
+                    <td  class="align-middle">
+                      <input type="text" name="desc_videos[]" class="form-control" placeholder="Descripción Video" value="">
+                    </td>
+                    <td class="align-middle">
+                      <button class="btn btn-danger btn-sm deleteVideoRow" title="Eliminar">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </td>
+                  </tr>` ;
+
+          $('#table-item-videos > tbody:last-child').append($html);
+
+          $("#url_video_add").val('') ;
+
+      }
+      else
+      {
+        alert('Agregar url de video');
+      }
+
+        return false;
+    });
+
+    $(document).on('click', 'button.deleteVideoRow', function () {
+        $(this).closest('tr').remove();
+        return false;
+    });
+
+
 
   });
 </script>

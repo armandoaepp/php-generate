@@ -108,6 +108,19 @@
       $fecha_ini_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_ini_promo);
       $fecha_fin_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($paquete->fecha_fin_promo);
 
+    # video paquete seleccionado
+    $paquete_video_controller = new PaqueteVideoController();
+
+    $array = array(
+      'paquete_id' => $paquete_id,
+    ) ;
+
+    $paquete_videos = $paquete_video_controller->getByPaqueteId($array);
+
+    // var_dump($paquete_videos);
+
+    // $paquete_adicional_ids = array_column($paquete_videos, 'adicional_id');
+
 ?>
 
 <!DOCTYPE html>
@@ -132,6 +145,11 @@
 
     require_once "../layout/head_links.phtml";
   ?>
+  <style>
+  .img-video-paquete{
+    max-width: 75px;
+  }
+  </style>
 </head>
 
 <body>
@@ -171,6 +189,8 @@
         <div class="row">
           <div class="col-12 mb-3">
 
+
+
             <form action="admin/paquete/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="accordion accordion-blue-gray">
@@ -186,6 +206,7 @@
                         <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $paquete_id ?>">
 
                         <div class="col-md-12">
+
                           <div class="form-group">
                             <label for="ubigeo_id">Distrito: </label>
                             <select class="custom-select select2-box" name="ubigeo_id" id="ubigeo_id" placeholder="UbigeoId" required>
@@ -480,6 +501,76 @@
 
                 </div>
 
+                <!-- Videos -->
+                <div class="accordion-item">
+                    <h6 class="accordion-toggle gotham-bold"> Videos
+                      <i class="icon fas fa-chevron-circle-right"></i>
+                    </h6>
+                    <div class="accordion-body">
+                      <div class="accordion-content">
+
+                        <div class="row m-0">
+                            <div class="col-md-10">
+                              <div class="form-group row d-flex align-items-center">
+                                <label class="col-sm-3 col-md-2" for="url_video_add">Url Video: </label>
+                                <input type="url" class="form-control col-sm-9 " name="url_video_add" id="url_video_add" placeholder="ejemplo : https://www.youtube.com/watch?v=B5YrrRBHGP0&t=6s">
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <button type="button" class="btn btn-primary btn-sm mt-1" id="addVideo" >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-12">
+                              <hr>
+                            </div>
+                        </div>
+                        <!-- content videos -->
+                        <div class="row m-0">
+
+                          <div class="col-12">
+
+                            <table id="table-item-videos" class="table table-sm">
+                              <thead>
+                                <tr>
+                                  <th>Video</th>
+                                  <th>Descripción</th>
+                                  <th>Eliminar</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                              <?php foreach ($paquete_videos as $row) { ?>
+
+                                <tr>
+                                  <td class="align-middle">
+                                    <input type="hidden" name="paquete_video_ids[]" value="<?php echo $row->paquete_video_id ;?>">
+                                    <img class="img-video-paquete" src="http://img.youtube.com/vi/<?php echo $row->url_video ;?>/default.jpg" alt="">
+                                    <input type="hidden" name="url_videos[]" class="form-control" value="<?php echo $row->url_video ;?>">
+                                  </td>
+                                  <td  class="align-middle">
+                                    <input type="text" name="desc_videos[]" class="form-control" placeholder="Descripción Video" value="<?php echo $row->desc_video ;?>">
+                                  </td>
+                                  <td class="align-middle">
+                                    <button class="btn btn-danger btn-sm deleteVideoRow" title="Eliminar">
+                                      <i class="fas fa-minus"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                             <?php } ?>
+
+                              </tbody>
+                            </table>
+                          </div>
+
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                </div>
+
                 <div class="w-100 text-center py-3">
                     <a href="admin/paquete/paquete.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                     <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
@@ -497,8 +588,6 @@
 
     </main>
   </div>
-
-
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
@@ -645,6 +734,51 @@
         $(this).closest('tr').remove();
         return false;
     });
+
+    // Videos
+    // ==========================================================
+
+      $("#addVideo").on("click",function() {
+
+        url_video_add = $("#url_video_add").val() ;
+        console.log(url_video_add);
+
+        if ( url_video_add != "" )
+        {
+          var codigo = url_video_add.replace("https://www.youtube.com/watch?v=", "");
+            $html = `<tr>
+                      <td class="align-middle">
+                        <input type="hidden" name="paquete_video_ids[]" value="0">
+                        <img class="img-video-paquete" src="http://img.youtube.com/vi/${codigo}/default.jpg" alt="">
+                        <input type="hidden" name="url_videos[]" class="form-control" value="${codigo}">
+                      </td>
+                      <td class="align-middle">
+                        <input type="text" name="desc_videos[]" class="form-control" placeholder="Descripción Video" value="">
+                      </td>
+                      <td class="align-middle">
+                        <button class="btn btn-danger btn-sm deleteVideoRow" title="Eliminar">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </td>
+                    </tr>` ;
+
+            $('#table-item-videos > tbody:last-child').append($html);
+
+            $("#url_video_add").val('') ;
+
+        }
+        else
+        {
+          alert('Agregar url de video');
+        }
+
+        return false;
+      });
+
+      $(document).on('click', 'button.deleteVideoRow', function () {
+        $(this).closest('tr').remove();
+        return false;
+      });
 
   });
 </script>

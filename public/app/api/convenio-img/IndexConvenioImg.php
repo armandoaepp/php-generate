@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $convenio_img_controller = new ConvenioImgController() ; 
+      $convenio_img_controller = new ConvenioImgController() ;
 
        $data = $convenio_img_controller->getAll() ;
 
@@ -35,37 +35,37 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $convenio_img_controller = new ConvenioImgController($cnx) ; 
+
+      $convenio_img_controller = new ConvenioImgController($cnx) ;
       $connection->beginTransaction();
-        
-      $cnvenio_img_id = $inputs->cnvenio_img_id;
+
+      $convenio_img_id = $inputs->convenio_img_id;
       $convenio_id = $inputs->convenio_id;
       $imagen = $inputs->imagen;
       $item = $inputs->item;
       $desc_img = $inputs->desc_img;
-        
+
       $params = array(
-                'cnvenio_img_id'=> $cnvenio_img_id,
+                'convenio_img_id'=> $convenio_img_id,
                 'convenio_id'=> $convenio_id,
                 'imagen'=> $imagen,
                 'item'=> $item,
                 'desc_img'=> $desc_img,
-              ) ; 
-        
+              ) ;
+
       $data = $convenio_img_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -75,7 +75,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -85,26 +85,26 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $convenio_img_controller = new ConvenioImgController($cnx) ; 
+
+      $convenio_img_controller = new ConvenioImgController($cnx) ;
       $connection->beginTransaction();
-        
-      $cnvenio_img_id = $inputs->cnvenio_img_id;
+
+      $convenio_img_id = $inputs->convenio_img_id;
       $convenio_id = $inputs->convenio_id;
       $imagen = $inputs->imagen;
       $item = $inputs->item;
       $desc_img = $inputs->desc_img;
-        
+
       $params = array(
-                'cnvenio_img_id'=> $cnvenio_img_id,
+                'convenio_img_id'=> $convenio_img_id,
                 'convenio_id'=> $convenio_id,
                 'imagen'=> $imagen,
                 'item'=> $item,
                 'desc_img'=> $desc_img,
-              ) ; 
-        
+              ) ;
+
       $data = $convenio_img_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -115,7 +115,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -124,15 +124,15 @@ switch($evento)
     try
     {
 
-      $cnvenio_img_id = $inputs->cnvenio_img_id;
+      $convenio_img_id = $inputs->convenio_img_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'cnvenio_img_id'=> $cnvenio_img_id,
+                'convenio_img_id'=> $convenio_img_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $convenio_img_controller = new ConvenioImgController() ; 
+      $convenio_img_controller = new ConvenioImgController() ;
 
       $data = $convenio_img_controller->updateEstado( $params ) ;
 
@@ -143,7 +143,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -153,7 +153,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $convenio_img_controller = new ConvenioImgController() ; 
+      $convenio_img_controller = new ConvenioImgController() ;
 
       $data = $convenio_img_controller->find( $id) ;
 
@@ -164,7 +164,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -173,8 +173,8 @@ switch($evento)
     try
     {
 
-      $cnvenio_img_id = $inputs->id;
-      $estado = $inputs->estado; 
+      $convenio_img_id = $inputs->id;
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -183,11 +183,11 @@ switch($evento)
       }
 
       $params = array(
-                'cnvenio_img_id'=> $cnvenio_img_id,
+                'convenio_img_id'=> $convenio_img_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $convenio_img_controller = new ConvenioImgController() ; 
+      $convenio_img_controller = new ConvenioImgController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -195,20 +195,20 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $convenio_img = $convenio_img_controller->find( $cnvenio_img_id );
+        $convenio_img = $convenio_img_controller->find( $convenio_img_id );
 
-        $data = $convenio_img_controller->deleteById( $cnvenio_img_id );
+        $data = $convenio_img_controller->deleteById( $convenio_img_id );
 				if( !empty($convenio_img) && $data )
 				{
-					$imagen = $convenio_img["imagen"] ;
+					$imagen = $convenio_img->imagen ;
 					UploadFiles::removeFile($imagen) ;
-                }
+        }
 
 			}
 			else
 			{
 				$data = $convenio_img_controller->updateEstado($params);
-			} 
+			}
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -217,7 +217,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;

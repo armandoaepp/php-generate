@@ -11,14 +11,14 @@
 
   $paquete_video_controller = new PaqueteVideoController();
 
-  $id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $paquete_img_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $paquete_id   = $_POST["paquete_id"] ;
   $url_video   = $_POST["url_video"] ;
   $item   = $_POST["item"] ;
   $desc_video   = $_POST["desc_video"] ;
   $params = array(
-    "id"   => $id,
+    "paquete_img_id"   => $paquete_img_id,
     "paquete_id"   => $paquete_id,
     "url_video"   => $url_video,
     "item"   => $item,

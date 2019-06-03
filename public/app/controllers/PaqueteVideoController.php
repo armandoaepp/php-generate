@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_video  = new PaqueteVideo();
-            
+
       $bean_paquete_video = new BeanPaqueteVideo();
-            
+
       $bean_paquete_video->setEstado($estado);
 
       $data = $paquete_video->getByEstado($bean_paquete_video);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_video  = new PaqueteVideo($this->cnx);
 
       $bean_paquete_video = new BeanPaqueteVideo();
-            
+
       $bean_paquete_video->setPaqueteId($paquete_id);
       $bean_paquete_video->setUrlVideo($url_video);
       $bean_paquete_video->setItem($item);
       $bean_paquete_video->setDescVideo($desc_video);
-            
+
       $data = $paquete_video->save($bean_paquete_video) ;
 
       return $data ;
@@ -85,20 +85,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_video  = new PaqueteVideo($this->cnx);
       $bean_paquete_video = new BeanPaqueteVideo();
-            
-      $bean_paquete_video->setId($id);
+
+      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
       $bean_paquete_video->setPaqueteId($paquete_id);
       $bean_paquete_video->setUrlVideo($url_video);
       $bean_paquete_video->setItem($item);
       $bean_paquete_video->setDescVideo($desc_video);
 
       $data = $paquete_video->update($bean_paquete_video) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $paquete_video  = new PaqueteVideo($this->cnx);
-            
+
       $bean_paquete_video = new BeanPaqueteVideo();
-            
-      $bean_paquete_video->setId($id);
+
+      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
       $bean_paquete_video->setEstado($estado);
 
       $data = $paquete_video->updateEstado($bean_paquete_video) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -139,7 +139,7 @@
 
       $bean_paquete_video = new BeanPaqueteVideo();
 
-      $bean_paquete_video->setId($id);
+      $bean_paquete_video->setPaqueteVideoId($id);
 
       $data = $paquete_video->find( $bean_paquete_video) ;
       return $data;
@@ -151,7 +151,7 @@
     }
   }
 
-  public function deleteById($id)
+  public function deleteById($paquete_img_id)
   {
     try
     {
@@ -160,7 +160,7 @@
 
       $bean_paquete_video = new BeanPaqueteVideo();
 
-      $bean_paquete_video->setId($id);
+      $bean_paquete_video->setPaqueteVideoId($paquete_img_id);
 
       $data = $paquete_video->deleteById( $bean_paquete_video ) ;
 
@@ -182,6 +182,29 @@
       $data = $paquete_video->countRows() ;
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByPaqueteId( $params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $paquete_video  = new PaqueteVideo();
+
+      $bean_paquete_video = new BeanPaqueteVideo();
+
+      $bean_paquete_video->setPaqueteId($paquete_id);
+
+      $data = $paquete_video->getByPaqueteId($bean_paquete_video);
+
+      return $data ;
     }
     catch (Exception $e)
     {

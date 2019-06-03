@@ -241,7 +241,7 @@ class PaqueteImg extends Connection {
     }
   }
 
-  # Method Eliminar(Update Estado)
+  # Method updateItem
   public function updateItem($bean_paquete_img)
   {
     try{

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Bean Generada]
@@ -12,7 +12,7 @@ class BeanPaqueteVideo{
   public function __construct(){}
 
   # Atributos
-  private $id;
+  private $paquete_video_id;
   private $paquete_id;
   private $url_video;
   private $item;
@@ -23,14 +23,14 @@ class BeanPaqueteVideo{
   public $item_autoincrement = true;
 
   # METODOS
-  public function setId($id_)
+  public function setPaqueteVideoId($paquete_video_id_)
   {
-    $this->id = Validation::validate( $id_ );
+    $this->paquete_video_id = Validation::validate( $paquete_video_id_ );
   }
 
-  public function getId()
+  public function getPaqueteVideoId()
   {
-    return $this->id;
+    return $this->paquete_video_id;
   }
 
   public function setPaqueteId($paquete_id_)

@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio();
-            
+
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setEstado($estado);
 
       $data = $convenio->getByEstado($bean_convenio);
@@ -59,20 +59,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio($this->cnx);
 
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setTipoConvenioId($tipo_convenio_id);
       $bean_convenio->setNombre($nombre);
       $bean_convenio->setCaracteristica($caracteristica);
       $bean_convenio->setPrecio($precio);
       $bean_convenio->setGlosa($glosa);
       $bean_convenio->setPublicar($publicar);
-            
+
       $data = $convenio->save($bean_convenio) ;
 
       return $data ;
@@ -87,12 +87,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio($this->cnx);
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setConvenioId($convenio_id);
       $bean_convenio->setTipoConvenioId($tipo_convenio_id);
       $bean_convenio->setNombre($nombre);
@@ -102,7 +102,7 @@
       $bean_convenio->setPublicar($publicar);
 
       $data = $convenio->update($bean_convenio) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -115,18 +115,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio($this->cnx);
-            
+
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setConvenioId($convenio_id);
       $bean_convenio->setEstado($estado);
 
       $data = $convenio->updateEstado($bean_convenio) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -181,17 +181,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio($this->cnx);
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setConvenioId($convenio_id);
       $bean_convenio->setPublicar($publicar);
 
       $data = $convenio->updatePublish($bean_convenio) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -204,16 +204,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $convenio  = new Convenio($this->cnx);
       $bean_convenio = new BeanConvenio();
-            
+
       $bean_convenio->setPublicar($publicar);
 
       $data = $convenio->getPublished($bean_convenio) ;
-      
+
       return $data;
     }
     catch (Exception $e)

@@ -50,14 +50,14 @@ switch($evento)
       $paquete_video_controller = new PaqueteVideoController($cnx) ; 
       $connection->beginTransaction();
         
-      $id = $inputs->id;
+      $paquete_img_id = $inputs->paquete_img_id;
       $paquete_id = $inputs->paquete_id;
       $url_video = $inputs->url_video;
       $item = $inputs->item;
       $desc_video = $inputs->desc_video;
         
       $params = array(
-                'id'=> $id,
+                'paquete_img_id'=> $paquete_img_id,
                 'paquete_id'=> $paquete_id,
                 'url_video'=> $url_video,
                 'item'=> $item,
@@ -89,14 +89,14 @@ switch($evento)
       $paquete_video_controller = new PaqueteVideoController($cnx) ; 
       $connection->beginTransaction();
         
-      $id = $inputs->id;
+      $paquete_img_id = $inputs->paquete_img_id;
       $paquete_id = $inputs->paquete_id;
       $url_video = $inputs->url_video;
       $item = $inputs->item;
       $desc_video = $inputs->desc_video;
         
       $params = array(
-                'id'=> $id,
+                'paquete_img_id'=> $paquete_img_id,
                 'paquete_id'=> $paquete_id,
                 'url_video'=> $url_video,
                 'item'=> $item,
@@ -124,11 +124,11 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
+      $paquete_img_id = $inputs->paquete_img_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'id'=> $id,
+                'paquete_img_id'=> $paquete_img_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -173,7 +173,7 @@ switch($evento)
     try
     {
 
-      $id = $inputs->id;
+      $paquete_img_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -183,7 +183,7 @@ switch($evento)
       }
 
       $params = array(
-                'id'=> $id,
+                'paquete_img_id'=> $paquete_img_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -195,9 +195,9 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $paquete_video = $paquete_video_controller->find( $id );
+        $paquete_video = $paquete_video_controller->find( $paquete_img_id );
 
-        $data = $paquete_video_controller->deleteById( $id );
+        $data = $paquete_video_controller->deleteById( $paquete_img_id );
 
 			}
 			else
