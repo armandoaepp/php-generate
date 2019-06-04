@@ -16,6 +16,7 @@ class BeanSuscritor{
   private $nombre;
   private $email;
   private $telefono;
+  private $empresa;
   private $mensaje;
   private $estado = 1 ;
   private $created_at = NULL ;
@@ -61,6 +62,16 @@ class BeanSuscritor{
   public function getTelefono()
   {
     return $this->telefono;
+  }
+
+  public function setEmpresa($empresa_)
+  {
+    $this->empresa = Validation::validate( $empresa_ );
+  }
+
+  public function getEmpresa()
+  {
+    return $this->empresa;
   }
 
   public function setMensaje($mensaje_)

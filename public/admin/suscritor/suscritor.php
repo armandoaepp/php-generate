@@ -89,6 +89,7 @@
                   <th>Nombre </th>
                   <th>Email </th>
                   <th>Telefono </th>
+                  <th>Empresa </th>
                   <th>Mensaje </th>
                   <th width="70"></th>
                 </tr>
@@ -138,6 +139,7 @@
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->email ?> </td>
                   <td> <?php echo $row->telefono ?> </td>
+                  <td> <?php echo $row->empresa ?> </td>
                   <td> <?php echo $row->mensaje ?> </td>
 
                   <td class="text-center">

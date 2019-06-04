@@ -69,6 +69,7 @@
       $bean_suscritor->setNombre($nombre);
       $bean_suscritor->setEmail($email);
       $bean_suscritor->setTelefono($telefono);
+      $bean_suscritor->setEmpresa($empresa);
       $bean_suscritor->setMensaje($mensaje);
             
       $data = $suscritor->save($bean_suscritor) ;
@@ -95,6 +96,7 @@
       $bean_suscritor->setNombre($nombre);
       $bean_suscritor->setEmail($email);
       $bean_suscritor->setTelefono($telefono);
+      $bean_suscritor->setEmpresa($empresa);
       $bean_suscritor->setMensaje($mensaje);
 
       $data = $suscritor->update($bean_suscritor) ;

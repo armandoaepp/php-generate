@@ -16,12 +16,14 @@
   $nombre   = $_POST["nombre"] ;
   $email   = $_POST["email"] ;
   $telefono   = $_POST["telefono"] ;
+  $empresa   = $_POST["empresa"] ;
   $mensaje   = $_POST["mensaje"] ;
   $params = array(
     "suscritor_id"   => $suscritor_id,
     "nombre"   => $nombre,
     "email"   => $email,
     "telefono"   => $telefono,
+    "empresa"   => $empresa,
     "mensaje"   => $mensaje,
   );
 

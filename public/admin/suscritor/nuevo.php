@@ -86,21 +86,30 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefono">Telefono: </label>
-                  <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                  <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="empresa">Empresa: </label>
+                  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="mensaje">Mensaje: </label>
-                  <textarea class="form-control ckeditor" name="mensaje" id="mensaje" placeholder="Mensaje" cols="30" rows="6"></textarea>
+                  <select class="custom-select" name="mensaje" id="mensaje" placeholder="Mensaje">
+                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="text">text</option>
+                  </select>
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/suscritor/suscritor.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/suscritor/suscritor.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 
             </form>

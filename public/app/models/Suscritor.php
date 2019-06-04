@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Suscritor extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -39,19 +39,21 @@ class Suscritor extends Connection {
   {
     try{
 
-      $suscritor_id = $bean_suscritor->getSuscritorId();
-      $nombre = $bean_suscritor->getNombre();
-      $email = $bean_suscritor->getEmail();
-      $telefono = $bean_suscritor->getTelefono();
-      $mensaje = $bean_suscritor->getMensaje();
-      $estado = $bean_suscritor->getEstado();
-      $created_at = $bean_suscritor->getCreatedAt();
+      // $suscritor_id = $bean_suscritor->getSuscritorId();
+      $nombre       = $bean_suscritor->getNombre();
+      $email        = $bean_suscritor->getEmail();
+      $telefono     = $bean_suscritor->getTelefono();
+      $empresa      = $bean_suscritor->getEmpresa();
+      $mensaje      = $bean_suscritor->getMensaje();
+      $estado       = $bean_suscritor->getEstado();
+      $created_at   = $bean_suscritor->getCreatedAt();
 
       $this->query = "INSERT INTO suscritor
                       (
                         nombre,
                         email,
                         telefono,
+                        empresa,
                         mensaje,
                         estado,
                         created_at
@@ -60,6 +62,7 @@ class Suscritor extends Connection {
                         '$nombre',
                         '$email',
                         '$telefono',
+                        '$empresa',
                         '$mensaje',
                         '$estado',
                         $created_at
@@ -84,15 +87,17 @@ class Suscritor extends Connection {
   {
     try{
       $suscritor_id = $bean_suscritor->getSuscritorId();
-      $nombre = $bean_suscritor->getNombre();
-      $email = $bean_suscritor->getEmail();
-      $telefono = $bean_suscritor->getTelefono();
-      $mensaje = $bean_suscritor->getMensaje();
+      $nombre       = $bean_suscritor->getNombre();
+      $email        = $bean_suscritor->getEmail();
+      $telefono     = $bean_suscritor->getTelefono();
+      $empresa      = $bean_suscritor->getEmpresa();
+      $mensaje      = $bean_suscritor->getMensaje();
 
-      $this->query = "UPDATE suscritor SET 
+      $this->query = "UPDATE suscritor SET
                         nombre = '$nombre',
                         email = '$email',
                         telefono = '$telefono',
+                        empresa = '$empresa',
                         mensaje = '$mensaje'
                       WHERE suscritor_id = '$suscritor_id'
                       LIMIT 1 ;";
@@ -184,7 +189,7 @@ class Suscritor extends Connection {
       $suscritor_id = $bean_suscritor->getSuscritorId();
       $estado = $bean_suscritor->getEstado();
 
-      $this->query = "UPDATE suscritor SET 
+      $this->query = "UPDATE suscritor SET
                         estado = '$estado'
                       WHERE suscritor_id='$suscritor_id'
                       LIMIT 1 ; ";

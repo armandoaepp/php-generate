@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $suscritor_controller = new SuscritorController() ; 
+      $suscritor_controller = new SuscritorController() ;
 
        $data = $suscritor_controller->getAll() ;
 
@@ -35,39 +35,40 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-    
+
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $suscritor_controller = new SuscritorController($cnx) ; 
+
+      $suscritor_controller = new SuscritorController($cnx) ;
       $connection->beginTransaction();
-        
+
       $suscritor_id = $inputs->suscritor_id;
-      $nombre = $inputs->nombre;
-      $email = $inputs->email;
-      $telefono = $inputs->telefono;
-      $mensaje = $inputs->mensaje;
-      $created_at = $inputs->created_at;
-        
+      $nombre       = $inputs->nombre;
+      $email        = $inputs->email;
+      $telefono     = $inputs->telefono;
+      $empresa      = $inputs->empresa;
+      $mensaje      = $inputs->mensaje;
+      // $created_at   = $inputs->created_at;
+
       $params = array(
                 'suscritor_id'=> $suscritor_id,
                 'nombre'=> $nombre,
                 'email'=> $email,
                 'telefono'=> $telefono,
+                'empresa'=> $empresa,
                 'mensaje'=> $mensaje,
-                'created_at'=> $created_at,
-              ) ; 
-        
+              ) ;
+
       $data = $suscritor_controller->save($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -77,7 +78,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -87,28 +88,30 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-        
-      $suscritor_controller = new SuscritorController($cnx) ; 
+
+      $suscritor_controller = new SuscritorController($cnx) ;
       $connection->beginTransaction();
-        
+
       $suscritor_id = $inputs->suscritor_id;
       $nombre = $inputs->nombre;
       $email = $inputs->email;
       $telefono = $inputs->telefono;
+      $empresa = $inputs->empresa;
       $mensaje = $inputs->mensaje;
       $created_at = $inputs->created_at;
-        
+
       $params = array(
                 'suscritor_id'=> $suscritor_id,
                 'nombre'=> $nombre,
                 'email'=> $email,
                 'telefono'=> $telefono,
+                'empresa'=> $empresa,
                 'mensaje'=> $mensaje,
                 'created_at'=> $created_at,
-              ) ; 
-        
+              ) ;
+
       $data = $suscritor_controller->update($params) ;
-        
+
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -119,7 +122,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -134,9 +137,9 @@ switch($evento)
       $params = array(
                 'suscritor_id'=> $suscritor_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $suscritor_controller = new SuscritorController() ; 
+      $suscritor_controller = new SuscritorController() ;
 
       $data = $suscritor_controller->updateEstado( $params ) ;
 
@@ -147,7 +150,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -157,7 +160,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $suscritor_controller = new SuscritorController() ; 
+      $suscritor_controller = new SuscritorController() ;
 
       $data = $suscritor_controller->find( $id) ;
 
@@ -168,7 +171,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -178,7 +181,7 @@ switch($evento)
     {
 
       $suscritor_id = $inputs->id;
-      $estado = $inputs->estado; 
+      $estado = $inputs->estado;
 
       if($estado == 1){
         $estado = 0 ;
@@ -189,9 +192,9 @@ switch($evento)
       $params = array(
                 'suscritor_id'=> $suscritor_id,
                 'estado'=> $estado,
-              ) ; 
+              ) ;
 
-      $suscritor_controller = new SuscritorController() ; 
+      $suscritor_controller = new SuscritorController() ;
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -207,7 +210,7 @@ switch($evento)
 			else
 			{
 				$data = $suscritor_controller->updateEstado($params);
-			} 
+			}
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -216,7 +219,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-        
+
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;
