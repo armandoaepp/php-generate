@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-06-03 12:48:34
+Date: 2019-06-05 10:36:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -156,7 +156,7 @@ CREATE TABLE `itinerario` (
   PRIMARY KEY (`id`),
   KEY `fk_itinerario_paquete1_idx` (`paquete_id`),
   CONSTRAINT `fk_itinerario_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of itinerario
@@ -183,6 +183,8 @@ INSERT INTO `itinerario` VALUES ('19', '4', '7', '', '', '1');
 INSERT INTO `itinerario` VALUES ('20', '4', '8', '', '', '1');
 INSERT INTO `itinerario` VALUES ('21', '4', '9', '', '', '1');
 INSERT INTO `itinerario` VALUES ('22', '4', '10', '', '', '1');
+INSERT INTO `itinerario` VALUES ('23', '5', '1', 'Cataratas', '&lt;p&gt;21323&lt;/p&gt;', '1');
+INSERT INTO `itinerario` VALUES ('24', '5', '2', '', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '1');
 
 -- ----------------------------
 -- Table structure for pais
@@ -225,15 +227,16 @@ CREATE TABLE `paquete` (
   PRIMARY KEY (`paquete_id`),
   KEY `fk_paquete_ubigeo1_idx` (`ubigeo_id`),
   CONSTRAINT `fk_paquete_ubigeo1` FOREIGN KEY (`ubigeo_id`) REFERENCES `ubigeo` (`ubigeo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete
 -- ----------------------------
-INSERT INTO `paquete` VALUES ('1', '225', 'Tours Playero', '&lt;p&gt;asdfasdf&lt;/p&gt;', '&lt;p&gt;sdfasdf&lt;/p&gt;', '4', '5', '200.00', '5.00', '190.00', '2019-05-31', '2019-06-05', 'tours-playero', '0', 'S', '1', '2019-05-30 12:05:04');
-INSERT INTO `paquete` VALUES ('2', '224', 'turistico playero', '&lt;p&gt;nuevo tours&amp;nbsp;&lt;/p&gt;', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '4', '3', '100.00', '10.00', '90.00', '2019-06-07', '2019-06-15', 'turistico-playero', '0', 'S', '1', '2019-06-03 10:06:51');
-INSERT INTO `paquete` VALUES ('3', '224', 'turistico playero', '&lt;p&gt;nuevo tours&amp;nbsp;&lt;/p&gt;', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '4', '3', '100.00', '10.00', '90.00', '2019-06-07', '2019-06-15', 'turistico-playero', '0', 'S', '1', '2019-06-03 10:06:35');
-INSERT INTO `paquete` VALUES ('4', '222', 'Chachapollero demos xD', '&lt;p&gt;tours nuevosaaa&lt;/p&gt;', '&lt;p&gt;sadfasdf&lt;/p&gt;', '10', '9', '34.00', '0.00', '34.00', '2019-06-15', '2019-06-29', 'chachapollero-demos-xd', '0', 'S', '1', '2019-06-03 11:06:14');
+INSERT INTO `paquete` VALUES ('1', '225', 'Tours Playero', '&lt;p&gt;asdfasdf&lt;/p&gt;', '&lt;p&gt;sdfasdf&lt;/p&gt;', '4', '5', '200.00', '5.00', '190.00', '2019-05-31', '2019-06-05', 'tours-playero', '21', 'S', '1', '2019-05-30 12:05:04');
+INSERT INTO `paquete` VALUES ('2', '224', 'turistico playero', '&lt;p&gt;nuevo tours&amp;nbsp;&lt;/p&gt;', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '4', '3', '100.00', '10.00', '90.00', '2019-06-07', '2019-06-15', 'turistico-playero', '13', 'S', '1', '2019-06-03 10:06:51');
+INSERT INTO `paquete` VALUES ('3', '224', 'turistico playero', '&lt;p&gt;nuevo tours&amp;nbsp;&lt;/p&gt;', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', '4', '3', '100.00', '10.00', '90.00', '2019-06-07', '2019-06-15', 'turistico-playero', '12', 'S', '1', '2019-06-03 10:06:35');
+INSERT INTO `paquete` VALUES ('4', '222', 'Chachapollero demos xD', '&lt;p&gt;tours nuevosaaa&lt;/p&gt;', '&lt;p&gt;sadfasdf&lt;/p&gt;', '10', '9', '34.00', '0.00', '34.00', '2019-06-15', '2019-06-29', 'chachapollero-demos-xd', '6', 'S', '1', '2019-06-03 11:06:14');
+INSERT INTO `paquete` VALUES ('5', '2019', 'Tours selvero', '&lt;p&gt;sdaksd&lt;/p&gt;', '&lt;p&gt;asd&lt;/p&gt;', '2', '3', '5.00', '0.00', '5.00', '2019-06-20', '2019-06-21', 'tours-selvero', '0', 'S', '1', '2019-06-04 12:06:15');
 
 -- ----------------------------
 -- Table structure for paquete_actividad
@@ -252,7 +255,7 @@ CREATE TABLE `paquete_actividad` (
   KEY `fk_paquete_actividad_actividad1_idx` (`actividad_id`),
   CONSTRAINT `fk_paquete_actividad_actividad1` FOREIGN KEY (`actividad_id`) REFERENCES `actividad` (`actividad_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_paquete_actividad_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_actividad
@@ -269,6 +272,9 @@ INSERT INTO `paquete_actividad` VALUES ('9', '3', '40', '2', '', '1', '2019-06-0
 INSERT INTO `paquete_actividad` VALUES ('10', '3', '43', '6', '', '1', '2019-06-03 10:06:36');
 INSERT INTO `paquete_actividad` VALUES ('11', '4', '2', '5', '', '1', '2019-06-03 11:06:14');
 INSERT INTO `paquete_actividad` VALUES ('12', '4', '6', '6', '', '1', '2019-06-03 11:06:14');
+INSERT INTO `paquete_actividad` VALUES ('13', '5', '4', '5', '', '1', '2019-06-04 12:06:15');
+INSERT INTO `paquete_actividad` VALUES ('14', '5', '10', '1', '', '1', '2019-06-04 12:06:15');
+INSERT INTO `paquete_actividad` VALUES ('15', '5', '43', '6', '', '1', '2019-06-04 12:06:15');
 
 -- ----------------------------
 -- Table structure for paquete_adicional
@@ -286,7 +292,7 @@ CREATE TABLE `paquete_adicional` (
   KEY `fk_paquete_adicional_adicional1_idx` (`adicional_id`),
   CONSTRAINT `fk_paquete_adicional_adicional1` FOREIGN KEY (`adicional_id`) REFERENCES `adicional` (`adicional_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_paquete_adicional_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_adicional
@@ -304,6 +310,8 @@ INSERT INTO `paquete_adicional` VALUES ('10', '4', '2', '6.00', '1', '2019-06-03
 INSERT INTO `paquete_adicional` VALUES ('11', '4', '2', '6.00', '1', '2019-06-03 12:06:03');
 INSERT INTO `paquete_adicional` VALUES ('12', '4', '2', '6.00', '1', '2019-06-03 12:06:03');
 INSERT INTO `paquete_adicional` VALUES ('13', '4', '2', '6.00', '1', '2019-06-03 12:06:03');
+INSERT INTO `paquete_adicional` VALUES ('14', '5', '2', '6.00', '1', '2019-06-04 12:06:16');
+INSERT INTO `paquete_adicional` VALUES ('15', '5', '1', '5.00', '1', '2019-06-04 12:06:16');
 
 -- ----------------------------
 -- Table structure for paquete_convenio
@@ -317,7 +325,7 @@ CREATE TABLE `paquete_convenio` (
   PRIMARY KEY (`paquete_convenio_id`),
   KEY `fk_paquete_convenio_paquete1_idx` (`paquete_id`),
   KEY `fk_paquete_convenio_convenio1_idx` (`convenio_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_convenio
@@ -330,6 +338,10 @@ INSERT INTO `paquete_convenio` VALUES ('5', '4', '1', '0');
 INSERT INTO `paquete_convenio` VALUES ('6', '4', '1', '0');
 INSERT INTO `paquete_convenio` VALUES ('7', '4', '1', '0');
 INSERT INTO `paquete_convenio` VALUES ('8', '4', '1', '1');
+INSERT INTO `paquete_convenio` VALUES ('9', '5', '1', '0');
+INSERT INTO `paquete_convenio` VALUES ('10', '5', '2', '0');
+INSERT INTO `paquete_convenio` VALUES ('11', '5', '1', '1');
+INSERT INTO `paquete_convenio` VALUES ('12', '5', '2', '1');
 
 -- ----------------------------
 -- Table structure for paquete_img
@@ -345,7 +357,7 @@ CREATE TABLE `paquete_img` (
   PRIMARY KEY (`id`),
   KEY `fk_paquete_img_paquete1_idx` (`paquete_id`),
   CONSTRAINT `fk_paquete_img_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_img
@@ -362,6 +374,9 @@ INSERT INTO `paquete_img` VALUES ('9', '3', 'images/paquetes/3201906031006086604
 INSERT INTO `paquete_img` VALUES ('10', '4', 'images/paquetes/4201906031106145235.jpg', '1', '', '1');
 INSERT INTO `paquete_img` VALUES ('11', '4', 'images/paquetes/4201906031106149134.jpg', '2', '', '1');
 INSERT INTO `paquete_img` VALUES ('12', '4', 'images/paquetes/4201906031106143885.jpg', '3', '', '1');
+INSERT INTO `paquete_img` VALUES ('13', '5', 'images/paquetes/5201906041206167526.jpg', '1', '', '1');
+INSERT INTO `paquete_img` VALUES ('14', '5', 'images/paquetes/5201906041206165361.png', '2', '', '1');
+INSERT INTO `paquete_img` VALUES ('15', '5', 'images/paquetes/5201906041206168306.jpg', '3', '', '1');
 
 -- ----------------------------
 -- Table structure for paquete_servicio
@@ -379,7 +394,7 @@ CREATE TABLE `paquete_servicio` (
   KEY `fk_tour_paquete_paquete1_idx` (`paquete_id`),
   CONSTRAINT `fk_tour_paquete_paquete1` FOREIGN KEY (`paquete_id`) REFERENCES `paquete` (`paquete_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tour_paquete_servicio1` FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_servicio
@@ -399,6 +414,9 @@ INSERT INTO `paquete_servicio` VALUES ('12', '3', '5', '1', '1', '2019-06-03 10:
 INSERT INTO `paquete_servicio` VALUES ('13', '4', '1', '1', '1', '2019-06-03 11:06:14');
 INSERT INTO `paquete_servicio` VALUES ('14', '4', '2', '1', '1', '2019-06-03 11:06:14');
 INSERT INTO `paquete_servicio` VALUES ('15', '4', '6', '1', '1', '2019-06-03 11:06:14');
+INSERT INTO `paquete_servicio` VALUES ('16', '5', '1', '1', '1', '2019-06-04 12:06:15');
+INSERT INTO `paquete_servicio` VALUES ('17', '5', '3', '1', '1', '2019-06-04 12:06:15');
+INSERT INTO `paquete_servicio` VALUES ('18', '5', '6', '1', '1', '2019-06-04 12:06:15');
 
 -- ----------------------------
 -- Table structure for paquete_video
@@ -413,7 +431,7 @@ CREATE TABLE `paquete_video` (
   `estado` char(1) DEFAULT '1',
   PRIMARY KEY (`paquete_video_id`),
   KEY `fk_paquete_video_paquete1_idx` (`paquete_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of paquete_video
@@ -424,6 +442,8 @@ INSERT INTO `paquete_video` VALUES ('3', '3', 'yGFeHsqVw-4', '1', 'video informa
 INSERT INTO `paquete_video` VALUES ('4', '3', 'dNe-QWb3qiw', '2', '', '1');
 INSERT INTO `paquete_video` VALUES ('5', '4', '9XyiBI53LZ0', '1', '', '1');
 INSERT INTO `paquete_video` VALUES ('6', '4', 'luECXKqgUpc', '2', '', '1');
+INSERT INTO `paquete_video` VALUES ('7', '5', 'ciaKqwX8Uqc', '1', '', '1');
+INSERT INTO `paquete_video` VALUES ('8', '5', 'OcQK9k9GRzM', '2', '', '1');
 
 -- ----------------------------
 -- Table structure for region
@@ -471,23 +491,27 @@ INSERT INTO `servicio` VALUES ('9', 'Entradas', '', '1', '1');
 INSERT INTO `servicio` VALUES ('10', 'Carpa', '', '1', '1');
 
 -- ----------------------------
--- Table structure for suscritor
+-- Table structure for suscriptor
 -- ----------------------------
-DROP TABLE IF EXISTS `suscritor`;
-CREATE TABLE `suscritor` (
-  `suscritor_id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `suscriptor`;
+CREATE TABLE `suscriptor` (
+  `suscritor_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) DEFAULT '',
   `email` varchar(255) DEFAULT NULL,
-  `telefono` varchar(25) DEFAULT NULL,
+  `telefono` varchar(25) NOT NULL DEFAULT '',
+  `empresa` varchar(100) DEFAULT '',
   `mensaje` text,
-  `estado` char(1) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `estado` char(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`suscritor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of suscritor
+-- Records of suscriptor
 -- ----------------------------
+INSERT INTO `suscriptor` VALUES ('1', 'Armando E', 'armandoaepp@gmail.com', '958478073', 'Catmedia', 'Mensaje de pruena', '0', '2019-06-04 11:06:14');
+INSERT INTO `suscriptor` VALUES ('2', 'Armando Pisfil Puemape', 'apisfilp@gmail.com', '958478073', 'Catmedia', 'dswafasd asdfasd', '0', '2019-06-04 11:06:11');
+INSERT INTO `suscriptor` VALUES ('3', 'Armando Pisfil Puemape', 'armandoaepp@gmail.com', '', '', 'dsfasdf', '1', '2019-06-04 11:06:28');
 
 -- ----------------------------
 -- Table structure for tipo_convenio
