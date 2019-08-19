@@ -95,13 +95,13 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $suscriptor->email; ?>">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $suscriptor->email; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefono">Telefono: </label>
-                  <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $suscriptor->telefono; ?>">
+                  <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $suscriptor->telefono; ?>">
                 </div>
               </div>
               <div class="col-md-12">
@@ -113,7 +113,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="mensaje">Mensaje: </label>
-                  <textarea class="form-control ckeditor" name="mensaje" id="mensaje" placeholder="Mensaje" cols="30" rows="6"><?php echo htmlspecialchars_decode($suscriptor->mensaje); ?></textarea>
+                  <input type="text" class="form-control" name="mensaje" id="mensaje" placeholder="Mensaje" value="<?php echo $suscriptor->mensaje; ?>">
                 </div>
               </div>
 
