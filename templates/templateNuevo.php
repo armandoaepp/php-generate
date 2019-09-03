@@ -22,7 +22,7 @@ $html .= '
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -30,9 +30,9 @@ $html .= '
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1,0],
     );
 
     require_once "../layout/head_links.phtml";

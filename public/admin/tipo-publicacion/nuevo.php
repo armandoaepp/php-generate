@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_active"      => [1, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -70,7 +70,7 @@
             <form action="admin/tipo-publicacion/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descripcion">Descripcion: </label>

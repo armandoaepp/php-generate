@@ -3,18 +3,30 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
+  $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
+
+  if ($id <= 0) {
+      header("Location: ./publicacion.php ", true, 301);
+  }
 
   require_once "../../app/autoload.php";
-  # tipo de publicaciones
-  $params = array(
-    'publicar' => 'S'
-  );
 
-  $tipo_publicacion_controller = new TipoPublicacionController();
+  $publicacion_controller = new PublicacionController();
 
-  $tipo_publicaciones = $tipo_publicacion_controller->getPublished($params);
+  $publicacion = $publicacion_controller->find($id);
 
-  $title_page = "Publicacion" ;
+  $publicar = trim($publicacion->publicar);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
+  $title_page = "Publicacion";
 
 ?>
 
@@ -22,24 +34,26 @@
 <html lang="es">
 
 <head>
+
   <?php
 
     $setvar = array(
-      "titulo"      => "$title_page",
+      "titulo"      => "Editar $title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
-      "active"      => [1,0]
+      "active"      => [1, 0],
     );
 
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,1],
+      "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
   ?>
+
 </head>
 
 <body>
@@ -63,7 +77,7 @@
             </a>
           </li>
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            Nuevo <?php echo $title_page; ?>
+            Editar <?php echo $title_page; ?>
           </li>
         </ol>
       </nav>
@@ -71,44 +85,43 @@
       <div class="container py-2 py-md-3">
         <div class="row">
           <div class="col-12">
-            <h5 class="page-header-title">Nuevo <?php echo $title_page; ?> </h5>
+            <h5 class="page-header-title">Editar <?php echo $title_page; ?> </h5>
             <hr class="hr dashed">
           </div>
         </div>
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/publicacion/save.php" method="POST" enctype="multipart/form-data">
-              <input type="hidden" class="form-control" name="accion" id="accion" value="new">
+            <form action="admin/publicacion/update.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
+              <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
 
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="tipo_publicacion_id">Tipo Publicacion: </label>
-                  <select class="custom-select" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="Tipo Publicacion" required>
+                  <label for="tipo_publicacion_id">TipoPublicacionId: </label>
+                  <select class="custom-select" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="TipoPublicacionId">
                     <option value="" selected disabled hidden>Seleccionar </option>
-                    <?php foreach ($tipo_publicaciones as $row) { ?>
-                    <option value="<?php echo $row->tipo_publicacion_id; ?>"> <?php echo $row->descripcion; ?></option>
-                    <?php } ?>
+                    <option value="text">text</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" required>
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $publicacion->titulo; ?>">
                 </div>
               </div>
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="descripcion">Descripción: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción" >
-                </div>
-              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="url_file">Archivo: </label>
-                  <input type="file" class="form-control" name="url_file" id="url_file" placeholder="Archivo" accept="image/jpeg,image/gif,image/png,application/pdf">
+                  <label for="descripcion">Descripcion: </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $publicacion->descripcion; ?>">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="url_file">UrlFile: </label>
+                  <input type="file" class="form-control" name="url_file" id="url_file" placeholder="UrlFile" value="<?php echo $publicacion->url_file; ?>">
                 </div>
               </div>
 
@@ -116,11 +129,11 @@
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
                     <label class="form-check-label" for="si">SI</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
                     <label class="form-check-label" for="no">NO</label>
                   </div>
                 </div>
@@ -130,7 +143,7 @@
 
               <div class="w-100 text-center">
                 <a href="admin/publicacion/publicacion.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
-                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 
             </form>
@@ -141,8 +154,8 @@
       </div>
 
     </main>
-  </div>
 
+  </div>
 
   <?php require_once "../layout/foot_links.phtml"; ?>
 

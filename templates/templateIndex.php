@@ -13,7 +13,7 @@ $html = '
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -21,9 +21,9 @@ $html = '
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -250,7 +250,7 @@ function tableHtml($table, $atributos,$table_url , $arraycabeza){
 
 $table_html = '' ;
 $table_html .= '
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+            <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>' . PHP_EOL ;
 

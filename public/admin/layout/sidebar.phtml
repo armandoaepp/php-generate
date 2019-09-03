@@ -18,12 +18,12 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
     <li>
       <a class="menu <?php if ($sidebar_active[0] == 1) {echo 'active';}?>" href="#" role="button">
-        <i class="fas fa-plane-departure"></i>
+        <i class="far fa-file-alt"></i>
           Publicaciones
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/publicaciones/publicacion.php">
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/publicacion/publicacion.php">
             <i class="fa fa-list"></i>
             Publicaciones
           </a>

@@ -21,7 +21,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -29,9 +29,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -81,15 +81,15 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+
+            <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Publicacion_id </th>
-                  <th>Tipo_publicacion_id </th>
+                  <th width="50">Id </th>
+                  <th>Tipo Publicacion </th>
                   <th>Titulo </th>
-                  <th>Descripcion </th>
-                  <th>Url_file </th>
+                  <!-- <th>Descripción </th> -->
+                  <th> Archivo </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -134,12 +134,16 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->publicacion_id ?> </td>
-                  <td> <?php echo $row->tipo_publicacion_id ?> </td>
+                  <td> <?php echo $row->desc_tipo_publicacion ?> </td>
                   <td> <?php echo $row->titulo ?> </td>
-                  <td> <?php echo $row->descripcion ?> </td>
-                  <td> <?php echo $row->url_file ?> </td>
+                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
+                  <td>
+                  <a href="<?php echo $row->url_file ?>" target="_blank" rel="noopener noreferrer">
+                  Ver Archivo
+                  </a>
+                  </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
@@ -147,7 +151,7 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-            
+
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/publicacion/editar.php?id=<?php echo $row->publicacion_id ?>" title="Editar">
@@ -162,7 +166,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

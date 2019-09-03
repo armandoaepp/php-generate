@@ -46,9 +46,9 @@
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -96,7 +96,7 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descripcion">Descripcion: </label>

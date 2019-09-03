@@ -4,7 +4,7 @@ class Connection
     protected $db_host = 'localhost';
     protected $db_user = 'root';
     protected $db_pass = '';
-    protected $db_name = 'db_tours';
+    protected $db_name = 'cat_db_apema';
 
     /* protected $db_host   = 'localhost';
     protected $db_user   = 'nervaesscm_webuser';

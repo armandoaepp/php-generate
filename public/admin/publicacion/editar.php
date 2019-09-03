@@ -28,6 +28,15 @@
 
   $title_page = "Publicacion";
 
+  # tipo de publicaciones
+  $params = array(
+    'publicar' => 'S'
+  );
+
+  $tipo_publicacion_controller = new TipoPublicacionController();
+
+  $tipo_publicaciones = $tipo_publicacion_controller->getPublished($params);
+
 ?>
 
 <!DOCTYPE html>
@@ -38,17 +47,17 @@
   <?php
 
     $setvar = array(
-        "titulo" => "Editar $title_page",
-        "follow" => "",
-        "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
+      "titulo"      => "Editar $title_page",
+      "follow"      => "",
+      "description" => "Administrador",
+      "keywords"    => "administrador",
+      "active"      => [1, 0],
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -96,34 +105,37 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="tipo_publicacion_id">TipoPublicacionId: </label>
-                  <select class="custom-select" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="TipoPublicacionId">
-                    <option value="" selected disabled hidden>Seleccionar </option> 
-                    <option value="text">text</option>
+                  <label for="tipo_publicacion_id">Tipo Publicación: </label>
+                  <select class="custom-select" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="Tipo Publicación" required>
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <?php foreach ($tipo_publicaciones as $row) { ?>
+                    <option value="<?php echo $row->tipo_publicacion_id; ?>" <?php if( $publicacion->tipo_publicacion_id == $row->tipo_publicacion_id ) echo "selected" ?> > <?php echo $row->descripcion; ?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $publicacion->titulo; ?>">
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $publicacion->titulo; ?>" required>
                 </div>
               </div>
-              <div class="col-md-12">
+
+              <div class="col-md-10">
                 <div class="form-group">
-                  <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $publicacion->descripcion; ?>">
+                  <label for="url_file">Nuevo Archivo: </label>
+                  <input type="file" class="form-control" name="url_file" id="url_file" placeholder="Nuevo Archivo" value="<?php echo $publicacion->url_file; ?>" accept="image/jpeg,image/gif,image/png,application/pdf">
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="url_file">UrlFile: </label>
-                  <input type="text" class="form-control" name="url_file" id="url_file" placeholder="UrlFile" value="<?php echo $publicacion->url_file; ?>">
-                </div>
+
+              <div class="col-md-2 text-center d-flex align-items-center justify-content-end">
+                <a href="<?php echo $publicacion->url_file; ?>" target="_blank" rel="noopener noreferrer">Ver Archivo Guardado</a>
+                <input type="hidden" class="form-control" name="file_db" id="file_db" value="<?php echo $publicacion->url_file; ?>">
               </div>
+
 
               <div class="col-md-12">
                 <div class="form-group">

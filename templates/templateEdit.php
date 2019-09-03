@@ -53,17 +53,17 @@ $html .= '
   <?php
 
     $setvar = array(
-        "titulo" => "Editar $title_page",
-        "follow" => "",
-        "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
+      "titulo"      => "Editar $title_page",
+      "follow"      => "",
+      "description" => "Administrador",
+      "keywords"    => "administrador",
+      "active"      => [1, 0],
     );
 
     $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [1, 0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1, 0],
     );
 
     require_once "../layout/head_links.phtml";

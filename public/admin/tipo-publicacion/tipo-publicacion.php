@@ -29,9 +29,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [1,2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,21 +85,17 @@
             <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Tipo_publicacion_id </th>
-                  <th>Descripcion </th>
+                  <th width="50">Id </th>
+                  <th>Descripción </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
 
               <tbody>
-              <pre>
-              <?php print_r($data); ?>
-              </pre>
                 <?php foreach ($data as &$row) {?>
 
                   <?php
-                  print_r($row);
                     $classBtn = "" ;
                     $title    = "" ;
                     $icon_pub = "" ;
