@@ -38,8 +38,13 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
       </ul>
     </li>
-
     <li>
+      <a class="<?php if ($sidebar_active[0] == 2) {echo 'active';}?>"href="admin/user/user.php" >
+        <i class="icofont icofont-curved-right"></i> Usuarios
+      </a>
+    </li>
+
+   <!--  <li>
       <a class="menu <?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="#" role="button">
         <i class="fa fa-list"></i> Personal
       </a>
@@ -52,7 +57,7 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
         </li>
 
       </ul>
-    </li>
+    </li> -->
 
   </ul>
 </nav>
