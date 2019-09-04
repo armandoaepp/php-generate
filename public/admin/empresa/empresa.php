@@ -6,11 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $tipo_publicacion_controller = new TipoPublicacionController();
+    $empresa_controller = new EmpresaController();
 
-    $data = $tipo_publicacion_controller->getAll();
+    $data = $empresa_controller->getAll();
 
-    $title_page = "TipoPublicacions";
+    $title_page = "Empresas";
 
 ?>
 
@@ -21,7 +21,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,2],
+      "sidebar_active" => [2,2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
-            <a class="link-white" href="admin/tipo-publicacion/tipo-publicacion.php">
+            <a class="link-white" href="admin/empresa/empresa.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,11 +69,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/tipo-publicacion/tipo-publicacion.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/empresa/empresa.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/tipo-publicacion/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/empresa/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -82,12 +82,12 @@
           <div class="col-12">
             <div class="table-responsive">
 
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+            <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Id </th>
-                  <th>Descripción </th>
-                  <th width="50" class="fs-x-13"> Publicar </th>
+                  <th width="50">Empresa_id </th>
+                  <th>Ruc </th>
+                  <th>Nombre </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -132,22 +132,15 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
 
-                  <td> <?php echo $row->tipo_publicacion_id ?> </td>
-                  <td> <?php echo $row->descripcion ?> </td>
+                  <td> <?php echo $row->empresa_id ?> </td>
+                  <td> <?php echo $row->ruc ?> </td>
+                  <td> <?php echo $row->nombre ?> </td>
 
                   <td class="text-center">
-                    <span class="sr-only"><?php echo $row->publicar ?></span>
-                    <button onclick="modalPublicar(<?php echo $row->tipo_publicacion_id ?>, `<?php echo $row->descripcion ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
-                    <?php echo $icon_pub ;?>
-                    </button>
-                  </td>
-
-
-                  <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/tipo-publicacion/editar.php?id=<?php echo $row->tipo_publicacion_id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/empresa/editar.php?id=<?php echo $row->empresa_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->tipo_publicacion_id ?>, `<?php echo $row->descripcion ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->empresa_id ?>, `<?php echo $row->ruc ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -235,7 +228,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/tipo-publicacion/IndexTipoPublicacion.php",
+        url: "./app/api/empresa/IndexEmpresa.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

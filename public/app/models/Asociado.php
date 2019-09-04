@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Asociado extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -19,7 +19,11 @@ class Asociado extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM asociado; ";
+      $this->query = "SELECT
+                        asociado.*,
+                        empresa.nombre AS empresa
+                      FROM asociado
+                      INNER JOIN empresa ON empresa.empresa_id =  asociado.asociado_id; ";
 
       $this->executeQuery();
 
@@ -39,33 +43,34 @@ class Asociado extends Connection {
   {
     try{
 
-      $user_id = $bean_asociado->getUserId();
-      $nombre = $bean_asociado->getNombre();
-      $apellidos = $bean_asociado->getApellidos();
-      $email = $bean_asociado->getEmail();
-      $password = $bean_asociado->getPassword();
-      $empresa = $bean_asociado->getEmpresa();
-      $telefono = $bean_asociado->getTelefono();
-      $estado = $bean_asociado->getEstado();
-      $created_at = $bean_asociado->getCreatedAt();
+      $asociado_id = $bean_asociado->getAsociadoId();
+      $empresa_id  = $bean_asociado->getEmpresaId();
+      $nombre      = $bean_asociado->getNombre();
+      $apellidos   = $bean_asociado->getApellidos();
+      $email       = $bean_asociado->getEmail();
+      // $password    = $bean_asociado->getPassword();
+      $password   =  Encript::md5($bean_asociado->getPassword());
+      $telefono    = $bean_asociado->getTelefono();
+      $estado      = $bean_asociado->getEstado();
+      $created_at  = $bean_asociado->getCreatedAt();
 
       $this->query = "INSERT INTO asociado
                       (
+                        empresa_id,
                         nombre,
                         apellidos,
                         email,
                         password,
-                        empresa,
                         telefono,
                         estado,
                         created_at
                       )
                       VALUES(
+                        '$empresa_id',
                         '$nombre',
                         '$apellidos',
                         '$email',
                         '$password',
-                        '$empresa',
                         '$telefono',
                         '$estado',
                         $created_at
@@ -89,22 +94,21 @@ class Asociado extends Connection {
   public function update($bean_asociado)
   {
     try{
-      $user_id = $bean_asociado->getUserId();
-      $nombre = $bean_asociado->getNombre();
-      $apellidos = $bean_asociado->getApellidos();
-      $email = $bean_asociado->getEmail();
-      $password = $bean_asociado->getPassword();
-      $empresa = $bean_asociado->getEmpresa();
-      $telefono = $bean_asociado->getTelefono();
+      $asociado_id = $bean_asociado->getAsociadoId();
+      $empresa_id  = $bean_asociado->getEmpresaId();
+      $nombre      = $bean_asociado->getNombre();
+      $apellidos   = $bean_asociado->getApellidos();
+      $email       = $bean_asociado->getEmail();
+      // $password    = $bean_asociado->getPassword();
+      $telefono    = $bean_asociado->getTelefono();
 
-      $this->query = "UPDATE asociado SET 
+      $this->query = "UPDATE asociado SET
+                        empresa_id = '$empresa_id',
                         nombre = '$nombre',
                         apellidos = '$apellidos',
                         email = '$email',
-                        password = '$password',
-                        empresa = '$empresa',
                         telefono = '$telefono'
-                      WHERE user_id = '$user_id'
+                      WHERE asociado_id = '$asociado_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -124,9 +128,9 @@ class Asociado extends Connection {
   public function find($bean_asociado)
   {
     try{
-      $user_id = $bean_asociado->getUserId();
+      $asociado_id = $bean_asociado->getAsociadoId();
 
-      $this->query = "SELECT * FROM asociado WHERE user_id = '$user_id' LIMIT 1; ";
+      $this->query = "SELECT * FROM asociado WHERE asociado_id = '$asociado_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -145,10 +149,10 @@ class Asociado extends Connection {
   public function deleteById($bean_asociado)
   {
     try{
-      $user_id = $bean_asociado->getUserId();
+      $asociado_id = $bean_asociado->getAsociadoId();
 
       $this->query = "DELETE FROM asociado
-                      WHERE user_id = '$user_id' LIMIT 1; ";
+                      WHERE asociado_id = '$asociado_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -191,12 +195,12 @@ class Asociado extends Connection {
   public function updateEstado($bean_asociado)
   {
     try{
-      $user_id = $bean_asociado->getUserId();
+      $asociado_id = $bean_asociado->getAsociadoId();
       $estado = $bean_asociado->getEstado();
 
-      $this->query = "UPDATE asociado SET 
+      $this->query = "UPDATE asociado SET
                         estado = '$estado'
-                      WHERE user_id='$user_id'
+                      WHERE asociado_id='$asociado_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -211,4 +215,29 @@ class Asociado extends Connection {
 
     }
   }
+
+   # Method Password
+   public function updatePassword($bean_asociado)
+   {
+     try{
+       $asociado_id   = $bean_asociado->getAsociadoId();
+       $password  = Encript::md5($bean_asociado->getPassword());
+
+       $this->query = "UPDATE asociado SET
+                         password = '$password'
+                       WHERE asociado_id = '$asociado_id'
+                       LIMIT 1 ;";
+
+       $this->executeQuery();
+
+       $data = $this->status  ;
+
+       return $data;
+
+     }catch(exception $e){
+
+       throw new Exception($e->getMessage());
+
+     }
+   }
 }

@@ -155,6 +155,17 @@
     border-right-color: $sidebar-text-active-color;
   }
 
+  .sidenav li>a.menu.active,
+  .sidenav>li>a.active {
+    color: $sidebar-text-active-color;
+    background-color: $sidebar-bg-active-color;
+    font-weight: 600;
+  }
+
+  .sidenav li>a.menu:only-child::after{
+    content: none;
+  }
+
 }
 
 

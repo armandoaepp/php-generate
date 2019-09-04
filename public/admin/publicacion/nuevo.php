@@ -62,7 +62,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             Nuevo <?php echo $title_page; ?>
           </li>
         </ol>

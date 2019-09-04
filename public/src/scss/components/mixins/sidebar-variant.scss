@@ -31,7 +31,12 @@ $sidebar-border-color-li-menu-items: rgba(0, 0, 0, 0.04)) {
     color: $sidebar-text-hover-color;
   }
 
-  .sidenav li>a.menu.active {
+  .sidenav li a:only-child {
+    color: $sidebar-text-color;
+  }
+
+  .sidenav li>a.menu.active,
+  .sidenav li a:only-child.menu.active {
     color: $sidebar-text-active-color;
     background-color: $sidebar-bg-active-color;
   }
@@ -55,5 +60,7 @@ $sidebar-border-color-li-menu-items: rgba(0, 0, 0, 0.04)) {
   .sidenav li>a.active.menu::after {
     border-right-color: rgba($sidebar-text-active-color, .85);
   }
+
+
 
 }

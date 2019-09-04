@@ -25,9 +25,9 @@ switch($evento)
   case "list":
     try
     {
-      $asociado_controller = new AsociadoController() ; 
+      $empresa_controller = new EmpresaController() ; 
 
-       $data = $asociado_controller->getAll() ;
+       $data = $empresa_controller->getAll() ;
 
       $data = array('msg' => 'Listado correcto', 'error' => false, 'data' => $data);
     }
@@ -47,30 +47,20 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $asociado_controller = new AsociadoController($cnx) ; 
+      $empresa_controller = new EmpresaController($cnx) ; 
       $connection->beginTransaction();
         
-      $asociado_id = $inputs->asociado_id;
       $empresa_id = $inputs->empresa_id;
+      $ruc = $inputs->ruc;
       $nombre = $inputs->nombre;
-      $apellidos = $inputs->apellidos;
-      $email = $inputs->email;
-      $password = $inputs->password;
-      $telefono = $inputs->telefono;
-      $created_at = $inputs->created_at;
         
       $params = array(
-                'asociado_id'=> $asociado_id,
                 'empresa_id'=> $empresa_id,
+                'ruc'=> $ruc,
                 'nombre'=> $nombre,
-                'apellidos'=> $apellidos,
-                'email'=> $email,
-                'password'=> $password,
-                'telefono'=> $telefono,
-                'created_at'=> $created_at,
               ) ; 
         
-      $data = $asociado_controller->save($params) ;
+      $data = $empresa_controller->save($params) ;
         
       $connection->commit();
 
@@ -92,30 +82,20 @@ switch($evento)
       $connection = new Connection();
       $cnx = $connection->getConnection();
         
-      $asociado_controller = new AsociadoController($cnx) ; 
+      $empresa_controller = new EmpresaController($cnx) ; 
       $connection->beginTransaction();
         
-      $asociado_id = $inputs->asociado_id;
       $empresa_id = $inputs->empresa_id;
+      $ruc = $inputs->ruc;
       $nombre = $inputs->nombre;
-      $apellidos = $inputs->apellidos;
-      $email = $inputs->email;
-      $password = $inputs->password;
-      $telefono = $inputs->telefono;
-      $created_at = $inputs->created_at;
         
       $params = array(
-                'asociado_id'=> $asociado_id,
                 'empresa_id'=> $empresa_id,
+                'ruc'=> $ruc,
                 'nombre'=> $nombre,
-                'apellidos'=> $apellidos,
-                'email'=> $email,
-                'password'=> $password,
-                'telefono'=> $telefono,
-                'created_at'=> $created_at,
               ) ; 
         
-      $data = $asociado_controller->update($params) ;
+      $data = $empresa_controller->update($params) ;
         
       $connection->commit();
 
@@ -136,17 +116,17 @@ switch($evento)
     try
     {
 
-      $asociado_id = $inputs->asociado_id;
+      $empresa_id = $inputs->empresa_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'asociado_id'=> $asociado_id,
+                'empresa_id'=> $empresa_id,
                 'estado'=> $estado,
               ) ; 
 
-      $asociado_controller = new AsociadoController() ; 
+      $empresa_controller = new EmpresaController() ; 
 
-      $data = $asociado_controller->updateEstado( $params ) ;
+      $data = $empresa_controller->updateEstado( $params ) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -165,9 +145,9 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $asociado_controller = new AsociadoController() ; 
+      $empresa_controller = new EmpresaController() ; 
 
-      $data = $asociado_controller->find( $id) ;
+      $data = $empresa_controller->find( $id) ;
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -185,7 +165,7 @@ switch($evento)
     try
     {
 
-      $asociado_id = $inputs->id;
+      $empresa_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -195,11 +175,11 @@ switch($evento)
       }
 
       $params = array(
-                'asociado_id'=> $asociado_id,
+                'empresa_id'=> $empresa_id,
                 'estado'=> $estado,
               ) ; 
 
-      $asociado_controller = new AsociadoController() ; 
+      $empresa_controller = new EmpresaController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -207,14 +187,14 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $asociado = $asociado_controller->find( $asociado_id );
+        $empresa = $empresa_controller->find( $empresa_id );
 
-        $data = $asociado_controller->deleteById( $asociado_id );
+        $data = $empresa_controller->deleteById( $empresa_id );
 
 			}
 			else
 			{
-				$data = $asociado_controller->updateEstado($params);
+				$data = $empresa_controller->updateEstado($params);
 			} 
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);

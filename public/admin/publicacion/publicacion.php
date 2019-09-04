@@ -55,7 +55,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             <a class="link-white" href="admin/publicacion/publicacion.php">
               <?php echo $title_page; ?>
             </a>

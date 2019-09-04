@@ -131,7 +131,7 @@ for ($i = 1; $i < count($atributos); $i++)
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
               $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <select class="custom-select" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '">'.PHP_EOL;
+              $html .= '                  <select class="custom-select select2-box" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '">'.PHP_EOL;
               $html .= '                    <option value="" selected disabled hidden>Seleccionar </option> '.PHP_EOL;
               $html .= '                    <option value="text">text</option>'.PHP_EOL;
               $html .= '                  </select>'.PHP_EOL;

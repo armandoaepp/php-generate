@@ -12,12 +12,12 @@ class BeanAsociado{
   public function __construct(){}
 
   # Atributos
-  private $user_id;
+  private $asociado_id;
+  private $empresa_id;
   private $nombre;
   private $apellidos;
   private $email;
   private $password;
-  private $empresa;
   private $telefono;
   private $estado = 1 ;
   private $created_at = NULL ;
@@ -25,14 +25,24 @@ class BeanAsociado{
   #Auto Increment Item
 
   # METODOS
-  public function setUserId($user_id_)
+  public function setAsociadoId($asociado_id_)
   {
-    $this->user_id = Validation::validate( $user_id_ );
+    $this->asociado_id = Validation::validate( $asociado_id_ );
   }
 
-  public function getUserId()
+  public function getAsociadoId()
   {
-    return $this->user_id;
+    return $this->asociado_id;
+  }
+
+  public function setEmpresaId($empresa_id_)
+  {
+    $this->empresa_id = Validation::validate( $empresa_id_ );
+  }
+
+  public function getEmpresaId()
+  {
+    return $this->empresa_id;
   }
 
   public function setNombre($nombre_)
@@ -73,16 +83,6 @@ class BeanAsociado{
   public function getPassword()
   {
     return $this->password;
-  }
-
-  public function setEmpresa($empresa_)
-  {
-    $this->empresa = Validation::validate( $empresa_ );
-  }
-
-  public function getEmpresa()
-  {
-    return $this->empresa;
   }
 
   public function setTelefono($telefono_)

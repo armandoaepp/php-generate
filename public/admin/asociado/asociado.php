@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,0],
+      "sidebar_active" => [2,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -55,7 +55,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             <a class="link-white" href="admin/asociado/asociado.php">
               <?php echo $title_page; ?>
             </a>
@@ -81,17 +81,17 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">User_id </th>
+                  <th width="50">Id </th>
+                  <th>Empresa  </th>
                   <th>Nombre </th>
                   <th>Apellidos </th>
                   <th>Email </th>
-                  <th>Password </th>
-                  <th>Empresa </th>
                   <th>Telefono </th>
+                  <th>Contraseña </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -135,20 +135,25 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
-                  <td> <?php echo $row->user_id ?> </td>
+
+                  <td> <?php echo $row->asociado_id ?> </td>
+                  <td> <?php echo $row->empresa ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->apellidos ?> </td>
                   <td> <?php echo $row->email ?> </td>
-                  <td> <?php echo $row->password ?> </td>
-                  <td> <?php echo $row->empresa ?> </td>
                   <td> <?php echo $row->telefono ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/asociado/editar.php?id=<?php echo $row->user_id ?>" title="Editar">
+                      <a class="btn btn-outline-info btn-sm lh-1 btn-table" href="admin/asociado/reset.php?id=<?php echo $row->asociado_id ?>" title="Cambiar Contraseña">
+                        <i class="fas fa-key"></i>
+                      </a>
+                    </td>
+
+                  <td class="text-center">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/asociado/editar.php?id=<?php echo $row->asociado_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->user_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->asociado_id ?>, `<?php echo $row->empresa_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -157,7 +162,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

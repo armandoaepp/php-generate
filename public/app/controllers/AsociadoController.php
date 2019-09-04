@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $asociado  = new Asociado();
-            
+
       $bean_asociado = new BeanAsociado();
-            
+
       $bean_asociado->setEstado($estado);
 
       $data = $asociado->getByEstado($bean_asociado);
@@ -59,20 +59,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $asociado  = new Asociado($this->cnx);
 
       $bean_asociado = new BeanAsociado();
-            
+
+      $bean_asociado->setEmpresaId($empresa_id);
       $bean_asociado->setNombre($nombre);
       $bean_asociado->setApellidos($apellidos);
       $bean_asociado->setEmail($email);
       $bean_asociado->setPassword($password);
-      $bean_asociado->setEmpresa($empresa);
       $bean_asociado->setTelefono($telefono);
-            
+
       $data = $asociado->save($bean_asociado) ;
 
       return $data ;
@@ -87,22 +87,22 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $asociado  = new Asociado($this->cnx);
       $bean_asociado = new BeanAsociado();
-            
-      $bean_asociado->setUserId($user_id);
+
+      $bean_asociado->setAsociadoId($asociado_id);
+      $bean_asociado->setEmpresaId($empresa_id);
       $bean_asociado->setNombre($nombre);
       $bean_asociado->setApellidos($apellidos);
       $bean_asociado->setEmail($email);
-      $bean_asociado->setPassword($password);
-      $bean_asociado->setEmpresa($empresa);
+      // $bean_asociado->setPassword($password);
       $bean_asociado->setTelefono($telefono);
 
       $data = $asociado->update($bean_asociado) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -115,18 +115,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $asociado  = new Asociado($this->cnx);
-            
+
       $bean_asociado = new BeanAsociado();
-            
-      $bean_asociado->setUserId($user_id);
+
+      $bean_asociado->setAsociadoId($asociado_id);
       $bean_asociado->setEstado($estado);
 
       $data = $asociado->updateEstado($bean_asociado) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -143,7 +143,7 @@
 
       $bean_asociado = new BeanAsociado();
 
-      $bean_asociado->setUserId($id);
+      $bean_asociado->setAsociadoId($id);
 
       $data = $asociado->find( $bean_asociado) ;
       return $data;
@@ -155,7 +155,7 @@
     }
   }
 
-  public function deleteById($user_id)
+  public function deleteById($asociado_id)
   {
     try
     {
@@ -164,7 +164,7 @@
 
       $bean_asociado = new BeanAsociado();
 
-      $bean_asociado->setUserId($user_id);
+      $bean_asociado->setAsociadoId($asociado_id);
 
       $data = $asociado->deleteById( $bean_asociado ) ;
 
@@ -174,6 +174,30 @@
     catch (Exception $e)
     {
       throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePassword($params = array() )
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $asociado  = new Asociado($this->cnx);
+
+      $bean_asociado = new BeanAsociado();
+
+      $bean_asociado->setAsociadoId($asociado_id);
+      $bean_asociado->setPassword($password);
+
+      $data = $asociado->updatePassword($bean_asociado) ;
+
+      return $data ;
+    }
+    catch (Exception $e)
+    {
+        throw new Exception($e->getMessage());
     }
   }
 

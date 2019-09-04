@@ -14,7 +14,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -22,9 +22,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [3, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -70,7 +70,7 @@
             <form action="admin/suscriptor/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
@@ -80,25 +80,25 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefono">Telefono: </label>
-                  <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                  <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="empresa">Empresa: </label>
-                  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
+                  <input type="email" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="mensaje">Mensaje: </label>
-                  <input type="text" class="form-control" name="mensaje" id="mensaje" placeholder="Mensaje">
+                  <textarea class="form-control ckeditor" name="mensaje" id="mensaje" placeholder="Mensaje" cols="30" rows="6"></textarea>
                 </div>
               </div>
 
@@ -121,6 +121,7 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/ckeditor.phtml"; ?>
 
 </body>
 

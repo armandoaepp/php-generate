@@ -21,7 +21,7 @@
   <?php
 
     $setvar = array(
-      "titulo"     => "$title_page",
+      "titulo"      => "$title_page",
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
@@ -29,9 +29,9 @@
     );
 
     $sidebar = array(
-      "sidebar_class"     => "",
-      "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,0],
+      "sidebar_class"  => "",
+      "sidebar_toggle" => "only",
+      "sidebar_active" => [3, 2],
     );
 
     require_once "../layout/head_links.phtml";
@@ -73,16 +73,16 @@
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/suscriptor/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <!-- <a href="admin/suscriptor/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
-            </a>
+            </a> -->
           </div>
 
           <div class="col-12">
             <div class="table-responsive">
-            
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+
+            <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Suscritor_id </th>
@@ -134,13 +134,13 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->suscritor_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->email ?> </td>
                   <td> <?php echo $row->telefono ?> </td>
                   <td> <?php echo $row->empresa ?> </td>
-                  <td> <?php echo $row->mensaje ?> </td>
+                  <td> <?php echo $rest = substr($row->mensaje, 0, 100); ?> </td>
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/suscriptor/editar.php?id=<?php echo $row->suscritor_id ?>" title="Editar">
@@ -155,7 +155,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

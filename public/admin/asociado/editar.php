@@ -17,6 +17,12 @@
 
   $title_page = "Asociado";
 
+  $empresa_controller = new EmpresaController();
+
+  $params = array('estado' => 1) ;
+
+  $empresas = $empresa_controller->getByEstado($params);
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1, 0],
+      "sidebar_active" => [2, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -65,7 +71,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             Editar <?php echo $title_page; ?>
           </li>
         </ol>
@@ -85,37 +91,42 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="empresa_id">Empresa: </label>
+                  <select class="custom-select select2-box" name="empresa_id" id="empresa_id" placeholder="Empresa" required>
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <?php foreach ($empresas as $row) { ?>
+                    <option value="<?php echo $row->empresa_id; ?>" <?php if( $asociado->empresa_id == $row->empresa_id ) echo "selected" ?> > <?php echo $row->nombre; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $asociado->nombre; ?>">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $asociado->nombre; ?>" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="apellidos">Apellidos: </label>
-                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $asociado->apellidos; ?>">
+                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $asociado->apellidos; ?>" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $asociado->email; ?>">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $asociado->email; ?>" required>
                 </div>
               </div>
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <div class="form-group">
                   <label for="password">Password: </label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $asociado->password; ?>">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $asociado->password; ?>" required>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="empresa">Empresa: </label>
-                  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" value="<?php echo $asociado->empresa; ?>">
-                </div>
-              </div>
+              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="telefono">Telefono: </label>
@@ -142,6 +153,7 @@
   </div>
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/select2.phtml"; ?>
 
 </body>
 

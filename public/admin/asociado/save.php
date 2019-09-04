@@ -11,19 +11,19 @@
 
   $asociado_controller = new AsociadoController();
 
-  $nombre   = $_POST["nombre"] ;
-  $apellidos   = $_POST["apellidos"] ;
-  $email   = $_POST["email"] ;
+  $empresa_id = $_POST["empresa_id"] ;
+  $nombre     = $_POST["nombre"] ;
+  $apellidos  = $_POST["apellidos"] ;
+  $email      = $_POST["email"] ;
   $password   = $_POST["password"] ;
-  $empresa   = $_POST["empresa"] ;
   $telefono   = $_POST["telefono"] ;
 
   $params = array(
-    "nombre"   => $nombre,
-    "apellidos"   => $apellidos,
-    "email"   => $email,
+    "empresa_id" => $empresa_id,
+    "nombre"     => $nombre,
+    "apellidos"  => $apellidos,
+    "email"      => $email,
     "password"   => $password,
-    "empresa"   => $empresa,
     "telefono"   => $telefono,
   );
 

@@ -5,6 +5,14 @@
 
   $title_page = "Asociado" ;
 
+  require_once "../../app/autoload.php";
+
+  $empresa_controller = new EmpresaController();
+
+  $params = array('estado' => 1) ;
+
+  $empresas = $empresa_controller->getByEstado($params);
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +32,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,0],
+      "sidebar_active" => [2,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -51,7 +59,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
@@ -70,41 +78,46 @@
             <form action="admin/asociado/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="empresa_id">Empresa: </label>
+                  <select class="custom-select select2-box" name="empresa_id" id="empresa_id" placeholder="Empresa" required>
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <?php foreach ($empresas as $row) { ?>
+                    <option value="<?php echo $row->empresa_id; ?>"> <?php echo $row->nombre; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="apellidos">Apellidos: </label>
-                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos">
+                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                  <label for="email">Correo(Usuario): </label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Correo(Usuario)" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="password">Password: </label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="empresa">Empresa: </label>
-                  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="telefono">Telefono: </label>
-                  <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                  <label for="telefono">Teléfono: </label>
+                  <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Teléfono">
                 </div>
               </div>
 
@@ -127,6 +140,7 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/select2.phtml"; ?>
 
 </body>
 
