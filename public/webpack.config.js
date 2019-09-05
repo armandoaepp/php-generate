@@ -34,7 +34,7 @@ var appConfig = Object.assign({}, config, {
 var adminConfig = Object.assign({}, config, {
   name: "admin",
   entry: {
-    admin: './src/js/admin.js',
+    'app-admin': './src/js/app-admin.js',
   },
   output: {
     filename: '[name].js',
