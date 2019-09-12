@@ -70,6 +70,7 @@
       $bean_publicacion->setTitulo($titulo);
       $bean_publicacion->setDescripcion($descripcion);
       $bean_publicacion->setUrlFile($url_file);
+      $bean_publicacion->setImagen($imagen);
       $bean_publicacion->setPublicar($publicar);
             
       $data = $publicacion->save($bean_publicacion) ;
@@ -97,6 +98,7 @@
       $bean_publicacion->setTitulo($titulo);
       $bean_publicacion->setDescripcion($descripcion);
       $bean_publicacion->setUrlFile($url_file);
+      $bean_publicacion->setImagen($imagen);
       $bean_publicacion->setPublicar($publicar);
 
       $data = $publicacion->update($bean_publicacion) ;

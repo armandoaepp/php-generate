@@ -50,7 +50,7 @@ switch($evento)
       $suscriptor_controller = new SuscriptorController($cnx) ; 
       $connection->beginTransaction();
         
-      $suscritor_id = $inputs->suscritor_id;
+      $suscriptor_id = $inputs->suscriptor_id;
       $nombre = $inputs->nombre;
       $email = $inputs->email;
       $telefono = $inputs->telefono;
@@ -59,7 +59,7 @@ switch($evento)
       $created_at = $inputs->created_at;
         
       $params = array(
-                'suscritor_id'=> $suscritor_id,
+                'suscriptor_id'=> $suscriptor_id,
                 'nombre'=> $nombre,
                 'email'=> $email,
                 'telefono'=> $telefono,
@@ -93,7 +93,7 @@ switch($evento)
       $suscriptor_controller = new SuscriptorController($cnx) ; 
       $connection->beginTransaction();
         
-      $suscritor_id = $inputs->suscritor_id;
+      $suscriptor_id = $inputs->suscriptor_id;
       $nombre = $inputs->nombre;
       $email = $inputs->email;
       $telefono = $inputs->telefono;
@@ -102,7 +102,7 @@ switch($evento)
       $created_at = $inputs->created_at;
         
       $params = array(
-                'suscritor_id'=> $suscritor_id,
+                'suscriptor_id'=> $suscriptor_id,
                 'nombre'=> $nombre,
                 'email'=> $email,
                 'telefono'=> $telefono,
@@ -132,11 +132,11 @@ switch($evento)
     try
     {
 
-      $suscritor_id = $inputs->suscritor_id;
+      $suscriptor_id = $inputs->suscriptor_id;
       $estado = $inputs->estado;
 
       $params = array(
-                'suscritor_id'=> $suscritor_id,
+                'suscriptor_id'=> $suscriptor_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -181,7 +181,7 @@ switch($evento)
     try
     {
 
-      $suscritor_id = $inputs->id;
+      $suscriptor_id = $inputs->id;
       $estado = $inputs->estado; 
 
       if($estado == 1){
@@ -191,7 +191,7 @@ switch($evento)
       }
 
       $params = array(
-                'suscritor_id'=> $suscritor_id,
+                'suscriptor_id'=> $suscriptor_id,
                 'estado'=> $estado,
               ) ; 
 
@@ -203,9 +203,9 @@ switch($evento)
 			if( $historial == 0 )
 			{
 
-        $suscriptor = $suscriptor_controller->find( $suscritor_id );
+        $suscriptor = $suscriptor_controller->find( $suscriptor_id );
 
-        $data = $suscriptor_controller->deleteById( $suscritor_id );
+        $data = $suscriptor_controller->deleteById( $suscriptor_id );
 
 			}
 			else

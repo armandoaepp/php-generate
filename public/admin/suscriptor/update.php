@@ -11,7 +11,7 @@
 
   $suscriptor_controller = new SuscriptorController();
 
-  $suscritor_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
+  $suscriptor_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $nombre   = $_POST["nombre"] ;
   $email   = $_POST["email"] ;
@@ -19,7 +19,7 @@
   $empresa   = $_POST["empresa"] ;
   $mensaje   = $_POST["mensaje"] ;
   $params = array(
-    "suscritor_id"   => $suscritor_id,
+    "suscriptor_id"   => $suscriptor_id,
     "nombre"   => $nombre,
     "email"   => $email,
     "telefono"   => $telefono,

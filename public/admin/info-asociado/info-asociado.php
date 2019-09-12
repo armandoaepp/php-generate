@@ -6,11 +6,11 @@
 
     require_once "../../app/autoload.php";
 
-    $publicacion_controller = new PublicacionController();
+    $info_asociado_controller = new InfoAsociadoController();
 
-    $data = $publicacion_controller->getAll();
+    $data = $info_asociado_controller->getAll();
 
-    $title_page = "Publicacions";
+    $title_page = "InfoAsociados";
 
 ?>
 
@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [0, 0],
+      "sidebar_active" => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -56,7 +56,7 @@
           </li>
 
           <li class="breadcrumb-item active bg-info text-white" aria-current="page">
-            <a class="link-white" href="admin/publicacion/publicacion.php">
+            <a class="link-white" href="admin/info-asociado/info-asociado.php">
               <?php echo $title_page; ?>
             </a>
           </li>
@@ -69,11 +69,11 @@
             <h5 class="page-header-title">Lista de <?php echo $title_page; ?> </h5>
           </div>
           <div class="col-12 mb-3">
-            <a href="admin/publicacion/publicacion.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/info-asociado/info-asociado.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <a href="admin/publicacion/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/info-asociado/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
             </a>
@@ -85,8 +85,8 @@
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Publicacion_id </th>
-                  <th>Tipo_publicacion_id </th>
+                  <th width="50">Info_asociado_id </th>
+                  <th>Tipo_info_asociado_id </th>
                   <th>Titulo </th>
                   <th>Descripcion </th>
                   <th>Url_file </th>
@@ -135,25 +135,25 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
                 
-                  <td> <?php echo $row->publicacion_id ?> </td>
-                  <td> <?php echo $row->tipo_publicacion_id ?> </td>
+                  <td> <?php echo $row->info_asociado_id ?> </td>
+                  <td> <?php echo $row->tipo_info_asociado_id ?> </td>
                   <td> <?php echo $row->titulo ?> </td>
                   <td> <?php echo $row->descripcion ?> </td>
                   <td> <?php echo $row->url_file ?> </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
-                    <button onclick="modalPublicar(<?php echo $row->publicacion_id ?>, `<?php echo $row->tipo_publicacion_id ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row->info_asociado_id ?>, `<?php echo $row->tipo_info_asociado_id ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
             
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/publicacion/editar.php?id=<?php echo $row->publicacion_id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/info-asociado/editar.php?id=<?php echo $row->info_asociado_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->publicacion_id ?>, `<?php echo $row->tipo_publicacion_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->info_asociado_id ?>, `<?php echo $row->tipo_info_asociado_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>
@@ -241,7 +241,7 @@
       var params = JSON.stringify(inputs);
 
       $.ajax({
-        url: "./app/api/publicacion/IndexPublicacion.php",
+        url: "./app/api/info-asociado/IndexInfoAsociado.php",
         dataType: "json",
         type: "post",
         contentType: "application/json",

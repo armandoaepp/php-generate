@@ -68,6 +68,8 @@
             
       $bean_empresa->setRuc($ruc);
       $bean_empresa->setNombre($nombre);
+      $bean_empresa->setImagen($imagen);
+      $bean_empresa->setPublicar($publicar);
             
       $data = $empresa->save($bean_empresa) ;
 
@@ -92,6 +94,8 @@
       $bean_empresa->setEmpresaId($empresa_id);
       $bean_empresa->setRuc($ruc);
       $bean_empresa->setNombre($nombre);
+      $bean_empresa->setImagen($imagen);
+      $bean_empresa->setPublicar($publicar);
 
       $data = $empresa->update($bean_empresa) ;
             
@@ -162,6 +166,51 @@
 
       return $data;
 
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function updatePublish($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $empresa  = new Empresa($this->cnx);
+      $bean_empresa = new BeanEmpresa();
+            
+      $bean_empresa->setEmpresaId($empresa_id);
+      $bean_empresa->setPublicar($publicar);
+
+      $data = $empresa->updatePublish($bean_empresa) ;
+            
+      return $data;
+    }
+    catch (Exception $e)
+    {
+           throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getPublished($params = array())
+  {
+    try
+    {
+            
+      extract($params) ; 
+
+      $empresa  = new Empresa($this->cnx);
+      $bean_empresa = new BeanEmpresa();
+            
+      $bean_empresa->setPublicar($publicar);
+
+      $data = $empresa->getPublished($bean_empresa) ;
+      
+      return $data;
     }
     catch (Exception $e)
     {

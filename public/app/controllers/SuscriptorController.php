@@ -92,7 +92,7 @@
       $suscriptor  = new Suscriptor($this->cnx);
       $bean_suscriptor = new BeanSuscriptor();
             
-      $bean_suscriptor->setSuscritorId($suscritor_id);
+      $bean_suscriptor->setSuscriptorId($suscriptor_id);
       $bean_suscriptor->setNombre($nombre);
       $bean_suscriptor->setEmail($email);
       $bean_suscriptor->setTelefono($telefono);
@@ -120,7 +120,7 @@
             
       $bean_suscriptor = new BeanSuscriptor();
             
-      $bean_suscriptor->setSuscritorId($suscritor_id);
+      $bean_suscriptor->setSuscriptorId($suscriptor_id);
       $bean_suscriptor->setEstado($estado);
 
       $data = $suscriptor->updateEstado($bean_suscriptor) ;
@@ -141,7 +141,7 @@
 
       $bean_suscriptor = new BeanSuscriptor();
 
-      $bean_suscriptor->setSuscritorId($id);
+      $bean_suscriptor->setSuscriptorId($id);
 
       $data = $suscriptor->find( $bean_suscriptor) ;
       return $data;
@@ -153,7 +153,7 @@
     }
   }
 
-  public function deleteById($suscritor_id)
+  public function deleteById($suscriptor_id)
   {
     try
     {
@@ -162,7 +162,7 @@
 
       $bean_suscriptor = new BeanSuscriptor();
 
-      $bean_suscriptor->setSuscritorId($suscritor_id);
+      $bean_suscriptor->setSuscriptorId($suscriptor_id);
 
       $data = $suscriptor->deleteById( $bean_suscriptor ) ;
 

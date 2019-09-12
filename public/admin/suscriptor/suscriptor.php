@@ -73,10 +73,10 @@
               <i class="fas fa-list-ul"></i>
               Listar
             </a>
-            <!-- <a href="admin/suscriptor/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
+            <a href="admin/suscriptor/nuevo.php" class="btn btn-outline-primary btn-sm btn-bar" role="button">
               <i class="fas fa-file"></i>
               Nuevo
-            </a> -->
+            </a>
           </div>
 
           <div class="col-12">
@@ -85,7 +85,7 @@
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Suscritor_id </th>
+                  <th width="50">Suscriptor_id </th>
                   <th>Nombre </th>
                   <th>Email </th>
                   <th>Telefono </th>
@@ -135,18 +135,18 @@
 
                 <tr class="<?php echo $class_estado ;?>" >
 
-                  <td> <?php echo $row->suscritor_id ?> </td>
+                  <td> <?php echo $row->suscriptor_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->email ?> </td>
                   <td> <?php echo $row->telefono ?> </td>
                   <td> <?php echo $row->empresa ?> </td>
-                  <td> <?php echo $rest = substr($row->mensaje, 0, 100); ?> </td>
+                  <td> <?php echo $row->mensaje ?> </td>
 
                   <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/suscriptor/editar.php?id=<?php echo $row->suscritor_id ?>" title="Editar">
+                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/suscriptor/editar.php?id=<?php echo $row->suscriptor_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->suscritor_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->suscriptor_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>

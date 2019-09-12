@@ -32,7 +32,7 @@ $html .= '
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,0],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";

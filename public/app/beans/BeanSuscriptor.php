@@ -12,7 +12,7 @@ class BeanSuscriptor{
   public function __construct(){}
 
   # Atributos
-  private $suscritor_id;
+  private $suscriptor_id;
   private $nombre;
   private $email;
   private $telefono;
@@ -24,14 +24,14 @@ class BeanSuscriptor{
   #Auto Increment Item
 
   # METODOS
-  public function setSuscritorId($suscritor_id_)
+  public function setSuscriptorId($suscriptor_id_)
   {
-    $this->suscritor_id = Validation::validate( $suscritor_id_ );
+    $this->suscriptor_id = Validation::validate( $suscriptor_id_ );
   }
 
-  public function getSuscritorId()
+  public function getSuscriptorId()
   {
-    return $this->suscritor_id;
+    return $this->suscriptor_id;
   }
 
   public function setNombre($nombre_)

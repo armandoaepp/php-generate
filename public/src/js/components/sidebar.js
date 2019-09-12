@@ -5,7 +5,6 @@ function prevSiblings(target) {
   while (n = n.previousElementSibling) siblings.push(n);
   return siblings;
 }
-
 /* siblings down */
 function nextSiblings(target) {
   var siblings = [],
@@ -13,7 +12,6 @@ function nextSiblings(target) {
   while (n = n.nextElementSibling) siblings.push(n);
   return siblings;
 }
-
 /* All siblings */
 function siblings(target) {
   var prev = prevSiblings(target) || [],
@@ -33,32 +31,22 @@ function siblings(target) {
       for (var i = 0; i < menus.length; i++) {
         var menu = menus[i];
 
-        var el_menu_items = menu.nextElementSibling;
+        menu.addEventListener("click", function (event) {
+          event.preventDefault();
 
-        // console.log(menu);
-        // console.log(el_menu_items);
+          var current = this;
 
-        if (el_menu_items) {
-          menu.addEventListener("click", function (event) {
-            event.preventDefault();
+          if (menu_toggle && menu_toggle === 'only') {
+            removeClassActive(current);
+          }
 
-            var current = this;
+          if (!current.classList.contains('active')) {
+            current.classList.add("active");
+          } else {
+            current.classList.remove("active");
+          }
 
-            if (menu_toggle && menu_toggle === 'only') {
-              removeClassActive(current);
-            }
-
-            if (!current.classList.contains('active')) {
-              current.classList.add("active");
-            } else {
-              current.classList.remove("active");
-            }
-
-          });
-        }
-
-
-
+        });
       }
 
     }

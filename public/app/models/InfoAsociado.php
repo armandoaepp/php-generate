@@ -7,7 +7,7 @@
  * email: armandoaepp@gmail.com
 */
 
-class Publicacion extends Connection {
+class InfoAsociado extends Connection {
   # CONSTRUCT 
   public function __construct($cnx  = null)
   {
@@ -19,7 +19,7 @@ class Publicacion extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM publicacion; ";
+      $this->query = "SELECT * FROM info_asociado; ";
 
       $this->executeQuery();
 
@@ -35,37 +35,34 @@ class Publicacion extends Connection {
   }
 
   # Method SAVE
-  public function save($bean_publicacion)
+  public function save($bean_info_asociado)
   {
     try{
 
-      $publicacion_id = $bean_publicacion->getPublicacionId();
-      $tipo_publicacion_id = $bean_publicacion->getTipoPublicacionId();
-      $titulo = $bean_publicacion->getTitulo();
-      $descripcion = $bean_publicacion->getDescripcion();
-      $url_file = $bean_publicacion->getUrlFile();
-      $imagen = $bean_publicacion->getImagen();
-      $publicar = $bean_publicacion->getPublicar();
-      $estado = $bean_publicacion->getEstado();
-      $created_at = $bean_publicacion->getCreatedAt();
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
+      $tipo_info_asociado_id = $bean_info_asociado->getTipoInfoAsociadoId();
+      $titulo = $bean_info_asociado->getTitulo();
+      $descripcion = $bean_info_asociado->getDescripcion();
+      $url_file = $bean_info_asociado->getUrlFile();
+      $publicar = $bean_info_asociado->getPublicar();
+      $estado = $bean_info_asociado->getEstado();
+      $created_at = $bean_info_asociado->getCreatedAt();
 
-      $this->query = "INSERT INTO publicacion
+      $this->query = "INSERT INTO info_asociado
                       (
-                        tipo_publicacion_id,
+                        tipo_info_asociado_id,
                         titulo,
                         descripcion,
                         url_file,
-                        imagen,
                         publicar,
                         estado,
                         created_at
                       )
                       VALUES(
-                        '$tipo_publicacion_id',
+                        '$tipo_info_asociado_id',
                         '$titulo',
                         '$descripcion',
                         '$url_file',
-                        '$imagen',
                         '$publicar',
                         '$estado',
                         $created_at
@@ -86,25 +83,23 @@ class Publicacion extends Connection {
   }
 
   # Method Actualizar
-  public function update($bean_publicacion)
+  public function update($bean_info_asociado)
   {
     try{
-      $publicacion_id = $bean_publicacion->getPublicacionId();
-      $tipo_publicacion_id = $bean_publicacion->getTipoPublicacionId();
-      $titulo = $bean_publicacion->getTitulo();
-      $descripcion = $bean_publicacion->getDescripcion();
-      $url_file = $bean_publicacion->getUrlFile();
-      $imagen = $bean_publicacion->getImagen();
-      $publicar = $bean_publicacion->getPublicar();
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
+      $tipo_info_asociado_id = $bean_info_asociado->getTipoInfoAsociadoId();
+      $titulo = $bean_info_asociado->getTitulo();
+      $descripcion = $bean_info_asociado->getDescripcion();
+      $url_file = $bean_info_asociado->getUrlFile();
+      $publicar = $bean_info_asociado->getPublicar();
 
-      $this->query = "UPDATE publicacion SET 
-                        tipo_publicacion_id = '$tipo_publicacion_id',
+      $this->query = "UPDATE info_asociado SET 
+                        tipo_info_asociado_id = '$tipo_info_asociado_id',
                         titulo = '$titulo',
                         descripcion = '$descripcion',
                         url_file = '$url_file',
-                        imagen = '$imagen',
                         publicar = '$publicar'
-                      WHERE publicacion_id = '$publicacion_id'
+                      WHERE info_asociado_id = '$info_asociado_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -121,12 +116,12 @@ class Publicacion extends Connection {
   }
 
   # Method Buscar por ID
-  public function find($bean_publicacion)
+  public function find($bean_info_asociado)
   {
     try{
-      $publicacion_id = $bean_publicacion->getPublicacionId();
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
 
-      $this->query = "SELECT * FROM publicacion WHERE publicacion_id = '$publicacion_id' LIMIT 1; ";
+      $this->query = "SELECT * FROM info_asociado WHERE info_asociado_id = '$info_asociado_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -142,13 +137,13 @@ class Publicacion extends Connection {
   }
 
   # Method deleteById
-  public function deleteById($bean_publicacion)
+  public function deleteById($bean_info_asociado)
   {
     try{
-      $publicacion_id = $bean_publicacion->getPublicacionId();
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
 
-      $this->query = "DELETE FROM publicacion
-                      WHERE publicacion_id = '$publicacion_id' LIMIT 1; ";
+      $this->query = "DELETE FROM info_asociado
+                      WHERE info_asociado_id = '$info_asociado_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -165,12 +160,12 @@ class Publicacion extends Connection {
 
 
   # Method getByEstado
-  public function getByEstado($bean_publicacion)
+  public function getByEstado($bean_info_asociado)
   {
     try{
-      $estado = $bean_publicacion->getEstado() ;
+      $estado = $bean_info_asociado->getEstado() ;
 
-      $this->query = "SELECT * FROM publicacion
+      $this->query = "SELECT * FROM info_asociado
                       WHERE estado = '$estado'; ";
 
       $this->executeQuery();
@@ -188,15 +183,15 @@ class Publicacion extends Connection {
 
 
   # Method Eliminar(Update Estado)
-  public function updateEstado($bean_publicacion)
+  public function updateEstado($bean_info_asociado)
   {
     try{
-      $publicacion_id = $bean_publicacion->getPublicacionId();
-      $estado = $bean_publicacion->getEstado();
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
+      $estado = $bean_info_asociado->getEstado();
 
-      $this->query = "UPDATE publicacion SET 
+      $this->query = "UPDATE info_asociado SET 
                         estado = '$estado'
-                      WHERE publicacion_id='$publicacion_id'
+                      WHERE info_asociado_id='$info_asociado_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -213,15 +208,15 @@ class Publicacion extends Connection {
   }
 
   # Method updatePublish
-  public function updatePublish($bean_publicacion)
+  public function updatePublish($bean_info_asociado)
   {
     try{
-      $publicacion_id = $bean_publicacion->getPublicacionId();
-      $publicar = $bean_publicacion->getPublicar() ;
+      $info_asociado_id = $bean_info_asociado->getInfoAsociadoId();
+      $publicar = $bean_info_asociado->getPublicar() ;
 
-      $this->query = "UPDATE publicacion SET 
+      $this->query = "UPDATE info_asociado SET 
                         publicar = '$publicar'
-                      WHERE publicacion_id = '$publicacion_id'
+                      WHERE info_asociado_id = '$info_asociado_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();
@@ -239,12 +234,12 @@ class Publicacion extends Connection {
 
 
   # Method getPublished
-  public function getPublished($bean_publicacion)
+  public function getPublished($bean_info_asociado)
   {
     try{
-      $publicar = $bean_publicacion->getPublicar() ;
+      $publicar = $bean_info_asociado->getPublicar() ;
 
-      $this->query = "SELECT * FROM publicacion
+      $this->query = "SELECT * FROM info_asociado
                       WHERE publicar = '$publicar'
                       AND estado = 1 ; ";
 

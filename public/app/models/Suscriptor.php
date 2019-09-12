@@ -39,7 +39,7 @@ class Suscriptor extends Connection {
   {
     try{
 
-      $suscritor_id = $bean_suscriptor->getSuscritorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
       $nombre = $bean_suscriptor->getNombre();
       $email = $bean_suscriptor->getEmail();
       $telefono = $bean_suscriptor->getTelefono();
@@ -86,7 +86,7 @@ class Suscriptor extends Connection {
   public function update($bean_suscriptor)
   {
     try{
-      $suscritor_id = $bean_suscriptor->getSuscritorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
       $nombre = $bean_suscriptor->getNombre();
       $email = $bean_suscriptor->getEmail();
       $telefono = $bean_suscriptor->getTelefono();
@@ -99,7 +99,7 @@ class Suscriptor extends Connection {
                         telefono = '$telefono',
                         empresa = '$empresa',
                         mensaje = '$mensaje'
-                      WHERE suscritor_id = '$suscritor_id'
+                      WHERE suscriptor_id = '$suscriptor_id'
                       LIMIT 1 ;";
 
       $this->executeQuery();
@@ -119,9 +119,9 @@ class Suscriptor extends Connection {
   public function find($bean_suscriptor)
   {
     try{
-      $suscritor_id = $bean_suscriptor->getSuscritorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
 
-      $this->query = "SELECT * FROM suscriptor WHERE suscritor_id = '$suscritor_id' LIMIT 1; ";
+      $this->query = "SELECT * FROM suscriptor WHERE suscriptor_id = '$suscriptor_id' LIMIT 1; ";
 
       $this->executeFind();
 
@@ -140,10 +140,10 @@ class Suscriptor extends Connection {
   public function deleteById($bean_suscriptor)
   {
     try{
-      $suscritor_id = $bean_suscriptor->getSuscritorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
 
       $this->query = "DELETE FROM suscriptor
-                      WHERE suscritor_id = '$suscritor_id' LIMIT 1; ";
+                      WHERE suscriptor_id = '$suscriptor_id' LIMIT 1; ";
 
       $this->executeQuery();
 
@@ -186,12 +186,12 @@ class Suscriptor extends Connection {
   public function updateEstado($bean_suscriptor)
   {
     try{
-      $suscritor_id = $bean_suscriptor->getSuscritorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
       $estado = $bean_suscriptor->getEstado();
 
       $this->query = "UPDATE suscriptor SET 
                         estado = '$estado'
-                      WHERE suscritor_id='$suscritor_id'
+                      WHERE suscriptor_id='$suscriptor_id'
                       LIMIT 1 ; ";
 
       $this->executeQuery();

@@ -15,6 +15,8 @@ class BeanEmpresa{
   private $empresa_id;
   private $ruc;
   private $nombre;
+  private $imagen = "" ;
+  private $publicar = "S" ;
   private $estado = 1 ;
 
   #Auto Increment Item
@@ -48,6 +50,26 @@ class BeanEmpresa{
   public function getNombre()
   {
     return $this->nombre;
+  }
+
+  public function setImagen($imagen_)
+  {
+    $this->imagen = Validation::validate( $imagen_ );
+  }
+
+  public function getImagen()
+  {
+    return $this->imagen;
+  }
+
+  public function setPublicar($publicar_)
+  {
+    $this->publicar = Validation::validate( $publicar_ );
+  }
+
+  public function getPublicar()
+  {
+    return $this->publicar;
   }
 
   public function setEstado($estado_)

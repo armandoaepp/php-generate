@@ -15,6 +15,17 @@
 
   $empresa = $empresa_controller->find($id);
 
+  $publicar = trim($empresa->publicar);
+
+  $si = "";
+  $no = "";
+
+  if ($publicar == "S") {
+      $si = "checked='checked'";
+  } elseif ($publicar == "N") {
+      $no = "checked='checked'";
+  }
+
   $title_page = "Empresa";
 
 ?>
@@ -37,7 +48,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [2, 2],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -65,7 +76,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             Editar <?php echo $title_page; ?>
           </li>
         </ol>
@@ -85,7 +96,7 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-
+              
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="ruc">Ruc: </label>
@@ -95,10 +106,44 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required value="<?php echo $empresa->nombre; ?>">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $empresa->nombre; ?>">
                 </div>
               </div>
 
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="email" class="d-block">Publicar </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <label class="form-check-label" for="si">SI</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <label class="form-check-label" for="no">NO</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 text-center">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $empresa->imagen; ?>">
+                <img src="<?php echo $empresa->imagen; ?>" class="img-fluid img-view-edit mb-2">
+              </div>
+                <div class="col-12 mb-3">
+                  <hr>
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="imagen">Nueva Imagen</label>
+                      </div>
+                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
+              
               </div>
 
               <div class="w-100 text-center">

@@ -7,17 +7,16 @@
  * email: armandoaepp@gmail.com
 */
 
-class BeanPublicacion{
+class BeanInfoAsociado{
   # Constructor
   public function __construct(){}
 
   # Atributos
-  private $publicacion_id;
-  private $tipo_publicacion_id;
+  private $info_asociado_id;
+  private $tipo_info_asociado_id;
   private $titulo;
   private $descripcion;
   private $url_file;
-  private $imagen = "" ;
   private $publicar = "S" ;
   private $estado = 1 ;
   private $created_at = NULL ;
@@ -25,24 +24,24 @@ class BeanPublicacion{
   #Auto Increment Item
 
   # METODOS
-  public function setPublicacionId($publicacion_id_)
+  public function setInfoAsociadoId($info_asociado_id_)
   {
-    $this->publicacion_id = Validation::validate( $publicacion_id_ );
+    $this->info_asociado_id = Validation::validate( $info_asociado_id_ );
   }
 
-  public function getPublicacionId()
+  public function getInfoAsociadoId()
   {
-    return $this->publicacion_id;
+    return $this->info_asociado_id;
   }
 
-  public function setTipoPublicacionId($tipo_publicacion_id_)
+  public function setTipoInfoAsociadoId($tipo_info_asociado_id_)
   {
-    $this->tipo_publicacion_id = Validation::validate( $tipo_publicacion_id_ );
+    $this->tipo_info_asociado_id = Validation::validate( $tipo_info_asociado_id_ );
   }
 
-  public function getTipoPublicacionId()
+  public function getTipoInfoAsociadoId()
   {
-    return $this->tipo_publicacion_id;
+    return $this->tipo_info_asociado_id;
   }
 
   public function setTitulo($titulo_)
@@ -73,16 +72,6 @@ class BeanPublicacion{
   public function getUrlFile()
   {
     return $this->url_file;
-  }
-
-  public function setImagen($imagen_)
-  {
-    $this->imagen = Validation::validate( $imagen_ );
-  }
-
-  public function getImagen()
-  {
-    return $this->imagen;
   }
 
   public function setPublicar($publicar_)

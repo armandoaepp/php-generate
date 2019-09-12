@@ -53,11 +53,15 @@ switch($evento)
       $empresa_id = $inputs->empresa_id;
       $ruc = $inputs->ruc;
       $nombre = $inputs->nombre;
+      $imagen = $inputs->imagen;
+      $publicar = $inputs->publicar;
         
       $params = array(
                 'empresa_id'=> $empresa_id,
                 'ruc'=> $ruc,
                 'nombre'=> $nombre,
+                'imagen'=> $imagen,
+                'publicar'=> $publicar,
               ) ; 
         
       $data = $empresa_controller->save($params) ;
@@ -88,11 +92,15 @@ switch($evento)
       $empresa_id = $inputs->empresa_id;
       $ruc = $inputs->ruc;
       $nombre = $inputs->nombre;
+      $imagen = $inputs->imagen;
+      $publicar = $inputs->publicar;
         
       $params = array(
                 'empresa_id'=> $empresa_id,
                 'ruc'=> $ruc,
                 'nombre'=> $nombre,
+                'imagen'=> $imagen,
+                'publicar'=> $publicar,
               ) ; 
         
       $data = $empresa_controller->update($params) ;
@@ -190,6 +198,11 @@ switch($evento)
         $empresa = $empresa_controller->find( $empresa_id );
 
         $data = $empresa_controller->deleteById( $empresa_id );
+				if( !empty($empresa) && $data )
+				{
+					$imagen = $empresa["imagen"] ;
+					UploadFiles::removeFile($imagen) ;
+                }
 
 			}
 			else
@@ -207,6 +220,66 @@ switch($evento)
         
         $jsn  = json_encode($data);
         print_r($jsn) ;
+  break;
+
+  case "publish":
+    try
+    {
+
+      $empresa_id = $inputs->id;
+      $publicar = $inputs->publicar;
+
+      if($publicar == "N"){
+                $publicar = "S" ;
+      }else{
+                $publicar = "N" ;
+      }
+
+      $params = array(
+                'empresa_id'=> $empresa_id,
+                'publicar'=> $publicar,
+              ) ; 
+
+      $empresa_controller = new EmpresaController() ; 
+
+      $data = $empresa_controller->updatePublish( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
+  break;
+
+  case "published":
+    try
+    {
+
+      $publicar = $inputs->publicar;
+
+      $params = array(
+                'publicar'=> $publicar,
+              ) ; 
+
+      $empresa_controller = new EmpresaController() ; 
+
+      $data = $empresa_controller->getPublished( $params ) ;
+
+      $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
+
+    }
+    catch (Exception $e)
+    {
+      $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
+    }
+        
+    $jsn  = json_encode($data);
+    print_r($jsn) ;
   break;
 
 }

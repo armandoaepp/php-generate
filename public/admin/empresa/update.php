@@ -15,10 +15,23 @@
 
   $ruc   = $_POST["ruc"] ;
   $nombre   = $_POST["nombre"] ;
+  $publicar   = $_POST["publicar"] ;
+  $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
+
+  $imagen  = "";
+  $imagen = UploadFiles::uploadFile($file_imagen, "empresa") ;
+
+  if (empty($imagen) ) { 
+    $imagen = $img_bd ; 
+  } 
+
   $params = array(
     "empresa_id"   => $empresa_id,
     "ruc"   => $ruc,
     "nombre"   => $nombre,
+    "publicar"   => $publicar,
+    "imagen"  => $imagen,
   );
 
 

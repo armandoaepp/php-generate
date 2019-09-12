@@ -3,17 +3,6 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-
-  require_once "../../app/autoload.php";
-  # tipo de publicaciones
-  $params = array(
-    'publicar' => 'S'
-  );
-
-  $tipo_publicacion_controller = new TipoPublicacionController();
-
-  $tipo_publicaciones = $tipo_publicacion_controller->getPublished($params);
-
   $title_page = "Publicacion" ;
 
 ?>
@@ -35,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,1],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -62,7 +51,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
@@ -81,34 +70,29 @@
             <form action="admin/publicacion/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-
+              
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="tipo_publicacion_id">Tipo Publicacion: </label>
-                  <select class="custom-select" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="Tipo Publicacion" required>
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <?php foreach ($tipo_publicaciones as $row) { ?>
-                    <option value="<?php echo $row->tipo_publicacion_id; ?>"> <?php echo $row->descripcion; ?></option>
-                    <?php } ?>
-                  </select>
+                  <label for="tipo_publicacion_id">TipoPublicacionId: </label>
+                  <input type="text" class="form-control" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="TipoPublicacionId">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" required>
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo">
                 </div>
               </div>
-              <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="descripcion">Descripción: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción" >
-                </div>
-              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="url_file">Archivo: </label>
-                  <input type="file" class="form-control" name="url_file" id="url_file" placeholder="Archivo" accept="image/jpeg,image/gif,image/png,application/pdf">
+                  <label for="descripcion">Descripcion: </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="url_file">UrlFile: </label>
+                  <input type="text" class="form-control" name="url_file" id="url_file" placeholder="UrlFile">
                 </div>
               </div>
 
@@ -126,6 +110,17 @@
                 </div>
               </div>
 
+              <div class="col-12 mb-3">
+                <div class="form-group">
+                  <label for="imagen">Imagen:</label>
+                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                </div>
+              </div>
+
+              <div class="col-12 mb-3">
+                <div class="preview-img" data-img-preview="preview" id="preview"></div>
+              </div>
+            
               </div>
 
               <div class="w-100 text-center">

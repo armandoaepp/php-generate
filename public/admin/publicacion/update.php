@@ -13,29 +13,29 @@
 
   $publicacion_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $tipo_publicacion_id = $_POST["tipo_publicacion_id"] ;
-  $titulo              = $_POST["titulo"] ;
-  $descripcion         = !empty($_POST["descripcion"]) ? $_POST["descripcion"] : '' ;
-  // $url_file            = $_POST["url_file"] ;
-  $publicar            = $_POST["publicar"] ;
+  $tipo_publicacion_id   = $_POST["tipo_publicacion_id"] ;
+  $titulo   = $_POST["titulo"] ;
+  $descripcion   = $_POST["descripcion"] ;
+  $url_file   = $_POST["url_file"] ;
+  $publicar   = $_POST["publicar"] ;
+  $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
+  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
-  $file_db   = !empty($_POST["file_db"]) ? $_POST["file_db"] : "" ;
-  $file   = !empty($_FILES["url_file"]) ? $_FILES["url_file"] : "" ;
+  $imagen  = "";
+  $imagen = UploadFiles::uploadFile($file_imagen, "publicacion") ;
 
-  $url_file  = "";
-  $url_file = UploadFiles::uploadFile($file, "publicaciones") ;
-
-  if (empty($url_file) ) {
-    $url_file = $file_db ;
-  }
+  if (empty($imagen) ) { 
+    $imagen = $img_bd ; 
+  } 
 
   $params = array(
-    "publicacion_id"      => $publicacion_id,
-    "tipo_publicacion_id" => $tipo_publicacion_id,
-    "titulo"              => $titulo,
-    "descripcion"         => $descripcion,
-    "url_file"            => $url_file,
-    "publicar"            => $publicar,
+    "publicacion_id"   => $publicacion_id,
+    "tipo_publicacion_id"   => $tipo_publicacion_id,
+    "titulo"   => $titulo,
+    "descripcion"   => $descripcion,
+    "url_file"   => $url_file,
+    "publicar"   => $publicar,
+    "imagen"  => $imagen,
   );
 
 
@@ -44,9 +44,9 @@
   if($response)
   {
 
-    if( !empty($url_file) && $url_file != $file_db )
+    if( !empty($imagen) && $imagen != $img_bd )
     {
-      $status = UploadFiles::removeFile($file_db) ;
+      $status = UploadFiles::removeFile($img_bd) ;
     }
 
     header("Location: ./publicacion.php ", true, 301);

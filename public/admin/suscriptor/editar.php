@@ -95,7 +95,10 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $suscriptor->email; ?>">
+                  <select class="custom-select select2-box" name="email" id="email" placeholder="Email">
+                    <option value="" selected disabled hidden>Seleccionar </option>
+                    <option value="text">text</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-12">
@@ -107,7 +110,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="empresa">Empresa: </label>
-                  <input type="email" class="form-control" name="empresa" id="empresa" placeholder="Empresa" value="<?php echo $suscriptor->empresa; ?>">
+                  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" value="<?php echo $suscriptor->empresa; ?>">
                 </div>
               </div>
               <div class="col-md-12">
@@ -136,7 +139,7 @@
   </div>
 
   <?php require_once "../layout/foot_links.phtml"; ?>
-  <?php require_once "../layout/ckeditor.phtml"; ?>
+
 </body>
 
 </html>

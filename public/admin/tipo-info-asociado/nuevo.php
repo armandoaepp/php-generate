@@ -3,7 +3,7 @@
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
-  $title_page = "Empresa" ;
+  $title_page = "TipoInfoAsociado" ;
 
 ?>
 
@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [0, 0],
+      "sidebar_active" => [1,0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -46,7 +46,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/empresa/empresa.php">
+            <a href="admin/tipo-info-asociado/tipo-info-asociado.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -67,20 +67,14 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/empresa/save.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/tipo-info-asociado/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
               
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="ruc">Ruc: </label>
-                  <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ruc">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                  <label for="descripcion">Descripcion: </label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
                 </div>
               </div>
 
@@ -98,21 +92,10 @@
                 </div>
               </div>
 
-              <div class="col-12 mb-3">
-                <div class="form-group">
-                  <label for="imagen">Imagen:</label>
-                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
-                </div>
-              </div>
-
-              <div class="col-12 mb-3">
-                <div class="preview-img" data-img-preview="preview" id="preview"></div>
-              </div>
-            
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/empresa/empresa.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/tipo-info-asociado/tipo-info-asociado.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
               </div>
 

@@ -6,16 +6,16 @@
   $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
   if ($id <= 0) {
-      header("Location: ./publicacion.php ", true, 301);
+      header("Location: ./info-asociado.php ", true, 301);
   }
 
   require_once "../../app/autoload.php";
 
-  $publicacion_controller = new PublicacionController();
+  $info_asociado_controller = new InfoAsociadoController();
 
-  $publicacion = $publicacion_controller->find($id);
+  $info_asociado = $info_asociado_controller->find($id);
 
-  $publicar = trim($publicacion->publicar);
+  $publicar = trim($info_asociado->publicar);
 
   $si = "";
   $no = "";
@@ -26,7 +26,7 @@
       $no = "checked='checked'";
   }
 
-  $title_page = "Publicacion";
+  $title_page = "InfoAsociado";
 
 ?>
 
@@ -48,7 +48,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [0, 0],
+      "sidebar_active" => [1, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -71,7 +71,7 @@
             </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="admin/publicacion/publicacion.php">
+            <a href="admin/info-asociado/info-asociado.php">
               <i class="fas fa-list"></i>
               <?php echo $title_page ;?>s
             </a>
@@ -92,33 +92,33 @@
         <div class="row">
 
           <div class="col-12">
-            <form action="admin/publicacion/update.php" method="POST" enctype="multipart/form-data">
+            <form action="admin/info-asociado/update.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
               
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="tipo_publicacion_id">TipoPublicacionId: </label>
-                  <input type="text" class="form-control" name="tipo_publicacion_id" id="tipo_publicacion_id" placeholder="TipoPublicacionId" value="<?php echo $publicacion->tipo_publicacion_id; ?>">
+                  <label for="tipo_info_asociado_id">TipoInfoAsociadoId: </label>
+                  <input type="text" class="form-control" name="tipo_info_asociado_id" id="tipo_info_asociado_id" placeholder="TipoInfoAsociadoId" value="<?php echo $info_asociado->tipo_info_asociado_id; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Titulo: </label>
-                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $publicacion->titulo; ?>">
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" value="<?php echo $info_asociado->titulo; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $publicacion->descripcion; ?>">
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $info_asociado->descripcion; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="url_file">UrlFile: </label>
-                  <input type="text" class="form-control" name="url_file" id="url_file" placeholder="UrlFile" value="<?php echo $publicacion->url_file; ?>">
+                  <input type="text" class="form-control" name="url_file" id="url_file" placeholder="UrlFile" value="<?php echo $info_asociado->url_file; ?>">
                 </div>
               </div>
 
@@ -136,30 +136,10 @@
                 </div>
               </div>
 
-              <div class="col-md-12 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $publicacion->imagen; ?>">
-                <img src="<?php echo $publicacion->imagen; ?>" class="img-fluid img-view-edit mb-2">
-              </div>
-                <div class="col-12 mb-3">
-                  <hr>
-                  <div class="form-group">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="imagen">Nueva Imagen</label>
-                      </div>
-                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 mb-3">
-                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
-                </div>
-              
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/publicacion/publicacion.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <a href="admin/info-asociado/info-asociado.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="fas fa-sync-alt"></i> Actualizar</button>
               </div>
 

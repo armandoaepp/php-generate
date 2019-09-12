@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [2,2],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -55,7 +55,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
             <a class="link-white" href="admin/empresa/empresa.php">
               <?php echo $title_page; ?>
             </a>
@@ -81,13 +81,14 @@
 
           <div class="col-12">
             <div class="table-responsive">
-
+            
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Empresa_id </th>
                   <th>Ruc </th>
                   <th>Nombre </th>
+                  <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -131,10 +132,18 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-
+                
                   <td> <?php echo $row->empresa_id ?> </td>
                   <td> <?php echo $row->ruc ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
+
+                  <td class="text-center">
+                    <span class="sr-only"><?php echo $row->publicar ?></span>
+                    <button onclick="modalPublicar(<?php echo $row->empresa_id ?>, `<?php echo $row->ruc ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <?php echo $icon_pub ;?>
+                    </button>
+                  </td>
+            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/empresa/editar.php?id=<?php echo $row->empresa_id ?>" title="Editar">
@@ -149,7 +158,7 @@
                 <?php }?>
               </tbody>
 
-            </table>
+            </table> 
             </div>
           </div>
 
