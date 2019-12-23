@@ -24,7 +24,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,2],
+      "sidebar_active"      => [3, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -51,7 +51,7 @@
               <?php echo $title_page ;?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             Nuevo <?php echo $title_page; ?>
           </li>
         </ol>
@@ -70,37 +70,37 @@
             <form action="admin/user/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="apellidos">Apellidos: </label>
-                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="apellidos">Apellidos: </label>
+                    <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="password">Password: </label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                  </div>
                 </div>
-              </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/user/user.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/user/user.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0"> <i class="far fa-save"></i> Registrar</button>
               </div>
 
             </form>

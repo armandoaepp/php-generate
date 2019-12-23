@@ -14,15 +14,15 @@
 $path = '';
 
 $setvar = array(
-    'titulo' => 'Login  | Escuela Cumbre ',
+    'titulo' => 'Login  | Tours ',
     'follow' => '',
-    'description' => 'Login Admin Instituto Cumbre',
+    'description' => 'Login Admin Tours',
     'keywords' => 'login, login admin, tables css, tables bootstrap 4, admin template',
     'active' => [1, 0],
 );
 
 $sidebar = array(
-    'sidebar_class' => 'sidebar-blue',
+    'sidebar_class' => '',
     'sidebar_toggle' => 'only',
     'sidebar_active' => [4, 1],
 );
@@ -34,7 +34,7 @@ require_once "layout/head_links.phtml";
 <body>
 
 
-  <main role="main" class="main min-vh-100 d-flex align-items-center bg-primary">
+  <main role="main" class="main min-vh-100 d-flex align-items-center bg-dark">
 
     <div class="container py-3 py-md-4">
       <div class="row">
@@ -43,7 +43,7 @@ require_once "layout/head_links.phtml";
 
           <div class="text-center">
             <div class="w-75 mx-auto mb-4">
-              <img class="img-fluid" src="img/instituto-superior-de-gastronomia-cumbre-logo-white.svg" alt="">
+              <!-- <img class="img-fluid" src="img/instituto-superior-de-gastronomia-cumbre-logo-white.svg" alt=""> -->
             </div>
             <h1 class="f-open-sans h5 mb-3 text-gray-500 "> Ingreso al Sistema </h1>
           </div>
@@ -65,7 +65,7 @@ require_once "layout/head_links.phtml";
 
             </div>
 
-            <button type="submit" class="f-open-sans btn btn-danger btn-block" role="button"> Login </button>
+            <button type="submit" class="f-open-sans btn btn-info btn-block" role="button"> Login </button>
 
             <div id="alertConfirmPrincipal" class="alert alert-success fade" role="alert">
               <div id="alertMensaje">

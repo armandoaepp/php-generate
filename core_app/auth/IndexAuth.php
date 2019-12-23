@@ -55,9 +55,8 @@ switch($evento)
 
         $user = $auth_controller->login($params);
 
-        // var_dump($user);
 
-        if(count($user) > 0 )
+        if($user)
         {
           $_SESSION['LOGIN'] = true;
           $_SESSION['USER']  = $user;

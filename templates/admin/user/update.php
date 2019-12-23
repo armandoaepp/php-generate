@@ -13,16 +13,17 @@
 
   $user_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $nombre   = $_POST["nombre"] ;
+  $nombre      = $_POST["nombre"] ;
   $apellidos   = $_POST["apellidos"] ;
-  $email   = $_POST["email"] ;
-  // $password   = $_POST["password"] ;
+  $email       = $_POST["email"] ;
+  // $password = $_POST["password"] ;´
+
   $params = array(
-    "user_id"   => $user_id,
-    "nombre"   => $nombre,
+    "user_id"     => $user_id,
+    "nombre"      => $nombre,
     "apellidos"   => $apellidos,
-    "email"   => $email,
-    // "password"   => $password,
+    "email"       => $email,
+    // "password" => $password,
   );
 
 
@@ -39,5 +40,5 @@
     header("Location: ./user.php ", true, 301);
   }
   else {
-  echo "A Sucedido un Error al Rehgistrar". $response ;
+    echo "A Sucedido un Error al Rehgistrar". $response ;
   }

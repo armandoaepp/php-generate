@@ -1,21 +1,21 @@
 
 <?php
-  require_once "../sesion_admin.php";
-  loginRedirect("../login.php");
+require_once "../sesion_admin.php";
+loginRedirect("../login.php");
 
-  $id = !empty($_GET["id"]) ? $_GET["id"] : 0;
+$id = !empty($_GET["id"]) ? $_GET["id"] : 0;
 
-  if ($id <= 0) {
-      header("Location: ./user.php ", true, 301);
-  }
+if ($id <= 0) {
+ header("Location: ./user.php ", true, 301);
+}
 
-  require_once "../../app/autoload.php";
+require_once "../../app/autoload.php";
 
-  $user_controller = new UserController();
+$user_controller = new UserController();
 
-  $user = $user_controller->find($id);
+$user = $user_controller->find($id);
 
-  $title_page = "User";
+$title_page = "User";
 
 ?>
 
@@ -26,27 +26,27 @@
 
   <?php
 
-    $setvar = array(
-        "titulo" => "$title_page",
-        "follow" => "",
-        "description" => "Administrador",
-        "keywords" => "administrador",
-        "active" => [1, 0],
-    );
+$setvar = array(
+ "titulo" => "Editar $title_page",
+ "follow" => "",
+ "description" => "Administrador",
+ "keywords" => "administrador",
+ "active" => [1, 0],
+);
 
-    $sidebar = array(
-        "sidebar_class" => "",
-        "sidebar_toggle" => "only",
-        "sidebar_active" => [2, 2],
-    );
+$sidebar = array(
+ "sidebar_class" => "",
+ "sidebar_toggle" => "only",
+ "sidebar_active" => [3, 1],
+);
 
-    require_once "../layout/head_links.phtml";
-  ?>
+require_once "../layout/head_links.phtml";
+?>
 
 </head>
 
 <body>
-  <?php require "../layout/header.phtml"; ?>
+  <?php require "../layout/header.phtml";?>
 
   <div class="app-wrap">
     <?php require_once "../layout/sidebar.phtml";?>
@@ -62,10 +62,10 @@
           <li class="breadcrumb-item">
             <a href="admin/user/user.php">
               <i class="fas fa-list"></i>
-              <?php echo $title_page ;?>s
+              <?php echo $title_page; ?>s
             </a>
           </li>
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             Editar <?php echo $title_page; ?>
           </li>
         </ol>
@@ -85,37 +85,37 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-              
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $user['nombre']; ?>">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $user->nombre; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="apellidos">Apellidos: </label>
-                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $user['apellidos']; ?>">
+                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $user->apellidos; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Email: </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $user['email']; ?>">
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $user->email; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="password">Password: </label>
-                  <input type="password" class="form-control" disabled name="password" id="password" placeholder="Password" value="<?php echo $user['password']; ?>">
+                  <input type="password" readonly class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $user->password; ?>">
                 </div>
               </div>
 
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/user/user.php" type="button" class="btn btn-dark ">Cancelar</a>
-                <button type="submit" class="btn btn-primary rounded-0  ">Guardar</button>
+                <a href="admin/user/user.php"  class="btn  btn-outline-danger">Cancelar</a>
+                 <button type="submit" class="btn btn-outline-primary rounded-0  ">Guardar</button>
               </div>
 
             </form>
@@ -129,7 +129,7 @@
 
   </div>
 
-  <?php require_once "../layout/foot_links.phtml"; ?>
+  <?php require_once "../layout/foot_links.phtml";?>
 
 </body>
 

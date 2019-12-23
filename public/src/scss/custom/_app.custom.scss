@@ -1,19 +1,16 @@
-@import './gray-colors';
+@import './app-global';
 
-@import './btn.links';
+@import './paquetes';
+@import './footer';
 
-@import './app-wrap';
+@import './_navbar-sticky';
+@import './select-custom';
+@import './moving-bg-images';
+@import './form-destino';
+@import './slider';
+@import './search';
+@import './links-colors';
+@import './sgvs';
+@import './_colors-extras';
 
-@import './list-separador';
-
-
-// @import './chart';
-
-@import './login';
-
-@import './styles-social';
-
-@import './styles-global';
-
-@import './ckeditor';
 

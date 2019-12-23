@@ -1,0 +1,114 @@
+.dropdown-drop {
+  .btn-drop {
+    color: #6c757d !important;
+    background-color: #fff !important;
+    border: 1px solid #ced4da !important;
+    width: 100%;
+  }
+
+  .btn-drop::after {
+    display: none !important;
+  }
+
+  &,
+  .drop-menu {
+    margin-top: 0 !important;
+    min-width: 200px;
+  }
+
+  .drop-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+  }
+}
+
+.input-number {
+  border: 2px solid #CCE2F4;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  font-weight: 500;
+  padding: 2px 4px 1px;
+  width: 30px;
+  text-align: center;
+}
+
+.number-spinner button {
+  background: 0 0;
+  border: none;
+  color: #F31;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.open-drop {
+  display: block !important;
+}
+
+.btn-aplicar {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+@media(min-width: 768px) {
+  .dropdown-drop {
+    .btn-drop {
+      min-width: 250px;
+    }
+  }
+}
+
+/* serach wrap */
+.wrap-search {
+  background-color: #2C3E87;
+  min-height: 150px;
+  margin-top: 1.5rem ;
+  /* position: absolute ; */
+  background-image: url('../img/bg-search.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: .5rem;
+  padding: 1rem;
+  font-size: 13px !important;
+  background-position: bottom;
+}
+
+.wrap-search .form-control,
+.wrap-search .btn {
+  font-size: 14px !important;
+}
+
+// .wrap-search:after {}
+
+.btn-search svg {
+  fill: #fff;
+  transform: rotate(90deg);
+}
+
+@media(min-width: 768px) {
+  .wrap-search .col-btn {
+    max-width: 150px;
+  }
+
+  .wrap-search {
+    background-size: 100% 150px;
+    margin-top: -110px;
+  }
+}

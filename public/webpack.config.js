@@ -34,10 +34,10 @@ var appConfig = Object.assign({}, config, {
 var adminConfig = Object.assign({}, config, {
   name: "admin",
   entry: {
-    'app-admin': './src/js/app-admin.js',
+    admin: './src/js/admin/app-admin.js',
   },
   output: {
-    filename: '[name].js',
+    filename: 'app-[name].js',
     path: path.resolve(__dirname, './admin/js')
   },
 });
@@ -46,7 +46,7 @@ var adminConfig = Object.assign({}, config, {
 
 // Return Array of Configurations
 module.exports = [
-  // appConfig,
+  appConfig,
   adminConfig,
   // appCssConfig
 ];

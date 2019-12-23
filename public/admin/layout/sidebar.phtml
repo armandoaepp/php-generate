@@ -11,26 +11,18 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
   <!-- <div class="sidebar-header">
     <span> Planeatec </span>
   </div> -->
-  <span class="heading">Opciones</span>
+  <span class="heading">Intranet</span>
   <ul class="sidenav">
 
     <li>
       <a class="menu <?php if ($sidebar_active[0] == 1) {echo 'active';}?>" href="#" role="button">
-        <i class="far fa-file-alt"></i>
-          Publicaciones
+        <i class="fa fa-list"></i> General
       </a>
       <ul class="menu-items">
-        <li>
-          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/publicacion/publicacion.php">
-            <i class="fa fa-list"></i>
-            Publicaciones
-          </a>
-        </li>
 
         <li>
-          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/tipo-publicacion/tipo-publicacion.php">
-            <i class="fa fa-list"></i>
-            Tipo Publicaciones
+          <a class="<?php if ($sidebar_active[0] == 1 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/user/user.php">
+            <i class="icofont icofont-curved-right"></i> Usuarios
           </a>
         </li>
 
@@ -38,51 +30,27 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
     </li>
 
     <li>
-      <a class="menu <?php if ($sidebar_active[0] == 2) {echo 'active';}?>"href="#" role="button">
-        <i class="fas fa-user-tie"></i> Asociados
+      <a class="menu <?php if ($sidebar_active[0] == 3) {echo 'active';}?>" href="#" role="button">
+        <i class="fas fa-suitcase-rolling"></i>
+        Carta
       </a>
-
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/asociado/asociado.php">
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/plato/plato.php">
             <i class="fa fa-list"></i>
-            Asociados
+            Platos
           </a>
         </li>
 
         <li>
-          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/empresa/empresa.php">
+          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/categoria/categoria.php">
             <i class="fa fa-list"></i>
-            Empresas
+            Categorias
           </a>
         </li>
 
       </ul>
     </li>
-
-    <li>
-      <a class="menu <?php if ($sidebar_active[0] == 3) {echo 'active';}?>"href="#" role="button">
-        <i class="fas fa-user-tie"></i> Personas
-      </a>
-
-      <ul class="menu-items">
-        <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/user/user.php">
-            <i class="fa fa-list"></i>
-            Usuarios
-          </a>
-        </li>
-
-        <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/suscriptor/suscriptor.php">
-            <i class="fa fa-list"></i>
-            Suscriptores Web
-          </a>
-        </li>
-
-      </ul>
-    </li>
-
 
   </ul>
 </nav>
