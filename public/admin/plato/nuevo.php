@@ -1,9 +1,18 @@
-
 <?php
   require_once "../sesion_admin.php";
   loginRedirect("../login.php");
 
   $title_page = "Plato" ;
+  require_once "../../app/autoload.php";
+
+   # Actividades
+   $categoria_controller = new CategoriaController();
+
+   $array = array(
+     'estado' => 1,
+   ) ;
+
+   $categorias = $categoria_controller->getByEstado($array);
 
 ?>
 
@@ -70,92 +79,122 @@
             <form action="admin/plato/save.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" class="form-control" name="accion" id="accion" value="new">
               <div class="row">
-              
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nombre">Nombre: </label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="categoria_id">CategoriaId: </label>
+                    <select class="custom-select select2-box" name="categoria_id" id="categoria_id"
+                      placeholder="CategoriaId">
+                      <option value="" selected disabled hidden>Seleccionar </option>
+                      <?php foreach ($categorias as $row) { ?>
+                      <option value="<?php echo $row->categoria_id; ?>"> <?php echo $row->desc_categoria; ?></option>
+                      <?php } ?>
+                    </select>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="descripcion">Descripcion: </label>
-                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="precio">Precio: </label>
-                  <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripción: </label>
+                    <textarea class="form-control ckeditor" name="descripcion" id="descripcion"
+                      placeholder="Descripción" cols="30" rows="6"></textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="descuento">Descuento: </label>
-                  <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Descuento">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="precio">Precio: </label>
+                    <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="precio_descuento">PrecioDescuento: </label>
-                  <input type="number" class="form-control" name="precio_descuento" id="precio_descuento" placeholder="PrecioDescuento">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="descuento">Descuento: </label>
+                    <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Descuento">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
+                <!-- <div class="col-md-4">
                 <div class="form-group">
-                  <label for="fecha_ini_promo">FechaIniPromo: </label>
-                  <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo" placeholder="FechaIniPromo">
+                  <label for="precio_descuento">Precio con Descuento: </label>
+                  <input type="number" class="form-control" name="precio_descuento" id="precio_descuento" placeholder="Precio con Descuento">
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="fecha_fin_promo">FechaFinPromo: </label>
-                  <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo" placeholder="FechaFinPromo">
+              </div> -->
+                <!-- <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fecha_ini_promo">Fecha Ini Promo: </label>
+                    <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo"
+                      placeholder="Fecha Ini Promo">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fecha_fin_promo">Fecha Fin Promo: </label>
+                    <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo"
+                      placeholder="Fecha Fin Promo">
+                  </div>
+                </div> -->
+
+                <!-- <div class="col-md-12">
                 <div class="form-group">
                   <label for="num_visitas">NumVisitas: </label>
                   <input type="text" class="form-control" name="num_visitas" id="num_visitas" placeholder="NumVisitas">
                 </div>
+              </div> -->
+
+
+                <!-- <div class="col-md-12">
+                <div class="form-group">
+                  <label for="create_at">CreateAt: </label>
+                  <input type="text" class="form-control" name="create_at" id="create_at" placeholder="CreateAt">
+                </div>
+              </div> -->
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fechas_promo">Fecha Promo: </label>
+                  <input type="text" data-filter-type="date-range" class="form-control" name="fechas_promo" id="fechas_promo" placeholder="Fecha Inicio Promo">
+                </div>
               </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="email" class="d-block">Publicar </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
-                    <label class="form-check-label" for="si">SI</label>
+                <div class="col-12 mb-3">
+                  <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required
+                      placeholder="Imagen" accept="image/*">
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
-                    <label class="form-check-label" for="no">NO</label>
+                </div>
+
+                <div class="col-12 mb-3">
+                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="email" class="d-block">Publicar </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="si" value="S" checked="checked">
+                      <label class="form-check-label" for="si">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="publicar" id="no" value="N">
+                      <label class="form-check-label" for="no">NO</label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="create_up">CreateUp: </label>
-                  <input type="text" class="form-control" name="create_up" id="create_up" placeholder="CreateUp">
-                </div>
-              </div>
 
-              <div class="col-12 mb-3">
-                <div class="form-group">
-                  <label for="imagen">Imagen:</label>
-                  <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
-                </div>
-              </div>
-
-              <div class="col-12 mb-3">
-                <div class="preview-img" data-img-preview="preview" id="preview"></div>
-              </div>
-            
               </div>
 
               <div class="w-100 text-center">
-                <a href="admin/plato/plato.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i> Cancelar</a>
-                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i> Guardar</button>
+                <a href="admin/plato/plato.php" class="btn btn-outline-danger"> <i class="fas fa-times"></i>
+                  Cancelar</a>
+                <button type="submit" class="btn btn-outline-primary rounded-0  "> <i class="far fa-save"></i>
+                  Guardar</button>
               </div>
 
             </form>
@@ -170,6 +209,10 @@
 
 
   <?php require_once "../layout/foot_links.phtml"; ?>
+
+  <?php require_once "../layout/ckeditor.phtml"; ?>
+  <?php require_once "../layout/select2.phtml"; ?>
+  <?php require_once "../layout/daterangepicker.phtml"; ?>
 
 </body>
 

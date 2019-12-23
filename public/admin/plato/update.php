@@ -13,6 +13,7 @@
 
   $plato_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
+  $categoria_id   = $_POST["categoria_id"] ;
   $nombre   = $_POST["nombre"] ;
   $descripcion   = $_POST["descripcion"] ;
   $precio   = $_POST["precio"] ;
@@ -22,7 +23,7 @@
   $fecha_fin_promo   = $_POST["fecha_fin_promo"] ;
   $num_visitas   = $_POST["num_visitas"] ;
   $publicar   = $_POST["publicar"] ;
-  $create_up   = $_POST["create_up"] ;
+  $create_at   = $_POST["create_at"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -35,6 +36,7 @@
 
   $params = array(
     "plato_id"   => $plato_id,
+    "categoria_id"   => $categoria_id,
     "nombre"   => $nombre,
     "descripcion"   => $descripcion,
     "precio"   => $precio,
@@ -44,7 +46,7 @@
     "fecha_fin_promo"   => $fecha_fin_promo,
     "num_visitas"   => $num_visitas,
     "publicar"   => $publicar,
-    "create_up"   => $create_up,
+    "create_at"   => $create_at,
     "imagen"  => $imagen,
   );
 

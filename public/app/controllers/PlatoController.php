@@ -66,6 +66,7 @@
 
       $bean_plato = new BeanPlato();
             
+      $bean_plato->setCategoriaId($categoria_id);
       $bean_plato->setNombre($nombre);
       $bean_plato->setDescripcion($descripcion);
       $bean_plato->setPrecio($precio);
@@ -76,7 +77,7 @@
       $bean_plato->setFechaFinPromo($fecha_fin_promo);
       $bean_plato->setNumVisitas($num_visitas);
       $bean_plato->setPublicar($publicar);
-      $bean_plato->setCreateUp($create_up);
+      $bean_plato->setCreateAt($create_at);
             
       $data = $plato->save($bean_plato) ;
 
@@ -99,6 +100,7 @@
       $bean_plato = new BeanPlato();
             
       $bean_plato->setPlatoId($plato_id);
+      $bean_plato->setCategoriaId($categoria_id);
       $bean_plato->setNombre($nombre);
       $bean_plato->setDescripcion($descripcion);
       $bean_plato->setPrecio($precio);
@@ -109,7 +111,7 @@
       $bean_plato->setFechaFinPromo($fecha_fin_promo);
       $bean_plato->setNumVisitas($num_visitas);
       $bean_plato->setPublicar($publicar);
-      $bean_plato->setCreateUp($create_up);
+      $bean_plato->setCreateAt($create_at);
 
       $data = $plato->update($bean_plato) ;
             

@@ -51,6 +51,7 @@ switch($evento)
       $connection->beginTransaction();
         
       $plato_id = $inputs->plato_id;
+      $categoria_id = $inputs->categoria_id;
       $nombre = $inputs->nombre;
       $descripcion = $inputs->descripcion;
       $precio = $inputs->precio;
@@ -61,10 +62,11 @@ switch($evento)
       $fecha_fin_promo = $inputs->fecha_fin_promo;
       $num_visitas = $inputs->num_visitas;
       $publicar = $inputs->publicar;
-      $create_up = $inputs->create_up;
+      $create_at = $inputs->create_at;
         
       $params = array(
                 'plato_id'=> $plato_id,
+                'categoria_id'=> $categoria_id,
                 'nombre'=> $nombre,
                 'descripcion'=> $descripcion,
                 'precio'=> $precio,
@@ -75,7 +77,7 @@ switch($evento)
                 'fecha_fin_promo'=> $fecha_fin_promo,
                 'num_visitas'=> $num_visitas,
                 'publicar'=> $publicar,
-                'create_up'=> $create_up,
+                'create_at'=> $create_at,
               ) ; 
         
       $data = $plato_controller->save($params) ;
@@ -104,6 +106,7 @@ switch($evento)
       $connection->beginTransaction();
         
       $plato_id = $inputs->plato_id;
+      $categoria_id = $inputs->categoria_id;
       $nombre = $inputs->nombre;
       $descripcion = $inputs->descripcion;
       $precio = $inputs->precio;
@@ -114,10 +117,11 @@ switch($evento)
       $fecha_fin_promo = $inputs->fecha_fin_promo;
       $num_visitas = $inputs->num_visitas;
       $publicar = $inputs->publicar;
-      $create_up = $inputs->create_up;
+      $create_at = $inputs->create_at;
         
       $params = array(
                 'plato_id'=> $plato_id,
+                'categoria_id'=> $categoria_id,
                 'nombre'=> $nombre,
                 'descripcion'=> $descripcion,
                 'precio'=> $precio,
@@ -128,7 +132,7 @@ switch($evento)
                 'fecha_fin_promo'=> $fecha_fin_promo,
                 'num_visitas'=> $num_visitas,
                 'publicar'=> $publicar,
-                'create_up'=> $create_up,
+                'create_at'=> $create_at,
               ) ; 
         
       $data = $plato_controller->update($params) ;

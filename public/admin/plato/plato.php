@@ -86,6 +86,7 @@
               <thead>
                 <tr>
                   <th width="50">Plato_id </th>
+                  <th>Categoria_id </th>
                   <th>Nombre </th>
                   <th>Descripcion </th>
                   <th>Precio </th>
@@ -94,7 +95,7 @@
                   <th>Fecha_ini_promo </th>
                   <th>Fecha_fin_promo </th>
                   <th>Num_visitas </th>
-                  <th>Create_up </th>
+                  <th>Create_at </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -141,6 +142,7 @@
                 <tr class="<?php echo $class_estado ;?>" >
                 
                   <td> <?php echo $row->plato_id ?> </td>
+                  <td> <?php echo $row->categoria_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->descripcion ?> </td>
                   <td> <?php echo $row->precio ?> </td>
@@ -149,11 +151,11 @@
                   <td> <?php echo $row->fecha_ini_promo ?> </td>
                   <td> <?php echo $row->fecha_fin_promo ?> </td>
                   <td> <?php echo $row->num_visitas ?> </td>
-                  <td> <?php echo $row->create_up ?> </td>
+                  <td> <?php echo $row->create_at ?> </td>
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
-                    <button onclick="modalPublicar(<?php echo $row->plato_id ?>, `<?php echo $row->nombre ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <button onclick="modalPublicar(<?php echo $row->plato_id ?>, `<?php echo $row->categoria_id ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.' ' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -163,7 +165,7 @@
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/plato/editar.php?id=<?php echo $row->plato_id ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->plato_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->plato_id ?>, `<?php echo $row->categoria_id ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
                     <span class="sr-only"><?php echo $row->estado ?></span>

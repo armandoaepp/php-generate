@@ -99,6 +99,15 @@
               
               <div class="col-md-12">
                 <div class="form-group">
+                  <label for="categoria_id">CategoriaId: </label>
+                  <select class="custom-select select2-box" name="categoria_id" id="categoria_id" placeholder="CategoriaId">
+                    <option value="" selected disabled hidden>Seleccionar </option> 
+                    <option value="text">text</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
                   <label for="nombre">Nombre: </label>
                   <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $plato->nombre; ?>">
                 </div>
@@ -161,8 +170,8 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="create_up">CreateUp: </label>
-                  <input type="text" class="form-control" name="create_up" id="create_up" placeholder="CreateUp" value="<?php echo $plato->create_up; ?>">
+                  <label for="create_at">CreateAt: </label>
+                  <input type="text" class="form-control" name="create_at" id="create_at" placeholder="CreateAt" value="<?php echo $plato->create_at; ?>">
                 </div>
               </div>
 

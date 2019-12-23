@@ -13,6 +13,7 @@ class BeanPlato{
 
   # Atributos
   private $plato_id;
+  private $categoria_id;
   private $nombre;
   private $descripcion;
   private $precio;
@@ -24,7 +25,7 @@ class BeanPlato{
   private $num_visitas;
   private $publicar = "S" ;
   private $estado = 1 ;
-  private $create_up;
+  private $create_at;
 
   #Auto Increment Item
 
@@ -37,6 +38,16 @@ class BeanPlato{
   public function getPlatoId()
   {
     return $this->plato_id;
+  }
+
+  public function setCategoriaId($categoria_id_)
+  {
+    $this->categoria_id = Validation::validate( $categoria_id_ );
+  }
+
+  public function getCategoriaId()
+  {
+    return $this->categoria_id;
   }
 
   public function setNombre($nombre_)
@@ -149,14 +160,14 @@ class BeanPlato{
     return $this->estado;
   }
 
-  public function setCreateUp($create_up_)
+  public function setCreateAt($create_at_)
   {
-    $this->create_up = Validation::validate( $create_up_ );
+    $this->create_at = Validation::validate( $create_at_ );
   }
 
-  public function getCreateUp()
+  public function getCreateAt()
   {
-    return $this->create_up;
+    return $this->create_at;
   }
 
 }
