@@ -26,17 +26,20 @@
       $no = "checked='checked'";
   }
 
+  $fecha_ini_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($plato->fecha_ini_promo);
+  $fecha_fin_promo = HelperDate::formatDate_DB_to_dd_mm_yyyyy($plato->fecha_fin_promo);
+
+
+  # Actividades
+  $categoria_controller = new CategoriaController();
+
+  $array = array(
+    'estado' => 1,
+    ) ;
+
+  $categorias = $categoria_controller->getByEstado($array);
+
   $title_page = "Plato";
-
-   # Actividades
-   $categoria_controller = new CategoriaController();
-
-   $array = array(
-     'estado' => 1,
-   ) ;
-
-   $categorias = $categoria_controller->getByEstado($array);
-
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +114,7 @@
                       placeholder="CategoriaId">
                       <option value="" selected disabled hidden>Seleccionar </option>
                       <?php foreach ($categorias as $row) { ?>
-                      <option value="<?php echo $row->categoria_id; ?>"> <?php echo $row->desc_categoria; ?></option>
+                      <option value="<?php echo $row->categoria_id; ?>" <?php if( $row->categoria_id == $plato->categoria_id) { echo 'selected' ;} ?>  > <?php echo $row->desc_categoria; ?></option>
                       <?php } ?>
                     </select>
                     </select>
@@ -131,58 +134,23 @@
                       placeholder="Descripción" cols="30" rows="6"><?php echo $plato->descripcion; ?></textarea>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label for="precio">Precio: </label>
                     <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $plato->precio; ?>">
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label for="descuento">Descuento: </label>
                     <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Descuento" value="<?php echo $plato->descuento; ?>">
                   </div>
                 </div>
-                <!-- <div class="col-md-4">
-                <div class="form-group">
-                  <label for="precio_descuento">Precio con Descuento: </label>
-                  <input type="number" class="form-control" name="precio_descuento" id="precio_descuento" placeholder="Precio con Descuento">
-                </div>
-              </div> -->
-                <!-- <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="fecha_ini_promo">Fecha Ini Promo: </label>
-                    <input type="text" class="form-control" name="fecha_ini_promo" id="fecha_ini_promo"
-                      placeholder="Fecha Ini Promo">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="fecha_fin_promo">Fecha Fin Promo: </label>
-                    <input type="text" class="form-control" name="fecha_fin_promo" id="fecha_fin_promo"
-                      placeholder="Fecha Fin Promo">
-                  </div>
-                </div> -->
 
-                <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="num_visitas">NumVisitas: </label>
-                  <input type="text" class="form-control" name="num_visitas" id="num_visitas" placeholder="NumVisitas">
-                </div>
-              </div> -->
-
-
-                <!-- <div class="col-md-12">
-                <div class="form-group">
-                  <label for="create_at">CreateAt: </label>
-                  <input type="text" class="form-control" name="create_at" id="create_at" placeholder="CreateAt">
-                </div>
-              </div> -->
-
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="fechas_promo">Fecha Promo: </label>
-                  <input type="text" data-filter-type="date-range" class="form-control" name="fechas_promo" id="fechas_promo" placeholder="Fecha Inicio Promo">
+                  <input type="text" data-filter-type="date-range" class="form-control" name="fechas_promo" id="fechas_promo" placeholder="Fechas Promo" value="<?php echo $fecha_ini_promo." - ".$fecha_fin_promo; ?>">
                 </div>
               </div>
 
