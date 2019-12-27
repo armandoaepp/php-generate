@@ -7,15 +7,17 @@ class UrlHelper {
 
     // Tranformamos todo a minusculas
     $url = trim($url);
-    $url = strtolower($url);
+
 
     //Rememplazamos caracteres especiales latinos
 
-    $find = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
+    $find = array("á","Á","é","É","í","Í","ó","Ó","ú","Ú","ñ","Ñ",);
 
-    $repl = array('a', 'e', 'i', 'o', 'u', 'n');
+    $repl = array("a","A","e","E","i","I","o","O","u","U","n","N",);
 
     $url = str_replace ($find, $repl, $url);
+
+    $url = strtolower($url);
 
     // Añadimos los guiones
 
@@ -33,5 +35,20 @@ class UrlHelper {
     return $url;
 
   }
+
+  // function urls_amigables($url) {
+    static public function urlFriendlyInverse($url) {
+
+
+      // Tranformamos todo a minusculas
+      $url = trim($url);
+
+      $url = str_replace('-', ' ', $url);
+
+      return $url;
+
+    }
+
+
 
 }

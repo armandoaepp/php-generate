@@ -30,20 +30,20 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
     </li>
 
     <li>
-      <a class="menu <?php if ($sidebar_active[0] == 3) {echo 'active';}?>" href="#" role="button">
+      <a class="menu <?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="#" role="button">
         <i class="fas fa-suitcase-rolling"></i>
         Carta
       </a>
       <ul class="menu-items">
         <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/plato/plato.php">
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 1) {echo 'active';}?>" href="admin/plato/plato.php">
             <i class="fa fa-list"></i>
             Platos
           </a>
         </li>
 
         <li>
-          <a class="<?php if ($sidebar_active[0] == 3 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/categoria/categoria.php">
+          <a class="<?php if ($sidebar_active[0] == 2 && $sidebar_active[1] == 2) {echo 'active';}?>" href="admin/categoria/categoria.php">
             <i class="fa fa-list"></i>
             Categorias
           </a>

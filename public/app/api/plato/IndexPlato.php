@@ -62,7 +62,7 @@ switch($evento)
       $fecha_fin_promo = $inputs->fecha_fin_promo;
       $num_visitas = $inputs->num_visitas;
       $publicar = $inputs->publicar;
-      $create_at = $inputs->create_at;
+      $created_at = $inputs->created_at;
         
       $params = array(
                 'plato_id'=> $plato_id,
@@ -77,7 +77,7 @@ switch($evento)
                 'fecha_fin_promo'=> $fecha_fin_promo,
                 'num_visitas'=> $num_visitas,
                 'publicar'=> $publicar,
-                'create_at'=> $create_at,
+                'created_at'=> $created_at,
               ) ; 
         
       $data = $plato_controller->save($params) ;
@@ -117,7 +117,7 @@ switch($evento)
       $fecha_fin_promo = $inputs->fecha_fin_promo;
       $num_visitas = $inputs->num_visitas;
       $publicar = $inputs->publicar;
-      $create_at = $inputs->create_at;
+      $created_at = $inputs->created_at;
         
       $params = array(
                 'plato_id'=> $plato_id,
@@ -132,7 +132,7 @@ switch($evento)
                 'fecha_fin_promo'=> $fecha_fin_promo,
                 'num_visitas'=> $num_visitas,
                 'publicar'=> $publicar,
-                'create_at'=> $create_at,
+                'created_at'=> $created_at,
               ) ; 
         
       $data = $plato_controller->update($params) ;

@@ -25,7 +25,7 @@ class BeanPlato{
   private $num_visitas;
   private $publicar = "S" ;
   private $estado = 1 ;
-  private $create_at;
+  private $created_at = NULL ;
 
   #Auto Increment Item
 
@@ -160,14 +160,18 @@ class BeanPlato{
     return $this->estado;
   }
 
-  public function setCreateAt($create_at_)
+  public function setCreatedAt($created_at_)
   {
-    $this->create_at = Validation::validate( $create_at_ );
+    $this->created_at = Validation::validate( $created_at_ );
   }
 
-  public function getCreateAt()
+  public function getCreatedAt()
   {
-    return $this->create_at;
+    if(empty($this->created_at))
+    {
+      $this->created_at = HelperDate::timestampsBd();
+    }
+    return $this->created_at;
   }
 
 }

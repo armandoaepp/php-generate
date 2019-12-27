@@ -23,7 +23,6 @@
   $fecha_fin_promo   = $_POST["fecha_fin_promo"] ;
   $num_visitas   = $_POST["num_visitas"] ;
   $publicar   = $_POST["publicar"] ;
-  $create_at   = $_POST["create_at"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -46,7 +45,6 @@
     "fecha_fin_promo"   => $fecha_fin_promo,
     "num_visitas"   => $num_visitas,
     "publicar"   => $publicar,
-    "create_at"   => $create_at,
     "imagen"  => $imagen,
   );
 

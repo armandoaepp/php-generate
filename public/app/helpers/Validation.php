@@ -7,6 +7,7 @@ class Validation {
 		$cadena = stripslashes($cadena);
 		$cadena = nl2br($cadena);
 		return $cadena;
+		// addslashes
 	}
 
 }

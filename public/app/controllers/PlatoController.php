@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $plato  = new Plato();
-            
+
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setEstado($estado);
 
       $data = $plato->getByEstado($bean_plato);
@@ -59,13 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
+
+      $precio_descuento = $precio ;
+      if($descuento > 0){
+          $precio_descuento = $precio - ( $precio * ($descuento/100) ) ;
+      }
 
       $plato  = new Plato($this->cnx);
 
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setCategoriaId($categoria_id);
       $bean_plato->setNombre($nombre);
       $bean_plato->setDescripcion($descripcion);
@@ -77,8 +82,10 @@
       $bean_plato->setFechaFinPromo($fecha_fin_promo);
       $bean_plato->setNumVisitas($num_visitas);
       $bean_plato->setPublicar($publicar);
-      $bean_plato->setCreateAt($create_at);
-            
+
+
+
+
       $data = $plato->save($bean_plato) ;
 
       return $data ;
@@ -93,12 +100,12 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $plato  = new Plato($this->cnx);
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setPlatoId($plato_id);
       $bean_plato->setCategoriaId($categoria_id);
       $bean_plato->setNombre($nombre);
@@ -111,10 +118,9 @@
       $bean_plato->setFechaFinPromo($fecha_fin_promo);
       $bean_plato->setNumVisitas($num_visitas);
       $bean_plato->setPublicar($publicar);
-      $bean_plato->setCreateAt($create_at);
 
       $data = $plato->update($bean_plato) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -127,18 +133,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $plato  = new Plato($this->cnx);
-            
+
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setPlatoId($plato_id);
       $bean_plato->setEstado($estado);
 
       $data = $plato->updateEstado($bean_plato) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -193,17 +199,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $plato  = new Plato($this->cnx);
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setPlatoId($plato_id);
       $bean_plato->setPublicar($publicar);
 
       $data = $plato->updatePublish($bean_plato) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -216,16 +222,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $plato  = new Plato($this->cnx);
       $bean_plato = new BeanPlato();
-            
+
       $bean_plato->setPublicar($publicar);
 
       $data = $plato->getPublished($bean_plato) ;
-      
+
       return $data;
     }
     catch (Exception $e)

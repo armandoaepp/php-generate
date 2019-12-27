@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [0, 0],
+      "sidebar_active" => [2, 1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -81,23 +81,22 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
-                  <th width="50">Plato_id </th>
-                  <th>Categoria_id </th>
+                  <th width="50">ID </th>
                   <th>Nombre </th>
-                  <th>Descripcion </th>
                   <th>Precio </th>
                   <th>Descuento </th>
                   <th>Precio_descuento </th>
-                  <th>Fecha_ini_promo </th>
-                  <th>Fecha_fin_promo </th>
-                  <th>Num_visitas </th>
-                  <th>Create_at </th>
+                  <th>Categoria </th>
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
+                  <!-- <th>Descripcion </th> -->
+                  <!-- <th>Fecha_ini_promo </th> -->
+                  <!-- <th>Fecha_fin_promo </th> -->
+                  <!-- <th>Num_visitas </th> -->
                 </tr>
               </thead>
 
@@ -140,18 +139,17 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->plato_id ?> </td>
-                  <td> <?php echo $row->categoria_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
-                  <td> <?php echo $row->descripcion ?> </td>
                   <td> <?php echo $row->precio ?> </td>
                   <td> <?php echo $row->descuento ?> </td>
                   <td> <?php echo $row->precio_descuento ?> </td>
-                  <td> <?php echo $row->fecha_ini_promo ?> </td>
-                  <td> <?php echo $row->fecha_fin_promo ?> </td>
-                  <td> <?php echo $row->num_visitas ?> </td>
-                  <td> <?php echo $row->create_at ?> </td>
+                  <td> <?php echo $row->desc_categoria ?> </td>
+                  <!-- <td> <?php echo $row->descripcion ?> </td> -->
+                  <!-- <td> <?php echo $row->fecha_ini_promo ?> </td> -->
+                  <!-- <td> <?php echo $row->fecha_fin_promo ?> </td> -->
+                  <!-- <td> <?php echo $row->num_visitas ?> </td> -->
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
@@ -159,7 +157,7 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-            
+
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/plato/editar.php?id=<?php echo $row->plato_id ?>" title="Editar">
@@ -174,7 +172,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

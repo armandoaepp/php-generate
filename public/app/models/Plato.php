@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class Plato extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -19,7 +19,12 @@ class Plato extends Connection {
   {
     try{
 
-      $this->query = "SELECT * FROM plato; ";
+      // $this->query = "SELECT * FROM plato; ";
+      $this->query = "SELECT
+                          plato.*,
+                          categoria.desc_categoria
+                        FROM plato
+                        INNER JOIN categoria ON categoria.categoria_id = plato.categoria_id ; ";
 
       $this->executeQuery();
 
@@ -39,20 +44,20 @@ class Plato extends Connection {
   {
     try{
 
-      $plato_id = $bean_plato->getPlatoId();
-      $categoria_id = $bean_plato->getCategoriaId();
-      $nombre = $bean_plato->getNombre();
-      $descripcion = $bean_plato->getDescripcion();
-      $precio = $bean_plato->getPrecio();
-      $descuento = $bean_plato->getDescuento();
+      // $plato_id         = $bean_plato->getPlatoId();
+      $categoria_id     = $bean_plato->getCategoriaId();
+      $nombre           = $bean_plato->getNombre();
+      $descripcion      = $bean_plato->getDescripcion();
+      $precio           = $bean_plato->getPrecio();
+      $descuento        = $bean_plato->getDescuento();
       $precio_descuento = $bean_plato->getPrecioDescuento();
-      $imagen = $bean_plato->getImagen();
-      $fecha_ini_promo = $bean_plato->getFechaIniPromo();
-      $fecha_fin_promo = $bean_plato->getFechaFinPromo();
-      $num_visitas = $bean_plato->getNumVisitas();
-      $publicar = $bean_plato->getPublicar();
-      $estado = $bean_plato->getEstado();
-      $create_at = $bean_plato->getCreateAt();
+      $imagen           = $bean_plato->getImagen();
+      $fecha_ini_promo  = $bean_plato->getFechaIniPromo();
+      $fecha_fin_promo  = $bean_plato->getFechaFinPromo();
+      $num_visitas      = $bean_plato->getNumVisitas();
+      $publicar         = $bean_plato->getPublicar();
+      $estado           = $bean_plato->getEstado();
+      $created_at       = $bean_plato->getCreatedAt();
 
       $this->query = "INSERT INTO plato
                       (
@@ -68,7 +73,7 @@ class Plato extends Connection {
                         num_visitas,
                         publicar,
                         estado,
-                        create_at
+                        created_at
                       )
                       VALUES(
                         '$categoria_id',
@@ -83,7 +88,7 @@ class Plato extends Connection {
                         '$num_visitas',
                         '$publicar',
                         '$estado',
-                        '$create_at'
+                        $created_at
                       ); ";
 
       $this->executeQuery();
@@ -116,9 +121,8 @@ class Plato extends Connection {
       $fecha_fin_promo = $bean_plato->getFechaFinPromo();
       $num_visitas = $bean_plato->getNumVisitas();
       $publicar = $bean_plato->getPublicar();
-      $create_at = $bean_plato->getCreateAt();
 
-      $this->query = "UPDATE plato SET 
+      $this->query = "UPDATE plato SET
                         categoria_id = '$categoria_id',
                         nombre = '$nombre',
                         descripcion = '$descripcion',
@@ -129,8 +133,7 @@ class Plato extends Connection {
                         fecha_ini_promo = '$fecha_ini_promo',
                         fecha_fin_promo = '$fecha_fin_promo',
                         num_visitas = '$num_visitas',
-                        publicar = '$publicar',
-                        create_at = '$create_at'
+                        publicar = '$publicar'
                       WHERE plato_id = '$plato_id'
                       LIMIT 1 ;";
 
@@ -221,7 +224,7 @@ class Plato extends Connection {
       $plato_id = $bean_plato->getPlatoId();
       $estado = $bean_plato->getEstado();
 
-      $this->query = "UPDATE plato SET 
+      $this->query = "UPDATE plato SET
                         estado = '$estado'
                       WHERE plato_id='$plato_id'
                       LIMIT 1 ; ";
@@ -246,7 +249,7 @@ class Plato extends Connection {
       $plato_id = $bean_plato->getPlatoId();
       $publicar = $bean_plato->getPublicar() ;
 
-      $this->query = "UPDATE plato SET 
+      $this->query = "UPDATE plato SET
                         publicar = '$publicar'
                       WHERE plato_id = '$plato_id'
                       LIMIT 1 ; ";
