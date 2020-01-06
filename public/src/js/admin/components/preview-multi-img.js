@@ -1,4 +1,4 @@
-(function (document) {
+/* (function (document) {
 
   img_preview = document.querySelectorAll("[data-file-img=\"images\"]");
 
@@ -38,6 +38,7 @@
                       image.title = file.name;
                       image.src = this.result;
                       preview.appendChild(image);
+                      preview.appendChild('holasasd sadfasd');
                   });
 
                   reader.readAsDataURL(file);
@@ -53,3 +54,4 @@
 
 
 })(document);
+ */

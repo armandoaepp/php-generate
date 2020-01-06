@@ -28,11 +28,18 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
       </ul>
     </li>
+    <li>
+      <a class="<?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="admin/habitacion/habitacion.php" role="button">
+        <i class="fas fa-suitcase-rolling"></i>
+        Habitaciones
+      </a>
+    </li>
 
+  <!--
     <li>
       <a class="menu <?php if ($sidebar_active[0] == 2) {echo 'active';}?>" href="#" role="button">
         <i class="fas fa-suitcase-rolling"></i>
-        Carta
+        Habitaciones
       </a>
       <ul class="menu-items">
         <li>
@@ -51,6 +58,7 @@ $sidebar_active = !empty($sidebar_active) ? $sidebar_active : [0, 0];
 
       </ul>
     </li>
+  -->
 
   </ul>
 </nav>

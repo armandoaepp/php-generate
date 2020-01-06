@@ -4,7 +4,7 @@ Class Connection
   protected $db_host   = 'localhost';
   protected $db_user   = 'root';
   protected $db_pass   = '';
-  protected $db_name   = 'cat_db_restaurant';
+  protected $db_name   = 'cat_db_hotel';
 
   // protected $db_host   = 'localhost';
   // protected $db_user   = 'escuelac_webuser2019';
