@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [3, 2],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -81,12 +81,13 @@
 
           <div class="col-12">
             <div class="table-responsive">
-
+            
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Suscriptor_id </th>
                   <th>Nombre </th>
+                  <th>Apellidos </th>
                   <th>Email </th>
                   <th>Telefono </th>
                   <th>Empresa </th>
@@ -134,9 +135,10 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-
+                
                   <td> <?php echo $row->suscriptor_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
+                  <td> <?php echo $row->apellidos ?> </td>
                   <td> <?php echo $row->email ?> </td>
                   <td> <?php echo $row->telefono ?> </td>
                   <td> <?php echo $row->empresa ?> </td>
@@ -155,7 +157,7 @@
                 <?php }?>
               </tbody>
 
-            </table>
+            </table> 
             </div>
           </div>
 

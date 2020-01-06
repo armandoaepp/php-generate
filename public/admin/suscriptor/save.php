@@ -12,6 +12,7 @@
   $suscriptor_controller = new SuscriptorController();
 
   $nombre   = $_POST["nombre"] ;
+  $apellidos   = $_POST["apellidos"] ;
   $email   = $_POST["email"] ;
   $telefono   = $_POST["telefono"] ;
   $empresa   = $_POST["empresa"] ;
@@ -19,6 +20,7 @@
 
   $params = array(
     "nombre"   => $nombre,
+    "apellidos"   => $apellidos,
     "email"   => $email,
     "telefono"   => $telefono,
     "empresa"   => $empresa,

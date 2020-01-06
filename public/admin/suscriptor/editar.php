@@ -37,7 +37,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [3, 2],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -85,7 +85,7 @@
               <input type="hidden" class="form-control" name="accion" id="accion" value="edit">
               <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id ?>">
               <div class="row">
-
+              
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre: </label>
@@ -94,11 +94,14 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
+                  <label for="apellidos">Apellidos: </label>
+                  <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos" value="<?php echo $suscriptor->apellidos; ?>">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
                   <label for="email">Email: </label>
-                  <select class="custom-select select2-box" name="email" id="email" placeholder="Email">
-                    <option value="" selected disabled hidden>Seleccionar </option>
-                    <option value="text">text</option>
-                  </select>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $suscriptor->email; ?>">
                 </div>
               </div>
               <div class="col-md-12">

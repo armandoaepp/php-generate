@@ -39,8 +39,9 @@ class Suscriptor extends Connection {
   {
     try{
 
-      // $suscriptor_id = $bean_suscriptor->getSuscriptorId();
+      $suscriptor_id = $bean_suscriptor->getSuscriptorId();
       $nombre = $bean_suscriptor->getNombre();
+      $apellidos = $bean_suscriptor->getApellidos();
       $email = $bean_suscriptor->getEmail();
       $telefono = $bean_suscriptor->getTelefono();
       $empresa = $bean_suscriptor->getEmpresa();
@@ -51,6 +52,7 @@ class Suscriptor extends Connection {
       $this->query = "INSERT INTO suscriptor
                       (
                         nombre,
+                        apellidos,
                         email,
                         telefono,
                         empresa,
@@ -60,6 +62,7 @@ class Suscriptor extends Connection {
                       )
                       VALUES(
                         '$nombre',
+                        '$apellidos',
                         '$email',
                         '$telefono',
                         '$empresa',
@@ -87,14 +90,16 @@ class Suscriptor extends Connection {
   {
     try{
       $suscriptor_id = $bean_suscriptor->getSuscriptorId();
-      $nombre        = $bean_suscriptor->getNombre();
-      $email         = $bean_suscriptor->getEmail();
-      $telefono      = $bean_suscriptor->getTelefono();
-      $empresa       = $bean_suscriptor->getEmpresa();
-      $mensaje       = $bean_suscriptor->getMensaje();
+      $nombre = $bean_suscriptor->getNombre();
+      $apellidos = $bean_suscriptor->getApellidos();
+      $email = $bean_suscriptor->getEmail();
+      $telefono = $bean_suscriptor->getTelefono();
+      $empresa = $bean_suscriptor->getEmpresa();
+      $mensaje = $bean_suscriptor->getMensaje();
 
       $this->query = "UPDATE suscriptor SET
                         nombre = '$nombre',
+                        apellidos = '$apellidos',
                         email = '$email',
                         telefono = '$telefono',
                         empresa = '$empresa',

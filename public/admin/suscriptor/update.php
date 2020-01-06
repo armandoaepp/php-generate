@@ -14,6 +14,7 @@
   $suscriptor_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
   $nombre   = $_POST["nombre"] ;
+  $apellidos   = $_POST["apellidos"] ;
   $email   = $_POST["email"] ;
   $telefono   = $_POST["telefono"] ;
   $empresa   = $_POST["empresa"] ;
@@ -21,6 +22,7 @@
   $params = array(
     "suscriptor_id"   => $suscriptor_id,
     "nombre"   => $nombre,
+    "apellidos"   => $apellidos,
     "email"   => $email,
     "telefono"   => $telefono,
     "empresa"   => $empresa,

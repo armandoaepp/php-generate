@@ -67,6 +67,7 @@
       $bean_suscriptor = new BeanSuscriptor();
             
       $bean_suscriptor->setNombre($nombre);
+      $bean_suscriptor->setApellidos($apellidos);
       $bean_suscriptor->setEmail($email);
       $bean_suscriptor->setTelefono($telefono);
       $bean_suscriptor->setEmpresa($empresa);
@@ -94,6 +95,7 @@
             
       $bean_suscriptor->setSuscriptorId($suscriptor_id);
       $bean_suscriptor->setNombre($nombre);
+      $bean_suscriptor->setApellidos($apellidos);
       $bean_suscriptor->setEmail($email);
       $bean_suscriptor->setTelefono($telefono);
       $bean_suscriptor->setEmpresa($empresa);

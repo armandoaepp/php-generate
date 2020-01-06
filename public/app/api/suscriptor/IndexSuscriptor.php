@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * [Api Index Auth  Generada]
@@ -25,7 +25,7 @@ switch($evento)
   case "list":
     try
     {
-      $suscriptor_controller = new SuscriptorController() ;
+      $suscriptor_controller = new SuscriptorController() ; 
 
        $data = $suscriptor_controller->getAll() ;
 
@@ -35,38 +35,43 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
 
   case "set":
-
+    
     try
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-
-      $suscriptor_controller = new SuscriptorController($cnx) ;
+        
+      $suscriptor_controller = new SuscriptorController($cnx) ; 
       $connection->beginTransaction();
-
-      // $suscriptor_id = $inputs->suscriptor_id;
-      $nombre        = !empty($inputs->nombre) ? $inputs->nombre : "";
-      $email         = !empty($inputs->email) ? $inputs->email : "";
-      $telefono      = !empty($inputs->telefono) ? $inputs->telefono : "";
-      $empresa       = !empty($inputs->empresa) ? $inputs->empresa : "";
-      $mensaje       = $inputs->mensaje;
-
+        
+      $suscriptor_id = $inputs->suscriptor_id;
+      $nombre = $inputs->nombre;
+      $apellidos = $inputs->apellidos;
+      $email = $inputs->email;
+      $telefono = $inputs->telefono;
+      $empresa = $inputs->empresa;
+      $mensaje = $inputs->mensaje;
+      $created_at = $inputs->created_at;
+        
       $params = array(
-                'nombre'        => $nombre,
-                'email'         => $email,
-                'telefono'      => $telefono,
-                'empresa'       => $empresa,
-                'mensaje'       => $mensaje,
-              ) ;
-
+                'suscriptor_id'=> $suscriptor_id,
+                'nombre'=> $nombre,
+                'apellidos'=> $apellidos,
+                'email'=> $email,
+                'telefono'=> $telefono,
+                'empresa'=> $empresa,
+                'mensaje'=> $mensaje,
+                'created_at'=> $created_at,
+              ) ; 
+        
       $data = $suscriptor_controller->save($params) ;
-
+        
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -76,7 +81,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -86,30 +91,32 @@ switch($evento)
     {
       $connection = new Connection();
       $cnx = $connection->getConnection();
-
-      $suscriptor_controller = new SuscriptorController($cnx) ;
+        
+      $suscriptor_controller = new SuscriptorController($cnx) ; 
       $connection->beginTransaction();
-
+        
       $suscriptor_id = $inputs->suscriptor_id;
       $nombre = $inputs->nombre;
+      $apellidos = $inputs->apellidos;
       $email = $inputs->email;
       $telefono = $inputs->telefono;
       $empresa = $inputs->empresa;
       $mensaje = $inputs->mensaje;
       $created_at = $inputs->created_at;
-
+        
       $params = array(
                 'suscriptor_id'=> $suscriptor_id,
                 'nombre'=> $nombre,
+                'apellidos'=> $apellidos,
                 'email'=> $email,
                 'telefono'=> $telefono,
                 'empresa'=> $empresa,
                 'mensaje'=> $mensaje,
                 'created_at'=> $created_at,
-              ) ;
-
+              ) ; 
+        
       $data = $suscriptor_controller->update($params) ;
-
+        
       $connection->commit();
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
@@ -120,7 +127,7 @@ switch($evento)
       $connection->rollback();
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -135,9 +142,9 @@ switch($evento)
       $params = array(
                 'suscriptor_id'=> $suscriptor_id,
                 'estado'=> $estado,
-              ) ;
+              ) ; 
 
-      $suscriptor_controller = new SuscriptorController() ;
+      $suscriptor_controller = new SuscriptorController() ; 
 
       $data = $suscriptor_controller->updateEstado( $params ) ;
 
@@ -148,7 +155,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -158,7 +165,7 @@ switch($evento)
     {
 
       $id = $_GET["id"] ;
-      $suscriptor_controller = new SuscriptorController() ;
+      $suscriptor_controller = new SuscriptorController() ; 
 
       $data = $suscriptor_controller->find( $id) ;
 
@@ -169,7 +176,7 @@ switch($evento)
     {
       $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
     $jsn  = json_encode($data);
     print_r($jsn) ;
   break;
@@ -179,7 +186,7 @@ switch($evento)
     {
 
       $suscriptor_id = $inputs->id;
-      $estado = $inputs->estado;
+      $estado = $inputs->estado; 
 
       if($estado == 1){
         $estado = 0 ;
@@ -190,9 +197,9 @@ switch($evento)
       $params = array(
                 'suscriptor_id'=> $suscriptor_id,
                 'estado'=> $estado,
-              ) ;
+              ) ; 
 
-      $suscriptor_controller = new SuscriptorController() ;
+      $suscriptor_controller = new SuscriptorController() ; 
 
 
 			$historial = (int)isset($inputs->historial) ? $inputs->historial : 1 ;
@@ -208,7 +215,7 @@ switch($evento)
 			else
 			{
 				$data = $suscriptor_controller->updateEstado($params);
-			}
+			} 
 
       $data = array('msg' => 'Operación Correcta', 'error' => false, 'data' => $data);
 
@@ -217,7 +224,7 @@ switch($evento)
     {
             $data = array('msg' => 'Error al consultar datos'. $e->getMessage(), 'error' => true, 'data' => array());
     }
-
+        
         $jsn  = json_encode($data);
         print_r($jsn) ;
   break;

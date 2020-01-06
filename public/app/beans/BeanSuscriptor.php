@@ -14,6 +14,7 @@ class BeanSuscriptor{
   # Atributos
   private $suscriptor_id;
   private $nombre;
+  private $apellidos;
   private $email;
   private $telefono;
   private $empresa;
@@ -42,6 +43,16 @@ class BeanSuscriptor{
   public function getNombre()
   {
     return $this->nombre;
+  }
+
+  public function setApellidos($apellidos_)
+  {
+    $this->apellidos = Validation::validate( $apellidos_ );
+  }
+
+  public function getApellidos()
+  {
+    return $this->apellidos;
   }
 
   public function setEmail($email_)
