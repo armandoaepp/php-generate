@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Test JS</title>
+
+  <style>
+    .thumb {
+      height: 75px;
+      border: 1px solid #000;
+      margin: 10px 5px 0 0;
+    }
+  </style>
+
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+  <!--
+    < script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+  <script type="text/javascript">
+    $(function () {
+      function confirmExt(base64Str) {
+        if (base64Str.slice(0, 4) === "/9j/") {
+          return "jpeg file";
+        } else if (base64Str.slice(0, 25) === "iVBORw0KGgoAAAANSUhEUgAAA") {
+          return "png file";
+        } else if (base64Str.slice(0, 8) === "R0lGODlh") {
+          return "gif file";
+        } else {
+          return "another file";
+        }
+      }
+      function handleFileSelect(evt) {
+        var files = evt.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+          // ignore if the file type doesn't match "image...".
+          if (!f.type.match('image.*')) {
+            continue;
+          }
+          var reader = new FileReader();
+          reader.onload = (function (file) {
+            return function (e) {
+              // file info
+              var fileName = file.name;
+              var fileExt = file.type;
+              var fileSize = file.size;
+              // extract first 25 chars
+              var base64Str = String(e.target.result).split(',')[1]; console.log(fileExt + ": " + base64Str.slice(0, 25));
+              var answer = confirmExt(base64Str);
+              // image
+              var inssertImg = '<span><img class="thumb" src="' + e.target.result + '" title="' + file.name + '"/></span>';
+              // output
+              var output = '<li>' + inssertImg + '<strong>' + fileName + '</strong><p>' + fileSize + ' bytes - ' + fileExt + '</p><p class="filetype">' + answer + '</p></li>';
+              $("#list").append(output);
+            }
+          })(f);
+          reader.readAsDataURL(f);
+        }
+      }
+      document.getElementById('upfile').addEventListener('change', handleFileSelect, false);
+    });
+  </script> -->
+</head>
+
+<body>
+
+  <div id="uptest">
+    <h1>File Upload Test</h1>
+    <input type="file" id="upfile" name="files[]" multiple>
+    <div>
+      <ul id="list"></ul>
+    </div>
+  </div>
+
+  <script>
+    var value_text = "La mañana se nos echa encima.jpge";
+
+    var n_sep_ext = value_text.lastIndexOf(".");
+    var value_lenght = value_text.length;
+
+    var ext_file = value_text.slice(n_sep_ext, value_lenght);
+    console.log(ext_file);
+
+    console.log(value_text.slice(0, n_sep_ext) );
+
+  </script>
+
+</body>
+
+</html>

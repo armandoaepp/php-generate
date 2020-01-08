@@ -18,6 +18,10 @@
   $num_visitas     = !empty($_POST["num_visitas"]) ? $_POST["num_visitas"]        : 0 ;
   $publicar        = $_POST["publicar"] ;
   $file_imagenes     = !empty($_FILES["imagenes"]) ? $_FILES["imagenes"]: [] ;
+  $desc_images     = !empty($_POST["desc_images"]) ? $_POST["desc_images"]: [] ;
+
+  // var_dump($desc_images);
+  // return ;
 
   $params = array(
     "nombre"          => $nombre,
@@ -33,7 +37,7 @@
 
   # ===================================================================
     // $imagenes = [];
-    $imagenes = UploadFiles::uploadMultiFiles($file_imagenes, "habitaciones", $habitacion_id ) ;
+    $imagenes = UploadFiles::uploadMultiFiles($file_imagenes, "habitaciones", $habitacion_id, $desc_images) ;
 
     if($habitacion_id > 0)
     {
@@ -46,7 +50,7 @@
           "habitacion_id" => $habitacion_id,
           "jerarquia"     => ($i + 1),
           "imagen"        => $imagenes[$i] ,
-          "desc_img"      => '' ,
+          "desc_imagen"   => $desc_images[$i] ,
         );
 
         $response = $habitacion_img_controller->save($params_det);

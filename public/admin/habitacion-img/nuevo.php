@@ -85,8 +85,8 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="desc_img">DescImg: </label>
-                  <input type="text" class="form-control" name="desc_img" id="desc_img" placeholder="DescImg">
+                  <label for="desc_imagen">DescImagen: </label>
+                  <input type="text" class="form-control" name="desc_imagen" id="desc_imagen" placeholder="DescImagen">
                 </div>
               </div>
 

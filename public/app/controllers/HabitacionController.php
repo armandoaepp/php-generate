@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion();
-            
+
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setEstado($estado);
 
       $data = $habitacion->getByEstado($bean_habitacion);
@@ -59,20 +59,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion($this->cnx);
 
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setNombre($nombre);
       $bean_habitacion->setDescripcion($descripcion);
       $bean_habitacion->setCaracteristicas($caracteristicas);
       $bean_habitacion->setPrecio($precio);
       $bean_habitacion->setNumVisitas($num_visitas);
       $bean_habitacion->setPublicar($publicar);
-            
+
       $data = $habitacion->save($bean_habitacion) ;
 
       return $data ;
@@ -87,22 +87,22 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion($this->cnx);
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setHabitacionId($habitacion_id);
       $bean_habitacion->setNombre($nombre);
       $bean_habitacion->setDescripcion($descripcion);
       $bean_habitacion->setCaracteristicas($caracteristicas);
       $bean_habitacion->setPrecio($precio);
-      $bean_habitacion->setNumVisitas($num_visitas);
+      // $bean_habitacion->setNumVisitas($num_visitas);
       $bean_habitacion->setPublicar($publicar);
 
       $data = $habitacion->update($bean_habitacion) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -115,18 +115,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion($this->cnx);
-            
+
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setHabitacionId($habitacion_id);
       $bean_habitacion->setEstado($estado);
 
       $data = $habitacion->updateEstado($bean_habitacion) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -181,17 +181,17 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion($this->cnx);
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setHabitacionId($habitacion_id);
       $bean_habitacion->setPublicar($publicar);
 
       $data = $habitacion->updatePublish($bean_habitacion) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -204,16 +204,16 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion  = new Habitacion($this->cnx);
       $bean_habitacion = new BeanHabitacion();
-            
+
       $bean_habitacion->setPublicar($publicar);
 
       $data = $habitacion->getPublished($bean_habitacion) ;
-      
+
       return $data;
     }
     catch (Exception $e)

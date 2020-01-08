@@ -88,7 +88,7 @@
                   <th width="50">Habitacion_img_id </th>
                   <th>Habitacion_id </th>
                   <th>Jerarquia </th>
-                  <th>Desc_img </th>
+                  <th>Desc_imagen </th>
                   <th width="70"></th>
                 </tr>
               </thead>
@@ -136,7 +136,7 @@
                   <td> <?php echo $row->habitacion_img_id ?> </td>
                   <td> <?php echo $row->habitacion_id ?> </td>
                   <td> <?php echo $row->jerarquia ?> </td>
-                  <td> <?php echo $row->desc_img ?> </td>
+                  <td> <?php echo $row->desc_imagen ?> </td>
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/habitacion-img/editar.php?id=<?php echo $row->habitacion_img_id ?>" title="Editar">

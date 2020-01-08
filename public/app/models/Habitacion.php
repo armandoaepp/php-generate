@@ -73,7 +73,10 @@ class Habitacion extends Connection {
 
       $this->executeQuery();
 
-      $data = $this->status  ;
+      $id = $this->lastInsertId();
+
+      // $data = $this->status  ;
+      $data = $id  ;
 
       return $data;
 
@@ -94,7 +97,7 @@ class Habitacion extends Connection {
       $descripcion = $bean_habitacion->getDescripcion();
       $caracteristicas = $bean_habitacion->getCaracteristicas();
       $precio = $bean_habitacion->getPrecio();
-      $num_visitas = $bean_habitacion->getNumVisitas();
+      // $num_visitas = $bean_habitacion->getNumVisitas();
       $publicar = $bean_habitacion->getPublicar();
 
       $this->query = "UPDATE habitacion SET
@@ -102,7 +105,6 @@ class Habitacion extends Connection {
                         descripcion = '$descripcion',
                         caracteristicas = '$caracteristicas',
                         precio = '$precio',
-                        num_visitas = '$num_visitas',
                         publicar = '$publicar'
                       WHERE habitacion_id = '$habitacion_id'
                       LIMIT 1 ;";

@@ -15,7 +15,7 @@
 
   $habitacion_id   = $_POST["habitacion_id"] ;
   $jerarquia   = $_POST["jerarquia"] ;
-  $desc_img   = $_POST["desc_img"] ;
+  $desc_imagen   = $_POST["desc_imagen"] ;
   $img_bd   = !empty($_POST["img_bd"]) ? $_POST["img_bd"] : "" ;
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;
 
@@ -30,7 +30,7 @@
     "habitacion_img_id"   => $habitacion_img_id,
     "habitacion_id"   => $habitacion_id,
     "jerarquia"   => $jerarquia,
-    "desc_img"   => $desc_img,
+    "desc_imagen"   => $desc_imagen,
     "imagen"  => $imagen,
   );
 

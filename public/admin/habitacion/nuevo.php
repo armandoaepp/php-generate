@@ -158,7 +158,7 @@ require_once "../layout/head_links.phtml";
   <?php require_once "../layout/ckeditor.phtml";?>
 
   <style>
-    .preview-item-image {
+    /* .preview-item-image {
       display: inline-block !important;
 
     }
@@ -170,11 +170,11 @@ require_once "../layout/head_links.phtml";
 
     .preview-item-image img {
       max-width: 100%;
-    }
+    } */
   </style>
 
   <script>
-    (function (document) {
+   /*  (function (document) {
 
       img_preview = document.querySelectorAll("[data-file-img=\"images\"]");
 
@@ -209,33 +209,25 @@ require_once "../layout/head_links.phtml";
               var reader = new FileReader();
 
               reader.onload = function (event) {
-                // $($.parseHTML('<img class="imag-preview">')).attr('src', event.target.result).appendTo(preview);
-
+                //  console.log(file.type) ;
                 var image = new Image();
                 image.title = file.name;
                 image.src = this.result;
                 // image.height = 100;
 
+                // Eliminar extension
+                let file_name = file.name;
+                let n_sep_ext = file_name.lastIndexOf(".");
+                let value_text = file_name.slice(0, n_sep_ext)
+
                 html_preview = `<div class="preview-item-image">
-                    <input type="text" class="form-control" name="desc_img[]" value="${file.name}" >
+                    <input type="text" class="form-control" name="desc_img[]" value="${value_text}" >
                     </div>` ;
 
                 $($.parseHTML(html_preview)).prepend(image).appendTo(preview);
 
-                // $($.parseHTML(html_preview)).appendTo(image) ;
-                // $($.parseHTML('<img class="imag-preview"> src="'+ event.target.result+'" ')).appendTo(preview);
 
-                // $($.parseHTML('<img class="imag-preview"> src="'+ event.target.result+'" ')).appendTo(preview);
-                // $($.parseHTML('<input type="text" class="form-control" name="desc_img[]" value="' + file.name + '" >')).appendTo(preview);
               }
-
-              // reader.addEventListener("load", function () {
-              //     var image = new Image();
-              //     image.height = 100;
-              //     image.title = file.name;
-              //     image.src = this.result;
-              //     preview.appendChild(image);
-              // });
 
               reader.readAsDataURL(file);
 
@@ -249,7 +241,7 @@ require_once "../layout/head_links.phtml";
       }
 
 
-    })(document);
+    })(document); */
 
   </script>
 

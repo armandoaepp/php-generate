@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * [Class Controller Generada]
@@ -8,7 +8,7 @@
 */
 
 class HabitacionImg extends Connection {
-  # CONSTRUCT 
+  # CONSTRUCT
   public function __construct($cnx  = null)
   {
     $this->conn = $cnx;
@@ -43,7 +43,7 @@ class HabitacionImg extends Connection {
       $habitacion_id = $bean_habitacion_img->getHabitacionId();
       $jerarquia = $bean_habitacion_img->getJerarquia();
       $imagen = $bean_habitacion_img->getImagen();
-      $desc_img = $bean_habitacion_img->getDescImg();
+      $desc_imagen = $bean_habitacion_img->getDescImagen();
       $estado = $bean_habitacion_img->getEstado();
 
       $this->query = "INSERT INTO habitacion_img
@@ -51,14 +51,14 @@ class HabitacionImg extends Connection {
                         habitacion_id,
                         jerarquia,
                         imagen,
-                        desc_img,
+                        desc_imagen,
                         estado
                       )
                       VALUES(
                         '$habitacion_id',
                         '$jerarquia',
                         '$imagen',
-                        '$desc_img',
+                        '$desc_imagen',
                         '$estado'
                       ); ";
 
@@ -84,13 +84,13 @@ class HabitacionImg extends Connection {
       $habitacion_id = $bean_habitacion_img->getHabitacionId();
       $jerarquia = $bean_habitacion_img->getJerarquia();
       $imagen = $bean_habitacion_img->getImagen();
-      $desc_img = $bean_habitacion_img->getDescImg();
+      $desc_imagen = $bean_habitacion_img->getDescImagen();
 
-      $this->query = "UPDATE habitacion_img SET 
+      $this->query = "UPDATE habitacion_img SET
                         habitacion_id = '$habitacion_id',
                         jerarquia = '$jerarquia',
                         imagen = '$imagen',
-                        desc_img = '$desc_img'
+                        desc_imagen = '$desc_imagen'
                       WHERE habitacion_img_id = '$habitacion_img_id'
                       LIMIT 1 ;";
 
@@ -181,7 +181,7 @@ class HabitacionImg extends Connection {
       $habitacion_img_id = $bean_habitacion_img->getHabitacionImgId();
       $estado = $bean_habitacion_img->getEstado();
 
-      $this->query = "UPDATE habitacion_img SET 
+      $this->query = "UPDATE habitacion_img SET
                         estado = '$estado'
                       WHERE habitacion_img_id='$habitacion_img_id'
                       LIMIT 1 ; ";
@@ -198,4 +198,29 @@ class HabitacionImg extends Connection {
 
     }
   }
+
+  # Method getBypaqueId
+  public function getByHabitacionId($bean_habitacion_img)
+  {
+    try{
+      $habitacion_id = $bean_habitacion_img->getHabitacionId() ;
+
+      $this->query = "SELECT * FROM habitacion_img
+                      WHERE habitacion_id = '$habitacion_id'
+                      AND estado = 1
+                      ORDER BY jerarquia ASC; ";
+
+      $this->executeQuery();
+
+      $data = $this->rows ;
+
+      return $data;
+
+    }catch(exception $e){
+
+      throw new Exception($e->getMessage());
+
+    }
+  }
+
 }

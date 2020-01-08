@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [0, 0],
+      "sidebar_active" => [2, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -81,16 +81,16 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
+
             <table id="dataTableList" class="table table-sm table-hover table-bordered dt-responsive nowrap" style="width:100%">
               <thead>
                 <tr>
                   <th width="50">Habitacion_id </th>
                   <th>Nombre </th>
                   <th>Descripcion </th>
-                  <th>Caracteristicas </th>
+                  <!-- <th>Caracteristicas </th> -->
                   <th>Precio </th>
-                  <th>Num_visitas </th>
+                  <!-- <th>Num_visitas </th> -->
                   <th width="50" class="fs-x-13"> Publicar </th>
                   <th width="70"></th>
                 </tr>
@@ -135,13 +135,13 @@
                   ?>
 
                 <tr class="<?php echo $class_estado ;?>" >
-                
+
                   <td> <?php echo $row->habitacion_id ?> </td>
                   <td> <?php echo $row->nombre ?> </td>
                   <td> <?php echo $row->descripcion ?> </td>
-                  <td> <?php echo $row->caracteristicas ?> </td>
+                  <!-- <td> <?php echo $row->caracteristicas ?> </td> -->
                   <td> <?php echo $row->precio ?> </td>
-                  <td> <?php echo $row->num_visitas ?> </td>
+                  <!-- <td> <?php echo $row->num_visitas ?> </td> -->
 
                   <td class="text-center">
                     <span class="sr-only"><?php echo $row->publicar ?></span>
@@ -149,7 +149,6 @@
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
-            
 
                   <td class="text-center">
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/habitacion/editar.php?id=<?php echo $row->habitacion_id ?>" title="Editar">
@@ -164,7 +163,7 @@
                 <?php }?>
               </tbody>
 
-            </table> 
+            </table>
             </div>
           </div>
 

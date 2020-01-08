@@ -16,7 +16,7 @@ class BeanHabitacionImg{
   private $habitacion_id;
   private $jerarquia;
   private $imagen = "" ;
-  private $desc_img;
+  private $desc_imagen;
   private $estado = 1 ;
 
   #Auto Increment Item
@@ -62,14 +62,14 @@ class BeanHabitacionImg{
     return $this->imagen;
   }
 
-  public function setDescImg($desc_img_)
+  public function setDescImagen($desc_imagen_)
   {
-    $this->desc_img = Validation::validate( $desc_img_ );
+    $this->desc_imagen = Validation::validate( $desc_imagen_ );
   }
 
-  public function getDescImg()
+  public function getDescImagen()
   {
-    return $this->desc_img;
+    return $this->desc_imagen;
   }
 
   public function setEstado($estado_)

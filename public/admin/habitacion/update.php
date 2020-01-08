@@ -13,22 +13,20 @@
 
   $habitacion_id = !empty($_POST["id"]) ? $_POST["id"]: 0 ;
 
-  $nombre   = $_POST["nombre"] ;
-  $descripcion   = $_POST["descripcion"] ;
-  $caracteristicas   = $_POST["caracteristicas"] ;
-  $precio   = $_POST["precio"] ;
-  $num_visitas   = $_POST["num_visitas"] ;
-  $publicar   = $_POST["publicar"] ;
+  $nombre          = $_POST["nombre"] ;
+  $descripcion     = !empty($_POST["descripcion"]) ? $_POST["descripcion"]        : "" ;
+  $caracteristicas = !empty($_POST["caracteristicas"]) ? $_POST["caracteristicas"]: "" ;
+  $precio          = $_POST["precio"] ;
+   $publicar       = $_POST["publicar"] ;
+
   $params = array(
     "habitacion_id"   => $habitacion_id,
-    "nombre"   => $nombre,
-    "descripcion"   => $descripcion,
-    "caracteristicas"   => $caracteristicas,
-    "precio"   => $precio,
-    "num_visitas"   => $num_visitas,
-    "publicar"   => $publicar,
+    "nombre"          => $nombre,
+    "descripcion"     => $descripcion,
+    "caracteristicas" => $caracteristicas,
+    "precio"          => $precio,
+    "publicar"        => $publicar,
   );
-
 
   $response = $habitacion_controller->update($params);
 

@@ -54,14 +54,14 @@ switch($evento)
       $habitacion_id = $inputs->habitacion_id;
       $jerarquia = $inputs->jerarquia;
       $imagen = $inputs->imagen;
-      $desc_img = $inputs->desc_img;
+      $desc_imagen = $inputs->desc_imagen;
         
       $params = array(
                 'habitacion_img_id'=> $habitacion_img_id,
                 'habitacion_id'=> $habitacion_id,
                 'jerarquia'=> $jerarquia,
                 'imagen'=> $imagen,
-                'desc_img'=> $desc_img,
+                'desc_imagen'=> $desc_imagen,
               ) ; 
         
       $data = $habitacion_img_controller->save($params) ;
@@ -93,14 +93,14 @@ switch($evento)
       $habitacion_id = $inputs->habitacion_id;
       $jerarquia = $inputs->jerarquia;
       $imagen = $inputs->imagen;
-      $desc_img = $inputs->desc_img;
+      $desc_imagen = $inputs->desc_imagen;
         
       $params = array(
                 'habitacion_img_id'=> $habitacion_img_id,
                 'habitacion_id'=> $habitacion_id,
                 'jerarquia'=> $jerarquia,
                 'imagen'=> $imagen,
-                'desc_img'=> $desc_img,
+                'desc_imagen'=> $desc_imagen,
               ) ; 
         
       $data = $habitacion_img_controller->update($params) ;

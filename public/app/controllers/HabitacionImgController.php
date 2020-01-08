@@ -15,7 +15,7 @@
   {
     $this->cnx = $cnx;
   }
-    
+
   public function getAll()
   {
     try
@@ -36,13 +36,13 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion_img  = new HabitacionImg();
-            
+
       $bean_habitacion_img = new BeanHabitacionImg();
-            
+
       $bean_habitacion_img->setEstado($estado);
 
       $data = $habitacion_img->getByEstado($bean_habitacion_img);
@@ -59,18 +59,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion_img  = new HabitacionImg($this->cnx);
 
       $bean_habitacion_img = new BeanHabitacionImg();
-            
+
       $bean_habitacion_img->setHabitacionId($habitacion_id);
       $bean_habitacion_img->setJerarquia($jerarquia);
       $bean_habitacion_img->setImagen($imagen);
-      $bean_habitacion_img->setDescImg($desc_img);
-            
+      $bean_habitacion_img->setDescImagen($desc_imagen);
+
       $data = $habitacion_img->save($bean_habitacion_img) ;
 
       return $data ;
@@ -85,20 +85,20 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion_img  = new HabitacionImg($this->cnx);
       $bean_habitacion_img = new BeanHabitacionImg();
-            
+
       $bean_habitacion_img->setHabitacionImgId($habitacion_img_id);
       $bean_habitacion_img->setHabitacionId($habitacion_id);
       $bean_habitacion_img->setJerarquia($jerarquia);
       $bean_habitacion_img->setImagen($imagen);
-      $bean_habitacion_img->setDescImg($desc_img);
+      $bean_habitacion_img->setDescImagen($desc_imagen);
 
       $data = $habitacion_img->update($bean_habitacion_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -111,18 +111,18 @@
   {
     try
     {
-            
-      extract($params) ; 
+
+      extract($params) ;
 
       $habitacion_img  = new HabitacionImg($this->cnx);
-            
+
       $bean_habitacion_img = new BeanHabitacionImg();
-            
+
       $bean_habitacion_img->setHabitacionImgId($habitacion_img_id);
       $bean_habitacion_img->setEstado($estado);
 
       $data = $habitacion_img->updateEstado($bean_habitacion_img) ;
-            
+
       return $data;
     }
     catch (Exception $e)
@@ -163,6 +163,30 @@
       $bean_habitacion_img->setHabitacionImgId($habitacion_img_id);
 
       $data = $habitacion_img->deleteById( $bean_habitacion_img ) ;
+
+      return $data;
+
+    }
+    catch (Exception $e)
+    {
+      throw new Exception($e->getMessage());
+    }
+  }
+
+  public function getByHabitacionId($params = array())
+  {
+    try
+    {
+
+      extract($params) ;
+
+      $habitacion_img  = new HabitacionImg();
+
+      $bean_habitacion_img = new BeanHabitacionImg();
+
+      $bean_habitacion_img->setHabitacionId($habitacion_id);
+
+      $data = $habitacion_img->getByHabitacionId( $bean_habitacion_img) ;
 
       return $data;
 
