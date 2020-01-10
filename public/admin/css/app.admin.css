@@ -13036,6 +13036,20 @@ ul.social li a {
   margin-right: 0;
 }
 
+.preview-img .ui-sortable .preview-item-image {
+  margin-right: 1.5rem;
+}
+
+/* .preview-img {
+  img {
+    margin-right: 0.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  img:last-child {
+    margin-right: 0;
+  }
+} */
 .ui-state-default .icon-move {
   color: rgba(0, 0, 0, 0.75);
   position: absolute;

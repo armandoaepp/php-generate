@@ -44,7 +44,7 @@ $setvar = array(
 $sidebar = array(
  "sidebar_class" => "",
  "sidebar_toggle" => "only",
- "sidebar_active" => [3, 2],
+ "sidebar_active" => [2, 0],
 );
 
 require_once "../layout/head_links.phtml";
@@ -136,7 +136,7 @@ require_once "../layout/head_links.phtml";
                       <!-- <div class="preview-img card ui-state-default border-0 bg-transparent" > -->
                         <div class="preview-item-image card ui-state-default border-0 bg-transparent">
                           <span class="icon-move"> <i class="fas fa-arrows-alt"></i> </span>
-                          <input type="hidden" name="ids_habitaciones_img[]" value="<?php echo $images->habitacion_img_id; ?>">
+                          <input type="hidden" name="ids_images_db[]" value="<?php echo $images->habitacion_img_id; ?>">
                           <a href="<?php echo $images->imagen; ?>" data-fancybox="gallery">
                             <img src="<?php echo $images->imagen; ?>" class="img-fluid " alt="" />
                           </a>

@@ -13,24 +13,24 @@ try{
 
   $accion   = !empty($_POST['accion']) ? $_POST['accion'] : '' ;
 
-  $paquete_id  = !empty($_POST['id']) ? $_POST['id']: 0 ;
-  $ids_paquete_img  = !empty($_POST['ids_paquete_img']) ? $_POST['ids_paquete_img']: [] ;
+  $habitacion_id  = !empty($_POST['id']) ? $_POST['id']: 0 ;
+  $ids_images_db  = !empty($_POST['ids_images_db']) ? $_POST['ids_images_db']: [] ;
 
-  // var_dump($ids_paquete_img);
+  // var_dump($ids_images_db);
 
   $paquete_img_controller = new PaqueteImgController();
 
    ####### SORTABLEs #############################################
-   $cant_item = count($ids_paquete_img) ;
+   $cant_item = count($ids_images_db) ;
    for ($i=0; $i < $cant_item ; $i++)
    {
 
      $param_item = array(
-       'id'   => $ids_paquete_img[$i],
-       'item' => ( $i + 1 ) ,
+       'id'   => $ids_images_db[$i],
+       'jerarquia' => ( $i + 1 ) ,
      );
 
-     $paquete_img_controller->updateItem($param_item);
+     $    ->updateItem($param_item);
    }
 
   $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : [] ;
@@ -41,16 +41,16 @@ try{
 
   $imagenes = [];
   // $imagen = UploadFiles::uploadFile($file_imagen, "noticia_img") ;
-  $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "paquetes", $paquete_id ) ;
+  $imagenes = UploadFiles::uploadMultiFiles($file_imagen, "paquetes", $habitacion_id ) ;
 
-  if($paquete_id > 0)
+  if($habitacion_id > 0)
   {
     if(count($imagenes) > 0 )
     {
       for ($i=0; $i < count($imagenes) ; $i++) {
 
         $params_det = array(
-          "paquete_id" => $paquete_id,
+          "habitacion_id" => $habitacion_id,
           'item' => ( $cant_item + $i + 1 ),
           "imagen"     => $imagenes[$i] ,
           "desc_img"   => '' ,
@@ -67,7 +67,7 @@ try{
 
   # --------------------------------------------------------
 
-    header("Location: ./edit-images.php?id=$paquete_id", true, 301);
+    header("Location: ./edit-images.php?id=$habitacion_id", true, 301);
 
 }catch(Exception $e){
   echo "Error: {$e}" ;
