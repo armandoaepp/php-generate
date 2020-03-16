@@ -4,7 +4,7 @@ class Connection
     protected $db_host = 'localhost';
     protected $db_user = 'root';
     protected $db_pass = '';
-    protected $db_name = 'db_admin_prod';
+    protected $db_name = 'pln_db_hotelcostnorte';
 
     /* protected $db_host   = 'localhost';
     protected $db_user   = 'nervaesscm_webuser';

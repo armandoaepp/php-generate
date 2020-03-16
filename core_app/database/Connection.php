@@ -4,7 +4,7 @@ Class Connection
   protected $db_host   = 'localhost';
   protected $db_user   = 'root';
   protected $db_pass   = '';
-  protected $db_name   = 'escuelac_w_ne16';
+  protected $db_name   = 'cat_db_apema';
 
   // protected $db_host   = 'localhost';
   // protected $db_user   = 'escuelac_webuser2019';
@@ -14,7 +14,7 @@ Class Connection
   protected $db_port   = '3306';
   protected $db_driver = 'mysql';
 
-  
+
 
   protected $query  = '';
   protected $rows   = array();
@@ -76,8 +76,8 @@ Class Connection
       if ($column_count > 0)
       {
         # solo se accede por nombres de columnas y facil convertir en json
-        $rows  = $stm->fetchAll(PDO::FETCH_ASSOC) ;
-        // $rows  = $stm->fetchAll(PDO::FETCH_OBJ) ;
+        // $rows  = $stm->fetchAll(PDO::FETCH_ASSOC) ;
+        $rows  = $stm->fetchAll(PDO::FETCH_OBJ) ;
       }
 
     }

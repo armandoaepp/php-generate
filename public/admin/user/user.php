@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [1,1],
+      "sidebar_active"      => [3,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -55,7 +55,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             <a class="link-white" href="admin/user/user.php">
               <?php echo $title_page; ?>
             </a>
@@ -322,6 +322,7 @@
   }
 
 </script>
+
 
 </body>
 
