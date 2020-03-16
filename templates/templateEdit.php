@@ -182,13 +182,13 @@ for ($i = 1; $i < count($atributos); $i++)
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="imagen">Nueva Imagen</label>
                       </div>
-                      <input data-file-img="images" type="file" class="form-control" name="imagen" id="imagen" required placeholder="Imagen" accept="image/*">
+                      <input data-file-img="images" data-id="preview-images" type="file" class="form-control" name="imagen"  required placeholder="Imagen" accept="image/*">
                     </div>
                   </div>
                 </div>
 
                 <div class="col-12 mb-3">
-                  <div class="preview-img" data-img-preview="preview" id="preview"></div>
+                <div class="preview-img" data-img-preview="preview-images" ></div>
                 </div>
               ' ;
 
