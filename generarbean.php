@@ -9,6 +9,9 @@ function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
     $cmTable     = toCamelCase($tabla);
     $clase     = "Bean" .$cmTable;
 
+    $prefix =  generatePrefixTable( $tabla ) ;
+    $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
     if (!empty($tabla)) {
         $nomarchivo = $carpeta . "Bean" . $cmTable;
         $abrir      = fopen($nomarchivo . $extension, "w");
@@ -31,7 +34,7 @@ function generarbean($atributos, $cListar, $tabla,  $nameMetodo )
         $texto .= '  # Atributos' . PHP_EOL;
         for ($i = 0; $i < count($atributos); $i++) {
             // if ( $atributos[$i] == "estado") {
-            $value_def = itemsDefaultBeans($atributos[$i]) ;
+            $value_def = itemsDefaultBeans($atributos[$i], $prefix) ;
             if ( $value_def != false ) {
                 $texto .= '  private $' . $atributos[$i] . ' = '. $value_def .' ;' . PHP_EOL;
             }

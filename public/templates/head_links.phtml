@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<?php
+// extraemos todas la variables
+extract($setvar);
+
+$titulo      = !empty($titulo ) ? $titulo : "Trébol Restaurante Café" ;
+$follow      = !empty($follow ) ? $follow : "follow" ;
+$description = !empty($description ) ? $description : "Trébol Restaurante Café" ;
+$keywords    = !empty($keywords ) ? $keywords : "Trébol Restaurante Café" ;
+
+?>
+
+<title><?php echo $titulo; ?></title>
+<link rel="icon" href="favicon.ico" sizes="32x32" />
+<meta name="robots" content="<?php echo $follow; ?>" />
+
+<meta name="description" content="<?php echo $description; ?>" />
+<meta name="keywords" content="<?php echo $keywords; ?>" />
+<meta name="robots" content="<?php echo $setvar['follow']; ?>" />
+<base href="http://localhost/helpers/php-generate/public/" />
+ <!-- <base href="/" /> -->
+
+ <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather:300,400,700,900|Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+
+<link rel="stylesheet" href="css/app.min.css">

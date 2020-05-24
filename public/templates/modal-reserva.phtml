@@ -1,0 +1,68 @@
+<!-- Modal -->
+<form action="#">
+  <div class="modal fade " id="modalReservar" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-modal">
+
+        <div class="modal-body p-4">
+        <button type="button" class="close close-reserva" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <h4 class="text-center f-merriweather text-secondary fw-700 h3" >Haz una reserva</h4>
+
+          <div class="py-3 mb-1">
+            <span class="mr-3">
+              <i class="fas fa-map-marker-alt text-success mr-1"></i>
+              Elías Aguirre #816, Chiclayo
+            </span>
+
+            <span class="mr-3">
+              <i class="far fa-clock text-success"></i>
+              8:00 am - 10:30 pm
+            </span>
+          </div>
+
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group">
+                <label for="fecha">Elige el dia</label>
+                <input type="date" class="form-control" name="fecha" id="fecha" required>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="hora">La Hora</label>
+                <input type="time" class="form-control" name="hora" id="hora" min="08:00"
+                max="22:30" required>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="num_personas">Num. Personas</label>
+                <input type="number" class="form-control" name="num_personas" id="num_personas"  min="2" required>
+              </div>
+            </div>
+
+            <div class="col-12 mb-3">
+              <div class="form-group">
+                <label for="telefono">Tu nro de celular</label>
+                <input type="tel" class="form-control" name="telefono" id="telefono" required>
+              </div>
+            </div>
+
+            <div class="col-12 text-center ">
+              <button class="btn btn-primary-dark my-2 my-sm-0" type="submit"><span class="d-none d-lg-inline-block">Haz una</span> Reserva</button>
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

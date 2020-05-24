@@ -8,6 +8,13 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
     // $clase     = ucwords($tabla);
     $clase     = toCamelCase($tabla);
 
+    $prefix =  generatePrefixTable( $tabla ) ;
+    $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
+    // $estado_name = "estado";
+    $estado_name = !empty(in_array("estado", $atributos) ) ? 'estado' : $prefix . 'estado';
+    $publicar_name = !empty(in_array("publicar", $atributos) ) ? 'publicar' : $prefix . 'publicar';
+
     $texto = '';
     if (!empty($tabla))
     {
@@ -151,7 +158,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         $texto .= '    try{' . PHP_EOL;
 
             for ($i = 0; $i < count($atributos); $i++) {
-                if ( !itemsNotSetController($atributos[$i]) ){
+                if ( !itemsNotSetController($atributos[$i], $prefix) ){
                 $texto .= '      $'.$atributos[$i]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[$i]) . '();' . PHP_EOL;
                 }
             }
@@ -163,7 +170,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
              for ($i = 1; $i < count($atributos); $i++) {
                 // $concat.= '                                '.$atributos[$i]." = '$".$atributos[$i];
 
-                if ( !itemsNotUpdateMetodo($atributos[$i]) ){
+                if ( !itemsNotUpdateMetodo($atributos[$i], $prefix) ){
                     $concat.= '                        '.$atributos[$i]." = '$".$atributos[$i]."',". PHP_EOL;
                 }
 
@@ -266,7 +273,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
         // fin del Method Eliminar actualizar
         $texto .= PHP_EOL;
 
-        if (in_array('estado', $atributos))
+        if (in_array('estado', $atributos) || in_array($prefix.'estado', $atributos))
         {
             //Method GETBYESTADO
             $texto .= PHP_EOL;
@@ -276,7 +283,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             $texto .= '    try{' . PHP_EOL;
             //SQL
 
-                 $texto .= '      $estado = $bean_'.$tabla.'->getEstado() ;' . PHP_EOL;
+                 $texto .= '      $estado = $bean_'.$tabla.'->get' . toCamelCase( $estado_name ) . '() ;' . PHP_EOL;
 
                 $texto .= '' . PHP_EOL;
 
@@ -285,7 +292,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $concat .= '      $this->query = "SELECT * FROM '.$tabla.'';
                 $concat .= PHP_EOL;
                 // $concat.= '                      WHERE estado'." = '".'$estado'."'";
-                $concat.= '                      WHERE estado'." = '".'$estado'."'" .'; ";';
+                $concat.= '                      WHERE '. $estado_name .''." = '".'$estado'."'" .'; ";';
                 $concat.= PHP_EOL;
                 // $concat.="                       ".'";';
                 $texto .=  $concat;
@@ -318,7 +325,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
                 $texto .= '      $'.$atributos[0]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[0]). '();' . PHP_EOL;
                 // $texto .= '            $'.$atributos[count($atributos)-1]  .' = $bean_'.$tabla.'->get' . ucwords($name_set_get[count($atributos)-1]) . '();' . PHP_EOL;
-                $texto .= '      $estado = $bean_'.$tabla.'->getEstado();' . PHP_EOL;
+                $texto .= '      $estado = $bean_'.$tabla.'->get' . toCamelCase( $estado_name ) . '();' . PHP_EOL;
                 $texto .= '' . PHP_EOL;
 
                 //QUERY
@@ -326,7 +333,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $concat .= '      $this->query = "UPDATE '.$tabla.' SET ';
                 $concat .= PHP_EOL;
                 //  $concat.= '            '.$atributos[count($atributos)-1]." = '".''.$atributos[count($atributos)-1];
-                $concat.= '                        estado'." = '".'$estado'."'";
+                $concat.= '                        '. $estado_name .''." = '".'$estado'."'";
                 $concat .= PHP_EOL;
                 $concat.="                      WHERE ".$atributos[0]."='$".$atributos[0]."'";
                 $concat.= PHP_EOL;
@@ -352,7 +359,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
 
         }
 
-        if ( in_array('publicar', $atributos) )
+        if ( in_array('publicar', $atributos) || in_array($prefix . 'publicar', $atributos) )
         {
             //Method UPDATE PUBLICAR
             $texto .= PHP_EOL;
@@ -363,7 +370,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             //SQL
 
                 $texto .= '      $'.$atributos[0]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[0]). '();' . PHP_EOL;
-                $texto .= '      $publicar = $bean_'.$tabla.'->getPublicar() ;' . PHP_EOL;
+                $texto .= '      $publicar = $bean_'.$tabla.'->get' . toCamelCase( $publicar_name ) . '() ;' . PHP_EOL;
 
                 $texto .= '' . PHP_EOL;
 
@@ -371,7 +378,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $concat = "";
                 $concat .= '      $this->query = "UPDATE '.$tabla.' SET ';
                 $concat .= PHP_EOL;
-                $concat.= '                        publicar'." = '".'$publicar'."'";
+                $concat.= '                        ' . $publicar_name . ''." = '".'$publicar'."'";
                 $concat .= PHP_EOL;
                 $concat.="                      WHERE ".$atributos[0]." = '$".$atributos[0]."'";
                 $concat.= PHP_EOL;
@@ -405,7 +412,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
             //SQL
 
                 // $texto .= '            $'.$atributos[0]  .' = $bean_'.$tabla.'->get' . toCamelCase($name_set_get[0]). '();' . PHP_EOL;
-                $texto .= '      $publicar = $bean_'.$tabla.'->getPublicar() ;' . PHP_EOL;
+                $texto .= '      $publicar = $bean_'.$tabla.'->get' . toCamelCase( $publicar_name ) . '() ;' . PHP_EOL;
 
                 $texto .= '' . PHP_EOL;
 
@@ -413,7 +420,7 @@ function generarmodelo($atributos, $cListar, $tabla, $name_set_get)
                 $concat = "";
                 $concat .= '      $this->query = "SELECT * FROM '.$tabla.'';
                 $concat .= PHP_EOL;
-                $concat.= '                      WHERE publicar'." = '".'$publicar'."'";
+                $concat.= '                      WHERE ' .  $publicar_name  . ''." = '".'$publicar'."'";
                 $concat.= PHP_EOL;
                 $concat.="                      AND estado = 1 ; ".'";';
                 $texto .=  $concat.PHP_EOL;

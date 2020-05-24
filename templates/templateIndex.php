@@ -5,6 +5,9 @@ function templateIndex($table, $atributos, $arraycabeza = array() ){
   $cmTable = toCamelCase($table) ;
   $url = toUrlFriendly($table) ;
 
+  $prefix =  generatePrefixTable( $table ) ;
+  $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
 $html = '
 <!DOCTYPE html>
 <html lang="es">
@@ -17,13 +20,13 @@ $html = '
       "follow"      => "",
       "description" => "Administrador",
       "keywords"    => "administrador",
-      "active"      => [1,0]
+      "active"      => [1, 0]
     );
 
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1,0],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -73,7 +76,7 @@ $html = '
 
           <div class="col-12">
             <div class="table-responsive">
-            '. tableHtml($table, $atributos, $url, $arraycabeza) .'
+            '. tableHtml($table, $atributos, $url, $arraycabeza, $prefix) .'
             </div>
           </div>
 
@@ -246,7 +249,7 @@ $html = '
 }
 
 
-function tableHtml($table, $atributos,$table_url , $arraycabeza){
+function tableHtml($table, $atributos,$table_url , $arraycabeza, $prefix = ""){
 
 $table_html = '' ;
 $table_html .= '
@@ -256,20 +259,27 @@ $table_html .= '
 
       for ($i = 0; $i < count($arraycabeza); $i++)
       {
+          $col_name = $atributos[$i] ;
+
+          if(!empty($prefix))
+          {
+            $col_name = revemoPrefix($col_name, $prefix)  ;
+          }
+
           if ( !itemsNotListTable( $atributos[$i] ) )
           {
             if($i == 0){
-              $table_html .= '                  <th width="50">' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+              $table_html .= '                  <th width="50">' . ucwords($col_name) . ' </th>' . PHP_EOL;
             }
             else
             {
-              $table_html .= '                  <th>' . ucwords($arraycabeza[$i]) . ' </th>' . PHP_EOL;
+              $table_html .= '                  <th>' . ucwords($col_name) . ' </th>' . PHP_EOL;
             }
 
           }
       }
 
-      if ( in_array('publicar', $atributos ) )
+      if(in_array("publicar", $atributos)  || in_array($prefix."publicar", $atributos) )
       {
         $table_html .= '                  <th width="50" class="fs-x-13"> Publicar </th>' . PHP_EOL;
       }
@@ -287,8 +297,8 @@ $table_html .= '
                     $title    = "" ;
                     $icon_pub = "" ;
 
-                    if(!empty($row->publicar)){
-                      if($row->publicar == "S"){
+                    if(!empty($row->'. $prefix .'publicar)){
+                      if($row->'. $prefix .'publicar == "S"){
                         $classBtn =  "btn-outline-danger";
                         $title = "Desactivar/Ocultar" ;
                         $icon_pub = \'<i class="fas fa-times"></i>\';
@@ -305,7 +315,7 @@ $table_html .= '
                     $class_estado   = "";
                     $class_disabled = "";
 
-                    if($row->estado == 1)
+                    if($row->'. $prefix .'estado == 1)
                     {
                       $title_estado = "Eliminar" ;
                     }
@@ -329,14 +339,14 @@ $table_html .= '
           }
         }
 
-        if ( in_array('publicar', $atributos ) )
+        if(in_array("publicar", $atributos)  || in_array($prefix."publicar", $atributos) )
         {
 
 
             $table_html .= '
                   <td class="text-center">
-                    <span class="sr-only"><?php echo $row->publicar ?></span>
-                    <button onclick="modalPublicar(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>` ,`<?php echo $title ?>`, `<?php echo $row->publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.\' \' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
+                    <span class="sr-only"><?php echo $row->'. $prefix .'publicar ?></span>
+                    <button onclick="modalPublicar(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>` ,`<?php echo $title ?>`, `<?php echo $row->'. $prefix .'publicar ?>`);" class="btn btn-sm lh-1 btn-table <?php echo $classBtn.\' \' .$class_disabled; ; ?> " title="<?php echo $title; ?>" >
                     <?php echo $icon_pub ;?>
                     </button>
                   </td>
@@ -348,10 +358,10 @@ $table_html .= '
                     <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/'. $table_url .'/editar.php?id=<?php echo $row->'. $atributos[0] .' ?>" title="Editar">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->'. $atributos[0] .' ?>, `<?php echo $row->'. $atributos[1] .' ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->'. $prefix .'estado ?>`);" title="<?php echo $title_estado ;?>">
                     <i class="far fa-trash-alt"></i>
                     </button>
-                    <span class="sr-only"><?php echo $row->estado ?></span>
+                    <span class="sr-only"><?php echo $row->'. $prefix .'estado ?></span>
                   </td>
                 </tr>
                 <?php }?>

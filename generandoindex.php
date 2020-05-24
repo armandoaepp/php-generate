@@ -1,11 +1,20 @@
 <?php
 function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace, $arrayenlace2)
 {
+    $prefix =  generatePrefixTable( $tabla ) ;
+    $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
+    // $estado_name = "estado";
+    $estado_name = !empty(in_array("estado", $atributos) ) ? 'estado' : $prefix . 'estado';
+    $publicar_name = !empty(in_array("publicar", $atributos) ) ? 'publicar' : $prefix . 'publicar';
+
+    // if(in_array("estado", $atributos) || in_array($prefix."estado", $atributos)) { }
+
 
     $paramss = "";
         if (count($atributos) > 0) {
                     for ($i = 0; $i < count($atributos); $i++) {
-                        if ($atributos[$i] != "estado") {
+                        if ($atributos[$i] != $estado_name )  {
                             $paramss .= '                \''.strtolower($atributos[$i]).'\'=> $'.strtolower($atributos[$i]).','. PHP_EOL;
                         }
                     }
@@ -105,7 +114,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
                 if (count($atributos) > 0) {
                     for ($i = 0; $i < count($atributos); $i++) {
-                        if ($atributos[$i] != "estado") {
+                        if ($atributos[$i] != $estado_name ) {
                             $texto .= '      $'.strtolower($atributos[$i]).' = $inputs->'.($atributos[$i]).';'. PHP_EOL;
                         }
                     }
@@ -154,7 +163,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
 
                 if (count($atributos) > 0) {
                     for ($i = 0; $i < count($atributos); $i++) {
-                        if ($atributos[$i] != "estado") {
+                        if ($atributos[$i] != $estado_name ) {
                             $texto .= '      $'.strtolower($atributos[$i]).' = $inputs->'.($atributos[$i]).';'. PHP_EOL;
                         }
                     }
@@ -197,7 +206,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         if (count($atributos) > 0) {
             $texto .= '      $'.strtolower($atributos[0]).' = $inputs->'.($atributos[0]).';'. PHP_EOL;
         }
-        $texto .= '      $estado = $inputs->estado;'. PHP_EOL;
+        $texto .= '      $estado = $inputs->'. $estado_name .';'. PHP_EOL;
 
         $texto  .= '' . PHP_EOL;
         $texto  .= '      $params = array(' . PHP_EOL;
@@ -319,7 +328,7 @@ function generandoIndex($atributos, $name_head, $tabla, $tablaref, $arrayenlace,
         $texto .= '  break;' . PHP_EOL;
         $texto .= "" . PHP_EOL;
 
-        if ( in_array('publicar', $atributos))
+        if ( in_array('publicar', $atributos) || in_array($prefix . 'publicar', $atributos)  )
         {
             # EVENTE UPDATE PUBLICAR
             $texto .= '  case "publish":' . PHP_EOL;

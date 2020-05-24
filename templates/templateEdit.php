@@ -5,6 +5,10 @@ function templateEdit($table, $atributos,$tipo_inputs = array()){
   $cmTable = toCamelCase($table) ;
   $table_url = toUrlFriendly($table) ;
 
+  $prefix =  generatePrefixTable( $table ) ;
+  $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
+
 $html = '';
 $html .= '
 <?php
@@ -23,11 +27,12 @@ $html .= '
 
   $'. $table .' = $'. $table .'_controller->find($id);'. PHP_EOL;
 
-if(in_array('publicar', $atributos))
+if(in_array('publicar', $atributos) || in_array($prefix."publicar", $atributos) )
 {
+  // $name_publicar = ( in_array("publicar", $atributos) ) ? 'publicar' : $prefix."publicar" ;
 
 $html .= '
-  $publicar = trim($'. $table .'->publicar);
+  $publicar = trim($'. $table .'->'. $prefix .'publicar);
 
   $si = "";
   $no = "";
@@ -63,7 +68,7 @@ $html .= '
     $sidebar = array(
       "sidebar_class"  => "",
       "sidebar_toggle" => "only",
-      "sidebar_active" => [1, 0],
+      "sidebar_active" => [0, 0],
     );
 
     require_once "../layout/head_links.phtml";
@@ -115,14 +120,22 @@ $html .= '
 
 for ($i = 1; $i < count($atributos); $i++)
 {
-    if ( !verificarItem($atributos[$i]) )
+    // ==== Start remove prefix
+    $field_item = $atributos[$i] ;
+    if(!empty($prefix))
+    {
+      $field_item = revemoPrefix($field_item, $prefix)  ;
+    }
+    $field_item = toCamelCase($field_item);
+
+    if ( !verificarItem($atributos[$i], $prefix) )
     {
             if($tipo_inputs[$i] == 'textarea')
             {
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
-              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '" cols="30" rows="6"><?php echo htmlspecialchars_decode($'. $table .'->'. $atributos[$i]. '); ?></textarea>' . PHP_EOL;
+              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($field_item) . ': </label>' . PHP_EOL;
+              $html .= '                  <textarea class="form-control ckeditor" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($field_item) . '" cols="30" rows="6"><?php echo htmlspecialchars_decode($'. $table .'->'. $atributos[$i]. '); ?></textarea>' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }
@@ -130,8 +143,8 @@ for ($i = 1; $i < count($atributos); $i++)
             {
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
-              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <select class="custom-select select2-box" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) . '">'.PHP_EOL;
+              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($field_item) . ': </label>' . PHP_EOL;
+              $html .= '                  <select class="custom-select select2-box" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($field_item) . '">'.PHP_EOL;
               $html .= '                    <option value="" selected disabled hidden>Seleccionar </option> '.PHP_EOL;
               $html .= '                    <option value="text">text</option>'.PHP_EOL;
               $html .= '                  </select>'.PHP_EOL;
@@ -141,39 +154,47 @@ for ($i = 1; $i < count($atributos); $i++)
             else{
               $html .= '              <div class="col-md-12">' . PHP_EOL;
               $html .= '                <div class="form-group">' . PHP_EOL;
-              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($atributos[$i]) . ': </label>' . PHP_EOL;
-              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($atributos[$i]) .'" value="<?php echo $'. $table .'->'. $atributos[$i]. '; ?>">' . PHP_EOL;
+              $html .= '                  <label for="' . $atributos[$i] . '">' . toCamelCase($field_item) . ': </label>' . PHP_EOL;
+              $html .= '                  <input type="' . $tipo_inputs[$i] .'" class="form-control" name="' . $atributos[$i] .'" id="' . $atributos[$i] .'" placeholder="' . toCamelCase($field_item) .'" value="<?php echo $'. $table .'->'. $atributos[$i]. '; ?>">' . PHP_EOL;
               $html .= '                </div>' . PHP_EOL;
               $html .= '              </div>' . PHP_EOL;
             }
     }
 
-    elseif(strtolower(trim($atributos[$i])) == "publicar")
+
+}
+
+    if(in_array("publicar", $atributos) || in_array($prefix."publicar", $atributos) )
     {
+
+    $name_publicar = (in_array("publicar", $atributos) ) ? 'publicar' : $prefix."publicar" ;
+
     $html .= '
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email" class="d-block">Publicar </label>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="si" value="S" <?php echo $si; ?> >
+                    <input class="form-check-input" type="radio" name="'. $name_publicar .'" id="si" value="S" <?php echo $si; ?> >
                     <label class="form-check-label" for="si">SI</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="publicar" id="no" value="N" <?php echo $no; ?> >
+                    <input class="form-check-input" type="radio" name="'. $name_publicar .'" id="no" value="N" <?php echo $no; ?> >
                     <label class="form-check-label" for="no">NO</label>
                   </div>
                 </div>
               </div>' . PHP_EOL;
 
     }
-}
 
-    if(in_array("imagen", $atributos))
+
+    if(in_array("imagen", $atributos)  || in_array($prefix."imagen", $atributos) )
     {
+      $name_file_imagen = (in_array("imagen", $atributos) ) ? 'imagen' : $prefix."imagen" ;
+
       $html .= '
               <div class="col-md-12 text-center">
-                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'->imagen; ?>">
-                <img src="<?php echo $'. $table .'->imagen; ?>" class="img-fluid img-view-edit mb-2">
+                <input type="hidden" class="form-control" name="img_bd" id="img_bd" value="<?php echo $'. $table .'->'. $name_file_imagen .'; ?>">
+                <img src="<?php echo $'. $table .'->'. $name_file_imagen .'; ?>" class="img-fluid img-view-edit mb-2">
               </div>
                 <div class="col-12 mb-3">
                   <hr>
@@ -182,7 +203,7 @@ for ($i = 1; $i < count($atributos); $i++)
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="imagen">Nueva Imagen</label>
                       </div>
-                      <input data-file-img="images" data-id="preview-images" type="file" class="form-control" name="imagen"  required placeholder="Imagen" accept="image/*">
+                      <input data-file-img="images" data-id="preview-images" type="file" class="form-control" name="imagen"  placeholder="Imagen" accept="image/*">
                     </div>
                   </div>
                 </div>

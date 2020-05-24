@@ -5,6 +5,9 @@ function templateSave($table, $atributos, $arraycabeza = array() ){
   $cmTable = toCamelCase($table) ;
   $table_url = toUrlFriendly($table) ;
 
+  $prefix =  generatePrefixTable( $table ) ;
+  $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
 $html = '';
 $html .= '
 <?php
@@ -24,14 +27,14 @@ $html .= '
 
 for ($i = 1; $i < count($atributos); $i++)
 {
-    if ( !verificarItemViewSave($atributos[$i]) )
+    if ( !verificarItemViewSave($atributos[$i], $prefix) )
     {
             $html .= '  $' . $atributos[$i] . '   = $_POST["' . $atributos[$i] . '"] ;' . PHP_EOL;
     }
 }
 
 
-if ( in_array('imagen', $atributos) )
+if(in_array("imagen", $atributos)  || in_array($prefix."imagen", $atributos) )
 {
   $html .= '  $file_imagen   = !empty($_FILES["imagen"]) ? $_FILES["imagen"] : "" ;' . PHP_EOL;
   $html .= '' . PHP_EOL;
@@ -42,7 +45,8 @@ if ( in_array('imagen', $atributos) )
   $html .= '' . PHP_EOL;
 }
 
-if ( in_array('url', $atributos) )
+if(in_array("url", $atributos)  || in_array($prefix."url", $atributos) )
+
 {
   $html .= '  $url = UrlHelper::urlFriendly($'. $atributos[1].'); ' . PHP_EOL;
   // $html .= '' . PHP_EOL;
@@ -54,20 +58,22 @@ $html .= '' . PHP_EOL;
 $html .= '  $params = array(' . PHP_EOL;
 for ($i = 1; $i < count($atributos); $i++)
 {
-  if ( !verificarItemViewSave($atributos[$i]) )
+  if ( !verificarItemViewSave($atributos[$i], $prefix) )
   {
     $html .= '    "' . $atributos[$i] . '"   => $' . $atributos[$i] . ',' . PHP_EOL;
   }
 }
 
-if ( in_array('imagen', $atributos) )
+if(in_array("imagen", $atributos)  || in_array($prefix."imagen", $atributos) )
+
 {
-  $html .= '    "imagen"  => $imagen,' . PHP_EOL;
+  $html .= '    "'. $prefix .'imagen"  => $imagen,' . PHP_EOL;
 }
 
-if ( in_array('url', $atributos) )
+if(in_array("url", $atributos)  || in_array($prefix."url", $atributos) )
+
 {
-  $html .= '    "url"  => $url,' . PHP_EOL;
+  $html .= '    "'. $prefix .'url"  => $'. $prefix .'url,' . PHP_EOL;
 }
 $html .= '  );' . PHP_EOL;
 $html .= '' . PHP_EOL;

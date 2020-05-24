@@ -7,6 +7,14 @@ function generandoControladores($atributos, $tabla, $nameatri)
 
     $cmTable = toCamelCase($tabla);
 
+    $prefix =  generatePrefixTable( $tabla ) ;
+    $prefix = !empty($prefix) ? $prefix."_" : "" ;
+
+    // $estado_name = "estado";
+    $estado_name = !empty(in_array("estado", $atributos) ) ? 'estado' : $prefix . 'estado';
+    $publicar_name = !empty(in_array("publicar", $atributos) ) ? 'publicar' : $prefix . 'publicar';
+
+
 
     $extension = ".php";
     if (!empty($tabla)) {
@@ -70,7 +78,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
         // $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
-        $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).'->set' . toCamelCase( $estado_name ) . '($estado);'. PHP_EOL;
         $texto  .= '' . PHP_EOL;
         $texto  .= '      $data = $'.($tabla).'->getByEstado($bean_'.($tabla).');' . PHP_EOL;
         // $texto .= '      $data = Serialize::unSerializeArray($data);' . PHP_EOL;
@@ -104,7 +112,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
 
                                 if (count($atributos) > 0) {
                                     for ($i = 1; $i < count($atributos); $i++) {
-                                        if ( !itemsNotSetController($atributos[$i]) ){
+                                        if ( !itemsNotSetController($atributos[$i], $prefix) ){
                                             $texto .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[$i]).'($'.strtolower($atributos[$i]).');'. PHP_EOL;
                                         }
                                     }
@@ -140,7 +148,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
 
                                 if (count($atributos) > 0) {
                                     for ($i = 0; $i < count($atributos); $i++) {
-                                        if ( !itemsNotUpdateMetodo($atributos[$i]) ){
+                                        if ( !itemsNotUpdateMetodo($atributos[$i], $prefix) ){
                                             $texto .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[$i]).'($'.strtolower($atributos[$i]).');'. PHP_EOL;
                                         }
                                     }
@@ -173,7 +181,8 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '      $bean_'.($tabla).' = new Bean'.$cmTable.'();' . PHP_EOL;
         $texto  .= '            ' . PHP_EOL;
         $texto  .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
-        $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
+        // $texto  .= '      $bean_'.($tabla).'->setEstado($estado);'. PHP_EOL;
+        $texto  .= '      $bean_'.($tabla).'->set' . toCamelCase( $estado_name ) . '($estado);'. PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
         $texto  .= '      $data = $'.($tabla).'->updateEstado($bean_'.($tabla).') ;' . PHP_EOL;
@@ -239,7 +248,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
         $texto  .= '  }' . PHP_EOL;
         $texto  .= '' . PHP_EOL;
 
-        if ( in_array('publicar', $atributos) )
+        if ( in_array('publicar', $atributos) || in_array($prefix . 'publicar', $atributos))
         {
 
             # Method UPDATE PUBLICAR
@@ -256,7 +265,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
             $texto  .= '            ' . PHP_EOL;
 
             $texto .= '      $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
-            $texto .= '      $bean_'.($tabla).'->setPublicar($publicar);'. PHP_EOL;
+            $texto .= '      $bean_'.($tabla).'->set' . toCamelCase( $publicar_name ) . '($publicar);'. PHP_EOL;
 
             $texto  .= '' . PHP_EOL;
             $texto  .= '      $data = $'.($tabla).'->updatePublish($bean_'.($tabla).') ;' . PHP_EOL;
@@ -285,7 +294,7 @@ function generandoControladores($atributos, $tabla, $nameatri)
             $texto  .= '            ' . PHP_EOL;
 
             // $texto .= '            $bean_'.($tabla).'->set'.toCamelCase($atributos[0]).'($'.strtolower($atributos[0]).');'. PHP_EOL;
-            $texto .= '      $bean_'.($tabla).'->setPublicar($publicar);'. PHP_EOL;
+            $texto .= '      $bean_'.($tabla).'->set' . toCamelCase( $publicar_name ) . '($publicar);'. PHP_EOL;
 
             $texto  .= '' . PHP_EOL;
             $texto  .= '      $data = $'.($tabla).'->getPublished($bean_'.($tabla).') ;' . PHP_EOL;

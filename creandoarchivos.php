@@ -14,6 +14,7 @@ include_once 'generandoindex.php';
 include_once 'generateViews.php';
 
 include_once 'templates/load_template.php';
+
 // include_once 'templates/fnc_template.php';
 // include_once 'templates/templateIndex.php';
 // include_once 'templates/templateNuevo.php';

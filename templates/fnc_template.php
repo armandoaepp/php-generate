@@ -1,8 +1,13 @@
 <?php
 
-function verificarItem($item){
+function verificarItem($item, $prefix = ""){
 
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items = array('estado', 'created_at', 'imagen', 'url', 'publicar') ;
 
@@ -14,9 +19,14 @@ function verificarItem($item){
 
 }
 
-function verificarItemViewSave($item){
+function verificarItemViewSave($item, $prefix = ""){
 
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items = array('estado', 'created_at', 'imagen', 'url') ;
 
@@ -29,9 +39,14 @@ function verificarItemViewSave($item){
 }
 
 
-function itemsDefaultBeans($item)
-{
+function itemsDefaultBeans($item, $prefix = ""){
+
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items =  array(
     'url'        => '""' ,
@@ -50,9 +65,14 @@ function itemsDefaultBeans($item)
 }
 
 
-function itemsNotUpdateMetodo($item){
+function itemsNotUpdateMetodo($item, $prefix = ""){
 
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items = array('estado','created_at') ;
 
@@ -64,9 +84,14 @@ function itemsNotUpdateMetodo($item){
 
 }
 
-function itemsNotSetController($item){
+function itemsNotSetController($item, $prefix = ""){
 
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items = array('estado', 'created_at') ;
 
@@ -78,9 +103,14 @@ function itemsNotSetController($item){
 
 }
 
-function itemsNotListTable($item){
+function itemsNotListTable($item, $prefix = ""){
 
   $item = strtolower( trim($item) ) ;
+
+  if(!empty($prefix))
+  {
+    $item = revemoPrefix($item, $prefix)  ;
+  }
 
   $items = array('estado', 'created_at', 'imagen', 'publicar') ;
 

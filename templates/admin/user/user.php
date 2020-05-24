@@ -31,7 +31,7 @@
     $sidebar = array(
       "sidebar_class"     => "",
       "sidebar_toggle"      => "only",
-      "sidebar_active"      => [2,2],
+      "sidebar_active"      => [3,1],
     );
 
     require_once "../layout/head_links.phtml";
@@ -55,7 +55,7 @@
             </a>
           </li>
 
-          <li class="breadcrumb-item active bg-info text-white" aria-current="page">
+          <li class="breadcrumb-item active bg-secondary text-white" aria-current="page">
             <a class="link-white" href="admin/user/user.php">
               <?php echo $title_page; ?>
             </a>
@@ -81,85 +81,87 @@
 
           <div class="col-12">
             <div class="table-responsive">
-            
-            <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
-              <thead>
-                <tr>
-                  <th width="50">User_id </th>
-                  <th>Nombre </th>
-                  <th>Apellidos </th>
-                  <th>Email </th>
-                  <th class="text-center fs-x-13">Reset Password</th>
-                  <!-- <th>Password </th> -->
-                  <th width="70"></th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <?php foreach ($data as &$row) {?>
+              <table id="dataTableList" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                  <tr>
+                    <th width="50">#</th>
+                    <th>Nombre </th>
+                    <th>Apellidos </th>
+                    <th>Email </th>
+                    <!-- <th>Password </th> -->
+                    <th class="text-center fs-x-13">Reset Password</th>
+                    <th width="70"></th>
+                  </tr>
+                </thead>
 
-                  <?php
-                    $classBtn = "" ;
-                    $title    = "" ;
-                    $icon_pub = "" ;
+                <tbody>
+                  <?php foreach ($data as &$row) {?>
 
-                    if(!empty($row["publicar"])){
-                      if($row["publicar"] == "S"){
-                        $classBtn =  "btn-outline-danger";
-                        $title = "Desactivar/Ocultar" ;
-                        $icon_pub = '<i class="fas fa-times"></i>';
+                    <?php
+                      $classBtn = "" ;
+                      $title    = "" ;
+                      $icon_pub = "" ;
+
+                      if(!empty($row->publicar)){
+                        if($row->publicar == "S"){
+                          $classBtn =  "btn-outline-danger";
+                          $title = "Desactivar/Ocultar" ;
+                          $icon_pub = '<i class="fas fa-times"></i>';
+                        }
+                        else {
+                          $classBtn =  "btn-outline-success";
+                          $title = "Publicar" ;
+                          $icon_pub = '<i class="fas fa-check"></i>';
+                        }
                       }
-                      else {
-                        $classBtn =  "btn-outline-success";
-                        $title = "Publicar" ;
-                        $icon_pub = '<i class="fas fa-check"></i>';
+
+                      /* estado */
+                      $title_estado   = "";
+                      $class_estado   = "";
+                      $class_disabled = "";
+
+                      if($row->estado == 1)
+                      {
+                        $title_estado = "Eliminar" ;
                       }
-                    }
+                      else
+                      {
+                        $title_estado   = "Recuperar" ;
+                        $class_estado   = "row-disabled";
+                        $class_disabled = "is-disabled";
+                      }
+                    ?>
 
-                    /* estado */
-                    $title_estado   = "";
-                    $class_estado   = "";
-                    $class_disabled = "";
+                  <tr class="<?php echo $class_estado ;?>" >
 
-                    if($row["estado"] == 1)
-                    {
-                      $title_estado = "Eliminar" ;
-                    }
-                    else
-                    {
-                      $title_estado   = "Recuperar" ;
-                      $class_estado   = "row-disabled";
-                      $class_disabled = "is-disabled";
-                    }
-                  ?>
+                    <td> <?php echo $row->user_id ?> </td>
+                    <td> <?php echo $row->nombre ?> </td>
+                    <td> <?php echo $row->apellidos ?> </td>
+                    <td> <?php echo $row->email ?> </td>
+                    <!-- <td> <?php echo $row->password ?> </td> -->
 
-                <tr class="<?php echo $class_estado ;?>" >
-                
-                  <td> <?php echo $row["user_id"] ?> </td>
-                  <td> <?php echo $row["nombre"] ?> </td>
-                  <td> <?php echo $row["apellidos"] ?> </td>
-                  <td> <?php echo $row["email"] ?> </td>
-                  <!-- <td> <?php echo $row["password"] ?> </td> -->
+                    <td class="text-center">
+                      <a class="btn btn-outline-info btn-sm lh-1 btn-table" href="admin/user/reset.php?id=<?php echo $row->user_id ?>" title="Reset Password">
+                        <i class="fas fa-key"></i>
+                      </a>
+                    </td>
 
-                  <td class="text-center">
-                    <a class="btn btn-outline-info btn-sm lh-1 btn-table" href="admin/user/reset.php?id=<?php echo $row["user_id"] ?>" title="Reset Password ">
-                      <i class="fas fa-key"></i>
-                    </a>
-                  </td>
-                  <td class="text-center">
-                    <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/user/editar.php?id=<?php echo $row["user_id"] ?>" title="Editar">
-                    <i class="fas fa-pencil-alt"></i>
-                    </a>
-                    <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row["user_id"] ?>, `<?php echo $row['nombre'] ?>`,`<?php echo $title_estado ?>`,`<?php echo $row['estado'] ?>`);" title="<?php echo $title_estado ;?>">
-                    <i class="far fa-trash-alt"></i>
-                    </button>
-                    <span class="sr-only"><?php echo $row["estado"] ?></span>
-                  </td>
-                </tr>
-                <?php }?>
-              </tbody>
+                    <td class="text-center">
+                      <a class="btn btn-outline-primary btn-sm lh-1 btn-table <?php echo $class_disabled ; ?>" href="admin/user/editar.php?id=<?php echo $row->user_id ?>" title="Editar">
+                      <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <button class="btn btn-outline-danger btn-sm lh-1 btn-table" onclick="modalDelete(<?php echo $row->user_id ?>, `<?php echo $row->nombre ?>`,`<?php echo $title_estado ?>`,`<?php echo $row->estado ?>`);" title="<?php echo $title_estado ;?>">
+                      <i class="far fa-trash-alt"></i>
+                      </button>
+                      <span class="sr-only"><?php echo $row->estado ?></span>
+                    </td>
+                  </tr>
+                  <?php }?>
+                </tbody>
 
-            </table> 
+              </table>
+
             </div>
           </div>
 
@@ -224,7 +226,7 @@
     </div>
   </form>
 
-  <?php require_once "../layout/datatables.phtml"?>
+  <?php require_once "../layout/datatables.phtml" ?>
 
   <script>
 
@@ -268,7 +270,6 @@
 
   })(jQuery);
 
-
   // modal DELETE
   function modalDelete(id, textRow, title, estado) {
     $("#idRowModal").val(id);
@@ -277,7 +278,7 @@
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Eliminar");
 
-    var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 
@@ -294,7 +295,6 @@
     $("#myModal").modal("show");
   }
 
-
   // modal PUBLICAR
   function modalPublicar(id, textRow, title, publicar) {
     $("#idRowModal").val(id);
@@ -304,7 +304,7 @@
     $("#modalHistorial").addClass("d-none");
     $("#modalTitle span").text("Publicar");
 
-    var text = `¿Esta seguro de <strong> ${title} </strong> la categoría: <strong> ${textRow} </strong> ?`;
+    var text = `¿Esta seguro de <strong> ${title} </strong>: <strong> ${textRow} </strong> ?`;
     $("#dataTextModal").html(text);
     $("#btn-send").text(title);
 
@@ -322,6 +322,7 @@
   }
 
 </script>
+
 
 </body>
 
